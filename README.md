@@ -13,7 +13,21 @@ For scope, attribution, and platform status, see:
 - [UPSTREAM.md](./UPSTREAM.md)
 - [docs/qryptana/PLATFORM_STATUS.md](./docs/qryptana/PLATFORM_STATUS.md)
 
----
+## Current Qryptana status
+
+Qryptana is currently in Labs-stage development.
+
+The initial Qryptana work is focused on:
+
+- preserving the upstream build structure;
+- documenting the downstream fork clearly;
+- preparing Qryptana branding without reusing SimpleX branding assets;
+- evaluating self-hosted SMP relay infrastructure;
+- keeping iOS and Android code as upstream reference material for now, not as Qryptana release targets.
+
+Qryptana does not currently provide official public downloads.
+
+Do not use the upstream SimpleX download links below as Qryptana release links.
 
 # Upstream SimpleX Chat README
 
@@ -22,7 +36,6 @@ The content below is retained from the upstream SimpleX Chat project for attribu
 It does not represent Qryptana branding, Qryptana release targets, Qryptana download links, or official Qryptana project status.
 
 # SimpleX
-
 
 [![build](https://github.com/simplex-chat/simplex-chat/actions/workflows/build.yml/badge.svg?branch=stable)](https://github.com/simplex-chat/simplex-chat/actions/workflows/build.yml)
 [![GitHub downloads](https://img.shields.io/github/downloads/simplex-chat/simplex-chat/total)](https://github.com/simplex-chat/simplex-chat/releases)
