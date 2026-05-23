@@ -6,12 +6,13 @@ This repository is currently a downstream fork derived from SimpleX Chat and rem
 
 Qryptana is not affiliated with, endorsed by, sponsored by, or officially connected to the SimpleX Chat project.
 
-For scope, attribution, and platform status, see:
+For scope, attribution, platform status, and upstream documentation status, see:
 
 - [QRYPTANA_SCOPE.md](./QRYPTANA_SCOPE.md)
 - [ATTRIBUTION.md](./ATTRIBUTION.md)
 - [UPSTREAM.md](./UPSTREAM.md)
 - [docs/qryptana/PLATFORM_STATUS.md](./docs/qryptana/PLATFORM_STATUS.md)
+- [docs/qryptana/UPSTREAM_DOCS_STATUS.md](./docs/qryptana/UPSTREAM_DOCS_STATUS.md)
 
 ## Current Qryptana status
 
