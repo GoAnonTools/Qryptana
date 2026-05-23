@@ -1,5 +1,9 @@
 # Qryptana
 
+<p align="center">
+  <img src="./docs/qryptana/brand/qryptana-wordmark.png" alt="Qryptana logo" width="720">
+</p>
+
 Qryptana is an early Labs-stage private communication project in the GoAnon ecosystem.
 
 This repository is currently a downstream fork derived from SimpleX Chat and remains licensed under AGPL-3.0.
