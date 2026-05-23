@@ -1,3 +1,29 @@
+# Qryptana
+
+Qryptana is an early Labs-stage private communication project in the GoAnon ecosystem.
+
+This repository is currently a downstream fork derived from SimpleX Chat and remains licensed under AGPL-3.0.
+
+Qryptana is not affiliated with, endorsed by, sponsored by, or officially connected to the SimpleX Chat project.
+
+For scope, attribution, and platform status, see:
+
+- [QRYPTANA_SCOPE.md](./QRYPTANA_SCOPE.md)
+- [ATTRIBUTION.md](./ATTRIBUTION.md)
+- [UPSTREAM.md](./UPSTREAM.md)
+- [docs/qryptana/PLATFORM_STATUS.md](./docs/qryptana/PLATFORM_STATUS.md)
+
+---
+
+# Upstream SimpleX Chat README
+
+The content below is retained from the upstream SimpleX Chat project for attribution, technical reference, and AGPL transparency.
+
+It does not represent Qryptana branding, Qryptana release targets, Qryptana download links, or official Qryptana project status.
+
+# SimpleX
+
+
 [![build](https://github.com/simplex-chat/simplex-chat/actions/workflows/build.yml/badge.svg?branch=stable)](https://github.com/simplex-chat/simplex-chat/actions/workflows/build.yml)
 [![GitHub downloads](https://img.shields.io/github/downloads/simplex-chat/simplex-chat/total)](https://github.com/simplex-chat/simplex-chat/releases)
 [![GitHub release](https://img.shields.io/github/v/release/simplex-chat/simplex-chat)](https://github.com/simplex-chat/simplex-chat/releases)
