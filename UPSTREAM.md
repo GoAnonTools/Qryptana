@@ -33,3 +33,7 @@ Before making large changes, map references first using tools such as `rg`.
 Do not imply that Qryptana is an official SimpleX product.
 
 Do not reuse SimpleX logos, app icons, product names, website visuals, or other non-code branding assets as Qryptana branding.
+
+User-facing Qryptana material should use the Qryptana name and GoAnon identity.
+SimpleX references may remain when they identify the upstream project, a
+protocol or dependency, retained attribution, or technical reference material.

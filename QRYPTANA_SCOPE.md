@@ -6,6 +6,10 @@ The goal of Qryptana is to provide privacy-first communication with reduced depe
 
 Qryptana is currently a downstream fork derived from SimpleX Chat.
 
+Qryptana is the product identity used for Qryptana-specific documentation,
+user-facing materials, and future releases. SimpleX remains the name of the
+upstream project and protocol family from which this repository is derived.
+
 ## Current focus
 
 The first Qryptana milestone is intentionally conservative:

@@ -17,6 +17,11 @@ These upstream documentation files may contain:
 
 Unless a document is explicitly marked as Qryptana-specific, it should be treated as upstream reference material.
 
+Qryptana-specific product identity is established in the repository-level
+scope, attribution, and relationship documents. The retained upstream README
+section in `README.md` is explicitly labeled as reference material and does not
+define Qryptana releases or product commitments.
+
 ## Qryptana-specific documentation
 
 Current Qryptana-specific documentation includes:

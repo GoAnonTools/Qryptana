@@ -6,7 +6,7 @@ This plan defines the safe order for rebranding work.
 
 ## Phase 1 — Documentation and compliance
 
-Status: in progress
+Status: complete for repository identity and documentation boundaries
 
 - Add Qryptana scope documentation.
 - Add upstream attribution.
@@ -14,6 +14,10 @@ Status: in progress
 - Add platform status documentation.
 - Add upstream documentation status documentation.
 - Clarify README so visitors understand which parts are Qryptana-specific and which parts are retained upstream reference.
+
+Phase 1 is limited to documentation and compliance. It does not rename code
+packages, protocol identifiers, storage paths, native targets, or application
+resources.
 
 ## Phase 2 — Branding assets
 

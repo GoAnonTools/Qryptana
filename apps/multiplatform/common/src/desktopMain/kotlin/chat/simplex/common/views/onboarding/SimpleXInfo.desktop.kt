@@ -16,8 +16,8 @@ import dev.icerock.moko.resources.compose.painterResource
 actual fun OnboardingActionButton(user: User?, onboardingStage: SharedPreference<OnboardingStage>, onclick: (() -> Unit)?) {
   if (user == null) {
     Row(horizontalArrangement = Arrangement.spacedBy(DEFAULT_PADDING * 2.5f)) {
-      OnboardingActionButton(labelId = MR.strings.link_a_mobile, onboarding = if (controller.appPrefs.initialRandomDBPassphrase.get() && !chatModel.desktopOnboardingRandomPassword.value) OnboardingStage.Step2_5_SetupDatabasePassphrase else OnboardingStage.LinkAMobile, icon = painterResource(MR.images.ic_smartphone_300), onclick = onclick)
-      OnboardingActionButton(labelId = MR.strings.create_your_profile, onboarding = OnboardingStage.Step2_CreateProfile, icon = painterResource(MR.images.ic_desktop), onclick = onclick)
+      OnboardingActionButton(labelId = MR.strings.qryptana_link_device, onboarding = if (controller.appPrefs.initialRandomDBPassphrase.get() && !chatModel.desktopOnboardingRandomPassword.value) OnboardingStage.Step2_5_SetupDatabasePassphrase else OnboardingStage.LinkAMobile, icon = painterResource(MR.images.ic_smartphone_300), onclick = onclick)
+      OnboardingActionButton(labelId = MR.strings.qryptana_create_profile, onboarding = OnboardingStage.Step2_CreateProfile, icon = painterResource(MR.images.ic_desktop), onclick = onclick)
     }
   } else {
     OnboardingActionButton(Modifier.widthIn(min = 300.dp), labelId = MR.strings.make_private_connection, onboarding = OnboardingStage.OnboardingComplete, onclick = onclick)

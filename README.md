@@ -34,13 +34,17 @@ Qryptana does not currently provide official public downloads.
 
 Do not use the upstream SimpleX download links below as Qryptana release links.
 
-# Upstream SimpleX Chat README
+# Upstream reference: SimpleX Chat
 
 The content below is retained from the upstream SimpleX Chat project for attribution, technical reference, and AGPL transparency.
 
 It does not represent Qryptana branding, Qryptana release targets, Qryptana download links, or official Qryptana project status.
 
-# SimpleX
+# SimpleX Chat (upstream reference)
+
+The remainder of this file is retained upstream material. It describes the
+SimpleX Chat project and its services, not current Qryptana releases,
+downloads, support channels, or product commitments.
 
 [![build](https://github.com/simplex-chat/simplex-chat/actions/workflows/build.yml/badge.svg?branch=stable)](https://github.com/simplex-chat/simplex-chat/actions/workflows/build.yml)
 [![GitHub downloads](https://img.shields.io/github/downloads/simplex-chat/simplex-chat/total)](https://github.com/simplex-chat/simplex-chat/releases)

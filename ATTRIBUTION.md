@@ -25,3 +25,7 @@ The SimpleX name, logo, visual identity, illustrations, website assets, and othe
 Qryptana is part of the GoAnon ecosystem.
 
 Qryptana branding, website copy, release materials, and user-facing presentation should use Qryptana and GoAnon identity, not SimpleX identity.
+
+Where inherited implementation or documentation is retained, it should be
+identified as upstream SimpleX material. This distinction applies to product
+copy as well as release, download, support, and marketing content.
