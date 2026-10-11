@@ -185,12 +185,12 @@ private fun ModalData.NewChatSheetLayout(
   val actionButtonsOriginal = listOf(
     Triple(
       painterResource(MR.images.ic_add_link),
-      stringResource(MR.strings.create_1_time_link),
+      stringResource(MR.strings.smart_invite_create),
       addContact,
     ),
     Triple(
       painterResource(MR.images.ic_qr_code),
-      if (appPlatform.isAndroid) stringResource(MR.strings.scan_paste_link) else stringResource(MR.strings.paste_link),
+      if (appPlatform.isAndroid) stringResource(MR.strings.smart_invite_scan) else stringResource(MR.strings.smart_invite_paste),
       scanPaste,
     ),
     Triple(

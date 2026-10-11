@@ -483,19 +483,19 @@ private fun InviteView(rhId: Long?, connLinkInvitation: CreatedConnLink, contact
 
   if (onboarding) {
     Text(
-      stringResource(MR.strings.onboarding_send_1_time_link),
+      stringResource(MR.strings.smart_invite_instruction),
       Modifier.fillMaxWidth().padding(horizontal = DEFAULT_PADDING, vertical = DEFAULT_PADDING_HALF),
       style = MaterialTheme.typography.body1
     )
     LinkTextView(connLinkInvitation.simplexChatUri(short = showShortLink.value), true)
     Text(
-      stringResource(MR.strings.onboarding_or_show_qr_code),
+      stringResource(MR.strings.smart_invite_or_scan),
       Modifier.fillMaxWidth().padding(horizontal = DEFAULT_PADDING, vertical = DEFAULT_PADDING_HALF),
       style = MaterialTheme.typography.body1
     )
     SimpleXCreatedLinkQRCode(connLinkInvitation, short = showShortLink.value, onShare = { chatModel.markShowingInvitationUsed() })
   } else {
-    SectionView(stringResource(MR.strings.share_this_1_time_link).uppercase(), headerBottomPadding = 5.dp) {
+    SectionView(stringResource(MR.strings.smart_invite_title).uppercase(), headerBottomPadding = 5.dp) {
       LinkTextView(connLinkInvitation.simplexChatUri(short = showShortLink.value), true)
     }
 

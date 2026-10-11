@@ -1,5 +1,13 @@
 <resources>
-  <string name="app_name">SimpleX</string>
+  <string name="app_name">Qryptana</string>
+  <string name="smart_invite_title">Qryptana Smart Invite</string>
+  <string name="smart_invite_instruction">Show this invite to someone you trust. They can scan it to start a private conversation.</string>
+  <string name="smart_invite_or_scan">Or let them scan this Qryptana invite</string>
+  <string name="smart_invite_scan_hint">Scan a Qryptana invite QR code from the other person’s app.</string>
+  <string name="qryptana_logo_description">Qryptana symbol</string>
+  <string name="smart_invite_create">Invite someone</string>
+  <string name="smart_invite_scan">Scan an invite</string>
+  <string name="smart_invite_paste">Paste an invite</string>
 
   <string name="thousand_abbreviation">k</string>
 
@@ -245,7 +253,7 @@
   <string name="icon_descr_instant_notifications">Instant notifications</string>
   <string name="service_notifications">Instant notifications!</string>
   <string name="service_notifications_disabled">Instant notifications are disabled!</string>
-  <string name="to_preserve_privacy_simplex_has_background_service_instead_of_push_notifications_it_uses_a_few_pc_battery"><![CDATA[To improve privacy, <b>SimpleX runs in background</b> instead of using push notifications.]]></string>
+  <string name="to_preserve_privacy_simplex_has_background_service_instead_of_push_notifications_it_uses_a_few_pc_battery"><![CDATA[To improve privacy, <b>Qryptana runs in background</b> instead of using push notifications.]]></string>
   <string name="it_can_disabled_via_settings_notifications_still_shown"><![CDATA[<b>It can be disabled via settings</b> – notifications will still be shown while the app is running.]]></string>
   <string name="turn_off_battery_optimization"><![CDATA[<b>Allow it</b> in the next dialog to receive notifications instantly.]]></string>
   <string name="turning_off_service_and_periodic">Battery optimization is active, turning off background service and periodic requests for new messages. You can re-enable them via settings.</string>
@@ -255,7 +263,7 @@
   <string name="turn_off_battery_optimization_button">Allow</string>
   <string name="turn_off_system_restriction_button">Open app settings</string>
   <string name="disable_notifications_button">Disable notifications</string>
-  <string name="system_restricted_background_desc">SimpleX can\'t run in background. You will receive the notifications only when the app is running.</string>
+  <string name="system_restricted_background_desc">Qryptana can\'t run in background. You will receive the notifications only when the app is running.</string>
   <string name="system_restricted_background_warn"><![CDATA[To enable notifications, please choose <b>App battery usage</b> / <b>Unrestricted</b> in the app settings.]]></string>
   <string name="system_restricted_background_in_call_title">No background calls</string>
   <string name="system_restricted_background_in_call_desc">The app may be closed after 1 minute in background.</string>
@@ -267,7 +275,7 @@
   <string name="xiaomi_ignore_battery_optimization"><![CDATA[<b>Xiaomi devices</b>: please enable Autostart in the system settings for notifications to work.]]></string>
 
   <!-- SimpleX Chat foreground Service -->
-  <string name="simplex_service_notification_title">SimpleX Chat service</string>
+  <string name="simplex_service_notification_title">Qryptana service</string>
   <string name="simplex_service_notification_text">Receiving messages…</string>
   <string name="call_service_notification_audio_call">Audio call</string>
   <string name="call_service_notification_video_call">Video call</string>
@@ -275,8 +283,8 @@
   <string name="hide_notification">Hide</string>
 
   <!-- Notification channels -->
-  <string name="ntf_channel_messages">SimpleX Chat messages</string>
-  <string name="ntf_channel_calls">SimpleX Chat calls</string>
+  <string name="ntf_channel_messages">Qryptana messages</string>
+  <string name="ntf_channel_calls">Qryptana calls</string>
 
   <!-- Notifications -->
   <string name="settings_notifications_mode_title">Notification service</string>
@@ -301,10 +309,10 @@
   <string name="error_showing_desktop_notification">Error showing notification, contact developers.</string>
 
   <!-- local authentication notice - SimpleXAPI.kt -->
-  <string name="la_notice_title_simplex_lock">SimpleX Lock</string>
-  <string name="la_notice_to_protect_your_information_turn_on_simplex_lock_you_will_be_prompted_to_complete_authentication_before_this_feature_is_enabled">To protect your information, turn on SimpleX Lock.\nYou will be prompted to complete authentication before this feature is enabled.</string>
+  <string name="la_notice_title_simplex_lock">Qryptana Lock</string>
+  <string name="la_notice_to_protect_your_information_turn_on_simplex_lock_you_will_be_prompted_to_complete_authentication_before_this_feature_is_enabled">To protect your information, turn on Qryptana Lock.\nYou will be prompted to complete authentication before this feature is enabled.</string>
   <string name="la_notice_turn_on">Turn on</string>
-  <string name="la_lock_mode">SimpleX Lock mode</string>
+  <string name="la_lock_mode">Qryptana Lock mode</string>
   <string name="la_lock_mode_system">System authentication</string>
   <string name="la_lock_mode_passcode">Passcode entry</string>
   <string name="la_auth_failed">Authentication failed</string>
@@ -320,22 +328,22 @@
   <string name="la_please_remember_to_store_password">Please remember or store it securely - there is no way to recover a lost password!</string>
 
   <!-- LocalAuthentication.kt -->
-  <string name="auth_simplex_lock_turned_on">SimpleX Lock turned on</string>
+  <string name="auth_simplex_lock_turned_on">Qryptana Lock turned on</string>
   <string name="auth_you_will_be_required_to_authenticate_when_you_start_or_resume">You will be required to authenticate when you start or resume the app after 30 seconds in background.</string>
   <string name="auth_unlock">Unlock</string>
   <string name="auth_log_in_using_credential">Log in using your credential</string>
-  <string name="auth_enable_simplex_lock">Enable SimpleX Lock</string>
-  <string name="auth_disable_simplex_lock">Disable SimpleX Lock</string>
+  <string name="auth_enable_simplex_lock">Enable Qryptana Lock</string>
+  <string name="auth_disable_simplex_lock">Disable Qryptana Lock</string>
   <string name="auth_confirm_credential">Confirm your credential</string>
   <string name="auth_unavailable">Authentication unavailable</string>
-  <string name="auth_device_authentication_is_not_enabled_you_can_turn_on_in_settings_once_enabled">Device authentication is not enabled. You can turn on SimpleX Lock via Settings, once you enable device authentication.</string>
-  <string name="auth_device_authentication_is_disabled_turning_off">Device authentication is disabled. Turning off SimpleX Lock.</string>
+  <string name="auth_device_authentication_is_not_enabled_you_can_turn_on_in_settings_once_enabled">Device authentication is not enabled. You can turn on Qryptana Lock via Settings, once you enable device authentication.</string>
+  <string name="auth_device_authentication_is_disabled_turning_off">Device authentication is disabled. Turning off Qryptana Lock.</string>
   <string name="auth_stop_chat">Stop chat</string>
   <string name="auth_open_chat_console">Open chat console</string>
   <string name="auth_open_chat_profiles">Change chat profiles</string>
   <string name="auth_open_migration_to_another_device">Open migration screen</string>
-  <string name="lock_not_enabled">SimpleX Lock not enabled!</string>
-  <string name="you_can_turn_on_lock">You can turn on SimpleX Lock via Settings.</string>
+  <string name="lock_not_enabled">Qryptana Lock not enabled!</string>
+  <string name="you_can_turn_on_lock">You can turn on Qryptana Lock via Settings.</string>
 
   <!-- Chat Alerts - ChatItemView.kt -->
   <string name="message_delivery_error_title">Message delivery error</string>
@@ -470,15 +478,15 @@
   <string name="tap_to_start_new_chat">Tap to start a new chat</string>
   <string name="chat_with_developers">Chat with the developers</string>
   <string name="you_have_no_chats">You have no chats</string>
-  <string name="talk_to_someone">Talk to someone</string>
-  <string name="let_someone_connect_to_you">Let someone connect to you</string>
-  <string name="connect_via_link_or_qr_code">Connect via link or QR code</string>
-  <string name="connect_with_someone">Create your link</string>
-  <string name="invite_someone_privately">Invite someone privately</string>
-  <string name="a_link_for_one_person">A link for one person to connect</string>
+  <string name="talk_to_someone">Start a private conversation</string>
+  <string name="let_someone_connect_to_you">Invite someone</string>
+  <string name="connect_via_link_or_qr_code">Scan an invite</string>
+  <string name="connect_with_someone">Advanced options</string>
+  <string name="invite_someone_privately">Invite someone directly</string>
+  <string name="a_link_for_one_person">A private invite for one person</string>
   <string name="create_your_public_address">Create your public address</string>
   <string name="your_public_address">Your public address</string>
-  <string name="for_anyone_to_reach_you">For anyone to reach you</string>
+  <string name="for_anyone_to_reach_you">A reusable address for people to find you</string>
   <string name="loading_chats">Loading chats…</string>
   <string name="no_filtered_chats">No filtered chats</string>
   <string name="no_chats_in_list">No chats in list %s.</string>
@@ -774,8 +782,8 @@
   <string name="gallery_video_button">Video</string>
 
   <!-- help - ChatHelpView.kt -->
-  <string name="thank_you_for_installing_simplex">Thank you for installing SimpleX Chat!</string>
-  <string name="you_can_connect_to_simplex_chat_founder"><![CDATA[You can <font color="#0088ff">connect to SimpleX Chat developers to ask any questions and to receive updates</font>.]]></string>
+  <string name="thank_you_for_installing_simplex">Thank you for installing Qryptana!</string>
+  <string name="you_can_connect_to_simplex_chat_founder"><![CDATA[You can <font color="#0088ff">connect to Qryptana developers to ask questions and receive updates</font>.]]></string>
   <string name="to_start_a_new_chat_help_header">To start a new chat</string>
   <string name="chat_help_tap_button">Tap button</string>
   <string name="above_then_preposition_continuation">above, then:</string>
@@ -860,8 +868,8 @@
   <string name="image_descr_qr_code">QR Code</string>
   <string name="icon_descr_address">SimpleX Address</string>
   <string name="icon_descr_help">help</string>
-  <string name="icon_descr_simplex_team">SimpleX Team</string>
-  <string name="image_descr_simplex_logo">SimpleX Logo</string>
+  <string name="icon_descr_simplex_team">Qryptana Team</string>
+  <string name="image_descr_simplex_logo">Qryptana Logo</string>
   <string name="icon_descr_email">Email</string>
   <string name="icon_descr_more_button">More</string>
 
@@ -973,13 +981,13 @@
   <string name="your_chat_profiles">Your chat profiles</string>
   <string name="create_chat_profile">Create chat profile</string>
   <string name="database_passphrase_and_export">Database passphrase &amp; export</string>
-  <string name="about_simplex_chat">About SimpleX Chat</string>
+  <string name="about_simplex_chat">About Qryptana</string>
   <string name="how_to_use_simplex_chat">How to use it</string>
   <string name="markdown_help">Markdown help</string>
   <string name="markdown_in_messages">Markdown in messages</string>
   <string name="chat_with_the_founder">Send questions and ideas</string>
   <string name="send_us_an_email">Send us email</string>
-  <string name="chat_lock">SimpleX Lock</string>
+  <string name="chat_lock">Qryptana Lock</string>
   <string name="chat_console">Chat console</string>
   <string name="message_servers">Message servers</string>
   <string name="smp_servers">SMP servers</string>
@@ -1012,15 +1020,15 @@
   <string name="xftp_servers_configured">Configured XFTP servers</string>
   <string name="xftp_servers_other">Other XFTP servers</string>
   <string name="subscription_percentage">Show percentage</string>
-  <string name="install_simplex_chat_for_terminal">Install SimpleX Chat for terminal</string>
+  <string name="install_simplex_chat_for_terminal">Install Qryptana for terminal</string>
   <string name="reset_all_hints">Reset all hints</string>
   <string name="star_on_github">Star on GitHub</string>
   <string name="contribute">Contribute</string>
   <string name="rate_the_app">Rate the app</string>
-  <string name="use_simplex_chat_servers__question">Use SimpleX Chat servers?</string>
+  <string name="use_simplex_chat_servers__question">Use Qryptana servers?</string>
   <string name="your_SMP_servers">Your SMP servers</string>
   <string name="your_XFTP_servers">Your XFTP servers</string>
-  <string name="using_simplex_chat_servers">Using SimpleX Chat servers.</string>
+  <string name="using_simplex_chat_servers">Using Qryptana servers.</string>
   <string name="how_to">How to</string>
   <string name="how_to_use_your_servers">How to use your servers</string>
   <string name="saved_ICE_servers_will_be_removed">Saved WebRTC ICE servers will be removed.</string>
@@ -1234,7 +1242,7 @@
   <string name="create_address_button">Create</string>
   <string name="invalid_name">Invalid name!</string>
   <string name="correct_name_to">Correct name to %s?</string>
-  <string name="about_simplex">About SimpleX</string>
+  <string name="about_simplex">About Qryptana</string>
 
   <!-- markdown demo - MarkdownHelpView.kt -->
   <string name="how_to_use_markdown">How to use markdown</string>
@@ -1296,15 +1304,17 @@
   <string name="make_private_connection">Make a private connection</string>
   <string name="migrate_from_another_device">Migrate from another device</string>
   <string name="how_it_works">How it works</string>
-  <string name="onboarding_be_free">Be free\nin your network</string>
-  <string name="onboarding_private_and_secure">Private and secure messaging.</string>
-  <string name="onboarding_first_network">The first network where you own\nyour contacts and groups.</string>
-  <string name="get_started">Get started</string>
-  <string name="why_simplex_is_built">Why SimpleX is built.</string>
-  <string name="onboarding_your_profile">Your profile</string>
-  <string name="onboarding_on_your_phone">On your phone, not on servers.</string>
-  <string name="onboarding_no_account">No account. No phone. No email. No ID.\nThe most secure encryption.</string>
-  <string name="enter_profile_name">Enter profile name…</string>
+  <string name="onboarding_be_free">Private conversations,\nmade simple</string>
+  <string name="onboarding_private_and_secure">Talk to the people you choose, without a phone number.</string>
+  <string name="onboarding_first_network">Start with a profile on this device. Learn how the privacy network works when you are ready.</string>
+  <string name="get_started">Create your profile</string>
+  <string name="qryptana_link_device">Use an existing profile</string>
+  <string name="qryptana_create_profile">Create a new profile</string>
+  <string name="why_simplex_is_built">Why Qryptana is built.</string>
+  <string name="onboarding_your_profile">Choose your name</string>
+  <string name="onboarding_on_your_phone">This is the name your contacts will see.</string>
+  <string name="onboarding_no_account">Your profile stays on this device. No phone number or email is needed.</string>
+  <string name="enter_profile_name">What should people call you?</string>
   <string name="migrate">Migrate</string>
 
   <!-- Why SimpleX is built -->
@@ -1404,7 +1414,7 @@
   <string name="relay_server_if_necessary">Relay server is only used if necessary. Another party can observe your IP address.</string>
 
   <!-- Call Lock Screen -->
-  <string name="open_simplex_chat_to_accept_call">Open SimpleX Chat to accept call</string>
+  <string name="open_simplex_chat_to_accept_call">Open Qryptana to accept call</string>
   <string name="allow_accepting_calls_from_lock_screen">Enable calls from lock screen via Settings.</string>
   <string name="open_verb">Open</string>
   <string name="open_external_link_title">Open external link?</string>
@@ -1541,7 +1551,7 @@
   <string name="settings_section_title_settings">SETTINGS</string>
   <string name="settings_section_title_chat_database">CHAT DATABASE</string>
   <string name="settings_section_title_help">HELP</string>
-  <string name="settings_section_title_support">SUPPORT SIMPLEX CHAT</string>
+  <string name="settings_section_title_support">SUPPORT QRYPTANA</string>
   <string name="settings_section_title_app">APP</string>
   <string name="settings_section_title_device">DEVICE</string>
   <string name="settings_section_title_chats">CHATS</string>
@@ -3092,10 +3102,10 @@
   <string name="close_behavior_dialog_text">If you choose Close, messages won\'t be received.\nYou can change it later in Appearance settings.</string>
   <string name="close_behavior_dialog_close">Close the app</string>
   <string name="close_behavior_dialog_minimize">Minimize to tray</string>
-  <string name="tray_show">Show SimpleX</string>
-  <string name="tray_quit">Quit SimpleX</string>
-  <string name="tray_tooltip">SimpleX</string>
-  <string name="tray_tooltip_unread">SimpleX — %d unread</string>
+  <string name="tray_show">Show Qryptana</string>
+  <string name="tray_quit">Quit Qryptana</string>
+  <string name="tray_tooltip">Qryptana</string>
+  <string name="tray_tooltip_unread">Qryptana — %d unread</string>
   <string name="appearance_minimize_to_tray">Minimize to tray when closing window</string>
-  <string name="appearance_minimize_to_tray_desc">Keep SimpleX running in the background to receive messages.</string>
+  <string name="appearance_minimize_to_tray_desc">Keep Qryptana running in the background to receive messages.</string>
 </resources>
