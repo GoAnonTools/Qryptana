@@ -23,6 +23,7 @@ import androidx.compose.ui.platform.*
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
+import dev.icerock.moko.resources.compose.painterResource
 import dev.icerock.moko.resources.compose.stringResource
 import boofcv.alg.drawing.FiducialImageEngine
 import boofcv.alg.fiducial.qrcode.*
@@ -110,6 +111,7 @@ fun QRCode(
     qrCodeBitmap(connReq, 1024, errorLevel).replaceColor(Color.Black.toArgb(), tintColor.toArgb())
       .let { if (withLogo) it.addLogo(logoSize) else it }
   }
+  val isLightTheme = MaterialTheme.colors.isLight
   Box(Modifier.fillMaxWidth(), contentAlignment = Alignment.Center) {
     val cardModifier = Modifier
       .padding(horizontal = if (branded) DEFAULT_PADDING else 0.dp)
@@ -149,7 +151,7 @@ fun QRCode(
               .matchParentSize()
               .alpha(if (branded) (1f - revealAlpha) else 0f)
           ) {
-            val privacyGlow = if (MaterialTheme.colors.isLight) Color(0xffe7f5ff) else Color(0xff15233d)
+            val privacyGlow = if (isLightTheme) Color(0xffe7f5ff) else Color(0xff15233d)
             drawRoundRect(
               color = privacyGlow,
               cornerRadius = androidx.compose.ui.geometry.CornerRadius(18.dp.toPx())
