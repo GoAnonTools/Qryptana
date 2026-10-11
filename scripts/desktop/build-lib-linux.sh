@@ -28,10 +28,10 @@ for elem in "${exports[@]}"; do count=$(grep -R "\"$elem\"" flake.nix | wc -l); 
 #rm -rf $BUILD_DIR
 if [[ "$DATABASE_BACKEND" == "postgres" ]]; then
     echo "Building with postgres backend..."
-    cabal build lib:simplex-chat --ghc-options='-optl-Wl,-rpath,$ORIGIN -optl-Wl,-soname,libsimplex.so -flink-rts -threaded' --constraint 'simplexmq +client_library +client_postgres' --constraint 'simplex-chat +client_library +client_postgres'
+    cabal build lib:simplex-chat --ghc-options='-optl-Wl,-rpath,$ORIGIN -optl-Wl,-soname,libsimplex.so -flink-rts -threaded' --constraint 'simplexmq +client_library +client_postgres' --constraint 'simplex-chat +client_library +client_postgres' --constraint 'zstd -standalone'
 else
     echo "Building with sqlite backend..."
-    cabal build lib:simplex-chat --ghc-options='-optl-Wl,-rpath,$ORIGIN -optl-Wl,-soname,libsimplex.so -flink-rts -threaded' --constraint 'simplexmq +client_library' --constraint 'simplex-chat +client_library'
+    cabal build lib:simplex-chat --ghc-options='-optl-Wl,-rpath,$ORIGIN -optl-Wl,-soname,libsimplex.so -flink-rts -threaded' --constraint 'simplexmq +client_library' --constraint 'simplex-chat +client_library' --constraint 'zstd -standalone'
 fi
 cd $BUILD_DIR/build
 mv libHSsimplex-chat-*-inplace-ghc${GHC_VERSION}.so libsimplex.so 2> /dev/null || true
@@ -42,8 +42,27 @@ mv libHSsimplex-chat-*-inplace-ghc${GHC_VERSION}.so libsimplex.so 2> /dev/null |
 # but libffi.so.8 is shipped as an external library with other libs
 patchelf --replace-needed "libffi.so.7" "libffi.so.8" libsimplex.so
 
-mkdir deps 2> /dev/null || true
-ldd libsimplex.so | grep "ghc" | cut -d' ' -f 3 | xargs -I {} cp {} ./deps/
+rm -rf deps
+mkdir deps
+mapfile -t runtime_libs < <(
+    ldd libsimplex.so |
+    awk '/=>/ && $3 ~ /^\// { print $3 }' |
+    while read -r lib; do
+        case "$lib" in
+            */.cabal/*|*/.ghcup/*|*/libzstd.so.*|*/libffi.so.*)
+                printf '%s\n' "$lib"
+                ;;
+        esac
+    done |
+    sort -u
+)
+for lib in "${runtime_libs[@]}"; do
+    cp "$lib" ./deps/
+done
+
+for lib in libsimplex.so deps/*.so*; do
+    patchelf --set-rpath '$ORIGIN' "$lib"
+done
 
 cd -
 
