@@ -12,6 +12,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.drawBehind
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
@@ -70,26 +71,7 @@ private fun SimpleXInfoDesktop(chatModel: ChatModel) {
   CompositionLocalProvider(LocalAppBarHandler provides rememberAppBarHandler()) {
     ModalView({}, showClose = false) {
       ColumnWithScrollBar(Modifier.padding(horizontal = DEFAULT_PADDING), horizontalAlignment = Alignment.CenterHorizontally) {
-        Spacer(Modifier.height(DEFAULT_PADDING))
-        Box(Modifier.widthIn(max = 600.dp).fillMaxWidth(0.45f).align(Alignment.CenterHorizontally)) {
-          QryptanaWordmark()
-        }
-        Spacer(Modifier.fillMaxHeight().weight(1f))
-        Column(Modifier.widthIn(max = 600.dp).align(Alignment.CenterHorizontally), horizontalAlignment = Alignment.CenterHorizontally) {
-          Box(Modifier.align(Alignment.CenterHorizontally)) {
-            AppBarTitle(stringResource(MR.strings.onboarding_be_free), bottomPadding = DEFAULT_PADDING, withPadding = false, overrideTitleColor = MaterialTheme.colors.onBackground, textAlign = TextAlign.Center, lineHeight = 42.sp)
-          }
-          Text(stringResource(MR.strings.onboarding_private_and_secure), style = MaterialTheme.typography.h3, fontWeight = FontWeight.Medium, color = MaterialTheme.colors.secondary, lineHeight = 25.sp, textAlign = TextAlign.Center)
-          Spacer(Modifier.height(DEFAULT_PADDING_HALF))
-          ReadableText(MR.strings.onboarding_first_network, TextAlign.Center, padding = PaddingValues(), style = MaterialTheme.typography.body2.copy(color = MaterialTheme.colors.secondary))
-        }
-        Spacer(Modifier.fillMaxHeight().weight(1f))
-        Column(Modifier.widthIn(max = 1000.dp).align(Alignment.CenterHorizontally), horizontalAlignment = Alignment.CenterHorizontally) {
-          OnboardingActionButton(user, onboardingStage)
-          TextButtonBelowOnboardingButton(stringResource(MR.strings.how_it_works), icon = painterResource(MR.images.ic_info), onClick = {
-            ModalManager.fullscreen.showModal(forceAnimated = true) { HowItWorks(user, onboardingStage) }
-          })
-        }
+        QryptanaWelcomeContent(user, onboardingStage, Modifier.widthIn(max = 560.dp).fillMaxWidth())
       }
     }
   }
@@ -106,60 +88,21 @@ fun SimpleXInfoLayout(
   onboardingStage: SharedPreference<OnboardingStage>?
 ) {
   val topBar = onboardingStage == null && !appPrefs.oneHandUI.state.value
-  val modifier = Modifier.fillMaxSize().systemBarsPadding().padding(horizontal = DEFAULT_ONBOARDING_HORIZONTAL_PADDING)
-  Column(if (topBar) modifier.padding(top = AppBarHeight * fontSizeSqrtMultiplier) else modifier, horizontalAlignment = Alignment.CenterHorizontally) {
-    Box(Modifier.padding(top = DEFAULT_PADDING * 2).widthIn(max = if (appPlatform.isAndroid) 185.dp else 160.dp), contentAlignment = Alignment.Center) {
-      QryptanaWordmark()
+  val gradient = if (isInDarkTheme()) {
+    Brush.verticalGradient(listOf(QryptanaDarkBackground, Color(0xFF24201E)))
+  } else {
+    Brush.verticalGradient(listOf(Color(0xFFF8F1E8), Color(0xFFEFE2D2)))
+  }
+  Box(Modifier.fillMaxSize().background(gradient).systemBarsPadding()) {
+    Column(
+      Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(horizontal = DEFAULT_ONBOARDING_HORIZONTAL_PADDING),
+      horizontalAlignment = Alignment.CenterHorizontally,
+      verticalArrangement = Arrangement.Center
+    ) {
+      if (topBar) Spacer(Modifier.height(AppBarHeight * fontSizeSqrtMultiplier))
+      QryptanaWelcomeContent(user, onboardingStage, Modifier.widthIn(max = 560.dp).fillMaxWidth())
+      if (topBar) Spacer(Modifier.height(DEFAULT_PADDING))
     }
-    OnboardingShrinkingLayout(
-      modifier = Modifier.fillMaxSize(),
-      image = {
-        Column(Modifier.padding(vertical = DEFAULT_PADDING_HALF), horizontalAlignment = Alignment.CenterHorizontally) {
-          QryptanaSymbol()
-      }
-    },
-    content = {
-      Column(horizontalAlignment = Alignment.CenterHorizontally) {
-        Text(
-          stringResource(MR.strings.onboarding_be_free),
-          style = MaterialTheme.typography.h1,
-          fontWeight = FontWeight.Bold,
-          textAlign = TextAlign.Center,
-          lineHeight = 42.sp,
-          modifier = Modifier.padding(top = DEFAULT_PADDING_HALF)
-        )
-        Text(
-          stringResource(MR.strings.onboarding_private_and_secure),
-          style = MaterialTheme.typography.h3,
-          color = MaterialTheme.colors.secondary,
-          fontWeight = FontWeight.Medium,
-          lineHeight = 25.sp,
-          textAlign = TextAlign.Center,
-          modifier = Modifier.padding(top = 14.dp)
-        )
-        Text(
-          stringResource(MR.strings.onboarding_first_network),
-          style = MaterialTheme.typography.body2,
-          color = MaterialTheme.colors.secondary,
-          textAlign = TextAlign.Center,
-          lineHeight = 20.sp,
-          modifier = Modifier.padding(top = DEFAULT_PADDING_HALF)
-        )
-      }
-    },
-    button = {
-      if (onboardingStage != null) {
-        Column(Modifier.widthIn(max = if (appPlatform.isAndroid) 450.dp else 1000.dp), horizontalAlignment = Alignment.CenterHorizontally) {
-          OnboardingActionButton(user, onboardingStage)
-          TextButtonBelowOnboardingButton(stringResource(MR.strings.how_it_works), icon = painterResource(MR.images.ic_info), onClick = {
-            ModalManager.fullscreen.showModal { HowItWorks(user, onboardingStage) }
-          })
-        }
-      } else {
-        Spacer(Modifier)
-      }
-    }
-  )
   }
   LaunchedEffect(Unit) {
     if (chatModel.migrationState.value != null && !ModalManager.fullscreen.hasModalsOpen()) {
@@ -169,14 +112,87 @@ fun SimpleXInfoLayout(
 }
 
 @Composable
-fun QryptanaWordmark() {
+private fun QryptanaWelcomeContent(
+  user: User?,
+  onboardingStage: SharedPreference<OnboardingStage>?,
+  modifier: Modifier = Modifier
+) {
+  Column(modifier, horizontalAlignment = Alignment.CenterHorizontally) {
+    QryptanaWordmark(Modifier.widthIn(max = 330.dp).fillMaxWidth(0.82f))
+    Spacer(Modifier.height(DEFAULT_PADDING_HALF))
+    Text(
+      stringResource(MR.strings.onboarding_be_free),
+      style = MaterialTheme.typography.h1,
+      fontWeight = FontWeight.Bold,
+      textAlign = TextAlign.Center,
+      lineHeight = 42.sp
+    )
+    Spacer(Modifier.height(10.dp))
+    Text(
+      stringResource(MR.strings.onboarding_private_and_secure),
+      style = MaterialTheme.typography.h3,
+      color = MaterialTheme.colors.secondary,
+      fontWeight = FontWeight.Medium,
+      lineHeight = 25.sp,
+      textAlign = TextAlign.Center
+    )
+    Text(
+      stringResource(MR.strings.onboarding_first_network),
+      style = MaterialTheme.typography.body2,
+      color = MaterialTheme.colors.onBackground.copy(alpha = 0.72f),
+      textAlign = TextAlign.Center,
+      lineHeight = 20.sp,
+      modifier = Modifier.padding(top = 8.dp)
+    )
+    Spacer(Modifier.height(DEFAULT_PADDING))
+    InvitationPreviewCard()
+    if (onboardingStage != null) {
+      Spacer(Modifier.height(DEFAULT_PADDING))
+      OnboardingActionButton(user, onboardingStage)
+      TextButtonBelowOnboardingButton(stringResource(MR.strings.how_it_works), icon = painterResource(MR.images.ic_info), onClick = {
+        ModalManager.fullscreen.showModal { HowItWorks(user, onboardingStage) }
+      })
+    }
+  }
+}
+
+@Composable
+private fun InvitationPreviewCard() {
+  val cardShape = RoundedCornerShape(24.dp)
+  Box(
+    Modifier
+      .widthIn(max = 370.dp)
+      .fillMaxWidth(0.9f)
+      .shadow(18.dp, cardShape, clip = false)
+      .clip(cardShape)
+      .background(QryptanaDarkCard)
+      .border(1.dp, QryptanaCopper.copy(alpha = 0.75f), cardShape)
+      .padding(horizontal = DEFAULT_PADDING, vertical = DEFAULT_PADDING_HALF + 4.dp)
+  ) {
+    Row(verticalAlignment = Alignment.CenterVertically) {
+      Image(
+        painter = painterResource(MR.images.qryptana_symbol),
+        contentDescription = stringResource(MR.strings.qryptana_logo_description),
+        contentScale = ContentScale.Fit,
+        modifier = Modifier.size(56.dp)
+      )
+      Spacer(Modifier.width(DEFAULT_PADDING_HALF))
+      Column {
+        Text(stringResource(MR.strings.onboarding_invitation_card_title), color = QryptanaDarkText, style = MaterialTheme.typography.h3, fontWeight = FontWeight.Medium)
+        Text(stringResource(MR.strings.onboarding_invitation_card_subtitle), color = QryptanaDarkSecondary, style = MaterialTheme.typography.body2, modifier = Modifier.padding(top = 3.dp))
+      }
+    }
+  }
+}
+
+@Composable
+fun QryptanaWordmark(modifier: Modifier = Modifier) {
   Image(
     painter = painterResource(MR.images.qryptana_wordmark),
     contentDescription = stringResource(MR.strings.image_descr_simplex_logo),
     contentScale = ContentScale.Fit,
-    modifier = Modifier
+    modifier = modifier
       .padding(bottom = DEFAULT_PADDING_HALF)
-      .fillMaxWidth()
   )
 }
 
