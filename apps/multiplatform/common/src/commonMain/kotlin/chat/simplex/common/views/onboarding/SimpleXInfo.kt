@@ -156,9 +156,9 @@ private fun QryptanaWelcomeContent(
 ) {
   Column(modifier, horizontalAlignment = Alignment.CenterHorizontally) {
     InvitationPreviewCard()
-    Spacer(Modifier.height(30.dp))
-    QryptanaWordmark(Modifier.widthIn(max = 350.dp).fillMaxWidth(0.86f), lightOnDark = true)
-    Spacer(Modifier.height(20.dp))
+    Spacer(Modifier.height(36.dp))
+    QryptanaWordmark(Modifier.widthIn(max = 400.dp).fillMaxWidth(0.9f), lightOnDark = true)
+    Spacer(Modifier.height(24.dp))
     Text(
       stringResource(MR.strings.onboarding_be_free),
       style = MaterialTheme.typography.h1,
@@ -168,7 +168,7 @@ private fun QryptanaWelcomeContent(
       lineHeight = 44.sp,
       color = QryptanaDarkText
     )
-    Spacer(Modifier.height(12.dp))
+    Spacer(Modifier.height(16.dp))
     Text(
       stringResource(MR.strings.onboarding_private_and_secure),
       style = MaterialTheme.typography.h3,
@@ -186,7 +186,7 @@ private fun QryptanaWelcomeContent(
       lineHeight = 20.sp,
       modifier = Modifier.padding(top = 8.dp)
     )
-    Spacer(Modifier.height(26.dp))
+    Spacer(Modifier.height(34.dp))
     if (onboardingStage != null) {
       OnboardingActionButton(user, onboardingStage)
       TextButtonBelowOnboardingButton(stringResource(MR.strings.how_it_works), onClick = {
@@ -215,7 +215,7 @@ private fun InvitationPreviewCard() {
       .drawBehind {
         drawCircle(
           brush = Brush.radialGradient(
-            colors = listOf(QryptanaCopper.copy(alpha = 0.16f), Color.Transparent),
+            colors = listOf(QryptanaCopper.copy(alpha = 0.2f), Color.Transparent),
             center = Offset(size.width / 2f, size.height / 2f),
             radius = size.maxDimension * 0.76f
           ),

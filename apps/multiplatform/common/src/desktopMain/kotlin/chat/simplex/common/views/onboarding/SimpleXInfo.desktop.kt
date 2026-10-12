@@ -14,7 +14,7 @@ import chat.simplex.res.MR
 @Composable
 actual fun OnboardingActionButton(user: User?, onboardingStage: SharedPreference<OnboardingStage>, onclick: (() -> Unit)?) {
   if (user == null) {
-    Column(verticalArrangement = Arrangement.spacedBy(12.dp), horizontalAlignment = Alignment.CenterHorizontally) {
+    Column(verticalArrangement = Arrangement.spacedBy(16.dp), horizontalAlignment = Alignment.CenterHorizontally) {
       OnboardingActionButton(labelId = MR.strings.qryptana_create_profile, onboarding = OnboardingStage.Step2_CreateProfile, onclick = onclick)
       OnboardingActionButton(labelId = MR.strings.qryptana_link_device, onboarding = if (controller.appPrefs.initialRandomDBPassphrase.get() && !chatModel.desktopOnboardingRandomPassword.value) OnboardingStage.Step2_5_SetupDatabasePassphrase else OnboardingStage.LinkAMobile, secondary = true, onclick = onclick)
     }
