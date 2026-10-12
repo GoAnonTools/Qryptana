@@ -174,7 +174,7 @@ fun SimpleXInfoLayout(
 @Composable
 fun SimpleXLogo() {
   Image(
-    painter = painterResource(if (isInDarkTheme()) MR.images.logo_light else MR.images.logo),
+    painter = painterResource(MR.images.qryptana_symbol),
     contentDescription = stringResource(MR.strings.image_descr_simplex_logo),
     contentScale = ContentScale.FillWidth,
     modifier = Modifier
