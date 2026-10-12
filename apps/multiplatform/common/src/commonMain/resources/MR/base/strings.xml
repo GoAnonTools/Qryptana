@@ -783,7 +783,7 @@
 
   <!-- help - ChatHelpView.kt -->
   <string name="thank_you_for_installing_simplex">Thank you for installing Qryptana!</string>
-  <string name="you_can_connect_to_simplex_chat_founder"><![CDATA[You can <font color="#0088ff">connect to Qryptana developers to ask questions and receive updates</font>.]]></string>
+  <string name="you_can_connect_to_simplex_chat_founder"><![CDATA[You can <font color="#B95F3A">connect to Qryptana developers to ask questions and receive updates</font>.]]></string>
   <string name="to_start_a_new_chat_help_header">To start a new chat</string>
   <string name="chat_help_tap_button">Tap button</string>
   <string name="above_then_preposition_continuation">above, then:</string>
@@ -912,7 +912,7 @@
   <string name="simplex_address_and_1_time_links_are_safe_to_share">Qryptana address and 1-time links are safe to share via any messenger.</string>
   <string name="to_protect_against_your_link_replaced_compare_codes">To protect against your link being replaced, you can compare contact security codes.</string>
   <string name="you_can_accept_or_reject_connection">When people request to connect, you can accept or reject it.</string>
-  <string name="read_more_in_user_guide_with_link"><![CDATA[Read more in <font color="#0088ff">User Guide</font>.]]></string>
+  <string name="read_more_in_user_guide_with_link"><![CDATA[Read more in <font color="#B95F3A">User Guide</font>.]]></string>
   <string name="address_or_1_time_link">Address or 1-time link?</string>
 
   <!-- PasteToConnect.kt -->
@@ -1304,12 +1304,12 @@
   <string name="make_private_connection">Make a private connection</string>
   <string name="migrate_from_another_device">Migrate from another device</string>
   <string name="how_it_works">How it works</string>
-  <string name="onboarding_be_free">Private conversations,\nreimagined</string>
-  <string name="onboarding_private_and_secure">Talk to the people you choose, without a phone number.</string>
-  <string name="onboarding_first_network">Start with a profile on this device. Learn how the privacy network works when you are ready.</string>
-  <string name="get_started">Create your profile</string>
-  <string name="qryptana_link_device">Use an existing profile</string>
-  <string name="qryptana_create_profile">Create a new profile</string>
+  <string name="onboarding_be_free">Private conversations, reimagined</string>
+  <string name="onboarding_private_and_secure">Connect with the people you choose, privately and freely.</string>
+  <string name="onboarding_first_network">Your conversations stay yours, with no phone number or email required.</string>
+  <string name="get_started">Create my identity</string>
+  <string name="qryptana_link_device">Restore my identity</string>
+  <string name="qryptana_create_profile">Create my identity</string>
   <string name="why_simplex_is_built">Why Qryptana is built.</string>
   <string name="onboarding_your_profile">Choose your name</string>
   <string name="onboarding_on_your_phone">This is the name your contacts will see.</string>
@@ -1330,7 +1330,7 @@
   <string name="to_protect_privacy_simplex_has_ids_for_queues">To protect your privacy, Qryptana uses separate IDs for each of your contacts.</string>
   <string name="only_client_devices_store_contacts_groups_e2e_encrypted_messages">Only client devices store user profiles, contacts, groups, and messages.</string>
   <string name="all_message_and_files_e2e_encrypted"><![CDATA[All messages and files are sent <b>end-to-end encrypted</b>, with post-quantum security in direct messages.]]></string>
-  <string name="read_more_in_github_with_link"><![CDATA[Read more in our <font color="#0088ff">GitHub repository</font>.]]></string>
+  <string name="read_more_in_github_with_link"><![CDATA[Read more in our <font color="#B95F3A">GitHub repository</font>.]]></string>
 
   <!-- SetNotificationsMode.kt -->
   <string name="use_chat">Use chat</string>

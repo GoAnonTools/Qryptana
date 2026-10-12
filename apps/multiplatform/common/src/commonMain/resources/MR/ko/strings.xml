@@ -708,7 +708,7 @@
     <string name="privacy_redefined">프라이버시의 재정의</string>
     <string name="opensource_protocol_and_code_anybody_can_run_servers">누구나 서버를 호스팅할 수 있습니다.</string>
     <string name="onboarding_notifications_mode_off">앱이 실행 중일 때</string>
-    <string name="read_more_in_github_with_link"><![CDATA[자세한 내용은 <font color="#0088ff">GitHub</font> 에서 확인해 주세요.]]></string>
+    <string name="read_more_in_github_with_link"><![CDATA[자세한 내용은 <font color="#B95F3A">GitHub</font> 에서 확인해 주세요.]]></string>
     <string name="relay_server_protects_ip">릴레이 서버는 IP 주소를 숨겨주지만, 통화 시간을 관찰 할 수 있어요.</string>
     <string name="rcv_group_event_invited_via_your_group_link">그룹 링크로 초대</string>
     <string name="onboarding_notifications_mode_subtitle">설정을 통해 나중에 변경할 수 있어요.</string>
@@ -1422,7 +1422,7 @@
     <string name="remote_host_error_disconnected"><![CDATA[모바일 <b>%s</b> 이 연결 끊김]]></string>
     <string name="connect_plan_this_is_your_link_for_group_vName"><![CDATA[그룹 링크입니다 <b>%1$s</b>!]]></string>
     <string name="migrate_from_device_you_must_not_start_database_on_two_device"><![CDATA[두 기기에서 동일한 데이터베이스를<b> 사용해서는 안 됩니다</b>.]]></string>
-    <string name="read_more_in_user_guide_with_link"><![CDATA[<font color="#0088ff">사용자 가이드</font>에서 확인하세요.]]></string>
+    <string name="read_more_in_user_guide_with_link"><![CDATA[<font color="#B95F3A">사용자 가이드</font>에서 확인하세요.]]></string>
     <string name="you_can_also_connect_by_clicking_the_link"><![CDATA[링크를 클릭하여 연결할 수도 있습니다. 브라우저에서 열리면<b> 모바일 앱에서 열기 </b>버튼을 클릭합니다.]]></string>
     <string name="operator">운영자</string>
     <string name="operators_conditions_will_be_accepted_for"><![CDATA[운영자(들)의 이용 약관이 수락될 것입니다: <b>%s</b>.]]></string>
@@ -1449,7 +1449,7 @@
     <string name="turn_off_battery_optimization"><![CDATA[다음 대화 상자에서 <b>허용</b>을 선택하면 알림을 즉시 받을 수 있습니다.]]></string>
     <string name="system_restricted_background_warn"><![CDATA[알림을 활성화하려면 <b>앱 설정에서 앱 배터리 사용량</b> / <b>제한 없음</b> 을 선택하십시오.]]></string>
     <string name="remote_host_error_inactive"><![CDATA[모바일 <b>%s</b> 이 현재 비활성화됨]]></string>
-    <string name="you_can_connect_to_simplex_chat_founder"><![CDATA[<font color="#0088ff">Qryptana 개발자에게 연결하여 질문하고 업데이트를 받을 수 있습니다</font>.]]></string>
+    <string name="you_can_connect_to_simplex_chat_founder"><![CDATA[<font color="#B95F3A">Qryptana 개발자에게 연결하여 질문하고 업데이트를 받을 수 있습니다</font>.]]></string>
     <string name="remote_host_was_disconnected_toast"><![CDATA[모바일 <b>%s</b> 이 연결 끊김]]></string>
     <string name="open_on_mobile_and_scan_qr_code"><![CDATA[모바일 앱 <i>에서 데스크톱에서</i> 사용을 열고 QR 코드를 스캔합니다.]]></string>
     <string name="remote_host_error_timeout"><![CDATA[모바일에 연결하는 동안 시간이 초과했습니다 <b>%s</b>]]></string>

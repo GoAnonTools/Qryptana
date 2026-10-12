@@ -1391,7 +1391,7 @@
     <string name="you_can_start_chat_via_setting_or_by_restarting_the_app">A csevegés elindítható az alkalmazás „Beállítások / Adatbázis” menüjében vagy az alkalmazás újraindításával.</string>
     <string name="verify_code_on_mobile">Kód ellenőrzése a hordozható eszközön</string>
     <string name="youve_accepted_group_invitation_connecting_to_inviting_group_member">Ön csatlakozott ehhez a csoporthoz. Kapcsolódás a meghívó csoporttaghoz.</string>
-    <string name="you_can_connect_to_simplex_chat_founder"><![CDATA[Kapcsolatba léphet <font color="#0088ff">a Qryptana fejlesztőivel, akiktől bármit kérdezhet és értesülhet a friss hírekről</font>.]]></string>
+    <string name="you_can_connect_to_simplex_chat_founder"><![CDATA[Kapcsolatba léphet <font color="#B95F3A">a Qryptana fejlesztőivel, akiktől bármit kérdezhet és értesülhet a friss hírekről</font>.]]></string>
     <string name="v4_2_auto_accept_contact_requests_desc">Nem kötelező üdvözlőüzenettel.</string>
     <string name="unknown_database_error_with_info">Ismeretlen adatbázishiba: %s</string>
     <string name="you_can_hide_or_mute_user_profile">Elrejtheti vagy lenémíthatja a felhasználóprofiljait – koppintson (vagy számítógép-alkalmazásban kattintson) hosszan a profilra a felugró menühöz.</string>
@@ -1471,13 +1471,13 @@
     <string name="sync_connection_force_desc">A titkosítás működik, és új titkosítási egyezményre nincs szükség. Ez kapcsolati hibákat eredményezhet!</string>
     <string name="delete_chat_profile_action_cannot_be_undone_warning">Ez a művelet nem vonható vissza – profiljai, partnerei, üzenetei és fájljai véglegesen törölve lesznek.</string>
     <string name="info_row_updated_at">Bejegyzés frissítve</string>
-    <string name="read_more_in_user_guide_with_link"><![CDATA[További információ a <font color="#0088ff">Használati útmutatóban</font> olvasható.]]></string>
+    <string name="read_more_in_user_guide_with_link"><![CDATA[További információ a <font color="#B95F3A">Használati útmutatóban</font> olvasható.]]></string>
     <string name="settings_is_storing_in_clear_text">A jelmondat a beállításokban egyszerű szövegként van tárolva.</string>
     <string name="terminal_always_visible">Konzol megjelenítése új ablakban</string>
     <string name="alert_text_msg_bad_hash">Az előző üzenet kivonata különbözik.</string>
     <string name="receipts_section_description">Ezek a beállítások csak a jelenlegi csevegési profiljára vonatkoznak</string>
     <string name="loading_remote_file_desc">Várjon, amíg a fájl betöltődik a társított hordozható eszközről</string>
-    <string name="read_more_in_github_with_link"><![CDATA[További információ a <font color="#0088ff">GitHub-tárolónkban</font>.]]></string>
+    <string name="read_more_in_github_with_link"><![CDATA[További információ a <font color="#B95F3A">GitHub-tárolónkban</font>.]]></string>
     <string name="error_showing_content">Hiba történt a tartalom megjelenítésekor</string>
     <string name="error_showing_message">Hiba történt az üzenet megjelenítésekor</string>
     <string name="you_can_make_address_visible_via_settings">Láthatóvá teheti a Qryptanabeli partnerei számára a beállításokban.</string>

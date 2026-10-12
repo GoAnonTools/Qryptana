@@ -486,8 +486,8 @@
     <string name="remote_host_error_disconnected"><![CDATA[Το κινητό <b>%s</b> έχει αποσυνδεθεί]]></string>
     <string name="mobile_tap_open_in_mobile_app_then_tap_connect_in_app"><![CDATA[📱 κινητό: πάτα <b>Άνοιγμα στην εφαρμογή κινητού</b>, μετά πάτα <b>Σύνδεση</b> μέσα στην εφαρμογή.]]></string>
     <string name="open_on_mobile_and_scan_qr_code"><![CDATA[Άνοιγμα <i>Χρήση από τον υπολογιστή</i> στην εφαρμογή του κινητού και σκάναρε τον QR κωδικό.]]></string>
-    <string name="read_more_in_user_guide_with_link"><![CDATA[Διάβασε περισσότερα στον <font color="#0088ff">Οδηγό Χρήσης</font>.]]></string>
-    <string name="read_more_in_github_with_link"><![CDATA[Διάβασε περισσότερα στο <font color="#0088ff">αποθετήριό μας στο GitHub</font>.]]></string>
+    <string name="read_more_in_user_guide_with_link"><![CDATA[Διάβασε περισσότερα στον <font color="#B95F3A">Οδηγό Χρήσης</font>.]]></string>
+    <string name="read_more_in_github_with_link"><![CDATA[Διάβασε περισσότερα στο <font color="#B95F3A">αποθετήριό μας στο GitHub</font>.]]></string>
     <string name="disable_onion_hosts_when_not_supported"><![CDATA[Ρύθμισε το <i>Χρήση .onion hosts</i> σε Όχι, αν ο διακομιστής μεσολάβησης SOCKS δεν τα υποστηρίζει.]]></string>
     <string name="operator_same_conditions_will_be_applied"><![CDATA[Οι ίδιες προϋποθέσεις θα ισχύσουν και για τον χειριστή <b>%s</b>.]]></string>
     <string name="operator_same_conditions_will_apply_to_operators"><![CDATA[Οι ίδιες προϋποθέσεις θα ισχύσουν και για τον/τους χειριστή/στές <b>%s</b>.]]></string>
@@ -505,7 +505,7 @@
     <string name="connect_plan_you_are_already_joining_the_group_vName"><![CDATA[Ήδη προσπαθείς να μπεις στην ομάδα <b>%1$s</b>.]]></string>
     <string name="migrate_from_device_you_must_not_start_database_on_two_device"><![CDATA[Δεν <b>πρέπει να</b> χρησιμοποιείς την ίδια βάση δεδομένων σε δύο συσκευές.]]></string>
     <string name="you_can_also_connect_by_clicking_the_link"><![CDATA[Μπορείς επίσης να συνδεθείς κάνοντας κλικ στο σύνδεσμο. Αν ανοίξει στον browser, πάτα το <b>Άνοιγμα στην εφαρμογή κινητού</b> κουμπί.]]></string>
-    <string name="you_can_connect_to_simplex_chat_founder"><![CDATA[Μπορείς να <font color="#0088ff">συνδεθείς με τους δημιουργούς του Qryptana για να κάνεις ερωτήσεις και να λαμβάνεις ενημερώσεις</font>.]]></string>
+    <string name="you_can_connect_to_simplex_chat_founder"><![CDATA[Μπορείς να <font color="#B95F3A">συνδεθείς με τους δημιουργούς του Qryptana για να κάνεις ερωτήσεις και να λαμβάνεις ενημερώσεις</font>.]]></string>
     <string name="compose_view_send_contact_request_alert_text"><![CDATA[Θα μπορείς να στέλνεις μηνύματα <b>μόνο αφού γίνει αποδεκτό το αίτημά σου</b>.]]></string>
     <string name="change_automatic_deletion_question">Να αλλάξεις την αυτόματη διαγραφή μηνυμάτων;</string>
     <string name="auth_open_chat_profiles">Αλλαγή των προφίλ συνομιλίας</string>

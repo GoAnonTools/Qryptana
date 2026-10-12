@@ -395,7 +395,7 @@
     <string name="delete_contact_all_messages_deleted_cannot_undo_warning">O contacto e todas as mensagens serão eliminadas - esta ação é irreversível!</string>
     <string name="image_descr_link_preview">ligação de visualização de imagem</string>
     <string name="invalid_contact_link">Ligação inválida!</string>
-    <string name="read_more_in_user_guide_with_link"><![CDATA[Leia mais em <font color="#0088ff">Guia de Utilizador</font>.]]></string>
+    <string name="read_more_in_user_guide_with_link"><![CDATA[Leia mais em <font color="#B95F3A">Guia de Utilizador</font>.]]></string>
     <string name="network_session_mode_entity">Conexão</string>
     <string name="create_address_and_let_people_connect">Crie um endereço para permitir que as pessoas se conectem consigo.</string>
     <string name="save_and_notify_contact">Salvar e notificar contato</string>
@@ -424,7 +424,7 @@
     <string name="send_link_previews">Enviar pré-visualizações de ligações</string>
     <string name="connect_via_link_or_qr_from_clipboard_or_in_person">(ler ou colar da área de transferência)</string>
     <string name="share_invitation_link">Partilhar ligação de utilização única</string>
-    <string name="read_more_in_github_with_link"><![CDATA[Leia mais no nosso repositório <font color="#0088ff">GitHub</font>.]]></string>
+    <string name="read_more_in_github_with_link"><![CDATA[Leia mais no nosso repositório <font color="#B95F3A">GitHub</font>.]]></string>
     <string name="create_profile">Criar perfil</string>
     <string name="create_your_profile">Criar o seu perfil</string>
     <string name="num_contacts_selected">%d contacto(s) selecionado(s)</string>
@@ -526,7 +526,7 @@
     <string name="simplex_service_notification_title">Qryptana service</string>
     <string name="large_file">Ficheiro grande!</string>
     <string name="icon_descr_image_snd_complete">Imagem enviada</string>
-    <string name="you_can_connect_to_simplex_chat_founder"><![CDATA[Você pode <font color="#0088ff">conectar-se com os desenvolvedores do Qryptana para fazer quaisquer perguntas e receber atualizações</font>.]]></string>
+    <string name="you_can_connect_to_simplex_chat_founder"><![CDATA[Você pode <font color="#B95F3A">conectar-se com os desenvolvedores do Qryptana para fazer quaisquer perguntas e receber atualizações</font>.]]></string>
     <string name="gallery_image_button">Imagem</string>
     <string name="gallery_video_button">Vídeo</string>
     <string name="icon_descr_address">Endereço Qryptana</string>

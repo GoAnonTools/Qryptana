@@ -72,7 +72,7 @@
     <string name="if_you_cannot_meet_in_person_scan_QR_in_video_call_or_ask_for_invitation_link"><![CDATA[Si no us podeu trobar en persona, podeu <b>escanejar el codi QR a la videotrucada</b> o el vostre contacte pot compartir un enllaç d\'invitació.]]></string>
     <string name="if_you_cannot_meet_in_person_show_QR_in_video_call_or_via_another_channel"><![CDATA[Si no pots trobar-te en persona, <b>mostra el codi QR a la videotrucada</b> o comparteix l\'enllaç.]]></string>
     <string name="deleted_chats">Contactes arxivats</string>
-    <string name="read_more_in_user_guide_with_link"><![CDATA[Llegir més a la <font color="#0088ff">Guia de l\'usuari</font>.]]></string>
+    <string name="read_more_in_user_guide_with_link"><![CDATA[Llegir més a la <font color="#B95F3A">Guia de l\'usuari</font>.]]></string>
     <string name="network_settings">Configuració de xarxa avançada</string>
     <string name="network_settings_title">Configuració avançada</string>
     <string name="network_enable_socks_info">Accedir als servidors mitjançant el servidor SOCKS al port %d? S\'ha d\'iniciar abans d\'activar aquesta opció.</string>
@@ -103,7 +103,7 @@
     <string name="all_message_and_files_e2e_encrypted"><![CDATA[Tots els missatges i fitxers s\'envien <b>xifrats d\'extrem a extrem</b>, amb seguretat postquàntica als missatges directes.]]></string>
     <string name="onboarding_notifications_mode_off_desc"><![CDATA[<b>El millor per a la bateria</b>. Només rebràs notificacions quan l\'aplicació s\'està executant (Sense servei en segon pla).]]></string>
     <string name="onboarding_notifications_mode_periodic_desc"><![CDATA[<b>Bo per a la bateria</b>. L\'aplicació revisa els missatges cada 10 minuts. Podeu perdre trucades o missatges urgents.]]></string>
-    <string name="read_more_in_github_with_link"><![CDATA[Llegir més al nostre <font color="#0088ff">repositori GitHub</font>.]]></string>
+    <string name="read_more_in_github_with_link"><![CDATA[Llegir més al nostre <font color="#B95F3A">repositori GitHub</font>.]]></string>
     <string name="contact_wants_to_connect_via_call">%1$s vol connectar amb tu mitjançant</string>
     <string name="always_use_relay">Feu servir sempre el retransmisor</string>
     <string name="onboarding_notifications_mode_service_desc_short">App always runs in background</string>
@@ -547,7 +547,7 @@
     <string name="chunks_downloaded">Blocs descarregats</string>
     <string name="error_saving_file">Error en desar el fitxer</string>
     <string name="switch_receiving_address_question">Canviar l\'adreça de recepció?</string>
-    <string name="you_can_connect_to_simplex_chat_founder"><![CDATA[Podeu <font color="#0088ff">connectar amb els desenvolupadors de Qryptana per fer qualsevol pregunta i rebre actualitzacions</font>.]]></string>
+    <string name="you_can_connect_to_simplex_chat_founder"><![CDATA[Podeu <font color="#B95F3A">connectar amb els desenvolupadors de Qryptana per fer qualsevol pregunta i rebre actualitzacions</font>.]]></string>
     <string name="you_can_also_connect_by_clicking_the_link"><![CDATA[També us podeu connectar fent clic a l\'enllaç. Si s\'obre al navegador, feu clic al botó <b>Obre a l\'aplicació mòbil</b>.]]></string>
     <string name="error_saving_ICE_servers">Error en desar els servidors ICE</string>
     <string name="network_proxy_incorrect_config_title">Error en desar el servidor intermediari</string>

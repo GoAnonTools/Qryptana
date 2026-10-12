@@ -756,7 +756,7 @@
     <string name="icon_descr_profile_image_placeholder">ตัวยึดตำแหน่งรูปโปรไฟล์</string>
     <string name="image_descr_profile_image">รูปโปรไฟล์</string>
     <string name="image_descr_qr_code">คิวอาร์โค้ด</string>
-    <string name="read_more_in_user_guide_with_link"><![CDATA[อ่านเพิ่มเติมใน <font color="#0088ff"> คู่มือผู้ใช้ </font>]]></string>
+    <string name="read_more_in_user_guide_with_link"><![CDATA[อ่านเพิ่มเติมใน <font color="#B95F3A"> คู่มือผู้ใช้ </font>]]></string>
     <string name="smp_servers_preset_address">ที่อยู่เซิร์ฟเวอร์ที่ตั้งไว้ล่วงหน้า</string>
     <string name="smp_servers_preset_server">เซิร์ฟเวอร์ที่ตั้งไว้ล่วงหน้า</string>
     <string name="rate_the_app">ให้คะแนนแอป</string>
@@ -765,7 +765,7 @@
     <string name="callstate_received_answer">ได้รับคำตอบ…</string>
     <string name="callstate_received_confirmation">ได้รับการยืนยัน…</string>
     <string name="privacy_redefined">นิยามความเป็นส่วนตัวใหม่</string>
-    <string name="read_more_in_github_with_link"><![CDATA[อ่านเพิ่มเติมใน <font color="#0088ff"> GitHub repository </font> ของเรา]]></string>
+    <string name="read_more_in_github_with_link"><![CDATA[อ่านเพิ่มเติมใน <font color="#B95F3A"> GitHub repository </font> ของเรา]]></string>
     <string name="onboarding_notifications_mode_title">การแจ้งเตือนส่วนตัว</string>
     <string name="alert_text_fragment_please_report_to_developers">โปรดรายงานไปยังผู้พัฒนาแอป</string>
     <string name="privacy_and_security">ความเป็นส่วนตัวและความปลอดภัย</string>
@@ -1030,7 +1030,7 @@
     <string name="contact_wants_to_connect_via_call">%1$s ต้องการเชื่อมต่อกับคุณผ่านทาง</string>
     <string name="alert_text_decryption_error_n_messages_failed_to_decrypt">การ decrypt %1$d ข้อความล้มเหลว</string>
     <string name="group_info_section_title_num_members">%1$s สมาชิก</string>
-    <string name="you_can_connect_to_simplex_chat_founder"><![CDATA[คุณสามารถ <font color="#0088ff">เชื่อมต่อกับ Qryptana นักพัฒนาแอปเพื่อถามคำถามและรับการอัปเดต</font>]]></string>
+    <string name="you_can_connect_to_simplex_chat_founder"><![CDATA[คุณสามารถ <font color="#B95F3A">เชื่อมต่อกับ Qryptana นักพัฒนาแอปเพื่อถามคำถามและรับการอัปเดต</font>]]></string>
     <string name="you_can_share_your_address">คุณสามารถแชร์ที่อยู่ของคุณเป็นลิงก์หรือรหัสคิวอาร์ - ใคร ๆ ก็สามารถเชื่อมต่อกับคุณได้</string>
     <string name="snd_conn_event_switch_queue_phase_completed">คุณเปลี่ยนที่อยู่</string>
     <string name="snd_group_event_changed_role_for_yourself">คุณเปลี่ยนบทบาทของตัวเองเป็น %s</string>

@@ -262,7 +262,7 @@
     <string name="gallery_video_button">Video</string>
     <!-- help - ChatHelpView.kt -->
     <string name="thank_you_for_installing_simplex">Danke, dass Sie Qryptana installiert haben!</string>
-    <string name="you_can_connect_to_simplex_chat_founder"><![CDATA[Sie können sich <font color="#0088ff">mit den Qryptana-Chat-Entwicklern verbinden, um Fragen zu stellen und aktuelle Informationen zu erhalten</font>.]]></string>
+    <string name="you_can_connect_to_simplex_chat_founder"><![CDATA[Sie können sich <font color="#B95F3A">mit den Qryptana-Chat-Entwicklern verbinden, um Fragen zu stellen und aktuelle Informationen zu erhalten</font>.]]></string>
     <string name="to_start_a_new_chat_help_header">Um einen neuen Chat zu starten</string>
     <string name="chat_help_tap_button">Schaltfläche tippen</string>
     <string name="above_then_preposition_continuation">Danach die gewünschte Aktion auswählen:</string>
@@ -475,7 +475,7 @@
     <!-- How Qryptana Works -->
     <string name="to_protect_privacy_simplex_has_ids_for_queues">Qryptana nutzt individuelle Kennungen für jeden Ihrer Kontakte, um Ihre Privatsphäre zu schützen.</string>
     <string name="only_client_devices_store_contacts_groups_e2e_encrypted_messages">Nur die Endgeräte speichern Benutzerprofile, Kontakte, Gruppen und Nachrichten.</string>
-    <string name="read_more_in_github_with_link"><![CDATA[Erfahren Sie in unserem <font color="#0088ff">GitHub-Repository</font> mehr dazu.]]></string>
+    <string name="read_more_in_github_with_link"><![CDATA[Erfahren Sie in unserem <font color="#B95F3A">GitHub-Repository</font> mehr dazu.]]></string>
     <!-- MakeConnection -->
     <string name="paste_the_link_you_received">Fügen Sie den erhaltenen Link ein</string>
     <!-- Call -->
@@ -1227,7 +1227,7 @@
     <string name="continue_to_next_step">Weiter</string>
     <string name="dark_theme">Dunkles Design</string>
     <string name="if_you_cant_meet_in_person">Falls Sie sich nicht persönlich treffen können, zeigen Sie den QR-Code in einem Videoanruf oder teilen Sie den Link.</string>
-    <string name="read_more_in_user_guide_with_link"><![CDATA[Lesen Sie mehr dazu in der <font color="#0088ff">Benutzeranleitung</font>.]]></string>
+    <string name="read_more_in_user_guide_with_link"><![CDATA[Lesen Sie mehr dazu in der <font color="#B95F3A">Benutzeranleitung</font>.]]></string>
     <string name="import_theme_error_desc">Stellen Sie sicher, dass die Datei die korrekte YAML-Syntax hat. Exportieren Sie das Design, um ein Beispiel für die Dateistruktur des Designs zu erhalten.</string>
     <string name="auth_open_chat_profiles">Chat-Profile wechseln</string>
     <string name="you_can_share_your_address">Sie können Ihre Adresse als Link oder QR-Code teilen – jede Person kann sich mit Ihnen verbinden.</string>

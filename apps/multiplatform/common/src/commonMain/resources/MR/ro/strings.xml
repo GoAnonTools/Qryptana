@@ -2217,7 +2217,7 @@
     <string name="archive_report">Arhivare raport</string>
     <string name="delete_chat_for_self_cannot_undo_warning">Conversația va fi ștearsă doar pentru tine - această acțiune nu poate fi anulată!</string>
     <string name="system_restricted_background_warn"><![CDATA[Pentru a activa notificările, vă rugăm să alegeți <b>Utilizarea bateriei aplicației</b> / <b>Nerestricționat</b> în setările aplicației.]]></string>
-    <string name="read_more_in_user_guide_with_link"><![CDATA[Află mai multe în <font color="#0088ff">Ghidul utilizatorului</font>.]]></string>
+    <string name="read_more_in_user_guide_with_link"><![CDATA[Află mai multe în <font color="#B95F3A">Ghidul utilizatorului</font>.]]></string>
     <string name="youve_accepted_group_invitation_connecting_to_inviting_group_member">V-ați alăturat acestui grup. Se conectează la membrul invitat al grupului.</string>
     <string name="profile_will_be_sent_to_contact_sending_link">Profilul tău va fi trimis persoanei de contact de la care ai primit acest link.</string>
     <string name="you_will_join_group">Te vei conecta cu toți membrii grupului.</string>
@@ -2312,7 +2312,7 @@
     <string name="acknowledged">Confirmat</string>
     <string name="acknowledgement_errors">Erori de confirmare</string>
     <string name="auth_you_will_be_required_to_authenticate_when_you_start_or_resume">Vi se va solicita să vă autentificați când porniți sau reluați aplicația după 30 de secunde în fundal.</string>
-    <string name="you_can_connect_to_simplex_chat_founder"><![CDATA[Poți <font color="#0088ff">să te conectezi la dezvoltatorii Qryptana pentru a le adresa orice întrebări și pentru a primi actualizări</font>.]]></string>
+    <string name="you_can_connect_to_simplex_chat_founder"><![CDATA[Poți <font color="#B95F3A">să te conectezi la dezvoltatorii Qryptana pentru a le adresa orice întrebări și pentru a primi actualizări</font>.]]></string>
     <string name="button_add_friends">Adaugă prieteni</string>
     <string name="button_add_team_members">Adaugă membri echipei</string>
     <string name="connect_plan_chat_already_exists">Conversația există deja!</string>
@@ -2376,7 +2376,7 @@
     <string name="v6_1_better_user_experience">Experiență de utilizare îmbunătățită</string>
     <string name="group_new_support_chat_one">1 chat cu un membru</string>
     <string name="report_archive_alert_desc_all">Toate rapoartele vor fi arhivate pentru tine.</string>
-    <string name="read_more_in_github_with_link"><![CDATA[Citește mai multe în <font color="#0088ff">depozitul nostru GitHub</font>.]]></string>
+    <string name="read_more_in_github_with_link"><![CDATA[Citește mai multe în <font color="#B95F3A">depozitul nostru GitHub</font>.]]></string>
     <string name="turn_off_battery_optimization"><![CDATA[<b>Permiteți</b> în următoarea fereastră de dialog să primească notificări instantaneu.]]></string>
     <string name="address_settings">Setări adresă</string>
     <string name="archive_reports">Arhivare rapoarte</string>

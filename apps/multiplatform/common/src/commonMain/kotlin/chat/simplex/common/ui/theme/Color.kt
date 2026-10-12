@@ -14,7 +14,22 @@ fun oklch(L: Float, C: Float, H: Float, alpha: Float = 1f): Color {
 }
 
 val Indigo = Color(0xFF9966FF)
-val SimplexBlue = Color(0, 136, 255, 255)  // If this value changes also need to update #0088ff in string resource files
+val QryptanaCopper = Color(0xFFC8794B)
+val QryptanaCopperLight = Color(0xFFE0A06F)
+val QryptanaCopperDark = Color(0xFFB95F3A)
+val QryptanaDarkBackground = Color(0xFF171615)
+val QryptanaDarkSurface = Color(0xFF20201E)
+val QryptanaDarkCard = Color(0xFF292623)
+val QryptanaDarkText = Color(0xFFF5EFE7)
+val QryptanaDarkSecondary = Color(0xFFB8B0A7)
+val QryptanaDarkBorder = Color(0xFF3A3530)
+val QryptanaLightBackground = Color(0xFFF7F0E6)
+val QryptanaLightSurface = Color(0xFFFFF8EF)
+val QryptanaLightCard = Color(0xFFFFFBF5)
+val QryptanaLightText = Color(0xFF24201D)
+val QryptanaLightSecondary = Color(0xFF6E655D)
+// Kept under its compatibility name because other visual helpers still reference it.
+val SimplexBlue = QryptanaCopper
 val SimplexGreen = Color(77, 218, 103, 255)
 val SecretColor = Color(0x40808080)
 val LightGray = Color(241, 242, 246, 255)

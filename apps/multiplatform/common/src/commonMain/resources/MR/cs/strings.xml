@@ -569,7 +569,7 @@
     <string name="live_message">Živá zpráva!</string>
     <string name="connect_via_link_or_qr">Připojit se prostřednictvím odkazu / QR kódu</string>
     <string name="thank_you_for_installing_simplex">Děkujeme za instalaci Qryptana!</string>
-    <string name="you_can_connect_to_simplex_chat_founder"><![CDATA[Můžete se <font color="#0088ff">připojit k Qryptana vývojářům, položit jim případné dotazy a získat aktualizace</font>.]]></string>
+    <string name="you_can_connect_to_simplex_chat_founder"><![CDATA[Můžete se <font color="#B95F3A">připojit k Qryptana vývojářům, položit jim případné dotazy a získat aktualizace</font>.]]></string>
     <string name="to_connect_via_link_title">Připojení prostřednictvím odkazu</string>
     <string name="if_you_received_simplex_invitation_link_you_can_open_in_browser">Pokud jste dostali Qryptana pozvánku, můžete ji otevřít v prohlížeči:</string>
     <string name="if_you_choose_to_reject_the_sender_will_not_be_notified">Pokud zvolíte odmítnutí, odesílatel NEBUDE upozorněn.</string>
@@ -664,7 +664,7 @@
     <string name="first_platform_without_user_ids">Bez uživatelských identifikátorů</string>
     <string name="immune_to_spam_and_abuse">Odolná vůči spamu</string>
     <string name="to_protect_privacy_simplex_has_ids_for_queues">K ochraně soukromí, Qryptana používá ID pro každý z vašich kontaktů.</string>
-    <string name="read_more_in_github_with_link"><![CDATA[Další informace najdete v našem <font color="#0088ff">úložišti GitHub</font>.]]></string>
+    <string name="read_more_in_github_with_link"><![CDATA[Další informace najdete v našem <font color="#B95F3A">úložišti GitHub</font>.]]></string>
     <string name="use_chat">Použijte chat</string>
     <string name="onboarding_notifications_mode_subtitle">Jak ovlivňuje baterii</string>
     <string name="onboarding_notifications_mode_off">Když aplikace běží</string>
@@ -1162,7 +1162,7 @@
     <string name="error_setting_address">Chyba nastavení adresy</string>
     <string name="scan_qr_to_connect_to_contact">Pro připojení může váš kontakt naskenovat QR kód, nebo použít odkaz v aplikaci.</string>
     <string name="you_can_accept_or_reject_connection">Když někdo požádá o připojení, můžete žádost přijmout nebo odmítnout.</string>
-    <string name="read_more_in_user_guide_with_link"><![CDATA[Přečtěte si více v <font color="#0088ff">Uživatelské příručce</font>.]]></string>
+    <string name="read_more_in_user_guide_with_link"><![CDATA[Přečtěte si více v <font color="#B95F3A">Uživatelské příručce</font>.]]></string>
     <string name="simplex_address">Adresa Qryptana</string>
     <string name="theme_colors_section_title">BARVY MOTIVU</string>
     <string name="customize_theme_title">Přizpůsobit motiv</string>
