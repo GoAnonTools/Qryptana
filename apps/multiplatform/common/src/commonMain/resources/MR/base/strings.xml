@@ -1304,9 +1304,11 @@
   <string name="make_private_connection">Make a private connection</string>
   <string name="migrate_from_another_device">Migrate from another device</string>
   <string name="how_it_works">How it works</string>
-  <string name="onboarding_be_free">Private conversations, reimagined</string>
+  <string name="onboarding_be_free">Private conversations,\nreimagined</string>
   <string name="onboarding_private_and_secure">Connect with the people you choose, privately and freely.</string>
   <string name="onboarding_first_network">Your conversations stay yours, with no phone number or email required.</string>
+  <string name="onboarding_invitation_card_title">Private invitation</string>
+  <string name="onboarding_invitation_card_subtitle">Your identity</string>
   <string name="get_started">Create my identity</string>
   <string name="qryptana_link_device">Restore my identity</string>
   <string name="qryptana_create_profile">Create my identity</string>
