@@ -107,7 +107,7 @@
   <string name="description_via_one_time_link">via one-time link</string>
   <string name="description_via_one_time_link_incognito">incognito via one-time link</string>
 
-  <!-- FormattedText, SimpleX links - ChatModel.kt -->
+  <!-- FormattedText, Qryptana links - ChatModel.kt -->
   <string name="simplex_link_contact">Qryptana contact address</string>
   <string name="simplex_link_invitation">Qryptana one-time invitation</string>
   <string name="simplex_link_group">Qryptana group link</string>
@@ -127,7 +127,7 @@
   <string name="report_reason_profile">Inappropriate profile</string>
   <string name="report_reason_other">Another reason</string>
 
-  <!-- SimpleXAPI.kt -->
+  <!-- QryptanaAPI.kt -->
   <string name="error_saving_smp_servers">Error saving SMP servers</string>
   <string name="error_saving_xftp_servers">Error saving XFTP servers</string>
   <string name="ensure_smp_server_address_are_correct_format_and_unique">Make sure SMP server addresses are in correct format, line separated and are not duplicated.</string>
@@ -159,7 +159,7 @@
   <string name="blocking_reason_spam">Spam</string>
   <string name="blocking_reason_content">Content violates conditions of use</string>
 
-  <!-- API Error Responses - SimpleXAPI.kt -->
+  <!-- API Error Responses - QryptanaAPI.kt -->
   <string name="connection_timeout">Connection timeout</string>
   <string name="connection_error">Connection error</string>
   <string name="network_error_unknown_ca">Fingerprint in server address does not match certificate: %1$s.</string>
@@ -249,7 +249,7 @@
   <string name="error_preparing_group">Error opening group</string>
   <string name="error_changing_user">Error changing profile</string>
 
-  <!-- background service notice - SimpleXAPI.kt -->
+  <!-- background service notice - QryptanaAPI.kt -->
   <string name="icon_descr_instant_notifications">Instant notifications</string>
   <string name="service_notifications">Instant notifications!</string>
   <string name="service_notifications_disabled">Instant notifications are disabled!</string>
@@ -274,7 +274,7 @@
   <string name="database_initialization_error_desc">The database is not working correctly. Tap to learn more</string>
   <string name="xiaomi_ignore_battery_optimization"><![CDATA[<b>Xiaomi devices</b>: please enable Autostart in the system settings for notifications to work.]]></string>
 
-  <!-- SimpleX Chat foreground Service -->
+  <!-- Qryptana foreground Service -->
   <string name="simplex_service_notification_title">Qryptana service</string>
   <string name="simplex_service_notification_text">Receiving messages…</string>
   <string name="call_service_notification_audio_call">Audio call</string>
@@ -308,7 +308,7 @@
   <string name="notification_contact_connected">Connected</string>
   <string name="error_showing_desktop_notification">Error showing notification, contact developers.</string>
 
-  <!-- local authentication notice - SimpleXAPI.kt -->
+  <!-- local authentication notice - QryptanaAPI.kt -->
   <string name="la_notice_title_simplex_lock">Qryptana Lock</string>
   <string name="la_notice_to_protect_your_information_turn_on_simplex_lock_you_will_be_prompted_to_complete_authentication_before_this_feature_is_enabled">To protect your information, turn on Qryptana Lock.\nYou will be prompted to complete authentication before this feature is enabled.</string>
   <string name="la_notice_turn_on">Turn on</string>
@@ -1194,7 +1194,7 @@
   <string name="share_old_address_alert_button">Share old address</string>
   <string name="share_old_link_alert_button">Share old link</string>
 
-  <!-- CreateSimpleXAddress.kt -->
+  <!-- CreateQryptanaAddress.kt -->
   <string name="continue_to_next_step">Continue</string>
   <string name="dont_create_address">Don\'t create address</string>
   <string name="you_can_create_it_later">You can create it later</string>
@@ -1292,7 +1292,7 @@
   <string name="error_initializing_web_view">Error initializing WebView. Update your system to the new version. Please contact developers.\nError: %s</string>
   <string name="error_initializing_web_view_wrong_arch">Error initializing WebView. Make sure you have WebView installed and it\'s supported architecture is arm64.\nError: %s</string>
 
-  <!-- SimpleXInfo -->
+  <!-- QryptanaInfo -->
   <string name="next_generation_of_private_messaging">The future of messaging</string>
   <string name="privacy_redefined">Privacy redefined</string>
   <string name="first_platform_without_user_ids">No user identifiers.</string>
@@ -1317,7 +1317,7 @@
   <string name="enter_profile_name">What should people call you?</string>
   <string name="migrate">Migrate</string>
 
-  <!-- Why SimpleX is built -->
+  <!-- Why Qryptana is built -->
   <string name="why_built_heading">You were born without an account.</string>
   <string name="why_built_p1">Nobody tracked your conversations. No one drew a map of where you\'d been. Privacy was never a feature — it was the way of life.</string>
   <string name="why_built_p2">Then we moved online, and every platform asked for a piece of you — your name, your number, your friends. We accepted that the price of talking to others is letting someone know who we talk to. Every generation, people and tech, had it this way — telephone, email, messengers, social media. It seemed the only way possible.</string>
