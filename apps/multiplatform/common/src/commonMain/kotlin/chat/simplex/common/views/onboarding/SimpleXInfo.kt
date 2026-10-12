@@ -14,10 +14,8 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.geometry.Offset
-import androidx.compose.ui.graphics.BlendMode
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.layout.layout
@@ -91,9 +89,9 @@ private fun QryptanaOnboardingLayout(
 ) {
   val gradient = Brush.verticalGradient(
     colorStops = arrayOf(
-      0.0f to Color(0xFF11100F),
-      0.42f to Color(0xFF1A1715),
-      1.0f to Color(0xFF28201C)
+      0.0f to Color(0xFF0E0D0C),
+      0.42f to Color(0xFF141210),
+      1.0f to Color(0xFF1B1815)
     )
   )
   Box(
@@ -103,10 +101,19 @@ private fun QryptanaOnboardingLayout(
       .drawBehind {
         drawRect(
           Brush.radialGradient(
-            colors = listOf(QryptanaCopper.copy(alpha = 0.12f), Color.Transparent),
-            center = Offset(size.width / 2f, size.height * 0.34f),
-            radius = size.minDimension * 0.72f
+            colors = listOf(QryptanaCopper.copy(alpha = 0.08f), QryptanaCopper.copy(alpha = 0.025f), Color.Transparent),
+            center = Offset(size.width / 2f, size.height * 0.46f),
+            radius = size.minDimension * 0.76f
           )
+        )
+        drawOval(
+          brush = Brush.radialGradient(
+            colors = listOf(QryptanaCopper.copy(alpha = 0.055f), Color.Transparent),
+            center = Offset(size.width / 2f, size.height * 0.86f),
+            radius = size.width * 0.42f
+          ),
+          topLeft = Offset(size.width * 0.24f, size.height * 0.80f),
+          size = androidx.compose.ui.geometry.Size(size.width * 0.52f, size.height * 0.10f)
         )
         drawRect(
           Brush.radialGradient(
@@ -168,17 +175,17 @@ private fun QryptanaWelcomeContent(
   modifier: Modifier = Modifier
 ) {
   Column(modifier, horizontalAlignment = Alignment.CenterHorizontally) {
-    QryptanaWordmark(Modifier.widthIn(max = 460.dp).fillMaxWidth(0.96f), lightOnDark = true)
-    Spacer(Modifier.height(20.dp))
+    QryptanaWordmark(Modifier.widthIn(max = 184.dp).fillMaxWidth(0.9f))
+    Spacer(Modifier.height(36.dp))
     InvitationPreviewCard()
-    Spacer(Modifier.height(42.dp))
+    Spacer(Modifier.height(40.dp))
     Text(
       stringResource(MR.strings.onboarding_be_free),
       style = MaterialTheme.typography.h1,
-      fontWeight = FontWeight.Bold,
-      fontSize = 38.sp,
+      fontWeight = FontWeight.Light,
+      fontSize = 34.sp,
       textAlign = TextAlign.Center,
-      lineHeight = 44.sp,
+      lineHeight = 40.sp,
       color = QryptanaDarkText
     )
     Spacer(Modifier.height(16.dp))
@@ -199,7 +206,7 @@ private fun QryptanaWelcomeContent(
       lineHeight = 20.sp,
       modifier = Modifier.padding(top = 8.dp)
     )
-    Spacer(Modifier.height(34.dp))
+    Spacer(Modifier.height(36.dp))
     if (onboardingStage != null) {
       OnboardingActionButton(user, onboardingStage)
       TextButtonBelowOnboardingButton(stringResource(MR.strings.how_it_works), onClick = {
@@ -303,13 +310,12 @@ private fun InvitationPreviewCard() {
 }
 
 @Composable
-fun QryptanaWordmark(modifier: Modifier = Modifier, lightOnDark: Boolean = false) {
+fun QryptanaWordmark(modifier: Modifier = Modifier) {
   Image(
     painter = painterResource(MR.images.qryptana_wordmark),
     contentDescription = stringResource(MR.strings.qryptana_logo_description),
     contentScale = ContentScale.Fit,
-    modifier = modifier.padding(bottom = DEFAULT_PADDING_HALF),
-    colorFilter = if (lightOnDark) ColorFilter.tint(QryptanaDarkText, BlendMode.SrcIn) else null
+    modifier = modifier.padding(bottom = DEFAULT_PADDING_HALF)
   )
 }
 
@@ -347,7 +353,8 @@ fun OnboardingActionButton(
         if (secondary) Modifier.border(1.dp, QryptanaCopper.copy(alpha = 0.8f), shape)
         else Modifier
           .shadow(12.dp, shape, clip = false)
-          .background(Brush.horizontalGradient(listOf(QryptanaCopperDark, QryptanaCopperLight)))
+          .background(Brush.horizontalGradient(listOf(Color(0xFF37312B), Color(0xFF211E1B))))
+          .border(1.dp, QryptanaCopper.copy(alpha = 0.48f), shape)
       )
       .clickable(enabled = enabled) {
         onclick?.invoke()
