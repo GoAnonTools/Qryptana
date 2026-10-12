@@ -27,7 +27,7 @@
   <string name="connect_plan_open_group">Open group</string>
   <string name="connect_plan_open_new_group">Open new group</string>
   <string name="error_parsing_uri_title">Invalid link</string>
-  <string name="error_parsing_uri_desc">Please check that SimpleX link is correct.</string>
+  <string name="error_parsing_uri_desc">Please check that Qryptana link is correct.</string>
 
   <!-- MainActivity.kt -->
   <string name="opening_database">Opening database…</string>
@@ -108,17 +108,17 @@
   <string name="description_via_one_time_link_incognito">incognito via one-time link</string>
 
   <!-- FormattedText, SimpleX links - ChatModel.kt -->
-  <string name="simplex_link_contact">SimpleX contact address</string>
-  <string name="simplex_link_invitation">SimpleX one-time invitation</string>
-  <string name="simplex_link_group">SimpleX group link</string>
-  <string name="simplex_link_channel">SimpleX channel link</string>
-  <string name="simplex_link_relay">SimpleX relay address</string>
+  <string name="simplex_link_contact">Qryptana contact address</string>
+  <string name="simplex_link_invitation">Qryptana one-time invitation</string>
+  <string name="simplex_link_group">Qryptana group link</string>
+  <string name="simplex_link_channel">Qryptana channel link</string>
+  <string name="simplex_link_relay">Qryptana relay address</string>
   <string name="simplex_link_connection">via %1$s</string>
-  <string name="simplex_link_mode">SimpleX links</string>
+  <string name="simplex_link_mode">Qryptana links</string>
   <string name="simplex_link_mode_description">Description</string>
   <string name="simplex_link_mode_full">Full link</string>
   <string name="simplex_link_mode_browser">Via browser</string>
-  <string name="simplex_link_mode_browser_warning">Opening the link in the browser may reduce connection privacy and security. Untrusted SimpleX links will be red.</string>
+  <string name="simplex_link_mode_browser_warning">Opening the link in the browser may reduce connection privacy and security. Untrusted Qryptana links will be red.</string>
 
   <!-- Reports - ChatModel.kt -->
   <string name="report_reason_spam">Spam</string>
@@ -499,8 +499,8 @@
   <string name="open_to_accept">Open to accept</string>
   <string name="contact_should_accept">contact should accept…</string>
   <string name="connect_with_contact_name_question">Connect with %1$s?</string>
-  <string name="search_or_paste_simplex_link">Search or paste SimpleX link</string>
-  <string name="address_creation_instruction">Tap Create SimpleX address in the menu to create it later.</string>
+  <string name="search_or_paste_simplex_link">Search or paste Qryptana link</string>
+  <string name="address_creation_instruction">Tap Create Qryptana address in the menu to create it later.</string>
 
   <!-- ChatView.kt -->
   <string name="no_selected_chat">No selected chat</string>
@@ -589,7 +589,7 @@
   <string name="compose_send_direct_message_to_connect">Send direct message to connect</string>
   <string name="compose_forward_messages_n">Forwarding %1$s messages</string>
   <string name="compose_save_messages_n">Saving %1$s messages</string>
-  <string name="simplex_links_not_allowed">SimpleX links not allowed</string>
+  <string name="simplex_links_not_allowed">Qryptana links not allowed</string>
   <string name="files_and_media_not_allowed">Files and media not allowed</string>
   <string name="voice_messages_not_allowed">Voice messages not allowed</string>
   <string name="compose_message_placeholder">Message</string>
@@ -790,7 +790,7 @@
   <string name="add_contact_button_to_create_link_or_connect_via_link"><![CDATA[<b>Add contact</b>: to create a new invitation link, or connect via a link you received.]]></string>
   <string name="create_group_button_to_create_new_group"><![CDATA[<b>Create group</b>: to create a new group.]]></string>
   <string name="to_connect_via_link_title">To connect via link</string>
-  <string name="if_you_received_simplex_invitation_link_you_can_open_in_browser">If you received SimpleX Chat invitation link, you can open it in your browser:</string>
+  <string name="if_you_received_simplex_invitation_link_you_can_open_in_browser">If you received Qryptana invitation link, you can open it in your browser:</string>
   <string name="desktop_scan_QR_code_from_app_via_scan_QR_code"><![CDATA[💻 desktop: scan displayed QR code from the app, via <b>Scan QR code</b>.]]></string>
   <string name="mobile_tap_open_in_mobile_app_then_tap_connect_in_app"><![CDATA[📱 mobile: tap <b>Open in mobile app</b>, then tap <b>Connect</b> in the app.]]></string>
 
@@ -866,7 +866,7 @@
   <string name="icon_descr_cancel_link_preview">cancel link preview</string>
   <string name="icon_descr_settings">Settings</string>
   <string name="image_descr_qr_code">QR Code</string>
-  <string name="icon_descr_address">SimpleX Address</string>
+  <string name="icon_descr_address">Qryptana Address</string>
   <string name="icon_descr_help">help</string>
   <string name="icon_descr_simplex_team">Qryptana Team</string>
   <string name="image_descr_simplex_logo">Qryptana Logo</string>
@@ -891,7 +891,7 @@
   <string name="share_invitation_link">Share 1-time link</string>
   <string name="paste_the_link_you_received_to_connect_with_your_contact">Paste the link you received to connect with your contact…</string>
   <string name="learn_more">Learn more</string>
-  <string name="learn_more_about_address">About SimpleX address</string>
+  <string name="learn_more_about_address">About Qryptana address</string>
 
   <string name="connect__a_new_random_profile_will_be_shared">A new random profile will be shared.</string>
   <string name="connect__your_profile_will_be_shared">Your profile %1$s will be shared.</string>
@@ -902,14 +902,14 @@
 
   <!-- User Address Learn More - UserAddressLearnMore.kt -->
   <string name="share_address_publicly">Share address publicly</string>
-  <string name="share_simplex_address_on_social_media">Share SimpleX address on social media.</string>
+  <string name="share_simplex_address_on_social_media">Share Qryptana address on social media.</string>
   <string name="you_can_share_your_address">You can share your address as a link or QR code - anybody can connect to you.</string>
   <string name="you_wont_lose_your_contacts_if_delete_address">You won\'t lose your contacts if you later delete your address.</string>
   <string name="share_1_time_link_with_a_friend">Share 1-time link with a friend</string>
   <string name="one_time_link_can_be_used_with_one_contact_only"><![CDATA[1-time link can be used <i>with one contact only</i> - share in person or via any messenger.]]></string>
   <string name="you_can_set_connection_name_to_remember">You can set connection name, to remember who the link was shared with.</string>
   <string name="connection_security">Connection security</string>
-  <string name="simplex_address_and_1_time_links_are_safe_to_share">SimpleX address and 1-time links are safe to share via any messenger.</string>
+  <string name="simplex_address_and_1_time_links_are_safe_to_share">Qryptana address and 1-time links are safe to share via any messenger.</string>
   <string name="to_protect_against_your_link_replaced_compare_codes">To protect against your link being replaced, you can compare contact security codes.</string>
   <string name="you_can_accept_or_reject_connection">When people request to connect, you can accept or reject it.</string>
   <string name="read_more_in_user_guide_with_link"><![CDATA[Read more in <font color="#0088ff">User Guide</font>.]]></string>
@@ -930,7 +930,7 @@
   <string name="paste_link">Paste link</string>
   <string name="one_time_link">One-time invitation link</string>
   <string name="one_time_link_short">1-time link</string>
-  <string name="simplex_address">SimpleX address</string>
+  <string name="simplex_address">Qryptana address</string>
   <string name="or_show_this_qr_code">Or show this code</string>
   <string name="full_link_button_text">Full link</string>
   <string name="short_link_button_text">Short link</string>
@@ -946,12 +946,12 @@
   <string name="retry_verb">Retry</string>
   <string name="share_this_1_time_link">Share this 1-time invite link</string>
   <string name="paste_the_link_you_received">Paste the link you received</string>
-  <string name="the_text_you_pasted_is_not_a_link">The text you pasted is not a SimpleX link.</string>
+  <string name="the_text_you_pasted_is_not_a_link">The text you pasted is not a Qryptana link.</string>
   <string name="tap_to_paste_link">Tap to paste link</string>
   <string name="loading_profile">Loading profile…</string>
 
   <string name="invalid_qr_code">Invalid QR code</string>
-  <string name="code_you_scanned_is_not_simplex_link_qr_code">The code you scanned is not a SimpleX link QR code.</string>
+  <string name="code_you_scanned_is_not_simplex_link_qr_code">The code you scanned is not a Qryptana link QR code.</string>
 
   <string name="deleted_chats">Archived contacts</string>
   <string name="no_filtered_contacts">No filtered contacts</string>
@@ -977,7 +977,7 @@
 
   <!-- settings - SettingsView.kt -->
   <string name="your_settings">Your settings</string>
-  <string name="your_simplex_contact_address">Your SimpleX address</string>
+  <string name="your_simplex_contact_address">Your Qryptana address</string>
   <string name="your_chat_profiles">Your chat profiles</string>
   <string name="create_chat_profile">Create chat profile</string>
   <string name="database_passphrase_and_export">Database passphrase &amp; export</string>
@@ -1154,12 +1154,12 @@
   <string name="all_your_contacts_will_remain_connected">All your contacts will remain connected.</string>
   <string name="all_your_contacts_will_remain_connected_update_sent">All your contacts will remain connected. Profile update will be sent to your contacts.</string>
   <string name="share_link">Share link</string>
-  <string name="add_address_to_your_profile">Add address to your profile, so that your SimpleX contacts can share it with other people. Profile update will be sent to your SimpleX contacts.</string>
+  <string name="add_address_to_your_profile">Add address to your profile, so that your Qryptana contacts can share it with other people. Profile update will be sent to your Qryptana contacts.</string>
   <string name="create_address_and_let_people_connect">Create an address to let people connect with you.</string>
-  <string name="create_simplex_address">Create SimpleX address</string>
-  <string name="share_with_contacts">Share with SimpleX contacts</string>
-  <string name="share_address_with_contacts_question">Share address with SimpleX contacts?</string>
-  <string name="profile_update_will_be_sent_to_contacts">Profile update will be sent to your SimpleX contacts.</string>
+  <string name="create_simplex_address">Create Qryptana address</string>
+  <string name="share_with_contacts">Share with Qryptana contacts</string>
+  <string name="share_address_with_contacts_question">Share address with Qryptana contacts?</string>
+  <string name="profile_update_will_be_sent_to_contacts">Profile update will be sent to your Qryptana contacts.</string>
   <string name="stop_sharing_address">Stop sharing address?</string>
   <string name="stop_sharing">Stop sharing</string>
   <string name="auto_accept_contact">Auto-accept</string>
@@ -1167,17 +1167,17 @@
   <string name="address_welcome_message">Welcome message</string>
   <string name="enter_welcome_message_optional">Enter welcome message… (optional)</string>
   <string name="save_settings_question">Save settings?</string>
-  <string name="save_auto_accept_settings">Save SimpleX address settings</string>
+  <string name="save_auto_accept_settings">Save Qryptana address settings</string>
   <string name="delete_address">Delete address</string>
   <string name="invite_friends">Invite friends</string>
-  <string name="email_invite_subject">Let\'s talk in SimpleX Chat</string>
-  <string name="email_invite_body">Hi!\nConnect to me via SimpleX Chat: %s</string>
+  <string name="email_invite_subject">Let\'s talk in Qryptana</string>
+  <string name="email_invite_body">Hi!\nConnect to me via Qryptana: %s</string>
   <string name="for_social_media">For social media</string>
   <string name="or_to_share_privately">Or to share privately</string>
-  <string name="simplex_address_or_1_time_link">SimpleX address or 1-time link?</string>
+  <string name="simplex_address_or_1_time_link">Qryptana address or 1-time link?</string>
   <string name="create_1_time_link">Create 1-time link</string>
   <string name="new_1_time_link">New 1-time link</string>
-  <string name="onboarding_send_1_time_link">Send the link via any messenger - it\'s secure. Ask to paste into SimpleX.</string>
+  <string name="onboarding_send_1_time_link">Send the link via any messenger - it\'s secure. Ask to paste into Qryptana.</string>
   <string name="onboarding_or_show_qr_code">Or show QR in person or via video call.</string>
   <string name="onboarding_post_address">Use this address in your social media profile, website, or email signature.</string>
   <string name="onboarding_or_use_qr_code">Or use this QR - print or show online.</string>
@@ -1198,7 +1198,7 @@
   <string name="continue_to_next_step">Continue</string>
   <string name="dont_create_address">Don\'t create address</string>
   <string name="you_can_create_it_later">You can create it later</string>
-  <string name="you_can_make_address_visible_via_settings">You can make it visible to your SimpleX contacts via Settings.</string>
+  <string name="you_can_make_address_visible_via_settings">You can make it visible to your Qryptana contacts via Settings.</string>
   <string name="invite_friends_short">Invite</string>
 
   <!-- User profile details - UserProfileView.kt -->
@@ -1207,7 +1207,7 @@
   <string name="short_descr__field">Bio:</string>
   <string name="bio_too_large">Bio too large</string>
   <string name="your_current_profile">Your current profile</string>
-  <string name="your_profile_is_stored_on_device_and_shared_only_with_contacts_simplex_cannot_see_it">Your profile is stored on your device and shared only with your contacts. SimpleX servers cannot see your profile.</string>
+  <string name="your_profile_is_stored_on_device_and_shared_only_with_contacts_simplex_cannot_see_it">Your profile is stored on your device and shared only with your Qryptana contacts. Qryptana servers cannot see your profile.</string>
   <string name="edit_image">Edit image</string>
   <string name="delete_image">Delete image</string>
   <string name="save_admission_question">Save admission settings?</string>
@@ -1304,7 +1304,7 @@
   <string name="make_private_connection">Make a private connection</string>
   <string name="migrate_from_another_device">Migrate from another device</string>
   <string name="how_it_works">How it works</string>
-  <string name="onboarding_be_free">Private conversations,\nmade simple</string>
+  <string name="onboarding_be_free">Private conversations,\nreimagined</string>
   <string name="onboarding_private_and_secure">Talk to the people you choose, without a phone number.</string>
   <string name="onboarding_first_network">Start with a profile on this device. Learn how the privacy network works when you are ready.</string>
   <string name="get_started">Create your profile</string>
@@ -1327,7 +1327,7 @@
   <string name="why_built_p6">The oldest human freedom — to speak to another person without being watched — built on infrastructure that cannot betray it.</string>
   <string name="why_built_p7">Because we destroyed the power to know who you are. So that your power can never be taken.</string>
   <string name="why_built_tagline">Be free in your network.</string>
-  <string name="to_protect_privacy_simplex_has_ids_for_queues">To protect your privacy, SimpleX uses separate IDs for each of your contacts.</string>
+  <string name="to_protect_privacy_simplex_has_ids_for_queues">To protect your privacy, Qryptana uses separate IDs for each of your contacts.</string>
   <string name="only_client_devices_store_contacts_groups_e2e_encrypted_messages">Only client devices store user profiles, contacts, groups, and messages.</string>
   <string name="all_message_and_files_e2e_encrypted"><![CDATA[All messages and files are sent <b>end-to-end encrypted</b>, with post-quantum security in direct messages.]]></string>
   <string name="read_more_in_github_with_link"><![CDATA[Read more in our <font color="#0088ff">GitHub repository</font>.]]></string>
@@ -1359,10 +1359,10 @@
   <string name="onboarding_conditions_accept">Accept</string>
   <string name="onboarding_choose_server_operators">Server operators</string>
   <string name="onboarding_network_operators">Network operators</string>
-  <string name="onboarding_network_operators_simplex_flux_agreement">SimpleX Chat and Flux made an agreement to include Flux-operated servers into the app.</string>
+  <string name="onboarding_network_operators_simplex_flux_agreement">Qryptana and Flux made an agreement to include Flux-operated servers into the app.</string>
   <string name="onboarding_network_operators_app_will_use_different_operators">The app protects your privacy by using different operators in each conversation.</string>
   <string name="onboarding_network_operators_cant_see_who_talks_to_whom">When more than one operator is enabled, none of them has metadata to learn who communicates with whom.</string>
-  <string name="onboarding_network_operators_app_will_use_for_routing">For example, if your contact receives messages via a SimpleX Chat server, your app will deliver them via a Flux server.</string>
+  <string name="onboarding_network_operators_app_will_use_for_routing">For example, if your contact receives messages via a Qryptana server, your app will deliver them via a Flux server.</string>
   <string name="onboarding_network_about_operators">About operators</string>
   <string name="onboarding_select_network_operators_to_use">Select network operators to use.</string>
   <string name="how_it_helps_privacy">How it helps privacy</string>
@@ -2208,7 +2208,7 @@
   <string name="theme_system">System</string>
   <string name="theme_light">Light</string>
   <string name="theme_dark">Dark</string>
-  <string name="theme_simplex">SimpleX</string>
+  <string name="theme_simplex">Qryptana</string>
   <string name="theme_black">Black</string>
 
   <!-- Languages -->
@@ -2287,7 +2287,7 @@
   <string name="message_reactions">Message reactions</string>
   <string name="voice_messages">Voice messages</string>
   <string name="files_and_media">Files and media</string>
-  <string name="simplex_links">SimpleX links</string>
+  <string name="simplex_links">Qryptana links</string>
   <string name="recent_history">Visible history</string>
   <string name="audio_video_calls">Audio/video calls</string>
   <string name="available_in_v51">\nAvailable in v5.1</string>
@@ -2353,8 +2353,8 @@
   <string name="prohibit_message_reactions_group">Prohibit messages reactions.</string>
   <string name="allow_to_send_files">Allow to send files and media.</string>
   <string name="prohibit_sending_files">Prohibit sending files and media.</string>
-  <string name="allow_to_send_simplex_links">Allow to send SimpleX links.</string>
-  <string name="prohibit_sending_simplex_links">Prohibit sending SimpleX links</string>
+  <string name="allow_to_send_simplex_links">Allow to send Qryptana links.</string>
+  <string name="prohibit_sending_simplex_links">Prohibit sending Qryptana links</string>
   <string name="enable_sending_recent_history">Send up to 100 last messages to new members.</string>
   <string name="disable_sending_recent_history">Do not send history to new members.</string>
   <string name="enable_sending_member_reports">Allow to report messsages to moderators.</string>
@@ -2373,8 +2373,8 @@
   <string name="message_reactions_are_prohibited">Message reactions are prohibited.</string>
   <string name="group_members_can_send_files">Members can send files and media.</string>
   <string name="files_are_prohibited_in_group">Files and media are prohibited.</string>
-  <string name="group_members_can_send_simplex_links">Members can send SimpleX links.</string>
-  <string name="simplex_links_are_prohibited_in_group">SimpleX links are prohibited.</string>
+  <string name="group_members_can_send_simplex_links">Members can send Qryptana links.</string>
+  <string name="simplex_links_are_prohibited_in_group">Qryptana links are prohibited.</string>
   <string name="recent_history_is_sent_to_new_members">Up to 100 last messages are sent to new members.</string>
   <string name="recent_history_is_not_sent_to_new_members">History is not sent to new members.</string>
   <string name="group_members_can_send_reports">Members can report messsages to moderators.</string>
@@ -2401,7 +2401,7 @@
   <string name="group_members_can_add_message_reactions_channel">Subscribers can add message reactions.</string>
   <string name="group_members_can_send_voice_channel">Subscribers can send voice messages.</string>
   <string name="group_members_can_send_files_channel">Subscribers can send files and media.</string>
-  <string name="group_members_can_send_simplex_links_channel">Subscribers can send SimpleX links.</string>
+  <string name="group_members_can_send_simplex_links_channel">Subscribers can send Qryptana links.</string>
   <string name="group_members_can_send_reports_channel">Subscribers can report messsages to moderators.</string>
   <string name="recent_history_is_sent_to_new_members_channel">Up to 100 last messages are sent to new subscribers.</string>
   <string name="recent_history_is_not_sent_to_new_members_channel">History is not sent to new subscribers.</string>
@@ -2463,7 +2463,7 @@
   <string name="new_in_version">New in %s</string>
   <string name="whats_new_read_more">Read more</string>
   <string name="v4_2_security_assessment">Security assessment</string>
-  <string name="v4_2_security_assessment_desc">SimpleX Chat security was audited by Trail of Bits.</string>
+  <string name="v4_2_security_assessment_desc">Qryptana security was audited by Trail of Bits.</string>
   <string name="v4_2_group_links">Group links</string>
   <string name="v4_2_group_links_desc">Admins can create the links to join groups.</string>
   <string name="v4_2_auto_accept_contact_requests">Auto-accept contact requests</string>
@@ -2605,7 +2605,7 @@
   <string name="v6_0_connection_servers_status">Control your network</string>
   <string name="v6_0_connection_servers_status_descr">Connection and servers status.</string>
   <string name="v6_1_better_security">Better security ✅</string>
-  <string name="v6_1_better_security_descr">SimpleX protocols reviewed by Trail of Bits.</string>
+  <string name="v6_1_better_security_descr">Qryptana protocols reviewed by Trail of Bits.</string>
   <string name="v6_1_better_calls">Better calls</string>
   <string name="v6_1_better_calls_descr">Switch audio and video during the call.</string>
   <string name="v6_1_better_user_experience">Better user experience</string>
@@ -2647,7 +2647,7 @@
   <string name="v6_4_1_welcome_contacts_descr">Set profile bio and welcome message.</string>
   <string name="v6_4_1_keep_chats_clean">Keep your chats clean</string>
   <string name="v6_4_1_keep_chats_clean_descr">Enable disappearing messages by default.</string>
-  <string name="v6_4_1_short_address">Short SimpleX address</string>
+  <string name="v6_4_1_short_address">Short Qryptana address</string>
   <string name="v6_4_1_short_address_create">Create your address</string>
   <string name="v6_4_1_short_address_update">Update your address</string>
   <string name="v6_4_1_short_address_share">Share your address</string>
@@ -2663,7 +2663,7 @@
   <string name="v6_5_safe_web_links">Safe web links</string>
   <string name="v6_5_safe_web_links_descr">- opt-in to send link previews.\n- use SOCKS proxy if enabled.\n- prevent hyperlink phishing.\n- remove link tracking.</string>
   <string name="v6_5_non_profit_governance">Non-profit governance</string>
-  <string name="v6_5_non_profit_governance_descr">To make SimpleX Network last.</string>
+  <string name="v6_5_non_profit_governance_descr">To make Qryptana Network last.</string>
   <string name="view_updated_conditions">View updated conditions</string>
 
   <!-- CustomTimePicker -->
@@ -2774,7 +2774,7 @@
   <string name="connect_plan_you_are_already_connecting_to_vName"><![CDATA[You are already connecting to <b>%1$s</b>.]]></string>
   <string name="connect_plan_already_connecting">Already connecting!</string>
   <string name="connect_plan_you_are_already_connecting_via_this_one_time_link">You are already connecting via this one-time link!</string>
-  <string name="connect_plan_this_is_your_own_simplex_address">This is your own SimpleX address!</string>
+  <string name="connect_plan_this_is_your_own_simplex_address">This is your own Qryptana address!</string>
   <string name="connect_plan_repeat_connection_request">Repeat connection request?</string>
   <string name="connect_plan_you_have_already_requested_connection_via_this_address">You have already requested connection via this address!</string>
   <string name="connect_plan_join_your_group">Join your group?</string>

@@ -47,6 +47,7 @@ import chat.simplex.common.views.helpers.*
 import chat.simplex.res.MR
 import com.google.accompanist.permissions.rememberMultiplePermissionsState
 import dev.icerock.moko.resources.compose.stringResource
+import dev.icerock.moko.resources.compose.painterResource as mokoPainterResource
 import kotlinx.coroutines.launch
 import kotlinx.datetime.Clock
 import java.lang.ref.WeakReference
@@ -399,7 +400,7 @@ fun IncomingCallLockScreenAlertLayout(
 @Composable
 private fun SimpleXLogo() {
   Image(
-    painter = painterResource(if (isInDarkTheme()) R.drawable.logo_light else R.drawable.logo),
+    painter = mokoPainterResource(MR.images.qryptana_symbol),
     contentDescription = stringResource(MR.strings.image_descr_simplex_logo),
     modifier = Modifier
       .padding(vertical = DEFAULT_PADDING)
