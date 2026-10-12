@@ -89,12 +89,25 @@ private fun QryptanaOnboardingLayout(
   user: User?,
   onboardingStage: SharedPreference<OnboardingStage>
 ) {
-  val gradient = Brush.verticalGradient(listOf(Color(0xFF121212), Color(0xFF201B18)))
+  val gradient = Brush.verticalGradient(
+    colorStops = arrayOf(
+      0.0f to Color(0xFF11100F),
+      0.42f to Color(0xFF1A1715),
+      1.0f to Color(0xFF28201C)
+    )
+  )
   Box(
     Modifier
       .fillMaxSize()
       .background(gradient)
       .drawBehind {
+        drawRect(
+          Brush.radialGradient(
+            colors = listOf(QryptanaCopper.copy(alpha = 0.12f), Color.Transparent),
+            center = Offset(size.width / 2f, size.height * 0.34f),
+            radius = size.minDimension * 0.72f
+          )
+        )
         drawRect(
           Brush.radialGradient(
             colors = listOf(Color.Transparent, Color.Black.copy(alpha = 0.24f)),
@@ -155,10 +168,10 @@ private fun QryptanaWelcomeContent(
   modifier: Modifier = Modifier
 ) {
   Column(modifier, horizontalAlignment = Alignment.CenterHorizontally) {
+    QryptanaWordmark(Modifier.widthIn(max = 460.dp).fillMaxWidth(0.96f), lightOnDark = true)
+    Spacer(Modifier.height(20.dp))
     InvitationPreviewCard()
-    Spacer(Modifier.height(36.dp))
-    QryptanaWordmark(Modifier.widthIn(max = 400.dp).fillMaxWidth(0.9f), lightOnDark = true)
-    Spacer(Modifier.height(24.dp))
+    Spacer(Modifier.height(42.dp))
     Text(
       stringResource(MR.strings.onboarding_be_free),
       style = MaterialTheme.typography.h1,
@@ -226,9 +239,9 @@ private fun InvitationPreviewCard() {
   ) {
     Box(
       Modifier
-        .widthIn(max = 430.dp)
-        .fillMaxWidth(0.92f)
-        .height(226.dp)
+        .widthIn(max = 480.dp)
+        .fillMaxWidth(0.96f)
+        .height(268.dp)
         .offset(y = floatOffset.dp)
         .shadow(34.dp, cardShape, clip = false)
         .clip(cardShape)
@@ -240,7 +253,7 @@ private fun InvitationPreviewCard() {
           )
         )
         .border(1.5.dp, QryptanaCopper.copy(alpha = 0.9f), cardShape)
-        .padding(horizontal = 34.dp, vertical = 28.dp)
+        .padding(horizontal = 38.dp, vertical = 34.dp)
     ) {
       Box(Modifier.fillMaxSize()) {
         Box(
@@ -258,9 +271,9 @@ private fun InvitationPreviewCard() {
               painter = painterResource(MR.images.qryptana_symbol),
               contentDescription = stringResource(MR.strings.qryptana_logo_description),
               contentScale = ContentScale.Fit,
-              modifier = Modifier.size(66.dp)
+              modifier = Modifier.size(74.dp)
             )
-            Spacer(Modifier.width(18.dp))
+            Spacer(Modifier.width(20.dp))
             Column {
               Text(
                 stringResource(MR.strings.onboarding_invitation_card_title),
