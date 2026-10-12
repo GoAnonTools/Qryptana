@@ -1,6 +1,6 @@
 package chat.simplex.common.views.onboarding
 
-import androidx.compose.animation.core.animateDpAsState
+import androidx.compose.animation.core.*
 import androidx.compose.desktop.ui.tooling.preview.Preview
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
@@ -69,11 +69,7 @@ private fun SimpleXInfoDesktop(chatModel: ChatModel) {
   val user = chatModel.currentUser.value
   val onboardingStage = chatModel.controller.appPrefs.onboardingStage
   CompositionLocalProvider(LocalAppBarHandler provides rememberAppBarHandler()) {
-    ModalView({}, showClose = false) {
-      ColumnWithScrollBar(Modifier.padding(horizontal = DEFAULT_PADDING), horizontalAlignment = Alignment.CenterHorizontally) {
-        QryptanaWelcomeContent(user, onboardingStage, Modifier.widthIn(max = 560.dp).fillMaxWidth())
-      }
-    }
+    SimpleXInfoLayout(user, onboardingStage)
   }
   LaunchedEffect(Unit) {
     if (chatModel.migrationState.value != null && !ModalManager.fullscreen.hasModalsOpen()) {
@@ -118,20 +114,23 @@ private fun QryptanaWelcomeContent(
   modifier: Modifier = Modifier
 ) {
   Column(modifier, horizontalAlignment = Alignment.CenterHorizontally) {
-    QryptanaWordmark(Modifier.widthIn(max = 330.dp).fillMaxWidth(0.82f))
-    Spacer(Modifier.height(DEFAULT_PADDING_HALF))
+    InvitationPreviewCard()
+    Spacer(Modifier.height(24.dp))
+    QryptanaWordmark(Modifier.widthIn(max = 280.dp).fillMaxWidth(0.78f))
+    Spacer(Modifier.height(14.dp))
     Text(
       stringResource(MR.strings.onboarding_be_free),
       style = MaterialTheme.typography.h1,
       fontWeight = FontWeight.Bold,
       textAlign = TextAlign.Center,
-      lineHeight = 42.sp
+      lineHeight = 42.sp,
+      color = QryptanaDarkText
     )
-    Spacer(Modifier.height(10.dp))
+    Spacer(Modifier.height(12.dp))
     Text(
       stringResource(MR.strings.onboarding_private_and_secure),
       style = MaterialTheme.typography.h3,
-      color = MaterialTheme.colors.secondary,
+      color = QryptanaDarkSecondary,
       fontWeight = FontWeight.Medium,
       lineHeight = 25.sp,
       textAlign = TextAlign.Center
@@ -139,15 +138,13 @@ private fun QryptanaWelcomeContent(
     Text(
       stringResource(MR.strings.onboarding_first_network),
       style = MaterialTheme.typography.body2,
-      color = MaterialTheme.colors.onBackground.copy(alpha = 0.72f),
+      color = QryptanaDarkSecondary.copy(alpha = 0.82f),
       textAlign = TextAlign.Center,
       lineHeight = 20.sp,
       modifier = Modifier.padding(top = 8.dp)
     )
-    Spacer(Modifier.height(DEFAULT_PADDING))
-    InvitationPreviewCard()
+    Spacer(Modifier.height(26.dp))
     if (onboardingStage != null) {
-      Spacer(Modifier.height(DEFAULT_PADDING))
       OnboardingActionButton(user, onboardingStage)
       TextButtonBelowOnboardingButton(stringResource(MR.strings.how_it_works), icon = painterResource(MR.images.ic_info), onClick = {
         ModalManager.fullscreen.showModal { HowItWorks(user, onboardingStage) }
@@ -158,28 +155,76 @@ private fun QryptanaWelcomeContent(
 
 @Composable
 private fun InvitationPreviewCard() {
+  val transition = rememberInfiniteTransition()
+  val floatOffset by transition.animateFloat(
+    initialValue = -3f,
+    targetValue = 3f,
+    animationSpec = infiniteRepeatable(
+      animation = tween(3600, easing = FastOutSlowInEasing),
+      repeatMode = RepeatMode.Reverse
+    )
+  )
   val cardShape = RoundedCornerShape(24.dp)
-  Box(
-    Modifier
-      .widthIn(max = 370.dp)
-      .fillMaxWidth(0.9f)
-      .shadow(18.dp, cardShape, clip = false)
-      .clip(cardShape)
-      .background(QryptanaDarkCard)
-      .border(1.dp, QryptanaCopper.copy(alpha = 0.75f), cardShape)
-      .padding(horizontal = DEFAULT_PADDING, vertical = DEFAULT_PADDING_HALF + 4.dp)
-  ) {
-    Row(verticalAlignment = Alignment.CenterVertically) {
-      Image(
-        painter = painterResource(MR.images.qryptana_symbol),
-        contentDescription = stringResource(MR.strings.qryptana_logo_description),
-        contentScale = ContentScale.Fit,
-        modifier = Modifier.size(56.dp)
-      )
-      Spacer(Modifier.width(DEFAULT_PADDING_HALF))
-      Column {
-        Text(stringResource(MR.strings.onboarding_invitation_card_title), color = QryptanaDarkText, style = MaterialTheme.typography.h3, fontWeight = FontWeight.Medium)
-        Text(stringResource(MR.strings.onboarding_invitation_card_subtitle), color = QryptanaDarkSecondary, style = MaterialTheme.typography.body2, modifier = Modifier.padding(top = 3.dp))
+  Box(contentAlignment = Alignment.Center, modifier = Modifier.padding(horizontal = 24.dp)) {
+    Box(
+      Modifier
+        .widthIn(max = 360.dp)
+        .fillMaxWidth(0.88f)
+        .height(188.dp)
+        .offset(y = floatOffset.dp)
+        .shadow(26.dp, cardShape, clip = false)
+        .clip(cardShape)
+        .background(
+          Brush.linearGradient(
+            colors = listOf(QryptanaDarkCard, QryptanaDarkSurface, Color(0xFF312A25)),
+            start = Offset.Zero,
+            end = Offset(420f, 240f)
+          )
+        )
+        .border(1.dp, QryptanaCopper.copy(alpha = 0.82f), cardShape)
+        .padding(horizontal = 28.dp, vertical = 22.dp)
+    ) {
+      Box(Modifier.fillMaxSize()) {
+        Box(
+          Modifier
+            .align(Alignment.TopEnd)
+            .size(78.dp)
+            .background(
+              Brush.radialGradient(listOf(QryptanaCopper.copy(alpha = 0.18f), Color.Transparent)),
+              CircleShape
+            )
+        )
+        Column(Modifier.fillMaxSize(), verticalArrangement = Arrangement.SpaceBetween) {
+          Row(verticalAlignment = Alignment.CenterVertically) {
+            Image(
+              painter = painterResource(MR.images.qryptana_symbol),
+              contentDescription = stringResource(MR.strings.qryptana_logo_description),
+              contentScale = ContentScale.Fit,
+              modifier = Modifier.size(54.dp)
+            )
+            Spacer(Modifier.width(16.dp))
+            Column {
+              Text(
+                stringResource(MR.strings.onboarding_invitation_card_title),
+                color = QryptanaDarkText,
+                style = MaterialTheme.typography.h3,
+                fontWeight = FontWeight.Medium
+              )
+              Text(
+                stringResource(MR.strings.onboarding_invitation_card_subtitle),
+                color = QryptanaDarkSecondary,
+                style = MaterialTheme.typography.body2,
+                modifier = Modifier.padding(top = 3.dp)
+              )
+            }
+          }
+          Text(
+            "A private way to connect",
+            color = QryptanaCopperLight.copy(alpha = 0.88f),
+            style = MaterialTheme.typography.body2,
+            fontWeight = FontWeight.Medium
+          )
+        }
       }
     }
   }
@@ -189,7 +234,7 @@ private fun InvitationPreviewCard() {
 fun QryptanaWordmark(modifier: Modifier = Modifier) {
   Image(
     painter = painterResource(MR.images.qryptana_wordmark),
-    contentDescription = stringResource(MR.strings.image_descr_simplex_logo),
+    contentDescription = stringResource(MR.strings.qryptana_logo_description),
     contentScale = ContentScale.Fit,
     modifier = modifier
       .padding(bottom = DEFAULT_PADDING_HALF)
@@ -220,28 +265,37 @@ fun OnboardingActionButton(
   secondary: Boolean = false,
   onclick: (() -> Unit)?
 ) {
-  Button(
-    onClick = {
-      onclick?.invoke()
-      if (onboarding != null) {
-        appPrefs.onboardingStage.set(onboarding)
+  val shape = RoundedCornerShape(50)
+  Box(
+    modifier
+      .widthIn(min = 280.dp, max = 360.dp)
+      .height(56.dp)
+      .clip(shape)
+      .then(
+        if (secondary) Modifier.border(1.dp, QryptanaCopper.copy(alpha = 0.8f), shape)
+        else Modifier
+          .shadow(12.dp, shape, clip = false)
+          .background(Brush.horizontalGradient(listOf(QryptanaCopperDark, QryptanaCopperLight)))
+      )
+      .clickable(enabled = enabled) {
+        onclick?.invoke()
+        if (onboarding != null) appPrefs.onboardingStage.set(onboarding)
       }
-    },
-    modifier = modifier,
-    shape = RoundedCornerShape(14.dp),
-    enabled = enabled,
-    border = if (secondary) BorderStroke(1.dp, MaterialTheme.colors.primary) else null,
-    contentPadding = PaddingValues(horizontal = if (icon == null) DEFAULT_PADDING * 2 else DEFAULT_PADDING * 1.5f, vertical = 15.dp),
-    colors = if (secondary) {
-      ButtonDefaults.outlinedButtonColors(backgroundColor = Color.Transparent, contentColor = MaterialTheme.colors.primary)
-    } else {
-      ButtonDefaults.buttonColors(MaterialTheme.colors.primary, disabledBackgroundColor = MaterialTheme.colors.secondary)
-    }
+      .padding(horizontal = 24.dp),
+    contentAlignment = Alignment.Center
   ) {
-    if (icon != null) {
-      Icon(icon, stringResource(labelId), Modifier.padding(end = DEFAULT_PADDING_HALF), tint = if (secondary) MaterialTheme.colors.primary else iconColor)
+    Row(verticalAlignment = Alignment.CenterVertically) {
+      if (icon != null) {
+        Icon(icon, stringResource(labelId), Modifier.padding(end = DEFAULT_PADDING_HALF), tint = if (secondary) QryptanaCopperLight else Color.White)
+      }
+      Text(
+        stringResource(labelId),
+        style = MaterialTheme.typography.h2,
+        color = if (secondary) QryptanaCopperLight else QryptanaDarkText,
+        fontSize = 17.sp,
+        fontWeight = FontWeight.Medium
+      )
     }
-      Text(stringResource(labelId), style = MaterialTheme.typography.h2, color = if (secondary) MaterialTheme.colors.primary else MaterialTheme.colors.onPrimary, fontSize = 18.sp, fontWeight = FontWeight.Medium)
   }
 }
 

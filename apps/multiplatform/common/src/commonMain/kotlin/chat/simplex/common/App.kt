@@ -274,6 +274,10 @@ private fun DesktopOnboarding(onboarding: OnboardingStage, chatModel: ChatModel)
   if (onboarding == OnboardingStage.LinkAMobile) {
     LinkAMobile()
     ModalManager.fullscreen.showInView()
+  } else if (onboarding == OnboardingStage.Step1_SimpleXInfo) {
+    // The first-run experience is a single Qryptana scene rather than the
+    // legacy illustration/content split used by the later setup steps.
+    SimpleXInfo(chatModel, onboarding = true)
   } else {
     DesktopOnboardingShell(onboarding) {
       when (onboarding) {
