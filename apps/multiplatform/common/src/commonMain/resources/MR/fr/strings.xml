@@ -292,7 +292,7 @@
     <string name="toast_permission_denied">Autorisation refusée !</string>
     <string name="use_camera_button">Appareil\nphoto</string>
     <string name="thank_you_for_installing_simplex">Merci d\'avoir installé Qryptana !</string>
-    <string name="you_can_connect_to_simplex_chat_founder"><![CDATA[Vous pouvez <font color="#0088ff">vous connecter aux développeurs de Qryptana pour leur poser des questions et recevoir des réponses :</font>.]]></string>
+    <string name="you_can_connect_to_simplex_chat_founder"><![CDATA[Vous pouvez <font color="#B95F3A">vous connecter aux développeurs de Qryptana pour leur poser des questions et recevoir des réponses :</font>.]]></string>
     <string name="above_then_preposition_continuation">ci-dessus, puis :</string>
     <string name="if_you_choose_to_reject_the_sender_will_not_be_notified">Si vous choisissez de la rejeter, l\'expéditeur·rice NE sera PAS notifié·e.</string>
     <string name="accept_contact_button">Accepter</string>
@@ -448,7 +448,7 @@
     <string name="make_private_connection">Établir une connexion privée</string>
     <string name="how_it_works">Comment ça fonctionne</string>
     <string name="only_client_devices_store_contacts_groups_e2e_encrypted_messages">Seuls les appareils clients stockent les profils des utilisateurs, les contacts, les groupes et les messages.</string>
-    <string name="read_more_in_github_with_link"><![CDATA[Pour en savoir plus, consultez notre <font color="#0088ff">GitHub repository</font>.]]></string>
+    <string name="read_more_in_github_with_link"><![CDATA[Pour en savoir plus, consultez notre <font color="#B95F3A">GitHub repository</font>.]]></string>
     <string name="onboarding_notifications_mode_periodic_desc"><![CDATA[<b>Batterie peu utilisée</b>. L\'app vérifie les messages toutes les 10 minutes. Vous risquez de manquer des appels ou des messages urgents.]]></string>
     <string name="onboarding_notifications_mode_service_desc"><![CDATA[<b>Consomme davantage de batterie </b> L\'app fonctionne toujours en arrière-plan - les notifications s\'affichent instantanément.]]></string>
     <string name="integrity_msg_skipped">%1$d message(s) manqué(s)</string>
@@ -1147,7 +1147,7 @@
     <string name="color_received_message">Message reçu</string>
     <string name="import_theme_error_desc">Assurez-vous que le fichier a une syntaxe YAML correcte. Exporter le thème pour avoir un exemple de la structure du fichier du thème.</string>
     <string name="profile_update_will_be_sent_to_contacts">La mise à jour du profil sera envoyée à vos contacts.</string>
-    <string name="read_more_in_user_guide_with_link"><![CDATA[Pour en savoir plus, consultez le <font color="#0088ff">Guide de l\'utilisateur</font>.]]></string>
+    <string name="read_more_in_user_guide_with_link"><![CDATA[Pour en savoir plus, consultez le <font color="#B95F3A">Guide de l\'utilisateur</font>.]]></string>
     <string name="save_auto_accept_settings">Enregistrer les paramètres de l\'adresse Qryptana</string>
     <string name="scan_qr_to_connect_to_contact">Pour se connecter, votre contact peut scanner un code QR ou utiliser un lien dans l\'app.</string>
     <string name="app_passcode_replaced_with_self_destruct">Le code d\'accès de l\'application est remplacé par un code d\'autodestruction.</string>

@@ -604,7 +604,7 @@
     <string name="image_descr_profile_image">imagen del perfil</string>
     <string name="prohibit_sending_voice_messages">No se permiten mensajes de voz.</string>
     <string name="protect_app_screen">Proteger pantalla de la aplicación</string>
-    <string name="read_more_in_github_with_link"><![CDATA[Conoce más en nuestro <font color="#0088ff">repositorio GitHub</font> .]]></string>
+    <string name="read_more_in_github_with_link"><![CDATA[Conoce más en nuestro <font color="#B95F3A">repositorio GitHub</font> .]]></string>
     <string name="icon_descr_record_voice_message">Grabar mensaje de voz</string>
     <string name="rcv_group_event_member_deleted">ha expulsado a %1$s</string>
     <string name="send_link_previews">Enviar previsualizacion de enlaces</string>
@@ -853,7 +853,7 @@
     <string name="contact_wants_to_connect_via_call">%1$s quiere conectarse contigo mediante</string>
     <string name="failed_to_create_user_duplicate_desc">Ya tienes un perfil con este nombre mostrado. Por favor, selecciona otro nombre.</string>
     <string name="you_can_also_connect_by_clicking_the_link"><![CDATA[También puedes conectarte pulsando el enlace. Si se abre en el navegador, pulsa en <b>Abrir en aplicación móvil</b>.]]></string>
-    <string name="you_can_connect_to_simplex_chat_founder"><![CDATA[Puedes <font color="#0088ff">ponerte en contacto con los desarrolladores de Qryptana para consultas y para recibir actualizaciones</font>.]]></string>
+    <string name="you_can_connect_to_simplex_chat_founder"><![CDATA[Puedes <font color="#B95F3A">ponerte en contacto con los desarrolladores de Qryptana para consultas y para recibir actualizaciones</font>.]]></string>
     <string name="observer_cant_send_message_title">eres observador</string>
     <string name="you_can_use_markdown_to_format_messages__prompt">Puedes usar la sintaxis markdown para dar formato a tus mensajes:</string>
     <string name="you_must_use_the_most_recent_version_of_database">Debes usar la versión más reciente de tu base de datos ÚNICAMENTE en un dispositivo, de lo contrario podrías dejar de recibir mensajes de algunos contactos.</string>
@@ -1104,7 +1104,7 @@
     <string name="group_welcome_preview">Vista previa</string>
     <string name="opening_database">Abriendo base de datos…</string>
     <string name="error_setting_address">Error al introducir dirección</string>
-    <string name="read_more_in_user_guide_with_link"><![CDATA[Conoce más en la <font color="#0088ff">Guía de Usuario</font>.]]></string>
+    <string name="read_more_in_user_guide_with_link"><![CDATA[Conoce más en la <font color="#B95F3A">Guía de Usuario</font>.]]></string>
     <string name="one_time_link_short">Enlace de un solo uso</string>
     <string name="simplex_address">Dirección Qryptana</string>
     <string name="you_can_accept_or_reject_connection">Cuando alguien solicite conectarse podrás aceptar o rechazar su solicitud.</string>

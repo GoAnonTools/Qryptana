@@ -886,7 +886,7 @@
     <string name="to_preserve_privacy_simplex_has_background_service_instead_of_push_notifications_it_uses_a_few_pc_battery"><![CDATA[Om de privacy te verbeteren, <b>draait Qryptana op de achtergrond</b> in plaats van pushmeldingen te gebruiken.]]></string>
     <string name="chat_preferences_you_allow">Jij staat toe</string>
     <string name="you_are_invited_to_group">Je bent uitgenodigd voor de groep</string>
-    <string name="you_can_connect_to_simplex_chat_founder"><![CDATA[U kunt <font color="#0088ff">verbinding maken met Qryptana ontwikkelaars om vragen te stellen en updates te ontvangen</font>.]]></string>
+    <string name="you_can_connect_to_simplex_chat_founder"><![CDATA[U kunt <font color="#B95F3A">verbinding maken met Qryptana ontwikkelaars om vragen te stellen en updates te ontvangen</font>.]]></string>
     <string name="connection_error_auth_desc">Tenzij uw contact de verbinding heeft verwijderd of deze link al is gebruikt, kan het een bug zijn. Meld het alstublieft.
 \nOm verbinding te maken, vraagt u uw contact om een andere verbinding link te maken en te controleren of u een stabiele netwerkverbinding heeft.</string>
     <string name="use_simplex_chat_servers__question">Qryptana servers gebruiken\?</string>
@@ -923,7 +923,7 @@
     <string name="description_you_shared_one_time_link">je hebt een eenmalige link gedeeld</string>
     <string name="description_you_shared_one_time_link_incognito">je hebt een eenmalige link incognito gedeeld</string>
     <string name="chat_help_tap_button">Tik op de knop</string>
-    <string name="read_more_in_github_with_link"><![CDATA[Lees meer in onze <font color="#0088ff">GitHub repository</font>.]]></string>
+    <string name="read_more_in_github_with_link"><![CDATA[Lees meer in onze <font color="#B95F3A">GitHub repository</font>.]]></string>
     <string name="integrity_msg_skipped">%1$d bericht(en) overgeslagen</string>
     <string name="moderated_description">gemodereerd</string>
     <string name="moderated_item_description">gemodereerd door %s</string>
@@ -1145,7 +1145,7 @@
     <string name="import_theme_error">Fout bij importeren thema</string>
     <string name="import_theme_error_desc">Zorg ervoor dat het bestand de juiste YAML-syntaxis heeft. Exporteer het thema om een voorbeeld te hebben van de themabestandsstructuur.</string>
     <string name="opening_database">Database openen…</string>
-    <string name="read_more_in_user_guide_with_link"><![CDATA[Lees meer in de <font color="#0088ff">Gebruikershandleiding</font>.]]></string>
+    <string name="read_more_in_user_guide_with_link"><![CDATA[Lees meer in de <font color="#B95F3A">Gebruikershandleiding</font>.]]></string>
     <string name="theme_colors_section_title">INTERFACE KLEUREN</string>
     <string name="you_can_share_your_address">U kunt uw adres delen als een link of QR-code - iedereen kan verbinding met u maken.</string>
     <string name="all_app_data_will_be_cleared">Alle app-gegevens worden verwijderd.</string>

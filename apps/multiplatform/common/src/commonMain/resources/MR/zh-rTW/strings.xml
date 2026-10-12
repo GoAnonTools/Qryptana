@@ -516,7 +516,7 @@
     <string name="we_do_not_store_contacts_or_messages_on_servers">我們不會在伺服器內儲存你的任何聯絡人和訊息（一旦傳送）。</string>
     <string name="create_profile">建立個人檔案</string>
     <string name="callstate_received_confirmation">已確認回應…</string>
-    <string name="you_can_connect_to_simplex_chat_founder"><![CDATA[你可以透過 <font color="#0088ff">連接到 Qryptana 開發人員提出任何問題並同意更新</font>。]]></string>
+    <string name="you_can_connect_to_simplex_chat_founder"><![CDATA[你可以透過 <font color="#B95F3A">連接到 Qryptana 開發人員提出任何問題並同意更新</font>。]]></string>
     <string name="to_start_a_new_chat_help_header">開啟新的對話</string>
     <string name="set_contact_name">設定聯絡人名稱</string>
     <string name="you_invited_a_contact">你已邀請了你的聯絡人</string>
@@ -782,7 +782,7 @@
     <string name="chat_preferences_contact_allows">聯絡人允許</string>
     <string name="ttl_s">%ds</string>
     <string name="onboarding_notifications_mode_title">私人通知</string>
-    <string name="read_more_in_github_with_link"><![CDATA[可在 <font color="#0088ff">GitHub</font>內查看更多。]]></string>
+    <string name="read_more_in_github_with_link"><![CDATA[可在 <font color="#B95F3A">GitHub</font>內查看更多。]]></string>
     <string name="incoming_video_call">視訊通話來電</string>
     <string name="icon_descr_hang_up">掛斷</string>
     <string name="call_connection_peer_to_peer">點對點</string>
@@ -1133,7 +1133,7 @@
     <string name="dark_theme">黑暗主題</string>
     <string name="error_setting_address">設定聯絡地址時出錯</string>
     <string name="auth_open_chat_profiles">變更聊天個人檔案</string>
-    <string name="read_more_in_user_guide_with_link"><![CDATA[可在 <font color="#0088ff"> 內查看更多關於用戶指南的資料</font>。]]></string>
+    <string name="read_more_in_user_guide_with_link"><![CDATA[可在 <font color="#B95F3A"> 內查看更多關於用戶指南的資料</font>。]]></string>
     <string name="self_destruct">自毁</string>
     <string name="enabled_self_destruct_passcode">啟用自毀密碼</string>
     <string name="change_self_destruct_passcode">修改自毀密碼</string>

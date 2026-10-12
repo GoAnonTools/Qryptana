@@ -517,7 +517,7 @@
     <string name="image_descr_profile_image">аватар</string>
     <string name="icon_descr_more_button">Більше</string>
     <string name="create_profile">Створити профіль</string>
-    <string name="read_more_in_github_with_link"><![CDATA[Докладніше читайте в нашому репозиторії на <font color="#0088ff">GitHub</font>.]]></string>
+    <string name="read_more_in_github_with_link"><![CDATA[Докладніше читайте в нашому репозиторії на <font color="#B95F3A">GitHub</font>.]]></string>
     <string name="icon_descr_video_on">Відео увімкнено</string>
     <string name="alert_text_fragment_encryption_out_of_sync_old_database">Це може трапитися, якщо ви або ваше з\'єднання використовували застарілу резервну копію бази даних.</string>
     <string name="restore_database">Відновити резервну копію бази даних</string>
@@ -1005,7 +1005,7 @@
     <string name="you_will_be_connected_when_your_contacts_device_is_online">Підключення відбудеться, коли пристрій вашого контакту буде онлайн. Будь ласка, зачекайте або спробуйте пізніше!</string>
     <string name="you_wont_lose_your_contacts_if_delete_address">Ви не втратите свої контакти, якщо ви пізніше видалите свою адресу.</string>
     <string name="you_can_accept_or_reject_connection">Коли люди просять про з\'єднання, ви можете його прийняти чи відхилити.</string>
-    <string name="read_more_in_user_guide_with_link"><![CDATA[Докладніше читайте в <font color="#0088ff">Посібнику користувача</font>.]]></string>
+    <string name="read_more_in_user_guide_with_link"><![CDATA[Докладніше читайте в <font color="#B95F3A">Посібнику користувача</font>.]]></string>
     <string name="simplex_address">Qryptana-адреса</string>
     <string name="clear_verification">Скинути підтвердження</string>
     <string name="is_verified">%s перевірено</string>
@@ -1175,7 +1175,7 @@
     <string name="create_group">Створити секретну групу</string>
     <string name="to_share_with_your_contact">(щоб поділитися з вашим контактом)</string>
     <string name="connect_via_link_or_qr_from_clipboard_or_in_person">(сканувати або вставити з буферу обміну)</string>
-    <string name="you_can_connect_to_simplex_chat_founder"><![CDATA[Ви можете <font color="#0088ff">підключитися до розробників Qryptana, щоб задати будь-які питання і отримувати оновлення</font>.]]></string>
+    <string name="you_can_connect_to_simplex_chat_founder"><![CDATA[Ви можете <font color="#B95F3A">підключитися до розробників Qryptana, щоб задати будь-які питання і отримувати оновлення</font>.]]></string>
     <string name="desktop_scan_QR_code_from_app_via_scan_QR_code"><![CDATA[💻 на комп\'ютері: скануйте відображений QR-код з додатка за допомогою <b>Сканувати QR-код</b>.]]></string>
     <string name="icon_descr_address">Адреса Qryptana</string>
     <string name="show_QR_code">Показати QR-код</string>

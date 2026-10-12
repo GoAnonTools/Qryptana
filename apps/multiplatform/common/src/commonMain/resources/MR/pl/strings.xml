@@ -432,7 +432,7 @@
     <string name="only_client_devices_store_contacts_groups_e2e_encrypted_messages">Tylko urządzenia klienckie przechowują profile użytkowników, kontakty, grupy i wiadomości.</string>
     <string name="onboarding_notifications_mode_periodic">Okresowo</string>
     <string name="onboarding_notifications_mode_title">Prywatne powiadomienia</string>
-    <string name="read_more_in_github_with_link"><![CDATA[Przeczytaj więcej na naszym <font color="#0088ff">repozytorium GitHub</font>.]]></string>
+    <string name="read_more_in_github_with_link"><![CDATA[Przeczytaj więcej na naszym <font color="#B95F3A">repozytorium GitHub</font>.]]></string>
     <string name="use_chat">Użyj czatu</string>
     <string name="onboarding_notifications_mode_off">Gdy aplikacja jest uruchomiona</string>
     <string name="onboarding_notifications_mode_service_desc"><![CDATA[<b>Zużywa więcej baterii</b>! Aplikacja zawsze działa w tle - powiadomienia są wyświetlane natychmiastowo.]]></string>
@@ -998,7 +998,7 @@
     <string name="simplex_service_notification_title">serwis Qryptana</string>
     <string name="contact_wants_to_connect_via_call">%1$s chce się z Tobą połączyć przez</string>
     <string name="you_are_already_connected_to_vName_via_this_link">Jesteś już połączony z %1$s.</string>
-    <string name="you_can_connect_to_simplex_chat_founder"><![CDATA[Możesz <font color="#0088ff">połączyć się z deweloperami Qryptana aby zadać wszelkie pytania i otrzymywać aktualizacje</font>.]]></string>
+    <string name="you_can_connect_to_simplex_chat_founder"><![CDATA[Możesz <font color="#B95F3A">połączyć się z deweloperami Qryptana aby zadać wszelkie pytania i otrzymywać aktualizacje</font>.]]></string>
     <string name="you_can_share_group_link_anybody_will_be_able_to_connect">Możesz udostępnić link lub kod QR - każdy będzie mógł dołączyć do grupy. Nie stracisz członków grupy, jeśli później ją usuniesz.</string>
     <string name="you_must_use_the_most_recent_version_of_database">Musisz używać najnowszej wersji bazy danych czatu TYLKO na jednym urządzeniu, w przeciwnym razie możesz przestać otrzymywać wiadomości od niektórych kontaktów.</string>
     <string name="you_can_start_chat_via_setting_or_by_restarting_the_app">Możesz rozpocząć czat poprzez Ustawienia aplikacji / Bazę danych lub poprzez ponowne uruchomienie aplikacji.</string>
@@ -1131,7 +1131,7 @@
     <string name="auth_open_chat_profiles">Zmień profile czatu</string>
     <string name="learn_more_about_address">O adresie Qryptana</string>
     <string name="one_time_link_short">link jednorazowy</string>
-    <string name="read_more_in_user_guide_with_link"><![CDATA[Przeczytaj więcej w <font color="#0088ff">Podręczniku Użytkownika</font>.]]></string>
+    <string name="read_more_in_user_guide_with_link"><![CDATA[Przeczytaj więcej w <font color="#B95F3A">Podręczniku Użytkownika</font>.]]></string>
     <string name="simplex_address">Adres Qryptana</string>
     <string name="you_can_accept_or_reject_connection">Kiedy ludzie proszą o połączenie, możesz je zaakceptować lub odrzucić.</string>
     <string name="you_wont_lose_your_contacts_if_delete_address">Nie stracisz kontaktów, jeśli później usuniesz swój adres.</string>

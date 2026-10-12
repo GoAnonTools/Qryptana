@@ -1397,7 +1397,7 @@
     <string name="confirm_delete_contact_question">Konfirmasi hapus kontak?</string>
     <string name="send_disappearing_message_custom_time">Waktu kustom</string>
     <string name="choose_file_title">Pilih berkas</string>
-    <string name="you_can_connect_to_simplex_chat_founder"><![CDATA[Anda dapat <font color="#0088ff">terhubung ke pengembang Qryptana untuk mengajukan pertanyaan dan menerima pembaruan</font>.]]></string>
+    <string name="you_can_connect_to_simplex_chat_founder"><![CDATA[Anda dapat <font color="#B95F3A">terhubung ke pengembang Qryptana untuk mengajukan pertanyaan dan menerima pembaruan</font>.]]></string>
     <string name="clear_chat_question">Hapus obrolan?</string>
     <string name="network_proxy_auth_mode_no_auth">Jangan gunakan kredensial dengan proxy.</string>
     <string name="disable_onion_hosts_when_not_supported"><![CDATA[Atur <i>Gunakan host .onion</i> ke Tidak jika proxy SOCKS tidak mendukung.]]></string>
@@ -1548,7 +1548,7 @@
     <string name="icon_descr_close_button">Tombol tutup</string>
     <string name="icon_descr_email">Email</string>
     <string name="if_you_cannot_meet_in_person_scan_QR_in_video_call_or_ask_for_invitation_link"><![CDATA[Jika Anda tidak dapat bertemu langsung, Anda dapat <b>pindai kode QR dalam panggilan video</b>, atau kontak Anda dapat bagikan tautan undangan.]]></string>
-    <string name="read_more_in_user_guide_with_link"><![CDATA[Lebih lanjut di <font color="#0088ff">Panduan Pengguna</font>.]]></string>
+    <string name="read_more_in_user_guide_with_link"><![CDATA[Lebih lanjut di <font color="#B95F3A">Panduan Pengguna</font>.]]></string>
     <string name="enable_receipts_all">Aktifkan</string>
     <string name="onboarding_network_operators_cant_see_who_talks_to_whom">Ketika lebih dari satu operator diaktifkan, tidak satupun dari mereka memiliki metadata untuk mengetahui siapa yang berkomunikasi.</string>
     <string name="chat_is_running">Obrolan sedang berjalan</string>
@@ -1594,7 +1594,7 @@
     <string name="how_it_helps_privacy">Bagaimana ini membantu privasi</string>
     <string name="onboarding_network_operators_continue">Lanjutkan</string>
     <string name="onboarding_network_operators_configure_via_settings">Anda dapat konfigurasi server di pengaturan.</string>
-    <string name="read_more_in_github_with_link"><![CDATA[Lebih lengkap di <font color="#0088ff">repositori GitHub</font> kami.]]></string>
+    <string name="read_more_in_github_with_link"><![CDATA[Lebih lengkap di <font color="#B95F3A">repositori GitHub</font> kami.]]></string>
     <string name="onboarding_network_operators_review_later">Nilai nanti</string>
     <string name="onboarding_network_operators_update">Perbarui</string>
     <string name="migrate_to_device_downloading_details">Rincian tautan unduhan</string>

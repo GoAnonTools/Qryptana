@@ -806,7 +806,7 @@
     <string name="mark_unread">Merkitse lukemattomaksi</string>
     <string name="set_contact_name">Aseta kontaktin nimi</string>
     <string name="connection_you_accepted_will_be_cancelled">Hyväksymäsi yhteys peruuntuu!</string>
-    <string name="read_more_in_user_guide_with_link"><![CDATA[Lue lisää <font color="#0088ff">Käyttöoppaasta</font>.]]></string>
+    <string name="read_more_in_user_guide_with_link"><![CDATA[Lue lisää <font color="#B95F3A">Käyttöoppaasta</font>.]]></string>
     <string name="mark_code_verified">Merkitse vahvistetuksi</string>
     <string name="simplex_address">Qryptana-osoite</string>
     <string name="chat_with_the_founder">Lähetä kysymyksiä ja ideoita</string>
@@ -828,7 +828,7 @@
     <string name="save_settings_question">Tallenna asetukset\?</string>
     <string name="email_invite_subject">Jutellaan Qryptanaissa</string>
     <string name="callstate_received_confirmation">vahvistus saatu…</string>
-    <string name="read_more_in_github_with_link"><![CDATA[Lue lisää <font color="#0088ff">GitHub-arkistostamme</font>.]]></string>
+    <string name="read_more_in_github_with_link"><![CDATA[Lue lisää <font color="#B95F3A">GitHub-arkistostamme</font>.]]></string>
     <string name="onboarding_notifications_mode_periodic">Säännölliset</string>
     <string name="only_client_devices_store_contacts_groups_e2e_encrypted_messages"><![CDATA[Vain asiakaslaitteet tallentavat käyttäjäprofiileja, yhteystietoja, ryhmiä ja viestejä, jotka on lähetetty <b>2-kerroksisella päästä päähän -salauksella</b>.]]></string>
     <string name="paste_the_link_you_received">Liitä vastaanotettu linkki</string>
@@ -1175,7 +1175,7 @@
     <string name="waiting_for_video">Odottaa videota</string>
     <string name="switch_receiving_address_desc">Vastaanotto-osoite vaihdetaan toiseen palvelimeen. Osoitteenmuutos tehdään sen jälkeen, kun lähettäjä tulee verkkoon.</string>
     <string name="you_need_to_allow_to_send_voice">Sinun on sallittava kontaktiesi lähettää ääniviestejä, jotta voit lähettää niitä.</string>
-    <string name="you_can_connect_to_simplex_chat_founder"><![CDATA[Voit <font color="#0088ff">olla yhteydessä Qryptanain -kehittäjiin kysyäksesi kysymyksiä ja saadaksesi päivityksiä</font>.]]></string>
+    <string name="you_can_connect_to_simplex_chat_founder"><![CDATA[Voit <font color="#B95F3A">olla yhteydessä Qryptanain -kehittäjiin kysyäksesi kysymyksiä ja saadaksesi päivityksiä</font>.]]></string>
     <string name="this_QR_code_is_not_a_link">Tämä QR-koodi ei ole linkki!</string>
     <string name="you_will_be_connected_when_group_host_device_is_online">Sinut yhdistetään ryhmään, kun ryhmän isännän laite on online-tilassa, odota tai tarkista myöhemmin!</string>
     <string name="you_will_be_connected_when_your_connection_request_is_accepted">Sinut yhdistetään, kun yhteyspyyntösi on hyväksytty, odota tai tarkista myöhemmin!</string>

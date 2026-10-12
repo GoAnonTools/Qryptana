@@ -784,9 +784,9 @@
     <string name="stop_rcv_file__message">קבלת הקובץ תופסק.</string>
     <string name="icon_descr_record_voice_message">הקלט הודעה קולית</string>
     <string name="reject_contact_button">דחיה</string>
-    <string name="read_more_in_user_guide_with_link"><![CDATA[קראו עוד ב<font color="#0088ff">מדריך למשתמש</font>.]]></string>
+    <string name="read_more_in_user_guide_with_link"><![CDATA[קראו עוד ב<font color="#B95F3A">מדריך למשתמש</font>.]]></string>
     <string name="rate_the_app">דרגו את האפליקציה</string>
-    <string name="read_more_in_github_with_link"><![CDATA[קראו עוד ב־<font color="#0088ff">GitHub repository</font> שלנו.]]></string>
+    <string name="read_more_in_github_with_link"><![CDATA[קראו עוד ב־<font color="#B95F3A">GitHub repository</font> שלנו.]]></string>
     <string name="relay_server_if_necessary">יבוצע שימוש בשרת ממסר רק במידת הצורך. גורם אחר יכול לצפות בכתובת ה־IP שלך.</string>
     <string name="relay_server_protects_ip">שרת ממסר מגן על כתובת ה־IP שלך, אך הוא יכול לראות את משך השיחה.</string>
     <string name="icon_descr_call_rejected">שיחה נדחתה</string>
@@ -1124,7 +1124,7 @@
     <string name="voice_message_send_text">הודעה קולית…</string>
     <string name="you_need_to_allow_to_send_voice">עליכם לאפשר לאיש הקשר שלכם לשלוח הודעות קוליות כדי שתוכלו לשלוח אותן.</string>
     <string name="gallery_video_button">סרטון</string>
-    <string name="you_can_connect_to_simplex_chat_founder"><![CDATA[באפשרותך <font color="#0088ff">להתחבר למפתחי Qryptana כדי לשאול כל שאלה ולקבל עדכונים</font>.]]></string>
+    <string name="you_can_connect_to_simplex_chat_founder"><![CDATA[באפשרותך <font color="#B95F3A">להתחבר למפתחי Qryptana כדי לשאול כל שאלה ולקבל עדכונים</font>.]]></string>
     <string name="webrtc_ice_servers">שרתי WebRTC ICE</string>
     <string name="integrity_msg_skipped">%1$d הודעות שדולגו</string>
     <string name="custom_time_unit_weeks">שבועות</string>

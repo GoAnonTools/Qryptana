@@ -1364,11 +1364,11 @@
     <string name="address_settings">Cài đặt địa chỉ</string>
     <string name="operators_conditions_accepted_for"><![CDATA[Các điều kiện được chấp nhận với (các) nhà cung cấp: <b>%s</b>.]]></string>
     <string name="operator_conditions_accepted_for_some"><![CDATA[Các điều kiện đã được chấp nhận rồi đối với (các) nhà cung cấp sau: <b>%s</b>.]]></string>
-    <string name="read_more_in_github_with_link"><![CDATA[Đọc thêm tại <font color="#0088ff">Kho lưu trữ GitHub của chúng tôi</font>.]]></string>
+    <string name="read_more_in_github_with_link"><![CDATA[Đọc thêm tại <font color="#B95F3A">Kho lưu trữ GitHub của chúng tôi</font>.]]></string>
     <string name="operator_same_conditions_will_be_applied"><![CDATA[Các điều kiện tương tự sẽ áp dụng cho nhà cung cấp <b>%s</b>.]]></string>
     <string name="operator_same_conditions_will_apply_to_operators"><![CDATA[Các điều kiện tương tự sẽ áp dụng cho (các) nhà cung cấp <b>%s</b>.]]></string>
     <string name="operators_conditions_will_also_apply"><![CDATA[Các điều kiện này cũng sẽ áp dụng cho: <b>%s</b>.]]></string>
-    <string name="read_more_in_user_guide_with_link"><![CDATA[Đọc thêm tại <font color="#0088ff">Hướng dẫn người dùng</font>.]]></string>
+    <string name="read_more_in_user_guide_with_link"><![CDATA[Đọc thêm tại <font color="#B95F3A">Hướng dẫn người dùng</font>.]]></string>
     <string name="connect_plan_you_are_already_connecting_to_vName"><![CDATA[Bạn đã kết nối tới <b>%1$s</b> rồi.]]></string>
     <string name="system_restricted_background_in_call_warn"><![CDATA[Để thực hiện cuộc gọi trong nền, vui lòng chọn <b>Mức sử dụng pin ứng dụng</b> / <b>Không hạn chế</b> trong phần cài đặt ứng dụng.]]></string>
     <string name="remote_host_error_timeout"><![CDATA[Đã hết thời gian chờ khi kết nối tới thiết bị di động <b>%s</b>]]></string>
@@ -1381,7 +1381,7 @@
     <string name="connect_plan_you_are_already_joining_the_group_vName"><![CDATA[Bạn đã tham gia nhóm <b>%1$s</b> rồi.]]></string>
     <string name="you_can_also_connect_by_clicking_the_link"><![CDATA[Bạn cũng có thể kết nối bằng cách nhấp vào đường dẫn. Nếu nó mở trong trình duyệt, nhấp vào nút<b>Mở trong ứng dụng di động</b>.]]></string>
     <string name="onboarding_choose_server_operators">Các bên vận hành máy chủ</string>
-    <string name="you_can_connect_to_simplex_chat_founder"><![CDATA[Bạn có thể <font color="#0088ff">kết nối với các nhà phát triển Qryptana để hỏi bất kỳ câu hỏi nào và nhận thông tin cập nhật</font>.]]></string>
+    <string name="you_can_connect_to_simplex_chat_founder"><![CDATA[Bạn có thể <font color="#B95F3A">kết nối với các nhà phát triển Qryptana để hỏi bất kỳ câu hỏi nào và nhận thông tin cập nhật</font>.]]></string>
     <string name="migrate_from_device_you_must_not_start_database_on_two_device"><![CDATA[Bạn <b>không được</b> sử dụng cùng một cơ sở dữ liệu trên hai thiết .]]></string>
     <string name="error_accepting_operator_conditions">Lỗi chấp nhận điều kiện</string>
     <string name="failed_to_save_servers">Lỗi lưu máy chủ</string>

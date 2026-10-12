@@ -408,7 +408,7 @@
     <string name="camera_not_available">دوربین موجود نیست</string>
     <string name="gallery_image_button">تصویر</string>
     <string name="share_one_time_link">ایجاد لینک دعوت یک‌بارمصرف</string>
-    <string name="you_can_connect_to_simplex_chat_founder"><![CDATA[می‌توانید <font color="#0088ff">برای پرسش هر سوال و دریافت اطلاعات به توسعه‌دهندگان Qryptana متصل شوید</font>.]]></string>
+    <string name="you_can_connect_to_simplex_chat_founder"><![CDATA[می‌توانید <font color="#B95F3A">برای پرسش هر سوال و دریافت اطلاعات به توسعه‌دهندگان Qryptana متصل شوید</font>.]]></string>
     <string name="add_contact_button_to_create_link_or_connect_via_link"><![CDATA[<b>افزودن مخاطب</b>: برای ایجاد لینک دعوت جدید، یا اتصال از طریق لینکی که دریافت کردید.]]></string>
     <string name="to_connect_via_link_title">اتصال از طریق لینک</string>
     <string name="image_will_be_received_when_contact_is_online">تصویر وقتی دریافت خواهد شد که مخاطبتان آنلاین شود، لطفا صبر کنید یا بعدا بررسی کنید!</string>
@@ -568,7 +568,7 @@
 \nمی‌توانید این اتصال را لغو و مخاطب را حذف کنید (و بعدا با یک لینک جدید امتحان کنید).</string>
     <string name="icon_descr_address">نشانی‌ Qryptana</string>
     <string name="this_QR_code_is_not_a_link">این کد QR یک لینک نیست!</string>
-    <string name="read_more_in_user_guide_with_link"><![CDATA[مطالعه بیشتر در <font color="#0088ff">راهنمای کاربر</font>.]]></string>
+    <string name="read_more_in_user_guide_with_link"><![CDATA[مطالعه بیشتر در <font color="#B95F3A">راهنمای کاربر</font>.]]></string>
     <string name="this_string_is_not_a_connection_link">این رشته متن، یک لینک اتصال نیست!</string>
     <string name="code_you_scanned_is_not_simplex_link_qr_code">کدی که اسکن کردید یک کد QR لینک Qryptana نیست.</string>
     <string name="scan_code">اسکن کد</string>
@@ -730,7 +730,7 @@
     <string name="callstatus_accepted">تماس پذیرفته</string>
     <string name="decentralized">نامتمرکز</string>
     <string name="create_your_profile">پروفایل خود را ایجاد کنید</string>
-    <string name="read_more_in_github_with_link"><![CDATA[مطالعه بیشتر در <font color="#0088ff">مخزن GitHub</font> ما.]]></string>
+    <string name="read_more_in_github_with_link"><![CDATA[مطالعه بیشتر در <font color="#B95F3A">مخزن GitHub</font> ما.]]></string>
     <string name="use_chat">استفاده از چت</string>
     <string name="onboarding_notifications_mode_off_desc"><![CDATA[<b>بهترین گزینه برای باتری</b>. شما اعلان‌ها را فقط وقتی دریافت می‌کنید که برنامه در حال اجراست (بدون سرویس پس‌زمینه).]]></string>
     <string name="call_on_lock_screen">تماس‌ها روی صفحه قفل:</string>

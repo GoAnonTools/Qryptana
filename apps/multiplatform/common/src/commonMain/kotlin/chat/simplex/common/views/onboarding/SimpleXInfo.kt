@@ -72,7 +72,7 @@ private fun SimpleXInfoDesktop(chatModel: ChatModel) {
       ColumnWithScrollBar(Modifier.padding(horizontal = DEFAULT_PADDING), horizontalAlignment = Alignment.CenterHorizontally) {
         Spacer(Modifier.height(DEFAULT_PADDING))
         Box(Modifier.widthIn(max = 600.dp).fillMaxWidth(0.45f).align(Alignment.CenterHorizontally)) {
-          SimpleXLogo()
+          QryptanaWordmark()
         }
         Spacer(Modifier.fillMaxHeight().weight(1f))
         Column(Modifier.widthIn(max = 600.dp).align(Alignment.CenterHorizontally), horizontalAlignment = Alignment.CenterHorizontally) {
@@ -109,16 +109,13 @@ fun SimpleXInfoLayout(
   val modifier = Modifier.fillMaxSize().systemBarsPadding().padding(horizontal = DEFAULT_ONBOARDING_HORIZONTAL_PADDING)
   Column(if (topBar) modifier.padding(top = AppBarHeight * fontSizeSqrtMultiplier) else modifier, horizontalAlignment = Alignment.CenterHorizontally) {
     Box(Modifier.padding(top = DEFAULT_PADDING * 2).widthIn(max = if (appPlatform.isAndroid) 185.dp else 160.dp), contentAlignment = Alignment.Center) {
-      SimpleXLogo()
+      QryptanaWordmark()
     }
     OnboardingShrinkingLayout(
       modifier = Modifier.fillMaxSize(),
       image = {
         Column(Modifier.padding(vertical = DEFAULT_PADDING_HALF), horizontalAlignment = Alignment.CenterHorizontally) {
-          OnboardingImage(
-            MR.images.intro, MR.images.intro_light, MR.images.ic_forum,
-            modifier = if (appPlatform.isAndroid) Modifier.fillMaxWidth() else Modifier.heightIn(max = 280.dp)
-          )
+          QryptanaSymbol()
       }
     },
     content = {
@@ -172,14 +169,24 @@ fun SimpleXInfoLayout(
 }
 
 @Composable
-fun SimpleXLogo() {
+fun QryptanaWordmark() {
+  Image(
+    painter = painterResource(MR.images.qryptana_wordmark),
+    contentDescription = stringResource(MR.strings.image_descr_simplex_logo),
+    contentScale = ContentScale.Fit,
+    modifier = Modifier
+      .padding(bottom = DEFAULT_PADDING_HALF)
+      .fillMaxWidth()
+  )
+}
+
+@Composable
+fun QryptanaSymbol() {
   Image(
     painter = painterResource(MR.images.qryptana_symbol),
-    contentDescription = stringResource(MR.strings.image_descr_simplex_logo),
-    contentScale = ContentScale.FillWidth,
-    modifier = Modifier
-      .padding(bottom = 10.dp)
-      .fillMaxWidth()
+    contentDescription = stringResource(MR.strings.qryptana_logo_description),
+    contentScale = ContentScale.Fit,
+    modifier = Modifier.size(120.dp)
   )
 }
 
@@ -194,6 +201,7 @@ fun OnboardingActionButton(
   enabled: Boolean = true,
   icon: Painter? = null,
   iconColor: Color = Color.White,
+  secondary: Boolean = false,
   onclick: (() -> Unit)?
 ) {
   Button(
@@ -204,16 +212,20 @@ fun OnboardingActionButton(
       }
     },
     modifier = modifier,
-    shape = CircleShape,
+    shape = RoundedCornerShape(14.dp),
     enabled = enabled,
-//    elevation = ButtonDefaults.elevation(defaultElevation = 0.dp, focusedElevation = 0.dp, pressedElevation = 0.dp, hoveredElevation = 0.dp),
-    contentPadding = PaddingValues(horizontal = if (icon == null) DEFAULT_PADDING * 2 else DEFAULT_PADDING * 1.5f, vertical = 17.dp),
-    colors = ButtonDefaults.buttonColors(MaterialTheme.colors.primary, disabledBackgroundColor = MaterialTheme.colors.secondary)
+    border = if (secondary) BorderStroke(1.dp, MaterialTheme.colors.primary) else null,
+    contentPadding = PaddingValues(horizontal = if (icon == null) DEFAULT_PADDING * 2 else DEFAULT_PADDING * 1.5f, vertical = 15.dp),
+    colors = if (secondary) {
+      ButtonDefaults.outlinedButtonColors(backgroundColor = Color.Transparent, contentColor = MaterialTheme.colors.primary)
+    } else {
+      ButtonDefaults.buttonColors(MaterialTheme.colors.primary, disabledBackgroundColor = MaterialTheme.colors.secondary)
+    }
   ) {
     if (icon != null) {
-      Icon(icon, stringResource(labelId), Modifier.padding(end = DEFAULT_PADDING_HALF), tint = iconColor)
+      Icon(icon, stringResource(labelId), Modifier.padding(end = DEFAULT_PADDING_HALF), tint = if (secondary) MaterialTheme.colors.primary else iconColor)
     }
-    Text(stringResource(labelId), style = MaterialTheme.typography.h2, color = Color.White, fontSize = 18.sp, fontWeight = FontWeight.Medium)
+      Text(stringResource(labelId), style = MaterialTheme.typography.h2, color = if (secondary) MaterialTheme.colors.primary else MaterialTheme.colors.onPrimary, fontSize = 18.sp, fontWeight = FontWeight.Medium)
   }
 }
 

@@ -532,7 +532,7 @@
     <string name="to_share_with_your_contact">(da condividere con il tuo contatto)</string>
     <string name="to_start_a_new_chat_help_header">Per iniziare una nuova chat</string>
     <string name="use_camera_button">Fotocamera</string>
-    <string name="you_can_connect_to_simplex_chat_founder"><![CDATA[Puoi <font color="#0088ff">connetterti con gli sviluppatori di Qryptana per porre domande e ricevere aggiornamenti</font>.]]></string>
+    <string name="you_can_connect_to_simplex_chat_founder"><![CDATA[Puoi <font color="#B95F3A">connetterti con gli sviluppatori di Qryptana per porre domande e ricevere aggiornamenti</font>.]]></string>
     <string name="invalid_contact_link">Link non valido!</string>
     <string name="invalid_QR_code">Codice QR non valido</string>
     <string name="image_descr_link_preview">immagine di anteprima link</string>
@@ -656,7 +656,7 @@
     <string name="onboarding_notifications_mode_periodic">Periodico</string>
     <string name="privacy_redefined">Privacy ridefinita</string>
     <string name="onboarding_notifications_mode_title">Notifiche private</string>
-    <string name="read_more_in_github_with_link"><![CDATA[Maggiori informazioni nel nostro <font color="#0088ff">repository GitHub</font>.]]></string>
+    <string name="read_more_in_github_with_link"><![CDATA[Maggiori informazioni nel nostro <font color="#B95F3A">repository GitHub</font>.]]></string>
     <string name="reject">Rifiuta</string>
     <string name="first_platform_without_user_ids">Nessun identificatore utente.</string>
     <string name="next_generation_of_private_messaging">Il futuro dei messaggi</string>
@@ -1144,7 +1144,7 @@
     <string name="if_you_cant_meet_in_person">Se non potete incontrarvi di persona, mostra il codice QR in una videochiamata o condividi il link.</string>
     <string name="email_invite_subject">Parliamo in Qryptana</string>
     <string name="profile_update_will_be_sent_to_contacts">L\'aggiornamento del profilo verrà inviato ai tuoi contatti di Qryptana.</string>
-    <string name="read_more_in_user_guide_with_link"><![CDATA[Maggiori informazioni nella <font color="#0088ff">Guida per l\'utente</font>.]]></string>
+    <string name="read_more_in_user_guide_with_link"><![CDATA[Maggiori informazioni nella <font color="#B95F3A">Guida per l\'utente</font>.]]></string>
     <string name="color_surface">Menu e avvisi</string>
     <string name="stop_sharing_address">Smettere di condividere l\'indirizzo\?</string>
     <string name="save_settings_question">Salvare le impostazioni\?</string>

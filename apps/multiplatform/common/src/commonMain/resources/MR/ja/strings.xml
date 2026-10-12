@@ -324,7 +324,7 @@
     <string name="how_it_works">技術の説明</string>
     <string name="make_private_connection">プライベートな接続をする</string>
     <string name="onboarding_notifications_mode_title">プライベートな通知</string>
-    <string name="read_more_in_github_with_link"><![CDATA[<font color="#0088ff">GitHubリポジトリ</font>で詳細をご確認ください。]]></string>
+    <string name="read_more_in_github_with_link"><![CDATA[<font color="#B95F3A">GitHubリポジトリ</font>で詳細をご確認ください。]]></string>
     <string name="encrypted_video_call">エンドツーエンド暗号化済みビデオ通話</string>
     <string name="no_call_on_lock_screen">無効にする</string>
     <string name="status_no_e2e_encryption">エンドツーエンド暗号化がありません</string>
@@ -841,7 +841,7 @@
     <string name="contact_sent_large_file">相手が上限を超える容量のファイルを送ろうとしました (%1$s)。</string>
     <string name="voice_messages_prohibited">音声メッセージは使用禁止です！</string>
     <string name="add_contact_or_create_group">新しいチャットを始める</string>
-    <string name="you_can_connect_to_simplex_chat_founder"><![CDATA[<font color="#0088ff">Qryptanaの開発者と繋がれば、質問したり、速報を受けたりすることができます</font>。]]></string>
+    <string name="you_can_connect_to_simplex_chat_founder"><![CDATA[<font color="#B95F3A">Qryptanaの開発者と繋がれば、質問したり、速報を受けたりすることができます</font>。]]></string>
     <string name="to_start_a_new_chat_help_header">新しいチャットを始めるには</string>
     <string name="chat_help_tap_button">ボタンをタップ</string>
     <string name="unmute_chat">ミュート解除</string>
@@ -939,7 +939,7 @@
     <string name="dark_theme">ダークテーマ</string>
     <string name="gallery_image_button">画像</string>
     <string name="learn_more_about_address">Qryptanaアドレスについて</string>
-    <string name="read_more_in_user_guide_with_link"><![CDATA[<font color="#0088ff">ユーザーガイド</font>で詳細を見る]]></string>
+    <string name="read_more_in_user_guide_with_link"><![CDATA[<font color="#B95F3A">ユーザーガイド</font>で詳細を見る]]></string>
     <string name="simplex_address">Qryptanaアドレス</string>
     <string name="network_proxy_port">ポート %d</string>
     <string name="enter_welcome_message_optional">ウェルカムメッセージを入力…（任意）</string>

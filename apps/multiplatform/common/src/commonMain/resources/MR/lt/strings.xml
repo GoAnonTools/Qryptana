@@ -419,7 +419,7 @@
     <string name="smp_servers_invalid_address">Neteisingas serverio adresas!</string>
     <string name="network_session_mode_user">Pokalbio profilis</string>
     <string name="profile_is_only_shared_with_your_contacts">Profilis yra bendrinamas tik su jūsų kontaktais.</string>
-    <string name="read_more_in_github_with_link"><![CDATA[Išsamiau skaitykite mūsų <font color="#0088ff">„GitHub“ saugykloje</font>.]]></string>
+    <string name="read_more_in_github_with_link"><![CDATA[Išsamiau skaitykite mūsų <font color="#B95F3A">„GitHub“ saugykloje</font>.]]></string>
     <string name="settings_section_title_socks">SOCKS ĮGALIOTASIS SERVERIS</string>
     <string name="save_passphrase_and_open_chat">Įrašyti slaptafrazę ir atverti pokalbį</string>
     <string name="restore_database">Atkurti atsarginę duomenų bazės kopiją</string>
@@ -987,7 +987,7 @@
     <string name="service_notifications_disabled">Momentiniai pranešimai yra išjungti!</string>
     <string name="icon_descr_profile_image_placeholder">profilio nuotraukos vietos ženklas</string>
     <string name="if_you_cannot_meet_in_person_show_QR_in_video_call_or_via_another_channel"><![CDATA[Jei negalite susitkti asmeniškai, <b>parodykite QR kodą vaizdo skambutyje</b>, arba pasidalinkite nuoroda.]]></string>
-    <string name="read_more_in_user_guide_with_link"><![CDATA[Skaitykite daugiau <font color="#0088ff">naudotojo vadove</font>.]]></string>
+    <string name="read_more_in_user_guide_with_link"><![CDATA[Skaitykite daugiau <font color="#B95F3A">naudotojo vadove</font>.]]></string>
     <string name="if_you_cant_meet_in_person">Jei negalite susitikti asmeniškai, parodykite QR kodą vaizdo skambutyje, arba pasidalinkite nuoroda.</string>
     <string name="paste_the_link_you_received_to_connect_with_your_contact">Įklijuokite nuorodą, kurią gavote prisijungimui prie savo kontakto…</string>
     <string name="callstate_received_answer">gautas atsakas…</string>
@@ -1483,7 +1483,7 @@
     <string name="v4_2_auto_accept_contact_requests_desc">Su nebūtina sveikinimo žinute.</string>
     <string name="v5_5_message_delivery_descr">Su sumažintu akumuliatoriaus naudojimu.</string>
     <string name="you_are_invited_to_group">Esate kviečiami į grupę</string>
-    <string name="you_can_connect_to_simplex_chat_founder"><![CDATA[Galite <font color="#0088ff">prisijungti prie Qryptana kūrėjų, kad klausti klausimus ir gauti atnaujinimus</font>.]]></string>
+    <string name="you_can_connect_to_simplex_chat_founder"><![CDATA[Galite <font color="#B95F3A">prisijungti prie Qryptana kūrėjų, kad klausti klausimus ir gauti atnaujinimus</font>.]]></string>
     <string name="you_can_make_address_visible_via_settings">Galite padaryti tai matomą savo Qryptana kontaktams per nustatymus.</string>
     <string name="linked_desktop_options">Susieto darbastalio parinktys</string>
     <string name="connect_plan_you_are_already_in_group_vName"><![CDATA[Jau esate grupėje <b>%1$s</b>.]]></string>

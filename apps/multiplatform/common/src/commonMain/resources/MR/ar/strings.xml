@@ -827,7 +827,7 @@
     <string name="onboarding_notifications_mode_title">الإشعارات خاصة</string>
     <string name="store_passphrase_securely_without_recover">يُرجى تخزين عبارة المرور بشكل آمن، فلن تتمكن من الوصول إلى الدردشة إذا فقدتها.</string>
     <string name="contact_developers">يُرجى تحديث التطبيق والتواصل مع المطوِّرين.</string>
-    <string name="read_more_in_user_guide_with_link"><![CDATA[اقرأ المزيد في <font color="#0088ff">دليل المستخدم</font>.]]></string>
+    <string name="read_more_in_user_guide_with_link"><![CDATA[اقرأ المزيد في <font color="#B95F3A">دليل المستخدم</font>.]]></string>
     <string name="auth_open_chat_profiles">غيّر ملفات تعريف الدردشة</string>
     <string name="revoke_file__confirm">اسحب الوصول</string>
     <string name="reveal_verb">اكشف</string>
@@ -850,7 +850,7 @@
     <string name="saved_ICE_servers_will_be_removed">ستتم إزالة خوادم WebRTC ICE المحفوظة.</string>
     <string name="prohibit_sending_files">امنع إرسال الملفات والوسائط.</string>
     <string name="callstate_received_answer">استلمت إجابة…</string>
-    <string name="read_more_in_github_with_link"><![CDATA[اقرأ المزيد في <font color="#0088ff">مستودع GitHub</font>.]]></string>
+    <string name="read_more_in_github_with_link"><![CDATA[اقرأ المزيد في <font color="#B95F3A">مستودع GitHub</font>.]]></string>
     <string name="reject">رفض</string>
     <string name="relay_server_protects_ip">يحمي خادم المُرحل عنوان IP الخاص بك، ولكن يمكنه مراقبة مُدّة المكالمة.</string>
     <string name="restore_database_alert_desc">الرجاء إدخال كلمة المرور السابقة بعد استعادة نسخة احتياطية لقاعدة البيانات. لا يمكن التراجع عن هذا الإجراء.</string>
@@ -1291,7 +1291,7 @@
     <string name="observer_cant_send_message_title">أنت المراقب!</string>
     <string name="you_need_to_allow_to_send_voice">تحتاج إلى السماح لجهة اتصالك بإرسال رسائل صوتية لتتمكن من إرسالها.</string>
     <string name="contact_sent_large_file">أرسلت جهة اتصالك ملفًا أكبر من الحجم الأقصى المعتمد حاليًا (%1$s).</string>
-    <string name="you_can_connect_to_simplex_chat_founder"><![CDATA[يمكنك <font color="#0088ff">الاتصال بمطوِّري Qryptana لطرح أي أسئلة وتلقي التحديثات</font>.]]></string>
+    <string name="you_can_connect_to_simplex_chat_founder"><![CDATA[يمكنك <font color="#B95F3A">الاتصال بمطوِّري Qryptana لطرح أي أسئلة وتلقي التحديثات</font>.]]></string>
     <string name="smp_servers_your_server">خادمك</string>
     <string name="your_profile_is_stored_on_device_and_shared_only_with_contacts_simplex_cannot_see_it">يُخزن ملف تعريفك على جهازك ومشاركته فقط مع جهات اتصالك. لا تستطيع خوادم Qryptana رؤية ملف تعريفك.</string>
     <string name="icon_descr_video_off">الفيديو مقفل</string>
