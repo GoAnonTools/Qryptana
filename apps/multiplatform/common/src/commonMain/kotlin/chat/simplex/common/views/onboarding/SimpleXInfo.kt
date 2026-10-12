@@ -69,11 +69,45 @@ private fun SimpleXInfoDesktop(chatModel: ChatModel) {
   val user = chatModel.currentUser.value
   val onboardingStage = chatModel.controller.appPrefs.onboardingStage
   CompositionLocalProvider(LocalAppBarHandler provides rememberAppBarHandler()) {
-    SimpleXInfoLayout(user, onboardingStage)
+    QryptanaOnboardingLayout(user, onboardingStage)
   }
   LaunchedEffect(Unit) {
     if (chatModel.migrationState.value != null && !ModalManager.fullscreen.hasModalsOpen()) {
       ModalManager.fullscreen.showCustomModal(animated = false) { close -> MigrateToDeviceView(close) }
+    }
+  }
+}
+
+/**
+ * The desktop first-run screen is intentionally a single composition. It does
+ * not use the legacy onboarding modal or illustration/content containers.
+ */
+@Composable
+private fun QryptanaOnboardingLayout(
+  user: User?,
+  onboardingStage: SharedPreference<OnboardingStage>
+) {
+  val gradient = if (isInDarkTheme()) {
+    Brush.verticalGradient(listOf(QryptanaDarkBackground, Color(0xFF24201E)))
+  } else {
+    Brush.verticalGradient(listOf(Color(0xFFF8F1E8), Color(0xFFEFE2D2)))
+  }
+  Box(
+    Modifier
+      .fillMaxSize()
+      .background(gradient)
+      .systemBarsPadding(),
+    contentAlignment = Alignment.Center
+  ) {
+    Column(
+      Modifier
+        .fillMaxWidth()
+        .verticalScroll(rememberScrollState())
+        .padding(horizontal = DEFAULT_ONBOARDING_HORIZONTAL_PADDING, vertical = DEFAULT_PADDING),
+      horizontalAlignment = Alignment.CenterHorizontally,
+      verticalArrangement = Arrangement.Center
+    ) {
+      QryptanaWelcomeContent(user, onboardingStage, Modifier.widthIn(max = 560.dp).fillMaxWidth())
     }
   }
 }
