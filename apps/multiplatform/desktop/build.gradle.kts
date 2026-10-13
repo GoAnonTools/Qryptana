@@ -1,5 +1,6 @@
 import org.gradle.internal.extensions.stdlib.toDefaultLowerCase
 import org.jetbrains.compose.desktop.application.dsl.TargetFormat
+import java.nio.file.Files
 
 plugins {
   kotlin("multiplatform")
@@ -171,6 +172,20 @@ afterEvaluate {
         }
         includeEmptyDirs = false
         duplicatesStrategy = DuplicatesStrategy.INCLUDE
+      }
+      // Compose's prepareAppResources task reads native desktop libraries
+      // through build/links. `clean` removes that directory, so recreate the
+      // Linux link after every CMake build before :desktop:run packages its
+      // resources.
+      if (System.getProperty("os.name").lowercase().contains("linux")) {
+        val nativeLibDir = project(":common").projectDir.resolve(
+          "src/commonMain/cpp/desktop/libs/linux-x86_64"
+        )
+        val linksDir = rootProject.layout.buildDirectory.dir("links").get().asFile
+        val platformLink = linksDir.resolve("linux-x64")
+        linksDir.mkdirs()
+        Files.deleteIfExists(platformLink.toPath())
+        Files.createSymbolicLink(platformLink.toPath(), nativeLibDir.toPath())
       }
       copy {
         from("${project(":desktop").buildDir}/cmake/main/linux-aarch64")
