@@ -16,10 +16,15 @@ import androidx.compose.ui.draw.BlurredEdgeTreatment
 import androidx.compose.ui.draw.blur
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.drawBehind
+import androidx.compose.ui.draw.drawWithContent
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.BlendMode
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.CompositingStrategy
+import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.graphics.drawscope.withTransform
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.graphics.lerp
@@ -28,8 +33,12 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.layout.layout
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.TextLayoutResult
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.rememberTextMeasurer
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.withStyle
+import dev.icerock.moko.resources.compose.asFont
 import dev.icerock.moko.resources.compose.painterResource
 import dev.icerock.moko.resources.compose.stringResource
 import androidx.compose.ui.text.font.FontFamily
@@ -43,6 +52,7 @@ import chat.simplex.common.model.ChatController.appPrefs
 import chat.simplex.common.platform.*
 import chat.simplex.common.ui.theme.*
 import chat.simplex.common.views.helpers.*
+import chat.simplex.common.views.chat.item.PlayerView
 import chat.simplex.common.views.newchat.darkStops
 import chat.simplex.common.views.newchat.gradientPoints
 import chat.simplex.common.views.newchat.lightStops
@@ -50,7 +60,11 @@ import chat.simplex.common.views.migration.MigrateToDeviceView
 import chat.simplex.common.views.migration.MigrationToState
 import chat.simplex.res.MR
 import dev.icerock.moko.resources.StringResource
+import java.io.File
+import java.net.URI
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.withTimeoutOrNull
 import kotlin.math.ceil
 import kotlin.math.floor
 
@@ -139,6 +153,10 @@ private object QryptanaMetal {
   val copperMid = Color(0xFFC4844A)
   val copperLight = Color(0xFFD9A878)
   val copperSheen = Color(0xFFEBC9A4)
+
+  // The signature word: copper, not gold. Lower in yellow, higher in red than copperLight.
+  val copperWord = Color(0xFFC8855A)
+  val copperWordHi = Color(0xFFD99B72)
 
   val textBright = Color(0xFFEDE8E2)
   val textHero = Color(0xFFF4F0EA)
@@ -271,11 +289,13 @@ fun SimpleXInfoLayout(
  * screen reads as "introducing itself" rather than "loading".
  */
 @Composable
-private fun rememberReveal(delayMs: Int, durationMs: Int): Animatable<Float, AnimationVector1D> {
+private fun rememberReveal(delayMs: Int, durationMs: Int, start: Boolean = true): Animatable<Float, AnimationVector1D> {
   val reveal = remember { Animatable(0f) }
-  LaunchedEffect(Unit) {
-    delay(delayMs.toLong())
-    reveal.animateTo(1f, tween(durationMs, easing = LinearOutSlowInEasing))
+  LaunchedEffect(start) {
+    if (start) {
+      delay(delayMs.toLong())
+      reveal.animateTo(1f, tween(durationMs, easing = LinearOutSlowInEasing))
+    }
   }
   return reveal
 }
@@ -289,11 +309,13 @@ private fun rememberReveal(delayMs: Int, durationMs: Int): Animatable<Float, Ani
  * state is fully static: no blur modifier, no animation running.
  */
 @Composable
-private fun QryptanaSignatureWord(text: String, delayMs: Int) {
+private fun QryptanaSignatureWord(text: String, delayMs: Int, start: Boolean = true) {
   val progress = remember { Animatable(0f) }
-  LaunchedEffect(Unit) {
-    delay(delayMs.toLong())
-    progress.animateTo(1f, tween(1500, easing = LinearEasing))
+  LaunchedEffect(start) {
+    if (start) {
+      delay(delayMs.toLong())
+      progress.animateTo(1f, tween(1500, easing = LinearEasing))
+    }
   }
   val p = progress.value
   val n = text.length.coerceAtLeast(1)
@@ -302,7 +324,7 @@ private fun QryptanaSignatureWord(text: String, delayMs: Int) {
       val pos = if (n > 1) i.toFloat() / (n - 1) else 0f
       val start = pos * 0.55f
       val a = FastOutSlowInEasing.transform(((p - start) / 0.45f).coerceIn(0f, 1f))
-      val tone = lerp(QryptanaMetal.copperLight, QryptanaMetal.copperSheen, pos * 0.55f)
+      val tone = lerp(QryptanaMetal.copperWord, QryptanaMetal.copperWordHi, pos * 0.5f)
       withStyle(SpanStyle(color = tone.copy(alpha = a))) { append(ch) }
     }
   }
@@ -312,14 +334,30 @@ private fun QryptanaSignatureWord(text: String, delayMs: Int) {
       if (p < 1f) Modifier.blur((1f - p) * 5.dp, BlurredEdgeTreatment.Unbounded) else Modifier
     ),
     style = MaterialTheme.typography.h1,
-    fontFamily = FontFamily.Serif,
-    fontStyle = FontStyle.Italic,
-    fontWeight = FontWeight.Normal,
-    fontSize = 38.sp,
-    letterSpacing = 1.sp,
-    lineHeight = 48.sp,
-    textAlign = TextAlign.Center
+    fontFamily = rememberQryptanaSerif(),
+       fontStyle = FontStyle.Italic,
+       fontWeight = FontWeight.Normal,
+       fontSize = 42.sp,
+       letterSpacing = 0.8.sp,
+       lineHeight = 50.sp,
+       textAlign = TextAlign.Center
   )
+}
+
+/**
+ * Bundled serif so the headline is identical on Windows, macOS and Linux.
+ * Files live in commonMain/resources/MR/fonts (CormorantGaramond-Light/Regular/Italic.ttf).
+ * Falls back to the platform serif if a font cannot be loaded.
+ */
+@Composable
+private fun rememberQryptanaSerif(): FontFamily {
+  val light = MR.fonts.CormorantGaramond.light.asFont(FontWeight.Light, FontStyle.Normal)
+  val regular = MR.fonts.CormorantGaramond.regular.asFont(FontWeight.Normal, FontStyle.Normal)
+  val italic = MR.fonts.CormorantGaramond.italic.asFont(FontWeight.Normal, FontStyle.Italic)
+  return remember(light, regular, italic) {
+    val fonts = listOfNotNull(light, regular, italic)
+    if (fonts.isEmpty()) FontFamily.Serif else FontFamily(fonts)
+  }
 }
 
 /**
@@ -329,31 +367,66 @@ private fun QryptanaSignatureWord(text: String, delayMs: Int) {
  * line one by extra space and a larger size.
  */
 @Composable
-private fun QryptanaHeroTitle(text: String) {
+private fun QryptanaHeroTitle(text: String, start: Boolean = true) {
   val lines = if ('\n' in text) {
     text.split('\n', limit = 2)
   } else {
     // Fallback if the resource has no explicit line break.
     text.split(", ", limit = 2).let { if (it.size == 2) listOf(it[0] + ",", it[1]) else it }
   }.map { it.trim() }
-  val first = rememberReveal(delayMs = 300, durationMs = 800)
+  val first = rememberReveal(delayMs = 300, durationMs = 800, start = start)
   Column(horizontalAlignment = Alignment.CenterHorizontally) {
     Text(
       lines.firstOrNull().orEmpty(),
          Modifier.graphicsLayer { alpha = first.value },
          style = MaterialTheme.typography.h1,
-         fontFamily = FontFamily.Serif,
+         fontFamily = rememberQryptanaSerif(),
          fontWeight = FontWeight.Light,
-         fontSize = 31.sp,
-         letterSpacing = 0.5.sp,
-         lineHeight = 40.sp,
+         fontSize = 34.sp,
+         letterSpacing = 0.4.sp,
+         lineHeight = 42.sp,
          textAlign = TextAlign.Center,
          color = QryptanaMetal.textHero
     )
     if (lines.size > 1) {
       Spacer(Modifier.height(8.dp))
-      QryptanaSignatureWord(lines[1], delayMs = 1000)
+      QryptanaSignatureWord(lines[1], delayMs = 1000, start = start)
     }
+  }
+}
+
+/**
+ * Text that never leaves a widow. If the text fits on one line it is left alone;
+ * otherwise it is set at the narrowest width that keeps the same number of
+ * lines, so the lines come out even ("balanced") instead of one long line and
+ * a stray word. Re-measured whenever the available width changes.
+ */
+@Composable
+private fun QryptanaBalancedText(
+  text: String,
+  style: TextStyle,
+  modifier: Modifier = Modifier,
+  maxWidth: Dp = 520.dp
+) {
+  val measurer = rememberTextMeasurer()
+  val density = LocalDensity.current
+  BoxWithConstraints(modifier, contentAlignment = Alignment.TopCenter) {
+    val limitPx = with(density) { minOf(maxWidth, this@BoxWithConstraints.maxWidth).roundToPx() }
+    val fitPx = remember(text, style, limitPx) {
+      val lines = measurer.measure(text, style, constraints = Constraints(maxWidth = limitPx)).lineCount
+      if (lines <= 1) {
+        limitPx
+      } else {
+        var lo = limitPx / 3
+        var hi = limitPx
+        while (hi - lo > 2) {
+          val mid = (lo + hi) / 2
+          if (measurer.measure(text, style, constraints = Constraints(maxWidth = mid)).lineCount <= lines) hi = mid else lo = mid
+        }
+        hi + 2
+      }
+    }
+    Text(text, Modifier.width(with(density) { fitPx.toDp() }), style = style)
   }
 }
 
@@ -363,9 +436,22 @@ private fun QryptanaWelcomeContent(
   onboardingStage: SharedPreference<OnboardingStage>?,
   modifier: Modifier = Modifier
 ) {
+  // Choreography: wordmark first, then the identity plaque assembles and settles,
+  // and only then does the copy introduce itself. Platforms without the plaque
+  // video (mobile) have nothing to wait for, so they start immediately.
+  var plaqueSettled by remember { mutableStateOf(!appPlatform.isDesktop) }
   val logoReveal = rememberReveal(delayMs = 0, durationMs = 1100)
-  val supportReveal = rememberReveal(delayMs = 1500, durationMs = 900)
-  val actionsReveal = rememberReveal(delayMs = 1750, durationMs = 900)
+  val supportReveal = rememberReveal(delayMs = 1000, durationMs = 900, start = plaqueSettled)
+  val actionsReveal = rememberReveal(delayMs = 1250, durationMs = 900, start = plaqueSettled)
+  // One slow specular pass across the wordmark once the plaque has come to rest:
+  // the "activation" moment. Runs once, then the mark is static.
+  val wordmarkSweep = remember { Animatable(0f) }
+  LaunchedEffect(plaqueSettled) {
+    if (plaqueSettled && appPlatform.isDesktop) {
+      delay(500)
+      wordmarkSweep.animateTo(1f, tween(2000, easing = FastOutSlowInEasing))
+    }
+  }
   Column(modifier, horizontalAlignment = Alignment.CenterHorizontally) {
     // 1. Wordmark: a floating metal object in darkness. No divider lines —
     // just a cool titanium pool of light behind the letters (an elliptical
@@ -374,52 +460,118 @@ private fun QryptanaWelcomeContent(
     // copper reflection on the Q is exactly as authored.
     Box(
       Modifier
-      .widthIn(max = 320.dp)
-      .fillMaxWidth(0.84f)
-      .graphicsLayer { alpha = logoReveal.value }
+      .widthIn(max = 400.dp)
+      .fillMaxWidth(0.9f)
+      .graphicsLayer { alpha = logoReveal.value * 0.9f }
       .drawBehind {
-        val c = Offset(size.width / 2f, size.height / 2f)
+        // A flat, wide pool of cool light — a reflection on a surface, not a round
+        // halo — with its source a little up and to the left, the same direction
+        // as the light on the plaque and the buttons.
+        val c = Offset(size.width * 0.46f, size.height * 0.46f)
         withTransform({
-          scale(1f, 0.5f, pivot = c)
+          scale(1f, 0.30f, pivot = c)
         }) {
           drawCircle(
             brush = Brush.radialGradient(
               colors = listOf(
-                QryptanaMetal.titaniumGlow.copy(alpha = 0.30f),
-                              QryptanaMetal.titaniumGlow.copy(alpha = 0.10f),
+                QryptanaMetal.titaniumGlow.copy(alpha = 0.10f),
+                              QryptanaMetal.titaniumGlow.copy(alpha = 0.035f),
                               Color.Transparent
               ),
               center = c,
-              radius = size.width * 0.62f
+              radius = size.width * 0.70f
             ),
-            radius = size.width * 0.62f,
+            radius = size.width * 0.70f,
             center = c
           )
         }
         // Tight core directly behind the letterforms.
         drawCircle(
           brush = Brush.radialGradient(
-            colors = listOf(QryptanaMetal.titaniumGlow.copy(alpha = 0.13f), Color.Transparent),
+            colors = listOf(QryptanaMetal.titaniumGlow.copy(alpha = 0.04f), Color.Transparent),
                                        center = c,
-                                       radius = size.width * 0.28f
+                                       radius = size.width * 0.26f
           ),
-          radius = size.width * 0.28f,
+          radius = size.width * 0.26f,
           center = c
         )
       }
-      .padding(vertical = 20.dp),
-        contentAlignment = Alignment.Center
+      .padding(vertical = 20.dp)
+      // The asset carries ~28% / ~30% transparent margin above / below the letters.
+      // Trim it in layout (nothing is clipped) so the wordmark sits close to its
+      // letterforms and the stack below can rise; glow and sweep stay centred on the letters.
+      .layout { measurable, constraints ->
+        val placeable = measurable.measure(constraints)
+        val pad = 20.dp.roundToPx()
+        val keep = 14.dp.roundToPx()
+        val imgH = placeable.width * 941f / 1672f
+        val trimTop = (pad + imgH * 0.277f).toInt() - keep
+        val trimBottom = (pad + imgH * 0.303f).toInt() - keep
+        layout(placeable.width, (placeable.height - trimTop - trimBottom).coerceAtLeast(0)) {
+          placeable.placeRelative(0, -trimTop)
+        }
+      },
+      contentAlignment = Alignment.Center
     ) {
-      QryptanaWordmark(Modifier.fillMaxWidth(), lightOnDark = true)
+      // The specular pass is drawn only where the wordmark's own pixels are
+      // (SrcAtop inside an offscreen layer), so the asset itself is never tinted
+      // or altered — it is simply lit as it passes.
+      Box(
+        Modifier
+        .graphicsLayer { compositingStrategy = CompositingStrategy.Offscreen }
+        .drawWithContent {
+          drawContent()
+          val t = wordmarkSweep.value
+          if (t > 0f && t < 1f) {
+            val bw = size.width * 0.22f
+            val cx = -bw + (size.width + 2f * bw) * t
+            drawRect(
+              brush = Brush.linearGradient(
+                colors = listOf(Color.Transparent, Color(0xFFE6EDF7).copy(alpha = 0.22f), Color.Transparent),
+                                           start = Offset(cx - bw, 0f),
+                                           end = Offset(cx + bw, size.height * 0.4f)
+              ),
+              blendMode = BlendMode.SrcAtop
+            )
+          }
+        }
+      ) {
+        QryptanaWordmark(Modifier.fillMaxWidth(), lightOnDark = true)
+      }
     }
-    Spacer(Modifier.height(46.dp))
+    // On desktop the plaque clip already carries generous empty margin inside its
+    // frame, so the gaps around it are tighter than the mobile card's.
+    Spacer(Modifier.height(if (appPlatform.isDesktop) 4.dp else 46.dp))
 
     // 2. Identity / invitation object (placeholder, unchanged design).
-    InvitationPreviewCard()
-    Spacer(Modifier.height(58.dp))
+    if (appPlatform.isDesktop) {
+      // No card: no shadow, no clip, no border. The plaque is an object resting
+      // in the scene; its edges dissolve into the app background (see
+      // QryptanaIdentityReveal).
+      QryptanaIdentityReveal(
+        Modifier
+        .widthIn(max = 620.dp)
+        .fillMaxWidth()
+        .aspectRatio(QRYPTANA_REVEAL_ASPECT)
+        // The clip carries a lot of empty margin; trim it so the wordmark, plaque and
+        // headline read as one stack (layout only — nothing is clipped).
+        .layout { measurable, constraints ->
+          val placeable = measurable.measure(constraints)
+          val trimTop = 36.dp.roundToPx()
+          val trimBottom = 8.dp.roundToPx()
+          layout(placeable.width, placeable.height - trimTop - trimBottom) {
+            placeable.placeRelative(0, -trimTop)
+          }
+        },
+        onSettled = { plaqueSettled = true }
+      )
+    } else {
+      InvitationPreviewCard()
+    }
+    Spacer(Modifier.height(if (appPlatform.isDesktop) 26.dp else 58.dp))
 
     // 3. Launch statement — staged reveal.
-    QryptanaHeroTitle(stringResource(MR.strings.onboarding_be_free))
+    QryptanaHeroTitle(stringResource(MR.strings.onboarding_be_free), start = plaqueSettled)
     Spacer(Modifier.height(26.dp))
 
     // Supporting copy fades in after the statement has landed.
@@ -439,30 +591,37 @@ private fun QryptanaWelcomeContent(
         )
       )
       Spacer(Modifier.height(24.dp))
-      Text(
+      QryptanaBalancedText(
         stringResource(MR.strings.onboarding_private_and_secure),
-           Modifier.widthIn(max = 480.dp),
-           style = MaterialTheme.typography.h3,
-           color = QryptanaMetal.textBright.copy(alpha = 0.92f),
-           fontWeight = FontWeight.Normal,
-           fontSize = 18.sp,
-           letterSpacing = 0.1.sp,
-           lineHeight = 28.sp,
-           textAlign = TextAlign.Center
+                           style = MaterialTheme.typography.h3.merge(
+                             TextStyle(
+                               color = QryptanaMetal.textBright.copy(alpha = 0.86f),
+                                       fontWeight = FontWeight.Normal,
+                                       fontSize = 18.sp,
+                                       letterSpacing = 0.1.sp,
+                                       lineHeight = 28.sp,
+                                       textAlign = TextAlign.Center
+                             )
+                           ),
+                           maxWidth = 560.dp
       )
       // The privacy promise: readable at normal desktop size, warm grey,
       // never white — said quietly but clearly. Regular weight (not Light)
       // so the thin strokes don't dissolve on near-black.
-      Text(
+      QryptanaBalancedText(
         stringResource(MR.strings.onboarding_first_network),
-           Modifier.widthIn(max = 460.dp).padding(top = 14.dp),
-           style = MaterialTheme.typography.body2,
-           color = QryptanaMetal.textSupport,
-           fontWeight = FontWeight.Normal,
-           fontSize = 16.sp,
-           letterSpacing = 0.1.sp,
-           textAlign = TextAlign.Center,
-           lineHeight = 25.sp
+                           modifier = Modifier.padding(top = 14.dp),
+                           style = MaterialTheme.typography.body2.merge(
+                             TextStyle(
+                               color = Color(0xFFCAC2BA),
+                                       fontWeight = FontWeight.Normal,
+                                       fontSize = 16.sp,
+                                       letterSpacing = 0.1.sp,
+                                       lineHeight = 25.sp,
+                                       textAlign = TextAlign.Center
+                             )
+                           ),
+                           maxWidth = 440.dp
       )
     }
     Spacer(Modifier.height(46.dp))
@@ -480,6 +639,174 @@ private fun QryptanaWelcomeContent(
                                         color = QryptanaMetal.textTertiary
         )
       }
+    }
+  }
+}
+
+private const val QRYPTANA_IDENTITY_REVEAL_RESOURCE = "videos/qryptana_identity_card_reveal.mp4"
+
+private fun qryptanaIdentityRevealUri(): URI? {
+  val videoFile = File(tmpDir, QRYPTANA_IDENTITY_REVEAL_RESOURCE)
+  if (!videoFile.exists()) {
+    videoFile.parentFile?.mkdirs()
+    val resource = object {}.javaClass.getResourceAsStream("/$QRYPTANA_IDENTITY_REVEAL_RESOURCE") ?: return null
+    resource.use { input ->
+      videoFile.outputStream().use { output -> input.copyTo(output) }
+    }
+  }
+  return videoFile.toURI()
+}
+
+/** Width / height of the plaque clip (1280 x 714). The reveal box is sized from this, so the plaque scales with the window. */
+private const val QRYPTANA_REVEAL_ASPECT = 1280f / 714f
+
+/** Playback position (ms) at which the plaque has all but come to rest; the copy begins here. */
+private const val QRYPTANA_TEXT_REVEAL_AT_MS = 8_800L
+
+/** Safety net: if playback never reaches the moment above (stall, missing codec), reveal anyway. */
+private const val QRYPTANA_TEXT_REVEAL_TIMEOUT_MS = 12_500L
+
+/**
+ * Desktop-only identity reveal surface. Playback is isolated from the
+ * onboarding composition so it can later gain replay, audio, or platform
+ * variants without changing the screen hierarchy.
+ *
+ * The clip carries the app's own graphite as its background, and here its
+ * four edges are feathered to transparent, so there is no visible frame, card
+ * or box: the plaque simply emerges from the screen. Once it has come to rest
+ * it is anchored by a soft contact shadow, and [onSettled] lets the screen
+ * start the copy. The last frame is held — nothing fades out at the end.
+ */
+@Composable
+private fun QryptanaIdentityReveal(modifier: Modifier, onSettled: () -> Unit) {
+  val uri = remember { qryptanaIdentityRevealUri() }
+  val player = remember(uri) {
+    uri?.let {
+      VideoPlayerHolder.getOrCreate(
+        uri = it,
+        gallery = true,
+        defaultPreview = ImageBitmap(1, 1),
+                                    defaultDuration = 11_300L,
+                                    soundEnabled = false
+      )
+    }
+  }
+  var visible by remember { mutableStateOf(false) }
+  var settled by remember { mutableStateOf(false) }
+  val alpha by animateFloatAsState(
+    targetValue = if (visible) 1f else 0f,
+                                   animationSpec = tween(900, easing = LinearOutSlowInEasing)
+  )
+  val contactShadow by animateFloatAsState(
+    targetValue = if (settled) 1f else 0f,
+                                           animationSpec = tween(1400, easing = LinearOutSlowInEasing)
+  )
+
+  Box(
+    modifier.drawWithContent {
+      drawContent()
+      // Contact shadow: a soft, flat ellipse just under the plaque's lower edge
+      // (the plaque rests at ~87% of the frame height). Drawn over the video, outside
+      // its feathered layer, and only once the plaque has come to rest.
+      if (contactShadow > 0f) {
+        val c = Offset(size.width / 2f, size.height * 0.895f)
+        val r = size.width * 0.24f
+        withTransform({ scale(1f, 0.16f, pivot = c) }) {
+          drawCircle(
+            brush = Brush.radialGradient(
+              colors = listOf(
+                Color.Black.copy(alpha = 0.46f * contactShadow),
+                              Color.Black.copy(alpha = 0.16f * contactShadow),
+                              Color.Transparent
+              ),
+              center = c,
+              radius = r
+            ),
+            radius = r,
+            center = c
+          )
+        }
+      }
+    }
+  ) {
+    Box(
+      Modifier
+      .fillMaxSize()
+      // Offscreen layer so the DstOut edge erasers below only affect the video.
+      .graphicsLayer {
+        this.alpha = alpha
+        compositingStrategy = CompositingStrategy.Offscreen
+      }
+      .drawWithContent {
+        drawContent()
+        val fx = size.width * 0.17f
+        val fy = size.height * 0.14f
+        // Smooth, non-linear falloff: opaque at the edge, easing to clear.
+        val out = arrayOf(
+          0f to Color.Black,
+          0.35f to Color.Black.copy(alpha = 0.62f),
+                          0.70f to Color.Black.copy(alpha = 0.18f),
+                          1f to Color.Transparent
+        )
+        val inn = arrayOf(
+          0f to Color.Transparent,
+          0.30f to Color.Black.copy(alpha = 0.18f),
+                          0.65f to Color.Black.copy(alpha = 0.62f),
+                          1f to Color.Black
+        )
+        drawRect(
+          Brush.horizontalGradient(*out, startX = 0f, endX = fx),
+                 topLeft = Offset.Zero, size = Size(fx, size.height), blendMode = BlendMode.DstOut
+        )
+        drawRect(
+          Brush.horizontalGradient(*inn, startX = size.width - fx, endX = size.width),
+                 topLeft = Offset(size.width - fx, 0f), size = Size(fx, size.height), blendMode = BlendMode.DstOut
+        )
+        drawRect(
+          Brush.verticalGradient(*out, startY = 0f, endY = fy),
+                 topLeft = Offset.Zero, size = Size(size.width, fy), blendMode = BlendMode.DstOut
+        )
+        drawRect(
+          Brush.verticalGradient(*inn, startY = size.height - fy, endY = size.height),
+                 topLeft = Offset(0f, size.height - fy), size = Size(size.width, fy), blendMode = BlendMode.DstOut
+        )
+      }
+    ) {
+      if (player != null) {
+        PlayerView(
+          player = player,
+          width = 620.dp,
+          onClick = {},
+          onLongClick = {},
+          stop = {},
+          modifier = Modifier.fillMaxSize(),
+                   contentScale = ContentScale.Crop
+        )
+      }
+    }
+  }
+
+  LaunchedEffect(player) {
+    if (player != null) {
+      visible = true
+      player.play(resetOnEnd = false)
+    }
+  }
+  // Tell the screen when the plaque has essentially come to rest. With no
+  // player (resource missing) or a stalled one, never leave the copy hidden.
+  LaunchedEffect(player) {
+    if (player != null) {
+      withTimeoutOrNull(QRYPTANA_TEXT_REVEAL_TIMEOUT_MS) {
+        snapshotFlow { player.progress.value >= QRYPTANA_TEXT_REVEAL_AT_MS }.first { it }
+      }
+    }
+    settled = true
+    onSettled()
+  }
+  DisposableEffect(player) {
+    onDispose {
+      player?.stop()
+      uri?.let { VideoPlayerHolder.release(it, gallery = true, remove = true) }
     }
   }
 }
@@ -659,7 +986,7 @@ fun OnboardingActionButton(
         .background(
           Brush.verticalGradient(
             colors = listOf(
-              QryptanaMetal.titaniumHigh.copy(alpha = if (pressed) 0.30f else 0.16f),
+              QryptanaMetal.titaniumHigh.copy(alpha = if (pressed) 0.38f else 0.24f),
                             QryptanaMetal.titaniumLow.copy(alpha = 0.10f)
             )
           )
@@ -668,8 +995,8 @@ fun OnboardingActionButton(
           1.dp,
           Brush.verticalGradient(
             colors = listOf(
-              QryptanaMetal.titaniumBorder.copy(alpha = if (pressed) 0.55f else 0.38f),
-                            QryptanaMetal.titaniumBorder.copy(alpha = 0.20f)
+              QryptanaMetal.titaniumBorder.copy(alpha = if (pressed) 0.85f else 0.62f),
+                            QryptanaMetal.titaniumBorder.copy(alpha = 0.32f)
             )
           ),
           shape
@@ -746,7 +1073,7 @@ fun OnboardingActionButton(
         stringResource(labelId),
            style = MaterialTheme.typography.h2,
            // Primary: full-bright titanium text. Secondary: noticeably dimmer.
-           color = if (secondary) QryptanaMetal.textBright.copy(alpha = 0.68f) else QryptanaMetal.textHero,
+           color = if (secondary) QryptanaMetal.textBright.copy(alpha = 0.82f) else QryptanaMetal.textHero,
            fontSize = 15.sp,
            letterSpacing = 0.9.sp,
            fontWeight = if (secondary) FontWeight.Normal else FontWeight.Medium

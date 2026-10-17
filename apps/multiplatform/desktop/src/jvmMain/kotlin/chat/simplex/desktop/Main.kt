@@ -21,8 +21,10 @@ import java.io.File
 
 fun main() {
   if (!acquireSingleInstance()) return
-  // Disable hardware acceleration
-  //System.setProperty("skiko.renderApi", "SOFTWARE")
+  // Use software rendering for the desktop onboarding video surface. This avoids
+  // a native SIGSEGV observed in the Linux Gallium/OpenGL stack while the card
+  // animation is active; the video frames are already copied through Skia.
+  System.setProperty("skiko.renderApi", "SOFTWARE")
   initHaskell()
   runMigrations()
   setupUpdateChecker()

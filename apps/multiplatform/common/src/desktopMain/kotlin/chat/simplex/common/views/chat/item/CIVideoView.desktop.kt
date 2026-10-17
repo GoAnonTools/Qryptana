@@ -4,6 +4,7 @@ import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.LocalWindowInfo
 import androidx.compose.ui.unit.Dp
@@ -12,16 +13,24 @@ import chat.simplex.common.simplexWindowState
 import java.awt.Window
 
 @Composable
-actual fun PlayerView(player: VideoPlayer, width: Dp, onClick: () -> Unit, onLongClick: () -> Unit, stop: () -> Unit) {
-  Box {
+actual fun PlayerView(
+  player: VideoPlayer,
+  width: Dp,
+  onClick: () -> Unit,
+  onLongClick: () -> Unit,
+  stop: () -> Unit,
+  modifier: Modifier,
+  contentScale: ContentScale
+) {
+  Box(modifier) {
     SurfaceFromPlayer(player,
-      Modifier
-        .width(width)
+      Modifier.fillMaxSize()
         .combinedClickable(
           onLongClick = onLongClick,
           onClick = { if (player.player.isPlaying) stop() else onClick() }
         )
-        .onRightClick(onLongClick)
+        .onRightClick(onLongClick),
+      contentScale
     )
   }
 }

@@ -19,6 +19,7 @@ import chat.simplex.common.ui.theme.DEFAULT_START_MODAL_WIDTH
 import chat.simplex.common.ui.theme.SimpleXTheme
 import chat.simplex.common.views.TerminalView
 import chat.simplex.common.views.helpers.*
+import chat.simplex.common.views.onboarding.OnboardingStage
 import chat.simplex.res.MR
 import dev.icerock.moko.resources.compose.painterResource
 import dev.icerock.moko.resources.compose.stringResource
@@ -43,8 +44,8 @@ fun showApp() {
           WindowExceptionHandler { e ->
             AlertManager.shared.showAlertMsg(
               title = generalGetString(MR.strings.app_was_crashed),
-              text = e.stackTraceToString(),
-              shareText = true
+                                             text = e.stackTraceToString(),
+                                             shareText = true
             )
             Log.e(TAG, "App crashed, thread name: " + Thread.currentThread().name + ", exception: " + e.stackTraceToString())
             // Must precede dispatchEvent — handleCloseRequest reads this flag.
@@ -111,9 +112,9 @@ private fun ApplicationScope.AppWindow(closedByError: MutableState<Boolean>) {
       storeWindowState(
         WindowPositionSize(
           x = windowState.position.x.value.toInt(),
-          y = windowState.position.y.value.toInt(),
-          width = windowState.size.width.value.toInt(),
-          height = windowState.size.height.value.toInt()
+                           y = windowState.position.y.value.toInt(),
+                           width = windowState.size.width.value.toInt(),
+                           height = windowState.size.height.value.toInt()
         )
       )
     }
@@ -129,8 +130,11 @@ private fun ApplicationScope.AppWindow(closedByError: MutableState<Boolean>) {
         false
       }
     }, title = "Qryptana") {
-//      val hardwareAccelerationDisabled = remember { listOf(GraphicsApi.SOFTWARE_FAST, GraphicsApi.SOFTWARE_COMPAT, GraphicsApi.UNKNOWN).contains(window.renderApi) }
+      //      val hardwareAccelerationDisabled = remember { listOf(GraphicsApi.SOFTWARE_FAST, GraphicsApi.SOFTWARE_COMPAT, GraphicsApi.UNKNOWN).contains(window.renderApi) }
       simplexWindowState.window = window
+      // Cosmetic only: dark native title bar while onboarding is showing.
+      val onboardingActive = remember { ChatController.appPrefs.onboardingStage.state }.value != OnboardingStage.OnboardingComplete
+      LaunchedEffect(onboardingActive) { applyQryptanaTitleBar(window, onboardingActive) }
       AppScreen()
       if (simplexWindowState.openDialog.isAwaiting) {
         FileDialogChooser(
@@ -169,9 +173,9 @@ private fun ApplicationScope.AppWindow(closedByError: MutableState<Boolean>) {
           Box(Modifier.fillMaxSize().padding(bottom = 20.dp), contentAlignment = Alignment.BottomCenter) {
             Text(
               escapedHtmlToAnnotatedString(toast.first, LocalDensity.current),
-              Modifier.background(MaterialTheme.colors.primary, RoundedCornerShape(100)).padding(vertical = 5.dp, horizontal = 10.dp),
-              color = MaterialTheme.colors.onPrimary,
-              style = MaterialTheme.typography.body1
+                 Modifier.background(MaterialTheme.colors.primary, RoundedCornerShape(100)).padding(vertical = 5.dp, horizontal = 10.dp),
+                 color = MaterialTheme.colors.onPrimary,
+                 style = MaterialTheme.typography.body1
             )
           }
         }
@@ -245,13 +249,13 @@ private fun ApplicationScope.handleCloseRequest(closedByError: MutableState<Bool
     CloseBehavior.MinimizeToTray -> if (trayIsAvailable && singleInstanceLock) {
       simplexWindowState.windowVisible.value = false
     } else exitApplication()
-    CloseBehavior.Ask -> if (trayIsAvailable && singleInstanceLock) {
-      requestCloseBehavior()
-    } else {
-      // Tray unavailable — Minimize is not a real option; remember Quit and exit.
-      pref.set(CloseBehavior.Quit)
-      exitApplication()
-    }
+      CloseBehavior.Ask -> if (trayIsAvailable && singleInstanceLock) {
+        requestCloseBehavior()
+      } else {
+        // Tray unavailable — Minimize is not a real option; remember Quit and exit.
+        pref.set(CloseBehavior.Quit)
+        exitApplication()
+      }
   }
 }
 
@@ -282,27 +286,59 @@ data class DialogParams(
   val filename: String? = null,
   val allowMultiple: Boolean = false,
   val fileFilter: ((File?) -> Boolean)? = null,
-  val fileFilterDescription: String = "",
+                        val fileFilterDescription: String = "",
 )
 
 class DialogState<T> {
   private var onResult: CompletableDeferred<T>? by mutableStateOf(null)
-  var params = DialogParams()
-  val isAwaiting get() = onResult != null
+    var params = DialogParams()
+    val isAwaiting get() = onResult != null
 
-  suspend fun awaitResult(params: DialogParams = DialogParams()): T {
-    onResult = CompletableDeferred()
-    this.params = params
-    val result = onResult!!.await()
-    onResult = null
-    return result
-  }
+    suspend fun awaitResult(params: DialogParams = DialogParams()): T {
+      onResult = CompletableDeferred()
+      this.params = params
+      val result = onResult!!.await()
+      onResult = null
+      return result
+    }
 
-  fun onResult(result: T) = onResult!!.complete(result)
+    fun onResult(result: T) = onResult!!.complete(result)
 }
 
 @Preview
 @Composable
 fun AppPreview() {
   AppScreen()
+}
+
+/**
+ * Dark, quiet native title bar so the window chrome does not fight the onboarding
+ * scene. Purely cosmetic and best effort: failures are ignored and the native
+ * decoration, resizing, drag and window buttons are untouched.
+ *  - macOS: transparent title bar + dark appearance (AWT client properties).
+ *  - Windows 10/11: immersive dark mode, plus a near-black caption on Windows 11.
+ *  - Linux: follows the desktop theme; nothing to do.
+ */
+private fun applyQryptanaTitleBar(window: java.awt.Window, dark: Boolean) {
+  try {
+    val os = System.getProperty("os.name").lowercase()
+    if (os.contains("mac")) {
+      (window as? javax.swing.RootPaneContainer)?.rootPane?.let {
+        it.putClientProperty("apple.awt.transparentTitleBar", dark)
+        it.putClientProperty("apple.awt.windowAppearance", if (dark) "NSAppearanceNameDarkAqua" else null)
+      }
+    } else if (os.contains("win")) {
+      val hwnd = com.sun.jna.Native.getComponentPointer(window) ?: return
+      val dwm = com.sun.jna.NativeLibrary.getInstance("dwmapi")
+      val fn = dwm.getFunction("DwmSetWindowAttribute")
+      fun set(attr: Int, value: Int) {
+        val mem = com.sun.jna.Memory(4); mem.setInt(0, value)
+        fn.invokeInt(arrayOf(hwnd, attr, mem, 4))
+      }
+      set(20, if (dark) 1 else 0)                    // DWMWA_USE_IMMERSIVE_DARK_MODE
+      set(35, if (dark) 0x000B0B0A else -1)          // DWMWA_CAPTION_COLOR (COLORREF 0x00BBGGRR); -1 = default
+      set(34, if (dark) 0x00131211 else -1)          // DWMWA_BORDER_COLOR
+    }
+  } catch (_: Throwable) {
+  }
 }

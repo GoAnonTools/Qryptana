@@ -1,4 +1,5 @@
 import org.gradle.internal.extensions.stdlib.toDefaultLowerCase
+import org.gradle.language.jvm.tasks.ProcessResources
 import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 import java.nio.file.Files
 
@@ -23,6 +24,14 @@ kotlin {
       }
     }
     val jvmTest by getting
+  }
+}
+
+// The identity reveal is an arbitrary runtime video, not an MR image.
+// Package it in the final desktop jar for classloader-based playback.
+tasks.named<ProcessResources>("jvmProcessResources") {
+  from(project(":common").file("src/commonMain/resources/MR/videos")) {
+    into("videos")
   }
 }
 
