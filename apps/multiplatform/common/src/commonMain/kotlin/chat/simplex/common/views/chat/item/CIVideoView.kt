@@ -290,7 +290,15 @@ private fun VideoView(
 }
 
 @Composable
-expect fun PlayerView(player: VideoPlayer, width: Dp, onClick: () -> Unit, onLongClick: () -> Unit, stop: () -> Unit)
+expect fun PlayerView(
+  player: VideoPlayer,
+  width: Dp,
+  onClick: () -> Unit,
+  onLongClick: () -> Unit,
+  stop: () -> Unit,
+  modifier: Modifier = Modifier.width(width),
+  contentScale: ContentScale = ContentScale.Fit
+)
 
 @Composable
 private fun BoxScope.PlayButton(error: Boolean = false, sizeMultiplier: Float = 1f, onLongClick: () -> Unit, onClick: () -> Unit) {
