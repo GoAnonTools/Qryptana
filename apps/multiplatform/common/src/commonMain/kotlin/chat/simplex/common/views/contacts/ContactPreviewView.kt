@@ -25,6 +25,7 @@ fun ContactPreviewView(
 ) {
     val cInfo = chat.chatInfo
     val contactType = chatContactType(chat)
+    val messagingTokens = qryptanaMessagingTokens()
 
     @Composable
     fun VerifiedIcon() {
@@ -34,16 +35,16 @@ fun ContactPreviewView(
     val deleting by remember(disabled, chat.id) { mutableStateOf(chatModel.deletedChats.value.contains(chat.remoteHostId to chat.chatInfo.id)) }
 
     val textColor = when {
-        deleting -> MaterialTheme.colors.secondary
-        contactType == ContactType.CARD -> MaterialTheme.colors.primary
+        deleting -> messagingTokens.secondaryText
+        contactType == ContactType.CARD -> messagingTokens.accent
         contactType == ContactType.CONTACT_WITH_REQUEST ->
             if (chat.chatInfo is ChatInfo.Direct && chat.chatInfo.contact.groupDirectInv?.memberRemoved == true)
-                MaterialTheme.colors.secondary
+                messagingTokens.secondaryText
             else
-                MaterialTheme.colors.primary
-        contactType == ContactType.REQUEST -> MaterialTheme.colors.primary
-        contactType == ContactType.RECENT -> if (chat.chatInfo.nextConnect) MaterialTheme.colors.primary else Color.Unspecified
-        else -> Color.Unspecified
+                messagingTokens.accent
+        contactType == ContactType.REQUEST -> messagingTokens.accent
+        contactType == ContactType.RECENT -> if (chat.chatInfo.nextConnect) messagingTokens.accent else messagingTokens.primaryText
+        else -> messagingTokens.primaryText
     }
 
     @Composable
@@ -75,14 +76,14 @@ fun ContactPreviewView(
     }
 
     Row(
-        modifier = Modifier.padding(PaddingValues(horizontal = DEFAULT_PADDING_HALF)),
+        modifier = Modifier.padding(horizontal = messagingTokens.rowHorizontalPadding),
         verticalAlignment = Alignment.CenterVertically,
     ) {
         Box(contentAlignment = Alignment.BottomEnd) {
             ChatInfoImage(cInfo, size = 42.dp)
         }
 
-        Spacer(Modifier.width(DEFAULT_SPACE_AFTER_ICON))
+        Spacer(Modifier.width(messagingTokens.rowContentSpacing))
 
         Box(modifier = Modifier.weight(10f, fill = true)) {
             chatPreviewTitle()
@@ -104,7 +105,7 @@ fun ContactPreviewView(
             Icon(
                 painterResource(MR.images.ic_mail),
                 contentDescription = null,
-                tint = MaterialTheme.colors.primary,
+                tint = messagingTokens.accent,
                 modifier = Modifier
                     .size(21.dp)
             )

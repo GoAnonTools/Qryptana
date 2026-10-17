@@ -90,6 +90,7 @@ private fun showNewChatSheet(oneHandUI: State<Boolean>) {
 
 @Composable
 fun ToggleChatListCard() {
+  val messagingTokens = qryptanaMessagingTokens()
   val oneHandUI = remember { appPrefs.oneHandUI.state }
   val onClose = {
     appPrefs.oneHandUICardShown.set(true)
@@ -98,9 +99,9 @@ fun ToggleChatListCard() {
       text = generalGetString(MR.strings.one_hand_ui_change_instruction),
     )
   }
-  val activeBg = MaterialTheme.colors.background.mixWith(MaterialTheme.colors.onBackground, 0.97f)
+  val activeBg = messagingTokens.surface.mixWith(messagingTokens.primaryText, 0.97f)
     .copy(alpha = appPrefs.inAppBarsAlpha.get())
-  val selectedBg = MaterialTheme.colors.background.mixWith(MaterialTheme.colors.onBackground, 0.92f)
+  val selectedBg = messagingTokens.selectedSurface
   Row(
     Modifier
       .padding(horizontal = 16.dp, vertical = 12.dp)
@@ -255,12 +256,13 @@ private fun ChatListCard(
   onCardClick: (() -> Unit)? = null,
   content: @Composable BoxScope.() -> Unit
 ) {
+  val messagingTokens = qryptanaMessagingTokens()
   Column(
-    modifier = Modifier.clip(RoundedCornerShape(18.dp))
+    modifier = Modifier.clip(RoundedCornerShape(messagingTokens.messageCornerRadius))
   ) {
     Box(
       modifier = Modifier
-        .background(MaterialTheme.appColors.sentMessage)
+        .background(messagingTokens.elevatedSurface)
         .clickable {
           onCardClick?.invoke()
         }
@@ -311,8 +313,9 @@ private fun BannerGradientBox(isDark: Boolean, content: @Composable () -> Unit) 
 
 @Composable
 private fun ConnectBannerCard() {
+  val messagingTokens = qryptanaMessagingTokens()
   val isDark = isInDarkTheme()
-  val labelBg = MaterialTheme.colors.background.mixWith(MaterialTheme.colors.onBackground, 0.97f)
+  val labelBg = messagingTokens.surface.mixWith(messagingTokens.primaryText, 0.97f)
     .copy(alpha = appPrefs.inAppBarsAlpha.get())
   val buttonSize = 30.dp * fontSizeSqrtMultiplier
   val gap = 3.dp * fontSizeSqrtMultiplier
@@ -327,7 +330,7 @@ private fun ConnectBannerCard() {
         contentDescription = stringResource(MR.strings.icon_descr_close_button),
         modifier = Modifier
           .size(buttonSize)
-          .background(MaterialTheme.colors.background.mixWith(MaterialTheme.colors.onBackground, 0.92f), CircleShape)
+          .background(messagingTokens.selectedSurface, CircleShape)
           .padding(buttonSize * 0.15f),
         tint = MaterialTheme.colors.secondary
       )
@@ -337,7 +340,7 @@ private fun ConnectBannerCard() {
       Modifier
         .fillMaxWidth()
         .height(IntrinsicSize.Min)
-        .clip(RoundedCornerShape(18.dp))
+        .clip(RoundedCornerShape(messagingTokens.messageCornerRadius))
     ) {
       Column(
         Modifier.weight(1f).clickable {
@@ -369,7 +372,7 @@ private fun ConnectBannerCard() {
           }
         }
       }
-      Spacer(Modifier.width(2.dp).fillMaxHeight().background(MaterialTheme.colors.background))
+      Spacer(Modifier.width(2.dp).fillMaxHeight().background(messagingTokens.border))
       Column(
         Modifier.weight(1f).clickable {
           ModalManager.start.showModalCloseable { close ->
@@ -406,8 +409,9 @@ private fun ConnectBannerCard() {
 
 @Composable
 private fun BoxScope.ChatListWithLoadingScreen(searchText: MutableState<TextFieldValue>, listState: LazyListState) {
+  val messagingTokens = qryptanaMessagingTokens()
   if (chatModel.chatRunning.value == null) {
-    Text(stringResource(MR.strings.loading_chats), Modifier.align(Alignment.Center), color = MaterialTheme.colors.secondary)
+    Text(stringResource(MR.strings.loading_chats), Modifier.align(Alignment.Center), color = messagingTokens.secondaryText)
   } else if (shouldShowOnboarding()) {
     if (appPlatform.isAndroid) AndroidOnboardingCards()
   } else {
@@ -436,6 +440,7 @@ private fun AndroidOnboardingCards() {
 
 @Composable
 private fun BoxScope.NewChatSheetFloatingButton(oneHandUI: State<Boolean>, stopped: Boolean) {
+  val messagingTokens = qryptanaMessagingTokens()
   FloatingActionButton(
     onClick = {
       if (!stopped) {
@@ -453,8 +458,8 @@ private fun BoxScope.NewChatSheetFloatingButton(oneHandUI: State<Boolean>, stopp
       hoveredElevation = 0.dp,
       focusedElevation = 0.dp,
     ),
-    backgroundColor = if (!stopped) MaterialTheme.colors.primary else MaterialTheme.colors.secondary,
-    contentColor = Color.White
+    backgroundColor = if (!stopped) messagingTokens.accent else messagingTokens.secondaryText,
+    contentColor = messagingTokens.onAccent
   ) {
     Icon(painterResource(MR.images.ic_edit_filled), stringResource(MR.strings.add_contact_or_create_group), Modifier.size(22.dp * fontSizeSqrtMultiplier))
   }
@@ -462,17 +467,18 @@ private fun BoxScope.NewChatSheetFloatingButton(oneHandUI: State<Boolean>, stopp
 
 @Composable
 private fun ConnectButton(text: String, onClick: () -> Unit) {
+  val messagingTokens = qryptanaMessagingTokens()
   Button(
     onClick,
     shape = RoundedCornerShape(21.dp),
     colors = ButtonDefaults.textButtonColors(
-      backgroundColor = MaterialTheme.colors.primaryVariant
+      backgroundColor = messagingTokens.accent
     ),
     elevation = null,
     contentPadding = PaddingValues(horizontal = DEFAULT_PADDING, vertical = DEFAULT_PADDING_HALF),
     modifier = Modifier.height(42.dp)
   ) {
-    Text(text, color = Color.White)
+    Text(text, color = messagingTokens.onAccent)
   }
 }
 
@@ -883,6 +889,7 @@ fun BoxScope.NavigationBarBackground(modifier: Modifier, color: Color = Material
 
 @Composable
 private fun BoxScope.ChatList(searchText: MutableState<TextFieldValue>, listState: LazyListState) {
+  val messagingTokens = qryptanaMessagingTokens()
   var scrollDirection by remember { mutableStateOf(ScrollDirection.Idle) }
   var previousIndex by remember { mutableStateOf(0) }
   var previousScrollOffset by remember { mutableStateOf(0) }
@@ -946,11 +953,11 @@ private fun BoxScope.ChatList(searchText: MutableState<TextFieldValue>, listStat
             }
             IntOffset(0, y)
           }
-          .background(MaterialTheme.colors.background)
+          .background(messagingTokens.background)
         ) {
         if (oneHandUI.value) {
           Column(Modifier.consumeWindowInsets(WindowInsets.navigationBars).consumeWindowInsets(PaddingValues(bottom = AppBarHeight))) {
-            Divider()
+            Divider(color = messagingTokens.border)
             TagsView(searchText)
             ChatListSearchBar(listState, searchText, searchShowingSimplexLink, searchChatFilteredBySimplexLink)
             Spacer(Modifier.windowInsetsBottomHeight(WindowInsets.ime))
@@ -958,7 +965,7 @@ private fun BoxScope.ChatList(searchText: MutableState<TextFieldValue>, listStat
         } else {
           ChatListSearchBar(listState, searchText, searchShowingSimplexLink, searchChatFilteredBySimplexLink)
           TagsView(searchText)
-          Divider()
+          Divider(color = messagingTokens.border)
         }
       }
     }
@@ -1007,12 +1014,13 @@ private fun BoxScope.ChatList(searchText: MutableState<TextFieldValue>, listStat
 
 @Composable
 private fun NoChatsView(searchText: MutableState<TextFieldValue>) {
+  val messagingTokens = qryptanaMessagingTokens()
   val activeFilter = remember { chatModel.activeChatTagFilter }.value
 
   if (searchText.value.text.isBlank()) {
     when (activeFilter) {
-      is ActiveFilter.PresetTag -> Text(generalGetString(MR.strings.no_filtered_chats), color = MaterialTheme.colors.secondary, textAlign = TextAlign.Center) // this should not happen
-      is ActiveFilter.UserTag -> Text(String.format(generalGetString(MR.strings.no_chats_in_list), activeFilter.tag.chatTagText), color = MaterialTheme.colors.secondary, textAlign = TextAlign.Center)
+      is ActiveFilter.PresetTag -> Text(generalGetString(MR.strings.no_filtered_chats), color = messagingTokens.secondaryText, textAlign = TextAlign.Center) // this should not happen
+      is ActiveFilter.UserTag -> Text(String.format(generalGetString(MR.strings.no_chats_in_list), activeFilter.tag.chatTagText), color = messagingTokens.secondaryText, textAlign = TextAlign.Center)
       is ActiveFilter.Unread -> {
           Row(
             Modifier.clip(shape = CircleShape).clickable { chatModel.activeChatTagFilter.value = null }.padding(DEFAULT_PADDING_HALF),
@@ -1022,17 +1030,17 @@ private fun NoChatsView(searchText: MutableState<TextFieldValue>) {
             Icon(
               painterResource(MR.images.ic_filter_list),
               null,
-              tint = MaterialTheme.colors.secondary
+              tint = messagingTokens.secondaryText
             )
-            Text(generalGetString(MR.strings.no_unread_chats), color = MaterialTheme.colors.secondary, textAlign = TextAlign.Center)
+            Text(generalGetString(MR.strings.no_unread_chats), color = messagingTokens.secondaryText, textAlign = TextAlign.Center)
           }
       }
       null -> {
-        Text(generalGetString(MR.strings.no_chats), color = MaterialTheme.colors.secondary, textAlign = TextAlign.Center)
+        Text(generalGetString(MR.strings.no_chats), color = messagingTokens.secondaryText, textAlign = TextAlign.Center)
       }
     }
   } else {
-    Text(generalGetString(MR.strings.no_chats_found), color = MaterialTheme.colors.secondary, textAlign = TextAlign.Center)
+    Text(generalGetString(MR.strings.no_chats_found), color = messagingTokens.secondaryText, textAlign = TextAlign.Center)
   }
 }
 
@@ -1051,6 +1059,7 @@ private val TAG_MIN_HEIGHT = 35.dp
 
 @Composable
 private fun TagsView(searchText: MutableState<TextFieldValue>) {
+  val messagingTokens = qryptanaMessagingTokens()
   val userTags = remember { chatModel.userTags }
   val presetTags = remember { chatModel.presetTags }
   val collapsiblePresetTags = presetTags.filter { presetCanBeCollapsed(it.key) && it.value > 0 }
@@ -1087,6 +1096,7 @@ private fun TagsView(searchText: MutableState<TextFieldValue>) {
         Row(
           rowSizeModifier
             .clip(shape = CircleShape)
+            .background(if (current) messagingTokens.selectedSurface else Color.Transparent)
             .combinedClickable(
               onClick = {
                 if (chatModel.activeChatTagFilter.value == ActiveFilter.UserTag(tag)) {
