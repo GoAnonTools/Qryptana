@@ -1245,6 +1245,11 @@ fun ComposeView(
       Modifier.padding(start = 3.dp, end = 1.dp, bottom = if (appPlatform.isAndroid) 2.sp.toDp() else 5.sp.toDp() * fontSizeSqrtMultiplier),
       horizontalArrangement = Arrangement.spacedBy((-8).dp)
     ) {
+      ComposerEmojiButton(
+        message = composeState.value.message,
+        onMessageChange = ::onMessageChange,
+        enabled = sendMsgEnabled.value && !composeState.value.inProgress && composeState.value.preview !is ComposePreview.VoicePreview,
+      )
       val msg = composeState.value.message.text.trim()
       val showAttachment = cInfo !is ChatInfo.Direct || cInfo.contact.profile.peerType != ChatPeerType.Bot || cInfo.featureEnabled(ChatFeature.Files)
       if (cInfo.useCommands && (!showAttachment || msg.isEmpty() || msg.startsWith("/"))) {
