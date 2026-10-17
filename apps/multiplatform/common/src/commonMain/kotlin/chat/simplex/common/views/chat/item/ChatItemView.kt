@@ -115,6 +115,7 @@ fun ChatItemView(
   val cInfo = chat.chatInfo
   val uriHandler = LocalUriHandler.current
   val sent = cItem.chatDir.sent
+  val messagingTokens = qryptanaMessagingTokens()
   val alignment = if (sent) Alignment.CenterEnd else Alignment.CenterStart
   val showMenu = remember { mutableStateOf(false) }
   val fullDeleteAllowed = remember(cInfo) { cInfo.featureEnabled(ChatFeature.FullDelete) }
@@ -151,7 +152,10 @@ fun ChatItemView(
             }
           }
 
-          var modifier = Modifier.padding(horizontal = 5.dp, vertical = 2.dp).clip(RoundedCornerShape(8.dp))
+          var modifier = Modifier
+            .padding(horizontal = 5.dp, vertical = 2.dp)
+            .clip(RoundedCornerShape(8.dp))
+            .background(messagingTokens.selectedSurface)
           if (cInfo.featureEnabled(ChatFeature.Reactions)) {
             fun showReactionsMenu() {
               when (cInfo) {
@@ -229,7 +233,7 @@ fun ChatItemView(
                 "${r.totalReacted}",
                 fontSize = 11.5.sp,
                 fontWeight = if (r.userReacted) FontWeight.Bold else FontWeight.Normal,
-                color = if (r.userReacted) MaterialTheme.colors.primary else MaterialTheme.colors.secondary,
+                color = if (r.userReacted) messagingTokens.accent else messagingTokens.secondaryText,
               )
             }
           }

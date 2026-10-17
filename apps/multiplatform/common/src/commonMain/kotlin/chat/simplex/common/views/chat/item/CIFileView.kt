@@ -35,6 +35,7 @@ fun CIFileView(
   smallView: Boolean = false,
   receiveFile: (Long) -> Unit
 ) {
+  val messagingTokens = qryptanaMessagingTokens()
   val saveFileLauncher = rememberSaveFileLauncher(ciFile = file)
   val sizeMultiplier = 1f
   val progressSizeMultiplier = if (smallView) 0.7f else 1f
@@ -61,7 +62,7 @@ fun CIFileView(
             .padding(top = topPadding * sizeMultiplier)
             .height(20.sp.toDp() * sizeMultiplier)
             .width(32.sp.toDp() * sizeMultiplier),
-          tint = Color.White
+          tint = messagingTokens.onAccent
         )
       }
     }
@@ -152,7 +153,7 @@ fun CIFileView(
           is CIFileStatus.SndWarning -> fileIcon(innerIcon = painterResource(MR.images.ic_warning_filled))
           is CIFileStatus.RcvInvitation ->
             if (fileSizeValid(file))
-              fileIcon(innerIcon = painterResource(MR.images.ic_arrow_downward), color = MaterialTheme.colors.primary, topPadding = 10.sp.toDp())
+              fileIcon(innerIcon = painterResource(MR.images.ic_arrow_downward), color = messagingTokens.accent, topPadding = 10.sp.toDp())
             else
               fileIcon(innerIcon = painterResource(MR.images.ic_priority_high), color = WarningOrange)
           is CIFileStatus.RcvAccepted -> fileIcon(innerIcon = painterResource(MR.images.ic_more_horiz))
@@ -163,7 +164,7 @@ fun CIFileView(
               CIFileViewScope.progressIndicator(progressSizeMultiplier)
             }
           is CIFileStatus.RcvAborted ->
-            fileIcon(innerIcon = painterResource(MR.images.ic_sync_problem), color = MaterialTheme.colors.primary)
+            fileIcon(innerIcon = painterResource(MR.images.ic_sync_problem), color = messagingTokens.accent)
           is CIFileStatus.RcvComplete -> fileIcon()
           is CIFileStatus.RcvCancelled -> fileIcon(innerIcon = painterResource(MR.images.ic_close))
           is CIFileStatus.RcvError -> fileIcon(innerIcon = painterResource(MR.images.ic_close))

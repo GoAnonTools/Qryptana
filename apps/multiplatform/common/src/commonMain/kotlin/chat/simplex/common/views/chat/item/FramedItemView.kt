@@ -50,6 +50,7 @@ fun FramedItemView(
   val chatInfo = chat.chatInfo
   val sent = ci.chatDir.sent
   val chatTTL = chatInfo.timedMessagesTTL
+  val messagingTokens = qryptanaMessagingTokens()
 
   fun membership(): GroupMember? {
     return if (chatInfo is ChatInfo.Group) chatInfo.groupInfo.membership else null
@@ -63,7 +64,7 @@ fun FramedItemView(
       toggleSecrets = true,
       maxLines = lines,
       overflow = TextOverflow.Ellipsis,
-      style = TextStyle(fontSize = 15.sp, color = MaterialTheme.colors.onSurface),
+      style = TextStyle(fontSize = 15.sp, color = messagingTokens.primaryText),
       linkMode = linkMode,
       uriHandler = if (appPlatform.isDesktop) uriHandler else null,
       showTimestamp = showTimestamp,
@@ -79,7 +80,7 @@ fun FramedItemView(
         // this width limitation prevents crash on calculating constraints that may happen if you post veeeery long message and then quote it.
         // Top level layout wants `IntrinsicWidth.Max` and very long layout makes the crash in this case
         .widthIn(max = 50000.dp)
-        .padding(vertical = 6.dp, horizontal = 12.dp),
+        .padding(vertical = messagingTokens.rowVerticalPadding, horizontal = messagingTokens.rowHorizontalPadding),
       contentAlignment = Alignment.TopStart
     ) {
       val sender = qi.sender(membership())
@@ -89,7 +90,7 @@ fun FramedItemView(
         ) {
           Text(
             sender,
-            style = TextStyle(fontSize = 13.5.sp, color = if (qi.chatDir is CIDirection.GroupSnd) CurrentColors.value.colors.primary else CurrentColors.value.colors.secondary),
+            style = TextStyle(fontSize = 13.5.sp, color = if (qi.chatDir is CIDirection.GroupSnd) messagingTokens.accent else messagingTokens.secondaryText),
             maxLines = 1
           )
           ciQuotedMsgTextView(qi, lines = 2, showTimestamp = showTimestamp, stripLink = stripLink, prefix = prefix)
@@ -102,14 +103,14 @@ fun FramedItemView(
 
   @Composable
   fun FramedItemHeader(caption: String, italic: Boolean, icon: Painter? = null, pad: Boolean = false, iconColor: Color? = null) {
-    val sentColor = MaterialTheme.appColors.sentQuote
-    val receivedColor = MaterialTheme.appColors.receivedQuote
+    val sentColor = messagingTokens.sentMessage
+    val receivedColor = messagingTokens.receivedMessage
     Row(
       Modifier
         .background(if (sent) sentColor else receivedColor)
         .fillMaxWidth()
-        .padding(start = 8.dp, top = 6.dp, end = 12.dp, bottom = if (pad || (ci.quotedItem == null && ci.meta.itemForwarded == null)) 6.dp else 0.dp),
-      horizontalArrangement = Arrangement.spacedBy(4.dp),
+        .padding(start = messagingTokens.rowHorizontalPadding, top = 6.dp, end = messagingTokens.rowHorizontalPadding, bottom = if (pad || (ci.quotedItem == null && ci.meta.itemForwarded == null)) 6.dp else 0.dp),
+      horizontalArrangement = Arrangement.spacedBy(messagingTokens.rowContentSpacing / 2),
       verticalAlignment = Alignment.CenterVertically
     ) {
       if (icon != null) {
@@ -122,7 +123,7 @@ fun FramedItemView(
       }
       Text(
         buildAnnotatedString {
-          withStyle(SpanStyle(fontSize = 12.sp, fontStyle = if (italic) FontStyle.Italic else FontStyle.Normal, color = MaterialTheme.colors.secondary)) {
+          withStyle(SpanStyle(fontSize = 12.sp, fontStyle = if (italic) FontStyle.Italic else FontStyle.Normal, color = messagingTokens.secondaryText)) {
             append(caption)
           }
         },
@@ -135,8 +136,8 @@ fun FramedItemView(
 
   @Composable
   fun ciQuoteView(qi: CIQuote) {
-    val sentColor = MaterialTheme.appColors.sentQuote
-    val receivedColor = MaterialTheme.appColors.receivedQuote
+    val sentColor = messagingTokens.sentMessage
+    val receivedColor = messagingTokens.receivedMessage
     Row(
       Modifier
         .background(if (sent) sentColor else receivedColor)
@@ -210,8 +211,8 @@ fun FramedItemView(
   val transparentBackground = (ci.content.msgContent is MsgContent.MCImage || ci.content.msgContent is MsgContent.MCVideo) &&
       !ci.meta.isLive && ci.content.text.isEmpty() && ci.quotedItem == null && ci.meta.itemForwarded == null
 
-  val sentColor = MaterialTheme.appColors.sentMessage
-  val receivedColor = MaterialTheme.appColors.receivedMessage
+  val sentColor = messagingTokens.sentMessage
+  val receivedColor = messagingTokens.receivedMessage
   Box(Modifier
     .clipChatItem(ci, tailVisible, revealed = true)
     .background(
@@ -221,7 +222,7 @@ fun FramedItemView(
         else -> receivedColor
       }
     )) {
-    var metaColor = MaterialTheme.colors.secondary
+    var metaColor = messagingTokens.secondaryText
     Box(contentAlignment = Alignment.BottomEnd) {
       val chatItemTail = remember { appPreferences.chatItemTail.state }
       val style = shapeStyle(ci, chatItemTail.value, tailVisible, true)
@@ -298,7 +299,7 @@ fun FramedItemView(
             }
           }
           if (ci.file == null && ci.formattedText == null && !ci.meta.isLive && isShortEmoji(ci.content.text)) {
-            Box(Modifier.padding(vertical = 6.dp, horizontal = 12.dp)) {
+            Box(Modifier.padding(vertical = messagingTokens.rowVerticalPadding - 2.dp, horizontal = messagingTokens.rowHorizontalPadding)) {
               Column(
                 Modifier
                   .padding(bottom = 2.dp)
@@ -379,7 +380,7 @@ fun FramedItemView(
         Modifier
           .padding(
             bottom = 6.dp,
-            end = 12.dp + if (tailRendered && sent) msgTailWidthDp else 0.dp,
+            end = messagingTokens.rowHorizontalPadding + if (tailRendered && sent) msgTailWidthDp else 0.dp,
           )
       ) {
         CIMetaView(ci, chatTTL, metaColor, showViaProxy = showViaProxy, showTimestamp = showTimestamp)
@@ -406,7 +407,8 @@ fun CIMarkdownText(
   val text = if (ci.meta.isLive) ci.content.msgContent?.text ?: ci.text else ci.text
   val selection = setupItemSelection(LocalSelectionManager.current, LocalItemContext.current.selectionIndex, ci.meta.isLive == true)
 
-  Box(Modifier.padding(vertical = 7.dp, horizontal = 12.dp).then(selection.positionModifier)) {
+  val messagingTokens = qryptanaMessagingTokens()
+  Box(Modifier.padding(vertical = messagingTokens.rowVerticalPadding - 1.dp, horizontal = messagingTokens.rowHorizontalPadding).then(selection.positionModifier)) {
     MarkdownText(
       text, if (text.isEmpty()) emptyList() else ci.formattedText, toggleSecrets = true,
       sendCommandMsg = if (chatInfo.useCommands && chat.chatInfo.sndReady) { { msg -> sendCommandMsg(chatsCtx, chat, msg) } } else null,
