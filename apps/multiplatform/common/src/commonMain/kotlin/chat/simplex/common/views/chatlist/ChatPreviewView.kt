@@ -51,6 +51,7 @@ fun ChatPreviewView(
   defaultClickAction: () -> Unit
 ) {
   val cInfo = chat.chatInfo
+  val messagingTokens = qryptanaMessagingTokens()
 
   @Composable
   fun inactiveIcon() {
@@ -82,7 +83,7 @@ fun ChatPreviewView(
   }
 
   @Composable
-  fun chatPreviewTitleText(color: Color = Color.Unspecified) {
+  fun chatPreviewTitleText(color: Color = messagingTokens.primaryText) {
     Text(
       cInfo.chatViewName,
       maxLines = 1,
@@ -232,7 +233,7 @@ fun ChatPreviewView(
         style = TextStyle(
           fontFamily = Inter,
           fontSize = 15.sp,
-          color = if (isInDarkTheme()) MessagePreviewDark else MessagePreviewLight,
+          color = messagingTokens.secondaryText,
           lineHeight = 21.sp
         ),
         inlineContent = inlineTextContent,
@@ -286,7 +287,7 @@ fun ChatPreviewView(
         style = TextStyle(
           fontFamily = Inter,
           fontSize = 15.sp,
-          color = if (isInDarkTheme()) MessagePreviewDark else MessagePreviewLight,
+          color = messagingTokens.secondaryText,
           lineHeight = 21.sp
         ),
         inlineContent = inlineTextContent,
@@ -474,7 +475,7 @@ fun ChatPreviewView(
                     Icon(
                       painterResource(MR.images.ic_alternate_email),
                       contentDescription = generalGetString(MR.strings.notifications),
-                      tint = Color.White,
+                      tint = messagingTokens.onAccent,
                       modifier = Modifier.size(9.sp.toDp())
                     )
                   }
@@ -582,7 +583,7 @@ fun UnreadBadge(
 ) {
   Text(
     text,
-    color = Color.White,
+    color = MaterialTheme.colors.onPrimary,
     fontSize = 10.sp,
     style = TextStyle(textAlign = TextAlign.Center),
     modifier = Modifier
@@ -600,6 +601,7 @@ fun unreadCountStr(n: Int): String {
 }
 
 @Composable fun ChatListTimestampView(ts: String) {
+  val messagingTokens = qryptanaMessagingTokens()
   Box(contentAlignment = Alignment.BottomStart) {
     // This should be the same font style as in title to make date located on the same line as title
     Text(
@@ -610,7 +612,7 @@ fun unreadCountStr(n: Int): String {
     Text(
       ts,
       Modifier.padding(bottom = 5.sp.toDp()).offset(x = if (appPlatform.isDesktop) 1.5.sp.toDp() else 0.dp),
-      color = MaterialTheme.colors.secondary,
+      color = messagingTokens.secondaryText,
       style = MaterialTheme.typography.body2.copy(fontSize = 13.sp),
     )
   }
