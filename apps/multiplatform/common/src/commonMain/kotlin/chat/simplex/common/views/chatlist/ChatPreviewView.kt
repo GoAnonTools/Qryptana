@@ -395,13 +395,13 @@ fun ChatPreviewView(
           chatPreviewImageOverlayIcon()
         }
       }
-      Spacer(Modifier.width(8.dp))
+      Spacer(Modifier.width(messagingTokens.rowContentSpacing))
       Column(Modifier.weight(1f)) {
         Row {
           Box(Modifier.weight(1f)) {
             chatPreviewTitle()
           }
-          Spacer(Modifier.width(8.sp.toDp()))
+          Spacer(Modifier.width(messagingTokens.rowContentSpacing))
           val ts = getTimestampText(chat.chatItems.lastOrNull()?.meta?.itemTs ?: chat.chatInfo.chatTs)
           ChatListTimestampView(ts)
         }
@@ -443,7 +443,7 @@ fun ChatPreviewView(
             }
           }
 
-          Spacer(Modifier.width(8.sp.toDp()))
+          Spacer(Modifier.width(messagingTokens.rowContentSpacing))
 
           Box(Modifier.widthIn(min = 34.sp.toDp()), contentAlignment = Alignment.TopEnd) {
             val n = chat.chatStats.unreadCount
