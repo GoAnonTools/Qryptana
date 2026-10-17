@@ -8,6 +8,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import chat.simplex.common.platform.onRightClick
+import chat.simplex.common.ui.theme.qryptanaMessagingTokens
 import chat.simplex.common.views.helpers.*
 
 @Composable
@@ -20,6 +21,7 @@ actual fun ChatListNavLinkLayout(
   selectedChat: State<Boolean>,
   nextChatSelected: State<Boolean>,
 ) {
+  val messagingTokens = qryptanaMessagingTokens()
   var modifier = Modifier.fillMaxWidth()
 
   if (!disabled) modifier = modifier
@@ -29,7 +31,12 @@ actual fun ChatListNavLinkLayout(
     Row(
       modifier = Modifier
         .fillMaxWidth()
-        .padding(start = 8.dp, top = 8.dp, end = 12.dp, bottom = 8.dp),
+        .padding(
+            start = messagingTokens.rowHorizontalPadding,
+            top = messagingTokens.rowVerticalPadding,
+            end = messagingTokens.rowHorizontalPadding,
+            bottom = messagingTokens.rowVerticalPadding
+        ),
       verticalAlignment = Alignment.Top
     ) {
       chatLinkPreview()
@@ -38,5 +45,8 @@ actual fun ChatListNavLinkLayout(
       DefaultDropdownMenu(showMenu, dropdownMenuItems = dropdownMenuItems)
     }
   }
-  Divider(Modifier.padding(horizontal = 8.dp))
+  Divider(
+    Modifier.padding(horizontal = messagingTokens.rowHorizontalPadding),
+    color = messagingTokens.border
+  )
 }

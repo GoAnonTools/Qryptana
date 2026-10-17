@@ -13,6 +13,7 @@ import androidx.compose.ui.node.DelegatableNode
 import androidx.compose.ui.node.DrawModifierNode
 import androidx.compose.ui.unit.dp
 import chat.simplex.common.platform.onRightClick
+import chat.simplex.common.ui.theme.qryptanaMessagingTokens
 import chat.simplex.common.views.helpers.*
 
 object NoIndication : IndicationNodeFactory {
@@ -35,6 +36,7 @@ actual fun ChatListNavLinkLayout(
   selectedChat: State<Boolean>,
   nextChatSelected: State<Boolean>,
 ) {
+  val messagingTokens = qryptanaMessagingTokens()
   var modifier = Modifier.fillMaxWidth()
   if (!disabled) modifier = modifier
     .combinedClickable(onClick = click, onLongClick = { showMenu.value = true })
@@ -46,13 +48,18 @@ actual fun ChatListNavLinkLayout(
       Row(
         modifier = Modifier
           .fillMaxWidth()
-          .padding(start = 8.dp, top = 8.dp, end = 12.dp, bottom = 8.dp),
+          .padding(
+            start = messagingTokens.rowHorizontalPadding,
+            top = messagingTokens.rowVerticalPadding,
+            end = messagingTokens.rowHorizontalPadding,
+            bottom = messagingTokens.rowVerticalPadding
+          ),
         verticalAlignment = Alignment.Top
       ) {
         chatLinkPreview()
       }
       if (selectedChat.value) {
-        Box(Modifier.matchParentSize().background(MaterialTheme.colors.onBackground.copy(0.05f)))
+        Box(Modifier.matchParentSize().background(messagingTokens.selectedSurface))
       }
       if (dropdownMenuItems != null) {
         DefaultDropdownMenu(showMenu, dropdownMenuItems = dropdownMenuItems)
@@ -60,7 +67,7 @@ actual fun ChatListNavLinkLayout(
     }
   }
   if (selectedChat.value || nextChatSelected.value) {
-    Divider()
+    Divider(modifier = Modifier, color = messagingTokens.border)
   } else {
     SectionDivider()
   }
