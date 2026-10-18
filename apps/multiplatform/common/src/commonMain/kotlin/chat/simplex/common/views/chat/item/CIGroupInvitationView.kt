@@ -49,7 +49,7 @@ fun CIGroupInvitationView(
   fun groupInfoView() {
     val p = groupInvitation.groupProfile
     val iconColor =
-      if (action && !inProgress.value) if (chatIncognito) Indigo else MaterialTheme.colors.primary
+      if (action && !inProgress.value) qryptanaMessagingTokens().accent
       else if (isInDarkTheme()) FileDark else FileLight
 
     Row(
@@ -121,7 +121,7 @@ fun CIGroupInvitationView(
                 color = if (inProgress.value)
                   MaterialTheme.colors.secondary
                 else
-                  if (chatIncognito) Indigo else MaterialTheme.colors.primary
+                  qryptanaMessagingTokens().accent
               )
             } else {
               Text(

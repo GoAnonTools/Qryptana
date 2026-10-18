@@ -37,6 +37,7 @@ import chat.simplex.common.helpers.toURI
 import chat.simplex.common.model.ChatController.appPrefs
 import chat.simplex.common.model.ChatModel
 import chat.simplex.common.ui.theme.CurrentColors
+import chat.simplex.common.ui.theme.qryptanaMessagingTokens
 import chat.simplex.common.views.chat.*
 import chat.simplex.common.views.helpers.*
 import chat.simplex.res.MR
@@ -63,8 +64,9 @@ actual fun PlatformTextField(
   onDone: () -> Unit,
 ) {
   val cs = composeState.value
-  val textColor = MaterialTheme.colors.onBackground
-  val hintColor = MaterialTheme.colors.secondary
+  val messagingTokens = qryptanaMessagingTokens()
+  val textColor = messagingTokens.primaryText
+  val hintColor = messagingTokens.placeholderText
   val padding = PaddingValues(0.dp, 7.dp, 50.dp, 0.dp)
   val paddingStart = 0
   val paddingTop = with(LocalDensity.current) { 7.dp.roundToPx() }
@@ -207,7 +209,7 @@ private fun ComposeOverlay(text: String, textStyle: MutableState<TextStyle>, pad
   Text(
     text,
     Modifier.padding(padding),
-    color = MaterialTheme.colors.secondary,
+    color = qryptanaMessagingTokens().disabledText,
     style = textStyle.value.copy(fontStyle = FontStyle.Italic)
   )
 }

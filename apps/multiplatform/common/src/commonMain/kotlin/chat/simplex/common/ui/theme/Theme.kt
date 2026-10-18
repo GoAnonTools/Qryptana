@@ -591,7 +591,7 @@ data class ThemeModeOverride (
       ThemeModeOverride(
         mode = mode,
         colors = ThemeOverrides(base = base).withFilledColors(base, null, null, null, null, null),
-        wallpaper = ThemeWallpaper(preset = PresetWallpaper.SCHOOL.filename)
+        wallpaper = ThemeWallpaper()
       )
   }
 }
@@ -640,7 +640,7 @@ val DarkColorPalette = darkColors(
   background = QryptanaDarkBackground,
   surface = QryptanaDarkSurface,
   error = Color.Red,
-  onPrimary = Color.White,
+  onPrimary = QryptanaDarkBackground,
   onBackground = QryptanaDarkText,
   onSurface = QryptanaDarkText,
 )
@@ -683,6 +683,7 @@ val SimplexColorPalette = darkColors(
   background = QryptanaDarkBackground,
   surface = QryptanaDarkSurface,
   error = Color.Red,
+  onPrimary = QryptanaDarkBackground,
   onBackground = QryptanaDarkText,
   onSurface = QryptanaDarkText,
 )
@@ -700,10 +701,10 @@ val BlackColorPalette = darkColors(
   primaryVariant = QryptanaCopperLight,
   secondary = QryptanaDarkSecondary,
   secondaryVariant = QryptanaDarkBorder,
-  background = Color(0xFF10100F),
+  background = QryptanaBlackBackground,
   surface = QryptanaDarkSurface,
   error = Color.Red,
-  onPrimary = Color.White,
+  onPrimary = QryptanaBlackBackground,
   onBackground = QryptanaDarkText,
   onSurface = QryptanaDarkText,
 )

@@ -161,7 +161,7 @@ fun ChatPreviewView(
           MaterialTheme.colors.secondary
         } else {
           when (cInfo.groupInfo.membership.memberStatus) {
-            GroupMemberStatus.MemInvited -> if (chat.chatInfo.incognito) Indigo else MaterialTheme.colors.primary
+            GroupMemberStatus.MemInvited -> messagingTokens.accent
             GroupMemberStatus.MemAccepted, GroupMemberStatus.MemRejected -> MaterialTheme.colors.secondary
             else -> if (cInfo.groupInfo.nextConnectPrepared) MaterialTheme.colors.primary else Color.Unspecified
           }
