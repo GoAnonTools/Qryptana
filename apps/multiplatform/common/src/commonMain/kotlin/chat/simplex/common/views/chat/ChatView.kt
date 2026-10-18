@@ -1553,7 +1553,7 @@ fun ChatInfoToolbarTitle(cInfo: ChatInfo, imageSize: Dp = 40.dp, iconColor: Colo
     verticalAlignment = Alignment.CenterVertically
   ) {
     if (cInfo.incognito) {
-      IncognitoImage(size = 36.dp * fontSizeSqrtMultiplier, Indigo)
+      IncognitoImage(size = 36.dp * fontSizeSqrtMultiplier, qryptanaMessagingTokens().accent)
     }
     ChatInfoImage(cInfo, size = imageSize * fontSizeSqrtMultiplier, iconColor)
     Column(

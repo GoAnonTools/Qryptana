@@ -22,6 +22,7 @@ import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import chat.simplex.common.views.chat.*
 import chat.simplex.common.views.helpers.*
+import chat.simplex.common.ui.theme.qryptanaMessagingTokens
 import chat.simplex.res.MR
 import dev.icerock.moko.resources.StringResource
 import kotlinx.coroutines.delay
@@ -58,6 +59,7 @@ actual fun PlatformTextField(
 ) {
 
   val cs = composeState.value
+  val messagingTokens = qryptanaMessagingTokens()
   val focusManager = LocalFocusManager.current
   val keyboard = LocalSoftwareKeyboardController.current
   val focusReq = focusRequester ?: remember { FocusRequester() }
@@ -180,7 +182,7 @@ actual fun PlatformTextField(
           }
         else false
       },
-    cursorBrush = SolidColor(MaterialTheme.colors.secondary),
+    cursorBrush = SolidColor(messagingTokens.accent),
     decorationBox = { innerTextField ->
         CompositionLocalProvider(
           LocalLayoutDirection provides if (isRtlByCharacters) LayoutDirection.Rtl else LocalLayoutDirection.current
@@ -188,7 +190,7 @@ actual fun PlatformTextField(
           TextFieldDefaults.TextFieldDecorationBox(
             value = textFieldValue.text,
             innerTextField = innerTextField,
-            placeholder = { Text(placeholder, style = textStyle.value.copy(color = MaterialTheme.colors.secondary)) },
+            placeholder = { Text(placeholder, style = textStyle.value.copy(color = messagingTokens.placeholderText)) },
             singleLine = false,
             enabled = true,
             isError = false,
@@ -214,7 +216,7 @@ private fun ComposeOverlay(text: String, textStyle: MutableState<TextStyle>, pad
   Text(
     text,
     Modifier.padding(padding),
-    color = MaterialTheme.colors.secondary,
+    color = qryptanaMessagingTokens().disabledText,
     style = textStyle.value.copy(fontStyle = FontStyle.Italic)
   )
 }

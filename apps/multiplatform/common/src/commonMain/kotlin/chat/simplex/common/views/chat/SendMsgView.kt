@@ -62,8 +62,19 @@ fun SendMsgView(
   focusRequester: FocusRequester? = null,
   ) {
   val showCustomDisappearingMessageDialog = remember { mutableStateOf(false) }
+  val messagingTokens = qryptanaMessagingTokens()
   val padding = if (appPlatform.isAndroid) PaddingValues(vertical = 8.dp) else PaddingValues(top = 3.dp, bottom = 4.dp)
-  Box(Modifier.padding(padding)) {
+  Box(
+    Modifier
+      .fillMaxWidth()
+      .background(messagingTokens.inputSurface, RoundedCornerShape(topStart = 16.dp, topEnd = 16.dp))
+      .border(
+        BorderStroke(1.dp, messagingTokens.inputBorder.copy(alpha = 0.9f)),
+        RoundedCornerShape(topStart = 16.dp, topEnd = 16.dp)
+      )
+      .padding(horizontal = 8.dp)
+      .padding(padding)
+  ) {
     val cs = composeState.value
     val showVoiceButton = !nextConnect && cs.message.text.isEmpty() && showVoiceRecordIcon && !composeState.value.editing &&
         !composeState.value.forwarding && cs.liveMessage == null && (cs.preview is ComposePreview.NoPreview || recState.value is RecordingState.Started) && (cs.contextItem !is ComposeContextItem.ReportedItem)
@@ -251,7 +262,7 @@ private fun CustomDisappearingMessageDialog(
       generalGetString(MR.strings.send_disappearing_message),
       Modifier.padding(vertical = DEFAULT_PADDING_HALF, horizontal = DEFAULT_PADDING * 1.5f),
       fontSize = 16.sp,
-      color = MaterialTheme.colors.secondary
+      color = qryptanaMessagingTokens().secondaryText
     )
 
     ItemAction(generalGetString(MR.strings.send_disappearing_message_30_seconds)) {
@@ -289,7 +300,7 @@ private fun BoxScope.DeleteTextButton(composeState: MutableState<ComposeState>) 
     { composeState.value = composeState.value.copy(message = ComposeMessage()) },
     Modifier.align(Alignment.TopEnd).size(36.dp)
   ) {
-    Icon(painterResource(MR.images.ic_close), null, Modifier.padding(7.dp).size(36.dp), tint = MaterialTheme.colors.secondary)
+    Icon(painterResource(MR.images.ic_close), null, Modifier.padding(7.dp).size(36.dp), tint = qryptanaMessagingTokens().secondaryText)
   }
 }
 
@@ -349,7 +360,7 @@ private fun DisallowedVoiceButton(onClick: () -> Unit) {
     Icon(
       painterResource(MR.images.ic_keyboard_voice),
       stringResource(MR.strings.icon_descr_record_voice_message),
-      tint = MaterialTheme.colors.secondary,
+      tint = qryptanaMessagingTokens().secondaryText,
       modifier = Modifier
         .size(36.dp)
         .padding(4.dp)
@@ -363,7 +374,7 @@ fun VoiceButtonWithoutPermission(onClick: () -> Unit) {
     Icon(
       painterResource(MR.images.ic_keyboard_voice_filled),
       stringResource(MR.strings.icon_descr_record_voice_message),
-      tint = MaterialTheme.colors.primary,
+      tint = qryptanaMessagingTokens().accent,
       modifier = Modifier
         .size(34.dp)
         .padding(4.dp)
@@ -377,7 +388,7 @@ private fun StopRecordButton(onClick: () -> Unit) {
     Icon(
       painterResource(MR.images.ic_stop_filled),
       stringResource(MR.strings.icon_descr_record_voice_message),
-      tint = MaterialTheme.colors.primary,
+      tint = qryptanaMessagingTokens().accent,
       modifier = Modifier
         .size(36.dp)
         .padding(4.dp)
@@ -391,7 +402,7 @@ private fun RecordVoiceButton(interactionSource: MutableInteractionSource) {
     Icon(
       painterResource(MR.images.ic_keyboard_voice_filled),
       stringResource(MR.strings.icon_descr_record_voice_message),
-      tint = MaterialTheme.colors.primary,
+      tint = qryptanaMessagingTokens().accent,
       modifier = Modifier
         .size(34.dp)
         .padding(4.dp)
@@ -401,7 +412,7 @@ private fun RecordVoiceButton(interactionSource: MutableInteractionSource) {
 
 @Composable
 fun ComposeProgressIndicator() {
-  CircularProgressIndicator(Modifier.size(36.dp).padding(4.dp), color = MaterialTheme.colors.secondary, strokeWidth = 2.5.dp)
+  CircularProgressIndicator(Modifier.size(36.dp).padding(4.dp), color = qryptanaMessagingTokens().secondaryText, strokeWidth = 2.5.dp)
 }
 
 @Composable
@@ -412,7 +423,7 @@ private fun CancelLiveMessageButton(
     Icon(
       painterResource(MR.images.ic_close),
       stringResource(MR.strings.icon_descr_cancel_live_message),
-      tint = MaterialTheme.colors.primary,
+      tint = qryptanaMessagingTokens().accent,
       modifier = Modifier
         .size(36.dp)
         .padding(4.dp)
@@ -455,13 +466,13 @@ private fun SendMsgButton(
     Icon(
       icon,
       stringResource(MR.strings.icon_descr_send_message),
-      tint = Color.White,
+      tint = qryptanaMessagingTokens().onAccent,
       modifier = Modifier
         .size(sizeDp.value.dp)
         .padding(4.dp)
         .alpha(alpha.value)
         .clip(CircleShape)
-        .background(if (enabled) sendButtonColor else MaterialTheme.colors.secondary.copy(alpha = 0.75f))
+        .background(if (enabled) sendButtonColor else qryptanaMessagingTokens().disabledText.copy(alpha = 0.75f))
         .padding(3.dp)
     )
   }
@@ -484,7 +495,7 @@ private fun StartLiveMessageButton(onClick: () -> Unit) {
     Icon(
       BoltFilled,
       stringResource(MR.strings.icon_descr_send_message),
-      tint = MaterialTheme.colors.primary,
+      tint = qryptanaMessagingTokens().accent,
       modifier = Modifier
         .size(36.dp)
         .padding(4.dp)

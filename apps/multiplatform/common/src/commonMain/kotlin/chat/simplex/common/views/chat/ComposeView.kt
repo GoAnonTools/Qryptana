@@ -1347,9 +1347,7 @@ fun ComposeView(
   ) {
     val timedMessageAllowed = remember(chat.chatInfo) { chat.chatInfo.featureEnabled(ChatFeature.TimedMessages) }
     val sendButtonColor =
-      if (chat.chatInfo.incognito)
-        if (isInDarkTheme()) Indigo else Indigo.copy(alpha = 0.7F)
-      else MaterialTheme.colors.primary
+      qryptanaMessagingTokens().accent
     SendMsgView(
       composeState,
       showVoiceRecordIcon = true,

@@ -16,6 +16,7 @@ import chat.simplex.res.MR
 
 @Composable
 fun ComposeFileView(fileName: String, cancelFile: () -> Unit, cancelEnabled: Boolean) {
+  val messagingTokens = qryptanaMessagingTokens()
   val sentColor = MaterialTheme.appColors.sentMessage
   Row(
     Modifier
@@ -31,7 +32,7 @@ fun ComposeFileView(fileName: String, cancelFile: () -> Unit, cancelEnabled: Boo
       Modifier
         .padding(start = 4.dp, end = 2.dp)
         .size(36.dp),
-      tint = if (isInDarkTheme()) FileDark else FileLight
+      tint = messagingTokens.secondaryText
     )
     Text(fileName)
     Spacer(Modifier.weight(1f))
@@ -40,7 +41,7 @@ fun ComposeFileView(fileName: String, cancelFile: () -> Unit, cancelEnabled: Boo
         Icon(
           painterResource(MR.images.ic_close),
           contentDescription = stringResource(MR.strings.icon_descr_cancel_file_preview),
-          tint = MaterialTheme.colors.primary,
+          tint = messagingTokens.accent,
           modifier = Modifier.padding(10.dp)
         )
       }
