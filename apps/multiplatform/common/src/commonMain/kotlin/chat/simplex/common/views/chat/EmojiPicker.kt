@@ -1,10 +1,9 @@
 package chat.simplex.common.views.chat
 
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.grid.GridCells
-import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
-import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.*
 import androidx.compose.runtime.*
@@ -35,7 +34,7 @@ internal enum class EmojiCategory(val label: String) {
   Symbols("✅")
 }
 
-private val composerEmojis = listOf(
+internal val composerEmojis = listOf(
   ComposerEmoji("😀", "grinning smile happy", EmojiCategory.Smileys), ComposerEmoji("😃", "smile happy", EmojiCategory.Smileys),
   ComposerEmoji("😄", "smile happy", EmojiCategory.Smileys), ComposerEmoji("😁", "grin happy", EmojiCategory.Smileys),
   ComposerEmoji("😂", "joy laugh tears", EmojiCategory.Smileys), ComposerEmoji("🤣", "rofl laugh", EmojiCategory.Smileys),
@@ -88,6 +87,9 @@ internal fun insertComposerEmoji(message: ComposeMessage, emoji: String): Compos
   return ComposeMessage(text, androidx.compose.ui.text.TextRange(cursor))
 }
 
+internal fun composerEmojiRows(items: List<ComposerEmoji>, columns: Int = 8): List<List<ComposerEmoji>> =
+  items.chunked(columns.coerceAtLeast(1))
+
 @Composable
 fun ComposerEmojiButton(
   message: ComposeMessage,
@@ -96,6 +98,7 @@ fun ComposerEmojiButton(
 ) {
   val showPicker = remember { mutableStateOf(false) }
   val recent = remember { mutableStateListOf<String>() }
+  val currentMessage by rememberUpdatedState(message)
   Box {
     IconButton(
       onClick = { showPicker.value = !showPicker.value },
@@ -117,7 +120,7 @@ fun ComposerEmojiButton(
         onSelected = { emoji ->
           recent.remove(emoji)
           recent.add(0, emoji)
-          onMessageChange(insertComposerEmoji(message, emoji))
+          onMessageChange(insertComposerEmoji(currentMessage, emoji))
           showPicker.value = false
         }
       )
@@ -158,17 +161,26 @@ private fun ComposerEmojiPicker(
     if (query.isEmpty() && category == null && recent.isNotEmpty()) {
       Text("Recent", style = MaterialTheme.typography.caption, color = MaterialTheme.colors.secondary)
     }
-    LazyVerticalGrid(
-      columns = GridCells.Fixed(8),
-      modifier = Modifier.fillMaxWidth().heightIn(min = 80.dp, max = 300.dp),
-      contentPadding = PaddingValues(2.dp),
+    Column(
+      modifier = Modifier
+        .fillMaxWidth()
+        .heightIn(min = 80.dp, max = 300.dp)
+        .verticalScroll(rememberScrollState()),
+      verticalArrangement = Arrangement.spacedBy(2.dp),
     ) {
-      items(filtered, key = { it.value }) { item ->
-        Box(
-          Modifier.size(38.dp).clip(CircleShape).clickable { onSelected(item.value) },
-          contentAlignment = Alignment.Center,
+      composerEmojiRows(filtered).forEach { rowItems ->
+        Row(
+          modifier = Modifier.fillMaxWidth(),
+          horizontalArrangement = Arrangement.spacedBy(2.dp),
         ) {
-          Text(item.value, style = MaterialTheme.typography.h6)
+          rowItems.forEach { item ->
+            Box(
+              Modifier.size(38.dp).clip(CircleShape).clickable { onSelected(item.value) },
+              contentAlignment = Alignment.Center,
+            ) {
+              Text(item.value, style = MaterialTheme.typography.h6)
+            }
+          }
         }
       }
     }
