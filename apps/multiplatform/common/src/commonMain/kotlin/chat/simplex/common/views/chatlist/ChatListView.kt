@@ -96,47 +96,47 @@ fun ToggleChatListCard() {
     appPrefs.oneHandUICardShown.set(true)
     AlertManager.shared.showAlertMsg(
       title = generalGetString(MR.strings.one_hand_ui),
-      text = generalGetString(MR.strings.one_hand_ui_change_instruction),
+                                     text = generalGetString(MR.strings.one_hand_ui_change_instruction),
     )
   }
   val activeBg = messagingTokens.surface.mixWith(messagingTokens.primaryText, 0.97f)
-    .copy(alpha = appPrefs.inAppBarsAlpha.get())
+  .copy(alpha = appPrefs.inAppBarsAlpha.get())
   val selectedBg = messagingTokens.selectedSurface
   Row(
     Modifier
-      .padding(horizontal = 16.dp, vertical = 12.dp)
-      .fillMaxWidth()
-      .height(IntrinsicSize.Min)
-      .clip(RoundedCornerShape(percent = 50)),
-    horizontalArrangement = Arrangement.spacedBy(2.dp)
+    .padding(horizontal = 16.dp, vertical = 12.dp)
+    .fillMaxWidth()
+    .height(IntrinsicSize.Min)
+    .clip(RoundedCornerShape(percent = 50)),
+      horizontalArrangement = Arrangement.spacedBy(2.dp)
   ) {
     ToolbarSegment(
       icon = MR.images.ic_mobile_3,
       text = stringResource(MR.strings.one_hand_ui_bottom_bar),
-      isSelected = oneHandUI.value,
-      selectedBg = selectedBg,
-      activeBg = activeBg,
-      modifier = Modifier.weight(1f)
+                   isSelected = oneHandUI.value,
+                   selectedBg = selectedBg,
+                   activeBg = activeBg,
+                   modifier = Modifier.weight(1f)
     ) { appPrefs.oneHandUI.set(true) }
     Box(Modifier.weight(1f).fillMaxHeight()) {
       ToolbarSegment(
         icon = MR.images.ic_mobile_4,
         text = stringResource(MR.strings.one_hand_ui_top_bar),
-        isSelected = !oneHandUI.value,
-        selectedBg = selectedBg,
-        activeBg = activeBg,
-        modifier = Modifier.fillMaxSize()
+                     isSelected = !oneHandUI.value,
+                     selectedBg = selectedBg,
+                     activeBg = activeBg,
+                     modifier = Modifier.fillMaxSize()
       ) { appPrefs.oneHandUI.set(false) }
       Icon(
         painterResource(MR.images.ic_close), null,
-        Modifier
-          .align(Alignment.CenterEnd)
-          .padding(end = 4.dp)
-          .clip(CircleShape)
-          .clickable(onClick = onClose)
-          .padding(8.dp)
-          .size(16.dp),
-        tint = MaterialTheme.colors.secondary
+           Modifier
+           .align(Alignment.CenterEnd)
+           .padding(end = 4.dp)
+           .clip(CircleShape)
+           .clickable(onClick = onClose)
+           .padding(8.dp)
+           .size(16.dp),
+           tint = MaterialTheme.colors.secondary
       )
     }
   }
@@ -154,21 +154,21 @@ private fun ToolbarSegment(
 ) {
   Row(
     modifier
-      .fillMaxHeight()
-      .background(if (isSelected) selectedBg else activeBg)
-      .then(if (!isSelected) Modifier.clickable(onClick = onClick) else Modifier)
-      .padding(start = 16.dp, top = 8.dp, bottom = 8.dp),
-    verticalAlignment = Alignment.CenterVertically
+    .fillMaxHeight()
+    .background(if (isSelected) selectedBg else activeBg)
+    .then(if (!isSelected) Modifier.clickable(onClick = onClick) else Modifier)
+    .padding(start = 16.dp, top = 8.dp, bottom = 8.dp),
+      verticalAlignment = Alignment.CenterVertically
   ) {
     Icon(
       painterResource(icon), null, Modifier.size(20.dp),
-      tint = if (isSelected) MaterialTheme.colors.secondary else MaterialTheme.colors.primary
+         tint = if (isSelected) MaterialTheme.colors.secondary else MaterialTheme.colors.primary
     )
     Spacer(Modifier.width(8.dp))
     Text(
       text,
       color = if (isSelected) MaterialTheme.colors.secondary else MaterialTheme.colors.onBackground,
-      style = MaterialTheme.typography.body1
+         style = MaterialTheme.typography.body1
     )
   }
 }
@@ -198,7 +198,7 @@ fun ChatListView(chatModel: ChatModel, userPickerState: MutableStateFlow<Animate
   }
   val searchText = rememberSaveable(stateSaver = TextFieldValue.Saver) { mutableStateOf(TextFieldValue("")) }
   val listState = rememberLazyListState(lazyListState.first, lazyListState.second)
-  Box(Modifier.fillMaxSize()) {
+  Box(Modifier.fillMaxSize().background(if (appPlatform.isDesktop) QryptanaDarkBackground else Color.Transparent)) {
     if (oneHandUI.value) {
       ChatListWithLoadingScreen(searchText, listState)
       Column(Modifier.align(Alignment.BottomCenter)) {
@@ -253,8 +253,8 @@ fun ChatListView(chatModel: ChatModel, userPickerState: MutableStateFlow<Animate
 @Composable
 private fun ChatListCard(
   close: () -> Unit,
-  onCardClick: (() -> Unit)? = null,
-  content: @Composable BoxScope.() -> Unit
+                         onCardClick: (() -> Unit)? = null,
+                         content: @Composable BoxScope.() -> Unit
 ) {
   val messagingTokens = qryptanaMessagingTokens()
   Column(
@@ -262,14 +262,14 @@ private fun ChatListCard(
   ) {
     Box(
       modifier = Modifier
-        .background(messagingTokens.elevatedSurface)
-        .clickable {
-          onCardClick?.invoke()
-        }
+      .background(messagingTokens.elevatedSurface)
+      .clickable {
+        onCardClick?.invoke()
+      }
     ) {
       Box(
         modifier = Modifier.fillMaxWidth().matchParentSize().padding(5.dp),
-        contentAlignment = Alignment.TopEnd
+          contentAlignment = Alignment.TopEnd
       ) {
         IconButton(
           onClick = {
@@ -299,7 +299,7 @@ private fun BannerGradientBox(isDark: Boolean, content: @Composable () -> Unit) 
       Brush.linearGradient(
         colorStops = stops,
         start = Offset(gp.startX * size.width, gp.startY * size.height),
-        end = Offset(gp.endX * size.width, gp.endY * size.height)
+                           end = Offset(gp.endX * size.width, gp.endY * size.height)
       )
     } else {
       Brush.linearGradient(colorStops = stops)
@@ -307,7 +307,7 @@ private fun BannerGradientBox(isDark: Boolean, content: @Composable () -> Unit) 
   }
   Box(
     Modifier.fillMaxWidth().aspectRatio(BANNER_IMAGE_RATIO).background(brush).onSizeChanged { size = it },
-    contentAlignment = Alignment.Center
+      contentAlignment = Alignment.Center
   ) { content() }
 }
 
@@ -316,31 +316,31 @@ private fun ConnectBannerCard() {
   val messagingTokens = qryptanaMessagingTokens()
   val isDark = isInDarkTheme()
   val labelBg = messagingTokens.surface.mixWith(messagingTokens.primaryText, 0.97f)
-    .copy(alpha = appPrefs.inAppBarsAlpha.get())
+  .copy(alpha = appPrefs.inAppBarsAlpha.get())
   val buttonSize = 30.dp * fontSizeSqrtMultiplier
   val gap = 3.dp * fontSizeSqrtMultiplier
 
   Column(horizontalAlignment = Alignment.End) {
     IconButton(
       onClick = { appPrefs.addressCreationCardShown.set(true) },
-      modifier = Modifier.size(buttonSize)
+               modifier = Modifier.size(buttonSize)
     ) {
       Icon(
         painterResource(MR.images.ic_close),
-        contentDescription = stringResource(MR.strings.icon_descr_close_button),
-        modifier = Modifier
-          .size(buttonSize)
-          .background(messagingTokens.selectedSurface, CircleShape)
-          .padding(buttonSize * 0.15f),
-        tint = MaterialTheme.colors.secondary
+           contentDescription = stringResource(MR.strings.icon_descr_close_button),
+           modifier = Modifier
+           .size(buttonSize)
+           .background(messagingTokens.selectedSurface, CircleShape)
+           .padding(buttonSize * 0.15f),
+           tint = MaterialTheme.colors.secondary
       )
     }
     Spacer(Modifier.height(gap))
     Row(
       Modifier
-        .fillMaxWidth()
-        .height(IntrinsicSize.Min)
-        .clip(RoundedCornerShape(messagingTokens.messageCornerRadius))
+      .fillMaxWidth()
+      .height(IntrinsicSize.Min)
+      .clip(RoundedCornerShape(messagingTokens.messageCornerRadius))
     ) {
       Column(
         Modifier.weight(1f).clickable {
@@ -352,9 +352,9 @@ private fun ConnectBannerCard() {
         if (BuildConfigCommon.SIMPLEX_ASSETS) {
           Image(
             painterResource(if (isDark) MR.images.banner_create_link_light else MR.images.banner_create_link),
-            contentDescription = null,
-            contentScale = ContentScale.FillWidth,
-            modifier = Modifier.fillMaxWidth().aspectRatio(BANNER_IMAGE_RATIO)
+                contentDescription = null,
+                contentScale = ContentScale.FillWidth,
+                modifier = Modifier.fillMaxWidth().aspectRatio(BANNER_IMAGE_RATIO)
           )
         } else {
           BannerGradientBox(isDark) {
@@ -383,9 +383,9 @@ private fun ConnectBannerCard() {
         if (BuildConfigCommon.SIMPLEX_ASSETS) {
           Image(
             painterResource(if (isDark) MR.images.banner_paste_link_light else MR.images.banner_paste_link),
-            contentDescription = null,
-            contentScale = ContentScale.FillWidth,
-            modifier = Modifier.fillMaxWidth().aspectRatio(BANNER_IMAGE_RATIO)
+                contentDescription = null,
+                contentScale = ContentScale.FillWidth,
+                modifier = Modifier.fillMaxWidth().aspectRatio(BANNER_IMAGE_RATIO)
           )
         } else {
           BannerGradientBox(isDark) {
@@ -441,6 +441,7 @@ private fun AndroidOnboardingCards() {
 @Composable
 private fun BoxScope.NewChatSheetFloatingButton(oneHandUI: State<Boolean>, stopped: Boolean) {
   val messagingTokens = qryptanaMessagingTokens()
+  val qryptanaDesktop = appPlatform.isDesktop
   FloatingActionButton(
     onClick = {
       if (!stopped) {
@@ -448,18 +449,29 @@ private fun BoxScope.NewChatSheetFloatingButton(oneHandUI: State<Boolean>, stopp
       }
     },
     Modifier
-      .navigationBarsPadding()
-      .padding(end = DEFAULT_PADDING, bottom = DEFAULT_PADDING)
-      .align(Alignment.BottomEnd)
-      .size(AppBarHeight * fontSizeSqrtMultiplier),
+    .navigationBarsPadding()
+    .padding(end = DEFAULT_PADDING, bottom = DEFAULT_PADDING)
+    .align(Alignment.BottomEnd)
+    .size(AppBarHeight * fontSizeSqrtMultiplier)
+    .then(
+      if (qryptanaDesktop && !stopped) {
+        Modifier.border(1.dp, Brush.verticalGradient(listOf(QryptanaMetal.copperLight.copy(alpha = 0.85f), QryptanaMetal.copperMid.copy(alpha = 0.32f), QryptanaMetal.copperShadow.copy(alpha = 0.22f))), CircleShape)
+      } else if (qryptanaDesktop) {
+        Modifier.border(1.dp, QryptanaMetal.titaniumBorder.copy(alpha = 0.6f), CircleShape)
+      } else Modifier
+    ),
     elevation = FloatingActionButtonDefaults.elevation(
       defaultElevation = 0.dp,
       pressedElevation = 0.dp,
       hoveredElevation = 0.dp,
       focusedElevation = 0.dp,
     ),
-    backgroundColor = if (!stopped) messagingTokens.accent else messagingTokens.secondaryText,
-    contentColor = messagingTokens.onAccent
+    backgroundColor = if (qryptanaDesktop) {
+      if (!stopped) QryptanaMetal.titaniumMid else QryptanaMetal.titaniumLow
+    } else if (!stopped) messagingTokens.accent else messagingTokens.secondaryText,
+      contentColor = if (qryptanaDesktop) {
+        if (!stopped) QryptanaMetal.copperLight else QryptanaMetal.textQuiet
+      } else messagingTokens.onAccent
   ) {
     Icon(painterResource(MR.images.ic_edit_filled), stringResource(MR.strings.add_contact_or_create_group), Modifier.size(22.dp * fontSizeSqrtMultiplier))
   }
@@ -471,12 +483,12 @@ private fun ConnectButton(text: String, onClick: () -> Unit) {
   Button(
     onClick,
     shape = RoundedCornerShape(21.dp),
-    colors = ButtonDefaults.textButtonColors(
-      backgroundColor = messagingTokens.accent
-    ),
-    elevation = null,
-    contentPadding = PaddingValues(horizontal = DEFAULT_PADDING, vertical = DEFAULT_PADDING_HALF),
-    modifier = Modifier.height(42.dp)
+         colors = ButtonDefaults.textButtonColors(
+           backgroundColor = messagingTokens.accent
+         ),
+         elevation = null,
+         contentPadding = PaddingValues(horizontal = DEFAULT_PADDING, vertical = DEFAULT_PADDING_HALF),
+         modifier = Modifier.height(42.dp)
   ) {
     Text(text, color = messagingTokens.onAccent)
   }
@@ -512,13 +524,13 @@ private fun ChatListToolbar(userPickerState: MutableStateFlow<AnimatedViewState>
       IconButton(onClick = {
         AlertManager.shared.showAlertMsg(
           generalGetString(MR.strings.chat_is_stopped_indication),
-          generalGetString(MR.strings.you_can_start_chat_via_setting_or_by_restarting_the_app)
+                                         generalGetString(MR.strings.you_can_start_chat_via_setting_or_by_restarting_the_app)
         )
       }) {
         Icon(
           painterResource(MR.images.ic_report_filled),
-          generalGetString(MR.strings.chat_is_stopped_indication),
-          tint = Color.Red,
+             generalGetString(MR.strings.chat_is_stopped_indication),
+             tint = Color.Red,
         )
       }
     }
@@ -556,14 +568,17 @@ private fun ChatListToolbar(userPickerState: MutableStateFlow<AnimatedViewState>
           Box(
             contentAlignment = Alignment.Center,
             modifier = Modifier
-              .background(MaterialTheme.colors.primary, shape = CircleShape)
-              .size(33.dp * fontSizeSqrtMultiplier)
+            .background(if (appPlatform.isDesktop) QryptanaMetal.titaniumMid else MaterialTheme.colors.primary, shape = CircleShape)
+            .then(
+              if (appPlatform.isDesktop) Modifier.border(1.dp, Brush.verticalGradient(listOf(QryptanaMetal.copperLight.copy(alpha = 0.85f), QryptanaMetal.copperMid.copy(alpha = 0.32f), QryptanaMetal.copperShadow.copy(alpha = 0.22f))), CircleShape) else Modifier
+            )
+            .size(33.dp * fontSizeSqrtMultiplier)
           ) {
             Icon(
               painterResource(MR.images.ic_edit_filled),
-              stringResource(MR.strings.add_contact_or_create_group),
-              Modifier.size(sp16),
-              tint = Color.White
+                 stringResource(MR.strings.add_contact_or_create_group),
+                 Modifier.size(sp16),
+                 tint = if (appPlatform.isDesktop) QryptanaMetal.copperLight else Color.White
             )
           }
         }
@@ -585,21 +600,32 @@ private fun ChatListToolbar(userPickerState: MutableStateFlow<AnimatedViewState>
       } else {
         val users by remember { derivedStateOf { chatModel.users.filter { u -> u.user.activeUser || !u.user.hidden } } }
         val allRead = users
-          .filter { u -> !u.user.activeUser && !u.user.hidden }
-          .all { u -> u.unreadCount == 0 }
+        .filter { u -> !u.user.activeUser && !u.user.hidden }
+        .all { u -> u.unreadCount == 0 }
         UserProfileButton(chatModel.currentUser.value?.profile?.image, allRead) {
-            userPickerState.value = AnimatedViewState.VISIBLE
+          userPickerState.value = AnimatedViewState.VISIBLE
         }
       }
     },
     title = {
       if (!shouldShowOnboarding()) {
         Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(DEFAULT_SPACE_AFTER_ICON)) {
-          Text(
-            stringResource(MR.strings.your_chats),
-            color = MaterialTheme.colors.onBackground,
-            fontWeight = FontWeight.SemiBold,
-          )
+          if (appPlatform.isDesktop) {
+            Text(
+              stringResource(MR.strings.your_chats),
+                 color = QryptanaMetal.textHero,
+                 fontFamily = rememberQryptanaSerif(),
+                 fontWeight = FontWeight.Normal,
+                 fontSize = 24.sp,
+                 letterSpacing = 0.3.sp,
+            )
+          } else {
+            Text(
+              stringResource(MR.strings.your_chats),
+                 color = MaterialTheme.colors.onBackground,
+                 fontWeight = FontWeight.SemiBold,
+            )
+          }
           SubscriptionStatusIndicator(
             click = {
               ModalManager.start.closeModals()
@@ -623,9 +649,11 @@ private fun ChatListToolbar(userPickerState: MutableStateFlow<AnimatedViewState>
       }
     },
     onTitleClick = if (canScrollToZero.value) { { scrollToBottom(scope, listState) } } else null,
-    onTop = !oneHandUI.value,
-    onSearchValueChanged = {},
-    buttons = { barButtons.forEach { it() } }
+                onTop = !oneHandUI.value,
+                backgroundColor = if (appPlatform.isDesktop) QryptanaDarkBackground else Color.Unspecified,
+                contentColor = if (appPlatform.isDesktop) QryptanaDarkText else Color.Unspecified,
+                onSearchValueChanged = {},
+                buttons = { barButtons.forEach { it() } }
   )
 }
 
@@ -700,11 +728,11 @@ private fun BoxScope.unreadBadge(text: String? = "") {
     color = MaterialTheme.colors.onPrimary,
     fontSize = 6.sp,
     modifier = Modifier
-      .background(MaterialTheme.colors.primary, shape = CircleShape)
-      .badgeLayout()
-      .padding(horizontal = 3.dp)
-      .padding(vertical = 1.dp)
-      .align(Alignment.TopEnd)
+    .background(MaterialTheme.colors.primary, shape = CircleShape)
+    .badgeLayout()
+    .padding(horizontal = 3.dp)
+    .padding(vertical = 1.dp)
+    .align(Alignment.TopEnd)
   )
 }
 
@@ -722,14 +750,14 @@ private fun ToggleFilterEnabledButton() {
     val sp16 = with(LocalDensity.current) { 16.sp.toDp() }
     Icon(
       painterResource(MR.images.ic_filter_list),
-      null,
-      tint = if (showUnread) MaterialTheme.colors.background else MaterialTheme.colors.secondary,
-      modifier = Modifier
-        .padding(3.dp)
-        .background(color = if (showUnread) MaterialTheme.colors.primary else Color.Unspecified, shape = RoundedCornerShape(50))
-        .border(width = 1.dp, color = if (showUnread) MaterialTheme.colors.primary else Color.Unspecified, shape = RoundedCornerShape(50))
-        .padding(3.dp)
-        .size(sp16)
+         null,
+         tint = if (showUnread) MaterialTheme.colors.background else MaterialTheme.colors.secondary,
+         modifier = Modifier
+         .padding(3.dp)
+         .background(color = if (showUnread) MaterialTheme.colors.primary else Color.Unspecified, shape = RoundedCornerShape(50))
+         .border(width = 1.dp, color = if (showUnread) MaterialTheme.colors.primary else Color.Unspecified, shape = RoundedCornerShape(50))
+         .padding(3.dp)
+         .size(sp16)
     )
   }
 }
@@ -757,17 +785,17 @@ private fun ChatListSearchBar(listState: LazyListState, searchText: MutableState
       var focused by remember { mutableStateOf(false) }
       Icon(
         painterResource(MR.images.ic_search),
-        contentDescription = null,
-        Modifier.padding(start = DEFAULT_PADDING, end = DEFAULT_PADDING_HALF).size(22.dp * fontSizeSqrtMultiplier),
-        tint = MaterialTheme.colors.secondary
+           contentDescription = null,
+           Modifier.padding(start = DEFAULT_PADDING, end = DEFAULT_PADDING_HALF).size(22.dp * fontSizeSqrtMultiplier),
+           tint = MaterialTheme.colors.secondary
       )
       SearchTextField(
         Modifier.weight(1f).onFocusChanged { focused = it.hasFocus }.focusRequester(focusRequester),
-        placeholder = stringResource(MR.strings.search_or_paste_simplex_link),
-        alwaysVisible = true,
-        searchText = searchText,
-        enabled = !remember { searchShowingSimplexLink }.value,
-        trailingContent = null,
+                      placeholder = stringResource(MR.strings.search_or_paste_simplex_link),
+                      alwaysVisible = true,
+                      searchText = searchText,
+                      enabled = !remember { searchShowingSimplexLink }.value,
+                      trailingContent = null,
       ) {
         searchText.value = searchText.value.copy(it)
       }
@@ -795,35 +823,35 @@ private fun ChatListSearchBar(listState: LazyListState, searchText: MutableState
       val view = LocalMultiplatformView()
       LaunchedEffect(Unit) {
         snapshotFlow { searchText.value.text }
-          .distinctUntilChanged()
-          .collect {
-            val link = strHasSingleSimplexLink(it.trim())
-            if (link != null) {
-              // if SimpleX link is pasted, show connection dialogue
-              hideKeyboard(view)
-              if (link.format is Format.SimplexLink) {
-                val linkText = link.format.simplexLinkText
-                searchText.value = searchText.value.copy(linkText, selection = TextRange.Zero)
-              }
-              searchShowingSimplexLink.value = true
-              searchChatFilteredBySimplexLink.value = null
-              connect(link.text, searchChatFilteredBySimplexLink) { searchText.value = TextFieldValue() }
-            } else if (!searchShowingSimplexLink.value || it.isEmpty()) {
-              if (it.isNotEmpty()) {
-                // if some other text is pasted, enter search mode
-                focusRequester.requestFocus()
-              } else {
-                if (!chatModel.appOpenUrlConnecting.value) {
-                  connectProgressManager.cancelConnectProgress()
-                }
-                if (listState.layoutInfo.totalItemsCount > 0) {
-                  listState.scrollToItem(0)
-                }
-              }
-              searchShowingSimplexLink.value = false
-              searchChatFilteredBySimplexLink.value = null
+        .distinctUntilChanged()
+        .collect {
+          val link = strHasSingleSimplexLink(it.trim())
+          if (link != null) {
+            // if SimpleX link is pasted, show connection dialogue
+            hideKeyboard(view)
+            if (link.format is Format.SimplexLink) {
+              val linkText = link.format.simplexLinkText
+              searchText.value = searchText.value.copy(linkText, selection = TextRange.Zero)
             }
+            searchShowingSimplexLink.value = true
+            searchChatFilteredBySimplexLink.value = null
+            connect(link.text, searchChatFilteredBySimplexLink) { searchText.value = TextFieldValue() }
+          } else if (!searchShowingSimplexLink.value || it.isEmpty()) {
+            if (it.isNotEmpty()) {
+              // if some other text is pasted, enter search mode
+              focusRequester.requestFocus()
+            } else {
+              if (!chatModel.appOpenUrlConnecting.value) {
+                connectProgressManager.cancelConnectProgress()
+              }
+              if (listState.layoutInfo.totalItemsCount > 0) {
+                listState.scrollToItem(0)
+              }
+            }
+            searchShowingSimplexLink.value = false
+            searchChatFilteredBySimplexLink.value = null
           }
+        }
       }
     }
     val oneHandUI = remember { appPrefs.oneHandUI.state }
@@ -835,11 +863,11 @@ private fun connect(link: String, searchChatFilteredBySimplexLink: MutableState<
   withBGApi {
     planAndConnect(
       chatModel.remoteHostId(),
-      link,
-      filterKnownContact = { searchChatFilteredBySimplexLink.value = it.id },
-      filterKnownGroup = { searchChatFilteredBySimplexLink.value = it.id },
-      close = null,
-      cleanup = cleanup,
+                   link,
+                   filterKnownContact = { searchChatFilteredBySimplexLink.value = it.id },
+                   filterKnownGroup = { searchChatFilteredBySimplexLink.value = it.id },
+                   close = null,
+                   cleanup = cleanup,
     )
   }
 }
@@ -931,30 +959,30 @@ private fun BoxScope.ChatList(searchText: MutableState<TextFieldValue>, listStat
   val blankSpaceSize = if (oneHandUI.value) WindowInsets.navigationBars.asPaddingValues().calculateBottomPadding() + AppBarHeight * fontSizeSqrtMultiplier else topPaddingToContent
   LazyColumnWithScrollBar(
     if (!oneHandUI.value) Modifier.imePadding() else Modifier,
-    listState,
-    reverseLayout = oneHandUI.value
+      listState,
+      reverseLayout = oneHandUI.value
   ) {
     item { Spacer(Modifier.height(blankSpaceSize)) }
     stickyHeader {
       Column(
         Modifier
-          .zIndex(1f)
-          .offset {
-            val offsetMultiplier = if (oneHandUI.value) 1 else -1
-            val y = if (searchText.value.text.isNotEmpty() || (appPlatform.isAndroid && keyboardState == KeyboardState.Opened) || scrollDirection == ScrollDirection.Up) {
-              if (listState.firstVisibleItemIndex == 0) -offsetMultiplier * listState.firstVisibleItemScrollOffset
+        .zIndex(1f)
+        .offset {
+          val offsetMultiplier = if (oneHandUI.value) 1 else -1
+          val y = if (searchText.value.text.isNotEmpty() || (appPlatform.isAndroid && keyboardState == KeyboardState.Opened) || scrollDirection == ScrollDirection.Up) {
+            if (listState.firstVisibleItemIndex == 0) -offsetMultiplier * listState.firstVisibleItemScrollOffset
               else -offsetMultiplier * blankSpaceSize.roundToPx()
-            } else {
-              when (listState.firstVisibleItemIndex) {
-                0 -> 0
-                1 -> offsetMultiplier * listState.firstVisibleItemScrollOffset
-                else -> offsetMultiplier * 1000
-              }
+          } else {
+            when (listState.firstVisibleItemIndex) {
+              0 -> 0
+              1 -> offsetMultiplier * listState.firstVisibleItemScrollOffset
+              else -> offsetMultiplier * 1000
             }
-            IntOffset(0, y)
           }
-          .background(messagingTokens.background)
-        ) {
+          IntOffset(0, y)
+        }
+        .background(messagingTokens.background)
+      ) {
         if (oneHandUI.value) {
           Column(Modifier.consumeWindowInsets(WindowInsets.navigationBars).consumeWindowInsets(PaddingValues(bottom = AppBarHeight))) {
             Divider(color = messagingTokens.border)
@@ -1022,18 +1050,18 @@ private fun NoChatsView(searchText: MutableState<TextFieldValue>) {
       is ActiveFilter.PresetTag -> Text(generalGetString(MR.strings.no_filtered_chats), color = messagingTokens.secondaryText, textAlign = TextAlign.Center) // this should not happen
       is ActiveFilter.UserTag -> Text(String.format(generalGetString(MR.strings.no_chats_in_list), activeFilter.tag.chatTagText), color = messagingTokens.secondaryText, textAlign = TextAlign.Center)
       is ActiveFilter.Unread -> {
-          Row(
-            Modifier.clip(shape = CircleShape).clickable { chatModel.activeChatTagFilter.value = null }.padding(DEFAULT_PADDING_HALF),
+        Row(
+          Modifier.clip(shape = CircleShape).clickable { chatModel.activeChatTagFilter.value = null }.padding(DEFAULT_PADDING_HALF),
             horizontalArrangement = Arrangement.spacedBy(4.dp),
             verticalAlignment = Alignment.CenterVertically
-          ) {
-            Icon(
-              painterResource(MR.images.ic_filter_list),
-              null,
-              tint = messagingTokens.secondaryText
-            )
-            Text(generalGetString(MR.strings.no_unread_chats), color = messagingTokens.secondaryText, textAlign = TextAlign.Center)
-          }
+        ) {
+          Icon(
+            painterResource(MR.images.ic_filter_list),
+               null,
+               tint = messagingTokens.secondaryText
+          )
+          Text(generalGetString(MR.strings.no_unread_chats), color = messagingTokens.secondaryText, textAlign = TextAlign.Center)
+        }
       }
       null -> {
         Text(generalGetString(MR.strings.no_chats), color = messagingTokens.secondaryText, textAlign = TextAlign.Center)
@@ -1095,34 +1123,34 @@ private fun TagsView(searchText: MutableState<TextFieldValue>) {
       Box {
         Row(
           rowSizeModifier
-            .clip(shape = CircleShape)
-            .background(if (current) messagingTokens.selectedSurface else Color.Transparent)
-            .combinedClickable(
-              onClick = {
-                if (chatModel.activeChatTagFilter.value == ActiveFilter.UserTag(tag)) {
-                  chatModel.activeChatTagFilter.value = null
-                } else {
-                  chatModel.activeChatTagFilter.value = ActiveFilter.UserTag(tag)
-                }
-              },
-              onLongClick = { showMenu.value = true },
-              interactionSource = interactionSource,
-              indication = LocalIndication.current,
-              enabled = !saving.value
-            )
-            .onRightClick { showMenu.value = true }
-            .padding(4.dp),
-          horizontalArrangement = Arrangement.Center,
-          verticalAlignment = Alignment.CenterVertically
+          .clip(shape = CircleShape)
+          .background(if (current) messagingTokens.selectedSurface else Color.Transparent)
+          .combinedClickable(
+            onClick = {
+              if (chatModel.activeChatTagFilter.value == ActiveFilter.UserTag(tag)) {
+                chatModel.activeChatTagFilter.value = null
+              } else {
+                chatModel.activeChatTagFilter.value = ActiveFilter.UserTag(tag)
+              }
+            },
+            onLongClick = { showMenu.value = true },
+            interactionSource = interactionSource,
+            indication = LocalIndication.current,
+            enabled = !saving.value
+          )
+          .onRightClick { showMenu.value = true }
+          .padding(4.dp),
+            horizontalArrangement = Arrangement.Center,
+            verticalAlignment = Alignment.CenterVertically
         ) {
           if (tag.chatTagEmoji != null) {
             ReactionIcon(tag.chatTagEmoji, fontSize = 14.sp)
           } else {
             Icon(
               painterResource(if (current) MR.images.ic_label_filled else MR.images.ic_label),
-              null,
-              Modifier.size(18.sp.toDp()),
-              tint = if (current) MaterialTheme.colors.primary else MaterialTheme.colors.onBackground
+                 null,
+                 Modifier.size(18.sp.toDp()),
+                 tint = if (current) MaterialTheme.colors.primary else MaterialTheme.colors.onBackground
             )
           }
           Spacer(Modifier.width(4.dp))
@@ -1152,10 +1180,10 @@ private fun TagsView(searchText: MutableState<TextFieldValue>) {
             Text(
               text = visibleText,
               fontWeight = if (current) FontWeight.Medium else FontWeight.Normal,
-              fontSize = 15.sp,
-              color = if (current) MaterialTheme.colors.primary else MaterialTheme.colors.secondary,
-              maxLines = 1,
-              overflow = TextOverflow.Ellipsis
+                 fontSize = 15.sp,
+                 color = if (current) MaterialTheme.colors.primary else MaterialTheme.colors.secondary,
+                 maxLines = 1,
+                 overflow = TextOverflow.Ellipsis
             )
           }
         }
@@ -1163,11 +1191,11 @@ private fun TagsView(searchText: MutableState<TextFieldValue>) {
       }
     }
     val plusClickModifier = Modifier
-      .clickable {
-        ModalManager.start.showModalCloseable { close ->
-          TagListEditor(rhId = rhId, close = close)
-        }
+    .clickable {
+      ModalManager.start.showModalCloseable { close ->
+        TagListEditor(rhId = rhId, close = close)
       }
+    }
 
     if (userTags.value.isEmpty()) {
       Row(rowSizeModifier.clip(shape = CircleShape).then(plusClickModifier).padding(start = 2.dp, top = 4.dp, end = 6.dp, bottom = 4.dp), verticalAlignment = Alignment.CenterVertically) {
@@ -1200,39 +1228,39 @@ private fun ExpandedTagFilterView(tag: PresetTagKind) {
 
   Row(
     modifier = Modifier
-      .sizeIn(minHeight = TAG_MIN_HEIGHT * fontSizeSqrtMultiplier)
-      .clip(shape = CircleShape)
-      .clickable {
-        if (activeFilter.value == ActiveFilter.PresetTag(tag)) {
-          chatModel.activeChatTagFilter.value = null
-        } else {
-          chatModel.activeChatTagFilter.value = ActiveFilter.PresetTag(tag)
-        }
+    .sizeIn(minHeight = TAG_MIN_HEIGHT * fontSizeSqrtMultiplier)
+    .clip(shape = CircleShape)
+    .clickable {
+      if (activeFilter.value == ActiveFilter.PresetTag(tag)) {
+        chatModel.activeChatTagFilter.value = null
+      } else {
+        chatModel.activeChatTagFilter.value = ActiveFilter.PresetTag(tag)
       }
-      .padding(horizontal = 5.dp, vertical = 4.dp)
+    }
+    .padding(horizontal = 5.dp, vertical = 4.dp)
     ,
     verticalAlignment = Alignment.CenterVertically,
     horizontalArrangement = Arrangement.Center
   ) {
     Icon(
       painterResource(menuIcon ?: icon),
-      stringResource(text),
-      Modifier.size(18.sp.toDp()),
-      tint = color
+         stringResource(text),
+         Modifier.size(18.sp.toDp()),
+         tint = color
     )
     Spacer(Modifier.width(4.dp))
     Box {
       Text(
         stringResource(text),
-        color = if (active) MaterialTheme.colors.primary else MaterialTheme.colors.secondary,
-        fontWeight = if (active) FontWeight.Medium else FontWeight.Normal,
-        fontSize = 15.sp
+           color = if (active) MaterialTheme.colors.primary else MaterialTheme.colors.secondary,
+           fontWeight = if (active) FontWeight.Medium else FontWeight.Normal,
+           fontSize = 15.sp
       )
       Text(
         stringResource(text),
-        color = Color.Transparent,
-        fontWeight = FontWeight.Medium,
-        fontSize = 15.sp
+           color = Color.Transparent,
+           fontWeight = FontWeight.Medium,
+           fontSize = 15.sp
       )
     }
   }
@@ -1251,24 +1279,24 @@ private fun CollapsedTagsFilterView(searchText: MutableState<TextFieldValue>) {
   }
 
   Box(Modifier
-    .clip(shape = CircleShape)
-    .size(TAG_MIN_HEIGHT * fontSizeSqrtMultiplier)
-    .clickable { showMenu.value = true },
-    contentAlignment = Alignment.Center
+  .clip(shape = CircleShape)
+  .size(TAG_MIN_HEIGHT * fontSizeSqrtMultiplier)
+  .clickable { showMenu.value = true },
+  contentAlignment = Alignment.Center
   ) {
     if (selectedPresetTag != null) {
       val (icon, menuIcon, text) = presetTagLabel(selectedPresetTag, true)
       Icon(
         painterResource(menuIcon ?: icon),
-        stringResource(text),
-        Modifier.size(18.sp.toDp()),
-        tint = MaterialTheme.colors.primary
+           stringResource(text),
+           Modifier.size(18.sp.toDp()),
+           tint = MaterialTheme.colors.primary
       )
     } else {
       Icon(
         painterResource(MR.images.ic_menu),
-        stringResource(MR.strings.chat_list_all),
-        tint = MaterialTheme.colors.secondary
+           stringResource(MR.strings.chat_list_all),
+           tint = MaterialTheme.colors.secondary
       )
     }
 
@@ -1278,15 +1306,15 @@ private fun CollapsedTagsFilterView(searchText: MutableState<TextFieldValue>) {
       if (activeFilter.value != null || searchText.value.text.isNotBlank()) {
         ItemAction(
           stringResource(MR.strings.chat_list_all),
-          painterResource(MR.images.ic_menu),
-          onClick = {
-            onCloseMenuAction.value = {
-              searchText.value = TextFieldValue()
-              chatModel.activeChatTagFilter.value = null
-              onCloseMenuAction.value = {}
-            }
-            showMenu.value = false
-          }
+                   painterResource(MR.images.ic_menu),
+                   onClick = {
+                     onCloseMenuAction.value = {
+                       searchText.value = TextFieldValue()
+                       chatModel.activeChatTagFilter.value = null
+                       onCloseMenuAction.value = {}
+                     }
+                     showMenu.value = false
+                   }
         )
       }
       PresetTagKind.entries.forEach { tag ->
@@ -1308,15 +1336,15 @@ fun ItemPresetFilterAction(
   val (icon, _, text) = presetTagLabel(presetTag, active)
   ItemAction(
     stringResource(text),
-    painterResource(icon),
-    color = if (active) MaterialTheme.colors.primary else Color.Unspecified,
-    onClick = {
-      onCloseMenuAction.value = {
-        chatModel.activeChatTagFilter.value = ActiveFilter.PresetTag(presetTag)
-        onCloseMenuAction.value = {}
-      }
-      showMenu.value = false
-    }
+             painterResource(icon),
+             color = if (active) MaterialTheme.colors.primary else Color.Unspecified,
+             onClick = {
+               onCloseMenuAction.value = {
+                 chatModel.activeChatTagFilter.value = ActiveFilter.PresetTag(presetTag)
+                 onCloseMenuAction.value = {}
+               }
+               showMenu.value = false
+             }
   )
 }
 
@@ -1334,9 +1362,9 @@ fun filteredChats(
     val s = if (searchShowingSimplexLink.value) "" else searchText.trim().lowercase()
     if (s.isEmpty())
       chats.filter { chat -> chat.id == chatModel.chatId.value || (!chat.chatInfo.chatDeleted && !chat.chatInfo.contactCard && filtered(chat, activeFilter)) }
-    else {
-      chats.filter { chat ->
-        chat.id == chatModel.chatId.value ||
+      else {
+        chats.filter { chat ->
+          chat.id == chatModel.chatId.value ||
           when (val cInfo = chat.chatInfo) {
             is ChatInfo.Direct -> !cInfo.contact.chatDeleted && !chat.chatInfo.contactCard && cInfo.anyNameContains(s)
             is ChatInfo.Group -> cInfo.anyNameContains(s)
@@ -1345,8 +1373,8 @@ fun filteredChats(
             is ChatInfo.ContactConnection -> cInfo.contactConnection.localAlias.lowercase().contains(s)
             is ChatInfo.InvalidJSON -> false
           }
+        }
       }
-    }
   }
 }
 
@@ -1358,7 +1386,7 @@ private fun filtered(chat: Chat, activeFilter: ActiveFilter?): Boolean =
     else -> true
   }
 
-fun presetTagMatchesChat(tag: PresetTagKind, chatInfo: ChatInfo, chatStats: Chat.ChatStats): Boolean =
+  fun presetTagMatchesChat(tag: PresetTagKind, chatInfo: ChatInfo, chatStats: Chat.ChatStats): Boolean =
   when (tag) {
     PresetTagKind.GROUP_REPORTS -> chatStats.reportsCount > 0
     PresetTagKind.FAVORITES -> chatInfo.chatSettings?.favorite == true
@@ -1387,22 +1415,22 @@ fun presetTagMatchesChat(tag: PresetTagKind, chatInfo: ChatInfo, chatStats: Chat
     }
   }
 
-private fun presetTagLabel(tag: PresetTagKind, active: Boolean): Triple<ImageResource, ImageResource?, StringResource> =
-  when (tag) {
-    PresetTagKind.GROUP_REPORTS -> Triple(if (active) MR.images.ic_flag_filled else MR.images.ic_flag, null, MR.strings.chat_list_group_reports)
-    PresetTagKind.FAVORITES -> Triple(if (active) MR.images.ic_star_filled else MR.images.ic_star, null, MR.strings.chat_list_favorites)
-    PresetTagKind.CONTACTS -> Triple(if (active) MR.images.ic_person_filled else MR.images.ic_person, null, MR.strings.chat_list_contacts)
-    PresetTagKind.GROUPS -> Triple(if (active) MR.images.ic_group_filled else MR.images.ic_group, null, MR.strings.chat_list_groups)
-    PresetTagKind.CHANNELS -> Triple(if (active) MR.images.ic_bigtop_updates_circle_filled else MR.images.ic_bigtop_updates, MR.images.ic_bigtop_updates, MR.strings.chat_list_channels)
-    PresetTagKind.BUSINESS -> Triple(if (active) MR.images.ic_work_filled else MR.images.ic_work, null, MR.strings.chat_list_businesses)
-    PresetTagKind.NOTES -> Triple(if (active) MR.images.ic_folder_closed_filled else MR.images.ic_folder_closed, null, MR.strings.chat_list_notes)
-  }
+  private fun presetTagLabel(tag: PresetTagKind, active: Boolean): Triple<ImageResource, ImageResource?, StringResource> =
+    when (tag) {
+      PresetTagKind.GROUP_REPORTS -> Triple(if (active) MR.images.ic_flag_filled else MR.images.ic_flag, null, MR.strings.chat_list_group_reports)
+      PresetTagKind.FAVORITES -> Triple(if (active) MR.images.ic_star_filled else MR.images.ic_star, null, MR.strings.chat_list_favorites)
+      PresetTagKind.CONTACTS -> Triple(if (active) MR.images.ic_person_filled else MR.images.ic_person, null, MR.strings.chat_list_contacts)
+      PresetTagKind.GROUPS -> Triple(if (active) MR.images.ic_group_filled else MR.images.ic_group, null, MR.strings.chat_list_groups)
+      PresetTagKind.CHANNELS -> Triple(if (active) MR.images.ic_bigtop_updates_circle_filled else MR.images.ic_bigtop_updates, MR.images.ic_bigtop_updates, MR.strings.chat_list_channels)
+      PresetTagKind.BUSINESS -> Triple(if (active) MR.images.ic_work_filled else MR.images.ic_work, null, MR.strings.chat_list_businesses)
+      PresetTagKind.NOTES -> Triple(if (active) MR.images.ic_folder_closed_filled else MR.images.ic_folder_closed, null, MR.strings.chat_list_notes)
+    }
 
-private fun presetCanBeCollapsed(tag: PresetTagKind): Boolean = when (tag) {
-  PresetTagKind.GROUP_REPORTS -> false
-  else -> true
-}
+    private fun presetCanBeCollapsed(tag: PresetTagKind): Boolean = when (tag) {
+      PresetTagKind.GROUP_REPORTS -> false
+      else -> true
+    }
 
-fun scrollToBottom(scope: CoroutineScope, listState: LazyListState) {
-  scope.launch { try { listState.animateScrollToItem(0) } catch (e: Exception) { Log.e(TAG, e.stackTraceToString()) } }
-}
+    fun scrollToBottom(scope: CoroutineScope, listState: LazyListState) {
+      scope.launch { try { listState.animateScrollToItem(0) } catch (e: Exception) { Log.e(TAG, e.stackTraceToString()) } }
+    }

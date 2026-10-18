@@ -27,6 +27,9 @@ fun ModalView(
   showAppBar: Boolean = true,
   enableClose: Boolean = true,
   background: Color = Color.Unspecified,
+  appBarBackground: Color = Color.Unspecified,
+  appBarContentColor: Color = Color.Unspecified,
+  appBarNavigationTint: Color = Color.Unspecified,
   modifier: Modifier = Modifier,
   showSearch: Boolean = false,
   searchAlwaysVisible: Boolean = false,
@@ -54,8 +57,10 @@ fun ModalView(
           } else {
             DefaultAppBar(
               navigationButton = if (showClose) {
-                { NavigationButtonBack(onButtonClicked = if (enableClose) close else null) }
+                { NavigationButtonBack(onButtonClicked = if (enableClose) close else null, tintColor = if (appBarNavigationTint != Color.Unspecified) appBarNavigationTint else if (enableClose) MaterialTheme.colors.primary else MaterialTheme.colors.secondary) }
               } else null,
+              backgroundColor = appBarBackground,
+              contentColor = appBarContentColor,
               onTop = !oneHandUI.value,
               showSearch = showSearch,
               searchAlwaysVisible = searchAlwaysVisible,

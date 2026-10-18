@@ -27,6 +27,8 @@ fun DefaultAppBar(
   fixedTitleText: String? = null,
   onTitleClick: (() -> Unit)? = null,
   onTop: Boolean,
+  backgroundColor: Color = Color.Unspecified,
+  contentColor: Color = Color.Unspecified,
   showSearch: Boolean = false,
   searchAlwaysVisible: Boolean = false,
   searchPlaceholder: String? = null,
@@ -40,7 +42,8 @@ fun DefaultAppBar(
   } else if (!onTop) Modifier.imePadding()
   else Modifier
 
-  val themeBackgroundMix = MaterialTheme.colors.background.mixWith(MaterialTheme.colors.onBackground, 0.97f)
+  val themeBackgroundMix = if (backgroundColor != Color.Unspecified) backgroundColor else MaterialTheme.colors.background.mixWith(MaterialTheme.colors.onBackground, 0.97f)
+  val hasExplicitBackground = backgroundColor != Color.Unspecified
   val prefAlpha = remember { appPrefs.inAppBarsAlpha.state }
   val handler = LocalAppBarHandler.current
   val connection = LocalAppBarHandler.current?.connection
@@ -62,9 +65,11 @@ fun DefaultAppBar(
         // store it as a variable, don't put it inside if without holding it here. Compiler don't see it changes otherwise
         val alpha = prefAlpha.value
         val backgroundColor = if (title != null || fixedTitleText != null || connection == null || !onTop) {
-          themeBackgroundMix.copy(alpha)
+          // Explicit onboarding backgrounds must cover the old themed/blurred surface.
+          // Otherwise the app bar becomes translucent and exposes the beige shell below it.
+          themeBackgroundMix.copy(alpha = if (hasExplicitBackground) 1f else alpha)
         } else {
-          themeBackgroundMix.copy(topTitleAlpha(false, connection))
+          themeBackgroundMix.copy(alpha = if (hasExplicitBackground) 1f else topTitleAlpha(false, connection))
         }
         onDrawBehind {
           drawRect(backgroundColor)
@@ -77,6 +82,7 @@ fun DefaultAppBar(
         .then(if (!onTop) Modifier.navigationBarsPadding() else Modifier)
         .heightIn(min = AppBarHeight * fontSizeSqrtMultiplier)
     ) {
+    CompositionLocalProvider(LocalContentColor provides if (contentColor != Color.Unspecified) contentColor else LocalContentColor.current) {
       AppBar(
         title = {
           if (showSearch) {
@@ -105,7 +111,8 @@ fun DefaultAppBar(
         centered = !showSearch && (title != null || !onTop),
         onTop = onTop,
       )
-      AppBarDivider(onTop, title != null || fixedTitleText != null, connection)
+        AppBarDivider(onTop, title != null || fixedTitleText != null, connection)
+      }
     }
   }
 }

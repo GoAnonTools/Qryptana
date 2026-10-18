@@ -2293,7 +2293,7 @@
     <string name="report_archive_for_all_moderators">Dla wszystkich moderatorów</string>
     <string name="v6_2_network_decentralization_enable_flux_reason">Lepsza prywatność metadanych.</string>
     <string name="for_chat_profile">Dla profilu czatu %s:</string>
-    <string name="onboarding_network_operators_app_will_use_for_routing">Na przykład, jeśli kontakt otrzyma wiadomości za pośrednictwem serwera czatu Qryptana, aplikacja dostarczy je za pośrednictwem serwera Flux.</string>
+    <string name="onboarding_network_operators_app_will_use_for_routing">Your app can use different operators for different parts of a connection.</string>
     <string name="report_archive_for_me">Dla mnie</string>
     <string name="operator_use_for_messages_private_routing">Dla prywatnego routingu</string>
     <string name="for_social_media">Dla mediów społecznościowych</string>
@@ -2472,7 +2472,7 @@
     <string name="short_link_button_text">Krótki link</string>
     <string name="v6_4_1_short_address">Krótki adres Qryptana</string>
     <string name="simplex_link_channel">Link do kanału na Qryptana</string>
-    <string name="onboarding_network_operators_simplex_flux_agreement">Qryptana i Flux zawarły umowę na włączenie do aplikacji serwerów obsługiwanych przez Flux.</string>
+    <string name="onboarding_network_operators_simplex_flux_agreement">You can choose between SimpleX-operated servers and servers operated by Flux.</string>
     <string name="simplex_link_relay">łącze przekaźnikowe Qryptana</string>
     <string name="report_reason_spam">Spam</string>
     <string name="blocking_reason_spam">Spam</string>

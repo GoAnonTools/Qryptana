@@ -1417,7 +1417,7 @@
     <string name="direct_messages_are_prohibited_in_chat">Tin nhắn trực tiếp giữa các thành viên bị cấm trong cuộc trò chuyện này.</string>
     <string name="for_chat_profile">Dành cho hồ sơ trò chuyện %s:</string>
     <string name="onboarding_notifications_mode_periodic_desc_short">Kiểm tra tin nhắn mỗi 10 phút.</string>
-    <string name="onboarding_network_operators_app_will_use_for_routing">Ví dụ, nếu liên hệ của bạn nhận tin nhắn thông qua một máy chủ Qryptana, ứng dụng của bạn sẽ gửi chúng qua một máy chủ Flux.</string>
+    <string name="onboarding_network_operators_app_will_use_for_routing">Your app can use different operators for different parts of a connection.</string>
     <string name="how_it_helps_privacy">Cách nó cải thiện sự riêng tư</string>
     <string name="invite_to_chat_button">Mời để trò chuyện</string>
     <string name="button_leave_chat">Rời cuộc trò chuyện</string>
@@ -1785,7 +1785,7 @@
     <string name="simplex_link_mode">Các đường dẫn Qryptana</string>
     <string name="simplex_link_invitation">Lời mời Qryptana dùng một lần</string>
     <string name="la_notice_title_simplex_lock">Khóa Qryptana</string>
-    <string name="onboarding_network_operators_simplex_flux_agreement">Qryptana và Flux đã đi đến một thỏa thuận để đưa các máy chủ do Flux vận hành vào ứng dụng.</string>
+    <string name="onboarding_network_operators_simplex_flux_agreement">You can choose between SimpleX-operated servers and servers operated by Flux.</string>
     <string name="theme_simplex">Qryptana</string>
     <string name="simplex_address">Địa chỉ Qryptana</string>
     <string name="shutdown_alert_question">Tắt?</string>

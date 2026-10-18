@@ -6,6 +6,11 @@ import SectionSpacer
 import SectionView
 import androidx.compose.foundation.*
 import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.interaction.collectIsFocusedAsState
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Brush
+import chat.simplex.common.views.onboarding.QryptanaMetal
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.ZeroCornerSize
 import androidx.compose.foundation.text.*
@@ -83,14 +88,14 @@ fun DatabaseEncryptionView(m: ChatModel, migration: Boolean) {
     if (progressIndicator.value) {
       Box(
         Modifier.fillMaxSize(),
-        contentAlignment = Alignment.Center
+          contentAlignment = Alignment.Center
       ) {
         CircularProgressIndicator(
           Modifier
-            .padding(horizontal = 2.dp)
-            .size(30.dp),
-          color = MaterialTheme.colors.secondary,
-          strokeWidth = 2.5.dp
+          .padding(horizontal = 2.dp)
+          .size(30.dp),
+                                  color = MaterialTheme.colors.secondary,
+                                  strokeWidth = 2.5.dp
         )
       }
     }
@@ -142,19 +147,19 @@ fun DatabaseEncryptionLayout(
           PassphraseField(
             currentKey,
             generalGetString(MR.strings.current_passphrase),
-            modifier = Modifier.padding(horizontal = DEFAULT_PADDING),
-            isValid = ::validKey,
-            keyboardActions = KeyboardActions(onNext = { defaultKeyboardAction(ImeAction.Next) }),
+                          modifier = Modifier.padding(horizontal = DEFAULT_PADDING),
+                          isValid = ::validKey,
+                          keyboardActions = KeyboardActions(onNext = { defaultKeyboardAction(ImeAction.Next) }),
           )
         }
 
         PassphraseField(
           newKey,
           generalGetString(MR.strings.new_passphrase),
-          modifier = Modifier.padding(horizontal = DEFAULT_PADDING),
-          showStrength = true,
-          isValid = ::validKey,
-          keyboardActions = KeyboardActions(onNext = { defaultKeyboardAction(ImeAction.Next) }),
+                        modifier = Modifier.padding(horizontal = DEFAULT_PADDING),
+                        showStrength = true,
+                        isValid = ::validKey,
+                        keyboardActions = KeyboardActions(onNext = { defaultKeyboardAction(ImeAction.Next) }),
         )
         val onClickUpdate = {
           // Don't do things concurrently. Shouldn't be here concurrently, just in case
@@ -162,32 +167,32 @@ fun DatabaseEncryptionLayout(
             if (currentKey.value == "") {
               if (useKeychain.value)
                 encryptDatabaseSavedAlert(onConfirmEncrypt)
-              else
-                encryptDatabaseAlert(onConfirmEncrypt)
+                else
+                  encryptDatabaseAlert(onConfirmEncrypt)
             } else {
               if (useKeychain.value)
                 changeDatabaseKeySavedAlert(onConfirmEncrypt)
-              else
-                changeDatabaseKeyAlert(onConfirmEncrypt)
+                else
+                  changeDatabaseKeyAlert(onConfirmEncrypt)
             }
           }
         }
         val disabled = currentKey.value == newKey.value ||
-            newKey.value != confirmNewKey.value ||
-            newKey.value.isEmpty() ||
-            !validKey(currentKey.value) ||
-            !validKey(newKey.value) ||
-            progressIndicator.value
+        newKey.value != confirmNewKey.value ||
+        newKey.value.isEmpty() ||
+        !validKey(currentKey.value) ||
+        !validKey(newKey.value) ||
+        progressIndicator.value
 
         PassphraseField(
           confirmNewKey,
           generalGetString(MR.strings.confirm_new_passphrase),
-          modifier = Modifier.padding(horizontal = DEFAULT_PADDING),
-          isValid = { confirmNewKey.value == "" || newKey.value == confirmNewKey.value },
-          keyboardActions = KeyboardActions(onDone = {
-            if (!disabled) onClickUpdate()
-            defaultKeyboardAction(ImeAction.Done)
-          }),
+                        modifier = Modifier.padding(horizontal = DEFAULT_PADDING),
+                        isValid = { confirmNewKey.value == "" || newKey.value == confirmNewKey.value },
+                        keyboardActions = KeyboardActions(onDone = {
+                          if (!disabled) onClickUpdate()
+                            defaultKeyboardAction(ImeAction.Done)
+                        }),
         )
 
         SectionItemViewSpaceBetween(onClickUpdate, disabled = disabled, minHeight = TextFieldDefaults.MinHeight) {
@@ -217,10 +222,10 @@ expect fun encryptDatabaseSavedAlert(onConfirm: () -> Unit)
 fun encryptDatabaseAlert(onConfirm: () -> Unit) {
   AlertManager.shared.showAlertDialog(
     title = generalGetString(MR.strings.encrypt_database_question),
-    text = generalGetString(MR.strings.database_will_be_encrypted) +"\n" + storeSecurelyDanger(),
-    confirmText = generalGetString(MR.strings.encrypt_database),
-    onConfirm = onConfirm,
-    destructive = true,
+                                      text = generalGetString(MR.strings.database_will_be_encrypted) +"\n" + storeSecurelyDanger(),
+                                      confirmText = generalGetString(MR.strings.encrypt_database),
+                                      onConfirm = onConfirm,
+                                      destructive = true,
   )
 }
 
@@ -229,10 +234,10 @@ expect fun changeDatabaseKeySavedAlert(onConfirm: () -> Unit)
 fun changeDatabaseKeyAlert(onConfirm: () -> Unit) {
   AlertManager.shared.showAlertDialog(
     title = generalGetString(MR.strings.change_database_passphrase_question),
-    text = generalGetString(MR.strings.database_passphrase_will_be_updated) + "\n" + storeSecurelyDanger(),
-    confirmText = generalGetString(MR.strings.update_database),
-    onConfirm = onConfirm,
-    destructive = true,
+                                      text = generalGetString(MR.strings.database_passphrase_will_be_updated) + "\n" + storeSecurelyDanger(),
+                                      confirmText = generalGetString(MR.strings.update_database),
+                                      onConfirm = onConfirm,
+                                      destructive = true,
   )
 }
 
@@ -262,8 +267,8 @@ expect fun DatabaseEncryptionFooter(
 fun ChatStoppedView() {
   SettingsActionItem(
     icon = painterResource(MR.images.ic_report_filled),
-    text = stringResource(MR.strings.chat_is_stopped),
-    iconColor = Color.Red,
+                     text = stringResource(MR.strings.chat_is_stopped),
+                     iconColor = Color.Red,
   )
 }
 
@@ -316,104 +321,131 @@ fun PassphraseField(
   modifier: Modifier = Modifier,
   showStrength: Boolean = false,
   isValid: (String) -> Boolean,
-  keyboardActions: KeyboardActions = KeyboardActions(),
-  dependsOn: State<Any?>? = null,
-  requestFocus: Boolean = false,
+                    keyboardActions: KeyboardActions = KeyboardActions(),
+                    dependsOn: State<Any?>? = null,
+                    requestFocus: Boolean = false,
+                    backgroundColor: Color = Color.Unspecified,
+                    textColor: Color = Color.Unspecified,
+                    placeholderColor: Color = Color.Unspecified,
+                    focusedIndicatorColor: Color = Color.Unspecified,
+                    unfocusedIndicatorColor: Color = Color.Unspecified,
+                    visibilityIconColor: Color = Color.Unspecified,
+                    // Qryptana onboarding look: an inset titanium well with a hairline (copper only while focused).
+                    titanium: Boolean = false,
 ) {
   var valid by remember { mutableStateOf(validKey(key.value)) }
   var showKey by remember { mutableStateOf(false) }
   val icon = if (valid) {
     if (showKey) painterResource(MR.images.ic_visibility_off_filled) else painterResource(MR.images.ic_visibility_filled)
   } else painterResource(MR.images.ic_error)
-  val iconColor = if (valid) {
-    if (showStrength && key.value.isNotEmpty()) PassphraseStrength.check(key.value).color else MaterialTheme.colors.secondary
-  } else Color.Red
-  val keyboard = LocalSoftwareKeyboardController.current
-  val keyboardOptions = KeyboardOptions(
-    imeAction = if (keyboardActions.onNext != null) ImeAction.Next else ImeAction.Done,
-    autoCorrect = false,
-    keyboardType = KeyboardType.Password
-  )
-  val state = remember {
-    mutableStateOf(TextFieldValue(key.value))
-  }
-  val enabled = true
-  val colors = TextFieldDefaults.textFieldColors(
-    backgroundColor = Color.Unspecified,
-    textColor = MaterialTheme.colors.onBackground,
-    focusedIndicatorColor = Color.Unspecified,
-    unfocusedIndicatorColor = Color.Unspecified,
-  )
-  val color = MaterialTheme.colors.onBackground
-  val shape = MaterialTheme.shapes.small.copy(bottomEnd = ZeroCornerSize, bottomStart = ZeroCornerSize)
-  val interactionSource = remember { MutableInteractionSource() }
-  val focusRequester = remember { FocusRequester() }
-  BasicTextField(
-    value = state.value,
-    modifier = modifier
-      .fillMaxWidth()
-      .background(colors.backgroundColor(enabled).value, shape)
-      .indicatorLine(enabled, false, interactionSource, colors)
-      .defaultMinSize(
-        minWidth = TextFieldDefaults.MinWidth,
-        minHeight = TextFieldDefaults.MinHeight
+    val iconColor = if (valid) {
+      if (showStrength && key.value.isNotEmpty()) PassphraseStrength.check(key.value).color
+        else if (visibilityIconColor != Color.Unspecified) visibilityIconColor else MaterialTheme.colors.secondary
+    } else Color.Red
+      val keyboard = LocalSoftwareKeyboardController.current
+      val keyboardOptions = KeyboardOptions(
+        imeAction = if (keyboardActions.onNext != null) ImeAction.Next else ImeAction.Done,
+                                            autoCorrect = false,
+                                            keyboardType = KeyboardType.Password
       )
-      .focusRequester(focusRequester),
-    onValueChange = {
-      state.value = it
-      key.value = it.text
-      valid = isValid(it.text)
-    },
-    cursorBrush = SolidColor(colors.cursorColor(false).value),
-    visualTransformation = if (showKey)
-      VisualTransformation.None
-    else
-      VisualTransformation { TransformedText(AnnotatedString(it.text.map { "*" }.joinToString(separator = "")), OffsetMapping.Identity) },
-    keyboardOptions = keyboardOptions,
-    keyboardActions = KeyboardActions(onDone = {
-      keyboard?.hide()
-      keyboardActions.onDone?.invoke(this)
-    }),
-    singleLine = true,
-    textStyle = TextStyle.Default.copy(
-      color = color,
-      fontWeight = FontWeight.Normal,
-      fontSize = 16.sp
-    ),
-    interactionSource = interactionSource,
-    decorationBox = @Composable { innerTextField ->
-      TextFieldDefaults.TextFieldDecorationBox(
-        value = state.value.text,
-        innerTextField = innerTextField,
-        placeholder = { Text(placeholder, color = MaterialTheme.colors.secondary) },
-        singleLine = true,
-        enabled = enabled,
-        isError = !valid,
-        trailingIcon = {
-          IconButton({ showKey = !showKey }) {
-            Icon(icon, null, tint = iconColor)
-          }
-        },
-        interactionSource = interactionSource,
-        contentPadding = TextFieldDefaults.textFieldWithLabelPadding(start = 0.dp, end = 0.dp),
-        visualTransformation = VisualTransformation.None,
-        colors = colors
-      )
-    }
-  )
-  LaunchedEffect(Unit) {
-    if (requestFocus) {
-      delay(200)
-      focusRequester.requestFocus()
-    }
-  }
-  LaunchedEffect(Unit) {
-    snapshotFlow { dependsOn?.value }
-      .distinctUntilChanged()
-      .collect {
-        valid = isValid(state.value.text)
+      val state = remember {
+        mutableStateOf(TextFieldValue(key.value))
       }
-  }
+      val enabled = true
+      val colors = TextFieldDefaults.textFieldColors(
+        backgroundColor = if (titanium) Color.Transparent else backgroundColor,
+                                                     textColor = if (textColor != Color.Unspecified) textColor else MaterialTheme.colors.onBackground,
+                                                     cursorColor = if (titanium) QryptanaMetal.copperLight else MaterialTheme.colors.primary,
+                                                     focusedIndicatorColor = if (titanium) Color.Transparent else focusedIndicatorColor,
+                                                     unfocusedIndicatorColor = if (titanium) Color.Transparent else unfocusedIndicatorColor,
+      )
+      val color = if (textColor != Color.Unspecified) textColor else MaterialTheme.colors.onBackground
+      val shape = MaterialTheme.shapes.small.copy(bottomEnd = ZeroCornerSize, bottomStart = ZeroCornerSize)
+      val interactionSource = remember { MutableInteractionSource() }
+      val focusRequester = remember { FocusRequester() }
+      val focused by interactionSource.collectIsFocusedAsState()
+      val wellShape = RoundedCornerShape(14.dp)
+      val wellStroke = when {
+        !valid -> Color(0xFFB5504A).copy(alpha = 0.85f)
+        focused -> QryptanaMetal.copperLight.copy(alpha = 0.72f)
+        else -> QryptanaMetal.titaniumBorder.copy(alpha = 0.75f)
+      }
+      BasicTextField(
+        value = state.value,
+        modifier = (if (titanium) {
+          modifier
+          .fillMaxWidth()
+          .defaultMinSize(minWidth = TextFieldDefaults.MinWidth, minHeight = 56.dp)
+          .clip(wellShape)
+          .background(Brush.verticalGradient(listOf(Color(0xFF0C0B0A), Color(0xFF181716))))
+          .border(1.dp, wellStroke, wellShape)
+          .padding(horizontal = 18.dp)
+        } else {
+          modifier
+          .fillMaxWidth()
+          .background(colors.backgroundColor(enabled).value, shape)
+          .indicatorLine(enabled, false, interactionSource, colors)
+          .defaultMinSize(
+            minWidth = TextFieldDefaults.MinWidth,
+            minHeight = TextFieldDefaults.MinHeight
+          )
+        })
+        .focusRequester(focusRequester),
+                     onValueChange = {
+                       state.value = it
+                       key.value = it.text
+                       valid = isValid(it.text)
+                     },
+                     cursorBrush = SolidColor(colors.cursorColor(false).value),
+                     visualTransformation = if (showKey)
+                     VisualTransformation.None
+                     else
+                       VisualTransformation { TransformedText(AnnotatedString(it.text.map { "*" }.joinToString(separator = "")), OffsetMapping.Identity) },
+                     keyboardOptions = keyboardOptions,
+                     keyboardActions = KeyboardActions(onDone = {
+                       keyboard?.hide()
+                       keyboardActions.onDone?.invoke(this)
+                     }),
+                     singleLine = true,
+                     textStyle = TextStyle.Default.copy(
+                       color = color,
+                       fontWeight = FontWeight.Normal,
+                       fontSize = 16.sp
+                     ),
+                     interactionSource = interactionSource,
+                     decorationBox = @Composable { innerTextField ->
+                       TextFieldDefaults.TextFieldDecorationBox(
+                         value = state.value.text,
+                         innerTextField = innerTextField,
+                         placeholder = { Text(placeholder, color = if (placeholderColor != Color.Unspecified) placeholderColor else MaterialTheme.colors.secondary) },
+                                                                singleLine = true,
+                                                                enabled = enabled,
+                                                                isError = !valid,
+                                                                trailingIcon = {
+                                                                  IconButton({ showKey = !showKey }) {
+                                                                    Icon(icon, null, tint = iconColor)
+                                                                  }
+                                                                },
+                                                                interactionSource = interactionSource,
+                                                                contentPadding = TextFieldDefaults.textFieldWithLabelPadding(start = 0.dp, end = 0.dp),
+                                                                visualTransformation = VisualTransformation.None,
+                                                                colors = colors
+                       )
+                     }
+      )
+      LaunchedEffect(Unit) {
+        if (requestFocus) {
+          delay(200)
+          focusRequester.requestFocus()
+        }
+      }
+      LaunchedEffect(Unit) {
+        snapshotFlow { dependsOn?.value }
+        .distinctUntilChanged()
+        .collect {
+          valid = isValid(state.value.text)
+        }
+      }
 }
 
 suspend fun encryptDatabase(
@@ -441,7 +473,7 @@ suspend fun encryptDatabase(
         operationEnded(m, progressIndicator) {
           AlertManager.shared.showAlertMsg(
             generalGetString(MR.strings.wrong_passphrase_title),
-            generalGetString(MR.strings.enter_correct_current_passphrase)
+                                           generalGetString(MR.strings.enter_correct_current_passphrase)
           )
         }
         false
@@ -449,7 +481,7 @@ suspend fun encryptDatabase(
       error != null -> {
         operationEnded(m, progressIndicator) {
           AlertManager.shared.showAlertMsg(generalGetString(MR.strings.error_encrypting_database),
-            "failed to set storage encryption: error ${error.string}"
+                                           "failed to set storage encryption: error ${error.string}"
           )
         }
         false
@@ -534,15 +566,15 @@ fun PreviewDatabaseEncryptionLayout() {
   SimpleXTheme {
     DatabaseEncryptionLayout(
       useKeychain = remember { mutableStateOf(true) },
-      chatDbEncrypted = true,
-      currentKey = remember { mutableStateOf("") },
-      newKey = remember { mutableStateOf("") },
-      confirmNewKey = remember { mutableStateOf("") },
-      storedKey = remember { mutableStateOf(true) },
-      initialRandomDBPassphrase = remember { mutableStateOf(true) },
-      progressIndicator = remember { mutableStateOf(false) },
-      migration = false,
-      onConfirmEncrypt = {},
+                             chatDbEncrypted = true,
+                             currentKey = remember { mutableStateOf("") },
+                             newKey = remember { mutableStateOf("") },
+                             confirmNewKey = remember { mutableStateOf("") },
+                             storedKey = remember { mutableStateOf(true) },
+                             initialRandomDBPassphrase = remember { mutableStateOf(true) },
+                             progressIndicator = remember { mutableStateOf(false) },
+                             migration = false,
+                             onConfirmEncrypt = {},
     )
   }
 }

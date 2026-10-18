@@ -2127,7 +2127,7 @@
     <string name="connection_security">Zabezpečení připojení</string>
     <string name="onboarding_notifications_mode_service_desc_short">Aplikace vždy poběží na pozadí</string>
     <string name="onboarding_notifications_mode_battery">Upozornění a baterie</string>
-    <string name="onboarding_network_operators_app_will_use_for_routing">Například, pokud váš kontakt dostane zprávu pres Chat server Qryptana, vaše aplikace ji doručí pomocí Flux serveru.</string>
+    <string name="onboarding_network_operators_app_will_use_for_routing">Your app can use different operators for different parts of a connection.</string>
     <string name="error_loading_chat_tags">Chyba načtení seznamů chatu</string>
     <string name="error_creating_chat_tags">Chyba vytváření seznamu chatu</string>
     <string name="error_updating_chat_tags">Chyba aktualizace seznamu chatů</string>
@@ -2311,7 +2311,7 @@
     <string name="servers_info_statistics_section_header">Statistiky</string>
     <string name="subscription_errors">Chyby odběru</string>
     <string name="onboarding_network_about_operators">O operátorech</string>
-    <string name="onboarding_network_operators_simplex_flux_agreement">Qryptana a Flux udělali dohodu, a zahrnuly servery spravované Flux do aplikace.</string>
+    <string name="onboarding_network_operators_simplex_flux_agreement">You can choose between SimpleX-operated servers and servers operated by Flux.</string>
     <string name="smp_server">SMP server</string>
     <string name="contact_list_header_title">Vaše kontakty</string>
     <string name="servers_info_private_data_disclaimer">Od %s.\nJsou všechna data uchovávána ve vašem zařízení.</string>

@@ -1351,6 +1351,11 @@
 
   <!-- SetupDatabasePassphrase.kt -->
   <string name="setup_database_passphrase">Setup database passphrase</string>
+  <string name="onboarding_protect_app">Protect your app</string>
+  <string name="onboarding_secret_phrase">Enter your secret phrase…</string>
+  <string name="onboarding_confirm_secret_phrase">Confirm your secret phrase…</string>
+  <string name="onboarding_create_secret_phrase">Create your secret phrase</string>
+  <string name="onboarding_generate_secure_phrase">Create one for me</string>
   <string name="you_can_change_it_later">Random passphrase is stored in settings as plaintext.\nYou can change it later.</string>
   <string name="use_random_passphrase">Use random passphrase</string>
 
@@ -1361,13 +1366,13 @@
   <string name="onboarding_conditions_accept">Accept</string>
   <string name="onboarding_choose_server_operators">Server operators</string>
   <string name="onboarding_network_operators">Network operators</string>
-  <string name="onboarding_network_operators_simplex_flux_agreement">Qryptana and Flux made an agreement to include Flux-operated servers into the app.</string>
+  <string name="onboarding_network_operators_simplex_flux_agreement">You can choose between SimpleX-operated servers and servers operated by Flux.</string>
   <string name="onboarding_network_operators_app_will_use_different_operators">The app protects your privacy by using different operators in each conversation.</string>
   <string name="onboarding_network_operators_cant_see_who_talks_to_whom">When more than one operator is enabled, none of them has metadata to learn who communicates with whom.</string>
-  <string name="onboarding_network_operators_app_will_use_for_routing">For example, if your contact receives messages via a Qryptana server, your app will deliver them via a Flux server.</string>
+  <string name="onboarding_network_operators_app_will_use_for_routing">Your app can use different operators for different parts of a connection.</string>
   <string name="onboarding_network_about_operators">About operators</string>
   <string name="onboarding_select_network_operators_to_use">Select network operators to use.</string>
-  <string name="how_it_helps_privacy">How it helps privacy</string>
+  <string name="how_it_helps_privacy">How this protects your privacy</string>
   <string name="onboarding_network_operators_configure_via_settings">You can configure servers via settings.</string>
   <string name="onboarding_network_operators_conditions_will_be_accepted">Conditions will be accepted for enabled operators after 30 days.</string>
   <string name="onboarding_network_operators_conditions_you_can_configure">You can configure operators in Network &amp; servers settings.</string>
@@ -1377,6 +1382,10 @@
 
   <!-- Onboarding Step 3: Your Network -->
   <string name="onboarding_your_network">Your network</string>
+  <string name="onboarding_private_network">Your private network</string>
+  <string name="onboarding_connections_stay_private">Your connections stay private. Choose the services that help protect your messages.</string>
+  <string name="onboarding_choose_private_routing">Choose how your messages connect</string>
+  <string name="onboarding_privacy_commitments">Keep your privacy at the center</string>
   <string name="onboarding_network_routers_cannot_know">Network routers cannot know\nwho talks to whom</string>
   <string name="onboarding_configure_routers">Setup routers</string>
   <string name="onboarding_configure_notifications">Setup notifications</string>

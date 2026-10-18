@@ -3,6 +3,9 @@ package chat.simplex.common.views.newchat
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.*
+import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.interaction.collectIsHoveredAsState
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
@@ -25,6 +28,11 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import chat.simplex.common.views.onboarding.QryptanaHairline
+import chat.simplex.common.views.onboarding.QryptanaMetal
+import chat.simplex.common.views.onboarding.qryptanaBackdrop
+import chat.simplex.common.views.onboarding.rememberQryptanaSerif
 import dev.icerock.moko.resources.compose.painterResource
 import dev.icerock.moko.resources.compose.stringResource
 import chat.simplex.common.BuildConfigCommon
@@ -50,16 +58,16 @@ fun shouldShowOnboarding(): Boolean {
 }
 
 fun hasConversations(chats: List<Chat>): Boolean =
-  chats.any { chat ->
-    when (val c = chat.chatInfo) {
-      is ChatInfo.Local -> false
-      is ChatInfo.Direct -> !c.contact.chatDeleted && !c.contact.isContactCard
-      is ChatInfo.Group -> true
-      is ChatInfo.ContactRequest -> false
-      is ChatInfo.ContactConnection -> false
-      is ChatInfo.InvalidJSON -> false
-    }
+chats.any { chat ->
+  when (val c = chat.chatInfo) {
+    is ChatInfo.Local -> false
+    is ChatInfo.Direct -> !c.contact.chatDeleted && !c.contact.isContactCard
+    is ChatInfo.Group -> true
+    is ChatInfo.ContactRequest -> false
+    is ChatInfo.ContactConnection -> false
+    is ChatInfo.InvalidJSON -> false
   }
+}
 
 internal data class GradientEndpoints(val startX: Float, val startY: Float, val endX: Float, val endY: Float)
 
@@ -71,9 +79,9 @@ internal fun gradientPoints(aspectRatio: Float, scale: Float): GradientEndpoints
   val dLenSq = dx * dx + dy * dy
   val projections = doubleArrayOf(
     -0.5 * dx + (-0.5) * dy,
-     0.5 * dx + (-0.5) * dy,
-    -0.5 * dx + 0.5 * dy,
-     0.5 * dx + 0.5 * dy
+                                  0.5 * dx + (-0.5) * dy,
+                                  -0.5 * dx + 0.5 * dy,
+                                  0.5 * dx + 0.5 * dy
   )
   val tMin = projections.min()
   val tMax = projections.max()
@@ -83,26 +91,26 @@ internal fun gradientPoints(aspectRatio: Float, scale: Float): GradientEndpoints
   val endY = 0.5 + tMax * dy / dLenSq
   return GradientEndpoints(
     startX = (0.5 + (startX - 0.5) * s).toFloat(),
-    startY = (0.5 + (startY - 0.5) * s).toFloat(),
-    endX = (0.5 + (endX - 0.5) * s).toFloat(),
-    endY = (0.5 + (endY - 0.5) * s).toFloat()
+                           startY = (0.5 + (startY - 0.5) * s).toFloat(),
+                           endX = (0.5 + (endX - 0.5) * s).toFloat(),
+                           endY = (0.5 + (endY - 0.5) * s).toFloat()
   )
 }
 
 internal val lightStops = arrayOf(
   0.0f to oklch(0.9219f, 0.0431f, 249.4f),
-  0.5f to oklch(0.9198f, 0.0471f, 240.7f),
-  0.9f to oklch(0.9772f, 0.0358f, 196.6f),
-  0.95f to oklch(0.9829f, 0.0104f, 70.0f),
-  1.0f to oklch(0.9886f, 0.0272f, 99.1f)
+                                  0.5f to oklch(0.9198f, 0.0471f, 240.7f),
+                                  0.9f to oklch(0.9772f, 0.0358f, 196.6f),
+                                  0.95f to oklch(0.9829f, 0.0104f, 70.0f),
+                                  1.0f to oklch(0.9886f, 0.0272f, 99.1f)
 )
 
 internal val darkStops = arrayOf(
   0.4f to oklch(0.1578f, 0.0609f, 267.3f),
-  0.72f to oklch(0.4729f, 0.1574f, 267.3f),
-  0.9f to oklch(0.9024f, 0.0760f, 202.8f),
-  0.95f to oklch(0.9384f, 0.0354f, 65.0f),
-  1.0f to oklch(0.9744f, 0.0370f, 88.4f)
+                                 0.72f to oklch(0.4729f, 0.1574f, 267.3f),
+                                 0.9f to oklch(0.9024f, 0.0760f, 202.8f),
+                                 0.95f to oklch(0.9384f, 0.0354f, 65.0f),
+                                 1.0f to oklch(0.9744f, 0.0370f, 88.4f)
 )
 
 private fun Modifier.maxHeightByWidthRatio(ratio: Float) = layout { measurable, constraints ->
@@ -121,6 +129,11 @@ fun OnboardingCardView(
   labelHeightRatio: Float,
   onClick: () -> Unit
 ) {
+  if (appPlatform.isDesktop) {
+    QryptanaOnboardingCard(icon, title, subtitle, labelHeightRatio, onClick)
+    return
+  }
+  val qryptanaDesktop = appPlatform.isDesktop
   var imageAreaSize by remember { mutableStateOf(IntSize.Zero) }
   val isDark = isInDarkTheme()
   val stops = if (isDark) darkStops else lightStops
@@ -133,7 +146,7 @@ fun OnboardingCardView(
       Brush.linearGradient(
         colorStops = stops,
         start = Offset(gp.startX * imageAreaSize.width, gp.startY * imageAreaSize.height),
-        end = Offset(gp.endX * imageAreaSize.width, gp.endY * imageAreaSize.height)
+                           end = Offset(gp.endX * imageAreaSize.width, gp.endY * imageAreaSize.height)
       )
     } else {
       Brush.linearGradient(colorStops = stops)
@@ -141,71 +154,169 @@ fun OnboardingCardView(
   }
 
   val labelBg = MaterialTheme.colors.background.mixWith(MaterialTheme.colors.onBackground, 0.97f)
-    .copy(alpha = appPrefs.inAppBarsAlpha.get())
+  .copy(alpha = appPrefs.inAppBarsAlpha.get())
 
   Box(
     Modifier
-      .fillMaxSize()
-      .clip(RoundedCornerShape(24.dp))
-      .clickable(onClick = onClick)
+    .fillMaxSize()
+    .border(
+      width = if (qryptanaDesktop) 1.dp else 0.dp,
+            color = if (qryptanaDesktop) QryptanaDarkBorder else Color.Transparent,
+            shape = RoundedCornerShape(24.dp)
+    )
+    .clip(RoundedCornerShape(24.dp))
+    .clickable(onClick = onClick)
   ) {
     Column(Modifier.fillMaxSize()) {
       Box(
         Modifier
-          .fillMaxWidth()
-          .weight(1f)
-          .background(brush)
-          .onSizeChanged { imageAreaSize = it }
+        .fillMaxWidth()
+        .weight(1f)
+        .then(if (qryptanaDesktop) Modifier.background(QryptanaDarkSurface) else Modifier.background(brush))
+        .onSizeChanged { imageAreaSize = it }
       ) {
-        if (BuildConfigCommon.SIMPLEX_ASSETS) {
+        if (qryptanaDesktop) {
+          Icon(
+            painterResource(icon),
+               contentDescription = null,
+               modifier = Modifier.size(64.dp).align(Alignment.Center),
+               tint = QryptanaCopperLight
+          )
+        } else if (BuildConfigCommon.SIMPLEX_ASSETS) {
           Image(
             painterResource(if (isDark) imageNameLight else imageName),
-            contentDescription = null,
-            contentScale = ContentScale.Fit,
-            modifier = Modifier.fillMaxSize()
+                contentDescription = null,
+                contentScale = ContentScale.Fit,
+                modifier = Modifier.fillMaxSize()
           )
         } else {
           Icon(
             painterResource(icon),
-            contentDescription = null,
-            modifier = Modifier.size(64.dp).align(Alignment.Center),
-            tint = MaterialTheme.colors.primary
+               contentDescription = null,
+               modifier = Modifier.size(64.dp).align(Alignment.Center),
+               tint = MaterialTheme.colors.primary
           )
         }
       }
       Box(
         Modifier
-          .fillMaxWidth()
-          .aspectRatio(1f / labelHeightRatio)
-          .background(labelBg),
-        contentAlignment = Alignment.Center
+        .fillMaxWidth()
+        .aspectRatio(1f / labelHeightRatio)
+        .background(if (qryptanaDesktop) QryptanaDarkCard else labelBg),
+          contentAlignment = Alignment.Center
       ) {
         Column(
           horizontalAlignment = Alignment.CenterHorizontally,
           verticalArrangement = Arrangement.spacedBy(6.dp)
         ) {
           Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-            if (BuildConfigCommon.SIMPLEX_ASSETS) {
+            if (qryptanaDesktop || BuildConfigCommon.SIMPLEX_ASSETS) {
               Icon(
                 painterResource(icon),
-                contentDescription = null,
-                modifier = Modifier.size(24.dp),
-                tint = MaterialTheme.colors.primary
+                   contentDescription = null,
+                   modifier = Modifier.size(24.dp),
+                   tint = if (qryptanaDesktop) QryptanaCopperLight else MaterialTheme.colors.primary
               )
             }
             Text(
               title,
               style = (if (appPlatform.isDesktop) MaterialTheme.typography.h3 else MaterialTheme.typography.h4).copy(fontWeight = FontWeight.Medium),
-              color = MaterialTheme.colors.onBackground,
-              maxLines = 1,
-              overflow = TextOverflow.Ellipsis
+                 color = if (qryptanaDesktop) QryptanaDarkText else MaterialTheme.colors.onBackground,
+                 maxLines = 1,
+                 overflow = TextOverflow.Ellipsis
             )
           }
           if (subtitle != null) {
             Text(
               subtitle,
               style = if (appPlatform.isDesktop) MaterialTheme.typography.body1 else MaterialTheme.typography.body2,
-              color = MaterialTheme.colors.onBackground.copy(alpha = 0.7f)
+                 color = if (qryptanaDesktop) QryptanaDarkSecondary else MaterialTheme.colors.onBackground.copy(alpha = 0.7f)
+            )
+          }
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Desktop card: a titanium plate with an engraved copper-lit glyph in an inset well and a quiet label.
+ * The copper edge only appears on hover — otherwise the plate is neutral graphite.
+ */
+@Composable
+private fun QryptanaOnboardingCard(
+  icon: dev.icerock.moko.resources.ImageResource,
+  title: String,
+  subtitle: String?,
+  labelHeightRatio: Float,
+  onClick: () -> Unit
+) {
+  val shape = RoundedCornerShape(20.dp)
+  val interaction = remember { MutableInteractionSource() }
+  val hovered by interaction.collectIsHoveredAsState()
+  Box(
+    Modifier
+    .fillMaxSize()
+    .clip(shape)
+    .background(Brush.verticalGradient(listOf(QryptanaMetal.titaniumHigh.copy(alpha = if (hovered) 0.34f else 0.24f), QryptanaMetal.titaniumLow.copy(alpha = 0.14f))))
+    .border(
+      1.dp,
+      if (hovered) Brush.verticalGradient(listOf(QryptanaMetal.copperLight.copy(alpha = 0.80f), QryptanaMetal.copperMid.copy(alpha = 0.30f), QryptanaMetal.copperShadow.copy(alpha = 0.20f)))
+        else Brush.verticalGradient(listOf(QryptanaMetal.titaniumBorder.copy(alpha = 0.62f), QryptanaMetal.titaniumBorder.copy(alpha = 0.30f))),
+          shape
+    )
+    .hoverable(interaction)
+    .clickable(interactionSource = interaction, indication = null, onClick = onClick)
+  ) {
+    Column(Modifier.fillMaxSize()) {
+      // Inset well, darker at the top like the form fields, holding the engraved glyph.
+      Box(
+        Modifier
+        .fillMaxWidth()
+        .weight(1f)
+        .background(Brush.verticalGradient(listOf(Color(0xFF0C0B0A), Color(0xFF151413)))),
+          contentAlignment = Alignment.Center
+      ) {
+        Box(
+          Modifier
+          .size(104.dp)
+          .clip(CircleShape)
+          .background(Brush.verticalGradient(listOf(QryptanaMetal.titaniumMid.copy(alpha = 0.55f), QryptanaMetal.titaniumLow.copy(alpha = 0.30f))))
+          .border(1.dp, Brush.verticalGradient(listOf(QryptanaMetal.titaniumBorder.copy(alpha = 0.70f), QryptanaMetal.titaniumBorder.copy(alpha = 0.25f))), CircleShape),
+            contentAlignment = Alignment.Center
+        ) {
+          Icon(painterResource(icon), contentDescription = null, modifier = Modifier.size(44.dp), tint = QryptanaMetal.copperLight.copy(alpha = 0.92f))
+        }
+      }
+      Box(
+        Modifier
+        .fillMaxWidth()
+        .height(1.dp)
+        .background(QryptanaMetal.titaniumBorder.copy(alpha = 0.35f))
+      )
+      Box(
+        Modifier
+        .fillMaxWidth()
+        .aspectRatio(1f / labelHeightRatio),
+          contentAlignment = Alignment.Center
+      ) {
+        Column(horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.spacedBy(6.dp)) {
+          Text(
+            title,
+            style = MaterialTheme.typography.h3.copy(fontWeight = FontWeight.Medium),
+               fontSize = 17.sp,
+               letterSpacing = 0.3.sp,
+               color = QryptanaMetal.textHero,
+               maxLines = 1,
+               overflow = TextOverflow.Ellipsis
+          )
+          if (subtitle != null) {
+            Text(
+              subtitle,
+              style = MaterialTheme.typography.body1,
+              fontSize = 14.sp,
+              letterSpacing = 0.1.sp,
+              color = QryptanaMetal.textTertiary
             )
           }
         }
@@ -216,28 +327,38 @@ fun OnboardingCardView(
 
 @Composable
 private fun PageHeader(title: String, isLandscape: Boolean, onBack: (() -> Unit)? = null) {
-  val color = if (onBack != null) MaterialTheme.colors.primary else Color.Transparent
+  val color = if (onBack != null) (if (appPlatform.isDesktop) QryptanaMetal.textSupport else MaterialTheme.colors.primary) else Color.Transparent
   val baseStyle = MaterialTheme.typography.h1
   val titleView = @Composable {
     var fontScale by remember(title) { mutableStateOf(1f) }
     Text(
       title,
-      style = baseStyle.copy(fontSize = baseStyle.fontSize * fontScale),
-      maxLines = 1,
-      overflow = TextOverflow.Ellipsis,
-      textAlign = TextAlign.Center,
-      modifier = Modifier.fillMaxWidth(),
-      onTextLayout = { result ->
-        if (result.hasVisualOverflow && fontScale > 0.5f) {
-          fontScale -= 0.05f
-        }
-      }
+      style = if (appPlatform.isDesktop) {
+        // Serif title, same as the onboarding pages (bundled Cormorant, light).
+        baseStyle.copy(fontFamily = rememberQryptanaSerif(), fontWeight = FontWeight.Light, fontSize = 34.sp * fontScale, letterSpacing = 0.4.sp)
+      } else baseStyle.copy(fontSize = baseStyle.fontSize * fontScale),
+        maxLines = 1,
+         overflow = TextOverflow.Ellipsis,
+         textAlign = TextAlign.Center,
+         color = if (appPlatform.isDesktop) QryptanaMetal.textHero else LocalContentColor.current,
+         modifier = Modifier.fillMaxWidth(),
+         onTextLayout = { result ->
+           if (result.hasVisualOverflow && fontScale > 0.5f) {
+             fontScale -= 0.05f
+           }
+         }
     )
   }
   if (isLandscape) {
-    Box(Modifier.fillMaxWidth().padding(horizontal = DEFAULT_PADDING)) {
-      BackButton(Modifier.align(Alignment.CenterStart), color, onBack)
-      titleView()
+    Column(Modifier.fillMaxWidth().padding(horizontal = DEFAULT_PADDING), horizontalAlignment = Alignment.CenterHorizontally) {
+      Box(Modifier.fillMaxWidth()) {
+        BackButton(Modifier.align(Alignment.CenterStart), color, onBack)
+        titleView()
+      }
+      if (appPlatform.isDesktop) {
+        Spacer(Modifier.height(10.dp))
+        QryptanaHairline()
+      }
     }
   } else {
     Column(Modifier.fillMaxWidth().padding(horizontal = DEFAULT_PADDING)) {
@@ -253,17 +374,17 @@ private fun PageHeader(title: String, isLandscape: Boolean, onBack: (() -> Unit)
 private fun BackButton(modifier: Modifier = Modifier, color: Color = MaterialTheme.colors.primary, onClick: (() -> Unit)? = null) {
   Row(
     modifier
-      .clip(RoundedCornerShape(20.dp))
-      .clickable(enabled = onClick != null, onClick = onClick ?: {})
-      .padding(end = 12.dp, top = 10.dp, bottom = 10.dp),
-    verticalAlignment = Alignment.CenterVertically,
-    horizontalArrangement = Arrangement.spacedBy(4.dp)
+    .clip(RoundedCornerShape(20.dp))
+    .clickable(enabled = onClick != null, onClick = onClick ?: {})
+    .padding(end = 12.dp, top = 10.dp, bottom = 10.dp),
+      verticalAlignment = Alignment.CenterVertically,
+      horizontalArrangement = Arrangement.spacedBy(4.dp)
   ) {
     Icon(
       painterResource(MR.images.ic_arrow_back_ios_new),
-      contentDescription = stringResource(MR.strings.back),
-      tint = color,
-      modifier = Modifier.height(24.dp)
+         contentDescription = stringResource(MR.strings.back),
+         tint = color,
+         modifier = Modifier.height(24.dp)
     )
     Text(stringResource(MR.strings.back), color = color)
   }
@@ -274,13 +395,13 @@ private fun CardPair(
   isLandscape: Boolean,
   heightRatio: Float,
   card1: @Composable () -> Unit,
-  card2: @Composable () -> Unit
+                     card2: @Composable () -> Unit
 ) {
   if (isLandscape) {
     Row(
       Modifier.fillMaxSize().padding(horizontal = DEFAULT_PADDING),
-      horizontalArrangement = Arrangement.spacedBy(DEFAULT_PADDING),
-      verticalAlignment = Alignment.CenterVertically
+        horizontalArrangement = Arrangement.spacedBy(DEFAULT_PADDING),
+        verticalAlignment = Alignment.CenterVertically
     ) {
       Box(Modifier.weight(1f).maxHeightByWidthRatio(heightRatio)) { card1() }
       Box(Modifier.weight(1f).maxHeightByWidthRatio(heightRatio)) { card2() }
@@ -288,7 +409,7 @@ private fun CardPair(
   } else {
     Column(
       Modifier.fillMaxSize().padding(horizontal = DEFAULT_PADDING),
-      verticalArrangement = Arrangement.spacedBy(DEFAULT_PADDING, Alignment.CenterVertically)
+           verticalArrangement = Arrangement.spacedBy(DEFAULT_PADDING, Alignment.CenterVertically)
     ) {
       Box(Modifier.fillMaxWidth().weight(1f, fill = false).maxHeightByWidthRatio(heightRatio)) { card1() }
       Box(Modifier.fillMaxWidth().weight(1f, fill = false).maxHeightByWidthRatio(heightRatio)) { card2() }
@@ -300,7 +421,7 @@ private fun CardPair(
 private fun OnboardingPageLayout(
   title: String,
   onBack: (() -> Unit)? = null,
-  cards: @Composable (isLandscape: Boolean) -> Unit
+                                 cards: @Composable (isLandscape: Boolean) -> Unit
 ) {
   val isLandscape = appPlatform.isDesktop || windowOrientation() == WindowOrientation.LANDSCAPE
   Column(Modifier.fillMaxSize(), horizontalAlignment = Alignment.CenterHorizontally) {
@@ -323,103 +444,108 @@ fun ConnectOnboardingView() {
     { ModalManager.start.closeModals() }
   } else null
 
-  fun goToPage(target: Int) {
-    if (appPlatform.isDesktop) {
-      scope.launch { pagerState.scrollToPage(target) }
-    } else {
-      scope.launch { pagerState.animateScrollToPage(target, animationSpec = tween(350)) }
+    fun goToPage(target: Int) {
+      if (appPlatform.isDesktop) {
+        scope.launch { pagerState.scrollToPage(target) }
+      } else {
+        scope.launch { pagerState.animateScrollToPage(target, animationSpec = tween(350)) }
+      }
     }
-  }
 
-  val pager = @Composable {
-    HorizontalPager(
-      state = pagerState,
-      modifier = Modifier.fillMaxWidth(),
-      userScrollEnabled = !appPlatform.isDesktop
-    ) { page ->
-      when (page) {
-        0 -> OnboardingPageLayout(title = stringResource(MR.strings.talk_to_someone)) { isLandscape ->
-          CardPair(isLandscape, CARD_HEIGHT_RATIO,
-            card1 = {
-              OnboardingCardView(
-                imageName = MR.images.card_let_someone_connect_to_you_alpha,
-                imageNameLight = MR.images.card_let_someone_connect_to_you_alpha_light,
-                icon = MR.images.ic_add_link,
-                title = stringResource(MR.strings.let_someone_connect_to_you),
-                labelHeightRatio = 0.132f,
-                onClick = cardClickOverride ?: { goToPage(1) }
-              )
-            },
-            card2 = {
-              OnboardingCardView(
-                imageName = MR.images.card_connect_via_link_alpha,
-                imageNameLight = MR.images.card_connect_via_link_alpha_light,
-                icon = MR.images.ic_qr_code_scanner,
-                title = stringResource(MR.strings.connect_via_link_or_qr_code),
-                labelHeightRatio = 0.132f,
-                onClick = cardClickOverride ?: {
-                  ModalManager.start.showModalCloseable { close ->
-                    NewChatView(chatModel.currentRemoteHost.value, NewChatOption.CONNECT, showQRCodeScanner = appPlatform.isAndroid, onboarding = true, close = close)
-                  }
-                }
-              )
-            }
-          )
-        }
-        1 -> OnboardingPageLayout(
-          title = stringResource(MR.strings.connect_with_someone),
-          onBack = cardClickOverride ?: { goToPage(0) }
-        ) { isLandscape ->
-          CardPair(isLandscape, CARD_HEIGHT_RATIO,
-            card1 = {
-              OnboardingCardView(
-                imageName = MR.images.card_invite_someone_privately_alpha,
-                imageNameLight = MR.images.card_invite_someone_privately_alpha_light,
-                icon = MR.images.ic_add_link,
-                title = stringResource(MR.strings.invite_someone_privately),
-                subtitle = stringResource(MR.strings.a_link_for_one_person),
-                labelHeightRatio = 0.195f,
-                onClick = cardClickOverride ?: {
-                  ModalManager.start.showModalCloseable { close ->
-                    NewChatView(chatModel.currentRemoteHost.value, NewChatOption.INVITE, onboarding = true, close = close)
-                  }
-                }
-              )
-            },
-            card2 = {
-              OnboardingCardView(
-                imageName = MR.images.card_create_your_public_address_alpha,
-                imageNameLight = MR.images.card_create_your_public_address_alpha_light,
-                icon = MR.images.ic_qr_code,
-                title = stringResource(if (chatModel.userAddress.value != null) MR.strings.your_public_address else MR.strings.create_your_public_address),
-                subtitle = stringResource(MR.strings.for_anyone_to_reach_you),
-                labelHeightRatio = 0.195f,
-                onClick = cardClickOverride ?: {
-                  ModalManager.start.showModalCloseable { close ->
-                    UserAddressView(chatModel = chatModel, shareViaProfile = false, autoCreateAddress = true, onboarding = true, close = close)
-                  }
-                }
-              )
-            }
-          )
+    val pager = @Composable {
+      HorizontalPager(
+        state = pagerState,
+        modifier = Modifier.fillMaxWidth(),
+                      userScrollEnabled = !appPlatform.isDesktop
+      ) { page ->
+        when (page) {
+          0 -> OnboardingPageLayout(title = stringResource(MR.strings.talk_to_someone)) { isLandscape ->
+            CardPair(isLandscape, CARD_HEIGHT_RATIO,
+                     card1 = {
+                       OnboardingCardView(
+                         imageName = MR.images.card_let_someone_connect_to_you_alpha,
+                         imageNameLight = MR.images.card_let_someone_connect_to_you_alpha_light,
+                         icon = MR.images.ic_add_link,
+                         title = stringResource(MR.strings.let_someone_connect_to_you),
+                                          labelHeightRatio = 0.132f,
+                                          onClick = cardClickOverride ?: { goToPage(1) }
+                       )
+                     },
+                     card2 = {
+                       OnboardingCardView(
+                         imageName = MR.images.card_connect_via_link_alpha,
+                         imageNameLight = MR.images.card_connect_via_link_alpha_light,
+                         icon = MR.images.ic_qr_code_scanner,
+                         title = stringResource(MR.strings.connect_via_link_or_qr_code),
+                                          labelHeightRatio = 0.132f,
+                                          onClick = cardClickOverride ?: {
+                                            ModalManager.start.showModalCloseable { close ->
+                                              NewChatView(chatModel.currentRemoteHost.value, NewChatOption.CONNECT, showQRCodeScanner = appPlatform.isAndroid, onboarding = true, close = close)
+                                            }
+                                          }
+                       )
+                     }
+            )
+          }
+          1 -> OnboardingPageLayout(
+            title = stringResource(MR.strings.connect_with_someone),
+                                    onBack = cardClickOverride ?: { goToPage(0) }
+          ) { isLandscape ->
+            CardPair(isLandscape, CARD_HEIGHT_RATIO,
+                     card1 = {
+                       OnboardingCardView(
+                         imageName = MR.images.card_invite_someone_privately_alpha,
+                         imageNameLight = MR.images.card_invite_someone_privately_alpha_light,
+                         icon = MR.images.ic_add_link,
+                         title = stringResource(MR.strings.invite_someone_privately),
+                                          subtitle = stringResource(MR.strings.a_link_for_one_person),
+                                          labelHeightRatio = 0.195f,
+                                          onClick = cardClickOverride ?: {
+                                            ModalManager.start.showModalCloseable { close ->
+                                              NewChatView(chatModel.currentRemoteHost.value, NewChatOption.INVITE, onboarding = true, close = close)
+                                            }
+                                          }
+                       )
+                     },
+                     card2 = {
+                       OnboardingCardView(
+                         imageName = MR.images.card_create_your_public_address_alpha,
+                         imageNameLight = MR.images.card_create_your_public_address_alpha_light,
+                         icon = MR.images.ic_qr_code,
+                         title = stringResource(if (chatModel.userAddress.value != null) MR.strings.your_public_address else MR.strings.create_your_public_address),
+                                          subtitle = stringResource(MR.strings.for_anyone_to_reach_you),
+                                          labelHeightRatio = 0.195f,
+                                          onClick = cardClickOverride ?: {
+                                            ModalManager.start.showModalCloseable { close ->
+                                              UserAddressView(chatModel = chatModel, shareViaProfile = false, autoCreateAddress = true, onboarding = true, close = close)
+                                            }
+                                          }
+                       )
+                     }
+            )
+          }
         }
       }
     }
-  }
 
-  if (appPlatform.isDesktop) {
-    val maxContentWidth = DEFAULT_WINDOW_WIDTH - DEFAULT_START_MODAL_WIDTH * fontSizeSqrtMultiplier
-    Box(
-      Modifier.fillMaxSize().background(MaterialTheme.colors.background).padding(vertical = DEFAULT_PADDING).graphicsLayer { alpha = cardAlpha },
-      contentAlignment = Alignment.Center
-    ) {
-      Box(Modifier.widthIn(max = maxContentWidth).fillMaxHeight()) {
+    if (appPlatform.isDesktop) {
+      val maxContentWidth = DEFAULT_WINDOW_WIDTH - DEFAULT_START_MODAL_WIDTH * fontSizeSqrtMultiplier
+      Box(
+        Modifier.fillMaxSize().qryptanaBackdrop().padding(vertical = DEFAULT_PADDING).graphicsLayer { alpha = cardAlpha },
+          contentAlignment = Alignment.Center
+      ) {
+      Box(
+        Modifier
+          .widthIn(max = maxContentWidth)
+          .fillMaxHeight()
+          .offset(x = -(DEFAULT_START_MODAL_WIDTH * fontSizeSqrtMultiplier) / 2)
+      ) {
+          pager()
+        }
+      }
+    } else {
+      Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
         pager()
       }
     }
-  } else {
-    Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-      pager()
-    }
-  }
 }

@@ -2126,7 +2126,7 @@
     <string name="onboarding_choose_server_operators">Оператори серверів</string>
     <string name="onboarding_network_operators">Мережеві оператори</string>
     <string name="onboarding_network_operators_conditions_will_be_accepted">Умови будуть прийняті для ввімкнених операторів через 30 днів.</string>
-    <string name="onboarding_network_operators_app_will_use_for_routing">Наприклад, якщо ваш контакт отримує повідомлення через сервер Qryptana, ваш додаток доставлятиме їх через сервер Flux.</string>
+    <string name="onboarding_network_operators_app_will_use_for_routing">Your app can use different operators for different parts of a connection.</string>
     <string name="onboarding_select_network_operators_to_use">Виберіть мережевих операторів для використання.</string>
     <string name="onboarding_network_operators_configure_via_settings">Ви можете налаштувати сервери за допомогою налаштувань.</string>
     <string name="onboarding_network_operators_review_later">Перегляньте пізніше</string>
@@ -2241,7 +2241,7 @@
     <string name="display_name_accepted_invitation">прийнято запрошення</string>
     <string name="display_name_requested_to_connect">запит на підключення</string>
     <string name="onboarding_network_about_operators">Про операторів</string>
-    <string name="onboarding_network_operators_simplex_flux_agreement">Qryptana та Flux уклали угоду про включення серверів, що працюють на Flux, до додатку.</string>
+    <string name="onboarding_network_operators_simplex_flux_agreement">You can choose between SimpleX-operated servers and servers operated by Flux.</string>
     <string name="sync_connection_desc">Підключення вимагає повторного узгодження шифрування.</string>
     <string name="encryption_renegotiation_in_progress">Виконується повторне узгодження шифрування.</string>
     <string name="sync_connection_confirm">Виправити</string>

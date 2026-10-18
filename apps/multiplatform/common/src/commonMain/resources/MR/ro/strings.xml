@@ -1417,7 +1417,7 @@
     <string name="app_check_for_updates_button_download">Descărcați %s (%s)</string>
     <string name="app_check_for_updates_button_install">Instalează actualizarea</string>
     <string name="dont_create_address">Nu crea adresă</string>
-    <string name="onboarding_network_operators_app_will_use_for_routing">De exemplu, dacă un contact al tău primește mesaje printr-un server Qryptana, aplicația ta le va trimite printr-un server Flux.</string>
+    <string name="onboarding_network_operators_app_will_use_for_routing">Your app can use different operators for different parts of a connection.</string>
     <string name="call_desktop_permission_denied_safari">Deschide Setările Safari / Site-uri web / Microfon, apoi selectează Permite pentru localhost.</string>
     <string name="icon_descr_call_missed">Apel ratat</string>
     <string name="alert_text_encryption_renegotiation_failed">Renegocierea criptării a eșuat.</string>
@@ -1843,7 +1843,7 @@
     <string name="use_simplex_chat_servers__question">Folosiți servere Qryptana?</string>
     <string name="network_socks_proxy">Proxy SOCKS</string>
     <string name="network_proxy_username">Nume de utilizator</string>
-    <string name="onboarding_network_operators_simplex_flux_agreement">Qryptana și Flux au ajuns la un acord pentru a include în aplicație servere operate de Flux.</string>
+    <string name="onboarding_network_operators_simplex_flux_agreement">You can choose between SimpleX-operated servers and servers operated by Flux.</string>
     <string name="periodic_notifications_desc">Aplicația preia mesajele noi periodic și consumă câteva procente din baterie pe zi. Aplicația nu folosește notificări push, așadar datele de pe dispozitivul tău nu sunt trimise către servere.</string>
     <string name="la_notice_title_simplex_lock">Blocare Qryptana</string>
     <string name="file_error_auth">Cheie greșită sau adresă necunoscută a fragmentului de fișier - cel mai probabil fișierul este șters.</string>

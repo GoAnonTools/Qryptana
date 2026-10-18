@@ -2159,7 +2159,7 @@
     <string name="operator_conditions_failed_to_load">لا يمكن تحميل نص الشروط الحالية، يمكنك مراجعة الشروط عبر هذا الرابط:</string>
     <string name="error_accepting_operator_conditions">خطأ في قبول الشروط</string>
     <string name="failed_to_save_servers">خطأ في حفظ الخوادم</string>
-    <string name="onboarding_network_operators_app_will_use_for_routing">على سبيل المثال، إذا تلقى أحد جهات اتصالك رسائل عبر خادم Qryptana، فسيقوم تطبيقك بتسليمها عبر خادم Flux.</string>
+    <string name="onboarding_network_operators_app_will_use_for_routing">Your app can use different operators for different parts of a connection.</string>
     <string name="no_message_servers_configured_for_private_routing">لا يوجد خوادم لتوجيه الرسائل الخاصة.</string>
     <string name="no_message_servers_configured">لا يوجد خوادم رسائل.</string>
     <string name="no_media_servers_configured_for_private_routing">لا يوجد خوادم لاستقبال الملفات.</string>
@@ -2220,7 +2220,7 @@
     <string name="chat_main_profile_sent">سيتم إرسال ملف تعريفك للدردشة إلى أعضاء الدردشة</string>
     <string name="you_will_stop_receiving_messages_from_this_chat_chat_history_will_be_preserved">ستتوقف عن تلقي الرسائل من هذه الدردشة. سيتم حفظ سجل الدردشة.</string>
     <string name="onboarding_network_about_operators">عن المُشغلين</string>
-    <string name="onboarding_network_operators_simplex_flux_agreement">توصلت Qryptana وFlux إلى اتفاق لتضمين الخوادم التي تديرها Flux في التطبيق.</string>
+    <string name="onboarding_network_operators_simplex_flux_agreement">You can choose between SimpleX-operated servers and servers operated by Flux.</string>
     <string name="encryption_renegotiation_in_progress">جارِ إعادة التفاوض على التعمية.</string>
     <string name="sync_connection_question">إصلاح الاتصال؟</string>
     <string name="sync_connection_desc">يتطلب الاتصال إعادة التفاوض على التعمية.</string>
