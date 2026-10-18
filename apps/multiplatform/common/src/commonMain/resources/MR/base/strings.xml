@@ -1132,6 +1132,8 @@
   <string name="app_check_for_updates_button_remind_later">Remind later</string>
   <string name="app_check_for_updates_notice_title">Check for updates</string>
   <string name="app_check_for_updates_notice_desc">To be notified about the new releases, turn on periodic check for Stable or Beta versions.</string>
+  <string name="app_check_for_updates_upstream_title">Upstream SimpleX release available: %s</string>
+  <string name="app_check_for_updates_upstream_only">A newer upstream SimpleX release is available. Qryptana updates are distributed separately, so this release cannot be installed as a Qryptana update.</string>
   <string name="app_check_for_updates_notice_disable">Disable</string>
 
   <string name="show_dev_options">Show:</string>

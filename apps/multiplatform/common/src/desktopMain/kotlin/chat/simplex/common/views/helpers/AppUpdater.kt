@@ -197,20 +197,26 @@ fun checkForUpdate() {
           Log.d(TAG, "Skipping update because of the same version or skipped version")
           return
         }
-        val assets = chooseGitHubReleaseAssets(release)
-        // No need to show an alert if no suitable packages were found. But for Flatpak users it's useful to see release notes anyway
-        if (assets.isEmpty() && !isRunningFromFlatpak()) {
-          Log.d(TAG, "No assets to download for current system")
-          return
-        }
+        // The upstream release is useful for version and security awareness, but its
+        // binaries are SimpleX releases and must never be offered as Qryptana updates.
+        val assets = chooseGitHubReleaseAssets()
         val lines = ArrayList<String>()
         for (line in release.body.lines()) {
           if (line == "Commits:") break
           lines.add(line)
         }
-        val text = lines.joinToString("\n")
+        val text = buildString {
+          append(lines.joinToString("\n"))
+          if (assets.isEmpty()) {
+            append("\n\n")
+            append(generalGetString(MR.strings.app_check_for_updates_upstream_only))
+          }
+        }
         AlertManager.shared.showAlertDialogButtonsColumn(
-          generalGetString(MR.strings.app_check_for_updates_update_available).format(release.name),
+          generalGetString(
+            if (assets.isEmpty()) MR.strings.app_check_for_updates_upstream_title
+            else MR.strings.app_check_for_updates_update_available
+          ).format(release.name),
           text = text,
           textAlign = TextAlign.Start,
           dismissible = false,
@@ -368,21 +374,10 @@ private suspend fun downloadAsset(asset: GitHubAsset) {
   }
 }
 
-private fun isRunningFromAppImage(): Boolean = System.getenv("APPIMAGE") != null
-
-private fun isRunningFromFlatpak(): Boolean = System.getenv("container") == "flatpak"
-
-private fun chooseGitHubReleaseAssets(release: GitHubRelease): List<GitHubAsset> {
-  val res = if (isRunningFromFlatpak()) {
-    // No need to show download options for Flatpak users
-    emptyList()
-  } else if (!isRunningFromAppImage() && Runtime.getRuntime().exec("which dpkg").onExit().join().exitValue() == 0) {
-    // Show all available .deb packages and user will choose the one that works on his system (for Debian derivatives)
-    release.assets.filter { it.name.lowercase().endsWith(".deb") }
-  } else {
-    release.assets.filter { it.name == desktopPlatform.githubAssetName }
-  }
-  return res
+private fun chooseGitHubReleaseAssets(): List<GitHubAsset> {
+  // No Qryptana release endpoint or signed Qryptana packages are configured yet.
+  // Never expose upstream SimpleX assets as an update for this application.
+  return emptyList()
 }
 
 private suspend fun installAppUpdate(file: File) = withContext(Dispatchers.IO) {
