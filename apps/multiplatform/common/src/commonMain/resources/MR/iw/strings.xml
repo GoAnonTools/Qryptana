@@ -2118,7 +2118,7 @@
     <string name="servers_info_private_data_disclaimer">החל מ-%s.\nכל הנתונים נשמרים פרטיים במכשיר שלך.</string>
     <string name="network_smp_web_port_all">כל השרתים</string>
     <string name="onboarding_conditions_private_chats_not_accessible">צ\'אטים פרטיים, קבוצות ואנשי הקשר שלך אינם נגישים למפעילי השרת.</string>
-    <string name="onboarding_network_operators_app_will_use_for_routing">לדוגמה, אם איש הקשר שלך מקבל הודעות דרך שרת Qryptana, האפליקציה שלך תעביר אותן דרך שרת Flux.</string>
+    <string name="onboarding_network_operators_app_will_use_for_routing">Your app can use different operators for different parts of a connection.</string>
     <string name="onboarding_conditions_privacy_policy_and_conditions_of_use">מדיניות פרטיות ותנאי שימוש.</string>
     <string name="onboarding_network_operators_conditions_you_can_configure">ניתן להגדיר מפעילים בהגדרות רשת ושרתים.</string>
     <string name="privacy_chat_list_open_links_no">לא</string>

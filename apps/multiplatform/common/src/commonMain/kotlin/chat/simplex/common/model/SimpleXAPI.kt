@@ -4332,9 +4332,9 @@ val operatorsInfo: Map<OperatorTag, ServerOperatorInfo> = mapOf(
     ),
     website = "https://simplex.chat",
     logo = MR.images.decentralized,
-    largeLogo = MR.images.logo,
+    largeLogo = MR.images.decentralized,
     logoDarkMode = MR.images.decentralized_light,
-    largeLogoDarkMode = MR.images.logo_light
+    largeLogoDarkMode = MR.images.decentralized_light
   ),
   OperatorTag.Flux to ServerOperatorInfo(
     description = listOf(

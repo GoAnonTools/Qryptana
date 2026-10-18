@@ -1590,7 +1590,7 @@
     <string name="onboarding_notifications_mode_service_desc_short">Aplikasi selalu berjalan di latar belakang</string>
     <string name="onboarding_notifications_mode_periodic_desc_short">Periksa pesan setiap 10 menit</string>
     <string name="onboarding_select_network_operators_to_use">Pilih operator jaringan yang akan digunakan.</string>
-    <string name="onboarding_network_operators_app_will_use_for_routing">Misalnya, jika kontak Anda menerima pesan melalui server Qryptana, aplikasi Anda akan mengirimkannya melalui server Flux.</string>
+    <string name="onboarding_network_operators_app_will_use_for_routing">Your app can use different operators for different parts of a connection.</string>
     <string name="how_it_helps_privacy">Bagaimana ini membantu privasi</string>
     <string name="onboarding_network_operators_continue">Lanjutkan</string>
     <string name="onboarding_network_operators_configure_via_settings">Anda dapat konfigurasi server di pengaturan.</string>
@@ -1617,7 +1617,7 @@
     <string name="desktop_address">Alamat desktop</string>
     <string name="desktop_devices">Perangkat desktop</string>
     <string name="onboarding_network_about_operators">Tentang operator</string>
-    <string name="onboarding_network_operators_simplex_flux_agreement">Qryptana dan Flux membuat kesepakatan untuk sertakan server yang dioperasikan Flux ke aplikasi.</string>
+    <string name="onboarding_network_operators_simplex_flux_agreement">You can choose between SimpleX-operated servers and servers operated by Flux.</string>
     <string name="delete_chat_profile_question">Hapus profil obrolan?</string>
     <string name="chat_is_stopped_you_should_transfer_database">Obrolan dihentikan. Jika Anda sudah gunakan basis data ini di perangkat lain, Anda harus transfer kembali sebelum memulai obrolan.</string>
     <string name="database_passphrase_will_be_updated">Frasa sandi enkripsi basis data akan diperbarui.</string>

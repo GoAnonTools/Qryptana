@@ -2102,7 +2102,7 @@
     <string name="subscription_percentage">نمایش درصد</string>
     <string name="simplex_address_and_1_time_links_are_safe_to_share">آدرس Qryptana و لینک‌های یکبارمصرف برای اشتراک توسط هرگونه پیامرسانی امن می‌باشند.</string>
     <string name="simplex_address_or_1_time_link">آدرس Qryptana یا لینک یکبار مصرف؟</string>
-    <string name="onboarding_network_operators_simplex_flux_agreement">Qryptana و Flux به توافق رسیده‌اند که سرورهای تحت کنترل Flux را به برنامه اضافه کنند.</string>
+    <string name="onboarding_network_operators_simplex_flux_agreement">You can choose between SimpleX-operated servers and servers operated by Flux.</string>
     <string name="v6_1_better_security_descr">پروتکل‌های Qryptana توسط Trail of Bits بررسی شده‌اند.</string>
     <string name="size">اندازه</string>
     <string name="app_check_for_updates_button_skip">نادیده گرفتن این نسخه</string>
@@ -2351,7 +2351,7 @@
     <string name="appearance_font_size">اندازه فونت</string>
     <string name="report_archive_for_all_moderators">برای همه مدیران</string>
     <string name="v6_2_network_decentralization_enable_flux_reason">برای بهبود حریم خصوصی فراداده.</string>
-    <string name="onboarding_network_operators_app_will_use_for_routing">به عنوان مثال، اگر مخاطب شما پیام‌ها را از طریق یک سرور چت Qryptana دریافت کند، برنامه شما آن‌ها را از طریق یک سرور Flux تحویل خواهد داد.</string>
+    <string name="onboarding_network_operators_app_will_use_for_routing">Your app can use different operators for different parts of a connection.</string>
     <string name="report_archive_for_me">برای من</string>
     <string name="operator_use_for_messages_private_routing">برای مسیریابی خصوصی</string>
     <string name="for_social_media">برای رسانه‌های اجتماعی</string>

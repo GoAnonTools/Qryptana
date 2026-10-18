@@ -2154,7 +2154,7 @@
     <string name="v6_2_network_decentralization_descr">应用中的第二个预设运营方！</string>
     <string name="v6_2_improved_chat_navigation">改进了聊天导航</string>
     <string name="view_updated_conditions">查看更新后的条款</string>
-    <string name="onboarding_network_operators_app_will_use_for_routing">比如，如果你通过 Qryptana 服务器收到消息，应用会通过 Flux 服务器传送它们。</string>
+    <string name="onboarding_network_operators_app_will_use_for_routing">Your app can use different operators for different parts of a connection.</string>
     <string name="onboarding_network_operators_app_will_use_different_operators">应用通过在每个对话中使用不同运营方保护你的隐私。</string>
     <string name="accept_conditions">接受条款</string>
     <string name="appearance_bars_blur_radius">模糊</string>
@@ -2230,7 +2230,7 @@
     <string name="display_name_accepted_invitation">已接受邀请</string>
     <string name="display_name_requested_to_connect">被请求连接</string>
     <string name="onboarding_network_about_operators">关于运营方</string>
-    <string name="onboarding_network_operators_simplex_flux_agreement">Qryptana 和 Flux 达成协议将 Flux 运营的服务器包括在应用中。</string>
+    <string name="onboarding_network_operators_simplex_flux_agreement">You can choose between SimpleX-operated servers and servers operated by Flux.</string>
     <string name="sync_connection_confirm">修复</string>
     <string name="sync_connection_question">修复连接？</string>
     <string name="encryption_renegotiation_in_progress">正进行加密重协商。</string>

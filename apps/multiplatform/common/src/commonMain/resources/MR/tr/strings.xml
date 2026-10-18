@@ -2187,7 +2187,7 @@
     <string name="edit_chat_list_menu_action">Düzenle</string>
     <string name="for_social_media">Sosyal medya için</string>
     <string name="create_1_time_link">Tek kullanımlık bağlantı oluştur</string>
-    <string name="onboarding_network_operators_app_will_use_for_routing">Örneğin, eğer kişiniz Qryptana Sohbet sunucusundan mesajları alıyorsa, uygulamanız bu mesajları Flux sunucusundan iletecektir.</string>
+    <string name="onboarding_network_operators_app_will_use_for_routing">Your app can use different operators for different parts of a connection.</string>
     <string name="chat_item_ttl_default">varsayılan (%s)</string>
     <string name="block_members_desc">Bu üyelerden gelen yeni mesajların hepsi gizlenecektir.</string>
     <string name="v6_3_better_groups_performance">İyileştirilmiş grup performansı</string>
@@ -2364,7 +2364,7 @@
     <string name="onboarding_conditions_privacy_policy_and_conditions_of_use">Gizlilik politikası ve kullanım koşulları.</string>
     <string name="onboarding_network_operators_review_later">Daha sonra incele</string>
     <string name="onboarding_choose_server_operators">Sunucu operatörleri</string>
-    <string name="onboarding_network_operators_simplex_flux_agreement">Qryptana ve Flux, Flux tarafından işletilen sunucuların uygulamaya dahil edilmesi konusunda bir anlaşma yaptı.</string>
+    <string name="onboarding_network_operators_simplex_flux_agreement">You can choose between SimpleX-operated servers and servers operated by Flux.</string>
     <string name="privacy_chat_list_open_links">Sohbet listesinden bağlantıları aç</string>
     <string name="privacy_chat_list_open_links_yes">Evet</string>
     <string name="privacy_chat_list_open_web_link_question">Web bağlantısını açmak ister misiniz?</string>

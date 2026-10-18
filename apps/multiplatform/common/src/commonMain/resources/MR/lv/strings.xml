@@ -1592,10 +1592,10 @@
     <string name="onboarding_conditions_accept">Ievada nosacījumi pieņemt</string>
     <string name="onboarding_choose_server_operators">Ievada izvēlēties servera operatorus</string>
     <string name="onboarding_network_operators">Ievada tīkla operatori</string>
-    <string name="onboarding_network_operators_simplex_flux_agreement">Ievada tīkla operatori simplex flux vienošanās</string>
+    <string name="onboarding_network_operators_simplex_flux_agreement">You can choose between SimpleX-operated servers and servers operated by Flux.</string>
     <string name="onboarding_network_operators_app_will_use_different_operators">Ievada tīkla operatori lietotne izmantos citus operatorus</string>
     <string name="onboarding_network_operators_cant_see_who_talks_to_whom">Ievada tīkla operatori nevar redzēt, kas ar ko runā</string>
-    <string name="onboarding_network_operators_app_will_use_for_routing">Ievada tīkla operatori lietotne izmantos maršrutēšanai</string>
+    <string name="onboarding_network_operators_app_will_use_for_routing">Your app can use different operators for different parts of a connection.</string>
     <string name="onboarding_network_about_operators">Ievada tīkls par operatoriem</string>
     <string name="onboarding_select_network_operators_to_use">Ievada izvēlēties tīkla operatorus, ko izmantot</string>
     <string name="how_it_helps_privacy">Kā tas palīdz privātumam</string>

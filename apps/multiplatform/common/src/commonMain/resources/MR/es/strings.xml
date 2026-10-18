@@ -2197,7 +2197,7 @@
     <string name="to_protect_against_your_link_replaced_compare_codes">Para protegerte contra una sustitución del enlace, puedes comparar los códigos de seguridad con tu contacto.</string>
     <string name="operator_same_conditions_will_apply_to_operators"><![CDATA[Las mismas condiciones se aplican a el/los operador(es) <b>%s</b>.]]></string>
     <string name="operator_conditions_will_be_applied"><![CDATA[Estas condiciones también se aplican para: <b>%s</b>.]]></string>
-    <string name="onboarding_network_operators_app_will_use_for_routing">Por ejemplo, si tu contacto recibe a través de un servidor de Qryptana, tu aplicación enviará a través de un servidor de Flux.</string>
+    <string name="onboarding_network_operators_app_will_use_for_routing">Your app can use different operators for different parts of a connection.</string>
     <string name="address_creation_instruction">Pulsa Crear dirección Qryptana en el menú para crearla más tarde.</string>
     <string name="connection_error_quota_desc">La conexión ha alcanzado el límite de mensajes no entregados. es posible que tu contacto esté desconectado.</string>
     <string name="message_deleted_or_not_received_error_desc">El mensaje ha sido eliminado o aún no se ha recibido.</string>
@@ -2242,7 +2242,7 @@
     <string name="onboarding_notifications_mode_service_desc_short">La aplicación siempre funciona en segundo plano</string>
     <string name="all_message_and_files_e2e_encrypted"><![CDATA[Todos los mensajes y archivos son enviados <b>cifrados de extremo a extremo</b> y con seguridad postcuántica en mensajes directos.]]></string>
     <string name="maximum_message_size_title">¡Mensaje demasiado largo!</string>
-    <string name="onboarding_network_operators_simplex_flux_agreement">Simplex Chat y Flux han acordado incluir en la aplicación servidores operados por Flux.</string>
+    <string name="onboarding_network_operators_simplex_flux_agreement">You can choose between SimpleX-operated servers and servers operated by Flux.</string>
     <string name="debug_logs">Activar registros</string>
     <string name="error_saving_database">Error al guardar base de datos</string>
     <string name="sync_connection_desc">La conexión requiere renegociar el cifrado.</string>

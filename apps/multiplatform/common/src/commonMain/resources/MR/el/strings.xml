@@ -929,7 +929,7 @@
     <string name="for_chat_profile">Για το προφίλ συνομιλίας %s:</string>
     <string name="section_title_for_console">ΓΙΑ ΚΟΝΣΟΛΑ</string>
     <string name="for_everybody">Για όλους</string>
-    <string name="onboarding_network_operators_app_will_use_for_routing">Για παράδειγμα, αν η επαφή σου λαμβάνει μηνύματα μέσω κάποιου Qryptana διακομιιστή, η εφαρμογή σου θα τα παραδίδει μέσω ενός Flux διακομιστή.</string>
+    <string name="onboarding_network_operators_app_will_use_for_routing">Your app can use different operators for different parts of a connection.</string>
     <string name="report_archive_for_me">Για μένα</string>
     <string name="operator_use_for_messages_private_routing">Για ιδιωτική δρομολόγηση</string>
     <string name="for_social_media">Για μέσα κοινωνικής δικτύωσης</string>
@@ -2226,7 +2226,7 @@
     <string name="simplex_address_or_1_time_link">Διεύθυνση Qryptana ή σύνδεσμος 1-χρήσης;</string>
     <string name="system_restricted_background_desc">Το Qryptana δεν μπορεί να λειτουργήσει στο παρασκήνιο. Θα λαμβάνεις τις ειδοποιήσεις μόνο όταν η εφαρμογή είναι σε λειτουργία.</string>
     <string name="simplex_link_channel">Σύνδεσμος καναλιού Qryptana</string>
-    <string name="onboarding_network_operators_simplex_flux_agreement">Η Qryptana και η Flux σύναψαν συμφωνία για την ενσωμάτωση των διακομιστών που λειτουργεί η Flux, στην εφαρμογή.</string>
+    <string name="onboarding_network_operators_simplex_flux_agreement">You can choose between SimpleX-operated servers and servers operated by Flux.</string>
     <string name="ntf_channel_calls">Κλήσεις Qryptana</string>
     <string name="ntf_channel_messages">Μηνύματα Qryptana</string>
     <string name="v4_2_security_assessment_desc">Η ασφάλεια του Qryptana ελέγχθηκε από την Trail of Bits.</string>

@@ -15,11 +15,15 @@ import androidx.compose.ui.draw.clipToBounds
 import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.*
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import chat.simplex.common.BuildConfigCommon
 import chat.simplex.common.ui.theme.DEFAULT_PADDING
+import chat.simplex.common.ui.theme.QryptanaCopper
+import chat.simplex.common.ui.theme.QryptanaDarkBackground
+import chat.simplex.common.ui.theme.QryptanaDarkCard
 import chat.simplex.common.ui.theme.isInDarkTheme
 import chat.simplex.common.views.helpers.ModalManager
 import chat.simplex.common.views.helpers.mixWith
@@ -41,12 +45,12 @@ fun OnboardingShrinkingLayout(
     topPadding: Dp = 0.dp,
     minSpacerHeight: Dp = 20.dp,
     image: @Composable () -> Unit,
-    content: @Composable () -> Unit,
-    button: @Composable () -> Unit
+                              content: @Composable () -> Unit,
+                              button: @Composable () -> Unit
 ) {
     Layout(
         contents = listOf(image, content, button),
-        modifier = modifier
+           modifier = modifier
     ) { (imageMeasurables, contentMeasurables, buttonMeasurables), constraints ->
         val width = constraints.maxWidth
         val height = constraints.maxHeight
@@ -93,9 +97,9 @@ fun OnboardingImage(
     if (BuildConfigCommon.SIMPLEX_ASSETS) {
         Image(
             painterResource(if (isInDarkTheme()) darkImage else lightImage),
-            contentDescription = null,
-            contentScale = ContentScale.Fit,
-            modifier = Modifier.fillMaxWidth().then(modifier)
+              contentDescription = null,
+              contentScale = ContentScale.Fit,
+              modifier = Modifier.fillMaxWidth().then(modifier)
         )
     } else {
         val isDark = isInDarkTheme()
@@ -103,25 +107,25 @@ fun OnboardingImage(
         val scale = if (isDark) 1.5f else 1.2f
         Box(
             modifier
-                .aspectRatio(aspectRatio)
-                .clip(RoundedCornerShape(24.dp))
-                .drawBehind {
-                    val gp = gradientPoints(size.height / size.width, scale)
-                    drawRect(
-                        Brush.linearGradient(
-                            colorStops = stops,
-                            start = Offset(gp.startX * size.width, gp.startY * size.height),
-                            end = Offset(gp.endX * size.width, gp.endY * size.height)
-                        )
+            .aspectRatio(aspectRatio)
+            .clip(RoundedCornerShape(24.dp))
+            .drawBehind {
+                val gp = gradientPoints(size.height / size.width, scale)
+                drawRect(
+                    Brush.linearGradient(
+                        colorStops = stops,
+                        start = Offset(gp.startX * size.width, gp.startY * size.height),
+                                         end = Offset(gp.endX * size.width, gp.endY * size.height)
                     )
-                },
+                )
+            },
             contentAlignment = Alignment.Center
         ) {
             Icon(
                 painterResource(fallbackIcon),
-                contentDescription = null,
-                modifier = Modifier.size(80.dp),
-                tint = MaterialTheme.colors.primary
+                 contentDescription = null,
+                 modifier = Modifier.size(80.dp),
+                 tint = MaterialTheme.colors.primary
             )
         }
     }
@@ -129,26 +133,67 @@ fun OnboardingImage(
 
 @Composable
 fun DesktopOnboardingShell(stage: OnboardingStage, content: @Composable () -> Unit) {
-    Row(Modifier.fillMaxSize()) {
+    val qryptanaCenteredStage = stage == OnboardingStage.Step2_CreateProfile ||
+    // Link-a-mobile now has its own full-screen Qryptana page, so it no longer needs the side panel.
+    stage == OnboardingStage.LinkAMobile ||
+    stage == OnboardingStage.Step2_5_SetupDatabasePassphrase ||
+    stage == OnboardingStage.Step3_ChooseServerOperators ||
+    stage == OnboardingStage.Step3_CreateSimpleXAddress ||
+    stage == OnboardingStage.Step4_SetNotificationsMode ||
+    stage == OnboardingStage.Step4_NetworkCommitments
+    val qryptanaProfileStage = stage == OnboardingStage.Step2_CreateProfile
+    if (qryptanaCenteredStage) {
+        Box(Modifier.fillMaxSize()) {
+            content()
+            ModalManager.fullscreen.showInView()
+        }
+    } else Row(Modifier.fillMaxSize()) {
         Box(
             Modifier.weight(0.382f).fillMaxHeight()
-                .background(MaterialTheme.colors.background.mixWith(MaterialTheme.colors.onBackground, 0.985f))
-                .padding(horizontal = DEFAULT_PADDING),
+            .background(if (qryptanaProfileStage) QryptanaDarkBackground else MaterialTheme.colors.background.mixWith(MaterialTheme.colors.onBackground, 0.985f))
+            .padding(horizontal = DEFAULT_PADDING),
             contentAlignment = Alignment.Center
         ) {
             when (stage) {
                 OnboardingStage.Step1_SimpleXInfo ->
-                    OnboardingImage(MR.images.intro, MR.images.intro_light, MR.images.ic_forum, Modifier.fillMaxWidth())
+                OnboardingImage(MR.images.intro, MR.images.intro_light, MR.images.ic_forum, Modifier.fillMaxWidth())
                 OnboardingStage.Step2_CreateProfile,
                 OnboardingStage.Step2_5_SetupDatabasePassphrase,
                 OnboardingStage.LinkAMobile ->
+                if (qryptanaProfileStage) {
+                    Box(
+                        Modifier
+                        .fillMaxWidth()
+                        .aspectRatio(1f)
+                        .clip(RoundedCornerShape(28.dp))
+                        .background(QryptanaDarkCard)
+                        .drawBehind {
+                            drawRect(
+                                Brush.radialGradient(
+                                    colors = listOf(QryptanaCopper.copy(alpha = 0.18f), Color.Transparent),
+                                                     center = Offset(size.width * 0.5f, size.height * 0.42f),
+                                                     radius = size.minDimension * 0.72f
+                                )
+                            )
+                        },
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Image(
+                            painterResource(MR.images.qryptana_symbol),
+                              contentDescription = null,
+                              contentScale = ContentScale.Fit,
+                              modifier = Modifier.fillMaxSize().padding(56.dp)
+                        )
+                    }
+                } else {
                     OnboardingImage(MR.images.your_profile, MR.images.your_profile_light, MR.images.ic_person, Modifier.fillMaxWidth())
+                }
                 OnboardingStage.Step3_ChooseServerOperators,
                 OnboardingStage.Step3_CreateSimpleXAddress,
                 OnboardingStage.Step4_SetNotificationsMode ->
-                    OnboardingImage(MR.images.your_network, MR.images.your_network_light, MR.images.ic_dns, Modifier.fillMaxWidth())
+                OnboardingImage(MR.images.your_network, MR.images.your_network_light, MR.images.ic_dns, Modifier.fillMaxWidth())
                 OnboardingStage.Step4_NetworkCommitments ->
-                    OnboardingImage(MR.images.network_commitments, MR.images.network_commitments_light, MR.images.ic_shield, Modifier.fillMaxWidth(), aspectRatio = 1.5f)
+                OnboardingImage(MR.images.network_commitments, MR.images.network_commitments_light, MR.images.ic_shield, Modifier.fillMaxWidth(), aspectRatio = 1.5f)
                 else -> {}
             }
         }

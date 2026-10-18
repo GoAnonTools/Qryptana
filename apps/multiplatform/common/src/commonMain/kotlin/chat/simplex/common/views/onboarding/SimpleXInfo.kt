@@ -125,7 +125,7 @@ private fun SimpleXInfoDesktop(chatModel: ChatModel) {
  * UI" at the scale of a hero card or primary button. Real metal is layered
  * and desaturated — these values model that directly for this screen only.
  */
-private object QryptanaMetal {
+internal object QryptanaMetal {
   val void = Color(0xFF0B0B0A)
   val depth = Color(0xFF131211)
   val cardHigh = Color(0xFF232019)
@@ -166,14 +166,14 @@ private object QryptanaMetal {
   val textQuiet = Color(0xFF746C65)
 }
 
-@Composable
-private fun QryptanaOnboardingLayout(
-  user: User?,
-  onboardingStage: SharedPreference<OnboardingStage>
-) {
-  // Layered graphite: a long, gentle vertical falloff with a lifted middle
-  // band so the stage behind the wordmark has somewhere to catch light.
-  val gradient = Brush.verticalGradient(
+/**
+ * The shared Qryptana stage: layered graphite, a neutral key light, a brushed diagonal sheen,
+ * corner falloff and a barely-there grain. Every onboarding page sits on this so the flow
+ * reads as one lit surface.
+ */
+internal fun Modifier.qryptanaBackdrop(): Modifier = this
+.background(
+  Brush.verticalGradient(
     colorStops = arrayOf(
       0.0f to QryptanaMetal.void,
       0.18f to Color(0xFF12110F),
@@ -182,63 +182,70 @@ private fun QryptanaOnboardingLayout(
                          1.0f to Color(0xFF0F0E0D)
     )
   )
+)
+.drawBehind {
+  // Key light: a wide, neutral studio glow above the wordmark. Not
+  // coloured — this is what lets brushed metal read as metal.
+  drawRect(
+    Brush.radialGradient(
+      colors = listOf(QryptanaMetal.studioSoft.copy(alpha = 0.30f), Color.Transparent),
+                         center = Offset(size.width / 2f, size.height * 0.20f),
+                         radius = size.minDimension * 0.78f
+    )
+  )
+  // Brushed titanium: an anisotropic diagonal sheen across the whole
+  // surface, so the light isn't uniform (uniform = flat black).
+  drawRect(
+    Brush.linearGradient(
+      colors = listOf(
+        Color.Transparent,
+        QryptanaMetal.studioSoft.copy(alpha = 0.10f),
+                      Color.Transparent,
+                      QryptanaMetal.studioSoft.copy(alpha = 0.05f),
+                      Color.Transparent
+      ),
+      start = Offset(0f, 0f),
+                         end = Offset(size.width, size.height)
+    )
+  )
+  // Light falloff: dark corners, so the centre reads as lit hardware.
+  // (The faint copper environment tint that used to sit before this
+  // was removed: it only contributed a warm-brown wash.)
+  drawRect(
+    Brush.radialGradient(
+      colors = listOf(Color.Transparent, Color.Black.copy(alpha = 0.50f)),
+                         center = Offset(size.width / 2f, size.height * 0.42f),
+                         radius = size.maxDimension * 0.76f
+    )
+  )
+  // Brushed grain: ultra-fine horizontal lines, barely there. Felt more
+  // than seen — it is what removes the "flat digital black" look.
+  val step = 3.dp.toPx()
+  var y = 0f
+  var i = 0
+  while (y < size.height) {
+    if (i % 2 == 0) {
+      drawLine(
+        color = Color.White.copy(alpha = 0.011f),
+               start = Offset(0f, y),
+               end = Offset(size.width, y),
+               strokeWidth = 1f
+      )
+    }
+    y += step
+    i++
+  }
+}
+
+@Composable
+private fun QryptanaOnboardingLayout(
+  user: User?,
+  onboardingStage: SharedPreference<OnboardingStage>
+) {
   Box(
     Modifier
     .fillMaxSize()
-    .background(gradient)
-    .drawBehind {
-      // Key light: a wide, neutral studio glow above the wordmark. Not
-      // coloured — this is what lets brushed metal read as metal.
-      drawRect(
-        Brush.radialGradient(
-          colors = listOf(QryptanaMetal.studioSoft.copy(alpha = 0.30f), Color.Transparent),
-                             center = Offset(size.width / 2f, size.height * 0.20f),
-                             radius = size.minDimension * 0.78f
-        )
-      )
-      // Brushed titanium: an anisotropic diagonal sheen across the whole
-      // surface, so the light isn't uniform (uniform = flat black).
-      drawRect(
-        Brush.linearGradient(
-          colors = listOf(
-            Color.Transparent,
-            QryptanaMetal.studioSoft.copy(alpha = 0.10f),
-                          Color.Transparent,
-                          QryptanaMetal.studioSoft.copy(alpha = 0.05f),
-                          Color.Transparent
-          ),
-          start = Offset(0f, 0f),
-                             end = Offset(size.width, size.height)
-        )
-      )
-      // Light falloff: dark corners, so the centre reads as lit hardware.
-      // (The faint copper environment tint that used to sit before this
-      // was removed: it only contributed a warm-brown wash.)
-      drawRect(
-        Brush.radialGradient(
-          colors = listOf(Color.Transparent, Color.Black.copy(alpha = 0.50f)),
-                             center = Offset(size.width / 2f, size.height * 0.42f),
-                             radius = size.maxDimension * 0.76f
-        )
-      )
-      // Brushed grain: ultra-fine horizontal lines, barely there. Felt more
-      // than seen — it is what removes the "flat digital black" look.
-      val step = 3.dp.toPx()
-      var y = 0f
-      var i = 0
-      while (y < size.height) {
-        if (i % 2 == 0) {
-          drawLine(
-            color = Color.White.copy(alpha = 0.011f),
-                   start = Offset(0f, y),
-                   end = Offset(size.width, y),
-                   strokeWidth = 1f
-          )
-        }
-        y += step
-        i++
-      }
-    }
+    .qryptanaBackdrop()
     .systemBarsPadding(),
       contentAlignment = Alignment.Center
   ) {
@@ -289,7 +296,7 @@ fun SimpleXInfoLayout(
  * screen reads as "introducing itself" rather than "loading".
  */
 @Composable
-private fun rememberReveal(delayMs: Int, durationMs: Int, start: Boolean = true): Animatable<Float, AnimationVector1D> {
+internal fun rememberReveal(delayMs: Int, durationMs: Int, start: Boolean = true): Animatable<Float, AnimationVector1D> {
   val reveal = remember { Animatable(0f) }
   LaunchedEffect(start) {
     if (start) {
@@ -350,7 +357,7 @@ private fun QryptanaSignatureWord(text: String, delayMs: Int, start: Boolean = t
  * Falls back to the platform serif if a font cannot be loaded.
  */
 @Composable
-private fun rememberQryptanaSerif(): FontFamily {
+internal fun rememberQryptanaSerif(): FontFamily {
   val light = MR.fonts.CormorantGaramond.light.asFont(FontWeight.Light, FontStyle.Normal)
   val regular = MR.fonts.CormorantGaramond.regular.asFont(FontWeight.Normal, FontStyle.Normal)
   val italic = MR.fonts.CormorantGaramond.italic.asFont(FontWeight.Normal, FontStyle.Italic)
@@ -940,12 +947,39 @@ fun QryptanaWordmark(modifier: Modifier = Modifier, lightOnDark: Boolean = false
 }
 
 @Composable
-fun QryptanaSymbol() {
+fun QryptanaSymbol(size: Dp = 120.dp) {
   Image(
     painter = painterResource(MR.images.qryptana_symbol),
         contentDescription = stringResource(MR.strings.qryptana_logo_description),
         contentScale = ContentScale.Fit,
-        modifier = Modifier.size(120.dp)
+        modifier = Modifier.size(size)
+  )
+}
+
+/** Serif page title shared by the onboarding pages (bundled Cormorant, light). */
+@Composable
+internal fun QryptanaSerifTitle(text: String, modifier: Modifier = Modifier, sizeSp: Int = 34) {
+  Text(
+    text,
+    modifier,
+    color = QryptanaMetal.textHero,
+    fontFamily = rememberQryptanaSerif(),
+       fontWeight = FontWeight.Light,
+       fontSize = sizeSp.sp,
+       letterSpacing = 0.4.sp,
+       lineHeight = (sizeSp * 1.24f).sp,
+       textAlign = TextAlign.Center
+  )
+}
+
+/** The short copper hairline used as a quiet divider under titles. */
+@Composable
+internal fun QryptanaHairline(modifier: Modifier = Modifier) {
+  Box(
+    modifier
+    .width(36.dp)
+    .height(1.dp)
+    .background(Brush.horizontalGradient(listOf(Color.Transparent, QryptanaMetal.copperMid.copy(alpha = 0.7f), Color.Transparent)))
   )
 }
 
@@ -975,7 +1009,7 @@ fun OnboardingActionButton(
     modifier
     .widthIn(min = 300.dp, max = 390.dp)
     .height(56.dp)
-    .graphicsLayer { scaleX = pressScale; scaleY = pressScale }
+    .graphicsLayer { scaleX = pressScale; scaleY = pressScale; alpha = if (enabled) 1f else 0.42f }
     .then(
       if (secondary) {
         // Deliberately quiet: no drop shadow, no copper, a faint translucent
