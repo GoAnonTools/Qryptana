@@ -252,20 +252,20 @@ fun ChatItemView(
       val mixAlpha = 0.6f
       val mixedBackgroundColor = if (fullyVisible) {
         if (MaterialTheme.colors.isLight) {
-          MaterialTheme.colors.secondary.mixWith(Color.White, mixAlpha)
+          messagingTokens.secondaryText.mixWith(Color.White, mixAlpha)
         } else {
-          MaterialTheme.colors.secondary.mixWith(Color.Black, mixAlpha)
+          messagingTokens.secondaryText.mixWith(Color.Black, mixAlpha)
         }
       } else {
         Color.Unspecified
       }
       val iconTint = if (fullyVisible) {
-        Color.White
+        messagingTokens.primaryText
       } else {
         if (MaterialTheme.colors.isLight) {
-          MaterialTheme.colors.secondary.mixWith(Color.White, mixAlpha)
+          messagingTokens.secondaryText.mixWith(Color.White, mixAlpha)
         } else {
-          MaterialTheme.colors.secondary.mixWith(Color.Black, mixAlpha)
+          messagingTokens.secondaryText.mixWith(Color.Black, mixAlpha)
         }
       }
 

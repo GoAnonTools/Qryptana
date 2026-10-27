@@ -34,7 +34,7 @@ fun ComposeFileView(fileName: String, cancelFile: () -> Unit, cancelEnabled: Boo
         .size(36.dp),
       tint = messagingTokens.secondaryText
     )
-    Text(fileName)
+    Text(fileName, color = messagingTokens.primaryText)
     Spacer(Modifier.weight(1f))
     if (cancelEnabled) {
       IconButton(onClick = cancelFile, modifier = Modifier.padding(0.dp)) {

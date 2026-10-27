@@ -23,6 +23,7 @@ import androidx.compose.ui.unit.sp
 import chat.simplex.common.model.*
 import chat.simplex.common.platform.*
 import chat.simplex.common.ui.theme.CurrentColors
+import chat.simplex.common.ui.theme.qryptanaMessagingTokens
 import chat.simplex.common.views.chat.SelectionHighlightColor
 import chat.simplex.common.views.helpers.*
 import chat.simplex.res.*
@@ -120,6 +121,7 @@ fun MarkdownText (
   selectionRange: IntRange? = null,
   onTextLayoutResult: ((TextLayoutResult) -> Unit)? = null
 ) {
+  val messagingTokens = qryptanaMessagingTokens()
   val text = if (stripLink != null) stripTextLink(text.toString(), stripLink) else text
   val formattedText = if (stripLink != null) stripFormattedTextLink(formattedText, stripLink) else formattedText
   val textLayoutDirection = remember (text) {
@@ -128,7 +130,7 @@ fun MarkdownText (
   val reserve = if (textLayoutDirection != LocalLayoutDirection.current && meta != null) {
     "\n"
   } else if (meta != null) {
-    reserveSpaceForMeta(meta, chatTTL, null, secondaryColor = MaterialTheme.colors.secondary, showViaProxy = showViaProxy, showTimestamp = showTimestamp)
+    reserveSpaceForMeta(meta, chatTTL, null, secondaryColor = messagingTokens.secondaryText, showViaProxy = showViaProxy, showTimestamp = showTimestamp)
   } else {
     "    "
   }

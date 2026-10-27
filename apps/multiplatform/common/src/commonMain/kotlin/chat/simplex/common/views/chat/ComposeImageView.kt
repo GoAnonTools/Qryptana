@@ -20,6 +20,7 @@ import chat.simplex.common.views.helpers.UploadContent
 
 @Composable
 fun ComposeImageView(media: ComposePreview.MediaPreview, cancelImages: () -> Unit, cancelEnabled: Boolean) {
+  val messagingTokens = qryptanaMessagingTokens()
   val sentColor = MaterialTheme.appColors.sentMessage
   Row(
     Modifier
@@ -65,7 +66,7 @@ fun ComposeImageView(media: ComposePreview.MediaPreview, cancelImages: () -> Uni
         Icon(
           painterResource(MR.images.ic_close),
           contentDescription = stringResource(MR.strings.icon_descr_cancel_image_preview),
-          tint = MaterialTheme.colors.primary,
+          tint = messagingTokens.accent,
         )
       }
     }

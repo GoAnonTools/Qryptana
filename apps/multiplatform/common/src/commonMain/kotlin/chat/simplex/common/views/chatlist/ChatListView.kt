@@ -341,6 +341,7 @@ private fun ConnectBannerCard() {
       .fillMaxWidth()
       .height(IntrinsicSize.Min)
       .clip(RoundedCornerShape(messagingTokens.messageCornerRadius))
+      .border(1.dp, messagingTokens.border, RoundedCornerShape(messagingTokens.messageCornerRadius))
     ) {
       Column(
         Modifier.weight(1f).clickable {
@@ -349,12 +350,19 @@ private fun ConnectBannerCard() {
           }
         }
       ) {
-        if (BuildConfigCommon.SIMPLEX_ASSETS) {
+        if (isDark) {
+          Box(
+            Modifier.fillMaxWidth().aspectRatio(BANNER_IMAGE_RATIO).background(messagingTokens.elevatedSurface),
+            contentAlignment = Alignment.Center
+          ) {
+            Icon(painterResource(MR.images.ic_add_link), contentDescription = null, modifier = Modifier.size(40.dp), tint = messagingTokens.accent)
+          }
+        } else if (BuildConfigCommon.SIMPLEX_ASSETS) {
           Image(
-            painterResource(if (isDark) MR.images.banner_create_link_light else MR.images.banner_create_link),
-                contentDescription = null,
-                contentScale = ContentScale.FillWidth,
-                modifier = Modifier.fillMaxWidth().aspectRatio(BANNER_IMAGE_RATIO)
+            painterResource(MR.images.banner_create_link),
+            contentDescription = null,
+            contentScale = ContentScale.FillWidth,
+            modifier = Modifier.fillMaxWidth().aspectRatio(BANNER_IMAGE_RATIO)
           )
         } else {
           BannerGradientBox(isDark) {
@@ -380,12 +388,19 @@ private fun ConnectBannerCard() {
           }
         }
       ) {
-        if (BuildConfigCommon.SIMPLEX_ASSETS) {
+        if (isDark) {
+          Box(
+            Modifier.fillMaxWidth().aspectRatio(BANNER_IMAGE_RATIO).background(messagingTokens.elevatedSurface),
+            contentAlignment = Alignment.Center
+          ) {
+            Icon(painterResource(MR.images.ic_qr_code_scanner), contentDescription = null, modifier = Modifier.size(40.dp), tint = messagingTokens.accent)
+          }
+        } else if (BuildConfigCommon.SIMPLEX_ASSETS) {
           Image(
-            painterResource(if (isDark) MR.images.banner_paste_link_light else MR.images.banner_paste_link),
-                contentDescription = null,
-                contentScale = ContentScale.FillWidth,
-                modifier = Modifier.fillMaxWidth().aspectRatio(BANNER_IMAGE_RATIO)
+            painterResource(MR.images.banner_paste_link),
+            contentDescription = null,
+            contentScale = ContentScale.FillWidth,
+            modifier = Modifier.fillMaxWidth().aspectRatio(BANNER_IMAGE_RATIO)
           )
         } else {
           BannerGradientBox(isDark) {
@@ -779,6 +794,7 @@ fun connectIfOpenedViaUri(rhId: Long?, uri: String, chatModel: ChatModel) {
 
 @Composable
 private fun ChatListSearchBar(listState: LazyListState, searchText: MutableState<TextFieldValue>, searchShowingSimplexLink: MutableState<Boolean>, searchChatFilteredBySimplexLink: MutableState<String?>) {
+  val messagingTokens = qryptanaMessagingTokens()
   Box {
     Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.fillMaxWidth()) {
       val focusRequester = remember { FocusRequester() }
@@ -790,12 +806,18 @@ private fun ChatListSearchBar(listState: LazyListState, searchText: MutableState
            tint = MaterialTheme.colors.secondary
       )
       SearchTextField(
-        Modifier.weight(1f).onFocusChanged { focused = it.hasFocus }.focusRequester(focusRequester),
+        Modifier
+          .weight(1f)
+          .clip(RoundedCornerShape(8.dp))
+          .border(1.dp, if (focused) messagingTokens.accent else messagingTokens.inputBorder, RoundedCornerShape(8.dp))
+          .onFocusChanged { focused = it.hasFocus }
+          .focusRequester(focusRequester),
                       placeholder = stringResource(MR.strings.search_or_paste_simplex_link),
                       alwaysVisible = true,
                       searchText = searchText,
                       enabled = !remember { searchShowingSimplexLink }.value,
                       trailingContent = null,
+                      backgroundColor = messagingTokens.inputSurface,
       ) {
         searchText.value = searchText.value.copy(it)
       }
