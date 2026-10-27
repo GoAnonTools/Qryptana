@@ -57,9 +57,9 @@ fun ChatPreviewView(
   fun inactiveIcon() {
     Icon(
       painterResource(MR.images.ic_cancel_filled),
-      stringResource(MR.strings.icon_descr_group_inactive),
-      Modifier.size(18.sp.toDp()).background(MaterialTheme.colors.background, CircleShape),
-      tint = MaterialTheme.colors.secondary
+         stringResource(MR.strings.icon_descr_group_inactive),
+         Modifier.size(18.sp.toDp()).background(MaterialTheme.colors.background, CircleShape),
+         tint = MaterialTheme.colors.secondary
     )
   }
 
@@ -67,16 +67,16 @@ fun ChatPreviewView(
   fun chatPreviewImageOverlayIcon() {
     when (cInfo) {
       is ChatInfo.Direct ->
-        if (!cInfo.contact.active) {
-          inactiveIcon()
-        }
+      if (!cInfo.contact.active) {
+        inactiveIcon()
+      }
       is ChatInfo.Group ->
-        when (cInfo.groupInfo.membership.memberStatus) {
-          GroupMemberStatus.MemRejected -> inactiveIcon()
-          GroupMemberStatus.MemLeft -> inactiveIcon()
-          GroupMemberStatus.MemRemoved -> inactiveIcon()
-          GroupMemberStatus.MemGroupDeleted -> inactiveIcon()
-          else -> {}
+      when (cInfo.groupInfo.membership.memberStatus) {
+        GroupMemberStatus.MemRejected -> inactiveIcon()
+        GroupMemberStatus.MemLeft -> inactiveIcon()
+        GroupMemberStatus.MemRemoved -> inactiveIcon()
+        GroupMemberStatus.MemGroupDeleted -> inactiveIcon()
+        else -> {}
       }
       else -> {}
     }
@@ -90,7 +90,8 @@ fun ChatPreviewView(
       overflow = TextOverflow.Ellipsis,
       style = MaterialTheme.typography.h3,
       fontWeight = FontWeight.Bold,
-      color = color
+      // desktop: an unspecified colour fell back to the dimmed content colour, so names looked greyed out
+      color = if (color == Color.Unspecified && appPlatform.isDesktop) messagingTokens.primaryText else color
     )
   }
 
@@ -101,12 +102,12 @@ fun ChatPreviewView(
 
   fun messageDraft(draft: ComposeState, sp20: Dp): Pair<AnnotatedString.Builder.() -> Unit, Map<String, InlineTextContent>> {
     fun attachment(): Pair<ImageResource, String?>? =
-      when (draft.preview) {
-        is ComposePreview.FilePreview -> MR.images.ic_draft_filled to draft.preview.fileName
-        is ComposePreview.MediaPreview -> MR.images.ic_image to null
-        is ComposePreview.VoicePreview -> MR.images.ic_play_arrow_filled to durationText(draft.preview.durationMs / 1000)
-        else -> null
-      }
+    when (draft.preview) {
+      is ComposePreview.FilePreview -> MR.images.ic_draft_filled to draft.preview.fileName
+      is ComposePreview.MediaPreview -> MR.images.ic_image to null
+      is ComposePreview.VoicePreview -> MR.images.ic_play_arrow_filled to durationText(draft.preview.durationMs / 1000)
+      else -> null
+    }
 
     val attachment = attachment()
     val inlineContentBuilder: AnnotatedString.Builder.() -> Unit = {
@@ -145,7 +146,7 @@ fun ChatPreviewView(
             VerifiedIcon()
           }
           val color = if (deleting)
-            MaterialTheme.colors.secondary
+          MaterialTheme.colors.secondary
           else if ((cInfo.contact.nextAcceptContactRequest && cInfo.contact.groupDirectInv?.memberRemoved != true) || cInfo.contact.sendMsgToConnect) {
             MaterialTheme.colors.primary
           } else if (!cInfo.contact.sndReady) {
@@ -176,40 +177,40 @@ fun ChatPreviewView(
   fun chatPreviewInfoText(): Pair<String, Color>? {
     return when (cInfo) {
       is ChatInfo.Direct ->
-        if (cInfo.contact.isContactCard) {
-          stringResource(MR.strings.contact_tap_to_connect) to MaterialTheme.colors.primary
-        } else if (cInfo.contact.isBot && cInfo.contact.nextConnectPrepared) {
-          stringResource(MR.strings.open_to_use_bot) to Color.Unspecified
-        } else if (cInfo.contact.sendMsgToConnect) {
-          stringResource(MR.strings.open_to_connect) to Color.Unspecified
-        } else if (cInfo.contact.nextAcceptContactRequest) {
-          stringResource(MR.strings.open_to_accept) to Color.Unspecified
-        } else if (!cInfo.contact.sndReady && cInfo.contact.activeConn != null && cInfo.contact.active) {
-          if ((cInfo.contact.preparedContact?.uiConnLinkType == ConnectionMode.Con && !cInfo.contact.isBot) || cInfo.contact.contactGroupMemberId != null) {
-            stringResource(MR.strings.contact_should_accept) to Color.Unspecified
-          } else {
-            stringResource(MR.strings.contact_connection_pending) to Color.Unspecified
-          }
+      if (cInfo.contact.isContactCard) {
+        stringResource(MR.strings.contact_tap_to_connect) to MaterialTheme.colors.primary
+      } else if (cInfo.contact.isBot && cInfo.contact.nextConnectPrepared) {
+        stringResource(MR.strings.open_to_use_bot) to Color.Unspecified
+      } else if (cInfo.contact.sendMsgToConnect) {
+        stringResource(MR.strings.open_to_connect) to Color.Unspecified
+      } else if (cInfo.contact.nextAcceptContactRequest) {
+        stringResource(MR.strings.open_to_accept) to Color.Unspecified
+      } else if (!cInfo.contact.sndReady && cInfo.contact.activeConn != null && cInfo.contact.active) {
+        if ((cInfo.contact.preparedContact?.uiConnLinkType == ConnectionMode.Con && !cInfo.contact.isBot) || cInfo.contact.contactGroupMemberId != null) {
+          stringResource(MR.strings.contact_should_accept) to Color.Unspecified
         } else {
-          null
+          stringResource(MR.strings.contact_connection_pending) to Color.Unspecified
         }
+      } else {
+        null
+      }
 
       is ChatInfo.Group ->
-        if (cInfo.groupInfo.nextConnectPrepared) {
-          stringResource(
-            if (cInfo.groupInfo.businessChat?.chatType == BusinessChatType.Business) MR.strings.open_to_connect
+      if (cInfo.groupInfo.nextConnectPrepared) {
+        stringResource(
+          if (cInfo.groupInfo.businessChat?.chatType == BusinessChatType.Business) MR.strings.open_to_connect
             else MR.strings.group_preview_open_to_join
-          ) to Color.Unspecified
-        } else {
-          when (cInfo.groupInfo.membership.memberStatus) {
-            GroupMemberStatus.MemRejected -> stringResource(MR.strings.group_preview_rejected) to Color.Unspecified
-            GroupMemberStatus.MemInvited -> groupInvitationPreviewText(currentUserProfileDisplayName, cInfo.groupInfo) to Color.Unspecified
-            GroupMemberStatus.MemAccepted -> stringResource(MR.strings.group_connection_pending) to Color.Unspecified
-            GroupMemberStatus.MemPendingReview, GroupMemberStatus.MemPendingApproval ->
-              stringResource(MR.strings.reviewed_by_admins) to MaterialTheme.colors.secondary
-            else -> null
-          }
+        ) to Color.Unspecified
+      } else {
+        when (cInfo.groupInfo.membership.memberStatus) {
+          GroupMemberStatus.MemRejected -> stringResource(MR.strings.group_preview_rejected) to Color.Unspecified
+          GroupMemberStatus.MemInvited -> groupInvitationPreviewText(currentUserProfileDisplayName, cInfo.groupInfo) to Color.Unspecified
+          GroupMemberStatus.MemAccepted -> stringResource(MR.strings.group_connection_pending) to Color.Unspecified
+          GroupMemberStatus.MemPendingReview, GroupMemberStatus.MemPendingApproval ->
+          stringResource(MR.strings.reviewed_by_admins) to MaterialTheme.colors.secondary
+          else -> null
         }
+      }
 
       else -> null
     }
@@ -226,18 +227,18 @@ fun ChatPreviewView(
       MarkdownText(
         text,
         formattedText,
-        toggleSecrets = false,
-        linkMode = linkMode,
-        maxLines = 2,
-        overflow = TextOverflow.Ellipsis,
-        style = TextStyle(
-          fontFamily = Inter,
-          fontSize = 15.sp,
-          color = messagingTokens.secondaryText,
-          lineHeight = 21.sp
-        ),
-        inlineContent = inlineTextContent,
-        modifier = Modifier.fillMaxWidth()
+          toggleSecrets = false,
+          linkMode = linkMode,
+          maxLines = 2,
+          overflow = TextOverflow.Ellipsis,
+          style = TextStyle(
+            fontFamily = Inter,
+            fontSize = 15.sp,
+            color = messagingTokens.secondaryText,
+            lineHeight = 21.sp
+          ),
+          inlineContent = inlineTextContent,
+          modifier = Modifier.fillMaxWidth()
       )
     } else if (ci?.content?.hasMsgContent != true && previewText != null) {
       Text(previewText.first, color = previewText.second)
@@ -258,11 +259,11 @@ fun ChatPreviewView(
       }
       val prefix = when (ci.content.msgContent) {
         is MsgContent.MCReport ->
-          buildAnnotatedString {
-            withStyle(SpanStyle(color = Color.Red, fontStyle = FontStyle.Italic)) {
-              append(itemPrefixText(ci))
-            }
+        buildAnnotatedString {
+          withStyle(SpanStyle(color = Color.Red, fontStyle = FontStyle.Italic)) {
+            append(itemPrefixText(ci))
           }
+        }
 
         else -> null
       }
@@ -270,29 +271,29 @@ fun ChatPreviewView(
       MarkdownText(
         text,
         formattedText,
-        sender = when {
-          cInfo is ChatInfo.Group && !ci.chatDir.sent && !ci.meta.showGroupAsSender -> ci.memberDisplayName
-          else -> null
-        },
-        mentions = ci.mentions,
-        userMemberId = when {
-          cInfo is ChatInfo.Group -> cInfo.groupInfo.membership.memberId
-          else -> null
-        },
-        toggleSecrets = false,
-        linkMode = linkMode,
-        senderBold = true,
-        maxLines = 2,
-        overflow = TextOverflow.Ellipsis,
-        style = TextStyle(
-          fontFamily = Inter,
-          fontSize = 15.sp,
-          color = messagingTokens.secondaryText,
-          lineHeight = 21.sp
-        ),
-        inlineContent = inlineTextContent,
-        modifier = Modifier.fillMaxWidth(),
-        prefix = prefix
+          sender = when {
+            cInfo is ChatInfo.Group && !ci.chatDir.sent && !ci.meta.showGroupAsSender -> ci.memberDisplayName
+            else -> null
+          },
+          mentions = ci.mentions,
+          userMemberId = when {
+            cInfo is ChatInfo.Group -> cInfo.groupInfo.membership.memberId
+            else -> null
+          },
+          toggleSecrets = false,
+          linkMode = linkMode,
+          senderBold = true,
+          maxLines = 2,
+          overflow = TextOverflow.Ellipsis,
+          style = TextStyle(
+            fontFamily = Inter,
+            fontSize = 15.sp,
+            color = messagingTokens.secondaryText,
+            lineHeight = 21.sp
+          ),
+          inlineContent = inlineTextContent,
+          modifier = Modifier.fillMaxWidth(),
+                   prefix = prefix
       )
     }
   }
@@ -308,7 +309,7 @@ fun ChatPreviewView(
       is MsgContent.MCLink -> SmallContentPreview {
         IconButton(
           { openBrowserAlert(mc.preview.uri, uriHandler) },
-          Modifier.desktopPointerHoverIconHand(),
+                   Modifier.desktopPointerHoverIconHand(),
         ) {
           Image(base64ToBitmap(mc.preview.image), null, contentScale = ContentScale.Crop)
         }
@@ -343,7 +344,7 @@ fun ChatPreviewView(
       is MsgContent.MCChat -> SmallContentPreview(borderColor = if (mc.chatLink.image != null) MaterialTheme.colors.onSurface.copy(alpha = 0.12f) else Color.Transparent) {
         Box(
           Modifier.fillMaxSize().clickable { withBGApi { planAndConnect(chat.remoteHostId, mc.chatLink.connLinkStr, linkOwnerSig = mc.ownerSig, close = null) } },
-          contentAlignment = Alignment.Center
+            contentAlignment = Alignment.Center
         ) {
           val image = mc.chatLink.image
           if (image != null) {
@@ -361,10 +362,10 @@ fun ChatPreviewView(
   fun progressView() {
     CircularProgressIndicator(
       Modifier
-        .size(15.sp.toDp())
-        .offset(y = 2.sp.toDp()),
-      color = MaterialTheme.colors.secondary,
-      strokeWidth = 1.5.dp
+      .size(15.sp.toDp())
+      .offset(y = 2.sp.toDp()),
+                              color = MaterialTheme.colors.secondary,
+                              strokeWidth = 1.5.dp
     )
   }
 
@@ -464,9 +465,9 @@ fun ChatPreviewView(
                 if (unreadMentions > 0 && n > 1) {
                   Icon(
                     painterResource(MR.images.ic_alternate_email),
-                    contentDescription = generalGetString(MR.strings.notifications),
-                    tint = mentionColor,
-                    modifier = Modifier.size(12.sp.toDp()).offset(y = 3.sp.toDp())
+                       contentDescription = generalGetString(MR.strings.notifications),
+                       tint = mentionColor,
+                       modifier = Modifier.size(12.sp.toDp()).offset(y = 3.sp.toDp())
                   )
                 }
 
@@ -474,42 +475,42 @@ fun ChatPreviewView(
                   Box(modifier = Modifier.offset(y = 2.sp.toDp()).size(15.sp.toDp()).background(mentionColor, shape = CircleShape), contentAlignment = Alignment.Center) {
                     Icon(
                       painterResource(MR.images.ic_alternate_email),
-                      contentDescription = generalGetString(MR.strings.notifications),
-                      tint = messagingTokens.onAccent,
-                      modifier = Modifier.size(9.sp.toDp())
+                         contentDescription = generalGetString(MR.strings.notifications),
+                         tint = messagingTokens.onAccent,
+                         modifier = Modifier.size(9.sp.toDp())
                     )
                   }
                 } else {
                   UnreadBadge(
                     text = if (n > 0) unreadCountStr(n) else "",
-                    backgroundColor = if (disabled || showNtfsIcon) MaterialTheme.colors.secondary else MaterialTheme.colors.primaryVariant,
-                    yOffset = 3.dp
+                              backgroundColor = if (disabled || showNtfsIcon) MaterialTheme.colors.secondary else MaterialTheme.colors.primaryVariant,
+                              yOffset = 3.dp
                   )
                 }
               }
             } else if (showNtfsIcon && ntfsMode != null) {
               Icon(
                 painterResource(ntfsMode.iconFilled),
-                contentDescription = generalGetString(MR.strings.notifications),
-                tint = MaterialTheme.colors.secondary,
-                modifier = Modifier
-                  .padding(start = 2.sp.toDp())
-                  .size(18.sp.toDp())
-                  .offset(x = 2.5.sp.toDp(), y = 2.sp.toDp())
+                   contentDescription = generalGetString(MR.strings.notifications),
+                   tint = MaterialTheme.colors.secondary,
+                   modifier = Modifier
+                   .padding(start = 2.sp.toDp())
+                   .size(18.sp.toDp())
+                   .offset(x = 2.5.sp.toDp(), y = 2.sp.toDp())
               )
             } else if (chat.chatInfo.chatSettings?.favorite == true) {
               Icon(
                 painterResource(MR.images.ic_star_filled),
-                contentDescription = generalGetString(MR.strings.favorite_chat),
-                tint = MaterialTheme.colors.secondary,
-                modifier = Modifier
-                  .size(20.sp.toDp())
-                  .offset(x = 2.5.sp.toDp())
+                   contentDescription = generalGetString(MR.strings.favorite_chat),
+                   tint = MaterialTheme.colors.secondary,
+                   modifier = Modifier
+                   .size(20.sp.toDp())
+                   .offset(x = 2.5.sp.toDp())
               )
             }
             Box(
               Modifier.offset(y = 28.sp.toDp()),
-              contentAlignment = Alignment.Center
+                contentAlignment = Alignment.Center
             ) {
               chatStatusImage()
             }
@@ -546,11 +547,11 @@ fun IncognitoIcon(incognito: Boolean) {
   if (incognito) {
     Icon(
       painterResource(MR.images.ic_theater_comedy),
-      contentDescription = null,
-      tint = MaterialTheme.colors.secondary,
-      modifier = Modifier
-        .size(21.sp.toDp())
-        .offset(x = 1.sp.toDp())
+         contentDescription = null,
+         tint = MaterialTheme.colors.secondary,
+         modifier = Modifier
+         .size(21.sp.toDp())
+         .offset(x = 1.sp.toDp())
     )
   }
 }
@@ -559,18 +560,18 @@ fun IncognitoIcon(incognito: Boolean) {
 fun FlagIcon(color: Color) {
   Icon(
     painterResource(MR.images.ic_flag),
-    contentDescription = null,
-    tint = color,
-    modifier = Modifier
-      .size(21.sp.toDp())
-      .offset(x = 2.sp.toDp())
+       contentDescription = null,
+       tint = color,
+       modifier = Modifier
+       .size(21.sp.toDp())
+       .offset(x = 2.sp.toDp())
   )
 }
 
 @Composable
 private fun groupInvitationPreviewText(currentUserProfileDisplayName: String?, groupInfo: GroupInfo): String {
   return if (groupInfo.membership.memberIncognito)
-    String.format(stringResource(MR.strings.group_preview_join_as), groupInfo.membership.memberProfile.displayName)
+  String.format(stringResource(MR.strings.group_preview_join_as), groupInfo.membership.memberProfile.displayName)
   else
     stringResource(MR.strings.group_preview_you_are_invited)
 }
@@ -586,12 +587,12 @@ fun UnreadBadge(
     color = MaterialTheme.colors.onPrimary,
     fontSize = 10.sp,
     style = TextStyle(textAlign = TextAlign.Center),
-    modifier = Modifier
-      .offset(y = yOffset ?: 0.dp)
-      .background(backgroundColor, shape = CircleShape)
-      .badgeLayout()
-      .padding(horizontal = 2.sp.toDp())
-      .padding(vertical = 1.sp.toDp())
+       modifier = Modifier
+       .offset(y = yOffset ?: 0.dp)
+       .background(backgroundColor, shape = CircleShape)
+       .badgeLayout()
+       .padding(horizontal = 2.sp.toDp())
+       .padding(vertical = 1.sp.toDp())
   )
 }
 
@@ -612,8 +613,8 @@ fun unreadCountStr(n: Int): String {
     Text(
       ts,
       Modifier.padding(bottom = 5.sp.toDp()).offset(x = if (appPlatform.isDesktop) 1.5.sp.toDp() else 0.dp),
-      color = messagingTokens.secondaryText,
-      style = MaterialTheme.typography.body2.copy(fontSize = 13.sp),
+         color = messagingTokens.secondaryText,
+         style = MaterialTheme.typography.body2.copy(fontSize = 13.sp),
     )
   }
 }
@@ -626,8 +627,8 @@ private data class ActiveVoicePreview(
 
 @Preview/*(
   uiMode = Configuration.UI_MODE_NIGHT_YES,
-  showBackground = true,
-  name = "Dark Mode"
+showBackground = true,
+name = "Dark Mode"
 )*/
 @Composable
 fun PreviewChatPreviewView() {

@@ -37,6 +37,7 @@ fun SearchTextField(
   enabled: Boolean = true,
   trailingContent: @Composable (() -> Unit)? = null,
   reducedCloseButtonPadding: Dp = 0.dp,
+  backgroundColor: Color? = null,
   onValueChange: (String) -> Unit
 ) {
   val focusRequester = remember { FocusRequester() }
@@ -71,7 +72,7 @@ fun SearchTextField(
   }
 
   val colors = TextFieldDefaults.textFieldColors(
-    backgroundColor = Color.Unspecified,
+    backgroundColor = backgroundColor ?: Color.Unspecified,
     textColor = MaterialTheme.colors.onBackground,
     focusedIndicatorColor = Color.Unspecified,
     unfocusedIndicatorColor = Color.Unspecified,

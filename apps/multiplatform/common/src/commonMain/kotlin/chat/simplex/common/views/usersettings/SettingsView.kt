@@ -29,6 +29,7 @@ import chat.simplex.common.ui.theme.*
 import chat.simplex.common.views.database.DatabaseView
 import chat.simplex.common.views.helpers.*
 import chat.simplex.common.views.migration.MigrateFromDeviceView
+import chat.simplex.common.views.onboarding.QryptanaMetal
 import chat.simplex.common.views.onboarding.SimpleXInfo
 import chat.simplex.common.views.onboarding.WhatsNewView
 import chat.simplex.common.views.usersettings.networkAndServers.NetworkAndServersView
@@ -46,28 +47,28 @@ fun SettingsView(chatModel: ChatModel, setPerformLA: (Boolean) -> Unit, close: (
     user?.displayName,
     setPerformLA = setPerformLA,
     showModal = { modalView -> { ModalManager.start.showModal { modalView(chatModel) } } },
-    showSettingsModal = { modalView -> { ModalManager.start.showModal(true) { modalView(chatModel) } } },
-    showSettingsModalWithSearch = { modalView ->
-      ModalManager.start.showCustomModal { close ->
-        val search = rememberSaveable { mutableStateOf("") }
-        ModalView(
-          { close() },
-          showSearch = true,
-          searchAlwaysVisible = true,
-          onSearchValueChanged = { search.value = it },
-          content = { modalView(chatModel, search) })
-      }
-    },
-    showCustomModal = { modalView -> { ModalManager.start.showCustomModal { close -> modalView(chatModel, close) } } },
-    showVersion = {
-      withBGApi {
-        val info = chatModel.controller.apiGetVersion()
-        if (info != null) {
-          ModalManager.start.showModal { VersionInfoView(info) }
-        }
-      }
-    },
-    withAuth = ::doWithAuth,
+                 showSettingsModal = { modalView -> { ModalManager.start.showModal(true) { modalView(chatModel) } } },
+                 showSettingsModalWithSearch = { modalView ->
+                   ModalManager.start.showCustomModal { close ->
+                     val search = rememberSaveable { mutableStateOf("") }
+                     ModalView(
+                       { close() },
+                               showSearch = true,
+                               searchAlwaysVisible = true,
+                               onSearchValueChanged = { search.value = it },
+                               content = { modalView(chatModel, search) })
+                   }
+                 },
+                 showCustomModal = { modalView -> { ModalManager.start.showCustomModal { close -> modalView(chatModel, close) } } },
+                 showVersion = {
+                   withBGApi {
+                     val info = chatModel.controller.apiGetVersion()
+                     if (info != null) {
+                       ModalManager.start.showModal { VersionInfoView(info) }
+                     }
+                   }
+                 },
+                 withAuth = ::doWithAuth,
   )
   KeyChangeEffect(chatModel.updatingProgress.value != null) {
     close()
@@ -75,7 +76,7 @@ fun SettingsView(chatModel: ChatModel, setPerformLA: (Boolean) -> Unit, close: (
 }
 
 val simplexTeamUri =
-  "simplex:/a#lrdvu2d8A1GumSmoKb2krQmtKhWXq-tyGpHuM7aMwsw?h=smp6.simplex.im"
+"simplex:/a#lrdvu2d8A1GumSmoKb2krQmtKhWXq-tyGpHuM7aMwsw?h=smp6.simplex.im"
 
 @Composable
 fun SettingsLayout(
@@ -85,12 +86,12 @@ fun SettingsLayout(
   notificationsMode: State<NotificationsMode>,
   userDisplayName: String?,
   setPerformLA: (Boolean) -> Unit,
-  showModal: (@Composable (ChatModel) -> Unit) -> (() -> Unit),
-  showSettingsModal: (@Composable (ChatModel) -> Unit) -> (() -> Unit),
-  showSettingsModalWithSearch: (@Composable (ChatModel, MutableState<String>) -> Unit) -> Unit,
-  showCustomModal: (@Composable ModalData.(ChatModel, () -> Unit) -> Unit) -> (() -> Unit),
-  showVersion: () -> Unit,
-  withAuth: (title: String, desc: String, block: () -> Unit) -> Unit,
+                   showModal: (@Composable (ChatModel) -> Unit) -> (() -> Unit),
+                   showSettingsModal: (@Composable (ChatModel) -> Unit) -> (() -> Unit),
+                   showSettingsModalWithSearch: (@Composable (ChatModel, MutableState<String>) -> Unit) -> Unit,
+                   showCustomModal: (@Composable ModalData.(ChatModel, () -> Unit) -> Unit) -> (() -> Unit),
+                   showVersion: () -> Unit,
+                   withAuth: (title: String, desc: String, block: () -> Unit) -> Unit,
 ) {
   val view = LocalMultiplatformView()
   LaunchedEffect(Unit) {
@@ -144,22 +145,22 @@ fun SettingsLayout(
 @Composable
 expect fun SettingsSectionApp(
   showSettingsModal: (@Composable (ChatModel) -> Unit) -> (() -> Unit),
-  showVersion: () -> Unit,
-  withAuth: (title: String, desc: String, block: () -> Unit) -> Unit
+                              showVersion: () -> Unit,
+                              withAuth: (title: String, desc: String, block: () -> Unit) -> Unit
 )
 
 @Composable private fun DatabaseItem(encrypted: Boolean, saved: Boolean, openDatabaseView: () -> Unit, stopped: Boolean) {
   SectionItemView(openDatabaseView) {
     Row(
       Modifier.fillMaxWidth(),
-      verticalAlignment = Alignment.CenterVertically,
-      horizontalArrangement = Arrangement.SpaceBetween
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.SpaceBetween
     ) {
       Row(Modifier.weight(1f), verticalAlignment = Alignment.CenterVertically) {
         Icon(
           painterResource(MR.images.ic_database),
-          contentDescription = stringResource(MR.strings.database_passphrase_and_export),
-          tint = if (encrypted && (appPlatform.isAndroid || !saved)) MaterialTheme.colors.secondary else WarningOrange,
+             contentDescription = stringResource(MR.strings.database_passphrase_and_export),
+             tint = if (encrypted && (appPlatform.isAndroid || !saved)) MaterialTheme.colors.secondary else WarningOrange,
         )
         TextIconSpaced(false)
         Text(stringResource(MR.strings.database_passphrase_and_export))
@@ -167,9 +168,9 @@ expect fun SettingsSectionApp(
       if (stopped) {
         Icon(
           painterResource(MR.images.ic_report_filled),
-          contentDescription = stringResource(MR.strings.chat_is_stopped),
-          tint = Color.Red,
-          modifier = Modifier.padding(end = 6.dp)
+             contentDescription = stringResource(MR.strings.chat_is_stopped),
+             tint = Color.Red,
+             modifier = Modifier.padding(end = 6.dp)
         )
       }
     }
@@ -179,28 +180,28 @@ expect fun SettingsSectionApp(
 @Composable fun ChatPreferencesItem(showCustomModal: ((@Composable ModalData.(ChatModel, () -> Unit) -> Unit) -> (() -> Unit)), stopped: Boolean) {
   SettingsActionItem(
     painterResource(MR.images.ic_toggle_on),
-    stringResource(MR.strings.chat_preferences),
-    click = if (stopped) null else ({
-      showCustomModal { m, close ->
-        PreferencesView(m, m.currentUser.value ?: return@showCustomModal, close)
-      }()
-    }),
-    disabled = stopped
+                     stringResource(MR.strings.chat_preferences),
+                     click = if (stopped) null else ({
+                       showCustomModal { m, close ->
+                         PreferencesView(m, m.currentUser.value ?: return@showCustomModal, close)
+                       }()
+                     }),
+                     disabled = stopped
   )
 }
 
 @Composable
 fun ChatLockItem(
   showSettingsModal: (@Composable (ChatModel) -> Unit) -> (() -> Unit),
-  setPerformLA: (Boolean) -> Unit
+                 setPerformLA: (Boolean) -> Unit
 ) {
   val performLA = remember { appPrefs.performLA.state }
   val currentLAMode = remember { ChatModel.controller.appPrefs.laMode }
   SettingsActionItemWithContent(
     click = showSettingsModal { SimplexLockView(ChatModel, currentLAMode, setPerformLA) },
-    icon = if (performLA.value) painterResource(MR.images.ic_lock_filled) else painterResource(MR.images.ic_lock),
-    text = stringResource(MR.strings.chat_lock),
-    iconColor = if (performLA.value) SimplexGreen else MaterialTheme.colors.secondary
+                                icon = if (performLA.value) painterResource(MR.images.ic_lock_filled) else painterResource(MR.images.ic_lock),
+                                text = stringResource(MR.strings.chat_lock),
+                                iconColor = if (performLA.value) SimplexGreen else MaterialTheme.colors.secondary
   ) {
     Text(if (performLA.value) remember { currentLAMode.state }.value.text else generalGetString(MR.strings.la_mode_off), color = MaterialTheme.colors.secondary)
   }
@@ -210,8 +211,8 @@ fun ChatLockItem(
   SectionItemView({ uriHandler.openExternalLink("https://github.com/simplex-chat/simplex-chat#contribute") }) {
     Icon(
       painterResource(MR.images.ic_keyboard),
-      contentDescription = "GitHub",
-      tint = MaterialTheme.colors.secondary,
+         contentDescription = "GitHub",
+         tint = MaterialTheme.colors.secondary,
     )
     TextIconSpaced()
     Text(generalGetString(MR.strings.contribute), color = MaterialTheme.colors.primary)
@@ -221,13 +222,13 @@ fun ChatLockItem(
 @Composable private fun RateAppItem(uriHandler: UriHandler) {
   SectionItemView({
     runCatching { uriHandler.openUriCatching("market://details?id=chat.simplex.app") }
-      .onFailure { uriHandler.openUriCatching("https://play.google.com/store/apps/details?id=chat.simplex.app") }
+    .onFailure { uriHandler.openUriCatching("https://play.google.com/store/apps/details?id=chat.simplex.app") }
   }
   ) {
     Icon(
       painterResource(MR.images.ic_star),
-      contentDescription = "Google Play",
-      tint = MaterialTheme.colors.secondary,
+         contentDescription = "Google Play",
+         tint = MaterialTheme.colors.secondary,
     )
     TextIconSpaced()
     Text(generalGetString(MR.strings.rate_the_app), color = MaterialTheme.colors.primary)
@@ -238,8 +239,8 @@ fun ChatLockItem(
   SectionItemView({ uriHandler.openExternalLink("https://github.com/simplex-chat/simplex-chat") }) {
     Icon(
       painter = painterResource(MR.images.ic_github),
-      contentDescription = "GitHub",
-      tint = MaterialTheme.colors.secondary,
+         contentDescription = "GitHub",
+         tint = MaterialTheme.colors.secondary,
     )
     TextIconSpaced()
     Text(generalGetString(MR.strings.star_on_github), color = MaterialTheme.colors.primary)
@@ -250,8 +251,8 @@ fun ChatLockItem(
   SectionItemView(showTerminal) {
     Icon(
       painter = painterResource(MR.images.ic_outline_terminal),
-      contentDescription = stringResource(MR.strings.chat_console),
-      tint = MaterialTheme.colors.secondary,
+         contentDescription = stringResource(MR.strings.chat_console),
+         tint = MaterialTheme.colors.secondary,
     )
     TextIconSpaced()
     Text(stringResource(MR.strings.chat_console))
@@ -271,8 +272,8 @@ fun ChatLockItem(
   SectionItemView({ uriHandler.openExternalLink("https://github.com/simplex-chat/simplex-chat") }) {
     Icon(
       painter = painterResource(MR.images.ic_github),
-      contentDescription = "GitHub",
-      tint = MaterialTheme.colors.secondary,
+         contentDescription = "GitHub",
+         tint = MaterialTheme.colors.secondary,
     )
     TextIconSpaced()
     Text(generalGetString(MR.strings.install_simplex_chat_for_terminal), color = MaterialTheme.colors.primary)
@@ -286,8 +287,8 @@ fun ChatLockItem(
   }, disabled = unchangedHints.value) {
     Icon(
       painter = painterResource(MR.images.ic_lightbulb),
-      contentDescription = "Lightbulb",
-      tint = MaterialTheme.colors.secondary,
+         contentDescription = "Lightbulb",
+         tint = MaterialTheme.colors.secondary,
     )
     TextIconSpaced()
     Text(generalGetString(MR.strings.reset_all_hints), color = if (unchangedHints.value) MaterialTheme.colors.secondary else MaterialTheme.colors.primary)
@@ -318,23 +319,23 @@ fun AppVersionItem(showVersion: () -> Unit) {
       style = MaterialTheme.typography.caption,
       fontWeight = FontWeight.Bold,
       color = if (stopped) MaterialTheme.colors.secondary else textColor,
-      maxLines = 1,
-      overflow = TextOverflow.Ellipsis
+         maxLines = 1,
+         overflow = TextOverflow.Ellipsis
     )
     if (profileOf.fullName.isNotEmpty() && profileOf.fullName != profileOf.displayName) {
       Text(
         profileOf.fullName,
         Modifier.padding(vertical = 5.dp),
-        color = if (stopped) MaterialTheme.colors.secondary else textColor,
-        maxLines = 1,
-        overflow = TextOverflow.Ellipsis
+           color = if (stopped) MaterialTheme.colors.secondary else textColor,
+           maxLines = 1,
+           overflow = TextOverflow.Ellipsis
       )
     }
   }
 }
 
 @Composable
-fun SettingsActionItem(icon: Painter, text: String, click: (() -> Unit)? = null, textColor: Color = Color.Unspecified, iconColor: Color = MaterialTheme.colors.secondary, disabled: Boolean = false, extraPadding: Boolean = false) {
+fun SettingsActionItem(icon: Painter, text: String, click: (() -> Unit)? = null, textColor: Color = Color.Unspecified, iconColor: Color = if (appPlatform.isDesktop) QryptanaMetal.copperMid.copy(alpha = 0.85f) else MaterialTheme.colors.secondary, disabled: Boolean = false, extraPadding: Boolean = false) {
   SectionItemView(click, disabled = disabled, extraPadding = extraPadding) {
     Icon(icon, text, tint = if (disabled) MaterialTheme.colors.secondary else iconColor)
     TextIconSpaced(extraPadding)
@@ -343,15 +344,15 @@ fun SettingsActionItem(icon: Painter, text: String, click: (() -> Unit)? = null,
 }
 
 @Composable
-fun SettingsActionItemWithContent(icon: Painter?, text: String? = null, click: (() -> Unit)? = null, iconColor: Color = MaterialTheme.colors.secondary, textColor: Color = MaterialTheme.colors.onBackground, disabled: Boolean = false, extraPadding: Boolean = false, content: @Composable RowScope.() -> Unit) {
+fun SettingsActionItemWithContent(icon: Painter?, text: String? = null, click: (() -> Unit)? = null, iconColor: Color = if (appPlatform.isDesktop) QryptanaMetal.copperMid.copy(alpha = 0.85f) else MaterialTheme.colors.secondary, textColor: Color = MaterialTheme.colors.onBackground, disabled: Boolean = false, extraPadding: Boolean = false, content: @Composable RowScope.() -> Unit) {
   SectionItemView(
     click,
     extraPadding = extraPadding,
     padding = if (extraPadding && icon != null)
-      PaddingValues(start = DEFAULT_PADDING * 1.7f, end = DEFAULT_PADDING)
+    PaddingValues(start = DEFAULT_PADDING * 1.7f, end = DEFAULT_PADDING)
     else
       PaddingValues(horizontal = DEFAULT_PADDING),
-    disabled = disabled
+                  disabled = disabled
   ) {
     if (icon != null) {
       Icon(icon, text, Modifier, tint = if (disabled) MaterialTheme.colors.secondary else iconColor)
@@ -377,9 +378,9 @@ fun SettingsPreferenceItem(
   icon: Painter?,
   text: String,
   pref: SharedPreference<Boolean>,
-  iconColor: Color = MaterialTheme.colors.secondary,
-  enabled: Boolean = true,
-  onChange: ((Boolean) -> Unit)? = null,
+  iconColor: Color = if (appPlatform.isDesktop) QryptanaMetal.copperMid.copy(alpha = 0.85f) else MaterialTheme.colors.secondary,
+                           enabled: Boolean = true,
+                           onChange: ((Boolean) -> Unit)? = null,
 ) {
   SettingsActionItemWithContent(icon, text, iconColor = iconColor,) {
     SharedPreferenceToggle(pref, enabled, onChange)
@@ -446,14 +447,14 @@ fun doWithAuth(title: String, desc: String, block: () -> Unit) {
       Surface(color = MaterialTheme.colors.background.copy(1f), contentColor = LocalContentColor.current) {
         Box(
           Modifier.fillMaxSize(),
-          contentAlignment = Alignment.Center
+            contentAlignment = Alignment.Center
         ) {
           SimpleButton(
             stringResource(MR.strings.auth_unlock),
-            icon = painterResource(MR.images.ic_lock),
-            click = {
-              runAuth(title, desc, onFinishAuth)
-            }
+                       icon = painterResource(MR.images.ic_lock),
+                       click = {
+                         runAuth(title, desc, onFinishAuth)
+                       }
           )
         }
       }
@@ -474,8 +475,8 @@ private fun runAuth(title: String, desc: String, onFinish: (success: Boolean) ->
 
 @Preview/*(
   uiMode = Configuration.UI_MODE_NIGHT_YES,
-  showBackground = true,
-  name = "Dark Mode"
+showBackground = true,
+name = "Dark Mode"
 )*/
 @Composable
 fun PreviewSettingsLayout() {
@@ -485,14 +486,14 @@ fun PreviewSettingsLayout() {
       encrypted = false,
       passphraseSaved = false,
       notificationsMode = remember { mutableStateOf(NotificationsMode.OFF) },
-      userDisplayName = "Alice",
-      setPerformLA = { _ -> },
-      showModal = { {} },
-      showSettingsModal = { {} },
-      showSettingsModalWithSearch = { },
-      showCustomModal = { {} },
-      showVersion = {},
-      withAuth = { _, _, _ -> },
+                   userDisplayName = "Alice",
+                   setPerformLA = { _ -> },
+                   showModal = { {} },
+                   showSettingsModal = { {} },
+                   showSettingsModalWithSearch = { },
+                   showCustomModal = { {} },
+                   showVersion = {},
+                   withAuth = { _, _, _ -> },
     )
   }
 }

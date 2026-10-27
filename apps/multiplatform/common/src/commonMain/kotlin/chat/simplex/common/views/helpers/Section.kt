@@ -12,11 +12,15 @@ import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.*
+import chat.simplex.common.platform.appPlatform
 import chat.simplex.common.platform.onRightClick
 import chat.simplex.common.platform.windowWidth
 import chat.simplex.common.ui.theme.*
 import chat.simplex.common.views.helpers.*
+import chat.simplex.common.views.onboarding.QryptanaMetal
 import chat.simplex.common.views.onboarding.SelectableCard
+import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.interaction.collectIsHoveredAsState
 import chat.simplex.common.views.usersettings.SettingsActionItemWithContent
 import chat.simplex.res.MR
 
@@ -26,7 +30,7 @@ fun SectionView(title: String? = null, contentPadding: PaddingValues = PaddingVa
     if (title != null) {
       Text(
         title, color = MaterialTheme.colors.secondary, style = MaterialTheme.typography.body2,
-        modifier = Modifier.padding(start = DEFAULT_PADDING, bottom = headerBottomPadding), fontSize = 12.sp
+        modifier = Modifier.padding(start = DEFAULT_PADDING, bottom = headerBottomPadding), fontSize = 12.sp, letterSpacing = if (appPlatform.isDesktop) 1.2.sp else TextUnit.Unspecified
       )
     }
     Column(Modifier.padding(contentPadding).fillMaxWidth()) { content() }
@@ -40,14 +44,14 @@ fun SectionView(
   iconTint: Color = MaterialTheme.colors.secondary,
   leadingIcon: Boolean = false,
   padding: PaddingValues = PaddingValues(),
-  content: (@Composable ColumnScope.() -> Unit)
+                content: (@Composable ColumnScope.() -> Unit)
 ) {
   Column {
     val iconSize = with(LocalDensity.current) { 21.sp.toDp() }
     Row(Modifier.padding(start = DEFAULT_PADDING, bottom = 5.dp), verticalAlignment = Alignment.CenterVertically) {
       if (leadingIcon) Icon(icon, null, Modifier.padding(end = DEFAULT_PADDING_HALF).size(iconSize), tint = iconTint)
-      Text(title, color = MaterialTheme.colors.secondary, style = MaterialTheme.typography.body2, fontSize = 12.sp)
-      if (!leadingIcon) Icon(icon, null, Modifier.padding(start = DEFAULT_PADDING_HALF).size(iconSize), tint = iconTint)
+        Text(title, color = MaterialTheme.colors.secondary, style = MaterialTheme.typography.body2, fontSize = 12.sp)
+        if (!leadingIcon) Icon(icon, null, Modifier.padding(start = DEFAULT_PADDING_HALF).size(iconSize), tint = iconTint)
     }
     Column(Modifier.padding(padding).fillMaxWidth()) { content() }
   }
@@ -59,7 +63,7 @@ fun SectionViewWithButton(title: String? = null, titleButton: (@Composable () ->
     if (title != null || titleButton != null) {
       Row(modifier = Modifier.padding(start = DEFAULT_PADDING, end = DEFAULT_PADDING, bottom = headerBottomPadding).fillMaxWidth()) {
         if (title != null) {
-          Text(title, color = MaterialTheme.colors.secondary, style = MaterialTheme.typography.body2, fontSize = 12.sp)
+          Text(title, color = MaterialTheme.colors.secondary, style = MaterialTheme.typography.body2, fontSize = 12.sp, letterSpacing = if (appPlatform.isDesktop) 1.2.sp else TextUnit.Unspecified)
         }
         if (titleButton != null) {
           Spacer(modifier = Modifier.weight(1f))
@@ -117,21 +121,28 @@ fun <T> SectionViewSelectableCards(
 @Composable
 fun SectionItemView(
   click: (() -> Unit)? = null,
-  minHeight: Dp = DEFAULT_MIN_SECTION_ITEM_HEIGHT,
-  disabled: Boolean = false,
-  extraPadding: Boolean = false,
-  padding: PaddingValues = if (extraPadding)
-    PaddingValues(start = DEFAULT_PADDING * 1.7f, end = DEFAULT_PADDING, top = DEFAULT_MIN_SECTION_ITEM_PADDING_VERTICAL, bottom = DEFAULT_MIN_SECTION_ITEM_PADDING_VERTICAL)
-  else
-    PaddingValues(horizontal = DEFAULT_PADDING, vertical = DEFAULT_MIN_SECTION_ITEM_PADDING_VERTICAL),
-  content: (@Composable RowScope.() -> Unit)
+                    minHeight: Dp = DEFAULT_MIN_SECTION_ITEM_HEIGHT,
+                    disabled: Boolean = false,
+                    extraPadding: Boolean = false,
+                    padding: PaddingValues = if (extraPadding)
+                    PaddingValues(start = DEFAULT_PADDING * 1.7f, end = DEFAULT_PADDING, top = DEFAULT_MIN_SECTION_ITEM_PADDING_VERTICAL, bottom = DEFAULT_MIN_SECTION_ITEM_PADDING_VERTICAL)
+                    else
+                      PaddingValues(horizontal = DEFAULT_PADDING, vertical = DEFAULT_MIN_SECTION_ITEM_PADDING_VERTICAL),
+                    content: (@Composable RowScope.() -> Unit)
 ) {
+  val hoverSource = remember { MutableInteractionSource() }
+  val hovered = hoverSource.collectIsHoveredAsState().value
   val modifier = Modifier
-    .fillMaxWidth()
-    .sizeIn(minHeight = minHeight)
+  .fillMaxWidth()
+  .sizeIn(minHeight = minHeight)
+  .then(
+    // desktop: a faint titanium tint under the pointer
+    if (appPlatform.isDesktop && click != null && !disabled) Modifier.hoverable(hoverSource).background(if (hovered) QryptanaMetal.titaniumMid.copy(alpha = 0.40f) else Color.Transparent)
+      else Modifier
+  )
   Row(
     if (click == null || disabled) modifier.padding(padding) else modifier.clickable(onClick = click).padding(padding),
-    verticalAlignment = Alignment.CenterVertically
+      verticalAlignment = Alignment.CenterVertically
   ) {
     content()
   }
@@ -140,14 +151,14 @@ fun SectionItemView(
 @Composable
 fun SectionItemViewWithoutMinPadding(
   click: (() -> Unit)? = null,
-  minHeight: Dp = DEFAULT_MIN_SECTION_ITEM_HEIGHT,
-  disabled: Boolean = false,
-  extraPadding: Boolean = false,
-  padding: PaddingValues = if (extraPadding)
-    PaddingValues(start = DEFAULT_PADDING * 1.7f, end = DEFAULT_PADDING)
-  else
-    PaddingValues(horizontal = DEFAULT_PADDING),
-  content: (@Composable RowScope.() -> Unit)
+                                     minHeight: Dp = DEFAULT_MIN_SECTION_ITEM_HEIGHT,
+                                     disabled: Boolean = false,
+                                     extraPadding: Boolean = false,
+                                     padding: PaddingValues = if (extraPadding)
+                                     PaddingValues(start = DEFAULT_PADDING * 1.7f, end = DEFAULT_PADDING)
+                                     else
+                                       PaddingValues(horizontal = DEFAULT_PADDING),
+                                     content: (@Composable RowScope.() -> Unit)
 ) {
   SectionItemView(click, minHeight, disabled, extraPadding, padding, content)
 }
@@ -155,19 +166,19 @@ fun SectionItemViewWithoutMinPadding(
 @Composable
 fun SectionItemViewLongClickable(
   click: () -> Unit,
-  longClick: () -> Unit,
-  minHeight: Dp = DEFAULT_MIN_SECTION_ITEM_HEIGHT,
-  disabled: Boolean = false,
-  extraPadding: Boolean = false,
-  padding: PaddingValues = if (extraPadding)
-    PaddingValues(start = DEFAULT_PADDING * 1.7f, end = DEFAULT_PADDING, top = DEFAULT_MIN_SECTION_ITEM_PADDING_VERTICAL, bottom = DEFAULT_MIN_SECTION_ITEM_PADDING_VERTICAL)
-  else
-    PaddingValues(horizontal = DEFAULT_PADDING, vertical = DEFAULT_MIN_SECTION_ITEM_PADDING_VERTICAL),
-  content: (@Composable RowScope.() -> Unit)
+                                 longClick: () -> Unit,
+                                 minHeight: Dp = DEFAULT_MIN_SECTION_ITEM_HEIGHT,
+                                 disabled: Boolean = false,
+                                 extraPadding: Boolean = false,
+                                 padding: PaddingValues = if (extraPadding)
+                                 PaddingValues(start = DEFAULT_PADDING * 1.7f, end = DEFAULT_PADDING, top = DEFAULT_MIN_SECTION_ITEM_PADDING_VERTICAL, bottom = DEFAULT_MIN_SECTION_ITEM_PADDING_VERTICAL)
+                                 else
+                                   PaddingValues(horizontal = DEFAULT_PADDING, vertical = DEFAULT_MIN_SECTION_ITEM_PADDING_VERTICAL),
+                                 content: (@Composable RowScope.() -> Unit)
 ) {
   val modifier = Modifier
-    .fillMaxWidth()
-    .sizeIn(minHeight = minHeight)
+  .fillMaxWidth()
+  .sizeIn(minHeight = minHeight)
   Row(
     if (disabled) {
       modifier.padding(padding)
@@ -183,21 +194,21 @@ fun SectionItemViewLongClickable(
 @Composable
 fun SectionItemViewSpaceBetween(
   click: (() -> Unit)? = null,
-  onLongClick: (() -> Unit)? = null,
-  minHeight: Dp = DEFAULT_MIN_SECTION_ITEM_HEIGHT,
-  padding: PaddingValues = PaddingValues(horizontal = DEFAULT_PADDING),
-  disabled: Boolean = false,
-  content: (@Composable RowScope.() -> Unit)
+                                onLongClick: (() -> Unit)? = null,
+                                minHeight: Dp = DEFAULT_MIN_SECTION_ITEM_HEIGHT,
+                                padding: PaddingValues = PaddingValues(horizontal = DEFAULT_PADDING),
+                                disabled: Boolean = false,
+                                content: (@Composable RowScope.() -> Unit)
 ) {
   val modifier = Modifier
-    .fillMaxWidth()
-    .sizeIn(minHeight = minHeight)
+  .fillMaxWidth()
+  .sizeIn(minHeight = minHeight)
   Row(
     if (click == null || disabled) modifier.padding(padding).padding(vertical = DEFAULT_MIN_SECTION_ITEM_PADDING_VERTICAL) else modifier
       .combinedClickable(onClick = click, onLongClick = onLongClick).padding(padding)
       .onRightClick { onLongClick?.invoke() },
-    horizontalArrangement = Arrangement.SpaceBetween,
-    verticalAlignment = Alignment.CenterVertically
+      horizontalArrangement = Arrangement.SpaceBetween,
+      verticalAlignment = Alignment.CenterVertically
   ) {
     content()
   }
@@ -212,19 +223,19 @@ fun <T> SectionItemWithValue(
   icon: Painter? = null,
   iconTint: Color = MaterialTheme.colors.secondary,
   enabled: State<Boolean> = mutableStateOf(true),
-  onSelected: () -> Unit
+                             onSelected: () -> Unit
 ) {
   SettingsActionItemWithContent(icon = icon, text = title, iconColor = iconTint, click = if (enabled.value) onSelected else null, disabled = !enabled.value) {
     Row(
       Modifier.padding(start = 10.dp),
-      verticalAlignment = Alignment.CenterVertically,
-      horizontalArrangement = Arrangement.End
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.End
     ) {
       Text(
         (values.firstOrNull { it.value == currentValue.value }?.title ?: "") + (if (label != null) " $label" else ""),
-        maxLines = 1,
-        overflow = TextOverflow.Ellipsis,
-        color = MaterialTheme.colors.secondary
+           maxLines = 1,
+           overflow = TextOverflow.Ellipsis,
+           color = MaterialTheme.colors.secondary
       )
     }
   }
@@ -240,10 +251,10 @@ fun SectionTextFooter(text: AnnotatedString, textAlign: TextAlign = TextAlign.St
   Text(
     text,
     Modifier.padding(start = DEFAULT_PADDING, end = DEFAULT_PADDING, top = DEFAULT_PADDING_HALF).fillMaxWidth(0.9F),
-    color = color,
-    lineHeight = 18.sp,
-    fontSize = 14.sp,
-    textAlign = textAlign
+       color = color,
+       lineHeight = 18.sp,
+       fontSize = 14.sp,
+       textAlign = textAlign
   )
 }
 
@@ -258,7 +269,7 @@ fun SectionCustomFooter(padding: PaddingValues = PaddingValues(start = DEFAULT_P
 
 @Composable
 fun SectionDivider() {
-  Divider(Modifier.padding(horizontal = 8.dp))
+  Divider(Modifier.padding(horizontal = 8.dp), color = if (appPlatform.isDesktop) QryptanaMetal.titaniumBorder.copy(alpha = 0.45f) else MaterialTheme.colors.onSurface.copy(alpha = 0.12f))
 }
 
 @Composable
@@ -267,8 +278,9 @@ fun SectionDividerSpaced(maxTopPadding: Boolean = false, maxBottomPadding: Boole
     Modifier.padding(
       start = DEFAULT_PADDING_HALF,
       top = if (maxTopPadding) DEFAULT_PADDING + 18.dp else DEFAULT_PADDING + 2.dp,
-      end = DEFAULT_PADDING_HALF,
-      bottom = if (maxBottomPadding) DEFAULT_PADDING + 18.dp else DEFAULT_PADDING + 2.dp)
+                     end = DEFAULT_PADDING_HALF,
+                     bottom = if (maxBottomPadding) DEFAULT_PADDING + 18.dp else DEFAULT_PADDING + 2.dp),
+          color = if (appPlatform.isDesktop) QryptanaMetal.titaniumBorder.copy(alpha = 0.45f) else MaterialTheme.colors.onSurface.copy(alpha = 0.12f)
   )
 }
 
@@ -293,7 +305,7 @@ fun InfoRow(title: String, value: String, icon: Painter? = null, iconTint: Color
     Row {
       val iconSize = with(LocalDensity.current) { 21.sp.toDp() }
       if (icon != null) Icon(icon, title, Modifier.padding(end = 8.dp).size(iconSize), tint = iconTint ?: MaterialTheme.colors.secondary)
-      Text(title, color = textColor)
+        Text(title, color = textColor)
     }
     Text(value, color = MaterialTheme.colors.secondary)
   }
@@ -336,7 +348,7 @@ fun InfoRowTwoValues(
       } else {
         Text(
           text = numOrDash(value),
-          color = MaterialTheme.colors.secondary,
+             color = MaterialTheme.colors.secondary,
         )
         Text(
           text = " / ",
@@ -345,8 +357,8 @@ fun InfoRowTwoValues(
         )
         Text(
           text = numOrDash(value2),
-          color = MaterialTheme.colors.secondary,
-          fontSize = 12.sp,
+             color = MaterialTheme.colors.secondary,
+             fontSize = 12.sp,
         )
       }
     }
@@ -362,11 +374,11 @@ fun InfoRowEllipsis(title: String, value: String, onClick: () -> Unit) {
     Text(
       value,
       Modifier
-        .padding(start = 10.dp)
-        .widthIn(max = (screenWidthDp / 2)),
-      maxLines = 1,
-      overflow = TextOverflow.Ellipsis,
-      color = MaterialTheme.colors.secondary
+      .padding(start = 10.dp)
+      .widthIn(max = (screenWidthDp / 2)),
+         maxLines = 1,
+         overflow = TextOverflow.Ellipsis,
+         color = MaterialTheme.colors.secondary
     )
   }
 }

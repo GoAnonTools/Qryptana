@@ -405,13 +405,30 @@ fun CenterPartOfScreen() {
       if (shouldShowOnboarding()) {
         ConnectOnboardingView()
       } else if (!rememberUpdatedState(ModalManager.center.hasModalsOpen()).value) {
+        val emptyStateBackground = if (
+          appPlatform.isDesktop && appPrefs.currentTheme.get() == DefaultTheme.SYSTEM_THEME_NAME
+        ) {
+          QryptanaDarkBackground
+        } else {
+          MaterialTheme.colors.background
+        }
+        val emptyStateText = if (
+          appPlatform.isDesktop && appPrefs.currentTheme.get() == DefaultTheme.SYSTEM_THEME_NAME
+        ) {
+          QryptanaDarkText
+        } else {
+          MaterialTheme.colors.onBackground
+        }
         Box(
           Modifier
             .fillMaxSize()
-            .background(MaterialTheme.colors.background),
+            .background(emptyStateBackground),
           contentAlignment = Alignment.Center
         ) {
-          Text(stringResource(if (chatModel.desktopNoUserNoRemote) MR.strings.no_connected_mobile else MR.strings.no_selected_chat))
+          Text(
+            stringResource(if (chatModel.desktopNoUserNoRemote) MR.strings.no_connected_mobile else MR.strings.no_selected_chat),
+            color = emptyStateText
+          )
         }
       } else {
         ModalManager.center.showInView()

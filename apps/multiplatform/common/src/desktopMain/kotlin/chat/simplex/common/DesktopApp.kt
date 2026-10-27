@@ -33,6 +33,7 @@ import kotlin.system.exitProcess
 val simplexWindowState = SimplexWindowState()
 
 fun showApp() {
+  applyQryptanaSwingTheme()
   // Probe SystemTray off the EDT — the lazy's first read would otherwise block the
   // EDT during composition; JDK-8322750's GNOME detection forks a subprocess.
   trayIsAvailable
@@ -340,5 +341,41 @@ private fun applyQryptanaTitleBar(window: java.awt.Window, dark: Boolean) {
       set(34, if (dark) 0x00131211 else -1)          // DWMWA_BORDER_COLOR
     }
   } catch (_: Throwable) {
+  }
+}
+
+
+// Titanium + copper palette for Swing dialogs (e.g. the avatar JFileChooser), visual only.
+private class QryptanaSwingTheme : javax.swing.plaf.metal.DefaultMetalTheme() {
+  private fun c(v: Int) = javax.swing.plaf.ColorUIResource(v)
+    override fun getName() = "Qryptana"
+    override fun getPrimary1() = c(0x6B4828)
+    override fun getPrimary2() = c(0x34322F)
+    override fun getPrimary3() = c(0x45423F)
+    override fun getSecondary1() = c(0x45423F)
+    override fun getSecondary2() = c(0x5A5651)
+    override fun getSecondary3() = c(0x1B1A18)
+    override fun getWhite() = c(0x131211)
+    override fun getBlack() = c(0xEDE8E2)
+}
+
+private fun applyQryptanaSwingTheme() {
+  try {
+    javax.swing.plaf.metal.MetalLookAndFeel.setCurrentTheme(QryptanaSwingTheme())
+    javax.swing.UIManager.setLookAndFeel(javax.swing.plaf.metal.MetalLookAndFeel())
+    val bg = javax.swing.plaf.ColorUIResource(0x1B1A18)
+    val fg = javax.swing.plaf.ColorUIResource(0xEDE8E2)
+    val field = javax.swing.plaf.ColorUIResource(0x0F0E0D)
+    val sel = javax.swing.plaf.ColorUIResource(0x6B4828)
+    for (k in listOf("Panel.background", "FileChooser.background", "Button.background", "ComboBox.background",
+      "ToolBar.background", "SplitPane.background", "ScrollPane.background", "Viewport.background")) javax.swing.UIManager.put(k, bg)
+      for (k in listOf("TextField.background", "List.background", "Table.background", "ComboBox.listBackground",
+        "FormattedTextField.background", "Tree.background")) javax.swing.UIManager.put(k, field)
+        for (k in listOf("Label.foreground", "Button.foreground", "TextField.foreground", "List.foreground",
+          "Table.foreground", "ComboBox.foreground", "TextField.caretForeground", "Panel.foreground")) javax.swing.UIManager.put(k, fg)
+          for (k in listOf("List.selectionBackground", "Table.selectionBackground", "TextField.selectionBackground")) javax.swing.UIManager.put(k, sel)
+            for (k in listOf("List.selectionForeground", "Table.selectionForeground", "TextField.selectionForeground")) javax.swing.UIManager.put(k, fg)
+  } catch (e: Throwable) {
+    // cosmetic only
   }
 }

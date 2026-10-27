@@ -32,6 +32,7 @@ import chat.simplex.common.views.chat.*
 import chat.simplex.common.views.newchat.*
 import chat.simplex.common.BuildConfigCommon
 import chat.simplex.res.MR
+import chat.simplex.common.views.onboarding.QryptanaMetal
 
 @Composable
 fun UserAddressView(
@@ -82,19 +83,19 @@ fun UserAddressView(
         val hasRelevantContacts = chatModel.chats.value.any { chat ->
           val ci = chat.chatInfo
           ci is ChatInfo.Direct &&
-            ci.contact.active &&
-            !ci.contact.isContactCard &&
-            !ci.contact.contactConnIncognito
+          ci.contact.active &&
+          !ci.contact.isContactCard &&
+          !ci.contact.contactConnIncognito
         }
         if (hasRelevantContacts) {
           AlertManager.shared.showAlertDialog(
             title = generalGetString(MR.strings.share_address_with_contacts_question),
-            text = generalGetString(MR.strings.add_address_to_your_profile),
-            confirmText = generalGetString(MR.strings.share_verb),
-            onConfirm = {
-              setProfileAddress(true)
-              shareViaProfile.value = true
-            }
+                                              text = generalGetString(MR.strings.add_address_to_your_profile),
+                                              confirmText = generalGetString(MR.strings.share_verb),
+                                              onConfirm = {
+                                                setProfileAddress(true)
+                                                shareViaProfile.value = true
+                                              }
           )
           progressIndicator.value = false
         } else {
@@ -135,28 +136,28 @@ fun UserAddressView(
       sendEmail = { userAddress ->
         uriHandler.sendEmail(
           generalGetString(MR.strings.email_invite_subject),
-          generalGetString(MR.strings.email_invite_body).format(simplexChatLink(userAddress.connLinkContact.connFullLink)) // TODO [short links] replace with short link
+                             generalGetString(MR.strings.email_invite_body).format(simplexChatLink(userAddress.connLinkContact.connFullLink)) // TODO [short links] replace with short link
         )
       },
       setProfileAddress = ::setProfileAddress,
       deleteAddress = {
         AlertManager.shared.showAlertDialog(
           title = generalGetString(MR.strings.delete_address__question),
-          text = if (shareViaProfile.value) generalGetString(MR.strings.all_your_contacts_will_remain_connected_update_sent) else generalGetString(MR.strings.all_your_contacts_will_remain_connected),
-          confirmText = generalGetString(MR.strings.delete_verb),
-          onConfirm = {
-            progressIndicator.value = true
-            withBGApi {
-              val u = chatModel.controller.apiDeleteUserAddress(user.value?.remoteHostId)
-              if (u != null) {
-                chatModel.userAddress.value = null
-                chatModel.updateUser(u)
-                shareViaProfile.value = false
-                progressIndicator.value = false
-              }
-            }
-          },
-          destructive = true,
+                                            text = if (shareViaProfile.value) generalGetString(MR.strings.all_your_contacts_will_remain_connected_update_sent) else generalGetString(MR.strings.all_your_contacts_will_remain_connected),
+                                            confirmText = generalGetString(MR.strings.delete_verb),
+                                            onConfirm = {
+                                              progressIndicator.value = true
+                                              withBGApi {
+                                                val u = chatModel.controller.apiDeleteUserAddress(user.value?.remoteHostId)
+                                                if (u != null) {
+                                                  chatModel.userAddress.value = null
+                                                  chatModel.updateUser(u)
+                                                  shareViaProfile.value = false
+                                                  progressIndicator.value = false
+                                                }
+                                              }
+                                            },
+                                            destructive = true,
         )
       },
       saveAddressSettings = { settings: AddressSettingsState, savedSettings: MutableState<AddressSettingsState> ->
@@ -178,17 +179,17 @@ fun UserAddressView(
   if (progressIndicator.value) {
     Box(
       Modifier.fillMaxSize(),
-      contentAlignment = Alignment.Center
+        contentAlignment = Alignment.Center
     ) {
       if (userAddress.value != null) {
-        Surface(Modifier.size(50.dp), color = MaterialTheme.colors.background.copy(0.9f), contentColor = LocalContentColor.current, shape = RoundedCornerShape(50)){}
+        Surface(Modifier.size(50.dp), color = if (appPlatform.isDesktop) QryptanaMetal.titaniumMid else MaterialTheme.colors.background.copy(0.9f), contentColor = LocalContentColor.current, shape = RoundedCornerShape(50)){}
       }
       CircularProgressIndicator(
         Modifier
-          .padding(horizontal = 2.dp)
-          .size(30.dp),
-        color = MaterialTheme.colors.secondary,
-        strokeWidth = 3.dp
+        .padding(horizontal = 2.dp)
+        .size(30.dp),
+                                color = if (appPlatform.isDesktop) QryptanaMetal.copperLight else MaterialTheme.colors.secondary,
+                                strokeWidth = 3.dp
       )
     }
   }
@@ -197,7 +198,7 @@ fun UserAddressView(
 private fun addShortLink(
   progressIndicator: MutableState<Boolean>,
   share: (String) -> Unit,
-  shareOnCompletion: Boolean = false
+                         shareOnCompletion: Boolean = false
 ) {
   withBGApi {
     progressIndicator.value = true
@@ -215,51 +216,51 @@ private fun addShortLink(
 fun showAddShortLinkAlert(
   progressIndicator: MutableState<Boolean>,
   share: (String) -> Unit,
-  shareAddress: (() -> Unit)? = null
+                          shareAddress: (() -> Unit)? = null
 ) {
   AlertManager.shared.showAlertDialogButtonsColumn(
     title = generalGetString(MR.strings.share_profile_via_link),
-    text = generalGetString(MR.strings.share_profile_via_link_alert_text),
-    buttons = {
-      Column {
-        SectionItemView({
-          AlertManager.shared.hideAlert()
-          addShortLink(progressIndicator = progressIndicator, share = share, shareOnCompletion = shareAddress != null)
-        }) {
-          Text(
-            generalGetString(MR.strings.share_profile_via_link_alert_confirm),
-            Modifier.fillMaxWidth(),
-            textAlign = TextAlign.Center,
-            color = MaterialTheme.colors.primary
-          )
-        }
+                                                   text = generalGetString(MR.strings.share_profile_via_link_alert_text),
+                                                   buttons = {
+                                                     Column {
+                                                       SectionItemView({
+                                                         AlertManager.shared.hideAlert()
+                                                         addShortLink(progressIndicator = progressIndicator, share = share, shareOnCompletion = shareAddress != null)
+                                                       }) {
+                                                         Text(
+                                                           generalGetString(MR.strings.share_profile_via_link_alert_confirm),
+                                                              Modifier.fillMaxWidth(),
+                                                              textAlign = TextAlign.Center,
+                                                              color = MaterialTheme.colors.primary
+                                                         )
+                                                       }
 
-        if (shareAddress != null) {
-          SectionItemView({
-            AlertManager.shared.hideAlert()
-            shareAddress()
-          }) {
-            Text(
-              generalGetString(MR.strings.share_old_address_alert_button),
-              Modifier.fillMaxWidth(),
-              textAlign = TextAlign.Center,
-              color = MaterialTheme.colors.primary
-            )
-          }
-        }
-        // Cancel
-        SectionItemView({
-          AlertManager.shared.hideAlert()
-        }) {
-          Text(
-            stringResource(MR.strings.cancel_verb),
-            Modifier.fillMaxWidth(),
-            textAlign = TextAlign.Center,
-            color = MaterialTheme.colors.primary
-          )
-        }
-      }
-    }
+                                                       if (shareAddress != null) {
+                                                         SectionItemView({
+                                                           AlertManager.shared.hideAlert()
+                                                           shareAddress()
+                                                         }) {
+                                                           Text(
+                                                             generalGetString(MR.strings.share_old_address_alert_button),
+                                                                Modifier.fillMaxWidth(),
+                                                                textAlign = TextAlign.Center,
+                                                                color = MaterialTheme.colors.primary
+                                                           )
+                                                         }
+                                                       }
+                                                       // Cancel
+                                                       SectionItemView({
+                                                         AlertManager.shared.hideAlert()
+                                                       }) {
+                                                         Text(
+                                                           stringResource(MR.strings.cancel_verb),
+                                                              Modifier.fillMaxWidth(),
+                                                              textAlign = TextAlign.Center,
+                                                              color = MaterialTheme.colors.primary
+                                                         )
+                                                       }
+                                                     }
+                                                   }
   )
 }
 
@@ -270,13 +271,13 @@ private fun UserAddressLayout(
   shareViaProfile: MutableState<Boolean>,
   onboarding: Boolean = false,
   createAddress: () -> Unit,
-  showAddShortLinkAlert: ((() -> Unit)?) -> Unit,
-  learnMore: () -> Unit,
-  share: (String) -> Unit,
-  sendEmail: (UserContactLinkRec) -> Unit,
-  setProfileAddress: (Boolean) -> Unit,
-  deleteAddress: () -> Unit,
-  saveAddressSettings: (AddressSettingsState, MutableState<AddressSettingsState>) -> Unit,
+                              showAddShortLinkAlert: ((() -> Unit)?) -> Unit,
+                              learnMore: () -> Unit,
+                              share: (String) -> Unit,
+                              sendEmail: (UserContactLinkRec) -> Unit,
+                              setProfileAddress: (Boolean) -> Unit,
+                              deleteAddress: () -> Unit,
+                              saveAddressSettings: (AddressSettingsState, MutableState<AddressSettingsState>) -> Unit,
 ) {
   ColumnWithScrollBar {
     if (!onboarding) {
@@ -296,8 +297,8 @@ private fun UserAddressLayout(
     }
     Column(
       Modifier.fillMaxWidth().padding(bottom = DEFAULT_PADDING_HALF),
-      horizontalAlignment = Alignment.CenterHorizontally,
-      verticalArrangement = Arrangement.SpaceEvenly
+           horizontalAlignment = Alignment.CenterHorizontally,
+           verticalArrangement = Arrangement.SpaceEvenly
     ) {
       if (userAddress == null) {
         if (!onboarding) {
@@ -321,14 +322,14 @@ private fun UserAddressLayout(
         if (onboarding) {
           Text(
             stringResource(MR.strings.onboarding_post_address),
-            Modifier.fillMaxWidth().padding(horizontal = DEFAULT_PADDING, vertical = DEFAULT_PADDING_HALF),
-            style = MaterialTheme.typography.body1
+               Modifier.fillMaxWidth().padding(horizontal = DEFAULT_PADDING, vertical = DEFAULT_PADDING_HALF),
+               style = MaterialTheme.typography.body1
           )
           LinkTextView(userAddress.connLinkContact.simplexChatUri(short = showShortLink.value), true)
           Text(
             stringResource(MR.strings.onboarding_or_use_qr_code),
-            Modifier.fillMaxWidth().padding(horizontal = DEFAULT_PADDING, vertical = DEFAULT_PADDING_HALF),
-            style = MaterialTheme.typography.body1
+               Modifier.fillMaxWidth().padding(horizontal = DEFAULT_PADDING, vertical = DEFAULT_PADDING_HALF),
+               style = MaterialTheme.typography.body1
           )
           SimpleXCreatedLinkQRCode(userAddress.connLinkContact, short = showShortLink.value)
         } else {
@@ -337,7 +338,7 @@ private fun UserAddressLayout(
 
           SectionViewWithButton(
             stringResource(MR.strings.for_social_media).uppercase(),
-            titleButton = if (userAddress.connLinkContact.connShortLink != null) {{ ToggleShortLinkButton(showShortLink) }} else null
+                                titleButton = if (userAddress.connLinkContact.connShortLink != null) {{ ToggleShortLinkButton(showShortLink) }} else null
           ) {
             SimpleXCreatedLinkQRCode(userAddress.connLinkContact, short = showShortLink.value)
             if (userAddress.shouldBeUpgraded) {
@@ -384,10 +385,10 @@ private fun UserAddressLayout(
 private fun CreateAddressButton(onClick: () -> Unit) {
   SettingsActionItem(
     painterResource(MR.images.ic_qr_code),
-    stringResource(MR.strings.create_simplex_address),
-    onClick,
-    iconColor = MaterialTheme.colors.primary,
-    textColor = MaterialTheme.colors.primary,
+                     stringResource(MR.strings.create_simplex_address),
+                     onClick,
+                     iconColor = MaterialTheme.colors.primary,
+                     textColor = MaterialTheme.colors.primary,
   )
 }
 
@@ -395,10 +396,10 @@ private fun CreateAddressButton(onClick: () -> Unit) {
 private fun AddShortLinkButton(text: String, onClick: () -> Unit) {
   SettingsActionItem(
     painterResource(MR.images.ic_arrow_upward),
-    text,
-    onClick,
-    iconColor = MaterialTheme.colors.primary,
-    textColor = MaterialTheme.colors.primary,
+                     text,
+                     onClick,
+                     iconColor = MaterialTheme.colors.primary,
+                     textColor = MaterialTheme.colors.primary,
   )
 }
 
@@ -407,14 +408,14 @@ private fun CreateOneTimeLinkButton() {
   val closeAll = { ModalManager.start.closeModals() }
   SettingsActionItem(
     painterResource(MR.images.ic_add_link),
-    stringResource(MR.strings.create_1_time_link),
-    click = {
-      ModalManager.start.showModalCloseable(endButtons = { AddContactLearnMoreButton() }) { _ ->
-        NewChatView(chatModel.currentRemoteHost.value, NewChatOption.INVITE, close = closeAll)
-      }
-    },
-    iconColor = MaterialTheme.colors.primary,
-    textColor = MaterialTheme.colors.primary,
+                     stringResource(MR.strings.create_1_time_link),
+                     click = {
+                       ModalManager.start.showModalCloseable(endButtons = { AddContactLearnMoreButton() }) { _ ->
+                         NewChatView(chatModel.currentRemoteHost.value, NewChatOption.INVITE, close = closeAll)
+                       }
+                     },
+                     iconColor = MaterialTheme.colors.primary,
+                     textColor = MaterialTheme.colors.primary,
   )
 }
 
@@ -422,8 +423,8 @@ private fun CreateOneTimeLinkButton() {
 private fun LearnMoreButton(onClick: () -> Unit) {
   SettingsActionItem(
     painterResource(MR.images.ic_info),
-    stringResource(MR.strings.simplex_address_or_1_time_link),
-    onClick,
+                     stringResource(MR.strings.simplex_address_or_1_time_link),
+                     onClick,
   )
 }
 
@@ -431,10 +432,10 @@ private fun LearnMoreButton(onClick: () -> Unit) {
 fun ShareViaEmailButton(onClick: () -> Unit) {
   SettingsActionItem(
     painterResource(MR.images.ic_mail),
-    stringResource(MR.strings.invite_friends),
-    onClick,
-    iconColor = MaterialTheme.colors.primary,
-    textColor = MaterialTheme.colors.primary,
+                     stringResource(MR.strings.invite_friends),
+                     onClick,
+                     iconColor = MaterialTheme.colors.primary,
+                     textColor = MaterialTheme.colors.primary,
   )
 }
 
@@ -444,16 +445,16 @@ private fun AddressSettingsButton(
   userAddress: UserContactLinkRec,
   shareViaProfile: MutableState<Boolean>,
   setProfileAddress: (Boolean) -> Unit,
-  saveAddressSettings: (AddressSettingsState, MutableState<AddressSettingsState>) -> Unit,
+                                  saveAddressSettings: (AddressSettingsState, MutableState<AddressSettingsState>) -> Unit,
 ) {
   SettingsActionItem(
     painterResource(MR.images.ic_settings),
-    stringResource(MR.strings.address_settings),
-    click = {
-      ModalManager.start.showCustomModal { close ->
-        UserAddressSettings(user, userAddress, shareViaProfile, setProfileAddress, saveAddressSettings, close = close)
-      }
-    }
+                     stringResource(MR.strings.address_settings),
+                     click = {
+                       ModalManager.start.showCustomModal { close ->
+                         UserAddressSettings(user, userAddress, shareViaProfile, setProfileAddress, saveAddressSettings, close = close)
+                       }
+                     }
   )
 }
 
@@ -463,8 +464,8 @@ private fun ModalData.UserAddressSettings(
   userAddress: UserContactLinkRec,
   shareViaProfile: MutableState<Boolean>,
   setProfileAddress: (Boolean) -> Unit,
-  saveAddressSettings: (AddressSettingsState, MutableState<AddressSettingsState>) -> Unit,
-  close: () -> Unit
+                                          saveAddressSettings: (AddressSettingsState, MutableState<AddressSettingsState>) -> Unit,
+                                          close: () -> Unit
 ) {
   val addressSettingsState = remember { stateGetOrPut("autoAcceptState") { (AddressSettingsState(userAddress.addressSettings)) } }
   val savedAddressSettingsState = remember { stateGetOrPut("autoAcceptStateSaved") { (addressSettingsState.value) } }
@@ -500,8 +501,8 @@ private fun ModalData.UserAddressSettings(
       AppBarTitle(stringResource(MR.strings.address_settings), hostDevice(user?.remoteHostId))
       Column(
         Modifier.fillMaxWidth().padding(bottom = DEFAULT_PADDING_HALF),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.SpaceEvenly
+             horizontalAlignment = Alignment.CenterHorizontally,
+             verticalArrangement = Arrangement.SpaceEvenly
       ) {
         SectionView {
           ShareWithContactsButton(shareViaProfile, setProfileAddress)
@@ -529,38 +530,38 @@ private fun ModalData.UserAddressSettings(
 fun ShareWithContactsButton(shareViaProfile: MutableState<Boolean>, setProfileAddress: (Boolean) -> Unit) {
   PreferenceToggleWithIcon(
     stringResource(MR.strings.share_with_contacts),
-    painterResource(MR.images.ic_person),
-    checked = shareViaProfile.value,
+                           painterResource(MR.images.ic_person),
+                           checked = shareViaProfile.value,
   ) { on ->
     shareViaProfile.value = on
     if (on) {
       AlertManager.shared.showAlertDialog(
         title = generalGetString(MR.strings.share_address_with_contacts_question),
-        text = generalGetString(MR.strings.profile_update_will_be_sent_to_contacts),
-        confirmText = generalGetString(MR.strings.share_verb),
-        onConfirm = {
-          setProfileAddress(on)
-        },
-        onDismiss = {
-          shareViaProfile.value = !on
-        },
-        onDismissRequest = {
-          shareViaProfile.value = !on
-        })
+                                          text = generalGetString(MR.strings.profile_update_will_be_sent_to_contacts),
+                                          confirmText = generalGetString(MR.strings.share_verb),
+                                          onConfirm = {
+                                            setProfileAddress(on)
+                                          },
+                                          onDismiss = {
+                                            shareViaProfile.value = !on
+                                          },
+                                          onDismissRequest = {
+                                            shareViaProfile.value = !on
+                                          })
     } else {
       AlertManager.shared.showAlertDialog(
         title = generalGetString(MR.strings.stop_sharing_address),
-        text = generalGetString(MR.strings.profile_update_will_be_sent_to_contacts),
-        confirmText = generalGetString(MR.strings.stop_sharing),
-        onConfirm = {
-          setProfileAddress(on)
-        },
-        onDismiss = {
-          shareViaProfile.value = !on
-        },
-        onDismissRequest = {
-          shareViaProfile.value = !on
-        })
+                                          text = generalGetString(MR.strings.profile_update_will_be_sent_to_contacts),
+                                          confirmText = generalGetString(MR.strings.stop_sharing),
+                                          onConfirm = {
+                                            setProfileAddress(on)
+                                          },
+                                          onDismiss = {
+                                            shareViaProfile.value = !on
+                                          },
+                                          onDismissRequest = {
+                                            shareViaProfile.value = !on
+                                          })
     }
   }
 }
@@ -569,16 +570,16 @@ fun ShareWithContactsButton(shareViaProfile: MutableState<Boolean>, setProfileAd
 private fun BusinessAddressToggle(addressSettingsState: MutableState<AddressSettingsState>, saveAddressSettings: (AddressSettingsState) -> Unit) {
   PreferenceToggleWithIcon(
     stringResource(MR.strings.business_address),
-    painterResource(MR.images.ic_work),
-    checked = addressSettingsState.value.businessAddress,
+                           painterResource(MR.images.ic_work),
+                           checked = addressSettingsState.value.businessAddress,
   ) { businessToggle ->
     addressSettingsState.value = if (businessToggle)
-      AddressSettingsState(
-        businessAddress = true,
-        autoAccept = true,
-        autoAcceptIncognito = false,
-        autoReply = addressSettingsState.value.autoReply
-      )
+    AddressSettingsState(
+      businessAddress = true,
+      autoAccept = true,
+      autoAcceptIncognito = false,
+      autoReply = addressSettingsState.value.autoReply
+    )
     else
       AddressSettingsState(
         businessAddress = false,
@@ -586,7 +587,7 @@ private fun BusinessAddressToggle(addressSettingsState: MutableState<AddressSett
         autoAcceptIncognito = addressSettingsState.value.autoAcceptIncognito,
         autoReply = addressSettingsState.value.autoReply
       )
-    saveAddressSettings(addressSettingsState.value)
+      saveAddressSettings(addressSettingsState.value)
   }
 }
 
@@ -594,17 +595,17 @@ private fun BusinessAddressToggle(addressSettingsState: MutableState<AddressSett
 private fun AutoAcceptToggle(addressSettingsState: MutableState<AddressSettingsState>, saveAddressSettings: (AddressSettingsState) -> Unit) {
   PreferenceToggleWithIcon(
     stringResource(MR.strings.auto_accept_contact),
-    painterResource(MR.images.ic_check),
-    disabled = addressSettingsState.value.businessAddress,
-    checked = addressSettingsState.value.autoAccept
+                           painterResource(MR.images.ic_check),
+                           disabled = addressSettingsState.value.businessAddress,
+                           checked = addressSettingsState.value.autoAccept
   ) { autoAcceptToggle ->
     addressSettingsState.value = if (autoAcceptToggle)
-      AddressSettingsState(
-        businessAddress = addressSettingsState.value.businessAddress,
-        autoAccept = true,
-        autoAcceptIncognito = false,
-        autoReply = ""
-      )
+    AddressSettingsState(
+      businessAddress = addressSettingsState.value.businessAddress,
+      autoAccept = true,
+      autoAcceptIncognito = false,
+      autoReply = ""
+    )
     else
       AddressSettingsState(
         businessAddress = false,
@@ -612,7 +613,7 @@ private fun AutoAcceptToggle(addressSettingsState: MutableState<AddressSettingsS
         autoAcceptIncognito = false,
         autoReply = ""
       )
-    saveAddressSettings(addressSettingsState.value)
+      saveAddressSettings(addressSettingsState.value)
   }
 }
 
@@ -620,22 +621,22 @@ private fun AutoAcceptToggle(addressSettingsState: MutableState<AddressSettingsS
 private fun DeleteAddressButton(onClick: () -> Unit) {
   SettingsActionItem(
     painterResource(MR.images.ic_delete),
-    stringResource(MR.strings.delete_address),
-    onClick,
-    iconColor = MaterialTheme.colors.error,
-    textColor = MaterialTheme.colors.error,
+                     stringResource(MR.strings.delete_address),
+                     onClick,
+                     iconColor = MaterialTheme.colors.error,
+                     textColor = MaterialTheme.colors.error,
   )
 }
 
 private class AddressSettingsState {
   var businessAddress: Boolean = false
-    private set
+  private set
   var autoAccept: Boolean = false
-    private set
+  private set
   var autoAcceptIncognito: Boolean = false
-    private set
+  private set
   var autoReply: String = ""
-    private set
+  private set
 
   constructor(businessAddress: Boolean = false, autoAccept: Boolean = false, autoAcceptIncognito: Boolean = false, autoReply: String = "") {
     this.businessAddress = businessAddress
@@ -652,22 +653,22 @@ private class AddressSettingsState {
   }
 
   val addressSettings: AddressSettings
-    get() {
-      return AddressSettings(
-        businessAddress = this.businessAddress,
-        autoAccept = if (this.autoAccept) AutoAccept(acceptIncognito = this.autoAcceptIncognito) else null,
-        autoReply = if (this.autoReply.isEmpty()) null else MsgContent.MCText(this.autoReply)
-      )
-    }
+  get() {
+    return AddressSettings(
+      businessAddress = this.businessAddress,
+      autoAccept = if (this.autoAccept) AutoAccept(acceptIncognito = this.autoAcceptIncognito) else null,
+                           autoReply = if (this.autoReply.isEmpty()) null else MsgContent.MCText(this.autoReply)
+    )
+  }
 
   override fun equals(other: Any?): Boolean {
     if (other !is AddressSettingsState) return false
-    return (
+      return (
         this.businessAddress == other.businessAddress
-            && this.autoAccept == other.autoAccept
-            && this.autoAcceptIncognito == other.autoAcceptIncognito
-            && this.autoReply == other.autoReply
-    )
+        && this.autoAccept == other.autoAccept
+        && this.autoAcceptIncognito == other.autoAcceptIncognito
+        && this.autoReply == other.autoReply
+      )
   }
 
   override fun hashCode(): Int {
@@ -683,9 +684,9 @@ private class AddressSettingsState {
 private fun AcceptIncognitoToggle(addressSettingsState: MutableState<AddressSettingsState>) {
   PreferenceToggleWithIcon(
     stringResource(MR.strings.accept_contact_incognito_button),
-    if (addressSettingsState.value.autoAcceptIncognito) painterResource(MR.images.ic_theater_comedy_filled) else painterResource(MR.images.ic_theater_comedy),
-    if (addressSettingsState.value.autoAcceptIncognito) Indigo else MaterialTheme.colors.secondary,
-    checked = addressSettingsState.value.autoAcceptIncognito,
+                           if (addressSettingsState.value.autoAcceptIncognito) painterResource(MR.images.ic_theater_comedy_filled) else painterResource(MR.images.ic_theater_comedy),
+                             if (addressSettingsState.value.autoAcceptIncognito) Indigo else MaterialTheme.colors.secondary,
+                               checked = addressSettingsState.value.autoAcceptIncognito,
   ) { incognitoToggle ->
     addressSettingsState.value = AddressSettingsState(
       businessAddress = addressSettingsState.value.businessAddress,
@@ -721,8 +722,8 @@ private fun saveAddressSettingsButton(disabled: Boolean, onClick: () -> Unit) {
 
 @Preview/*(
   uiMode = Configuration.UI_MODE_NIGHT_YES,
-  showBackground = true,
-  name = "Dark Mode"
+showBackground = true,
+name = "Dark Mode"
 )*/
 @Composable
 fun PreviewUserAddressLayoutNoAddress() {
@@ -738,7 +739,7 @@ fun PreviewUserAddressLayoutNoAddress() {
       setProfileAddress = { _ -> },
       learnMore = {},
       shareViaProfile = remember { mutableStateOf(false) },
-      sendEmail = {},
+                      sendEmail = {},
     )
   }
 }
@@ -746,17 +747,17 @@ fun PreviewUserAddressLayoutNoAddress() {
 private fun showUnsavedChangesAlert(save: () -> Unit, revert: () -> Unit) {
   AlertManager.shared.showAlertDialogStacked(
     title = generalGetString(MR.strings.save_settings_question),
-    confirmText = generalGetString(MR.strings.save_auto_accept_settings),
-    dismissText = generalGetString(MR.strings.exit_without_saving),
-    onConfirm = save,
-    onDismiss = revert,
+                                             confirmText = generalGetString(MR.strings.save_auto_accept_settings),
+                                             dismissText = generalGetString(MR.strings.exit_without_saving),
+                                             onConfirm = save,
+                                             onDismiss = revert,
   )
 }
 
 @Preview/*(
   uiMode = Configuration.UI_MODE_NIGHT_YES,
-  showBackground = true,
-  name = "Dark Mode"
+showBackground = true,
+name = "Dark Mode"
 )*/
 @Composable
 fun PreviewUserAddressLayoutAddressCreated() {
@@ -765,9 +766,9 @@ fun PreviewUserAddressLayoutAddressCreated() {
       user = User.sampleData,
       userAddress = UserContactLinkRec(
         CreatedConnLink("https://simplex.chat/contact#/?v=1&smp=smp%3A%2F%2FPQUV2eL0t7OStZOoAsPEV2QYWt4-xilbakvGUGOItUo%3D%40smp6.simplex.im%2FK1rslx-m5bpXVIdMZg9NLUZ_8JBm8xTt%23MCowBQYDK2VuAyEALDeVe-sG8mRY22LsXlPgiwTNs9dbiLrNuA7f3ZMAJ2w%3D", null),
-        shortLinkDataSet = false,
-        shortLinkLargeDataSet = false,
-        addressSettings = AddressSettings(businessAddress = false, autoAccept = null, autoReply = null)
+                                       shortLinkDataSet = false,
+                                       shortLinkLargeDataSet = false,
+                                       addressSettings = AddressSettings(businessAddress = false, autoAccept = null, autoReply = null)
       ),
       createAddress = {},
       showAddShortLinkAlert = {},
@@ -777,7 +778,7 @@ fun PreviewUserAddressLayoutAddressCreated() {
       setProfileAddress = { _ -> },
       learnMore = {},
       shareViaProfile = remember { mutableStateOf(false) },
-      sendEmail = {},
+                      sendEmail = {},
     )
   }
 }
