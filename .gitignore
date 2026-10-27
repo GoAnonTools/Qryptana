@@ -84,3 +84,9 @@ website/test/stubs-layout-cache/_includes/*.js
 apps/android/app/release
 apps/multiplatform/.kotlin/sessions
 
+hs_err_pid*.log
+**/build/
+*.backup
+*.jitpack-backup
+*.jitpack-test-backup
+*.before-group-fix
