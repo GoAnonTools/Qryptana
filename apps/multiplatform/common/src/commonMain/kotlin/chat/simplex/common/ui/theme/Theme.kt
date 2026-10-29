@@ -633,7 +633,14 @@ val DEFAULT_MIN_CENTER_MODAL_WIDTH = 590.dp
 val DEFAULT_END_MODAL_WIDTH = 388.dp
 val DEFAULT_MAX_IMAGE_WIDTH = 500.dp
 
-val DarkColorPalette = if (appPlatform.isDesktop) darkColors(
+// Pure defaults: independent of preferences, ChatController and CurrentColors initialization.
+object ThemeDefaults {
+  fun themeName(isDesktop: Boolean, savedTheme: String, systemDark: Boolean, savedDarkTheme: String): String =
+    if (isDesktop) DefaultTheme.BLACK.themeName
+    else if (savedTheme != DefaultTheme.SYSTEM_THEME_NAME) savedTheme
+    else if (systemDark) savedDarkTheme else DefaultTheme.LIGHT.themeName
+
+fun darkPalette(isDesktop: Boolean) = if (isDesktop) darkColors(
   primary = QryptanaCopper,
   primaryVariant = QryptanaCopperLight,
   secondary = QryptanaDarkSecondary,
@@ -654,7 +661,7 @@ val DarkColorPalette = if (appPlatform.isDesktop) darkColors(
   onBackground = Color(0xFFFFFBFA),
   onSurface = Color(0xFFFFFBFA),
 )
-val DarkColorPaletteApp = if (appPlatform.isDesktop) AppColors(
+fun darkAppPalette(isDesktop: Boolean) = if (isDesktop) AppColors(
   title = QryptanaCopperLight,
   primaryVariant2 = QryptanaDarkCard,
   sentMessage = Color(0xFF3A2B24),
@@ -670,7 +677,7 @@ val DarkColorPaletteApp = if (appPlatform.isDesktop) AppColors(
   receivedQuote = Color(0xff373739),
 )
 
-val LightColorPalette = if (appPlatform.isDesktop) lightColors(
+fun lightPalette(isDesktop: Boolean) = if (isDesktop) lightColors(
   primary = QryptanaCopperDark,
   primaryVariant = QryptanaCopperLight,
   secondary = QryptanaLightSecondary,
@@ -690,7 +697,7 @@ val LightColorPalette = if (appPlatform.isDesktop) lightColors(
   error = Color.Red,
   surface = Color.White,
 )
-val LightColorPaletteApp = if (appPlatform.isDesktop) AppColors(
+fun lightAppPalette(isDesktop: Boolean) = if (isDesktop) AppColors(
   title = QryptanaCopperDark,
   primaryVariant2 = QryptanaLightCard,
   sentMessage = Color(0xFFF3E1D4),
@@ -706,7 +713,7 @@ val LightColorPaletteApp = if (appPlatform.isDesktop) AppColors(
   receivedQuote = Color(0xffececee),
 )
 
-val SimplexColorPalette = if (appPlatform.isDesktop) darkColors(
+fun simplexPalette(isDesktop: Boolean) = if (isDesktop) darkColors(
   primary = QryptanaCopperLight,
   primaryVariant = QryptanaCopper,
   secondary = QryptanaDarkSecondary,
@@ -726,7 +733,7 @@ val SimplexColorPalette = if (appPlatform.isDesktop) darkColors(
   surface = Color(0xFF121C37),
   error = Color.Red,
 )
-val SimplexColorPaletteApp = if (appPlatform.isDesktop) AppColors(
+fun simplexAppPalette(isDesktop: Boolean) = if (isDesktop) AppColors(
   title = QryptanaCopperLight,
   primaryVariant2 = QryptanaDarkCard,
   sentMessage = Color(0xFF3A2B24),
@@ -744,7 +751,7 @@ val SimplexColorPaletteApp = if (appPlatform.isDesktop) AppColors(
 
 // On desktop this is the Qryptana black-titanium palette (ThemeManager always selects it there).
 // Mobile keeps the original BLACK palette.
-val BlackColorPalette = if (appPlatform.isDesktop) darkColors(
+fun blackPalette(isDesktop: Boolean) = if (isDesktop) darkColors(
   primary = QryptanaMetal.copperLight,
   primaryVariant = QryptanaMetal.copperMid,
   secondary = QryptanaMetal.textTertiary,
@@ -766,7 +773,7 @@ val BlackColorPalette = if (appPlatform.isDesktop) darkColors(
   onBackground = Color(0xFFFFFBFA),
   onSurface = Color(0xFFFFFBFA),
 )
-val BlackColorPaletteApp = if (appPlatform.isDesktop) AppColors(
+fun blackAppPalette(isDesktop: Boolean) = if (isDesktop) AppColors(
   title = QryptanaMetal.copperLight,
   primaryVariant2 = QryptanaMetal.titaniumMid,
   sentMessage = Color(0xFF2E2A26),
@@ -781,6 +788,16 @@ val BlackColorPaletteApp = if (appPlatform.isDesktop) AppColors(
   receivedMessage = Color(0xff1b1b1b),
   receivedQuote = Color(0xff29292b),
 )
+}
+
+val DarkColorPalette = ThemeDefaults.darkPalette(appPlatform.isDesktop)
+val DarkColorPaletteApp = ThemeDefaults.darkAppPalette(appPlatform.isDesktop)
+val LightColorPalette = ThemeDefaults.lightPalette(appPlatform.isDesktop)
+val LightColorPaletteApp = ThemeDefaults.lightAppPalette(appPlatform.isDesktop)
+val SimplexColorPalette = ThemeDefaults.simplexPalette(appPlatform.isDesktop)
+val SimplexColorPaletteApp = ThemeDefaults.simplexAppPalette(appPlatform.isDesktop)
+val BlackColorPalette = ThemeDefaults.blackPalette(appPlatform.isDesktop)
+val BlackColorPaletteApp = ThemeDefaults.blackAppPalette(appPlatform.isDesktop)
 
 var systemInDarkThemeCurrently: Boolean = isInNightMode()
 
