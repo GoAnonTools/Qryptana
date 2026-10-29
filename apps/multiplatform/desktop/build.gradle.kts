@@ -66,12 +66,12 @@ compose {
           //, TargetFormat.AppImage // Gradle doesn't sync on Mac with it
         )
         linux {
-          iconFile.set(project.file("src/jvmMain/resources/distribute/simplex.png"))
+          iconFile.set(project.file("src/jvmMain/resources/distribute/qryptana.png"))
           appCategory = "Messenger"
         }
         windows {
           packageName = "Qryptana"
-          iconFile.set(project.file("src/jvmMain/resources/distribute/simplex.ico"))
+          iconFile.set(project.file("src/jvmMain/resources/distribute/qryptana.ico"))
           console = false
           perUserInstall = false
           dirChooser = true
@@ -80,7 +80,8 @@ compose {
         }
         macOS {
           packageName = "Qryptana"
-          iconFile.set(project.file("src/jvmMain/resources/distribute/simplex.icns"))
+          // Native ICNS tooling is not available in this build environment; use the derived PNG.
+          iconFile.set(project.file("src/jvmMain/resources/distribute/qryptana.png"))
           appCategory = "public.app-category.social-networking"
           bundleID = "chat.simplex.app"
           infoPlist {
