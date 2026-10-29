@@ -949,6 +949,9 @@ object AppearanceScope {
     @Composable
     fun CustomizeThemeColorsSection(currentTheme: ThemeManager.ActiveTheme, editColor: (ThemeColor) -> Unit) {
       SectionView(stringResource(MR.strings.theme_colors_section_title)) {
+      if (appPlatform.isDesktop) {
+        Text(stringResource(MR.strings.qryptana_desktop_theme_description), color = MaterialTheme.colors.secondary)
+      }
         SectionItemViewSpaceBetween({ editColor(ThemeColor.PRIMARY) }) {
           val title = generalGetString(MR.strings.color_primary)
           Text(title)

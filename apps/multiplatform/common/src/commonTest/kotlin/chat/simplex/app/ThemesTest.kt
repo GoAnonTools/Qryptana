@@ -1,6 +1,7 @@
 package chat.simplex.app
 
 import chat.simplex.common.ui.theme.*
+import chat.simplex.common.model.ChatController.appPrefs
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
@@ -34,5 +35,10 @@ class ThemesTest {
         ThemeOverrides("UUID10", DefaultTheme.LIGHT, wallpaper = ThemeWallpaper(imageFile = "image"))
       )
     )
+  }
+
+  @Test
+  fun desktopAlwaysUsesBlackThemeRegardlessOfSavedTheme() {
+    assertEquals(DefaultTheme.BLACK, ThemeManager.currentColors(null, null, null, appPrefs.themeOverrides.get()).base)
   }
 }

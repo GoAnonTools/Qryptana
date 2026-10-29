@@ -1108,6 +1108,7 @@
   <string name="network_smp_web_port_preset">Preset servers</string>
   <string name="network_smp_web_port_off">Off</string>
   <string name="appearance_settings">Appearance</string>
+  <string name="qryptana_desktop_theme_description">Qryptana desktop uses one black-titanium finish. Mobile keeps the original SimpleX palettes while the Qryptana mobile theme rollout is evaluated.</string>
   <string name="customize_theme_title">Customize theme</string>
   <string name="theme_colors_section_title">INTERFACE COLORS</string>
   <string name="app_version_title">App version</string>
