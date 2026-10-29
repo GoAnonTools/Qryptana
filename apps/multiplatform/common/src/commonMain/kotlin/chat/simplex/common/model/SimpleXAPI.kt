@@ -4432,7 +4432,7 @@ data class ServerOperator(
   companion object {
     val dummyOperatorInfo = ServerOperatorInfo(
       description = listOf("Default"),
-      website = "https://simplex.chat",
+      website = "",
       logo = MR.images.decentralized,
       largeLogo = MR.images.logo,
       logoDarkMode = MR.images.decentralized_light,
