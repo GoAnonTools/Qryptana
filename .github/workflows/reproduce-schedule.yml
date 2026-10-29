@@ -1,5 +1,7 @@
 name: Reproduce latest release
 
+# Reproduces SimpleX releases and uses upstream webhook secrets, not Qryptana
+# artifacts. Retain for reference/manual use; never schedule it for this fork.
 on:
   workflow_dispatch:
 

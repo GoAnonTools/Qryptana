@@ -1,33 +1,9 @@
 name: build
 
+# Inherited Haskell/packaging matrix requires release infrastructure that has not
+# been validated for Qryptana. Routine main checks live in qryptana-ci.yml.
 on:
-  push:
-    branches:
-      - master
-      - stable
-      - main
-    tags:
-      - "v*"
-      - "!*-fdroid"
-      - "!*-armv7a"
-  pull_request:
-    branches:
-      - main
-    paths:
-      - "src/**"
-      - "apps/simplex-chat/**"
-      - "apps/simplex-bot/**"
-      - "apps/simplex-bot-advanced/**"
-      - "apps/simplex-broadcast-bot/**"
-      - "apps/simplex-directory-service/**"
-      - "tests/**"
-      - "bots/src/**"
-      - "simplex-chat.cabal"
-      - "cabal.project"
-      - "Dockerfile*"
-      - "scripts/ci/**"
-      - "scripts/desktop/**"
-      - ".github/**"
+  workflow_dispatch:
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
