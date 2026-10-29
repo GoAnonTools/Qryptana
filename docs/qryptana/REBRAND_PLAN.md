@@ -21,29 +21,35 @@ resources.
 
 ## Phase 2 — Branding assets
 
-Status: not started
+Status: substantially complete for the current desktop/Labs scope
 
 - Create original Qryptana logo and icons.
 - Do not reuse SimpleX logos, illustrations, app icons, or visual identity.
 - Locate all image/icon references before replacing assets.
 - Replace visible branding assets only after confirming build impact.
 
+The repository now contains original Qryptana symbol and wordmark assets. Desktop and Android distribution artwork is derived from the original Qryptana symbol; bundle/application IDs remain upstream-compatible by decision. Native ICNS tooling and a future identifier migration remain follow-up work.
+
 ## Phase 3 — User-facing text
 
-Status: not started
+Status: in progress
 
 - Change only visible product text that clearly represents the app to users.
 - Avoid changing protocol names, package names, code namespaces, or technical references blindly.
 - Keep SimpleX references where they are required for attribution, upstream compatibility, or protocol explanation.
 
+Base-locale operator wording, store metadata, support routing and privacy-document boundaries have been reviewed. Translated operator strings remain a documented follow-up and are not hand-translated in this remediation.
+
 ## Phase 4 — Release target isolation
 
-Status: not started
+Status: partially complete
 
 - Keep iOS and Android source trees as upstream reference for now.
 - Do not publish iOS or Android as Qryptana release targets.
 - Remove upstream download links from Qryptana marketing.
 - Define Qryptana-supported platforms explicitly before release.
+
+The current decision is desktop-first Labs scope: Qryptana copper/titanium palettes apply to desktop, desktop uses a forced black-titanium finish, and mobile retains verified upstream palettes pending a deliberate rollout decision. See [ADR 0001](adr/0001-theme-scope.md).
 
 ## Phase 5 — Self-hosted server path
 
