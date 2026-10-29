@@ -36,7 +36,7 @@ SimpleX network is fully decentralized, without any central component or bootstr
 
 But a large number of SimpleX app users use the servers pre-configured in the app. Even though the app randomly chooses 4 servers in each connection to improve privacy and security, prior to v6.2 for these users the servers were operated by the same company &mdash; ourselves.
 
-Our open-source code that we are [legally bound to use](./20240426-simplex-legally-binding-transparency-v5-7-better-user-experience.md#legally-binding-transparency) doesn't provide any metadata that could be used to learn who connects to whom. But the privacy of users' connections still depends on us honouring our promises and [privacy policy](../PRIVACY.md). Flux servers in the app improve that.
+Our open-source code that we are [legally bound to use](./20240426-simplex-legally-binding-transparency-v5-7-better-user-experience.md#legally-binding-transparency) doesn't provide any metadata that could be used to learn who connects to whom. But the privacy of users' connections still depends on us honouring our promises and [privacy policy](../docs/upstream/SIMPLEX_PRIVACY.md). Flux servers in the app improve that.
 
 ## Using two operators improves connection privacy
 

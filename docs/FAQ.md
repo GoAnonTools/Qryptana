@@ -6,6 +6,8 @@ revision: 13.08.2025
 
 # Frequently Asked Questions
 
+This is retained upstream SimpleX documentation. Operator statements refer to those operators, not Qryptana promises; see the [policy boundary](upstream/README.md).
+
 [How to use it](#how-to-use-it)
 - [How do I connect to people?](#how-do-i-connect-to-people)
 - [I have nobody to chat with! Where can I find any groups?](#i-have-nobody-to-chat-with-where-can-i-find-any-groups)
@@ -341,7 +343,7 @@ While these approaches are not as convenient as seamless multi-device support of
 
 Our objective is to consistently ensure that no user data and absolute minimum of the metadata required for the network to function is available for disclosure by any infrastructure operators, under any circumstances.
 
-Please see our [Privacy Policy](../PRIVACY.md) and [Transparency Reports](./TRANSPARENCY.md).
+Please see the [upstream operator Privacy Policy](upstream/SIMPLEX_PRIVACY.md) and [Transparency Reports](./TRANSPARENCY.md).
 
 ### Does SimpleX protect my IP address?
 

@@ -409,7 +409,7 @@ Nigdy nie udostępnialiśmy ani nie byliśmy proszeni o dostęp do naszych serwe
 
 Nie rejestrujemy adresów IP użytkowników i nie przeprowadzamy żadnej korelacji ruchu na naszych serwerach. Jeśli bezpieczeństwo na poziomie transportu jest krytyczne, musisz użyć Tor lub innej podobnej sieci, aby uzyskać dostęp do serwerów wiadomości. Będziemy ulepszać aplikacje klienckie, aby zmniejszyć możliwości korelacji ruchu.
 
-Więcej informacji można znaleźć w [Warunkach i polityce prywatności](./PRIVACY.md).
+Więcej informacji można znaleźć w [Warunkach i polityce prywatności](../../upstream/SIMPLEX_PRIVACY.md).
 
 ## Kontakt w sprawie bezpieczeństwa
 

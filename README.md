@@ -457,17 +457,19 @@ The cryptographic review of SimpleX protocols was done in July 2024 by Trail of 
 
 SimpleX Chat is still a relatively early stage platform (the mobile apps were released in March 2022), so you may discover some bugs and missing features. We would really appreciate if you let us know anything that needs to be fixed or improved.
 
+The following server statements are retained upstream SimpleX operator claims, not Qryptana service commitments or independently verified availability measurements:
+
 The default servers configured in the app are provided on the best effort basis. We are currently not guaranteeing any SLAs, although historically our servers had over 99.9% uptime each.
 
 We have never provided or have been requested access to our servers or any information from our servers by any third parties. If we are ever requested to provide such access or information, we will be following due legal process.
 
 We do not log IP addresses of the users and we do not perform any traffic correlation on our servers. If transport level security is critical you must use Tor or some other similar network to access messaging servers. We will be improving the client applications to reduce the opportunities for traffic correlation.
 
-Please read more in [Privacy Policy](./PRIVACY.md).
+Please read more in the retained [upstream operator privacy policy](./docs/upstream/SIMPLEX_PRIVACY.md). Qryptana's separate [privacy draft](./PRIVACY.md) requires legal review.
 
 ## Security contact
 
-Please see our [Security Policy](./docs/SECURITY.md) on how to report security vulnerabilities to us. We will coordinate the fix and disclosure.
+Qryptana has not yet published a verified security contact or disclosure process. See [Qryptana security notes](./SECURITY.md). The retained [upstream security policy](./docs/SECURITY.md) describes SimpleX's contacts, not Qryptana support; do not send Qryptana-specific reports there as if they were the fork's maintainers.
 
 Please do NOT report security vulnerabilities via GitHub issues.
 

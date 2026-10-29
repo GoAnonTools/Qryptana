@@ -5,6 +5,8 @@ revision: 18.08.2023
 
 # SimpleX Directory
 
+This describes the upstream SimpleX Directory, not a Qryptana-operated service. See the [policy boundary](upstream/README.md).
+
 You can use SimpleX Directory to discover the groups created and registered by other users.
 
 ## Searching for groups
@@ -13,7 +15,7 @@ SimpleX Directory is available at [simplex.chat/directory](https://simplex.chat/
 
 You can also connect to SimpleX Directory via [this address](https://smp4.simplex.im/a#lXUjJW5vHYQzoLYgmi8GbxkGP41_kjefFvBrdwg-0Ok) and send the message containing the words you want to find in the group name or welcome message. You will receive up to 10 groups with the largest number of members in the response, together with the links to join these groups.
 
-Please note that your search queries can be kept by the bot as the conversation history, but you can use incognito mode when connecting to the bot, to avoid correlation with any other communications. See [Privacy policy](../PRIVACY.md) for more details.
+Please note that your search queries can be kept by the bot as the conversation history, but you can use incognito mode when connecting to the bot, to avoid correlation with any other communications. See the [upstream operator privacy policy](upstream/SIMPLEX_PRIVACY.md) for more details.
 
 ## Adding groups to the directory
 
