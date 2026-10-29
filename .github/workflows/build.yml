@@ -5,11 +5,14 @@ on:
     branches:
       - master
       - stable
+      - main
     tags:
       - "v*"
       - "!*-fdroid"
       - "!*-armv7a"
   pull_request:
+    branches:
+      - main
     paths:
       - "src/**"
       - "apps/simplex-chat/**"
