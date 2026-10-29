@@ -33,6 +33,7 @@ import chat.simplex.common.views.chat.item.showContentBlockedAlert
 import chat.simplex.common.views.chat.item.showQuotedItemDoesNotExistAlert
 import chat.simplex.common.views.chatlist.openGroupChat
 import chat.simplex.common.views.migration.MigrationFileLinkData
+
 import chat.simplex.common.views.onboarding.OnboardingStage
 import chat.simplex.common.views.usersettings.*
 import chat.simplex.common.views.usersettings.networkAndServers.defaultConditionsLink
@@ -46,6 +47,7 @@ import dev.icerock.moko.resources.StringResource
 import dev.icerock.moko.resources.compose.stringResource
 import kotlinx.coroutines.*
 import kotlinx.coroutines.channels.Channel
+
 import kotlinx.coroutines.sync.withLock
 import kotlinx.datetime.Clock
 import kotlinx.datetime.Instant
@@ -62,6 +64,8 @@ import java.util.concurrent.atomic.AtomicBoolean
 import java.time.format.DateTimeFormatter
 import java.time.format.FormatStyle
 import java.util.Date
+
+internal fun defaultAppUpdateChannel(): AppUpdatesChannel = AppUpdatesChannel.DISABLED
 
 typealias ChatCtrl = Long
 
@@ -191,7 +195,7 @@ class AppPreferences {
   val showMuteProfileAlert = mkBoolPreference(SHARED_PREFS_SHOW_MUTE_PROFILE_ALERT, true)
   val showReportsInSupportChatAlert = mkBoolPreference(SHARED_PREFS_SHOW_REPORTS_IN_SUPPORT_CHAT_ALERT, true)
   val appLanguage = mkStrPreference(SHARED_PREFS_APP_LANGUAGE, null)
-  val appUpdateChannel = mkEnumPreference(SHARED_PREFS_APP_UPDATE_CHANNEL, AppUpdatesChannel.DISABLED) { AppUpdatesChannel.entries.firstOrNull { it.name == this } }
+  val appUpdateChannel = mkEnumPreference(SHARED_PREFS_APP_UPDATE_CHANNEL, defaultAppUpdateChannel()) { AppUpdatesChannel.entries.firstOrNull { it.name == this } }
   val appSkippedUpdate = mkStrPreference(SHARED_PREFS_APP_SKIPPED_UPDATE, "")
   val appUpdateNoticeShown = mkBoolPreference(SHARED_PREFS_APP_UPDATE_NOTICE_SHOWN, false)
 

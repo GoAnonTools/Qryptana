@@ -30,6 +30,9 @@ import java.net.InetSocketAddress
 import java.net.Proxy
 import kotlin.math.min
 
+// TODO: replace with a verified Qryptana release feed before enabling updates by default.
+internal const val UPSTREAM_RELEASE_FEED_URL = "https://api.github.com/repos/simplex-chat/simplex-chat/releases"
+
 data class SemVer(
   val major: Int,
   val minor: Int,
@@ -194,7 +197,7 @@ private fun updateButtonColor(): Color = if (appPlatform.isDesktop) QryptanaMeta
           }
           val client = setupHttpClient()
           try {
-            val request = Request.Builder().url("https://api.github.com/repos/simplex-chat/simplex-chat/releases").addHeader("User-agent", "curl").build()
+            val request = Request.Builder().url(UPSTREAM_RELEASE_FEED_URL).addHeader("User-agent", "curl").build()
             client.newCall(request).execute().use { response ->
               response.body?.use {
                 val body = it.string()
@@ -386,7 +389,7 @@ private fun updateButtonColor(): Color = if (appPlatform.isDesktop) QryptanaMeta
           }
         }
 
-        private fun chooseGitHubReleaseAssets(): List<GitHubAsset> {
+        internal fun chooseGitHubReleaseAssets(): List<GitHubAsset> {
           // No Qryptana release endpoint or signed Qryptana packages are configured yet.
           // Never expose upstream SimpleX assets as an update for this application.
           return emptyList()
