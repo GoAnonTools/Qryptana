@@ -67,7 +67,7 @@ previousConditionsCommit = "7471fd2af5838dc0467aebc570b5ea75e5df3209"
 
 usageConditionsText :: Text
 usageConditionsText =
-  $( let s = $(embedFile "PRIVACY.md")
+  $( let s = $(embedFile "docs/upstream/SIMPLEX_PRIVACY.md")
       in [|stripFrontMatter $(lift (safeDecodeUtf8 s))|]
    )
 
