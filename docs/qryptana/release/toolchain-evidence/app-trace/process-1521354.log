@@ -1,0 +1,2 @@
+pid=1521354 ppid=1521353 exe=/home/theanarchitect/code/Qryptana-release-artifacts/toolchain-regression-20261030/qryptana-temurin/main/app/qryptana/bin/qryptana event=fork-child arg=
+pid=1521354 ppid=1521353 exe=/home/theanarchitect/code/Qryptana-release-artifacts/toolchain-regression-20261030/qryptana-temurin/main/app/qryptana/bin/qryptana event=execvp arg=rpm

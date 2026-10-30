@@ -1,5 +1,7 @@
 # Local release candidate report
 
+Later Linux candidate: [toolchain-acceptance-report.md](toolchain-acceptance-report.md) records the separately archived Temurin build that resolves the launcher helper abort. Original artifacts and this historical report are preserved; full UI and release gates remain open.
+
 Date: 2026-10-30. Outcome: local Linux runnable distribution and debug Android APKs produced; full runtime acceptance remains incomplete. Nothing published, uploaded, signed with production keys, installed on a physical device or pushed.
 
 Durable worktree: `/home/theanarchitect/code/Qryptana-release-validation`, branch `qryptana-release-validation`, created from verified migrated checkpoint `97dd441a10217aaf82531e002122409593e958f5`. Application/build source is unchanged from that checkpoint and the tested implementation `3ad2abd2c1dc19a57871cdca3fabe4b86e123165`. The preceding release-gate documentation commit is `dd46149d8`. The final report commit is the branch-tip documentation checkpoint printed in the final handoff and recorded in `/home/theanarchitect/code/Qryptana-release-artifacts/FINAL_CHECKPOINT.txt`; resolve it with `git log -1 --format=%H -- docs/qryptana/release/release-candidate-report.md`.

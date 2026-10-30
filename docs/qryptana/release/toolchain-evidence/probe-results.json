@@ -1,0 +1,152 @@
+[
+  {
+    "vendor": "original",
+    "instrumented": false,
+    "trial": 1,
+    "exit": 0,
+    "stdout": "QRYPTANA_LAUNCHER_PROBE_OK\n",
+    "stderr": "pure virtual method called\nterminate called without an active exception\n",
+    "trace_files": [],
+    "launcher_sha256": "aaa5504ada5e61d7d00a9d1e6093ae6ab3fa8a00879977f4f08efe74b5f4524e"
+  },
+  {
+    "vendor": "original",
+    "instrumented": false,
+    "trial": 2,
+    "exit": 0,
+    "stdout": "QRYPTANA_LAUNCHER_PROBE_OK\n",
+    "stderr": "pure virtual method called\nterminate called without an active exception\n",
+    "trace_files": [],
+    "launcher_sha256": "aaa5504ada5e61d7d00a9d1e6093ae6ab3fa8a00879977f4f08efe74b5f4524e"
+  },
+  {
+    "vendor": "original",
+    "instrumented": false,
+    "trial": 3,
+    "exit": 0,
+    "stdout": "QRYPTANA_LAUNCHER_PROBE_OK\n",
+    "stderr": "pure virtual method called\nterminate called without an active exception\n",
+    "trace_files": [],
+    "launcher_sha256": "aaa5504ada5e61d7d00a9d1e6093ae6ab3fa8a00879977f4f08efe74b5f4524e"
+  },
+  {
+    "vendor": "original",
+    "instrumented": true,
+    "trial": 1,
+    "exit": 0,
+    "stdout": "QRYPTANA_LAUNCHER_PROBE_OK\n",
+    "stderr": "",
+    "trace_files": [
+      "process-68.log",
+      "process-69.log",
+      "process-70.log",
+      "process-71.log"
+    ],
+    "launcher_sha256": "aaa5504ada5e61d7d00a9d1e6093ae6ab3fa8a00879977f4f08efe74b5f4524e"
+  },
+  {
+    "vendor": "original",
+    "instrumented": true,
+    "trial": 2,
+    "exit": 0,
+    "stdout": "QRYPTANA_LAUNCHER_PROBE_OK\n",
+    "stderr": "",
+    "trace_files": [
+      "process-89.log",
+      "process-90.log",
+      "process-91.log",
+      "process-92.log"
+    ],
+    "launcher_sha256": "aaa5504ada5e61d7d00a9d1e6093ae6ab3fa8a00879977f4f08efe74b5f4524e"
+  },
+  {
+    "vendor": "original",
+    "instrumented": true,
+    "trial": 3,
+    "exit": 0,
+    "stdout": "QRYPTANA_LAUNCHER_PROBE_OK\n",
+    "stderr": "",
+    "trace_files": [
+      "process-110.log",
+      "process-111.log",
+      "process-112.log",
+      "process-113.log"
+    ],
+    "launcher_sha256": "aaa5504ada5e61d7d00a9d1e6093ae6ab3fa8a00879977f4f08efe74b5f4524e"
+  },
+  {
+    "vendor": "temurin",
+    "instrumented": false,
+    "trial": 1,
+    "exit": 0,
+    "stdout": "QRYPTANA_LAUNCHER_PROBE_OK\n",
+    "stderr": "",
+    "trace_files": [],
+    "launcher_sha256": "336fe5e8ce1e8b36e0f8287f265f9456f52e776d48041f427e275c45c350e494"
+  },
+  {
+    "vendor": "temurin",
+    "instrumented": false,
+    "trial": 2,
+    "exit": 0,
+    "stdout": "QRYPTANA_LAUNCHER_PROBE_OK\n",
+    "stderr": "",
+    "trace_files": [],
+    "launcher_sha256": "336fe5e8ce1e8b36e0f8287f265f9456f52e776d48041f427e275c45c350e494"
+  },
+  {
+    "vendor": "temurin",
+    "instrumented": false,
+    "trial": 3,
+    "exit": 0,
+    "stdout": "QRYPTANA_LAUNCHER_PROBE_OK\n",
+    "stderr": "",
+    "trace_files": [],
+    "launcher_sha256": "336fe5e8ce1e8b36e0f8287f265f9456f52e776d48041f427e275c45c350e494"
+  },
+  {
+    "vendor": "temurin",
+    "instrumented": true,
+    "trial": 1,
+    "exit": 0,
+    "stdout": "QRYPTANA_LAUNCHER_PROBE_OK\n",
+    "stderr": "",
+    "trace_files": [
+      "process-195.log",
+      "process-196.log",
+      "process-197.log",
+      "process-198.log"
+    ],
+    "launcher_sha256": "336fe5e8ce1e8b36e0f8287f265f9456f52e776d48041f427e275c45c350e494"
+  },
+  {
+    "vendor": "temurin",
+    "instrumented": true,
+    "trial": 2,
+    "exit": 0,
+    "stdout": "QRYPTANA_LAUNCHER_PROBE_OK\n",
+    "stderr": "",
+    "trace_files": [
+      "process-216.log",
+      "process-217.log",
+      "process-218.log",
+      "process-219.log"
+    ],
+    "launcher_sha256": "336fe5e8ce1e8b36e0f8287f265f9456f52e776d48041f427e275c45c350e494"
+  },
+  {
+    "vendor": "temurin",
+    "instrumented": true,
+    "trial": 3,
+    "exit": 0,
+    "stdout": "QRYPTANA_LAUNCHER_PROBE_OK\n",
+    "stderr": "",
+    "trace_files": [
+      "process-237.log",
+      "process-238.log",
+      "process-239.log",
+      "process-240.log"
+    ],
+    "launcher_sha256": "336fe5e8ce1e8b36e0f8287f265f9456f52e776d48041f427e275c45c350e494"
+  }
+]

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="chat.simplex.app.CallServerAuthTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2026-10-30T17:48:12" hostname="maya" time="0.095">
+  <properties/>
+  <testcase name="testCallPageRejectedWithoutToken[desktop]" classname="chat.simplex.app.CallServerAuthTest" time="0.039"/>
+  <testcase name="testWebSocketUpgradeAcceptedWithToken[desktop]" classname="chat.simplex.app.CallServerAuthTest" time="0.015"/>
+  <testcase name="testWebSocketUpgradeRejectedWithoutToken[desktop]" classname="chat.simplex.app.CallServerAuthTest" time="0.013"/>
+  <testcase name="testCallPagePassesAuthGateWithToken[desktop]" classname="chat.simplex.app.CallServerAuthTest" time="0.015"/>
+  <testcase name="testWebSocketUpgradeRejectedWithWrongToken[desktop]" classname="chat.simplex.app.CallServerAuthTest" time="0.012"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

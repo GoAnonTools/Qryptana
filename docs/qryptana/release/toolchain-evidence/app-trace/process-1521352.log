@@ -1,0 +1,11 @@
+pid=1521352 ppid=1521351 exe=/home/theanarchitect/code/Qryptana-release-artifacts/toolchain-regression-20261030/qryptana-temurin/main/app/qryptana/bin/qryptana event=loaded arg=
+pid=1521352 ppid=1521351 exe=/home/theanarchitect/code/Qryptana-release-artifacts/toolchain-regression-20261030/qryptana-temurin/main/app/qryptana/bin/qryptana event=wait arg=child=1521353 status=0
+pid=1521352 ppid=1521351 exe=/home/theanarchitect/code/Qryptana-release-artifacts/toolchain-regression-20261030/qryptana-temurin/main/app/qryptana/bin/qryptana event=waitpid arg=child=1521390 status=0
+pid=1521352 ppid=1521351 exe=/home/theanarchitect/code/Qryptana-release-artifacts/toolchain-regression-20261030/qryptana-temurin/main/app/qryptana/bin/qryptana event=waitpid arg=child=1521399 status=0
+pid=1521352 ppid=1521351 exe=/home/theanarchitect/code/Qryptana-release-artifacts/toolchain-regression-20261030/qryptana-temurin/main/app/qryptana/bin/qryptana event=waitpid arg=child=1521400 status=0
+pid=1521352 ppid=1521351 exe=/home/theanarchitect/code/Qryptana-release-artifacts/toolchain-regression-20261030/qryptana-temurin/main/app/qryptana/bin/qryptana event=waitpid arg=child=1521416 status=0
+pid=1521352 ppid=1521351 exe=/home/theanarchitect/code/Qryptana-release-artifacts/toolchain-regression-20261030/qryptana-temurin/main/app/qryptana/bin/qryptana event=waitpid arg=child=1521425 status=0
+pid=1521352 ppid=1521351 exe=/home/theanarchitect/code/Qryptana-release-artifacts/toolchain-regression-20261030/qryptana-temurin/main/app/qryptana/bin/qryptana event=waitpid arg=child=1521430 status=0
+pid=1521352 ppid=1521351 exe=/home/theanarchitect/code/Qryptana-release-artifacts/toolchain-regression-20261030/qryptana-temurin/main/app/qryptana/bin/qryptana event=waitpid arg=child=1521457 status=0
+pid=1521352 ppid=1521351 exe=/home/theanarchitect/code/Qryptana-release-artifacts/toolchain-regression-20261030/qryptana-temurin/main/app/qryptana/bin/qryptana event=waitpid arg=child=1521462 status=0
+pid=1521352 ppid=1521351 exe=/home/theanarchitect/code/Qryptana-release-artifacts/toolchain-regression-20261030/qryptana-temurin/main/app/qryptana/bin/qryptana event=waitpid arg=child=1521479 status=0

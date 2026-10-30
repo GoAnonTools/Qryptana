@@ -1,0 +1,2 @@
+pid=195 ppid=3 exe=/home/theanarchitect/code/Qryptana-release-artifacts/toolchain-regression-20261030/temurin/TemurinProbe/bin/TemurinProbe event=loaded arg=
+pid=195 ppid=3 exe=/home/theanarchitect/code/Qryptana-release-artifacts/toolchain-regression-20261030/temurin/TemurinProbe/bin/TemurinProbe event=wait arg=child=196 status=0

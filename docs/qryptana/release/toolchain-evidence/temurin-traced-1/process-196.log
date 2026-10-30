@@ -1,0 +1,3 @@
+pid=196 ppid=195 exe=/home/theanarchitect/code/Qryptana-release-artifacts/toolchain-regression-20261030/temurin/TemurinProbe/bin/TemurinProbe event=fork-child arg=
+pid=196 ppid=195 exe=/home/theanarchitect/code/Qryptana-release-artifacts/toolchain-regression-20261030/temurin/TemurinProbe/bin/TemurinProbe event=waitpid arg=child=197 status=32512
+pid=196 ppid=195 exe=/home/theanarchitect/code/Qryptana-release-artifacts/toolchain-regression-20261030/temurin/TemurinProbe/bin/TemurinProbe event=waitpid arg=child=198 status=32512

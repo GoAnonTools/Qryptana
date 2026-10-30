@@ -1,0 +1,4070 @@
+{
+  "bin/qryptana": {
+    "bytes": 22008,
+    "sha256": "b6c11c88fd797451e6c81f075fef8d4d044a1187eb91698ecf932914f57e4654"
+  },
+  "lib/app/.jpackage.xml": {
+    "bytes": 279,
+    "sha256": "28d8b899c3a3bc9315e7ed9f179b2793e9b25caa8b8f1662c8a5fe5d5bb0959e"
+  },
+  "lib/app/animation-core-desktop-1.8.2-89882254a9c39d5b61e9ebfe58237d8.jar": {
+    "bytes": 373054,
+    "sha256": "710eeb91fd8552e10b67ecae12b1dc31ab317eb6e5bceb04d4c21e3f34252407"
+  },
+  "lib/app/animation-desktop-1.8.2-aa361a5749a780284bf03455dbd58ba2.jar": {
+    "bytes": 334268,
+    "sha256": "80af3d6bf305f0b6c0cfbe8175ae7ec46bf7b3027a9bac1616e05b0e21422432"
+  },
+  "lib/app/annotation-jvm-1.9.1-1d6a04b3b9847638d0529df8ef76a.jar": {
+    "bytes": 60577,
+    "sha256": "1e343917ebf27ba96fe4dc52b1cad7fd32b738fbc6355bb6cd5b3b305d7212d0"
+  },
+  "lib/app/annotations-23.0.0-8484cd17d040d837983323f760b2c660.jar": {
+    "bytes": 29371,
+    "sha256": "7b0f19724082cbfcbc66e5abea2b9bc92cf08a1ea11e191933ed43801eb3cd05"
+  },
+  "lib/app/atomicfu-jvm-0.23.2-5e4f88ed1c37222d791f5dcadf481498.jar": {
+    "bytes": 36181,
+    "sha256": "101ff43ff563fca167af5ade98c3b69bf569010eab745013b84d8955034d3b3c"
+  },
+  "lib/app/batik-anim-1.16-ef2d1e77dc121a894a6da6c5028e8dc.jar": {
+    "bytes": 485898,
+    "sha256": "93d2948dfc9837c392cb9c97d5ddaa4db95845e3061974b4ab94148f1587ddbf"
+  },
+  "lib/app/batik-awt-util-1.16-5493fc13976389ff705f96f867f5cb8.jar": {
+    "bytes": 424607,
+    "sha256": "dc0409227230b21a69ac3e79359385e2300df76728ec26081c6ed6c4373d3f13"
+  },
+  "lib/app/batik-bridge-1.16-67eb64799e6d69a8d9ac19ccc5a8f2d9.jar": {
+    "bytes": 704905,
+    "sha256": "a96031c2664599b43eee89ada011b6f20fb1d940bf70d1e830fbf780e7e2c86d"
+  },
+  "lib/app/batik-codec-1.16-f8139eda5bd656be3de6c68cc49667ba.jar": {
+    "bytes": 112371,
+    "sha256": "372f8127e7898256c19af3823a3837c80a58c23f5a5e36f34667b648d1a5e58a"
+  },
+  "lib/app/batik-constants-1.16-dbb7585ab60d6fee6b42b814756023.jar": {
+    "bytes": 8431,
+    "sha256": "0bdc9ac3e0b93f26cafd3fd8e3065d13fe678865115fc162f4d627fa0af35ad5"
+  },
+  "lib/app/batik-css-1.16-18b391172074464552b09acb9187e.jar": {
+    "bytes": 330361,
+    "sha256": "1f7e51c703813f21de58e9be4e6d907cef3a5540d23047507af9c4c5dc396419"
+  },
+  "lib/app/batik-dom-1.16-3a8e777a8777513a2b80ec91d06252da.jar": {
+    "bytes": 184060,
+    "sha256": "968dbc4bd291bb3c0074dc4b60223c4a95e0455c7b8c2a51ce5fe92aa68e15a1"
+  },
+  "lib/app/batik-ext-1.16-88db233e758febe33059f2be9f7c7fc8.jar": {
+    "bytes": 10239,
+    "sha256": "a12be0ba0f20a9f57ca16f76685366485b8c3119eaf5a2da4a34008d4947db73"
+  },
+  "lib/app/batik-gvt-1.16-fe24bef455f4d68232121574ea209b.jar": {
+    "bytes": 192085,
+    "sha256": "2232cfd309c30c5ee2d37d9efbacc8c708da091af747a77c4fc04287e234bd41"
+  },
+  "lib/app/batik-i18n-1.16-b2ac749b2277fb0f46ec912da8bfdde.jar": {
+    "bytes": 11464,
+    "sha256": "94fc90806f7cb823dabc0d292012ed97d637207329dc8d2f351f52e0a9107d9a"
+  },
+  "lib/app/batik-parser-1.16-62c4e0778339752a1f6f4d53ea3aef2f.jar": {
+    "bytes": 76872,
+    "sha256": "98257ac1b9daf378d917d7ac005ec9d85a17cfbb88fa744d0fed0d176e403220"
+  },
+  "lib/app/batik-rasterizer-1.16-9a4bec95395ecacaee2085945c311ad.jar": {
+    "bytes": 9129,
+    "sha256": "42539d0bb6a0892b8880b90b8e655037b92feabf6c2fd4d26277b6babc99e514"
+  },
+  "lib/app/batik-script-1.16-bfcf216f539f5718c7345322e0f060fc.jar": {
+    "bytes": 25198,
+    "sha256": "a66febdb41d9bade0e11e6320ed4914ea2799aa6b814c5ec7f35589b370733dc"
+  },
+  "lib/app/batik-shared-resources-1.16-d6b1e37464c15ad7cd1a5b06d9ee1a9.jar": {
+    "bytes": 6665,
+    "sha256": "318543fe05ee0d118938d9302b2fce137d040f31d71e042d2ca02406e386974a"
+  },
+  "lib/app/batik-svg-dom-1.16-ee7f7021afdfbe71b29871159da5765.jar": {
+    "bytes": 232734,
+    "sha256": "701ee2e9c14ff7d39759db8fa8a8dd04398cbf9d38c75ad5ca178f05d99f4406"
+  },
+  "lib/app/batik-svggen-1.16-48657fb48029f0427b1e34eb2a6884.jar": {
+    "bytes": 227487,
+    "sha256": "4bb25e0267d80765a4f87063ff3cac77688b045dafe8e903452c6b3fae9b249c"
+  },
+  "lib/app/batik-svgrasterizer-1.16-649f564439bc465caa6d1fa68ad24.jar": {
+    "bytes": 61758,
+    "sha256": "828df01e2b696b6b8fdd0bb9eaa29fcace597c3664ff25aee7679f05c00643b2"
+  },
+  "lib/app/batik-transcoder-1.16-1290ebbcaf1ebbef5e1675eb639d54c.jar": {
+    "bytes": 129300,
+    "sha256": "eaf365c90f758ab95deedf4d21331d5cdf0fa4e00df715df0240ab8f6653ff1e"
+  },
+  "lib/app/batik-util-1.16-d8f93a889db85573d4f8c576ff2ad2f.jar": {
+    "bytes": 127485,
+    "sha256": "a8306eda7a840685da7a730cdd99a63f8145ceb543017779d438c9d67550bfa2"
+  },
+  "lib/app/batik-xml-1.16-3147e6cfe396df25489c8c5899213dd.jar": {
+    "bytes": 33870,
+    "sha256": "56f1ed597857bc81f5db7e669d15caa7d9497887e2710f0f98eea4b3e3f8ddaa"
+  },
+  "lib/app/boofcv-core-1.1.3-cd7ed044859f6bdb3fe6325518f2fd1.jar": {
+    "bytes": 1648,
+    "sha256": "16b211617619d677771460b1ac59cf912dcaf8096b8bf19b1e967546ca22f06b"
+  },
+  "lib/app/boofcv-feature-1.1.3-59cbff871bc68e558a47caf63ca5e628.jar": {
+    "bytes": 1213557,
+    "sha256": "428dae97b4364a049fa62fbaedae822e23320fcee47854cb2f8dc71b0d3f7030"
+  },
+  "lib/app/boofcv-geo-1.1.3-f84cc97629241bfece5898b6dfc355.jar": {
+    "bytes": 826369,
+    "sha256": "0fbdbf8ce8d0d76b5411fbbb1e74a86bc8ab5299b69f4484a93ddd61906f02dc"
+  },
+  "lib/app/boofcv-io-1.1.3-ffaf831bea36c585d68448a987dfdc7.jar": {
+    "bytes": 265336,
+    "sha256": "95e3edf462ffd9397ea358c17ebd771cd78a6f637cbf8a61b24ed562157ee0ef"
+  },
+  "lib/app/boofcv-ip-1.1.3-592861c95cb7fb89daba7a2ecc45dc.jar": {
+    "bytes": 1695104,
+    "sha256": "98efb0d0c5f666eaf7a022dd509681e5341691759f04325171814514b007b77d"
+  },
+  "lib/app/boofcv-ip-multiview-1.1.3-3dae51c6bb18e2bee2cc4c4c56244d.jar": {
+    "bytes": 226285,
+    "sha256": "3d971f15fca346baba3b8bc1376c115017da10dfba07b03aab8ea2a77135e125"
+  },
+  "lib/app/boofcv-learning-1.1.3-a0cda13c9e27adac84c3def9befa4f4.jar": {
+    "bytes": 26257,
+    "sha256": "dfe12a03cc9b3a13ea40bb3910875ca38f9f95fbc9bebda014ed37eb26639179"
+  },
+  "lib/app/boofcv-recognition-1.1.3-4785f96b8bdc075e3b397df160307e.jar": {
+    "bytes": 789475,
+    "sha256": "c44734e80a140a0ec3e1fe357e06575f0ef00e7278cb4c993d72aefab7af1af7"
+  },
+  "lib/app/boofcv-reconstruction-1.1.3-2f106acdaa7b2d37562537c41230e56d.jar": {
+    "bytes": 249035,
+    "sha256": "3a7e2abd1073a69f03461bf0652f01b18f5bc9dc874efcf5270463e9608c08c5"
+  },
+  "lib/app/boofcv-sfm-1.1.3-3f834ac3aae126a7b09583e94cc37974.jar": {
+    "bytes": 225631,
+    "sha256": "ca8dad02d8c9256bc93c8c931131ec78c72a96e76d05444cdc693f52adb6a2c4"
+  },
+  "lib/app/boofcv-types-1.1.3-b4d37b91ff7a9c3626c2164945d410.jar": {
+    "bytes": 318205,
+    "sha256": "e4ff85262cb4219dfff5ab382edb5d4b72b9d7bfa8a99512898834d050013602"
+  },
+  "lib/app/collection-jvm-1.5.0-4421442c114a4f8c8fe587cf2d668237.jar": {
+    "bytes": 877998,
+    "sha256": "70b35924e4babcdffa37d0e575ee039c56a2d97123342624c48b603233704341"
+  },
+  "lib/app/color-picker-jvm-2ed58bcab85566b2167a85945efe6ea4.jar": {
+    "bytes": 141943,
+    "sha256": "bb9bb61c78c99e9f33c43069cce5c8066c7b7c8f7234d6930ec9838345b9a937"
+  },
+  "lib/app/colormath-jvm-3.2.0-e2476281b7c5dca28ab5ccea6cb21538.jar": {
+    "bytes": 350981,
+    "sha256": "11cc96affebb3934176e06ffa7472987cc0bc99995171c8f0768ed0deae5e812"
+  },
+  "lib/app/common-desktop-7.0.3-9012872215b173f2fa542544421f2.jar": {
+    "bytes": 35562708,
+    "sha256": "b126d390886260db8cb2c9033657f2b5b3455c36933f06de6f1b7fbc30f0c4f6"
+  },
+  "lib/app/commons-compress-1.21-2a713d10331bc4e13459a3dc463f16f.jar": {
+    "bytes": 1018316,
+    "sha256": "6aecfd5459728a595601cfa07258d131972ffc39b492eb48bdd596577a2f244a"
+  },
+  "lib/app/commons-io-2.13.0-8d0fa8939b71b8894637f0ef6ea28c.jar": {
+    "bytes": 483954,
+    "sha256": "671eaa39688dac2ffaa4645b3c9980ae2d0ea2471e4ae6a5da199cd15ae23666"
+  },
+  "lib/app/commons-logging-1.0.4-8a507817b28077e0478add944c64586a.jar": {
+    "bytes": 38015,
+    "sha256": "e94af49749384c11f5aa50e8d0f5fe679be771295b52030338d32843c980351e"
+  },
+  "lib/app/core-common-2.2.0-2212d240dfe1e8a7598ee117ccc316d.jar": {
+    "bytes": 11657,
+    "sha256": "65308a06b1c00ee186cb9e19321383f043b993813f1522c47f4a3e3303bdba41"
+  },
+  "lib/app/ddogleg-0.23.2-dd8796e3833727362b15e255fcc860.jar": {
+    "bytes": 452941,
+    "sha256": "2de446b39b906ea6d0631af7f91ec374ff22019603b0e2f903370ee07555e6b1"
+  },
+  "lib/app/desktop-jvm-1.8.2-d950f0d452fcdcba52d4c7bef9b82f3.jar": {
+    "bytes": 6045,
+    "sha256": "93cd32edc75d2f7d905fdc7cfd8d448b9a4bbb1884ed1832f886dc9e03f53482"
+  },
+  "lib/app/desktop-jvm-7.0.3-ea1dd94f8041e625a6e6ecf87c8ff533.jar": {
+    "bytes": 10712229,
+    "sha256": "d4d61d090eb6a77094d5aa9945ec3bf00701489e633aa5799ff89c0aca77e613"
+  },
+  "lib/app/ejml-cdense-0.43.1-2c6df71965c5cdf7691c5872c86c6776.jar": {
+    "bytes": 86531,
+    "sha256": "20c96f2b25facf9014c46c6d0e0139e2c1bbec7954411e9eb1b4c53ef7eaef6d"
+  },
+  "lib/app/ejml-core-0.43.1-16dd6c5491d9355af81b769674a3a071.jar": {
+    "bytes": 268866,
+    "sha256": "04136b8fabedf92c218914da3a837e27ba0aefbf924444d2aac243f77dbf208d"
+  },
+  "lib/app/ejml-ddense-0.43.1-1be6bae44cdc5caa8b953cd9e252adb8.jar": {
+    "bytes": 408363,
+    "sha256": "bb3d00c111868673d35f1aca24de7fe72b970c47dc44295f510684b2be6eb7ce"
+  },
+  "lib/app/ejml-dsparse-0.43.1-71288b9cdb3f1474129c91678f048ed.jar": {
+    "bytes": 96034,
+    "sha256": "5b15d7d06e88d0384ed40358127f3358cab462ad4d273da1763e9f5282ad27e1"
+  },
+  "lib/app/ejml-fdense-0.43.1-d87dcbfffd1c51afc65793b4b7a6750.jar": {
+    "bytes": 406935,
+    "sha256": "67dc4bebaa52a9864c2028ad150444a22227792a712bbc13f5d0c1ebe836b029"
+  },
+  "lib/app/ejml-fsparse-0.43.1-ac6d385736642db857b4d613d8347e6.jar": {
+    "bytes": 95287,
+    "sha256": "23ef080a75893f7d1b0b2f16bd937ddbc4199a2999c246d905a55663a4d54a91"
+  },
+  "lib/app/ejml-simple-0.43.1-ba2b807292453a646ec27edd6ec61aee.jar": {
+    "bytes": 204000,
+    "sha256": "348acd004027e1e0719b76cac6432d368640489eb3d619508275fd37373acb0d"
+  },
+  "lib/app/ejml-zdense-0.43.1-1b7736b4852070554f2561428015f280.jar": {
+    "bytes": 87006,
+    "sha256": "dc47e7395fb7dd3652f0f2e82566f193824ba3762fc709487e03d76bba13e070"
+  },
+  "lib/app/foundation-desktop-1.8.2-6c851aecc8be62e46223f53275c0cd.jar": {
+    "bytes": 3796030,
+    "sha256": "0715dc7efb3ea6d5174a849214a8212aaac4989c3e31be83da82d32712a54f9e"
+  },
+  "lib/app/foundation-layout-desktop-1.8.2-b6837befc59d01e2a6a72e91a9cc2.jar": {
+    "bytes": 573052,
+    "sha256": "979636876cabd6bbcd7fbb76f0311e80b1b319b420e057e468722180e9ca0079"
+  },
+  "lib/app/georegression-0.27.0-369be327deacfb1333261c97a272c4f.jar": {
+    "bytes": 627190,
+    "sha256": "81d13b5b5408944c011b61cac1fca9a430a7d6b90673f233b78f99928b529970"
+  },
+  "lib/app/graphics-jvm-0.9.0-385f6b62d90ebad7f8fb75e3789e23c.jar": {
+    "bytes": 4791,
+    "sha256": "e88cf08142d69f21cdfd1f0a7a5a1f6917d7bacb3fecdd0f1958a411638335d9"
+  },
+  "lib/app/icu4j-73.1-8cff87c6f9429f12167511ac2226fcf.jar": {
+    "bytes": 14561083,
+    "sha256": "e51fda26a50667aa6e5e7c752301203867dc36bbf82cb9f8f1008aded3798a5e"
+  },
+  "lib/app/io-0.5.2-d4f7fdaec1e7e16f8d598671955c990.jar": {
+    "bytes": 846935,
+    "sha256": "07c6b8d364c9813d6fb6c003b7b07451467c9d3cc6f7f23c627943d3c3408ac4"
+  },
+  "lib/app/jSystemThemeDetector-3.8-4eb38f1c7e205b88626d263cea3ebfa0.jar": {
+    "bytes": 17691,
+    "sha256": "3127ce18611c7373ab6a8e2a498fea4a10de53d9970c11a01c6831057b3ecdfe"
+  },
+  "lib/app/jarchivelib-1.2.0-6eb6a7d1146795830fb9fe77dec9613.jar": {
+    "bytes": 41124,
+    "sha256": "524142e431fc739120d961457c29ac1f9d384ab03265aaef2d6aa39677c9ad93"
+  },
+  "lib/app/jfa-1.2.0-d7d2d2dafe2fe70f68740cf723a606c.jar": {
+    "bytes": 88968,
+    "sha256": "f1cc18f1595d441ae839cda1465c08b1e7db46b72c1d7f3b37320ae1641ec72b"
+  },
+  "lib/app/jna-5.14.0-8b3cc65292435ad9f801e6d9b2a3497.jar": {
+    "bytes": 1878533,
+    "sha256": "34ed1e1f27fa896bca50dbc4e99cf3732967cec387a7a0d5e3486c09673fe8c6"
+  },
+  "lib/app/jna-jpms-5.14.0-c3a153b373aa94253a6742420ef51e3.jar": {
+    "bytes": 1879108,
+    "sha256": "204912ead5e0891f53aab7be346b75758abbe38bd9fb2d320bfa21bbca6905b7"
+  },
+  "lib/app/jna-platform-5.14.0-3bc3f09a698e6ad250dd93f64fbb8a7.jar": {
+    "bytes": 1369287,
+    "sha256": "ae4caceb3840730c2537f9b7fb55a01baba580286b4122951488bcee558c2449"
+  },
+  "lib/app/jna-platform-jpms-5.14.0-e47bdb4498394d706a5dfb217306531.jar": {
+    "bytes": 1370005,
+    "sha256": "60dd009545f8cef45a9e6e31cace03dc28ab335220a64b24083045eddc351d45"
+  },
+  "lib/app/jsoup-1.17.2-d9dd58c3f8a09f45e57d85e78993be6e.jar": {
+    "bytes": 445706,
+    "sha256": "f60b33b38e9d7ac93eaaa68a6c70f706bb99036494b2e2add2bfee11d09ac6f5"
+  },
+  "lib/app/kaml-jvm-0.59.0-3b23f73e1a935228ee46baf2d7f459a.jar": {
+    "bytes": 167793,
+    "sha256": "038532c007a0dfc32842c2b2d99b4e6a35d34fd0cc3de44ce8896892ff019f6f"
+  },
+  "lib/app/kotlin-stdlib-2.1.21-1269975f32698511a6062a4db34d0.jar": {
+    "bytes": 1724058,
+    "sha256": "263bdc679e1f62012db7b091796279b6d71cf36f4797a98ff1ace05835f201c8"
+  },
+  "lib/app/kotlin-stdlib-jdk7-2.1.21-4b5377b637f6ef7f833899a93b9862c.jar": {
+    "bytes": 945,
+    "sha256": "966846172e1052cb5b34d7b34647a64799b33f6da816509f7825c56f55895234"
+  },
+  "lib/app/kotlin-stdlib-jdk8-2.1.21-affbe0196f13ecc7ad85e8d3feb4d96.jar": {
+    "bytes": 952,
+    "sha256": "87b4f956de27401446227e474ac7a31acff0d0a8087160c54288c1e6f46a67e6"
+  },
+  "lib/app/kotlinx-coroutines-core-jvm-1.8.0-d2920b1d99a82fafcceabc3a48f7e0.jar": {
+    "bytes": 1548360,
+    "sha256": "9860906a1937490bf5f3b06d2f0e10ef451e65b95b269f22daf68a3d1f5065c5"
+  },
+  "lib/app/kotlinx-coroutines-swing-1.8.0-c6d21696c46ad49017eebaebbb943b4.jar": {
+    "bytes": 9846,
+    "sha256": "b6f4a488717315d6a2de4e921cba0d619c88486d7a3532cdd3618dd00a6dff6e"
+  },
+  "lib/app/kotlinx-datetime-jvm-0.5.0-2558224776dbe758dbaf22792b86193.jar": {
+    "bytes": 166616,
+    "sha256": "bff0d35072d4fafb608052c0875597a0c3bc703ee795246250910f9caff85863"
+  },
+  "lib/app/kotlinx-serialization-core-jvm-1.6.3-a53de86f751fdde057be40958fad42ac.jar": {
+    "bytes": 420348,
+    "sha256": "29c821a8d4e25cbfe4f2ce96cdd4526f61f8f4e69a135f9612a34a81d93b65f1"
+  },
+  "lib/app/kotlinx-serialization-json-jvm-1.6.3-f748e5e9c7239a8197747ced7208c13.jar": {
+    "bytes": 265019,
+    "sha256": "d3234179bcff1886d53d67c11eca47f7f3cf7b63c349d16965f6db51b7f3dd9a"
+  },
+  "lib/app/learning-0.5.2-21b31ab436bb2eaef4489324eccf3.jar": {
+    "bytes": 43163,
+    "sha256": "b6d075d7d112314edcacd83a851003d1f11d54c50b3865924068300d8e9c7eb7"
+  },
+  "lib/app/library-desktop-1.8.2-bf7df5ab9288098bde768e8e992de.jar": {
+    "bytes": 22566,
+    "sha256": "a9cfebbf7e66d7df6b3b5e37a5f8b12328a5b581284d3d1ab53d844bc7e24b8f"
+  },
+  "lib/app/libskiko-linux-x64.so": {
+    "bytes": 30508952,
+    "sha256": "b6229be9b8f810d85b8a3af58c9c7ada0d73de60a65ede3a2476703b04b1e1ea"
+  },
+  "lib/app/libskiko-linux-x64.so.sha256": {
+    "bytes": 64,
+    "sha256": "6f68fc8166a093e56bed03cdbaf9892c4ab157cf9c37fbbbf57e50b85c3f2003"
+  },
+  "lib/app/lifecycle-common-jvm-2.8.5-8c81b745cb7664b0f78619d2e523d018.jar": {
+    "bytes": 57238,
+    "sha256": "61c873a7327c946ec033c310bb98f3f92eeabcede0e1a5200ab8a1896483c7bf"
+  },
+  "lib/app/lifecycle-runtime-compose-desktop-2.8.4-7aa4c61a74a64c3df8de58b46c853dc8.jar": {
+    "bytes": 63619,
+    "sha256": "c1e51a246e69e237e87d289be08bebd8d406ffe9ff60a125e8f2072db6119966"
+  },
+  "lib/app/lifecycle-runtime-desktop-2.8.5-7fc568586d392d3d5dbda79492e18d.jar": {
+    "bytes": 44220,
+    "sha256": "10bfe53bb2752f967751a5102cdb785eeea54e1d4df6bde88fb0f50b0a49156c"
+  },
+  "lib/app/lifecycle-viewmodel-desktop-2.8.5-34f77ff425af3216d357e6cbf3b7d12b.jar": {
+    "bytes": 48766,
+    "sha256": "21ec0e77dc02ed0d6bfe6f3cba7f43e25400446d89ded8568ee165437e0c1922"
+  },
+  "lib/app/main-0.5.2-b47daf3489376dfd913555b272dbd12.jar": {
+    "bytes": 99435,
+    "sha256": "a87978b6c0bb5a6524fd2b299f257902bcef3b36f6dfa6abc35ce59bb43d2c11"
+  },
+  "lib/app/markdown-jvm-0.7.3-26e066c4816f12a82495b8dc3956ff.jar": {
+    "bytes": 548313,
+    "sha256": "893abb31f15b6216f74dc704c0c6bf1e567dcf2b62cca29cf42e4f53153637ac"
+  },
+  "lib/app/material-desktop-1.8.2-4076e5a985a1bb9eed554aeb3673999d.jar": {
+    "bytes": 1702312,
+    "sha256": "d5be76c9bb18a0d132e1a07ff2d1f5eab663a3a1945d3687c6e9e050f791eda1"
+  },
+  "lib/app/material-icons-core-desktop-1.7.3-23eaca5d2a4caa3e4077a0e9fd549d68.jar": {
+    "bytes": 878084,
+    "sha256": "bcf6c853b6db2ff148d2d3aad3b7a7ea54d93fc7b42e0afd840eb6daf1a1c681"
+  },
+  "lib/app/material-icons-extended-desktop-1.7.3-848bc0f13628d5b3accc94dd3afdfa27.jar": {
+    "bytes": 37768805,
+    "sha256": "dc55d383dca8279e353917e5c5a93d192a95e7ca4f926ee55ee0b4627f99d860"
+  },
+  "lib/app/material-ripple-desktop-1.8.2-23ca70e318c881df5c6b3ca2bb3a9b.jar": {
+    "bytes": 72676,
+    "sha256": "8d49477de3571a3066abc48cfe8a1b1289bfe667c4224d10c695e07b5b2f9875"
+  },
+  "lib/app/models-0.5.2-7c878f9c52a077fc5773cdbfa856752c.jar": {
+    "bytes": 3792,
+    "sha256": "afbe44532a7840788e485572941ae0b4aa1f44f3588d3c7c411acdf89e7af468"
+  },
+  "lib/app/multiplatform-markdown-renderer-jvm-0.27.0-fe7f9f40cd4652da29f8f81e9bb37084.jar": {
+    "bytes": 280784,
+    "sha256": "77539932d7ee012ae5d9414f78f9a516f16a3e9306cb73f9f8fdbc2340db551c"
+  },
+  "lib/app/multiplatform-markdown-renderer-m2-jvm-0.27.0-b1fcd82b7360eb16ede097a27f916b.jar": {
+    "bytes": 10025,
+    "sha256": "ddf6a74c743e5d951598084cad29c8844b217cef83d7495f3f1fd0a75601f6d2"
+  },
+  "lib/app/multiplatform-settings-jvm-1.1.1-28ecb925674113ff74d3eb8eeaf8a21.jar": {
+    "bytes": 60893,
+    "sha256": "3c2698e371128d013c25a3eb7d33dfb8b72199bfc6e065671a1c0818c2515cfb"
+  },
+  "lib/app/nanohttpd-efb2ebf-a1d0b36415525d1a957ef149c7d14d0.jar": {
+    "bytes": 71956,
+    "sha256": "7192216863d2d2b748c5cc9f40500c2101cedfb54b530a28052240308cc7f89a"
+  },
+  "lib/app/okhttp-4.12.0-6acba053af88fed87e71c6c29911d7c.jar": {
+    "bytes": 789531,
+    "sha256": "b1050081b14bb7a3a7e55a4d3ef01b5dcfabc453b4573a4fc019767191d5f4e0"
+  },
+  "lib/app/okio-jvm-3.9.0-5eb4b8544f2fffe6e23b53499de96d1.jar": {
+    "bytes": 372089,
+    "sha256": "ddc386ff14bd25d5c934167196eaf45b18de4f28e1c55a4db37ae594cbfd37e4"
+  },
+  "lib/app/oshi-core-5.8.6-2ff591bf2ecc14faf64e2678fb27016.jar": {
+    "bytes": 879787,
+    "sha256": "6af645b6b319c5a1fe6a5ac03c1fb4b1eca96a3b627cae895352f989b7209017"
+  },
+  "lib/app/parcelize-jvm-0.8.0-5c3e19736ac67d23d6c7dff984596e6.jar": {
+    "bytes": 2279,
+    "sha256": "38eb2476bc5b3f115ac6d670531d87d99430afaee95c4eec518dc9f80c9fcab2"
+  },
+  "lib/app/protobuf-java-3.23.2-8794b2f1660ff92f3afe151e3c76eff.jar": {
+    "bytes": 1742242,
+    "sha256": "18a057f5e0f828daa92b71c19df91f6bcc2aad067ca2cdd6b5698055ca7bcece"
+  },
+  "lib/app/qryptana.cfg": {
+    "bytes": 10563,
+    "sha256": "e86a36327fd203c1a7d82e76e15b976d2fa3fd243142a4f2253c41a16833379c"
+  },
+  "lib/app/resources/libHSOneTuple-0.4.1.1-25a6728f7eaaed6f25c0c84b9d23c563689aba5664fafb9d25de1e8b6e93e436-ghc9.6.3.so": {
+    "bytes": 22944,
+    "sha256": "050233724496cff998ae57855697cf6eeba832cb8066ad07fd2acf70e26e1b6a"
+  },
+  "lib/app/resources/libHSOnly-0.1-d2bf20dfe5467325a687dcb3fde37a1178e357c9b6ec5a5420e432ad07a7bbb4-ghc9.6.3.so": {
+    "bytes": 72536,
+    "sha256": "5bef9673dd3051f9a27720964f15fd7d05d3772ee57e478beb922129ece76ebc"
+  },
+  "lib/app/resources/libHSQuickCheck-2.14.3-42e7b27f0bb2b87c0930816285f53ba2bdf063e20fd76cc59871d58e800a849e-ghc9.6.3.so": {
+    "bytes": 3062256,
+    "sha256": "501d7a56edd540f06b3d39c0b5d0e3f88fa9a331041f0ebceab2f976cdcaa689"
+  },
+  "lib/app/resources/libHSStateVar-1.2.2-a828c4fffd0a9f376bdf1d2a0630fdc0e11764f2810422e01054ef1e5ae7a0d9-ghc9.6.3.so": {
+    "bytes": 76768,
+    "sha256": "0c34c917a8f4d809c3b51d185ea0bf5fed5401471b844680a21ea4957363c040"
+  },
+  "lib/app/resources/libHSaeson-2.2.1.0-cf52746d31b8346dfd448c16593c61264a0cdb15506adcbb2603cfff8af08098-ghc9.6.3.so": {
+    "bytes": 7341568,
+    "sha256": "5372303bae2546f0eef01b92d418a7c9689c724fd575f6a10abfa87c2488e2ae"
+  },
+  "lib/app/resources/libHSansi-terminal-0.11.5-6a9402a4880013edc495bbed56c88d36a8b264c1157297c88c41965b09fc017c-ghc9.6.3.so": {
+    "bytes": 269168,
+    "sha256": "18e3e306384dba3c884dbd88f0e7a08f311cfee5ec87136c5d4a1e9d0c05e6ad"
+  },
+  "lib/app/resources/libHSansi-terminal-types-0.11.5-4ee3a76fe47abcaa37b7bdb9a45b814da28b7b793448bc9f72187556bbf30827-ghc9.6.3.so": {
+    "bytes": 550192,
+    "sha256": "ed68207de4b9c7f1ca6f2de8ad1ecf550449f38676b309b0422e3813bd513c88"
+  },
+  "lib/app/resources/libHSansi-wl-pprint-0.6.9-740e11c23a4b1fdd05b947ad8c991cbe710e732c7aa74fd140113a8437bcb88a-ghc9.6.3.so": {
+    "bytes": 341192,
+    "sha256": "64e6f5f864bcb79905f048b82fea25d350f0bf3338dbe479d3e8c3d13eb8764e"
+  },
+  "lib/app/resources/libHSappar-0.1.8-bd63ed1040fe7d92a0e7cc92684637afe09f278adaac8b4a583b27a1abb41d6f-ghc9.6.3.so": {
+    "bytes": 114496,
+    "sha256": "62c74ee8fe04265c71c9419da53367da9c9fceb621b393f63c241deb75ecd717"
+  },
+  "lib/app/resources/libHSarray-0.5.5.0-ghc9.6.3.so": {
+    "bytes": 526520,
+    "sha256": "320c7c704ffd7a6c4e98182a845947db0bdf0cee7a9fe92dc60ca752cba4587c"
+  },
+  "lib/app/resources/libHSasn1-encoding-0.9.6-7a9728b8adee899eed9bb97cf06c9589da9228bd00263511eb8e7834935a11f6-ghc9.6.3.so": {
+    "bytes": 474248,
+    "sha256": "f8eb8a40feb7a0b1bca3cefdf02df51a623a9ababa760186c59cfb2cb5dbe785"
+  },
+  "lib/app/resources/libHSasn1-parse-0.9.5-388a8b57b8e521bbc599a749d1894177c5d08ec8998c0db0c8a3c6e56f135e02-ghc9.6.3.so": {
+    "bytes": 74424,
+    "sha256": "cec7f7143ccfff446e14b42a881d3229e5e7f28a3225f9fcf0349cdd437c27bf"
+  },
+  "lib/app/resources/libHSasn1-types-0.3.4-52ab490310e9cb8ba1462a6195d007877c2fc9dcfb589a53e3803b95b1e1307d-ghc9.6.3.so": {
+    "bytes": 481040,
+    "sha256": "541cfab909352d8af74bb8e5065aed6d799b7d19068bd379f4fe6a9c40cc3108"
+  },
+  "lib/app/resources/libHSassoc-1.1-833fe934934ac287ee0125e0f70630bbf79db58c094cac008fb300c306b45c2c-ghc9.6.3.so": {
+    "bytes": 45032,
+    "sha256": "31dd22d805b23105803860afd20e1257935b5dcafeba6f0ed68f7fd11dcb35ce"
+  },
+  "lib/app/resources/libHSasync-2.2.5-f240644c06d60420051c45977a93932ce6ee3ff3009f928ccb9f2acf95c571dd-ghc9.6.3.so": {
+    "bytes": 317512,
+    "sha256": "f02e5319bb801049ea291552b8b8fe9760daea05e1c1e74af14131476f66cce0"
+  },
+  "lib/app/resources/libHSattoparsec-0.14.4-4f4ea7336683751fc7ddafd5d6b7f267d5cd03d53ffa54f447c4d22956ac93d0-ghc9.6.3.so": {
+    "bytes": 2501600,
+    "sha256": "9dd0c303240e753aa8d3cb59493f64ed48128ff983064f1fd66081b44cff7878"
+  },
+  "lib/app/resources/libHSattoparsec-0.14.4-l-attoparsec-internal-e9490ddaea4841a79fc251813223287bd9e65e0510180febd5e98a6907758746-ghc9.6.3.so": {
+    "bytes": 211488,
+    "sha256": "d731c3b2e54806c71706b0ada411ea8c6c718525ffaa8dc3f0ead0bf1c8154ba"
+  },
+  "lib/app/resources/libHSauto-update-0.1.6-ecb80428f0d9edc16907d305ff237d25cbe29e71e601ffa03b04627282304912-ghc9.6.3.so": {
+    "bytes": 133864,
+    "sha256": "9d9b67d0c81e3029a85e24aa7ef84c251b62b3b9eac2fd962620d07d77e11f3a"
+  },
+  "lib/app/resources/libHSbase-4.18.1.0-ghc9.6.3.so": {
+    "bytes": 12344088,
+    "sha256": "868e6e4d8bca1e306d97e83ae81f0fe13d8a15f688a35b2b3caf7e9fdb9ff500"
+  },
+  "lib/app/resources/libHSbase-orphans-0.9.1-264c535ac11fa2bb1dc61e9601fa533869cc15baf045a8637949e684cef27141-ghc9.6.3.so": {
+    "bytes": 50032,
+    "sha256": "e01c0f9bbd642ac9fb4c049384dc457a6a0fb2584e2d7635c7f0bad1acf419bf"
+  },
+  "lib/app/resources/libHSbase64-bytestring-1.2.1.0-49cd5e3a01c30b8823595cd1048fbeedf7d533d7f39e6c22a14019c54fec245b-ghc9.6.3.so": {
+    "bytes": 141832,
+    "sha256": "a66aa6e8888daf80457b32099470f94d5cd48b9a2acb7701b9e003e1653dfd41"
+  },
+  "lib/app/resources/libHSbasement-0.0.16-7f05c347fcfef1382c7a2079f658dc2b01997ca155fed4ad49b55f2f5fcdf0cf-ghc9.6.3.so": {
+    "bytes": 4675848,
+    "sha256": "542948471a36774f577098b102bcf5d7ec7e9d24d213e0e67fe31a8a81a718cf"
+  },
+  "lib/app/resources/libHSbifunctors-5.6.1-821163cc03fae21b74f29dca370e811f63a65f46c62cfe96d1425caa200f3c5c-ghc9.6.3.so": {
+    "bytes": 2182048,
+    "sha256": "e51e1c11395e7366a115557b72d9c9aca861a2b0bf06f03c3be680127bba4e45"
+  },
+  "lib/app/resources/libHSbinary-0.8.9.1-ghc9.6.3.so": {
+    "bytes": 839952,
+    "sha256": "6958ff3888e0632a6fe145ebd1113bf63e906f8722cb66050288101692900377"
+  },
+  "lib/app/resources/libHSbitvec-1.1.5.0-f7812fb545e860bcf25db099a0f86418cb8b521ac6c734b90394edb5f29dcc64-ghc9.6.3.so": {
+    "bytes": 1850888,
+    "sha256": "e7c4e4ef528be4271a547e3e4f380dd3481bc45221ca93f52c137c19dffe240a"
+  },
+  "lib/app/resources/libHSblaze-builder-0.4.2.3-cfba547b28f9002387e922228aa358ccf0b616be9b75b595c36c70c86441d563-ghc9.6.3.so": {
+    "bytes": 251904,
+    "sha256": "2b731e591aa7dc400e25a874ca646626245e401544428dd93bc08a4e88dd7436"
+  },
+  "lib/app/resources/libHSblaze-textual-0.2.3.1-df8b5224c67a2ff9b4ea9f1217d8696cbece59157a1b11f3edb6e543f74102d0-ghc9.6.3.so": {
+    "bytes": 163536,
+    "sha256": "7eb406bfde39209204fd6945a42cd93da0e3b28e04a78c88a519ea087a6373e8"
+  },
+  "lib/app/resources/libHSbyteorder-1.0.4-ed17d207852397b4b016f73775ae7e4a811a9c27f8222c19d558bd92a259ee1d-ghc9.6.3.so": {
+    "bytes": 69032,
+    "sha256": "15aea624c55bfe67775d0c2d464cfa4f0d62a18d91a6ecc7c4f8c0a567901ede"
+  },
+  "lib/app/resources/libHSbytestring-0.11.5.2-ghc9.6.3.so": {
+    "bytes": 1458928,
+    "sha256": "38085fbd8717b772ed0d90bee43ca21b2627d279bbea67ab0a71fef9f3a7a1c0"
+  },
+  "lib/app/resources/libHScase-insensitive-1.2.1.0-911f138ed8f1a51c290f3661c35a231fca5751b2e6d93cb8b08b793c28d333f8-ghc9.6.3.so": {
+    "bytes": 167448,
+    "sha256": "be466546691988c93d8eddcc064b0f8f9fb95a51fa9ca12b656a39fe4bf90e22"
+  },
+  "lib/app/resources/libHScereal-0.5.8.3-1dc9d2e442647ca716729f0956fdcf61c80cd8a0e0593a7c3ffd6dec6fd90897-ghc9.6.3.so": {
+    "bytes": 797456,
+    "sha256": "46f29f3c6dee1798a94e2757f04691ace5dd5363e063591f3f5f52df289869b6"
+  },
+  "lib/app/resources/libHScolour-2.3.6-8ea7c1420185239be8ef23631a149d777e07d29385b36df7ab60fb829c47b836-ghc9.6.3.so": {
+    "bytes": 847560,
+    "sha256": "c5683e53f80be2e5c624c10af1d447c178ae734f34633930c1eb0a87de272274"
+  },
+  "lib/app/resources/libHScomonad-5.0.8-db6fdc8475375a8088bde8f5f0a18ec7839b5f7135bfd4a1b039ae844bb9f9f7-ghc9.6.3.so": {
+    "bytes": 478664,
+    "sha256": "4144bac6c501374c7326605ea958dfeca42af76e3cafdd516f69dee1d6f69f6a"
+  },
+  "lib/app/resources/libHScomposition-1.0.2.2-237b8704d6b2659dedca5654b4896de04c10bdbb3672d164e018047bd34b458b-ghc9.6.3.so": {
+    "bytes": 36360,
+    "sha256": "db743157c303cadb8bf1cf21f989419948c141667e4a328e719d3e7d7a719049"
+  },
+  "lib/app/resources/libHSconduit-1.3.5-f7cd0af4bd2712f81767a07893f463374305fbd51a1ccbf7dde3d722fad38078-ghc9.6.3.so": {
+    "bytes": 1552832,
+    "sha256": "584811b64dcce9624be9d2a82d3841b004e0a7a5308c470b484283323e988fed"
+  },
+  "lib/app/resources/libHSconduit-extra-1.3.6-46fa6ccb0368471fb2eb4319e2a291d4351d9beb99b9d3dc2b80ef3c18ff6a8d-ghc9.6.3.so": {
+    "bytes": 776568,
+    "sha256": "c53f2583809f1e4a0b0e929d6ce6e1b72889dbfc9bcbbf25cee616296d948344"
+  },
+  "lib/app/resources/libHSconstraints-0.13.4-51395134fd9d2fb4ac419e99718fc4d2fa1bca3d7018f1ba7a849169d0aefc3f-ghc9.6.3.so": {
+    "bytes": 1391080,
+    "sha256": "f600cf4a3e7a1c380106fa21e964b38fdc19fe69f1fce07d1bc28a0ba75692c5"
+  },
+  "lib/app/resources/libHScontainers-0.6.7-ghc9.6.3.so": {
+    "bytes": 3765632,
+    "sha256": "01a0b8b0192310aedf8c3a317ce72f187f081f84a86152bb75a1bfbc48c2d319"
+  },
+  "lib/app/resources/libHScontravariant-1.5.5-70d7f156408038e9752dcbba632c9c365900dde64d1872b1b3f3370b60d23395-ghc9.6.3.so": {
+    "bytes": 326672,
+    "sha256": "cd0f48a91eb3fbd05eff879e254e92125d7b3a5e82c04f1280d31bd14a07246c"
+  },
+  "lib/app/resources/libHScryptohash-md5-0.11.101.0-3e5428d235f9533ab23c9db75abdfb80b57c54f4269b0769f87f5b37c728be6f-ghc9.6.3.so": {
+    "bytes": 89048,
+    "sha256": "1d0a27b7ab746e84345df65f3a37251915d134c3320213a016d8b0543a0a02d6"
+  },
+  "lib/app/resources/libHScryptohash-sha1-0.11.101.0-f9f5afd4e14b2941ce9d06239c42f864d8d670b8d70cc4005a54e7e3270c528d-ghc9.6.3.so": {
+    "bytes": 97440,
+    "sha256": "2426177e8fd155a34fedc44a7a6f2aa1732c5bab7792f91cc5733123f546b0b4"
+  },
+  "lib/app/resources/libHScrypton-0.34-b2399ccbd1993e3b036c7a317962fb65ffa85a86b669ebe78d5cb7ba52c2fa2b-ghc9.6.3.so": {
+    "bytes": 9867328,
+    "sha256": "fcac9fd46662293ebb4616355352f21d866ea330f056ea5794d563d16517d3a1"
+  },
+  "lib/app/resources/libHScrypton-x509-1.7.6-998bb4ca6b85e4b9e331aa23ce277793a0beb37932d7c40b81027f8c9c5501bd-ghc9.6.3.so": {
+    "bytes": 1770816,
+    "sha256": "c184962622c08cbde37164f8a64a060c86d9288344f0d717b44c1d8a0750af2c"
+  },
+  "lib/app/resources/libHScrypton-x509-store-1.6.9-64fdad60030d495614a07f5b56043ee9ff853e07d06be0e999faf50e57e3c974-ghc9.6.3.so": {
+    "bytes": 139816,
+    "sha256": "4052d9f75f5354611f24a0fbbc7a18af6839cb6e30bae82a90a6ce6be0d8eed9"
+  },
+  "lib/app/resources/libHScrypton-x509-validation-1.6.12-6c2492e39358fa3eb290c04e6d2e26ea294b9142355075e952d607428999798b-ghc9.6.3.so": {
+    "bytes": 348536,
+    "sha256": "e41303b1cf8d4a941e05f052ef5a48beb48d0ebb164a90691eb979f60675fab0"
+  },
+  "lib/app/resources/libHScryptostore-0.3.0.1-44f7a30de8c5f27df2f4c61613d8f76fda72b1cf7b8d867e2fe8ff99f77f43b4-ghc9.6.3.so": {
+    "bytes": 5564576,
+    "sha256": "033651c2bc48297b6220c9af15989c349e333fb2b363bc0fb20e46361e10de8b"
+  },
+  "lib/app/resources/libHSdata-default-0.7.1.1-0dc1fc6930f802543ff7577d89a20f1a17f8631c8f8cd7fd967230ca6a8e107a-ghc9.6.3.so": {
+    "bytes": 20216,
+    "sha256": "ace47b04dfc9875c4aabff5430cdcfd8bda545326a35987e305a51c33c9b284b"
+  },
+  "lib/app/resources/libHSdata-default-class-0.1.2.0-d6478233bb84b60567a3dfc7c3c78e8e26df20c2f16a39369f2fe564b42c4bc8-ghc9.6.3.so": {
+    "bytes": 71680,
+    "sha256": "9b17cda48dd2ede59a0555bd84eae71de74e42aa79de80316efd12bf21308e3f"
+  },
+  "lib/app/resources/libHSdata-default-instances-containers-0.0.1-e07d6bd680e8b4edd6ca2b303e8e36905ca27003d2c3d92ef0670ee9c04aa2cd-ghc9.6.3.so": {
+    "bytes": 22784,
+    "sha256": "d2985b548121382e7ed523bb91df43bc99c4e43816520d9e32f4b4153e7febd4"
+  },
+  "lib/app/resources/libHSdata-default-instances-dlist-0.0.1-38b1acfbec2ad8ad85a0928dba90ca3c87c03c627c255d665ba59997ed6a1e7d-ghc9.6.3.so": {
+    "bytes": 16712,
+    "sha256": "78d2587c1d9bff718d9b4a3129cc664f5a52b6603dacda0521b89e0b4c658ec4"
+  },
+  "lib/app/resources/libHSdata-default-instances-old-locale-0.0.1-e85d0ded954c9ef0f874779c89b261bd7dce2b130c748c5ff301aa13a813ebd2-ghc9.6.3.so": {
+    "bytes": 16768,
+    "sha256": "95b5d1e5193aa38ab44bd41e44b72632fcc01eeb61fd24606ff5427d25dad0fc"
+  },
+  "lib/app/resources/libHSdata-fix-0.3.2-4404532ec4620d7c25dfbde142be7414df2f51c7512f2c63e2cf5ae3482c5071-ghc9.6.3.so": {
+    "bytes": 157352,
+    "sha256": "64bc0f9a61c3edc4c6cd8f35fb1783ae5894dcee7505be302c4101077fc9c752"
+  },
+  "lib/app/resources/libHSdeepseq-1.4.8.1-ghc9.6.3.so": {
+    "bytes": 124936,
+    "sha256": "98a700b37863b8f0dd8b2a070b5dba8b960720d85015364eaf3b94bc701a357f"
+  },
+  "lib/app/resources/libHSdigest-0.0.1.3-2ac287db51ccbe243b46853bfcd942cd2c9207ea2336791de9b022a1ed4dcad2-ghc9.6.3.so": {
+    "bytes": 56688,
+    "sha256": "931778f291a4769a149e4d6dd02d03ca387bd3df787facb1e601ccf1c5672f0c"
+  },
+  "lib/app/resources/libHSdirect-sqlcipher-2.3.28-92796d593dc7316c0ba77b962f19966a70cc5062c89c4754e5696179c5c7b680-ghc9.6.3.so": {
+    "bytes": 2791952,
+    "sha256": "605037c91e36ade4149773212b4a53bb4342d5b4cf70e94b6ea7f06f4eb9a5f3"
+  },
+  "lib/app/resources/libHSdirectory-1.3.8.1-ghc9.6.3.so": {
+    "bytes": 529576,
+    "sha256": "df31e8c4b126f723b7918c77d5c93a99d6738ce314953464615abc765576b314"
+  },
+  "lib/app/resources/libHSdistributive-0.6.2.1-424d6f2381d9c9b4606d8ef373e84068158bda1024a3a03ef04f8b94e363236b-ghc9.6.3.so": {
+    "bytes": 190376,
+    "sha256": "35790930765a3eb59d477e56b02ed6aac75832ab2fd80773ce79e2a9c3c9ebb7"
+  },
+  "lib/app/resources/libHSdlist-1.0-19350425ea16e193b94f3155032af71150aa52f121d0da6d2b4a052ebe8b472e-ghc9.6.3.so": {
+    "bytes": 220504,
+    "sha256": "8f7a7cc3987630d6106c2b1a449cede06d346d0c9cd788a7d42cd4785001ff19"
+  },
+  "lib/app/resources/libHSeasy-file-0.2.5-993791674239f71f3d5c5348a4742b33b35a11f259b010653481c060821ceac2-ghc9.6.3.so": {
+    "bytes": 150144,
+    "sha256": "81d505732026aed226c5bb5e298dad02f850064f5b3a061204aca65f70c63273"
+  },
+  "lib/app/resources/libHSemail-validate-2.3.2.19-8e093d39175bc833333d170127e683e34f7c13447809285b558be894a69a8107-ghc9.6.3.so": {
+    "bytes": 212744,
+    "sha256": "93bbc6223956c48b89068ef3874217c08195de077cdb3765997c2176e2ceedf3"
+  },
+  "lib/app/resources/libHSentropy-0.4.1.10-d4a847724a3b6d10e83808146b77b36d07bb854fcaa1dece416caea1c022f5c6-ghc9.6.3.so": {
+    "bytes": 59776,
+    "sha256": "cf8cfed3846654c668659126e23410b55a9f80562d4f491924592b102e54aa9c"
+  },
+  "lib/app/resources/libHSexceptions-0.10.7-ghc9.6.3.so": {
+    "bytes": 275592,
+    "sha256": "dc40f85c269dd952b23f80d51794eb374605d81aa28b4655a15f92e2fd8225bc"
+  },
+  "lib/app/resources/libHSfast-logger-3.2.2-b996f2a9213a68adbcb76c2cd120cca89f66fffcc9f58aa29e344f14c7372a28-ghc9.6.3.so": {
+    "bytes": 434664,
+    "sha256": "f4f712a09a1897dc6a3ad9080c29c6c8aa1135993f695a5acf1b6eed497f3d8b"
+  },
+  "lib/app/resources/libHSfile-embed-0.0.15.0-858d0ef424fd92d742d20e68b7596e642557183aba03df51abd86155233a5a95-ghc9.6.3.so": {
+    "bytes": 138960,
+    "sha256": "deb604ead2629e37db76ac2a2f87a9629e7ff9c2635beaf0a674730012d00a96"
+  },
+  "lib/app/resources/libHSfilepath-1.4.100.4-ghc9.6.3.so": {
+    "bytes": 799256,
+    "sha256": "a23f8c195e84795997111aab8b7168e4f76a7db395871fd7d09d497f0d8d2bde"
+  },
+  "lib/app/resources/libHSgenerically-0.1.1-2834f311c967983e0bc61b2c2991e5f1889ec4efc87b9657d666962213309952-ghc9.6.3.so": {
+    "bytes": 16160,
+    "sha256": "48eece0b14f6811c7218a1cf3f3d5c1445b31f7c58a410801a6541a79dd290a1"
+  },
+  "lib/app/resources/libHSghc-bignum-1.3-ghc9.6.3.so": {
+    "bytes": 338584,
+    "sha256": "b3afa1847f8043deb8c32c9e81de3c3e9e5c6b80703dcea62ed264ef703f42c8"
+  },
+  "lib/app/resources/libHSghc-boot-th-9.6.3-ghc9.6.3.so": {
+    "bytes": 262928,
+    "sha256": "1e65254c3401f5869733d3539de2de097426968a1494cea1b2548ba87e841bc4"
+  },
+  "lib/app/resources/libHSghc-prim-0.10.0-ghc9.6.3.so": {
+    "bytes": 5201560,
+    "sha256": "e3259f03b3292e80f1bf37244413ddea586900633712b182fcc8b7b7a341887a"
+  },
+  "lib/app/resources/libHShashable-1.4.3.0-98acfc8d400a5c987d553ee7033a1f0d4393f505a0071034b204862e7038d80e-ghc9.6.3.so": {
+    "bytes": 532792,
+    "sha256": "436a63236381d399bad8f620e008ad25c83804156001a49aaac4b4a2a6346c19"
+  },
+  "lib/app/resources/libHShourglass-0.2.12-f636396f2d46bc10697cc675793b72a77a91d145e2ab377dfdb4cc7920021f54-ghc9.6.3.so": {
+    "bytes": 1681968,
+    "sha256": "dc386ad8f49a275580d3ee0c40311174d479ee3de28e78f64ad2d0c2760e5741"
+  },
+  "lib/app/resources/libHShttp-types-0.12.4-04b79bbaa320685b0d9adb7fa02616087e75618cb90fa0923146d636c6dc5c73-ghc9.6.3.so": {
+    "bytes": 781408,
+    "sha256": "8f4ccf8dd745e09eb390911fb342813a3c44ca5e67d9a23aa3188040eec35504"
+  },
+  "lib/app/resources/libHShttp2-4.2.2-279e9f93a2a789f5c64f9764f7bd3769d90a8545611b3427359c36d57278b0f6-ghc9.6.3.so": {
+    "bytes": 3639256,
+    "sha256": "344f898e7690854a6722d637e25988889594876dd00445cc26236841fc36fddf"
+  },
+  "lib/app/resources/libHSindexed-traversable-0.1.3-5c151c51a16fe848251abf60409384564a48ba07895ffcc7c55051ccad6ef1c8-ghc9.6.3.so": {
+    "bytes": 602208,
+    "sha256": "e50f07127dcab10f99ca2fafe8a5d375e83b98bdd31c73e6a2f866e00c2412ae"
+  },
+  "lib/app/resources/libHSindexed-traversable-instances-0.1.1.2-e658ac3e748a41c0cc81fb89dc42bd36a8d5b56479ebba7f4257689b2a550fd3-ghc9.6.3.so": {
+    "bytes": 70976,
+    "sha256": "ce26b335ddfc38e3439af2cf136c73815fecbbd3f27ce2f990a6df42223c51cf"
+  },
+  "lib/app/resources/libHSinteger-conversion-0.1.0.1-2601c7292b651aa00336b33dba37461eb02d4288e078d53e9050188c4a03e67f-ghc9.6.3.so": {
+    "bytes": 44776,
+    "sha256": "403bc9a7fdb52d43aba30dc143d1a359bb96a182832ea7261a1f2a8b2eb37bed"
+  },
+  "lib/app/resources/libHSinteger-gmp-1.1-ghc9.6.3.so": {
+    "bytes": 52880,
+    "sha256": "58b20f18fa0b4e0f9db628dac9d651acbc0498b143bfb5c423e9bc759a3825a8"
+  },
+  "lib/app/resources/libHSinteger-logarithms-1.0.3.1-967596eee7d227357a19cc7ecdd12c181b8bbc7a88c7e90578ac5595d559b732-ghc9.6.3.so": {
+    "bytes": 154128,
+    "sha256": "a13cbb3cc4af535d850ca8b4d210b02717c7b50ebf52875d7c35b82479eb8430"
+  },
+  "lib/app/resources/libHSiproute-1.7.12-f2697155f8d196d730c7a4356a213a14569fb9fe169e659aee4a75a1b1e3d28d-ghc9.6.3.so": {
+    "bytes": 881624,
+    "sha256": "7acc4fe205ff7ffd6c5108a8db4208da80eb83d446d38595f45f4b8eb78dd9e3"
+  },
+  "lib/app/resources/libHSiso8601-time-0.1.5-7f565c978c2ccda76ebfa53eadc50025f93857add83f2dded45add1b6358a9db-ghc9.6.3.so": {
+    "bytes": 30576,
+    "sha256": "e4459a677075fe89fc40b63d716734261ec0e8689210559acdc6f8cc68bb25eb"
+  },
+  "lib/app/resources/libHSlibyaml-0.1.2-de0acb1e923516f14fa49958b60d7cc3a140a82067b24afd52ce940c2f0441f1-ghc9.6.3.so": {
+    "bytes": 778544,
+    "sha256": "94fff932de80dd4346ce90e55bfdb139016039017f3b5e223f5f3bb9541b6840"
+  },
+  "lib/app/resources/libHSlifted-base-0.2.3.12-6bb680b275575f77f23a400002cab0d5c5392afc5c95837c034d35d6f4d761c8-ghc9.6.3.so": {
+    "bytes": 160080,
+    "sha256": "84282526294bb88d4b330bf05a0094684dd61d795eadc4a5894c2e8e57be2058"
+  },
+  "lib/app/resources/libHSmemory-0.18.0-86df06eca77fa38fe27d9ccf54ec9e5bdd4cf7adfe9cca5b11aa4b3fd5ae2fa1-ghc9.6.3.so": {
+    "bytes": 957576,
+    "sha256": "3fdbf3cd6653bcd3081c4239ece4adc75f3182a404414df739dce2b401cd40f7"
+  },
+  "lib/app/resources/libHSmonad-control-1.0.3.1-6f6ba806d7cf991812bc234b52c30f48282db4f291e3d32cab0696752b0c8a6b-ghc9.6.3.so": {
+    "bytes": 129984,
+    "sha256": "f107794e9796e5a60b9db3e4653e8a4ede5e6c6b9df296ae93bed45da5dd84a7"
+  },
+  "lib/app/resources/libHSmonad-logger-0.3.40-bd2c86f117c7a9e15efe0e94bf63ea4ba9acb1a3cd6ae109d16580e3e144a39f-ghc9.6.3.so": {
+    "bytes": 737904,
+    "sha256": "ddae1fa6d7c1b28c1700aad046f066145733e5215987a404dd57522b19c9c52e"
+  },
+  "lib/app/resources/libHSmonad-loops-0.4.3-98feff43df6edc7df39efe98002b1cc9407b070d698d434ec670f5726dc88e5b-ghc9.6.3.so": {
+    "bytes": 124352,
+    "sha256": "5b3f17ec7cb66bb25e674445427c79a1fa3d249d5ee1aa8582167b3ea2a297ef"
+  },
+  "lib/app/resources/libHSmono-traversable-1.0.15.3-702fbc586e2e3e3ba85606e4705af5b51dedb7602b3236f1217afbfba0777dbc-ghc9.6.3.so": {
+    "bytes": 3047784,
+    "sha256": "827e74198f198768ffed232a109e90b3af8660e8ebc546818cb6933bb1d01691"
+  },
+  "lib/app/resources/libHSmtl-2.3.1-ghc9.6.3.so": {
+    "bytes": 326032,
+    "sha256": "27b55078d7d6c8d7a800a3019b7acf8a392be8177ea3914b3f11f96b408305f2"
+  },
+  "lib/app/resources/libHSnetwork-3.1.4.0-d7a34d14b13a117592434557be9626c3e970a42510042af7c7f787b50c31f140-ghc9.6.3.so": {
+    "bytes": 1506520,
+    "sha256": "480fad0daf2845a8f6f747b201be1e41a8eb0b66b9ab510363486a3e668f9ce1"
+  },
+  "lib/app/resources/libHSnetwork-byte-order-0.1.7-9300eb9d93376c7451b714e77dbee63d69827bfd45154453c5e009f245628c5f-ghc9.6.3.so": {
+    "bytes": 148872,
+    "sha256": "7fb5a034e521b31da47d6a84c5a5bb07e1f56f2bff86363e60f94b303aaa4a84"
+  },
+  "lib/app/resources/libHSnetwork-info-0.2.1-49a3d4e9c6a555a4c6b765f873d00374b22e229f03394a07154790970cb7ff97-ghc9.6.3.so": {
+    "bytes": 158872,
+    "sha256": "fd68637b5a67be39c6484c0f6d15651ded4e03268c0b3aad4d75abe6b47a4fa9"
+  },
+  "lib/app/resources/libHSnetwork-transport-0.5.6-a598784797da0e5cd837bb152982a8134dbeea490ef4781a1161ebd03ad61e22-ghc9.6.3.so": {
+    "bytes": 491960,
+    "sha256": "318cbbc87fa1415867dce4636c5a52f0ac30fc96bef01196f5b7062e3685ea06"
+  },
+  "lib/app/resources/libHSnetwork-udp-0.0.0-530084fb15fcec5f08fc3bee6044237bcec27bdd9896cea52bf3bf54ae880d2d-ghc9.6.3.so": {
+    "bytes": 179080,
+    "sha256": "0fceefd11ed128bb18bb211dc67f322f5b9d975ff922fb34d825b1e31b66bd84"
+  },
+  "lib/app/resources/libHSnetwork-uri-2.6.4.2-1b28555ec16212e9f20752fce0460b0baff485858922e9bd4f037e02858e9015-ghc9.6.3.so": {
+    "bytes": 659552,
+    "sha256": "065d1a9999b7091c51649f645ad4a96d71c32d0a8dad7649ac521888aeb950df"
+  },
+  "lib/app/resources/libHSold-locale-1.0.0.7-2fc41634d130ad577f30ae220a366c50aded85663753062bcd06dee8a22a28ee-ghc9.6.3.so": {
+    "bytes": 128512,
+    "sha256": "a82099148717cddf6fc5edf181895cfcb112f74d730e000b0074651e5f46aa69"
+  },
+  "lib/app/resources/libHSold-time-1.1.0.4-1176cf9d27ce76ea666f65838dedc69cf85e21dda79241ecb77ebc9da74206df-ghc9.6.3.so": {
+    "bytes": 430416,
+    "sha256": "7941dc87ba3df2210b29b8984730a190e8a5290b9daa11504741714824ec1a23"
+  },
+  "lib/app/resources/libHSoptparse-applicative-0.16.1.0-3ce9aafbd1a55a039ca95f58edb9a59055e5a44025a363ef7164a17f4f233cd8-ghc9.6.3.so": {
+    "bytes": 1412400,
+    "sha256": "34d3ffb0039987c5b4f2ea5a077b417eced0d83fa3accabab1ed9453d03c8caa"
+  },
+  "lib/app/resources/libHSparsec-3.1.16.1-ghc9.6.3.so": {
+    "bytes": 1043144,
+    "sha256": "46fac9b5b7902fc0f308c7c058d4aeac5d3796adfd9d42beb82c39934e8a1bbe"
+  },
+  "lib/app/resources/libHSpem-0.2.4-f906496cff163a500cd65e64adb820577bcc6db48a8415f3199036f58c5276a6-ghc9.6.3.so": {
+    "bytes": 86032,
+    "sha256": "082d593bee0b7876968dc55863cc76a4eecb908e9c02a97dfae38dd853ca0be3"
+  },
+  "lib/app/resources/libHSpretty-1.1.3.6-ghc9.6.3.so": {
+    "bytes": 466488,
+    "sha256": "828819e499836ff09c301dcbd8cb60ec7b46813369132307cb6c176354b48e9d"
+  },
+  "lib/app/resources/libHSprettyprinter-1.7.1-287da2e036de31e4a5b0a697b58ed34063c3a4b99d58100d6d6202cad6e659d0-ghc9.6.3.so": {
+    "bytes": 1376112,
+    "sha256": "566deb56f2858726d8cef663f371844163b2a215d72e665478275423d3d19b55"
+  },
+  "lib/app/resources/libHSprimitive-0.8.0.0-1668d91881d295d36b48f2796497f2026070412919828ab5bdf883bdf10dfdf1-ghc9.6.3.so": {
+    "bytes": 1322304,
+    "sha256": "d5da08a386220c17c5c0135b62963818b9f32bf0bdc839d64cade4eea6275e51"
+  },
+  "lib/app/resources/libHSprocess-1.6.17.0-ghc9.6.3.so": {
+    "bytes": 262416,
+    "sha256": "b84ca583cea82004664623b46e75f15fa570a8d92c2966cf0e73adf58044ecff"
+  },
+  "lib/app/resources/libHSpsqueues-0.2.8.0-cf18912fd284bc3c4ca8133b791460e95c2ce18855d35dbe15128d1b9b901f99-ghc9.6.3.so": {
+    "bytes": 693048,
+    "sha256": "10d2ef983a364baa48955e1838764d2693f1aadb11fddc2e7b10a6a8a1a9d9a3"
+  },
+  "lib/app/resources/libHSrandom-1.2.1.1-f75323201d1b45182ed9370fb261ee029c5dbe1b59bf181cffc1aadffc6d66a4-ghc9.6.3.so": {
+    "bytes": 1254032,
+    "sha256": "c6ba1b4aca899e4525f7e9b583070e3b18799a82669bec24be95f74c17814ebb"
+  },
+  "lib/app/resources/libHSrecord-hasfield-1.0-d6cb5024fc4032d99d6944fd59d32266d746ed207dd5c5f8d3ffdca859062686-ghc9.6.3.so": {
+    "bytes": 71440,
+    "sha256": "51be45e640bcb78b24542986c7c69086afde28be9bf430bf2fbc3673d008269d"
+  },
+  "lib/app/resources/libHSresourcet-1.3.0-7bc4c5832125cb21a657e1e52c7d15ade8946d90d44a4aeef2da03d323cfdcfc-ghc9.6.3.so": {
+    "bytes": 382752,
+    "sha256": "a0d73619a3f81248f97929cd649fbce18f744307aad8af91a38819be7e01f7dd"
+  },
+  "lib/app/resources/libHSrts-1.0.2_thr-ghc9.6.3.so": {
+    "bytes": 804544,
+    "sha256": "1797e2127c4e0be745e97467c8cad7ba8ec281b658e3bddb7e054b1f8f7c3f91"
+  },
+  "lib/app/resources/libHSsafe-exceptions-0.1.7.4-fa39710bdd0613170da182466a4d5f7d7e1ca3350d0d4a062ea9d3f2a3dbbb31-ghc9.6.3.so": {
+    "bytes": 180264,
+    "sha256": "5be368522225d303cb77e579504bf3a6ed6086140bf2973ffa40455490372af0"
+  },
+  "lib/app/resources/libHSscientific-0.3.7.0-7a07b5ac361675a639efba043eabeed19b465966ead7cf70752d089759ceb598-ghc9.6.3.so": {
+    "bytes": 493992,
+    "sha256": "36b6d0f57b76d1f8e41c84de27b2e5c2110d7af70b07d3d7bf86c8ed6994360a"
+  },
+  "lib/app/resources/libHSsemialign-1.3-99ac2e818d746a6df401718f0e74d0c6627f6b1f9a710e172a601f5dd48242ec-ghc9.6.3.so": {
+    "bytes": 637024,
+    "sha256": "e08623fefe268d235ba5b2ca2f27a89a4acaa4befbdcd2baf3aece894ab0f936"
+  },
+  "lib/app/resources/libHSsemigroupoids-6.0.0.1-d56f88db2e1891ee087502046796957cae68c5b2ce657ace8f34eccdd8b0241a-ghc9.6.3.so": {
+    "bytes": 1849560,
+    "sha256": "aeada957409bdae3a8d85a0490874e10595bf35660e72dbc7c71b62488c4c86f"
+  },
+  "lib/app/resources/libHSsimple-logger-0.1.1-74a5a24b5c9c137579e4e7136fe51f6f3d021f9d392f41e966f82eb3aced465f-ghc9.6.3.so": {
+    "bytes": 243760,
+    "sha256": "5918563cb5cd618854cb75776b244c7043277446677f305003d7c659899ce221"
+  },
+  "lib/app/resources/libHSsimplexmq-7.0.0.6-3688041ddcda3d46dcd95c5ecf9fce36ab825614cf814441a3521ab1285c9993-ghc9.6.3.so": {
+    "bytes": 30948768,
+    "sha256": "7a46970181b188c64413849aaf291a1355c26376b8d6c7007109b72e27b3f49a"
+  },
+  "lib/app/resources/libHSsocks-0.6.1-321a4ad83486b2eab3dbdbbd43e942eb6e8e886281d9cd99264913eda3e51659-ghc9.6.3.so": {
+    "bytes": 887384,
+    "sha256": "beaabbdbab065bcf33128f3ef91958263c0191c598ab678ffaf7ede30b3b9e65"
+  },
+  "lib/app/resources/libHSsplit-0.2.4-fe41ecd5cdbc55441ea0d9f6b9c0a5fa60d53be08482d4617078dba8531c5ff7-ghc9.6.3.so": {
+    "bytes": 171632,
+    "sha256": "7c420b4df2281a51da7816ae434fa1e8b586c5f0895f8d505a92ffe901d87c52"
+  },
+  "lib/app/resources/libHSsplitmix-0.1.0.5-4d43824a2aa15437e433f1a344653af933edf881ad9f72fc820c1c827832bfcb-ghc9.6.3.so": {
+    "bytes": 163184,
+    "sha256": "3f384646a7f9e358624694e6074a8f165805dd77f4f2d187f7e2087b0600efb0"
+  },
+  "lib/app/resources/libHSsqlcipher-simple-0.4.18.1-10c21f8b76877ac291d7cd5bb401353f25996f3b172b661e6e356c860fae6224-ghc9.6.3.so": {
+    "bytes": 1061888,
+    "sha256": "939942a2620be40c17ac1e291eee67d5e8dee9ecb9534e1534a6bff8fc6cd658"
+  },
+  "lib/app/resources/libHSstm-2.5.1.0-ghc9.6.3.so": {
+    "bytes": 133456,
+    "sha256": "6f1e5e6efcaee28d4e1645ade3a07571a5431a5cf1b247fe5fcb322e4b121214"
+  },
+  "lib/app/resources/libHSstm-chans-3.0.0.9-27ac3a1df633cbdc2c71a28c9eeacd8c9b232a2a752f54f84e55418ba8d206e4-ghc9.6.3.so": {
+    "bytes": 220064,
+    "sha256": "c4c46eaa19b45011cf9a128e9158e66f534a2a5d10edec260cbf1a7f057e7a19"
+  },
+  "lib/app/resources/libHSstreaming-commons-0.2.2.6-c2a64f34d630d423cfe81f4f5f013ab2aa9c88fe829a5b8fb1558030225c68fe-ghc9.6.3.so": {
+    "bytes": 919496,
+    "sha256": "577e363077686ace3ebdd0d0d25e37b599da7be5e89eca9cf2c43d2a86dc074e"
+  },
+  "lib/app/resources/libHSstrict-0.5-1a0c8f31aff2b2f1a8ae2f87d1569e7d08ca311d4a6f56f8f2ee0b62023ef159-ghc9.6.3.so": {
+    "bytes": 798320,
+    "sha256": "50c1ee603637408381ac2f6526af27a4a284856eb49d5842253147055d20aa44"
+  },
+  "lib/app/resources/libHStagged-0.8.8-245207977ddabd2449b4b7811802701130827478b7f71185ea9f91ae936b7797-ghc9.6.3.so": {
+    "bytes": 276064,
+    "sha256": "b0bed3ea3cc17e638d7eee518655674272d65dda73e559649fe47b4a5592b13e"
+  },
+  "lib/app/resources/libHStemplate-haskell-2.20.0.0-ghc9.6.3.so": {
+    "bytes": 3834632,
+    "sha256": "46dcabcebb022c23e74f02bd71a0bc17d3902935851729aeaf0573ef6d15533e"
+  },
+  "lib/app/resources/libHSterminal-0.2.0.0-fbbb10e30fe4fdf009d551e793d8e5d9e09aca9300ff8302cfe6b9700ff7f048-ghc9.6.3.so": {
+    "bytes": 1274400,
+    "sha256": "01d8120a8d31e7e85e3cbf638e5c5cb65b18e66d154b2a75d7664478aecc2778"
+  },
+  "lib/app/resources/libHStext-2.0.2-ghc9.6.3.so": {
+    "bytes": 3175720,
+    "sha256": "9ad6854c7757ec1d4679ae91fe05e07b460fec57e0048a69c85e100cae2ea3a0"
+  },
+  "lib/app/resources/libHStext-iso8601-0.1-55382b463885bb513191a122ae0f82efcc92d62419c514170d7c421c5a196612-ghc9.6.3.so": {
+    "bytes": 395864,
+    "sha256": "cfaf352f8f7edc30c4e8a88bd35605eba9b7cd10d9cb96f23d0994f67665ec80"
+  },
+  "lib/app/resources/libHStext-short-0.1.5-94b1ede93059468211e0353054f11cad674c09aa84b5716555f3f5b4564c6195-ghc9.6.3.so": {
+    "bytes": 293576,
+    "sha256": "ae0ec96c01b8edb528acad8832ea198a5a26c281fbafa32728aa1b0f8b24a338"
+  },
+  "lib/app/resources/libHSth-abstraction-0.6.0.0-4b7fd6ddae43ee14f43798c73010233dd357bc47de41458d8a4e4c8fc084082b-ghc9.6.3.so": {
+    "bytes": 877200,
+    "sha256": "c17f5c90256bba4bddb2d3f0af008a57c2d522e3025b1c618dae3aeb67b5f991"
+  },
+  "lib/app/resources/libHSth-compat-0.1.4-0067826cccf2ecd73fb3b4a3646f25bf76c4c0471063cc62f191ddab844b4926-ghc9.6.3.so": {
+    "bytes": 95464,
+    "sha256": "aa7be6fe9cd510cb059ce7281beca477c03150dfd0857ea55660f4e9ecfa90fd"
+  },
+  "lib/app/resources/libHSth-lift-0.8.4-1c91f8c5d8bf435aa4ba27eac4f6358b3d7ba8c4445440d023bc46f9e92e47d6-ghc9.6.3.so": {
+    "bytes": 159960,
+    "sha256": "8b8dbc329ed90a7cdf60e6a601ddcedfb012cb32289d8b156c0c5201892aa9a1"
+  },
+  "lib/app/resources/libHSth-lift-instances-0.1.20-cd99be9ab1bc86675c598032f14d52b773b0e5dee01ec40e583b58e7b99e5d81-ghc9.6.3.so": {
+    "bytes": 66080,
+    "sha256": "9ebd5d2228b655508762132c5248bce6dfc76a06c6bdd398845a691af1ae4b79"
+  },
+  "lib/app/resources/libHSthese-1.2-3b1f6a11eac936dc57ccf3a6f07e8171cab1162bd8998b3ed3f34a6961b31092-ghc9.6.3.so": {
+    "bytes": 458768,
+    "sha256": "71d8404e7267d9ee84b1b892ad84881c5483626366edbd3d7611c264f1eec7a2"
+  },
+  "lib/app/resources/libHStime-1.12.2-ghc9.6.3.so": {
+    "bytes": 1623000,
+    "sha256": "b2abdda99ccbb79fd0947661b1be670aaf54e6d30b530bc0fd5c757262a5c4f0"
+  },
+  "lib/app/resources/libHStime-compat-1.9.6.1-d15b6a338416dabcd597571a5e582e7c8fcc7d68279f99ccd7cd20e024900e44-ghc9.6.3.so": {
+    "bytes": 268872,
+    "sha256": "5393102a681b398ca18aba41a3b2c489704e8c63a7a7cb9c11bd7d2930c71240"
+  },
+  "lib/app/resources/libHStime-manager-0.0.1-77828802fbee26aec7c30a924eb863902e639ee260505a667e17333384754050-ghc9.6.3.so": {
+    "bytes": 78272,
+    "sha256": "9c3fd3c0e893ad464f211d286151f089126f8768cd2bbee6eb8cf9b8d84855a5"
+  },
+  "lib/app/resources/libHStls-1.9.0-6788cf450613a953599cb80c84cd483fafc4caa194ade4412ea440d544ee19ba-ghc9.6.3.so": {
+    "bytes": 5984720,
+    "sha256": "0843f8d25863e76420230dba028cba6b98c35ceeda56f272d2e5b2146b4b8696"
+  },
+  "lib/app/resources/libHStransformers-0.6.1.0-ghc9.6.3.so": {
+    "bytes": 1162072,
+    "sha256": "718bf2f6db4b1e8eea92b7b736f7b1305733c3c0a66bf30df39ec3d20446861c"
+  },
+  "lib/app/resources/libHStransformers-base-0.4.6-7c5a8ca4b546fee71e383ab67aa6d04821890ff83d9df8fa9270fd287319cc2f-ghc9.6.3.so": {
+    "bytes": 105616,
+    "sha256": "729dbec67f40a21b305f317426e666d9ec424bc9fe7a47d25fbbf3a2b11d72c1"
+  },
+  "lib/app/resources/libHStransformers-compat-0.7.2-25923a9ee3488abd71a022b0310fa410647c6ac733dd896576b6e366ef80fd82-ghc9.6.3.so": {
+    "bytes": 616560,
+    "sha256": "fcba1984f2181a6fcbe2874989807a319224a9b0c03cb038f47ad4a0609f913c"
+  },
+  "lib/app/resources/libHStype-equality-1-c6a98cb4eb3e5594096ad0805c75d62364c4e94bc328d1703756f1c4f2bcddcf-ghc9.6.3.so": {
+    "bytes": 16152,
+    "sha256": "89408079a638b5472b739802b2480ad6b6ca824cf2f86fa3dcd9de344b297fd2"
+  },
+  "lib/app/resources/libHStyped-process-0.2.11.1-62f137b38f036ac21804c99685e715e16a8eae2414705926bc32627e2e3746b7-ghc9.6.3.so": {
+    "bytes": 373520,
+    "sha256": "b04a5e900673227949173163d8734f95201b0bbd0d977a4f3db4011693393427"
+  },
+  "lib/app/resources/libHSunix-2.8.1.0-ghc9.6.3.so": {
+    "bytes": 1217144,
+    "sha256": "0cc4e39c4b2641e07b8f25798bf4fa9c75becc8b5247a285e4789ec135ce545d"
+  },
+  "lib/app/resources/libHSunix-compat-0.7.1-04755f57844c9ce72e8a2cab1ebd7288024e6fb7aa9baab3dee08a636e74f2d8-ghc9.6.3.so": {
+    "bytes": 36736,
+    "sha256": "3c3895032ca6e5851c2dac3a0a7581d05f04f902c4ad354e5f81c92baacabf71"
+  },
+  "lib/app/resources/libHSunix-time-0.4.11-9189a02348ca6152b40e2de4217054859bd40e33c0e5eeb1369921a564b5cf30-ghc9.6.3.so": {
+    "bytes": 162256,
+    "sha256": "61e514b22a9ef3443d3c65cafde042bd4ae61a44f6c69a2dc16114920ffcb25c"
+  },
+  "lib/app/resources/libHSunliftio-0.2.25.0-e49039a2da3a9a3368bfeaf21760d33880319bcb69605951ea8183d181cc2a0c-ghc9.6.3.so": {
+    "bytes": 1022792,
+    "sha256": "2eb7f05877ea2c90288e1c0d0037bf0b102b6fd4136121c000596805b0ccd56c"
+  },
+  "lib/app/resources/libHSunliftio-core-0.2.1.0-fe08e519f2101e0d6af5c7436f21f4fe398f2538422b74fd8852415fb9c17a59-ghc9.6.3.so": {
+    "bytes": 80000,
+    "sha256": "d82ec8a680304ee19ec8052c736f420553489294ae951e3e0cad5ed5f5664317"
+  },
+  "lib/app/resources/libHSunordered-containers-0.2.19.1-fe823f0c4c35e091e52d2033a63fb26d634c96f699768c5240411cca0b2d0108-ghc9.6.3.so": {
+    "bytes": 1013208,
+    "sha256": "bef77ddddb8898e369b455e3fa33601def7579e3463465ea43294cd771af084d"
+  },
+  "lib/app/resources/libHSuri-bytestring-0.3.3.1-4d719fc60e6ca5f4f72051b1f43399c95eb51b1d320c3943ade8d35848396c46-ghc9.6.3.so": {
+    "bytes": 880016,
+    "sha256": "3b0e0a3113a1e8202a1e1b45b72d45724aa40f904a7cfa00a6ff17cf096b0bdb"
+  },
+  "lib/app/resources/libHSuuid-1.3.15-4828f16f2b77b79ea8b795753bd98503215dea0d6fddf19a95ffe8c7a59f1ea7-ghc9.6.3.so": {
+    "bytes": 125192,
+    "sha256": "a66695d9cda95212f9539a60bc699fbcca2b81a61f8563d5c7fef6cf578b084e"
+  },
+  "lib/app/resources/libHSuuid-types-1.0.5.1-865f4cc89d0ca4f6a3f59698789a19e889c9c7269183681c34c38a1ec3a0c155-ghc9.6.3.so": {
+    "bytes": 286784,
+    "sha256": "76d0ac10b872988f097f4a8c3219e377716eb223178669a60e5a863725c5418b"
+  },
+  "lib/app/resources/libHSvector-0.13.1.0-cf8a0ecaaaf2c3a8a67fd3a90b4673e394789ff172620844d9169dac0c285184-ghc9.6.3.so": {
+    "bytes": 6661600,
+    "sha256": "fac5e82f0e8571e59b67298cf72b1b1e0a86e620f27341e80a301c8b844e286b"
+  },
+  "lib/app/resources/libHSvector-algorithms-0.9.0.1-622db70b7c3b579b7fe0b3e87dc9b73bdd25f7c197595d6188f4ff6c97ca3a03-ghc9.6.3.so": {
+    "bytes": 2688488,
+    "sha256": "98c43717031742d7a560b437abe42b18afb15aece83937902fefc27be6fd93b7"
+  },
+  "lib/app/resources/libHSvector-stream-0.1.0.0-cd544f2a524119b745a23e3409aa3f38b5d18471174a3ec15e48fdb0b32df517-ghc9.6.3.so": {
+    "bytes": 409240,
+    "sha256": "625fc5014b3b30934a5bc1e706f2937ac4f17f84797eab4d74a7c17d80cdd5f4"
+  },
+  "lib/app/resources/libHSwitherable-0.4.2-8d7489e64c055b44e3c3ece47851fb23685c037eaadda9898ec23ce12482c663-ghc9.6.3.so": {
+    "bytes": 663848,
+    "sha256": "9020c05d0857029fe3a97d0481aa23985bb208fe08b36f50fdfd955b372cdeec"
+  },
+  "lib/app/resources/libHSyaml-0.11.11.2-2c247ec5eab9916942fb606ad20d3e2bde3e7b572227f2797341c26ecc997bca-ghc9.6.3.so": {
+    "bytes": 856320,
+    "sha256": "9c065c9fdab7845cdbc34fb5b90fc2724d617bd1aba92dd8bb2000a89f009ab6"
+  },
+  "lib/app/resources/libHSzip-2.2.1-c84529db08699b8940be8253f32c450005f695e7c889e6b7a63f112a12d4453f-ghc9.6.3.so": {
+    "bytes": 1139664,
+    "sha256": "ab84da2f8958a1fb653cf0c0f44a5e57f55e3b4160cf6e4de8ef95b067500163"
+  },
+  "lib/app/resources/libHSzlib-0.6.3.0-a39aae8f67ff3eaace9ad2f1a8075252dfa05207ee067004481e4d1b253aa7f7-ghc9.6.3.so": {
+    "bytes": 721136,
+    "sha256": "e8f17b740cc53fb1a54edb0e990cedfa764cba5b8b1d8a8dfd346b6086a6d1c6"
+  },
+  "lib/app/resources/libHSzstd-0.1.3.0-203b259d81b55151fd2c9ecb432bfa701dfd8529080fb68640d12b8cbccbb2c4-ghc9.6.3.so": {
+    "bytes": 1219256,
+    "sha256": "b43f9cb026e7f234260dfd9eb4ea4fa5535c3471ae00eaecbc0b05c7a924fd2b"
+  },
+  "lib/app/resources/libapp-lib.so": {
+    "bytes": 26088,
+    "sha256": "cbef066f109322d8a5eb1028c0f4904ac7c346d61f7b323a7390cffd11ea3a4f"
+  },
+  "lib/app/resources/libffi.so.8": {
+    "bytes": 91720,
+    "sha256": "58e3450d65a9977af7bb7993f9fc93b4177286ee25199a5aa8c3d1df182450cf"
+  },
+  "lib/app/resources/libsimplex.so": {
+    "bytes": 56389416,
+    "sha256": "3f7bc19a1f5f17f88070680f6b93b6a88be5a9c1f8a6005ba45023eeb42d68c5"
+  },
+  "lib/app/resources/vlc/libFLAC.so.12": {
+    "bytes": 423592,
+    "sha256": "d172179745bd4ce315929351ff8b05cdc4df24943be2c4ae0932031dca81c67b"
+  },
+  "lib/app/resources/vlc/libLerc.so.4": {
+    "bytes": 644416,
+    "sha256": "5871150b88cec6b8bb4647f1839e618ce7b5557c81b1417ed225cfe7488da195"
+  },
+  "lib/app/resources/vlc/libOpenCL.so.1": {
+    "bytes": 74080,
+    "sha256": "bbe97fa6b2f46c0e3017f76b4e440bffd1e42fd1dfe1af7c11ea1ccf2db3e00f"
+  },
+  "lib/app/resources/vlc/libQt5Core.so.5": {
+    "bytes": 5840544,
+    "sha256": "16a6c2d51ede30e3ed9cb01a946534f250951ec544a5543f0429d2353fb3b453"
+  },
+  "lib/app/resources/vlc/libQt5Gui.so.5": {
+    "bytes": 7501624,
+    "sha256": "ce47ce12a2fb6aa20e079cdcc9e3b61b5c43bad3b124d98e55e5947fd4b9dd6a"
+  },
+  "lib/app/resources/vlc/libQt5Svg.so.5": {
+    "bytes": 402584,
+    "sha256": "cb72fff4350d63da3bc76abc2bf4b88c56b3cb6467f459a2a0c0ac92d5fc2cff"
+  },
+  "lib/app/resources/vlc/libQt5Widgets.so.5": {
+    "bytes": 7430000,
+    "sha256": "9cb073dfed5f353c878ec778184d6b39b16eb8b5ce2f79e0ecbada65f79f85ed"
+  },
+  "lib/app/resources/vlc/libQt5X11Extras.so.5": {
+    "bytes": 27328,
+    "sha256": "f66498fe445c8cdb9262d14aff92c7a01f40d9427870aaf22e81545754d15097"
+  },
+  "lib/app/resources/vlc/libSDL-1.2.so.0": {
+    "bytes": 455608,
+    "sha256": "8901ea89e5345e0c2f7366177706329c7c40bfa62922bdf53cc577b85ae5ec10"
+  },
+  "lib/app/resources/vlc/libSDL2-2.0.so.0": {
+    "bytes": 1945184,
+    "sha256": "2d8c8b7e1c20cd0a15201b2d55adb2d8276f05d27b00caa9d4c665ebbc5b8a93"
+  },
+  "lib/app/resources/vlc/libSDL_image-1.2.so.0": {
+    "bytes": 68640,
+    "sha256": "d973e2d64b598d394e4ab060409026ed45b889e8b124c0e3442a2070b893ed59"
+  },
+  "lib/app/resources/vlc/libSvtAv1Enc.so.1": {
+    "bytes": 6768368,
+    "sha256": "84b6a51ee9a491c6999b5ba5c02964c1a690bd527dba5de5185370ea41195f88"
+  },
+  "lib/app/resources/vlc/libXau.so.6": {
+    "bytes": 17880,
+    "sha256": "14217aeb9b14f0c6eb6e680ad4493418ee4e8dd8547e7cd4688bb43e8a3ef253"
+  },
+  "lib/app/resources/vlc/libXcomposite.so.1": {
+    "bytes": 18136,
+    "sha256": "b6b7323e3f3f9b0817d1745d86fecb7c139f6af27ee52fb2bd5d3b768c50a5a0"
+  },
+  "lib/app/resources/vlc/libXcursor.so.1": {
+    "bytes": 52488,
+    "sha256": "2d247fc088d201b2eda36ca4cea7480d40427b4fa64b9c4d056cf969bfd103c3"
+  },
+  "lib/app/resources/vlc/libXdamage.so.1": {
+    "bytes": 17976,
+    "sha256": "73e7d6058867d7258f5f8cf818c4ff53fedbbc35fa5981ca85a0880c4fffa839"
+  },
+  "lib/app/resources/vlc/libXdmcp.so.6": {
+    "bytes": 26584,
+    "sha256": "438e643de69f7ba73225bbb233feec41d2807d319dcbc6809bb1cb82a909ae49"
+  },
+  "lib/app/resources/vlc/libXext.so.6": {
+    "bytes": 86360,
+    "sha256": "238c8678d10d92719abbbb4e7dfac2a6ef708322d74ff371ce24f51f5575b38c"
+  },
+  "lib/app/resources/vlc/libXfixes.so.3": {
+    "bytes": 31096,
+    "sha256": "6c52f81ed67b531b665c38590416e1159ddd522572594c48b1afe8bcdae425e3"
+  },
+  "lib/app/resources/vlc/libXi.so.6": {
+    "bytes": 81152,
+    "sha256": "a574f79ac96e73acb13bff3111d67f2a6acfafa09722d84d0a0d6a51be079794"
+  },
+  "lib/app/resources/vlc/libXinerama.so.1": {
+    "bytes": 22120,
+    "sha256": "0d74ef78e493f4aea5d50aafcdc1c18a3bffa7e54291bc41e0e6988a7685de19"
+  },
+  "lib/app/resources/vlc/libXpm.so.4": {
+    "bytes": 85104,
+    "sha256": "c67a36736e9fdb276cf29f9ad8c419575e42a184a1c9cc33832b1706069fd653"
+  },
+  "lib/app/resources/vlc/libXrandr.so.2": {
+    "bytes": 52104,
+    "sha256": "add3c3245dad3e334b3a677e4ada02c3487a8924f881108e05f8a4d5d39dd652"
+  },
+  "lib/app/resources/vlc/libXrender.so.1": {
+    "bytes": 51872,
+    "sha256": "5effde51e18aca73d012988cd2a5024ca9809de7c819fa7f79de7258edaef49a"
+  },
+  "lib/app/resources/vlc/libXss.so.1": {
+    "bytes": 18152,
+    "sha256": "15531dc9d13d6024ed011822cef27464fc54438e4417e15016d54e472cc1e1ac"
+  },
+  "lib/app/resources/vlc/libacl.so.1": {
+    "bytes": 43120,
+    "sha256": "3521a7c1d7a0fe191eae1993b8e12258cdbab114738c8078472eb78a15034697"
+  },
+  "lib/app/resources/vlc/libaom.so.3": {
+    "bytes": 5643784,
+    "sha256": "0288a40675dc61b8ccbabe60238ac3a3106e8758ca2e10b3cfcd9df97646df11"
+  },
+  "lib/app/resources/vlc/libarchive.so.13": {
+    "bytes": 836600,
+    "sha256": "b469ef3cd572d55b648188f82c16fcffa65a51c47c5a484b9f2427eaa20b82a1"
+  },
+  "lib/app/resources/vlc/libaribb24.so.0": {
+    "bytes": 75728,
+    "sha256": "0c4fe030b5009f6971a7838120fb5da7fc6f3aab92dd7862c337a51a90e0239a"
+  },
+  "lib/app/resources/vlc/libass.so.9": {
+    "bytes": 238088,
+    "sha256": "460a58b665b698306f924eeee5f2bc04133785fa803600b54cdba50f4db5cd91"
+  },
+  "lib/app/resources/vlc/libasyncns.so.0": {
+    "bytes": 26440,
+    "sha256": "d9a13e229903e5fe3d8dea79c2e5e59b534e64a363eb7159153a32ad3eefdf9c"
+  },
+  "lib/app/resources/vlc/libatk-1.0.so.0": {
+    "bytes": 175176,
+    "sha256": "dc7a67e9c8675544ed12caa8be97f394488cc7928accf1eea31c956dfbd145f8"
+  },
+  "lib/app/resources/vlc/libatk-bridge-2.0.so.0": {
+    "bytes": 259424,
+    "sha256": "8c109396b3966ad31f5cc0bb6134ce24f129424e4bb695d93f768e86034097da"
+  },
+  "lib/app/resources/vlc/libatspi.so.0": {
+    "bytes": 255632,
+    "sha256": "a2a1a3c960819919a2728d9fe1c8adb94862faaa3e5ebd12c873470cc35004f3"
+  },
+  "lib/app/resources/vlc/libavahi-client.so.3": {
+    "bytes": 82592,
+    "sha256": "423c57c90746292ce691314336dda082723e3477e4512066d4fc5c0bd9532b62"
+  },
+  "lib/app/resources/vlc/libavahi-common.so.3": {
+    "bytes": 57160,
+    "sha256": "3a392dc2234fa1c97055ca977cfe0a60c1c1038cd344a482a9d64cb4c73d3c76"
+  },
+  "lib/app/resources/vlc/libavc1394.so.0": {
+    "bytes": 22928,
+    "sha256": "fa71d897ceea2fe0f14f38bfed6d6762cf17e9079081c25db086177e482eef4d"
+  },
+  "lib/app/resources/vlc/libavcodec.so.59": {
+    "bytes": 14962208,
+    "sha256": "c36ab4b02726b64b68299269386cd9fd8a446587c9f33858e5878c73059a30f1"
+  },
+  "lib/app/resources/vlc/libavformat.so.59": {
+    "bytes": 2793040,
+    "sha256": "724f212ba3df55ed7fa383bb8e8ca5d6acf5272b999a8daa74dde7d69c9a44e7"
+  },
+  "lib/app/resources/vlc/libavutil.so.57": {
+    "bytes": 940744,
+    "sha256": "7c27afc112124aeba39a0291e25adc859e2c2a3392a31ac838c8961bb8739ce4"
+  },
+  "lib/app/resources/vlc/libblkid.so.1": {
+    "bytes": 362160,
+    "sha256": "5720ae22d68d793b35b21d1a406afeb1ed847b4043959e8a490a0106c92e8471"
+  },
+  "lib/app/resources/vlc/libbluray.so.2": {
+    "bytes": 315136,
+    "sha256": "37fb558f3bd85058d8327a0da401bfb0c82a4342008f47fac4eccc6a6a766bb4"
+  },
+  "lib/app/resources/vlc/libbrotlicommon.so.1": {
+    "bytes": 140648,
+    "sha256": "f671c4db79bd7da1e1e13d207eb66993387d853691bc5a3417e07eb908f71b3f"
+  },
+  "lib/app/resources/vlc/libbrotlidec.so.1": {
+    "bytes": 50984,
+    "sha256": "d3afb5965e4567acf91d4c1c3c7c1bff7a93a10277230d4a51d9f46a942afc92"
+  },
+  "lib/app/resources/vlc/libbrotlienc.so.1": {
+    "bytes": 595744,
+    "sha256": "d32afbefab07f48ec8173820a70a48838750fbe0810ef5accc5c9c097285a08f"
+  },
+  "lib/app/resources/vlc/libbsd.so.0": {
+    "bytes": 89696,
+    "sha256": "079fbe7202724b95889330cba7614a2b565af7180e7da990d5197163e3d51608"
+  },
+  "lib/app/resources/vlc/libbz2.so.1.0": {
+    "bytes": 79800,
+    "sha256": "c560d33926bb4a04ea13f70cb37222ae33413a8524123f9103b201b8c3bc170b"
+  },
+  "lib/app/resources/vlc/libcaca.so.0": {
+    "bytes": 821960,
+    "sha256": "5d078a8861bfb63be19976684081f530954c51edca6eff8fa210fed22fb7a87a"
+  },
+  "lib/app/resources/vlc/libcairo-gobject.so.2": {
+    "bytes": 47880,
+    "sha256": "6ad2007893cc86a149b653427761bbfeae66e46c90daae90017a992017350b07"
+  },
+  "lib/app/resources/vlc/libcairo.so.2": {
+    "bytes": 1207280,
+    "sha256": "778d21e6973e63b39e50ad5495eb113ffd451b5f5706118699386a074c1d8742"
+  },
+  "lib/app/resources/vlc/libcap.so.2": {
+    "bytes": 51920,
+    "sha256": "dfa01bad002ad6aea38041bfce5a15f358dd8873804264f565303ad8a02fb05b"
+  },
+  "lib/app/resources/vlc/libcddb.so.2": {
+    "bytes": 83200,
+    "sha256": "fe3fcb594f4f7c823ebbc9054dc05b06dc2ec8cd9a35ce7d3f9f33bc74aa9d6c"
+  },
+  "lib/app/resources/vlc/libchromaprint.so.1": {
+    "bytes": 89568,
+    "sha256": "fde4c7ec8e7e6f37a0abcc6baf126da3d37f3d2a4ab4099d51141438ba03a60f"
+  },
+  "lib/app/resources/vlc/libcjson.so.1": {
+    "bytes": 39888,
+    "sha256": "4b00b9de617e2af1e4d9649e6c8e0135824a5fe070ee71d8e9269823f4082961"
+  },
+  "lib/app/resources/vlc/libcodec2.so.1.0": {
+    "bytes": 16864968,
+    "sha256": "731c16fc3ae0c9bf5e06585aa458b9f38913e8703878bc7b4c1461a85cb6fc3e"
+  },
+  "lib/app/resources/vlc/libcrypto.so.3": {
+    "bytes": 4848816,
+    "sha256": "40e53db1a0e97a934a0979bfdd7493ba024a01742610eb9d2340df209c0cfa45"
+  },
+  "lib/app/resources/vlc/libdatrie.so.1": {
+    "bytes": 38864,
+    "sha256": "3041604501fdf7d1b47c6ecf564cd6372177d88b7d8d79c65052f77f09413e10"
+  },
+  "lib/app/resources/vlc/libdav1d.so.6": {
+    "bytes": 1632368,
+    "sha256": "455fda010f7a3d70f5dd0d3279114c435f8c076b22a936ef16b6a9e0942d9efa"
+  },
+  "lib/app/resources/vlc/libdb-5.3.so": {
+    "bytes": 1882664,
+    "sha256": "d396c61d7a4681b8d8a8535110c92ab90e3d75047467d1197bed75b65af8f884"
+  },
+  "lib/app/resources/vlc/libdbus-1.so.3": {
+    "bytes": 365504,
+    "sha256": "f828bb5593116e5bab3e58fa543d0aee5480337ec1bd23d84360485d1d394095"
+  },
+  "lib/app/resources/vlc/libdc1394.so.25": {
+    "bytes": 243896,
+    "sha256": "a12254653fe7cf77ae8ef8c32a50516ae5ca938d837afc1a9e99898dcb03333f"
+  },
+  "lib/app/resources/vlc/libdecor-0.so.0": {
+    "bytes": 48472,
+    "sha256": "7946449d1e335bfb0be44126d04f906c155d0baec1012f3a93a8439c5d4f74d1"
+  },
+  "lib/app/resources/vlc/libdeflate.so.0": {
+    "bytes": 153360,
+    "sha256": "066ca95888004b445639d292b8c719a345bd66bcee861c4fd36d358b3466e48c"
+  },
+  "lib/app/resources/vlc/libdouble-conversion.so.3": {
+    "bytes": 86808,
+    "sha256": "94b20707accb246af5a45c58ce1ac9e08a0aa1e593aebda48342b17b15d6e8e1"
+  },
+  "lib/app/resources/vlc/libdvbpsi.so.10": {
+    "bytes": 142776,
+    "sha256": "ebeaf902d77ba2d0f23eb661284b32274d5efbbf9576dafa19c4a75b9569e742"
+  },
+  "lib/app/resources/vlc/libdvdnav.so.4": {
+    "bytes": 98264,
+    "sha256": "11b378d94c686adfdb56e9f0ad8492c01cb141c81686d713de5b1790d01c41ef"
+  },
+  "lib/app/resources/vlc/libdvdread.so.8": {
+    "bytes": 133704,
+    "sha256": "24befca7995f7d84c836f8b92efada499b7d873ee322cfa9449894c2b94af175"
+  },
+  "lib/app/resources/vlc/libebml.so.5": {
+    "bytes": 171072,
+    "sha256": "fac1525a3459f70686b50bacc210591ac3d3f455e3318f10a30198f796a394b7"
+  },
+  "lib/app/resources/vlc/libepoxy.so.0": {
+    "bytes": 1339880,
+    "sha256": "3f392c95aaaef00bec747878ae4133f2ffe81c4126eb6911fca42ef5070befc0"
+  },
+  "lib/app/resources/vlc/libfaad.so.2": {
+    "bytes": 271992,
+    "sha256": "c2b9b5bbb8d00a3eb3e6203425dd0eb1830e96a9f405094be2ebf6fc9d4effae"
+  },
+  "lib/app/resources/vlc/libffi.so.8": {
+    "bytes": 47368,
+    "sha256": "c3bbfce473af622c45d5be8f1c64faee164a459c73591c66234aeaf4dc992a3d"
+  },
+  "lib/app/resources/vlc/libfluidsynth.so.3": {
+    "bytes": 546424,
+    "sha256": "2c7300979ce735c654d4c5e797b66d866fb313408427486c029b68f2cb23f885"
+  },
+  "lib/app/resources/vlc/libgcrypt.so.20": {
+    "bytes": 1341288,
+    "sha256": "7273edcb3e071be44ebbd475f940e859acbab18a9b553155825be5c054397b66"
+  },
+  "lib/app/resources/vlc/libgdk-3.so.0": {
+    "bytes": 1126544,
+    "sha256": "62464b59953353f8538d152972de34d1fe2c6a8ca3f5d15ef65ad84e7c157a64"
+  },
+  "lib/app/resources/vlc/libgdk_pixbuf-2.0.so.0": {
+    "bytes": 198232,
+    "sha256": "577bce996705daa8325327544be65e3e999cdf81a72aee7a24f28a0f37bd9e5f"
+  },
+  "lib/app/resources/vlc/libgio-2.0.so.0": {
+    "bytes": 2033680,
+    "sha256": "9d250d14e45b52a9591c81761eb276b448237cfd660f104847e43f44ab66162a"
+  },
+  "lib/app/resources/vlc/libglib-2.0.so.0": {
+    "bytes": 1315496,
+    "sha256": "00555dc02696d2387f4aa9bc4d15f96d48db64475e7f2107c42e34c8da8f9ea2"
+  },
+  "lib/app/resources/vlc/libgme.so.0": {
+    "bytes": 326624,
+    "sha256": "00c87e306fbd6efd45624a4ff439ad84fc16bc00eaaa8fed2ffbef3a04d95e73"
+  },
+  "lib/app/resources/vlc/libgmodule-2.0.so.0": {
+    "bytes": 22480,
+    "sha256": "79ddad54a81d84e84ad07683c7f51fcf9d4e013ac836c378656acfc528db6fb9"
+  },
+  "lib/app/resources/vlc/libgnutls.so.30": {
+    "bytes": 2263064,
+    "sha256": "e039bc2889b5d2d86dfbc46019ffb210401473bdaa9372a85d16fe18034e6648"
+  },
+  "lib/app/resources/vlc/libgobject-2.0.so.0": {
+    "bytes": 404864,
+    "sha256": "970de33c879e8b9c9771f806d9cdcac6f659e7cabdfbd516f34a995a0816cb5d"
+  },
+  "lib/app/resources/vlc/libgomp.so.1": {
+    "bytes": 303296,
+    "sha256": "50ea827d5f37728dd445379d1d99108d437a1cb8953a0c8d8bc8e7cb31175cb2"
+  },
+  "lib/app/resources/vlc/libgraphite2.so.3": {
+    "bytes": 170592,
+    "sha256": "8126df857e8f1e2770ed116554cbd7bf1a65c81b892c264721a2595a121399c2"
+  },
+  "lib/app/resources/vlc/libgsm.so.1": {
+    "bytes": 67408,
+    "sha256": "f9276b5d1ebef092a1fdf19e39825fe45273c00b7bf4fd9d6648c94aca0e46bb"
+  },
+  "lib/app/resources/vlc/libgssapi_krb5.so.2": {
+    "bytes": 350888,
+    "sha256": "0c52258964d9231e09f893cd1e3e17b773f957f9ce43059e9568c6d5967d01c7"
+  },
+  "lib/app/resources/vlc/libgtk-3.so.0": {
+    "bytes": 8689816,
+    "sha256": "5a58234ff18539625d98a45e273bfa31208f759a8c9de2c6a9830863c7575108"
+  },
+  "lib/app/resources/vlc/libhogweed.so.6": {
+    "bytes": 305288,
+    "sha256": "4e385d249ac3a3eaa90e0d7845f20cf2f961761aff0328a560a7c32d0b6fedbb"
+  },
+  "lib/app/resources/vlc/libhwy.so.1": {
+    "bytes": 43296,
+    "sha256": "5fb6b2ed948449187088639fd6e3888f215fdf9431481084aad2a100c6a50c18"
+  },
+  "lib/app/resources/vlc/libicudata.so.72": {
+    "bytes": 31265816,
+    "sha256": "517b3d45498e9dfbebb3ce3b3ca05213a8d1c05a41c4f059d6a8078f3a0b1cc2"
+  },
+  "lib/app/resources/vlc/libicui18n.so.72": {
+    "bytes": 3813048,
+    "sha256": "357f3b5db8380fd4086f8e20f2224b006543cd95c1ba040f860ed550b34ba47f"
+  },
+  "lib/app/resources/vlc/libicuuc.so.72": {
+    "bytes": 2239656,
+    "sha256": "c1aa2e6ba50d086ac40b272aa644ab5f7f3435e2436a9436074eb826bd0bdfb6"
+  },
+  "lib/app/resources/vlc/libidn.so.12": {
+    "bytes": 215944,
+    "sha256": "3cf46d40d99a137cac09e163154731bfacc4f8f394f644a7f1a47f969998886c"
+  },
+  "lib/app/resources/vlc/libidn2.so.0": {
+    "bytes": 203064,
+    "sha256": "a74ba2b9e2316beb77e9516717e245b627a49c0c06cc0bfc919e25f6209506e6"
+  },
+  "lib/app/resources/vlc/libinstpatch-1.0.so.2": {
+    "bytes": 826512,
+    "sha256": "e03e82dec7dd940f9a797e82543614783681dc38ff3356e101688e663cae1508"
+  },
+  "lib/app/resources/vlc/libixml.so.10": {
+    "bytes": 61176,
+    "sha256": "32d37d68b12fb97a746709f0c78a78158aa3747b96c0dd800dbe8ece8af52c90"
+  },
+  "lib/app/resources/vlc/libjbig.so.0": {
+    "bytes": 71528,
+    "sha256": "dfe28f8d9e8d04051442230630d6c3015f082fe8a629ce7c69c8820e727b0031"
+  },
+  "lib/app/resources/vlc/libjpeg.so.62": {
+    "bytes": 606056,
+    "sha256": "102976ed1ac831560ea0dfb6ac1528e889bb7bca08e6fb717e178868490ae4d7"
+  },
+  "lib/app/resources/vlc/libjxl.so.0.7": {
+    "bytes": 3513608,
+    "sha256": "0a8ad04d916a9925af2eb5a4f7b9604684e344d4c41123a3da01fa0661126653"
+  },
+  "lib/app/resources/vlc/libjxl_threads.so.0.7": {
+    "bytes": 22672,
+    "sha256": "8955c7f79cfec4f0ac36a8abdf57911b2b562ba659deed875dcf014a1ae72758"
+  },
+  "lib/app/resources/vlc/libk5crypto.so.3": {
+    "bytes": 188032,
+    "sha256": "5a2adcfbd3b10a9ef289ef47f473e96892c6d0e82bcda0d273c70357b6ad1e48"
+  },
+  "lib/app/resources/vlc/libkate.so.1": {
+    "bytes": 94272,
+    "sha256": "46e601ce99f0180c7c1a09273e3b7aeedc5fa4b58e7bc6f4f80fdee85a8342f8"
+  },
+  "lib/app/resources/vlc/libkeyutils.so.1": {
+    "bytes": 27000,
+    "sha256": "b5b74de48231b85035f7d4f8a48fd42c79040deb5c556097c53ba80270a77b28"
+  },
+  "lib/app/resources/vlc/libkrb5.so.3": {
+    "bytes": 909096,
+    "sha256": "7401b24c95971b77749f56e2828e9042853a6ecdcf3f26d458d813154c47feaf"
+  },
+  "lib/app/resources/vlc/libkrb5support.so.0": {
+    "bytes": 57024,
+    "sha256": "525a99e3b217f0bd80e04679740775242a7060ed689d4977ad1db360214de2d7"
+  },
+  "lib/app/resources/vlc/liblcms2.so.2": {
+    "bytes": 410728,
+    "sha256": "91780a7bf1dbfa745a386f1f8733bef608735d5e6408c29e4ebf596b5f303292"
+  },
+  "lib/app/resources/vlc/liblua5.2.so.0": {
+    "bytes": 221112,
+    "sha256": "54a78741f4ad8bfe1f3cfb31fd280e144effd5e465ee4e31d678332f2ea1402f"
+  },
+  "lib/app/resources/vlc/liblz4.so.1": {
+    "bytes": 155256,
+    "sha256": "a07431ad3d94b8295b3dcda045c60432dcc0d0a446aacacc9a0973daffdf7828"
+  },
+  "lib/app/resources/vlc/liblzma.so.5": {
+    "bytes": 196592,
+    "sha256": "37e8c20430c82b494a892cd3a351e5e692972c3496d51815baba55aea372f96a"
+  },
+  "lib/app/resources/vlc/liblzo2.so.2": {
+    "bytes": 150912,
+    "sha256": "38beb35be95530d6b5fff65fee59a19433ce1c0515124137475622cafa1547fd"
+  },
+  "lib/app/resources/vlc/libmad.so.0": {
+    "bytes": 137184,
+    "sha256": "7f3a5a72f67057b7154bbb08bb9e53e3e4f76301e313eb55e0a3b52c99da3ced"
+  },
+  "lib/app/resources/vlc/libmatroska.so.7": {
+    "bytes": 761328,
+    "sha256": "2d557b89e9942de4800c878cd34069d2d5034b7392d596417f9e2c0d78c93ef2"
+  },
+  "lib/app/resources/vlc/libmbedcrypto.so.7": {
+    "bytes": 523936,
+    "sha256": "1adb96c8a8043875a153ed3491b45d4a20c94f4322d869959ef56d10392bef67"
+  },
+  "lib/app/resources/vlc/libmd.so.0": {
+    "bytes": 51280,
+    "sha256": "f42efe210cfecf43103fcb9acd02450e47ab43a68eafe6c5b50041afc1d7ad26"
+  },
+  "lib/app/resources/vlc/libmd4c.so.0": {
+    "bytes": 70952,
+    "sha256": "7be110e7681bd7da99c733c0a2290f3f64ec2ca7b9e547d7aeae636b4f1e8881"
+  },
+  "lib/app/resources/vlc/libmfx.so.1": {
+    "bytes": 70688,
+    "sha256": "f2e629c0e8200053e61586c58051aa19d538a161d2450038acb3a7b1fc75dcd2"
+  },
+  "lib/app/resources/vlc/libmount.so.1": {
+    "bytes": 415864,
+    "sha256": "47d088a848c8334a468665a0edcdf1d240a59601aa473c7ac341f025cdfefddf"
+  },
+  "lib/app/resources/vlc/libmp3lame.so.0": {
+    "bytes": 305544,
+    "sha256": "95d0091c1d69b881e07ddf5ea85655c65f4f345e8928fbb3c0dd848575b3db28"
+  },
+  "lib/app/resources/vlc/libmpcdec.so.6": {
+    "bytes": 75576,
+    "sha256": "4845daf79f33486471060681a3951df57feb26f3e770de0309e3297af5cfcbbd"
+  },
+  "lib/app/resources/vlc/libmpg123.so.0": {
+    "bytes": 380784,
+    "sha256": "d7c15ebf936a59539c9b3df88ab79471bdfd22927b73a7f521ed3e36d02fb489"
+  },
+  "lib/app/resources/vlc/libmtp.so.9": {
+    "bytes": 578976,
+    "sha256": "2ae43b0f76c32039b582136dd71cab6aa1431273b7423998f5655ff2718bae9e"
+  },
+  "lib/app/resources/vlc/libmysofa.so.1": {
+    "bytes": 67936,
+    "sha256": "8d504b91dc78624907b0bec12028a2102dfac9e39fbc4f384157c228da5f356e"
+  },
+  "lib/app/resources/vlc/libncursesw.so.6": {
+    "bytes": 240752,
+    "sha256": "6b5e2d0600664edc29e03e0a3c543b54a321b15f9fbee6803a58e0745540c473"
+  },
+  "lib/app/resources/vlc/libnettle.so.8": {
+    "bytes": 333856,
+    "sha256": "0f91dca40352c0608fcd2ef8cac2bd3eefce30008cbd4ef7bb99acc4ed60f0bb"
+  },
+  "lib/app/resources/vlc/libnfs.so.13": {
+    "bytes": 361384,
+    "sha256": "567f194c023af957c119f2acec5513f26057083b922773393ae71449057b68b0"
+  },
+  "lib/app/resources/vlc/libnorm.so.1": {
+    "bytes": 497288,
+    "sha256": "e06f1e2a692e094c640c5883ad1edf81ef894cbd9b2445604051f4c4dc0f59ab"
+  },
+  "lib/app/resources/vlc/libnotify.so.4": {
+    "bytes": 57976,
+    "sha256": "eaf6656a6510738088b44c1989c76a895f3daa51386a1b951d27eb5806869b66"
+  },
+  "lib/app/resources/vlc/libnuma.so.1": {
+    "bytes": 56912,
+    "sha256": "8424c8498a5a611b42996a3807ce45c072f7b046c9bbc1ddf2e6ee51dbd0850f"
+  },
+  "lib/app/resources/vlc/libogg.so.0": {
+    "bytes": 43448,
+    "sha256": "091b35bc0b5498e2080fc7bd9f296bd98275de91010ce4c59986e2f3081bab7d"
+  },
+  "lib/app/resources/vlc/libopenjp2.so.7": {
+    "bytes": 412496,
+    "sha256": "a3ce80409a463825d1aae9f6bf8fd59e9d97f9c6824a13c53b4099d213685ac6"
+  },
+  "lib/app/resources/vlc/libopenmpt.so.0": {
+    "bytes": 1948432,
+    "sha256": "cb55b3d7e5520e4d0783f859f5f281f785420338b5965fd6a5b35a887344e6c4"
+  },
+  "lib/app/resources/vlc/libopenmpt_modplug.so.1": {
+    "bytes": 67720,
+    "sha256": "d8bb8563887ca7a5d569dd10dbfc3f383b2f0c96ef47dabf6f8f0c14c68ca51c"
+  },
+  "lib/app/resources/vlc/libopus.so.0": {
+    "bytes": 388600,
+    "sha256": "ddfb82c68a83dc32da1f2edc704a883b56b448aaaef2755d8f68dd2acd0bdd48"
+  },
+  "lib/app/resources/vlc/libp11-kit.so.0": {
+    "bytes": 1266624,
+    "sha256": "357dd11d8e58c64ce9573697a641c579bf8ad399effcaa62a7d616ad8bfd99a5"
+  },
+  "lib/app/resources/vlc/libpango-1.0.so.0": {
+    "bytes": 446080,
+    "sha256": "49b4c11abb368141955d4daf4ae986b2e8eb4550d2c6f5063be6a8f7afcdc1b3"
+  },
+  "lib/app/resources/vlc/libpangocairo-1.0.so.0": {
+    "bytes": 72232,
+    "sha256": "0828b4dd3de8f101706246e9f6137d0d9826573abac10362532ec2c3bbb11aee"
+  },
+  "lib/app/resources/vlc/libpangoft2-1.0.so.0": {
+    "bytes": 112864,
+    "sha256": "7d991a48edf481c713fd10b0a5c13cfc3539582aa68d783ad0e9a8056b7c7798"
+  },
+  "lib/app/resources/vlc/libpcre2-16.so.0": {
+    "bytes": 580944,
+    "sha256": "5798fdc6a1b04f863ca708144a6036fe5fa102001a7f6e0aa6d783a99b24fa5a"
+  },
+  "lib/app/resources/vlc/libpcre2-8.so.0": {
+    "bytes": 634152,
+    "sha256": "e4a2fc79268fcc935eee5f435603c7be22a3fa943b8ea04b5d0a0d1739081fc5"
+  },
+  "lib/app/resources/vlc/libpgm-5.3.so.0": {
+    "bytes": 311200,
+    "sha256": "1eb902eea9bb90c68924fb818c8432fa11674960a6b6d058063459b1cb7f09ba"
+  },
+  "lib/app/resources/vlc/libpixman-1.so.0": {
+    "bytes": 705960,
+    "sha256": "429d1a73c7f35b18cb5ebf2b92ecd61cd4dd4dcd9af8dc0479ecf4b5961dfefe"
+  },
+  "lib/app/resources/vlc/libplacebo.so.208": {
+    "bytes": 7886448,
+    "sha256": "f3130b03ffbe586bc33ebd389ec6529143a426d1a2a86d13bdb8b570df2cec5e"
+  },
+  "lib/app/resources/vlc/libpng16.so.16": {
+    "bytes": 227808,
+    "sha256": "521c323d217ccf8d95a522e6d449431004a2efa0ed0cc9575d9b1b7c4ef1144a"
+  },
+  "lib/app/resources/vlc/libpostproc.so.56": {
+    "bytes": 140920,
+    "sha256": "644d93b8a7b785c7c3c625d4d2b28e3dc89cd582b60a9c07ded9c1699620ba41"
+  },
+  "lib/app/resources/vlc/libprotobuf-lite.so.32": {
+    "bytes": 966752,
+    "sha256": "7a27fe7776cbd60e285036c047608553ca4ccea3516d6e4ef641255e456128d6"
+  },
+  "lib/app/resources/vlc/libpulse-simple.so.0": {
+    "bytes": 22600,
+    "sha256": "1959a670f4170960e87cdf1d37da147be3ad0cb77c0e3a0a5f80a22638846c8c"
+  },
+  "lib/app/resources/vlc/libpulse.so.0": {
+    "bytes": 338992,
+    "sha256": "44ea5e71f4c4f27b8f519ca835e23c6c622c9185e7eb5be6ce2fdf1dd8c91f55"
+  },
+  "lib/app/resources/vlc/libpulsecommon-16.1.so": {
+    "bytes": 572128,
+    "sha256": "d58c824e5d3b43c8342ff4b82ed164c36a1e886083692d42560a194a59fa7ee8"
+  },
+  "lib/app/resources/vlc/librabbitmq.so.4": {
+    "bytes": 107784,
+    "sha256": "dc09b665248273086f2768a8d25baaa2b358735eb273b9ad5f5f458637fb58e1"
+  },
+  "lib/app/resources/vlc/librav1e.so.0": {
+    "bytes": 2706592,
+    "sha256": "7bc9d1156a3f64560693b54e09b09bc5abc1ae79f348a82e6406a06c1ecfbb7a"
+  },
+  "lib/app/resources/vlc/libraw1394.so.11": {
+    "bytes": 70896,
+    "sha256": "6ddcdbc16a302b364883373bd7e60662ea235866db80115d7c10f21ffcb3d943"
+  },
+  "lib/app/resources/vlc/libreadline.so.8": {
+    "bytes": 372560,
+    "sha256": "0a22e76573f9a10f54c70f84c29255df5a31249f367cf6a7cb6d0c983df2af6e"
+  },
+  "lib/app/resources/vlc/libresid-builder.so.0": {
+    "bytes": 193768,
+    "sha256": "43f6a1a12840a53e8d2d7dae7fb48be3c05136c31ff8fa81c3a23e6e7d440a12"
+  },
+  "lib/app/resources/vlc/librist.so.4": {
+    "bytes": 177000,
+    "sha256": "caa7b354aa526e0f49d00c65bc0560232ce88cf6cd2e492bf1181e7f68458c8c"
+  },
+  "lib/app/resources/vlc/librom1394.so.0": {
+    "bytes": 22200,
+    "sha256": "d1799a6aa0d1eae8ed0f1595e81f2ee5da22354df8f6392e3cfb0658630f7ad9"
+  },
+  "lib/app/resources/vlc/librsvg-2.so.2": {
+    "bytes": 11127872,
+    "sha256": "0fda25f52e4df39c10d636500063aee4d321b4bf00e6f85008441289b3e683f7"
+  },
+  "lib/app/resources/vlc/libsamplerate.so.0": {
+    "bytes": 1500856,
+    "sha256": "cd11fab7828a70b75fd2d93f896eea64b0ef32c5445c05b915e7be5797bf67fc"
+  },
+  "lib/app/resources/vlc/libsasl2.so.2": {
+    "bytes": 117704,
+    "sha256": "f9ad965e15d74ce34c8a4d7e0d46532015a33de722563c570a4fa865dd73b129"
+  },
+  "lib/app/resources/vlc/libsecret-1.so.0": {
+    "bytes": 425848,
+    "sha256": "7fff337c79fc192e1eaf8cc5054b0e6cbcd0b007ac3ff4d71cc5d7b8263b5146"
+  },
+  "lib/app/resources/vlc/libselinux.so.1": {
+    "bytes": 184224,
+    "sha256": "0a37ea28d594a4ce5946dd2d7938b5d5e27e24f3c5bcc3e126575208e4ec5475"
+  },
+  "lib/app/resources/vlc/libshine.so.3": {
+    "bytes": 46464,
+    "sha256": "2e6845b26f7f299492610e7cfc37534224bd88e2f947c634e0b4073acbaaabfb"
+  },
+  "lib/app/resources/vlc/libshout.so.3": {
+    "bytes": 131984,
+    "sha256": "8477289762e46639539fdaddeedd5015f0a0a610235dc4de65fc0c9d9674b936"
+  },
+  "lib/app/resources/vlc/libsidplay2.so.1": {
+    "bytes": 289024,
+    "sha256": "5321f8c4b9b86714a2d2ea087c8ddd43574c2a0cab252c831d6558797b522b27"
+  },
+  "lib/app/resources/vlc/libslang.so.2": {
+    "bytes": 2186592,
+    "sha256": "55246f132d5772afd7636016aa12294f56c6188c8499fffce07b96d79c4b4b7d"
+  },
+  "lib/app/resources/vlc/libsnappy.so.1": {
+    "bytes": 50144,
+    "sha256": "4750e3d8bdd76c0c3a0b0f28f37064fa31b6f4b4c6eac685efa4d1962445304e"
+  },
+  "lib/app/resources/vlc/libsndfile.so.1": {
+    "bytes": 563272,
+    "sha256": "1729b15b66161a8044265ddb81b9973ef7fc2205159fa6533ea986bbc6b46d81"
+  },
+  "lib/app/resources/vlc/libsndio.so.7": {
+    "bytes": 73376,
+    "sha256": "38a2dd6c281a31e3a46c056f97ab5429cdbd80faca7fb567b8242a76009f6490"
+  },
+  "lib/app/resources/vlc/libsodium.so.23": {
+    "bytes": 381696,
+    "sha256": "1c4a390c850b6a675213e6861582aa2e3210540f034676b10caa6fbb8ebe78cb"
+  },
+  "lib/app/resources/vlc/libsoxr.so.0": {
+    "bytes": 218976,
+    "sha256": "4ff603bd0f05e3639e689af5117fc691bf4e831b7a2ba4071e2316e722d1bcb0"
+  },
+  "lib/app/resources/vlc/libspatialaudio.so.0": {
+    "bytes": 94920,
+    "sha256": "8b26af16d1ae276be3fd061d8b01fba3a106f703fabba5748c503b4af5761bfc"
+  },
+  "lib/app/resources/vlc/libspeex.so.1": {
+    "bytes": 113224,
+    "sha256": "6ac531fffcb33a90879f6b315c0173b3040e4b9a7ad2c73968b2f16e26e7d27b"
+  },
+  "lib/app/resources/vlc/libspeexdsp.so.1": {
+    "bytes": 84784,
+    "sha256": "265801b0de79703f3d56589593487fca293d4a1826ea5f78a1eff8a11bb60384"
+  },
+  "lib/app/resources/vlc/libsrt-gnutls.so.1.5": {
+    "bytes": 948976,
+    "sha256": "a95071a5994aa08587b283ea22a2b9e2f044e364d2543a9bc897b25875ebf3b0"
+  },
+  "lib/app/resources/vlc/libssh-gcrypt.so.4": {
+    "bytes": 606616,
+    "sha256": "e9bd383b5be05a8cb1cde9f303ec648d8bfa1d32303c2417ea88cd653ffeee2a"
+  },
+  "lib/app/resources/vlc/libssh2.so.1": {
+    "bytes": 268928,
+    "sha256": "146cf98ecbaef6319e1cb299aa492f195ddcde999c1bddfc3792026edd5ea294"
+  },
+  "lib/app/resources/vlc/libssl.so.3": {
+    "bytes": 714840,
+    "sha256": "2981035c39ee31f10f75da487e40fd97d756f7ee79f1bda49217ac9e6d0f4cab"
+  },
+  "lib/app/resources/vlc/libswresample.so.4": {
+    "bytes": 137784,
+    "sha256": "f38314d4ee136a386a828d9b42dd45c646d02a28334878b82e42de3e3bc29d34"
+  },
+  "lib/app/resources/vlc/libswscale.so.6": {
+    "bytes": 674312,
+    "sha256": "b83096480d2f73a3fd44a0559b6bf1eef860d15a4bc750dcb6e312a16c372363"
+  },
+  "lib/app/resources/vlc/libsystemd.so.0": {
+    "bytes": 867488,
+    "sha256": "251d15639306fe7310b057bbd9f6d708d18d3ad6786d322a96ef21c3c2718596"
+  },
+  "lib/app/resources/vlc/libtag.so.1": {
+    "bytes": 1103176,
+    "sha256": "d5e5b4456652f23a6707c249e750d1d5d453cb8b7670466048655cc4001d0c70"
+  },
+  "lib/app/resources/vlc/libtasn1.so.6": {
+    "bytes": 88408,
+    "sha256": "6f221c3d8e0a4e2b25d71b3fbff9c72ab00c8a05159c5a16b8ad6de865325730"
+  },
+  "lib/app/resources/vlc/libthai.so.0": {
+    "bytes": 47832,
+    "sha256": "822b1337bf2ec24207a4fd2d59f841cd7950a8002d562dc9d8d17f880bf51785"
+  },
+  "lib/app/resources/vlc/libtheora.so.0": {
+    "bytes": 297480,
+    "sha256": "def34e7ca0f25c5a37020cf9728e27e6fba5362d0a00e9a7593b9d32ec49ad3f"
+  },
+  "lib/app/resources/vlc/libtheoradec.so.1": {
+    "bytes": 113232,
+    "sha256": "525b740c20acb42bd7df03af44200ae8a8081249b3fbd5fa96348b52e5a386ff"
+  },
+  "lib/app/resources/vlc/libtheoraenc.so.1": {
+    "bytes": 235392,
+    "sha256": "028bfb78889ed6a7661dbec718881d76dd8d52500836f0f77a4274c7e9693a7b"
+  },
+  "lib/app/resources/vlc/libtiff.so.6": {
+    "bytes": 580352,
+    "sha256": "1907d4fb827768d61ac0059651e0a91cb2ec8c24ddadae7ae9369f342a6f22b0"
+  },
+  "lib/app/resources/vlc/libtinfo.so.6": {
+    "bytes": 210104,
+    "sha256": "fcf1db54e61ac4fc8c831d1bc455b7ecce2506ce191580279b1519ff7bfaf7e9"
+  },
+  "lib/app/resources/vlc/libtwolame.so.0": {
+    "bytes": 134224,
+    "sha256": "a7eb310cb35bff63b0f408a9b4cfa310b7f49051a90f86e3e25a32579e11e593"
+  },
+  "lib/app/resources/vlc/libudev.so.1": {
+    "bytes": 189568,
+    "sha256": "4e680648705c461d1b4f0ff2ce0d73e85e00b7416c802ed91b01c634b355c485"
+  },
+  "lib/app/resources/vlc/libudfread.so.0": {
+    "bytes": 42720,
+    "sha256": "81a71733b1f527910607c2933d84b767e70ba25d4b786b04ed7e7e34283d7908"
+  },
+  "lib/app/resources/vlc/libunistring.so.2": {
+    "bytes": 1810344,
+    "sha256": "4182d5a58c374d1cc958828dee3a3272626b9e5c0cc8c40e3046e351ad14de7c"
+  },
+  "lib/app/resources/vlc/libupnp.so.13": {
+    "bytes": 251360,
+    "sha256": "6e11cbf86d60ca678d89aede8e5b37e3ff46d861146799bb1ba42198ddcad558"
+  },
+  "lib/app/resources/vlc/libva-drm.so.2": {
+    "bytes": 17896,
+    "sha256": "05219841ac280dd5b721abc8b5d4ca625829c61b674a3507bc03965b93236c08"
+  },
+  "lib/app/resources/vlc/libva-x11.so.2": {
+    "bytes": 31200,
+    "sha256": "4c4dccd7caf63aba9adf6739cca3df08cf2ec74afb5a0e4e0ace624ac1658070"
+  },
+  "lib/app/resources/vlc/libva.so.2": {
+    "bytes": 195872,
+    "sha256": "f69af6fbf5b92a90d4221c1832db9adedd98b56e3d4557e0756b35bcf684b79e"
+  },
+  "lib/app/resources/vlc/libvdpau.so.1": {
+    "bytes": 22224,
+    "sha256": "4584674845bffab2545bd6765961eac17793bb3a3fb2b59596dfeb8cb001603d"
+  },
+  "lib/app/resources/vlc/libvlc.so": {
+    "bytes": 159952,
+    "sha256": "303ea5d112060a3d9ad26dd00c4cb3169000890b42c24252a921babe76e27e6f"
+  },
+  "lib/app/resources/vlc/libvlc.so.5": {
+    "bytes": 159952,
+    "sha256": "303ea5d112060a3d9ad26dd00c4cb3169000890b42c24252a921babe76e27e6f"
+  },
+  "lib/app/resources/vlc/libvlc.so.5.6.1": {
+    "bytes": 159952,
+    "sha256": "303ea5d112060a3d9ad26dd00c4cb3169000890b42c24252a921babe76e27e6f"
+  },
+  "lib/app/resources/vlc/libvlccore.so": {
+    "bytes": 1128656,
+    "sha256": "0076318940e7dcc22a04d218d874262aecc2032ac6ebc6ad3f82a149ab8f5e0e"
+  },
+  "lib/app/resources/vlc/libvlccore.so.9": {
+    "bytes": 1128656,
+    "sha256": "0076318940e7dcc22a04d218d874262aecc2032ac6ebc6ad3f82a149ab8f5e0e"
+  },
+  "lib/app/resources/vlc/libvlccore.so.9.0.1": {
+    "bytes": 1128656,
+    "sha256": "0076318940e7dcc22a04d218d874262aecc2032ac6ebc6ad3f82a149ab8f5e0e"
+  },
+  "lib/app/resources/vlc/libvncclient.so.1": {
+    "bytes": 173816,
+    "sha256": "a646679118f6a569900fd9f5fecb7b33922d0ca4f72e34617e4b78f1ffde5228"
+  },
+  "lib/app/resources/vlc/libvorbis.so.0": {
+    "bytes": 184016,
+    "sha256": "f945ef4b1564f088f92a1c30b42f15fdf084b8110daeb75b322f44d52159d0e9"
+  },
+  "lib/app/resources/vlc/libvorbisenc.so.2": {
+    "bytes": 697776,
+    "sha256": "6b899f5c18b2892b11a513ab0ec1cd4d1fecc76ceae4f0e5adf29d9875466cd6"
+  },
+  "lib/app/resources/vlc/libvorbisfile.so.3": {
+    "bytes": 43656,
+    "sha256": "d05e6a873db29088392998ea46ae1e468c05951dcc1c1633d64b7d566de4f16a"
+  },
+  "lib/app/resources/vlc/libvpx.so.7": {
+    "bytes": 3103336,
+    "sha256": "995e7f8f01fe0be0873e02dafb0f2a28aff7db94570d3134be6e275364418e15"
+  },
+  "lib/app/resources/vlc/libvulkan.so.1": {
+    "bytes": 466728,
+    "sha256": "618006de48e605d207869ba6460b68f17330148ba45f38bd559078ba3c750403"
+  },
+  "lib/app/resources/vlc/libwayland-cursor.so.0": {
+    "bytes": 38712,
+    "sha256": "4d7613dce304cac54fe61044a7eb9bbdeb007b4b7ff513f9c7b3a99d26ac10be"
+  },
+  "lib/app/resources/vlc/libwayland-egl.so.1": {
+    "bytes": 17672,
+    "sha256": "169edca3edde2c7d1381488bb2603b7a6f1869a3aee21b9adb690be23d39d5d1"
+  },
+  "lib/app/resources/vlc/libwayland-server.so.0": {
+    "bytes": 95256,
+    "sha256": "1a82ea8566370d13f870c2ab00d2b7c78814aab0cba690e2f25854c558531893"
+  },
+  "lib/app/resources/vlc/libwebp.so.7": {
+    "bytes": 457736,
+    "sha256": "63192a1b6e5d9f34dbf4d651ed6c5670134db3ced50941667b428f3eda6b8dbc"
+  },
+  "lib/app/resources/vlc/libwebpmux.so.3": {
+    "bytes": 47320,
+    "sha256": "a13de7b8048adcb326fe2d74fb686b70160e9619e03212fe85cd8b8303f33daf"
+  },
+  "lib/app/resources/vlc/libx264.so.164": {
+    "bytes": 1908040,
+    "sha256": "3f4ae839cb2e8786583a3c6e72414b0efe8477f26854e1f6c51152dc52c74468"
+  },
+  "lib/app/resources/vlc/libx265.so.199": {
+    "bytes": 16535176,
+    "sha256": "2afe32d12daa41cc13ada24070a85586df62bc1ef466b5e0419c017c4a92e570"
+  },
+  "lib/app/resources/vlc/libxcb-composite.so.0": {
+    "bytes": 18464,
+    "sha256": "25f0d40df182916663e9a8e2d2f456ddad3e643a0de450bbb78e1ca882f56b08"
+  },
+  "lib/app/resources/vlc/libxcb-keysyms.so.1": {
+    "bytes": 13904,
+    "sha256": "669ff9afd14f5b809e5be3ff1467b6044228d53cfea635dfe310b28cd97bf93a"
+  },
+  "lib/app/resources/vlc/libxcb-randr.so.0": {
+    "bytes": 82600,
+    "sha256": "0358ba2095addb71aec25d2b080ac59c36b50c79e40d65d4f5f114ca435d896f"
+  },
+  "lib/app/resources/vlc/libxcb-render.so.0": {
+    "bytes": 66776,
+    "sha256": "ec26db1a05e28a2f3ac82e4470b45b00a244fa630a6d65d75da1fa97db027bc0"
+  },
+  "lib/app/resources/vlc/libxcb-shm.so.0": {
+    "bytes": 18240,
+    "sha256": "531029abe45506cd9c2279f1514d0eb945f8701cde44d8c92a562087b8e0fd8a"
+  },
+  "lib/app/resources/vlc/libxcb-xv.so.0": {
+    "bytes": 41440,
+    "sha256": "ed92ea5b7fcd7a5a76dc15098834353de6df4661521012ba9fa1141bc71f32e6"
+  },
+  "lib/app/resources/vlc/libxkbcommon.so.0": {
+    "bytes": 286632,
+    "sha256": "6abed4bda171e8ab2199803810bbac321d62405e19df8f93b74e2748584e46cd"
+  },
+  "lib/app/resources/vlc/libxml2.so.2": {
+    "bytes": 1791496,
+    "sha256": "722fd7a1e0e47701520f6f3a5bea6db8220c0fe2adc6b750b03f4fb6cc0d4014"
+  },
+  "lib/app/resources/vlc/libxvidcore.so.4": {
+    "bytes": 694048,
+    "sha256": "efa39faba5178e048f4f12928e2c41212e9b1f5997b465d2fc62c9db5320716c"
+  },
+  "lib/app/resources/vlc/libzmq.so.5": {
+    "bytes": 786064,
+    "sha256": "1d50d3eb45583a8cb13a5d42cc5d45c4d9893bffaa58a21365e3e94aacd49b12"
+  },
+  "lib/app/resources/vlc/libzstd.so.1": {
+    "bytes": 771912,
+    "sha256": "19e5e2cf774ab18af43191a02d61a29ef9d66df4651c418525507578a9baa215"
+  },
+  "lib/app/resources/vlc/libzvbi.so.0": {
+    "bytes": 593128,
+    "sha256": "5ceba80e3608840d7dc8bb5de9505545f7b9b51e0d6a5a1ea8fdbb33044371dc"
+  },
+  "lib/app/resources/vlc/vlc/libvlc_pulse.so": {
+    "bytes": 55008,
+    "sha256": "cb43351a37b6da03afb0e6290a4ae89e182e1f4f58786e561514944da8ec9879"
+  },
+  "lib/app/resources/vlc/vlc/libvlc_pulse.so.0": {
+    "bytes": 55008,
+    "sha256": "cb43351a37b6da03afb0e6290a4ae89e182e1f4f58786e561514944da8ec9879"
+  },
+  "lib/app/resources/vlc/vlc/libvlc_pulse.so.0.0.0": {
+    "bytes": 55008,
+    "sha256": "cb43351a37b6da03afb0e6290a4ae89e182e1f4f58786e561514944da8ec9879"
+  },
+  "lib/app/resources/vlc/vlc/libvlc_vdpau.so": {
+    "bytes": 85056,
+    "sha256": "729e52dee480dcaf9330a819e3df0c771ba5ea530083f5abf0ee97d55ed7600f"
+  },
+  "lib/app/resources/vlc/vlc/libvlc_vdpau.so.0": {
+    "bytes": 85056,
+    "sha256": "729e52dee480dcaf9330a819e3df0c771ba5ea530083f5abf0ee97d55ed7600f"
+  },
+  "lib/app/resources/vlc/vlc/libvlc_vdpau.so.0.0.0": {
+    "bytes": 85056,
+    "sha256": "729e52dee480dcaf9330a819e3df0c771ba5ea530083f5abf0ee97d55ed7600f"
+  },
+  "lib/app/resources/vlc/vlc/libvlc_xcb_events.so": {
+    "bytes": 42064,
+    "sha256": "3a4e3f5c5176c151a2386c5f5fa5d0253e049f8c0029fdd3cc3c748d1d546950"
+  },
+  "lib/app/resources/vlc/vlc/libvlc_xcb_events.so.0": {
+    "bytes": 42064,
+    "sha256": "3a4e3f5c5176c151a2386c5f5fa5d0253e049f8c0029fdd3cc3c748d1d546950"
+  },
+  "lib/app/resources/vlc/vlc/libvlc_xcb_events.so.0.0.0": {
+    "bytes": 42064,
+    "sha256": "3a4e3f5c5176c151a2386c5f5fa5d0253e049f8c0029fdd3cc3c748d1d546950"
+  },
+  "lib/app/resources/vlc/vlc/plugins/access/libaccess_alsa_plugin.so": {
+    "bytes": 69032,
+    "sha256": "dbc1bde21fd8455744c42bb7058d199085a41e38b977d2b0ba5c9942c3c68c64"
+  },
+  "lib/app/resources/vlc/vlc/plugins/access/libaccess_concat_plugin.so": {
+    "bytes": 42728,
+    "sha256": "1f28129fc2b0e84e87deb24f8591f76dca72f63690bf4e0cb15933fc3ff4f3d4"
+  },
+  "lib/app/resources/vlc/vlc/plugins/access/libaccess_imem_plugin.so": {
+    "bytes": 67320,
+    "sha256": "579a4b018c4b90eb26fd4e2d65f69e0306b7dba0e71d878282a13ad595a0425d"
+  },
+  "lib/app/resources/vlc/vlc/plugins/access/libaccess_jack_plugin.so": {
+    "bytes": 72472,
+    "sha256": "06a2cb5437aede5b8e88820fa5a2b989ac122a8cbe9ce7b48da98bca45b83207"
+  },
+  "lib/app/resources/vlc/vlc/plugins/access/libaccess_mms_plugin.so": {
+    "bytes": 220256,
+    "sha256": "43135d153c1ef92c3c9b78d6b244dde2a029ef96f600aadcdfcd98fe1d8e06da"
+  },
+  "lib/app/resources/vlc/vlc/plugins/access/libaccess_mtp_plugin.so": {
+    "bytes": 46912,
+    "sha256": "11b4c73085843df6a74ff202ed7a3f7ec6dbe075c7d9d82db2d250fd042281fc"
+  },
+  "lib/app/resources/vlc/vlc/plugins/access/libaccess_srt_plugin.so": {
+    "bytes": 55760,
+    "sha256": "89c8c504a6d1fdb79ee6e992ab1bab58a35601342332f1568c89717880c1142e"
+  },
+  "lib/app/resources/vlc/vlc/plugins/access/libattachment_plugin.so": {
+    "bytes": 42224,
+    "sha256": "a74e38aa9754b9c7d0ac5410cb070af9b3a03218fd9d7a3782585bf196bd87c0"
+  },
+  "lib/app/resources/vlc/vlc/plugins/access/libavio_plugin.so": {
+    "bytes": 51360,
+    "sha256": "2b41618f43f180ae22b22feefcff0f4aacaaa61883fe3af190671ffe736e2c77"
+  },
+  "lib/app/resources/vlc/vlc/plugins/access/libcdda_plugin.so": {
+    "bytes": 230392,
+    "sha256": "5cac137522fdf73a66924640c2e28b435687f0eb16744e4a9d9664c53fb655a5"
+  },
+  "lib/app/resources/vlc/vlc/plugins/access/libdc1394_plugin.so": {
+    "bytes": 68040,
+    "sha256": "5aa4a341fb153740e93fe9ed6ef596c3f8c9e12a30c5c4568bd5b5972772428f"
+  },
+  "lib/app/resources/vlc/vlc/plugins/access/libdtv_plugin.so": {
+    "bytes": 313784,
+    "sha256": "5b5fa7c3321f20c249b42bb0403f8a9972fe157a6391980d5dec827b1cf8f1a3"
+  },
+  "lib/app/resources/vlc/vlc/plugins/access/libdv1394_plugin.so": {
+    "bytes": 60360,
+    "sha256": "e5d911239a700e5a0a28b302eca6891e53d3f1b6454af1f2776dc86c4605f4a4"
+  },
+  "lib/app/resources/vlc/vlc/plugins/access/libdvb_plugin.so": {
+    "bytes": 290472,
+    "sha256": "8badf1a2f084713e085ceb68f4e17ff4f70fb52eadacd3756c144cf1e25a5f4d"
+  },
+  "lib/app/resources/vlc/vlc/plugins/access/libdvdnav_plugin.so": {
+    "bytes": 176808,
+    "sha256": "725f83f52886a886e4939cb83549a39d47ec6949a92afc028cf7e50da34b551e"
+  },
+  "lib/app/resources/vlc/vlc/plugins/access/libdvdread_plugin.so": {
+    "bytes": 124912,
+    "sha256": "c83c6c42595fec6af53fa9b3a33afe4a8b29adabea264e56d7fbe7239f707785"
+  },
+  "lib/app/resources/vlc/vlc/plugins/access/libfilesystem_plugin.so": {
+    "bytes": 63784,
+    "sha256": "646487117f49f216712536d1319df3e8238c5b7810fde62a10911ffc9428c405"
+  },
+  "lib/app/resources/vlc/vlc/plugins/access/libftp_plugin.so": {
+    "bytes": 178984,
+    "sha256": "d98165906ce3c8b7d9da6cc7aa2ed48101fd215de69ef0d539b2484ad8d51307"
+  },
+  "lib/app/resources/vlc/vlc/plugins/access/libhttp_plugin.so": {
+    "bytes": 88968,
+    "sha256": "11708470f290d3d16084704f214e0fa70f24f72e759fc62f822cdf6496c3b33a"
+  },
+  "lib/app/resources/vlc/vlc/plugins/access/libhttps_plugin.so": {
+    "bytes": 356568,
+    "sha256": "fcfbd688a4dde0aa4063fb9694ca3a6e452e705d140db70a0d9c1b8a33e411b3"
+  },
+  "lib/app/resources/vlc/vlc/plugins/access/libidummy_plugin.so": {
+    "bytes": 38216,
+    "sha256": "3ca53ad40d45386160764584b3c84e02a7f4053ed9a10cb433bafcf6fb02d26d"
+  },
+  "lib/app/resources/vlc/vlc/plugins/access/libimem_plugin.so": {
+    "bytes": 29856,
+    "sha256": "b47ed3e7fad3dd8924f234d11e51a99cb2e628f95e94641bb5b31659c54acb29"
+  },
+  "lib/app/resources/vlc/vlc/plugins/access/liblibbluray_plugin.so": {
+    "bytes": 259072,
+    "sha256": "a2b4cd84d853c87b4a421989fec128202db70c41f85434f467f3f869e051c2e6"
+  },
+  "lib/app/resources/vlc/vlc/plugins/access/liblinsys_hdsdi_plugin.so": {
+    "bytes": 92088,
+    "sha256": "edbfd1b4659b37aaff42046252fb200322e61814f55716d20b0e37dd2888656e"
+  },
+  "lib/app/resources/vlc/vlc/plugins/access/liblinsys_sdi_plugin.so": {
+    "bytes": 117136,
+    "sha256": "52cdd7d8fd5b300d6e93ea100ea4a0129b100c15c5000b0a1ee33230e3f76fcb"
+  },
+  "lib/app/resources/vlc/vlc/plugins/access/libnfs_plugin.so": {
+    "bytes": 80728,
+    "sha256": "d31a20a9ba7a7ba194a3f779bda49b014633fc699887b607a153e1cd00a34e5f"
+  },
+  "lib/app/resources/vlc/vlc/plugins/access/libpulsesrc_plugin.so": {
+    "bytes": 63904,
+    "sha256": "4866aa4d3f3c93ca6a65b77b1206a3e979cb3d7ed50ce45a0d1a28c3e05e6aac"
+  },
+  "lib/app/resources/vlc/vlc/plugins/access/librist_plugin.so": {
+    "bytes": 121568,
+    "sha256": "3f3c0422a21f232f48720686d2303d18c16296d971e564a5cab84be43cbcbdca"
+  },
+  "lib/app/resources/vlc/vlc/plugins/access/librtp_plugin.so": {
+    "bytes": 191904,
+    "sha256": "914fc5d6b1ffc5b89cd91cf12196f165988b0cbdf3cd3123412ff1023e1796b0"
+  },
+  "lib/app/resources/vlc/vlc/plugins/access/libsatip_plugin.so": {
+    "bytes": 76848,
+    "sha256": "74e940fd5699f44a0f5b10107b56c0aa9689a29bc507d157088012c6052c7e89"
+  },
+  "lib/app/resources/vlc/vlc/plugins/access/libsdp_plugin.so": {
+    "bytes": 29856,
+    "sha256": "9f0022433b1b75f1dd433c49f3c586cded92c6677cbedc7a350c6c293e0b93e2"
+  },
+  "lib/app/resources/vlc/vlc/plugins/access/libsftp_plugin.so": {
+    "bytes": 69048,
+    "sha256": "453da34019bc9a4be985291d8a9814fab6204cbb23549f8f1cc7e720b9ef1ab6"
+  },
+  "lib/app/resources/vlc/vlc/plugins/access/libshm_plugin.so": {
+    "bytes": 50880,
+    "sha256": "13155150398d5070fe76770bb98025441a4bbc53a16d8d8f6f8def1a912eef10"
+  },
+  "lib/app/resources/vlc/vlc/plugins/access/libtcp_plugin.so": {
+    "bytes": 30016,
+    "sha256": "f611d3a82e726403d21cadd8d83471854ec3384b4026f5b706ecf8b8de6fd9f7"
+  },
+  "lib/app/resources/vlc/vlc/plugins/access/libtimecode_plugin.so": {
+    "bytes": 42528,
+    "sha256": "dd488ddf49dbfbb4bb5b1885fa047f28ecbf0c3c708f9f66d257526d361139b8"
+  },
+  "lib/app/resources/vlc/vlc/plugins/access/libudp_plugin.so": {
+    "bytes": 38376,
+    "sha256": "6dd17c4fb17a17c9d6b0e49fb881287cc4f22584d5f8dba2a4cce62c8c68d6ea"
+  },
+  "lib/app/resources/vlc/vlc/plugins/access/libv4l2_plugin.so": {
+    "bytes": 236648,
+    "sha256": "48558d40c25b37922aa0d43efa90c507d625fc88dd0558cf389a2edd34154fd0"
+  },
+  "lib/app/resources/vlc/vlc/plugins/access/libvcd_plugin.so": {
+    "bytes": 96464,
+    "sha256": "e34add989838015bfda423d5b6ee0ca671af1f5b1914b2c10f4ceb3767ca7cc9"
+  },
+  "lib/app/resources/vlc/vlc/plugins/access/libvdr_plugin.so": {
+    "bytes": 92856,
+    "sha256": "bf6f16ad366d77a0cf6be8de7baa6cb86e9a933418a6cd5b8a3dc925964d1d5d"
+  },
+  "lib/app/resources/vlc/vlc/plugins/access/libvnc_plugin.so": {
+    "bytes": 72128,
+    "sha256": "cbb3ec28cdb264190da7f25d6bbc636dadd2306f2bc6ff4460874e937407ba85"
+  },
+  "lib/app/resources/vlc/vlc/plugins/access/libxcb_screen_plugin.so": {
+    "bytes": 68776,
+    "sha256": "f5365899236ff42ec284c7bdd7acd99db93d8ab0ebde9a1d051f0c1776245cc1"
+  },
+  "lib/app/resources/vlc/vlc/plugins/access_output/libaccess_output_dummy_plugin.so": {
+    "bytes": 25632,
+    "sha256": "70f71968b3220a6321dca0925e566ee78f2b6fdc68aa89d5f225dda5b0f2b89b"
+  },
+  "lib/app/resources/vlc/vlc/plugins/access_output/libaccess_output_file_plugin.so": {
+    "bytes": 42784,
+    "sha256": "7aea19767c210909743e9d507374ff855f85747ed4da50c05e3a77a5cee98bd7"
+  },
+  "lib/app/resources/vlc/vlc/plugins/access_output/libaccess_output_http_plugin.so": {
+    "bytes": 55360,
+    "sha256": "767abec999aae6e460c566f42a5454bc98bf0e1245ddc55a5882c5d30e9c682a"
+  },
+  "lib/app/resources/vlc/vlc/plugins/access_output/libaccess_output_livehttp_plugin.so": {
+    "bytes": 88728,
+    "sha256": "0ff1937fb9d0f0ea564a66ae7c3eb5f6f0b949415931a9db7fb2801fdfa8fbe7"
+  },
+  "lib/app/resources/vlc/vlc/plugins/access_output/libaccess_output_rist_plugin.so": {
+    "bytes": 101360,
+    "sha256": "25d1f914fa70cfb60ee4c09b1b577ebb77edeb68375307097ad8c7b639ec2091"
+  },
+  "lib/app/resources/vlc/vlc/plugins/access_output/libaccess_output_shout_plugin.so": {
+    "bytes": 51536,
+    "sha256": "3fe1e8c5360ec65e3dd0d691b0b342fb9b3855f985cc2ab9452f3fac612d134b"
+  },
+  "lib/app/resources/vlc/vlc/plugins/access_output/libaccess_output_srt_plugin.so": {
+    "bytes": 63920,
+    "sha256": "c86da979cd4a022070a713fc807c189087052e38ed7026b1a7cd5dfbfb54f1f3"
+  },
+  "lib/app/resources/vlc/vlc/plugins/access_output/libaccess_output_udp_plugin.so": {
+    "bytes": 51576,
+    "sha256": "148be2650bb8bb44b5550645dd6d960a0a32241c7f11f176abe9d1ff3e2ecd2e"
+  },
+  "lib/app/resources/vlc/vlc/plugins/audio_filter/libaudio_format_plugin.so": {
+    "bytes": 78976,
+    "sha256": "d2365d8b029be374a5dbff1be9e9fb500cba330039afd251de8bf4d3f690a504"
+  },
+  "lib/app/resources/vlc/vlc/plugins/audio_filter/libaudiobargraph_a_plugin.so": {
+    "bytes": 46552,
+    "sha256": "173180ddb384e7868499de289b27118dc44380d84892a49ee6afd166f6836175"
+  },
+  "lib/app/resources/vlc/vlc/plugins/audio_filter/libchorus_flanger_plugin.so": {
+    "bytes": 58904,
+    "sha256": "87ff6d407684c6a2802864d7a420762d6fd9feefccad55908118159f6cd94cb6"
+  },
+  "lib/app/resources/vlc/vlc/plugins/audio_filter/libcompressor_plugin.so": {
+    "bytes": 71264,
+    "sha256": "2f0681234d965d37b266b4c3bc6c6f0103a694bf54335f2b6a6db1674c25e17d"
+  },
+  "lib/app/resources/vlc/vlc/plugins/audio_filter/libdolby_surround_decoder_plugin.so": {
+    "bytes": 38088,
+    "sha256": "ea36cc4ca0339204f707c86cf6155cb5b0c12c1658ec2b70e2a10e92b3d25253"
+  },
+  "lib/app/resources/vlc/vlc/plugins/audio_filter/libequalizer_plugin.so": {
+    "bytes": 71576,
+    "sha256": "9e09bba4d1387270a878798eb444232a47a55219bf28271c9ff8ad0d1d2ed8d1"
+  },
+  "lib/app/resources/vlc/vlc/plugins/audio_filter/libgain_plugin.so": {
+    "bytes": 34072,
+    "sha256": "fea337014e1ad9adb632176a168194053abd736022c00d329d4dda5f1889f136"
+  },
+  "lib/app/resources/vlc/vlc/plugins/audio_filter/libheadphone_channel_mixer_plugin.so": {
+    "bytes": 54656,
+    "sha256": "2e689b028ee7512b45c3468cb8d328feb0838712f52c483b933448c9ccdd0e04"
+  },
+  "lib/app/resources/vlc/vlc/plugins/audio_filter/libkaraoke_plugin.so": {
+    "bytes": 33920,
+    "sha256": "d685c9a6eb4a84026e72d8cf64fe3bcb6b1a04475df346793f9c3d7ca3f36a26"
+  },
+  "lib/app/resources/vlc/vlc/plugins/audio_filter/libmad_plugin.so": {
+    "bytes": 46744,
+    "sha256": "a8ad896f43303f1bf4c2e58082fa6cb534e13655fb74238176bf7ed7a5f5fa51"
+  },
+  "lib/app/resources/vlc/vlc/plugins/audio_filter/libmono_plugin.so": {
+    "bytes": 62800,
+    "sha256": "a5db256c307f1b1b84d28438f1baa3618ed39e4589e2d6d892116eeaa523cc0e"
+  },
+  "lib/app/resources/vlc/vlc/plugins/audio_filter/libnormvol_plugin.so": {
+    "bytes": 46376,
+    "sha256": "904d7581688708f19fc9003705456de11ef5d3cb171ce62b566b926b210b4ee7"
+  },
+  "lib/app/resources/vlc/vlc/plugins/audio_filter/libparam_eq_plugin.so": {
+    "bytes": 50456,
+    "sha256": "37d3ecd1fea555eaa9634ac3191ff36209ed29580a2ff90b7fc00fab7e83734d"
+  },
+  "lib/app/resources/vlc/vlc/plugins/audio_filter/libremap_plugin.so": {
+    "bytes": 58784,
+    "sha256": "6e2d83804113c4ea947e93a35c8ee5142dfc6cff44a2ed316fee83aaea72efdb"
+  },
+  "lib/app/resources/vlc/vlc/plugins/audio_filter/libsamplerate_plugin.so": {
+    "bytes": 38288,
+    "sha256": "389bba851fce50b9bd41e145a0fbc8fbd2ce311973d09dc0c2dba6f446b1cae3"
+  },
+  "lib/app/resources/vlc/vlc/plugins/audio_filter/libscaletempo_pitch_plugin.so": {
+    "bytes": 67352,
+    "sha256": "06d914dc5bfde187f48319457a18f092602cb67ef3ccd4783c699b596dc2a6d2"
+  },
+  "lib/app/resources/vlc/vlc/plugins/audio_filter/libscaletempo_plugin.so": {
+    "bytes": 58736,
+    "sha256": "d846031c095f97c465c89bb451d646f9f61b12c082019b04da818c22cedb42e7"
+  },
+  "lib/app/resources/vlc/vlc/plugins/audio_filter/libsimple_channel_mixer_plugin.so": {
+    "bytes": 58504,
+    "sha256": "3d57a085a2ceffa3397a61f8292e34dce2a88809df14fb6968193055f0ea763a"
+  },
+  "lib/app/resources/vlc/vlc/plugins/audio_filter/libsoxr_plugin.so": {
+    "bytes": 54864,
+    "sha256": "0a9cd25e02081af78be87a88e1b4d56be1ad4cac68d4cf8a6d6b832f72d73877"
+  },
+  "lib/app/resources/vlc/vlc/plugins/audio_filter/libspatialaudio_plugin.so": {
+    "bytes": 369784,
+    "sha256": "878c1824b833840862e90a6da6aeb3f354991552f2c0dcfa08e070a6f57932b9"
+  },
+  "lib/app/resources/vlc/vlc/plugins/audio_filter/libspatializer_plugin.so": {
+    "bytes": 87976,
+    "sha256": "5a314c918c00d240eb9a043b732b26b989a738322158d3d42830920d3d6ac0d4"
+  },
+  "lib/app/resources/vlc/vlc/plugins/audio_filter/libspeex_resampler_plugin.so": {
+    "bytes": 38408,
+    "sha256": "c6090fd080f2df69475f4126d948c88f4b5f11156164f325707964a95d380a73"
+  },
+  "lib/app/resources/vlc/vlc/plugins/audio_filter/libstereo_widen_plugin.so": {
+    "bytes": 42448,
+    "sha256": "8a372d12d1f063ff60f76f705d2c984b581fc833f55628b437b8fb798a2c0e54"
+  },
+  "lib/app/resources/vlc/vlc/plugins/audio_filter/libtospdif_plugin.so": {
+    "bytes": 99616,
+    "sha256": "ee3a77a3cfe235308b6201526c33c2f6dd8d700ce794f9cf9699bce690170729"
+  },
+  "lib/app/resources/vlc/vlc/plugins/audio_filter/libtrivial_channel_mixer_plugin.so": {
+    "bytes": 42224,
+    "sha256": "32967347cd545250ae6281069eaef651fd984d5701440b96cd2a2e46f5d32186"
+  },
+  "lib/app/resources/vlc/vlc/plugins/audio_filter/libugly_resampler_plugin.so": {
+    "bytes": 33976,
+    "sha256": "05aca3fefed856401e0f81e3233f1116521a01610926b38926d4bc21a40d9fc8"
+  },
+  "lib/app/resources/vlc/vlc/plugins/audio_mixer/libfloat_mixer_plugin.so": {
+    "bytes": 25624,
+    "sha256": "516a9e14a24510d3498041358e7b5cd03b8e5585602fca1c14721d76c6cbb3b4"
+  },
+  "lib/app/resources/vlc/vlc/plugins/audio_mixer/libinteger_mixer_plugin.so": {
+    "bytes": 29728,
+    "sha256": "6b3e6442f1fbc7207d5f3aaeae48f04f4c6655224a3e635935526cde8d121657"
+  },
+  "lib/app/resources/vlc/vlc/plugins/audio_output/libadummy_plugin.so": {
+    "bytes": 29720,
+    "sha256": "d536758b8af7bd7790d0e429b09ee3c5aaaa0da6e1cb798dc8edf9c884459f26"
+  },
+  "lib/app/resources/vlc/vlc/plugins/audio_output/libafile_plugin.so": {
+    "bytes": 38368,
+    "sha256": "cdd4e05bbb5e3c763c59136bf0595635eb5952e0fc4456d15c77d786a6a3866c"
+  },
+  "lib/app/resources/vlc/vlc/plugins/audio_output/libalsa_plugin.so": {
+    "bytes": 85856,
+    "sha256": "de8b28c0451de3a399a55882935080bfbc7d52dc2b41308db892dd5d2da57fd8"
+  },
+  "lib/app/resources/vlc/vlc/plugins/audio_output/libamem_plugin.so": {
+    "bytes": 38096,
+    "sha256": "b38b2212eefd4ea0e435b897c972da76146a78e9a5aca80441cf1dca2457a270"
+  },
+  "lib/app/resources/vlc/vlc/plugins/audio_output/libjack_plugin.so": {
+    "bytes": 51632,
+    "sha256": "370ee9cbce50dde63ae8793c3d3d4ef29548573673439f7fdb7e04b0a88ff2ae"
+  },
+  "lib/app/resources/vlc/vlc/plugins/audio_output/libpulse_plugin.so": {
+    "bytes": 98288,
+    "sha256": "2b1bf54c96de8cd958dc2fd0800f18326a462f481040e49d1448f5f7c6b5e8fb"
+  },
+  "lib/app/resources/vlc/vlc/plugins/audio_output/libsndio_plugin.so": {
+    "bytes": 34448,
+    "sha256": "f105d1b8f008c1a1891747f33718d242d4bfd9342d637a9b5a5c2d13db63a0ce"
+  },
+  "lib/app/resources/vlc/vlc/plugins/codec/libadpcm_plugin.so": {
+    "bytes": 54632,
+    "sha256": "0f779b8ef642bb94c1bf076201b663476ac6889ce15cc5c32dfc59e2df36a8e8"
+  },
+  "lib/app/resources/vlc/vlc/plugins/codec/libaes3_plugin.so": {
+    "bytes": 46408,
+    "sha256": "5cdb29318d2d66f13711d58f7c06df7ad7227fbef2d49f8bb145a67086cfd45b"
+  },
+  "lib/app/resources/vlc/vlc/plugins/codec/libaraw_plugin.so": {
+    "bytes": 136720,
+    "sha256": "aaad766bc605f7f0c7e4d86752d9fce3b616b5b2f11de1ca3480f34aa5b75899"
+  },
+  "lib/app/resources/vlc/vlc/plugins/codec/libaribsub_plugin.so": {
+    "bytes": 51456,
+    "sha256": "45651631c4db25781ac51a7352ecc5904649ab52214f4700fbb83494715be6f8"
+  },
+  "lib/app/resources/vlc/vlc/plugins/codec/libavcodec_plugin.so": {
+    "bytes": 509264,
+    "sha256": "bd622ad9699bf1bf88cd8e944c4dcd4355a9037bbf6224c0623e09876676d8e2"
+  },
+  "lib/app/resources/vlc/vlc/plugins/codec/libcc_plugin.so": {
+    "bytes": 202624,
+    "sha256": "60fabbf2b9dc97aa6586f79b2aa16322fe8d7a1ea2431e2530d46570aba868cd"
+  },
+  "lib/app/resources/vlc/vlc/plugins/codec/libcdg_plugin.so": {
+    "bytes": 62584,
+    "sha256": "7e79761fc0625f55414e88dcc5ac7ff59f4a9aea55109d5b80b0b19727c8b1d3"
+  },
+  "lib/app/resources/vlc/vlc/plugins/codec/libcvdsub_plugin.so": {
+    "bytes": 58760,
+    "sha256": "29fd79d30109dbdf309f2c74211ed441dcf87db6932e83c5ce50cabe9774f76f"
+  },
+  "lib/app/resources/vlc/vlc/plugins/codec/libdav1d_plugin.so": {
+    "bytes": 59032,
+    "sha256": "44267e3de88928c5dc96e368ece18f16ecebc78c7cfad11863730bbc1327b04c"
+  },
+  "lib/app/resources/vlc/vlc/plugins/codec/libddummy_plugin.so": {
+    "bytes": 42296,
+    "sha256": "3a962e4997d79ee8c9405bb8fed37fda2da6e7b451eb3887d94566b4c3a59170"
+  },
+  "lib/app/resources/vlc/vlc/plugins/codec/libdvbsub_plugin.so": {
+    "bytes": 300696,
+    "sha256": "859bf9d59d3ebc67767cfb8f4da0023986ba5573af6e95a4da680e2a73bfbe0e"
+  },
+  "lib/app/resources/vlc/vlc/plugins/codec/libedummy_plugin.so": {
+    "bytes": 33816,
+    "sha256": "4f53f5319a4e2a54ca7b5a82c45985f067da8dd6303e77cca2ba7040797de810"
+  },
+  "lib/app/resources/vlc/vlc/plugins/codec/libfaad_plugin.so": {
+    "bytes": 67536,
+    "sha256": "957bf2ba33e8b49a557466534d25cc1fb9793e8774124da5c72208b0d8979cd1"
+  },
+  "lib/app/resources/vlc/vlc/plugins/codec/libflac_plugin.so": {
+    "bytes": 84632,
+    "sha256": "bc70a815b7ab0250ff701c75b4c397f5340860f1dbaa82e021b57bb689f77c31"
+  },
+  "lib/app/resources/vlc/vlc/plugins/codec/libfluidsynth_plugin.so": {
+    "bytes": 55816,
+    "sha256": "f9d8fa2577b3238cf4581a3e36fe1d7440841a41edd4c2fa6d7962de20ae334b"
+  },
+  "lib/app/resources/vlc/vlc/plugins/codec/libg711_plugin.so": {
+    "bytes": 54680,
+    "sha256": "6fbb42cc190e0dd22f2b4c12ec808774b723158ac44c809dcae7f9b629986baa"
+  },
+  "lib/app/resources/vlc/vlc/plugins/codec/libjpeg_plugin.so": {
+    "bytes": 76104,
+    "sha256": "e3e9fc128fe3904f6039d5a450df1c4c5339080f2eb2373e5ef5fe6c7d0a9e92"
+  },
+  "lib/app/resources/vlc/vlc/plugins/codec/libkate_plugin.so": {
+    "bytes": 72128,
+    "sha256": "8caff854a29999868abffc51aad6426b14fabcbfb40a51abe5abeeabadc3caf5"
+  },
+  "lib/app/resources/vlc/vlc/plugins/codec/liblibass_plugin.so": {
+    "bytes": 84824,
+    "sha256": "6803c147e378312b9a1a6345923e4a45f72e23d85c441ee61c6b584c816ad32f"
+  },
+  "lib/app/resources/vlc/vlc/plugins/codec/liblpcm_plugin.so": {
+    "bytes": 75352,
+    "sha256": "cd324200535b19c36d85a2136618094feaf53e02ceec4e10b0d3ede182fc124e"
+  },
+  "lib/app/resources/vlc/vlc/plugins/codec/libmpg123_plugin.so": {
+    "bytes": 51328,
+    "sha256": "bc47b4ae3ae883c29f02d8a09865cdc0a72ca5d352afb3621980e1072c15de3b"
+  },
+  "lib/app/resources/vlc/vlc/plugins/codec/liboggspots_plugin.so": {
+    "bytes": 46456,
+    "sha256": "63a225967a8779e7df3e971572292531e769ae540c9302e2384b0b1dcc0138d9"
+  },
+  "lib/app/resources/vlc/vlc/plugins/codec/libopus_plugin.so": {
+    "bytes": 100800,
+    "sha256": "ad00b30ec8dcee6bb81306762c08a635cc12d4ca4db85b81f4568c136020623a"
+  },
+  "lib/app/resources/vlc/vlc/plugins/codec/libpng_plugin.so": {
+    "bytes": 55880,
+    "sha256": "8912a2d064bf8bb2cfd0ac21b0b8aa7fd7602fc7ca0125ed10f53b05d83749ed"
+  },
+  "lib/app/resources/vlc/vlc/plugins/codec/librawvideo_plugin.so": {
+    "bytes": 42408,
+    "sha256": "f80a11eb882f2d00c944746b9d6878b1aa80d07ccb85bd2a806796ceca5bc54d"
+  },
+  "lib/app/resources/vlc/vlc/plugins/codec/librtpvideo_plugin.so": {
+    "bytes": 33888,
+    "sha256": "1513410d2c7e7374f0f45f7cd61621e11ee549b6e57a73c0a5d6a2193c569205"
+  },
+  "lib/app/resources/vlc/vlc/plugins/codec/libscte18_plugin.so": {
+    "bytes": 63240,
+    "sha256": "c21c00c24b79a414f8d1493010d0a85f8c7799a6d85f8a2b080bc94c2cfa7733"
+  },
+  "lib/app/resources/vlc/vlc/plugins/codec/libscte27_plugin.so": {
+    "bytes": 87424,
+    "sha256": "891286951c19e7527e8bdf0b1d278f7d104105b39850cd0ac0808a261c08b901"
+  },
+  "lib/app/resources/vlc/vlc/plugins/codec/libsdl_image_plugin.so": {
+    "bytes": 46576,
+    "sha256": "193af307605f30cdad39568e08c967a0332b8bdf01525a085ef31438eb144421"
+  },
+  "lib/app/resources/vlc/vlc/plugins/codec/libshine_plugin.so": {
+    "bytes": 42888,
+    "sha256": "f4bafe8d53bb5d294a28972dcd5adcd86b87c8ea8873092c84fc85af33a559a5"
+  },
+  "lib/app/resources/vlc/vlc/plugins/codec/libspdif_plugin.so": {
+    "bytes": 33816,
+    "sha256": "9a1f32f19c728578675fd1008dea0d98b56fcf43dd0f54f47945a7d371efd4f1"
+  },
+  "lib/app/resources/vlc/vlc/plugins/codec/libspeex_plugin.so": {
+    "bytes": 89080,
+    "sha256": "8142bd02681bffa4b724ca25b506f1827cb0cd3931dc77549088fef8f088a7a6"
+  },
+  "lib/app/resources/vlc/vlc/plugins/codec/libspudec_plugin.so": {
+    "bytes": 87552,
+    "sha256": "7ffd73fedf690b15563b6483f12efc0e28f5cad94634eb3fb751203ec094af71"
+  },
+  "lib/app/resources/vlc/vlc/plugins/codec/libstl_plugin.so": {
+    "bytes": 58976,
+    "sha256": "c7e6ff1b623256c84191d89bbf5e6157ad83160be154968b251e145472bac2ac"
+  },
+  "lib/app/resources/vlc/vlc/plugins/codec/libsubsdec_plugin.so": {
+    "bytes": 104864,
+    "sha256": "e20410d66911cb5cb24ddffb33bd089123003feb38048e8566291e49e37e82ec"
+  },
+  "lib/app/resources/vlc/vlc/plugins/codec/libsubstx3g_plugin.so": {
+    "bytes": 63120,
+    "sha256": "d622c71dcbbfa711c4c4cc15080968d37e1e0e36753df471e403fe4290f0f74a"
+  },
+  "lib/app/resources/vlc/vlc/plugins/codec/libsubsusf_plugin.so": {
+    "bytes": 96936,
+    "sha256": "c4eac99d343499e98cb7538d7a61bf48455a34973b634dd615299c9d2db59d5e"
+  },
+  "lib/app/resources/vlc/vlc/plugins/codec/libsvcdsub_plugin.so": {
+    "bytes": 58728,
+    "sha256": "fae169cc24d298f2328051187c56d21b6c8fabab476009a477af3ee5cca7bab4"
+  },
+  "lib/app/resources/vlc/vlc/plugins/codec/libsvgdec_plugin.so": {
+    "bytes": 46872,
+    "sha256": "b188373fd4c7d77f674464b229361f1dd51e653d703c0f703b879980693c7b73"
+  },
+  "lib/app/resources/vlc/vlc/plugins/codec/libt140_plugin.so": {
+    "bytes": 34024,
+    "sha256": "082aa448a9d909730b9810c84595106f2ad7d46689356a075a983e54d0423c5c"
+  },
+  "lib/app/resources/vlc/vlc/plugins/codec/libtelx_plugin.so": {
+    "bytes": 58944,
+    "sha256": "e90cc0328b2562d170d59254bc3dc42ed3275d3451558830bfa17e617b69de48"
+  },
+  "lib/app/resources/vlc/vlc/plugins/codec/libtextst_plugin.so": {
+    "bytes": 54840,
+    "sha256": "5bd7ebe7411d4a410d6e1ca8b0969ddd5a8a6fe98a347f51deebf3c1a1c257dd"
+  },
+  "lib/app/resources/vlc/vlc/plugins/codec/libtheora_plugin.so": {
+    "bytes": 84328,
+    "sha256": "231856d028ccf4413a7cc79dd8abc62e5b3e455fa475da0bd01fd3742e32f1f3"
+  },
+  "lib/app/resources/vlc/vlc/plugins/codec/libttml_plugin.so": {
+    "bytes": 203712,
+    "sha256": "bf74add94d0a71ed75573e3c3ae81d9f11dbff2c64bbb907ae64eb49f8176e20"
+  },
+  "lib/app/resources/vlc/vlc/plugins/codec/libtwolame_plugin.so": {
+    "bytes": 47000,
+    "sha256": "2365e3a3bfbaa8cfaa201704f28aa3ab6bc11d0b9db718d968499c3b0d0e54fb"
+  },
+  "lib/app/resources/vlc/vlc/plugins/codec/libuleaddvaudio_plugin.so": {
+    "bytes": 42288,
+    "sha256": "32565aa2afb501fdda9b92b1da4ccdd0d65ea4f8952cbc2523d17c421e6cb64c"
+  },
+  "lib/app/resources/vlc/vlc/plugins/codec/libvaapi_drm_plugin.so": {
+    "bytes": 138152,
+    "sha256": "ea1c7da659a4828258d510a1d214b326320628261c9ce9cc7e8e5b7a7dacd214"
+  },
+  "lib/app/resources/vlc/vlc/plugins/codec/libvaapi_plugin.so": {
+    "bytes": 138160,
+    "sha256": "1e97cf95e245c8c0e9d8246fe24acb299a6ccc3728f73394e58e9c0d0c619bcc"
+  },
+  "lib/app/resources/vlc/vlc/plugins/codec/libvorbis_plugin.so": {
+    "bytes": 97320,
+    "sha256": "ebc932d7f4805891d94f86dc4aa4826e0d0b47d1f739d550acde6edb8f6015f3"
+  },
+  "lib/app/resources/vlc/vlc/plugins/codec/libwebvtt_plugin.so": {
+    "bytes": 429312,
+    "sha256": "46ab59cd3d42f7d847fee248ee6194586909b2115d498ab690a5c46b51f5f011"
+  },
+  "lib/app/resources/vlc/vlc/plugins/codec/libx26410b_plugin.so": {
+    "bytes": 137296,
+    "sha256": "59b66454fa9e711096a3b174d2d007f79a4715bfcb825f1fc593e6ead9c1004e"
+  },
+  "lib/app/resources/vlc/vlc/plugins/codec/libx264_plugin.so": {
+    "bytes": 137296,
+    "sha256": "b1185f0f9b838ef839fae949f532b34abc19facfa97541abf65909ecdaddc290"
+  },
+  "lib/app/resources/vlc/vlc/plugins/codec/libx265_plugin.so": {
+    "bytes": 54832,
+    "sha256": "7be5b13b558495dafb20ab88ffcf956f78352d592401a05586c608d01fa47ee6"
+  },
+  "lib/app/resources/vlc/vlc/plugins/codec/libxwd_plugin.so": {
+    "bytes": 38064,
+    "sha256": "c3bff5a9a1891ead04b7475955012e952397296763afbbf5834568a404eadcf6"
+  },
+  "lib/app/resources/vlc/vlc/plugins/codec/libzvbi_plugin.so": {
+    "bytes": 92656,
+    "sha256": "a0fa637e9fd6f9011a510eff1dd8c28ffe5e40767a16f98b4cf6559b159b4cc5"
+  },
+  "lib/app/resources/vlc/vlc/plugins/control/libdbus_plugin.so": {
+    "bytes": 329568,
+    "sha256": "2391bb7efe9a314592b62e75bc430ac59b63081eff2538439e7d54eaa3c211f2"
+  },
+  "lib/app/resources/vlc/vlc/plugins/control/libdummy_plugin.so": {
+    "bytes": 25688,
+    "sha256": "eeb73ff51261989c16170157e6f134a80c1adba07de643750d38bcec9edbaae8"
+  },
+  "lib/app/resources/vlc/vlc/plugins/control/libgestures_plugin.so": {
+    "bytes": 63480,
+    "sha256": "2ff94909c565c80830a934aa567f8174980eec44b9ffeeb98a1cba68b88f39df"
+  },
+  "lib/app/resources/vlc/vlc/plugins/control/libhotkeys_plugin.so": {
+    "bytes": 134104,
+    "sha256": "817dcd6e181f1dcd67b884a99c24e061e37934d9299706f449febd5c7d6894af"
+  },
+  "lib/app/resources/vlc/vlc/plugins/control/libmotion_plugin.so": {
+    "bytes": 50920,
+    "sha256": "065628926596f1fa11e8bb438fe9a5d20ce9c94594669ffa2e4f816a9c233398"
+  },
+  "lib/app/resources/vlc/vlc/plugins/control/libnetsync_plugin.so": {
+    "bytes": 55080,
+    "sha256": "0b13228d302b65dcfe3b408fd6d5abcfaff7926961ffc5eea184cf192a05db6e"
+  },
+  "lib/app/resources/vlc/vlc/plugins/control/liboldrc_plugin.so": {
+    "bytes": 160000,
+    "sha256": "71471777c472aa9abfd745a60838b19158aa4d98f0020a0570349dc0b8220fdc"
+  },
+  "lib/app/resources/vlc/vlc/plugins/control/libxcb_hotkeys_plugin.so": {
+    "bytes": 43304,
+    "sha256": "ee434e0e3a30e618eba559f376d53256b702ad168880145d8f6ba3cfe621f1f2"
+  },
+  "lib/app/resources/vlc/vlc/plugins/demux/libadaptive_plugin.so": {
+    "bytes": 13477696,
+    "sha256": "2d70bd755af729ce1e286df3ffa4e7e1f0784d778e636fdf51878c1b7421a0fb"
+  },
+  "lib/app/resources/vlc/vlc/plugins/demux/libaiff_plugin.so": {
+    "bytes": 46512,
+    "sha256": "681e8a47c4072c02a46db9c8a63f9a1557c3dd18183235753271c59b76959011"
+  },
+  "lib/app/resources/vlc/vlc/plugins/demux/libasf_plugin.so": {
+    "bytes": 354608,
+    "sha256": "f54e9bc8663b4b0d88a0a4e07b487b2aa97866a620f4f4ad2682b76ab4feecab"
+  },
+  "lib/app/resources/vlc/vlc/plugins/demux/libau_plugin.so": {
+    "bytes": 42336,
+    "sha256": "dc71e900d5f20547980e82a94e154e99f3c90c0cdffeae414fe129e758a12e24"
+  },
+  "lib/app/resources/vlc/vlc/plugins/demux/libavformat_plugin.so": {
+    "bytes": 241936,
+    "sha256": "b4c76097242f9a6c20bdf65b340005e34ae61ffb5215417d13d8c18989ac4c52"
+  },
+  "lib/app/resources/vlc/vlc/plugins/demux/libavi_plugin.so": {
+    "bytes": 330520,
+    "sha256": "69559940590af0e8c55986672772e4a634fe0da85022bef1cfa11e7614469844"
+  },
+  "lib/app/resources/vlc/vlc/plugins/demux/libcaf_plugin.so": {
+    "bytes": 79400,
+    "sha256": "f87bd543ddf3df7552ec29893877454ec44e7a4ccacb98058e6bda9b6b2a19ff"
+  },
+  "lib/app/resources/vlc/vlc/plugins/demux/libdemux_cdg_plugin.so": {
+    "bytes": 42536,
+    "sha256": "c8683fccb969f1a305cfe8f9d8ab6ff815bd408a9d2568c8996603e0cffbcc39"
+  },
+  "lib/app/resources/vlc/vlc/plugins/demux/libdemux_chromecast_plugin.so": {
+    "bytes": 79712,
+    "sha256": "c05b362db4a6b9fd584b6a0f4152e1db7d290dd45890a23f550fc657c1be0ed8"
+  },
+  "lib/app/resources/vlc/vlc/plugins/demux/libdemux_stl_plugin.so": {
+    "bytes": 50792,
+    "sha256": "6a48ee6ac4d32150f2307ca9dffb942e925c11bda4cbf07d8a3def7f8faf4b67"
+  },
+  "lib/app/resources/vlc/vlc/plugins/demux/libdemuxdump_plugin.so": {
+    "bytes": 38368,
+    "sha256": "1cb76ee436ae9dd99ed0a289e78560cc644c1aa0fe91e528d3cde80b91168013"
+  },
+  "lib/app/resources/vlc/vlc/plugins/demux/libdiracsys_plugin.so": {
+    "bytes": 46600,
+    "sha256": "f5d61c04ccabc8fb966b214d534face3f8c341d91cdb5d9ddcd26d8266ac992e"
+  },
+  "lib/app/resources/vlc/vlc/plugins/demux/libdirectory_demux_plugin.so": {
+    "bytes": 42296,
+    "sha256": "a9e4ea756cb730355a7139bfca71f3be2fa12e1065ba5433f2fc4ed95a058f77"
+  },
+  "lib/app/resources/vlc/vlc/plugins/demux/libdmxmus_plugin.so": {
+    "bytes": 50680,
+    "sha256": "f424d2aa761d26c2741a1cc7eec1bdc9f92bbd52d7b0476487483d095b9604e5"
+  },
+  "lib/app/resources/vlc/vlc/plugins/demux/libes_plugin.so": {
+    "bytes": 170184,
+    "sha256": "88e34145e5573f0db00e5b78cec00cb346a94021efeed20b86987ec53b4205c2"
+  },
+  "lib/app/resources/vlc/vlc/plugins/demux/libflacsys_plugin.so": {
+    "bytes": 150040,
+    "sha256": "001541b86b0c9710b739440ba6ddcbd4ad7d9f7bec5a832655166d4938fa2428"
+  },
+  "lib/app/resources/vlc/vlc/plugins/demux/libh26x_plugin.so": {
+    "bytes": 489440,
+    "sha256": "9abf273ab33321faa014af359c24526a9e114f13177607972ad3ad8f472448f3"
+  },
+  "lib/app/resources/vlc/vlc/plugins/demux/libimage_plugin.so": {
+    "bytes": 84024,
+    "sha256": "35ee1719c96f98710b14e5d0fa573ebe316bb71d7fcba111e9a53db90f545e3e"
+  },
+  "lib/app/resources/vlc/vlc/plugins/demux/libmjpeg_plugin.so": {
+    "bytes": 55056,
+    "sha256": "256b56df0843bc598394a366ed834a3848558c3e7c37bd53f662e09d35e8b43d"
+  },
+  "lib/app/resources/vlc/vlc/plugins/demux/libmkv_plugin.so": {
+    "bytes": 6225536,
+    "sha256": "79e18b770f2e06383a365443115d2b80d45c87d003090a58928d8b88ad56c4a0"
+  },
+  "lib/app/resources/vlc/vlc/plugins/demux/libmod_plugin.so": {
+    "bytes": 72320,
+    "sha256": "a7880fc909e05bd200d7761fad0ae7d79ea735d85fe86f0656dd31730cfdbdd4"
+  },
+  "lib/app/resources/vlc/vlc/plugins/demux/libmp4_plugin.so": {
+    "bytes": 1150680,
+    "sha256": "4c42e1c0aaaf31d00c47f991664c8e05219e792ea6dede5a2fc5da4f54293826"
+  },
+  "lib/app/resources/vlc/vlc/plugins/demux/libmpc_plugin.so": {
+    "bytes": 50936,
+    "sha256": "229ebbef258bcbb68f57cddc41bcb23f4a6a4a633a1753c88d427820e4e47422"
+  },
+  "lib/app/resources/vlc/vlc/plugins/demux/libmpgv_plugin.so": {
+    "bytes": 42384,
+    "sha256": "1efe4e60620395e34a1f012affa876dd39d6b55f7dcd3355dfae822c1e10c03d"
+  },
+  "lib/app/resources/vlc/vlc/plugins/demux/libnoseek_plugin.so": {
+    "bytes": 33888,
+    "sha256": "d0c2dc0e8a2292d309eeba9d2602ee41c63cdcd21d08b2de9b87ae0df86d12e2"
+  },
+  "lib/app/resources/vlc/vlc/plugins/demux/libnsc_plugin.so": {
+    "bytes": 42488,
+    "sha256": "191ae9941bc5a8b55eb71a9dc39966bf2c2a313fb1a93968c8567c9ab07b8d4f"
+  },
+  "lib/app/resources/vlc/vlc/plugins/demux/libnsv_plugin.so": {
+    "bytes": 54704,
+    "sha256": "2039e2573079a26d5ac062ded46899999f0e546d555e77dcf756f1d536a15d50"
+  },
+  "lib/app/resources/vlc/vlc/plugins/demux/libnuv_plugin.so": {
+    "bytes": 71216,
+    "sha256": "53ce4b902db877638251260f3eb724b57d4e05affe2672989e15fd99c3522b7b"
+  },
+  "lib/app/resources/vlc/vlc/plugins/demux/libogg_plugin.so": {
+    "bytes": 372600,
+    "sha256": "3b9f6ffb83be2458685a99ae228b65de66dedab9dfeb8c7c7c7433e70f029198"
+  },
+  "lib/app/resources/vlc/vlc/plugins/demux/libplaylist_plugin.so": {
+    "bytes": 442248,
+    "sha256": "b5a458e8121d2552d36a70742c052e3567a959dc8788919a10d1a4c988b0c2b3"
+  },
+  "lib/app/resources/vlc/vlc/plugins/demux/libps_plugin.so": {
+    "bytes": 128712,
+    "sha256": "11a814e2610f9413fb14f66d9eb408f3fe77b655f8521a0f950b6b34932a2f08"
+  },
+  "lib/app/resources/vlc/vlc/plugins/demux/libpva_plugin.so": {
+    "bytes": 58904,
+    "sha256": "4816841eb41f124e1051c652719b47ad196d89d86cf1bb014b3556503e63cd5b"
+  },
+  "lib/app/resources/vlc/vlc/plugins/demux/librawaud_plugin.so": {
+    "bytes": 42560,
+    "sha256": "e466d7195a0ab47d84c4761aa1ac38c263e69e2d8f337a1beea231b33481c0d9"
+  },
+  "lib/app/resources/vlc/vlc/plugins/demux/librawdv_plugin.so": {
+    "bytes": 46632,
+    "sha256": "69ed21d35e30204a2cc022df7a807d70e7aa12ea55fb4e09884496bcc39b2da8"
+  },
+  "lib/app/resources/vlc/vlc/plugins/demux/librawvid_plugin.so": {
+    "bytes": 55288,
+    "sha256": "d5598c1545266b72f98f2afab79c075d12172eb4af76d8f78af8a477b06fdcab"
+  },
+  "lib/app/resources/vlc/vlc/plugins/demux/libreal_plugin.so": {
+    "bytes": 153312,
+    "sha256": "0e4da7cadfb5d9d8d1a5339660fa300ecf067f4f2c0521d0a809981f8cb8af15"
+  },
+  "lib/app/resources/vlc/vlc/plugins/demux/libsid_plugin.so": {
+    "bytes": 80568,
+    "sha256": "b0045fecf47cf070aa595600c9892223e73763b6712ae06d51a2d67b003387f9"
+  },
+  "lib/app/resources/vlc/vlc/plugins/demux/libsmf_plugin.so": {
+    "bytes": 63176,
+    "sha256": "71f26ab40786828412c0104f448e8accd00379fc85b9fc1ee170abed548866f1"
+  },
+  "lib/app/resources/vlc/vlc/plugins/demux/libsubtitle_plugin.so": {
+    "bytes": 145944,
+    "sha256": "613f1622db7e033555a6f7cb89777573db887d8ce346c728b86c993c14f6a45b"
+  },
+  "lib/app/resources/vlc/vlc/plugins/demux/libts_plugin.so": {
+    "bytes": 1121136,
+    "sha256": "e4e49c83f5b4130d772a260dafb0666ff9bdf4ca85ec176856150041bffe15d4"
+  },
+  "lib/app/resources/vlc/vlc/plugins/demux/libtta_plugin.so": {
+    "bytes": 46624,
+    "sha256": "2775ff99c2a3ed26022c0784c52097ba4d90681daaf218274dcbee1dea66384b"
+  },
+  "lib/app/resources/vlc/vlc/plugins/demux/libty_plugin.so": {
+    "bytes": 125080,
+    "sha256": "036455a11f354dfcf46dfdab2088ece095fd984b51bfc5ab65c727e86c5f53ee"
+  },
+  "lib/app/resources/vlc/vlc/plugins/demux/libvc1_plugin.so": {
+    "bytes": 42456,
+    "sha256": "75db82fe70b319eeda5a3226dcc6218a18fd88b3cda4c8334dbabe10a2e74d69"
+  },
+  "lib/app/resources/vlc/vlc/plugins/demux/libvobsub_plugin.so": {
+    "bytes": 71544,
+    "sha256": "271761c12ddc2fbfbcad71d8259d60423c638c346abaffdd9fbd01d131088b14"
+  },
+  "lib/app/resources/vlc/vlc/plugins/demux/libvoc_plugin.so": {
+    "bytes": 50816,
+    "sha256": "afc451857d11fe716c3147142523a21630c5302e5145cf8afcb172ea5a855629"
+  },
+  "lib/app/resources/vlc/vlc/plugins/demux/libwav_plugin.so": {
+    "bytes": 71456,
+    "sha256": "1c519a00564610b499292346d1625c974ad05816f842460844008e4a73babdd8"
+  },
+  "lib/app/resources/vlc/vlc/plugins/demux/libxa_plugin.so": {
+    "bytes": 42512,
+    "sha256": "b2f2726c0cfcd702ec39c937e2337999502936aadd1ebd65b792554b480e7e23"
+  },
+  "lib/app/resources/vlc/vlc/plugins/gui/libncurses_plugin.so": {
+    "bytes": 185744,
+    "sha256": "8c849bc4b5c89d840a67d3e70d18486c03decce265800ecc9ac2dc423768378b"
+  },
+  "lib/app/resources/vlc/vlc/plugins/gui/libqt_plugin.so": {
+    "bytes": 57471040,
+    "sha256": "4d4b8f5a3fba3f8ec8fb93996ec66738ba517fec3ab56ebebd1e43dc5d68e307"
+  },
+  "lib/app/resources/vlc/vlc/plugins/gui/libskins2_plugin.so": {
+    "bytes": 19486800,
+    "sha256": "bb2fee6ece48326419c40f239d0bb2ae1ca2b6bf0cd96d206f49286f9d431c71"
+  },
+  "lib/app/resources/vlc/vlc/plugins/keystore/libfile_keystore_plugin.so": {
+    "bytes": 55256,
+    "sha256": "3d3eb3148890b3713bb0f4fab97fe60eb3e6b56ce25e825a2069e66c7e28b3f7"
+  },
+  "lib/app/resources/vlc/vlc/plugins/keystore/libkwallet_plugin.so": {
+    "bytes": 97672,
+    "sha256": "aaf97f030c6710f953e7d640704ddd700709cc47c9e0888baf6de3762c504d42"
+  },
+  "lib/app/resources/vlc/vlc/plugins/keystore/libmemory_keystore_plugin.so": {
+    "bytes": 34296,
+    "sha256": "d95715a210985ccb68708389fdb07a71260046874457edc4ab32d464a9638ef8"
+  },
+  "lib/app/resources/vlc/vlc/plugins/keystore/libsecret_plugin.so": {
+    "bytes": 47744,
+    "sha256": "32b831797a247426c63283017c4207c2903329dc36d27376d84a094669ed18bc"
+  },
+  "lib/app/resources/vlc/vlc/plugins/logger/libconsole_logger_plugin.so": {
+    "bytes": 34240,
+    "sha256": "56610f3564c05fa8a05d025a4e0d38a903a563e75ca9d5215e2616dff41f3c1b"
+  },
+  "lib/app/resources/vlc/vlc/plugins/logger/libfile_logger_plugin.so": {
+    "bytes": 34440,
+    "sha256": "04e9dcee6803789d02903f82f40bba7d2bebee792cd270c51ff4e88d70fc1d50"
+  },
+  "lib/app/resources/vlc/vlc/plugins/logger/libsd_journal_plugin.so": {
+    "bytes": 25872,
+    "sha256": "889137cb706870f41f0d058c01ae2cad2c413d480d55247693f5d8f62ca0ec7e"
+  },
+  "lib/app/resources/vlc/vlc/plugins/logger/libsyslog_plugin.so": {
+    "bytes": 34160,
+    "sha256": "42536277339c156e63a7397aeae4e464c7348e0f035a945a29dfc191607bc9b8"
+  },
+  "lib/app/resources/vlc/vlc/plugins/lua/liblua_plugin.so": {
+    "bytes": 810720,
+    "sha256": "605a2db2bb21d988b9a133fd8a11e87c559d8a241c1a9b9c5f01f51fe2dd8eb9"
+  },
+  "lib/app/resources/vlc/vlc/plugins/meta_engine/libfolder_plugin.so": {
+    "bytes": 34216,
+    "sha256": "88682a3c71d11df9d0e66f598a4597c75e780a3a93260b1dd2ad037beef44993"
+  },
+  "lib/app/resources/vlc/vlc/plugins/meta_engine/libtaglib_plugin.so": {
+    "bytes": 1023936,
+    "sha256": "486a6bd30db9f21d796df3523f4ffdd4927ffb040e9b55709be546d61dda35c2"
+  },
+  "lib/app/resources/vlc/vlc/plugins/misc/libaddonsfsstorage_plugin.so": {
+    "bytes": 84680,
+    "sha256": "1790ef595d9b78cfff3b389967cd1a1f36033b18b7badf9f1b0a498c7ff7cfef"
+  },
+  "lib/app/resources/vlc/vlc/plugins/misc/libaddonsvorepository_plugin.so": {
+    "bytes": 55408,
+    "sha256": "3f6817eda8a192512946f4aa8a374c5194b381570d4d3605b709e0a5f32eb749"
+  },
+  "lib/app/resources/vlc/vlc/plugins/misc/libaudioscrobbler_plugin.so": {
+    "bytes": 85240,
+    "sha256": "4c978ac0ed522f43e0ec049ed72ec4bcde9f868e2f107d01cfbce442f95ea44d"
+  },
+  "lib/app/resources/vlc/vlc/plugins/misc/libdbus_screensaver_plugin.so": {
+    "bytes": 30728,
+    "sha256": "cff7bcc67c748e87ac0256ac2bb1c99f03c03a6a90ed93301c6ed9333e23b1dd"
+  },
+  "lib/app/resources/vlc/vlc/plugins/misc/libexport_plugin.so": {
+    "bytes": 100040,
+    "sha256": "2a3ea5150fa89311ff4ade533f60207e36ac52677fe43e765fc1109560853d60"
+  },
+  "lib/app/resources/vlc/vlc/plugins/misc/libfingerprinter_plugin.so": {
+    "bytes": 122048,
+    "sha256": "897c6ab9a80fca44956e3c06ed92ccb23380bdfb732916050c3adae2c43bdf95"
+  },
+  "lib/app/resources/vlc/vlc/plugins/misc/libgnutls_plugin.so": {
+    "bytes": 81680,
+    "sha256": "d178d61edd31b4b54e8c07234e9cec73eedcfeae513b58f7e4c50d1bf697f47a"
+  },
+  "lib/app/resources/vlc/vlc/plugins/misc/liblogger_plugin.so": {
+    "bytes": 25720,
+    "sha256": "375aa4ab2737f4ddb07db85a849a586134f1c7411875c145a5e5ba04284f3699"
+  },
+  "lib/app/resources/vlc/vlc/plugins/misc/libstats_plugin.so": {
+    "bytes": 46520,
+    "sha256": "d47dcac0b720356fc9da455ef354d49a0fbff03f02c075101fc01f0ecd6efdd2"
+  },
+  "lib/app/resources/vlc/vlc/plugins/misc/libvod_rtsp_plugin.so": {
+    "bytes": 134312,
+    "sha256": "119c0796faf20af266e59918492d0295b329bdc03592ba4b2e3c8fe817b90ad1"
+  },
+  "lib/app/resources/vlc/vlc/plugins/misc/libxdg_screensaver_plugin.so": {
+    "bytes": 30472,
+    "sha256": "2826d50b19ae24a67150fa2f9c5d62a19408bb55cf0fa098be3813d1e098e280"
+  },
+  "lib/app/resources/vlc/vlc/plugins/misc/libxml_plugin.so": {
+    "bytes": 39016,
+    "sha256": "58fe70ee56e0e38c272e7a938b4653cb32e21f38b7939fc6ac21e49d9827d7fd"
+  },
+  "lib/app/resources/vlc/vlc/plugins/mux/libmux_asf_plugin.so": {
+    "bytes": 194456,
+    "sha256": "766423e418c4336b3b6fe8a15a3cb0b1b194f58166d6c02eba43550e0487cf83"
+  },
+  "lib/app/resources/vlc/vlc/plugins/mux/libmux_avi_plugin.so": {
+    "bytes": 145040,
+    "sha256": "b0d45a169287de8c5eae767a8d4fd2befe24ce1f4b3c593db19339549a999968"
+  },
+  "lib/app/resources/vlc/vlc/plugins/mux/libmux_dummy_plugin.so": {
+    "bytes": 38240,
+    "sha256": "aa6bd367e429fc2ae246b5c85a3cb7febfa07d6f87ba8b55db2d8da2007799f2"
+  },
+  "lib/app/resources/vlc/vlc/plugins/mux/libmux_mp4_plugin.so": {
+    "bytes": 1312808,
+    "sha256": "bce259debe98e0d8e667daedeba10f7d5da2c55d2a611e59f3ce8a7c9a998862"
+  },
+  "lib/app/resources/vlc/vlc/plugins/mux/libmux_mpjpeg_plugin.so": {
+    "bytes": 38216,
+    "sha256": "f00b0b679cfcd58e26942c63faa610e9f4868e32d081572af2e863ace7482289"
+  },
+  "lib/app/resources/vlc/vlc/plugins/mux/libmux_ogg_plugin.so": {
+    "bytes": 129336,
+    "sha256": "37f3713580e0277b219b8f7c5f9be8ec12802a35a5caf8fc4a10b3addbd963df"
+  },
+  "lib/app/resources/vlc/vlc/plugins/mux/libmux_ps_plugin.so": {
+    "bytes": 272048,
+    "sha256": "b72624bfe746a845f21e4d211657278c8daec07e3b7bad240c3b45ee337509ea"
+  },
+  "lib/app/resources/vlc/vlc/plugins/mux/libmux_ts_plugin.so": {
+    "bytes": 548184,
+    "sha256": "9d209e8be82ad5464c1d05d044e0f09a3e8ee3607d2b1937943d3a78cd4e1ab5"
+  },
+  "lib/app/resources/vlc/vlc/plugins/mux/libmux_wav_plugin.so": {
+    "bytes": 46552,
+    "sha256": "e23cb159fc89b730ecf87b49530aea502f2c852627c8a2da1a9d4ce233b992d7"
+  },
+  "lib/app/resources/vlc/vlc/plugins/notify/libnotify_plugin.so": {
+    "bytes": 60296,
+    "sha256": "0da176eeb440f520c2a55a2ed3373019f5d9bb08943880ab9194df118973bd69"
+  },
+  "lib/app/resources/vlc/vlc/plugins/packetizer/libpacketizer_a52_plugin.so": {
+    "bytes": 71064,
+    "sha256": "6cd43b9313d33dbd77121553a7739a5a55e594a6f07a1038cb20d93e4ecfeaec"
+  },
+  "lib/app/resources/vlc/vlc/plugins/packetizer/libpacketizer_av1_plugin.so": {
+    "bytes": 161104,
+    "sha256": "f00b4439951bfb8333d97fbeeb469e0b3ec9fa216d1d470ba20d8e12c3ab33bb"
+  },
+  "lib/app/resources/vlc/vlc/plugins/packetizer/libpacketizer_avparser_plugin.so": {
+    "bytes": 96112,
+    "sha256": "c8eb6b12391dc6b6536b3de5773b998acaf1837017a6e30cf32783d816a880b4"
+  },
+  "lib/app/resources/vlc/vlc/plugins/packetizer/libpacketizer_copy_plugin.so": {
+    "bytes": 46320,
+    "sha256": "296bd19d28d746433a216bce15e2460235af89da36b331acb28cb92f1994aa09"
+  },
+  "lib/app/resources/vlc/vlc/plugins/packetizer/libpacketizer_dirac_plugin.so": {
+    "bytes": 116264,
+    "sha256": "2f86907926cff89d655ad63afa346560f5de701ed93756c37c6288e51553876d"
+  },
+  "lib/app/resources/vlc/vlc/plugins/packetizer/libpacketizer_dts_plugin.so": {
+    "bytes": 91504,
+    "sha256": "5a355d7341cf1e1b59daa261474ae6ea6fdd23f3baacdf42cfe672644f839401"
+  },
+  "lib/app/resources/vlc/vlc/plugins/packetizer/libpacketizer_flac_plugin.so": {
+    "bytes": 87520,
+    "sha256": "a48f150b94c6de0a811b11700fc9c6f509ff99649277ba90148e7ecffe85d856"
+  },
+  "lib/app/resources/vlc/vlc/plugins/packetizer/libpacketizer_h264_plugin.so": {
+    "bytes": 693800,
+    "sha256": "37dcdd60e02202b9a1dd0b5e1755592b8a9c2fc9a29a1ef394650dbe6e2f146f"
+  },
+  "lib/app/resources/vlc/vlc/plugins/packetizer/libpacketizer_hevc_plugin.so": {
+    "bytes": 603712,
+    "sha256": "42b4e74ea3d6b3528af2b2e777ccfb997136a1a21d9af40d773e0ea27d5b2699"
+  },
+  "lib/app/resources/vlc/vlc/plugins/packetizer/libpacketizer_mlp_plugin.so": {
+    "bytes": 91504,
+    "sha256": "beb7a44303cfc1c3c26d2b38e7d41e1f84e793fd2a984041539370a8f495bb7f"
+  },
+  "lib/app/resources/vlc/vlc/plugins/packetizer/libpacketizer_mpeg4audio_plugin.so": {
+    "bytes": 153080,
+    "sha256": "e2d440f166719c4405c959eced5ffcd953ec72c6ae1b3975e3b9cad7830fb263"
+  },
+  "lib/app/resources/vlc/vlc/plugins/packetizer/libpacketizer_mpeg4video_plugin.so": {
+    "bytes": 128344,
+    "sha256": "90d2fb65b351e3a2fca765fda275d01a8d8ae8b98600ca8afcd6d5cea5f89eda"
+  },
+  "lib/app/resources/vlc/vlc/plugins/packetizer/libpacketizer_mpegaudio_plugin.so": {
+    "bytes": 66976,
+    "sha256": "e354a140be37d616d05d53808a99dd16b04b69771b830848a0de66165b6b3d3e"
+  },
+  "lib/app/resources/vlc/vlc/plugins/packetizer/libpacketizer_mpegvideo_plugin.so": {
+    "bytes": 103944,
+    "sha256": "48ce39c17a3146dbbad44b393462ef62fb71a708d885ed74863042c53661418e"
+  },
+  "lib/app/resources/vlc/vlc/plugins/packetizer/libpacketizer_vc1_plugin.so": {
+    "bytes": 136632,
+    "sha256": "c6c14772968c20fb3266023b75dea64c39629531b42f96d4aea5d05ac6498d2a"
+  },
+  "lib/app/resources/vlc/vlc/plugins/services_discovery/libavahi_plugin.so": {
+    "bytes": 76232,
+    "sha256": "7e2dde3ea648ca02ebbc73b27541bf76ec036c475750ac99517de52b50f34cfe"
+  },
+  "lib/app/resources/vlc/vlc/plugins/services_discovery/libmediadirs_plugin.so": {
+    "bytes": 63448,
+    "sha256": "af5f3674c9b2699ee4964537407798dbff81fc4270cf05eb48ea49df58bc79e1"
+  },
+  "lib/app/resources/vlc/vlc/plugins/services_discovery/libmtp_plugin.so": {
+    "bytes": 51368,
+    "sha256": "9063329a7fdd2306fb4870f0445771f8ef30203e9fe9c09b80db1c6ce5b30dc7"
+  },
+  "lib/app/resources/vlc/vlc/plugins/services_discovery/libpodcast_plugin.so": {
+    "bytes": 68216,
+    "sha256": "099111896e50d5254acb398be202743a8b0171d0fc30a0fb06a75d702757e2cf"
+  },
+  "lib/app/resources/vlc/vlc/plugins/services_discovery/libpulselist_plugin.so": {
+    "bytes": 50792,
+    "sha256": "bea0df5825fe08d9909e20c1288f48fc113cd7b9d907fd4f211541a37e3d1a58"
+  },
+  "lib/app/resources/vlc/vlc/plugins/services_discovery/libsap_plugin.so": {
+    "bytes": 142520,
+    "sha256": "0a1896a1aeef18337affc507d6c7d8fa761a0b01c242e17f9084effdc52fcd4d"
+  },
+  "lib/app/resources/vlc/vlc/plugins/services_discovery/libudev_plugin.so": {
+    "bytes": 73520,
+    "sha256": "b7c2ab16766129c208d593c4171c92a44f9bf1799a55f4491ced2890315a97f1"
+  },
+  "lib/app/resources/vlc/vlc/plugins/services_discovery/libupnp_plugin.so": {
+    "bytes": 562616,
+    "sha256": "5922d35cd933dcd4a53f4cc121731b359cabe59cadbf2a47aa85088a5e4eef71"
+  },
+  "lib/app/resources/vlc/vlc/plugins/services_discovery/libxcb_apps_plugin.so": {
+    "bytes": 55816,
+    "sha256": "b43be3ee9df0a545878d2eb4a866af60ea67426363c59b9a309a431eb3bdd89d"
+  },
+  "lib/app/resources/vlc/vlc/plugins/spu/libaudiobargraph_v_plugin.so": {
+    "bytes": 67808,
+    "sha256": "dd512478b51c29ca5cc19d987ae7e339f8162522071015c04467c97c0fa058fa"
+  },
+  "lib/app/resources/vlc/vlc/plugins/spu/libdynamicoverlay_plugin.so": {
+    "bytes": 129608,
+    "sha256": "584fb488ff19d02f256722f8559a55f5bd408a85b41cbfe23f697568ca1a68c7"
+  },
+  "lib/app/resources/vlc/vlc/plugins/spu/liblogo_plugin.so": {
+    "bytes": 67744,
+    "sha256": "ce52c4786bc72004384748f8ef84cf348970a4127b25bb3ef400929695cdfcf5"
+  },
+  "lib/app/resources/vlc/vlc/plugins/spu/libmarq_plugin.so": {
+    "bytes": 59512,
+    "sha256": "5f43b94073d4cd18e1c9681624dcd7a0ccdda630b38985100aaa3f9a1f88edb1"
+  },
+  "lib/app/resources/vlc/vlc/plugins/spu/libmosaic_plugin.so": {
+    "bytes": 83928,
+    "sha256": "590c3b86ea6f3f152b15a7b43bf8e83e447668364d8b28c268fe5214df8df5f1"
+  },
+  "lib/app/resources/vlc/vlc/plugins/spu/libremoteosd_plugin.so": {
+    "bytes": 113272,
+    "sha256": "3825a98e2d38f32a71f7f08961a9543e81ee61cb5aad8c714b274b892ec36f0a"
+  },
+  "lib/app/resources/vlc/vlc/plugins/spu/librss_plugin.so": {
+    "bytes": 88480,
+    "sha256": "3a9fc94d133a13030fdb2d6c8aa8a9817dd68291cb472ee39bc61735131739cd"
+  },
+  "lib/app/resources/vlc/vlc/plugins/spu/libsubsdelay_plugin.so": {
+    "bytes": 79536,
+    "sha256": "b96ddf0919d9066641bb1f1fb1ba6b47acfe2d091295116ff27b5c224c1481a4"
+  },
+  "lib/app/resources/vlc/vlc/plugins/stream_extractor/libarchive_plugin.so": {
+    "bytes": 64304,
+    "sha256": "7cf17990244255d883aba7a01d3ac1195abeadcbc10773b0ffd8d631837d3ff5"
+  },
+  "lib/app/resources/vlc/vlc/plugins/stream_filter/libadf_plugin.so": {
+    "bytes": 29976,
+    "sha256": "47b86d48ac0973c71db317d12073d57dcd70b93d7266a17a8315a4cdaffca1d4"
+  },
+  "lib/app/resources/vlc/vlc/plugins/stream_filter/libcache_block_plugin.so": {
+    "bytes": 38312,
+    "sha256": "9b35e7a17c9d8f8f242662debb466bfd53c15f0cb5103a92a2110796784662da"
+  },
+  "lib/app/resources/vlc/vlc/plugins/stream_filter/libcache_read_plugin.so": {
+    "bytes": 38272,
+    "sha256": "0acf4fde6c4dd4abb9befd89ab5a12b32d722262d11209345e45ee7fb9a31ab7"
+  },
+  "lib/app/resources/vlc/vlc/plugins/stream_filter/libdecomp_plugin.so": {
+    "bytes": 60112,
+    "sha256": "9f95764a9a4bc6e8d15d96da3a28b9414b97b451c43f32bcdaad6c75e9851d5f"
+  },
+  "lib/app/resources/vlc/vlc/plugins/stream_filter/libhds_plugin.so": {
+    "bytes": 117352,
+    "sha256": "fba67f06757fde46197a5574064aad1e577330f32c1ddccb682d830dd5e806a2"
+  },
+  "lib/app/resources/vlc/vlc/plugins/stream_filter/libinflate_plugin.so": {
+    "bytes": 34224,
+    "sha256": "2fc5d0d9c2be937581244720dd3da9d4ba0c85b5eb0b1f25ef46f0466af617be"
+  },
+  "lib/app/resources/vlc/vlc/plugins/stream_filter/libprefetch_plugin.so": {
+    "bytes": 51488,
+    "sha256": "c6706793133ec7d67dc255180270ecd8f97109da4bfcaeaba80fd25be29bed58"
+  },
+  "lib/app/resources/vlc/vlc/plugins/stream_filter/librecord_plugin.so": {
+    "bytes": 46704,
+    "sha256": "13c5fe20e62c8cb2c5a81f3b12df2cda41a14ea9f746e7c6d915283f80ef9905"
+  },
+  "lib/app/resources/vlc/vlc/plugins/stream_filter/libskiptags_plugin.so": {
+    "bytes": 38280,
+    "sha256": "5e822adc98caac391ea36c2c5079e0e83d939918833bc6ac7556eb0033aabd03"
+  },
+  "lib/app/resources/vlc/vlc/plugins/stream_out/libstream_out_autodel_plugin.so": {
+    "bytes": 38248,
+    "sha256": "b8d09bb9b67f97630bfc9cd6630b56cba37b6c59f8c6bdfdfba853ccb0b2c19c"
+  },
+  "lib/app/resources/vlc/vlc/plugins/stream_out/libstream_out_bridge_plugin.so": {
+    "bytes": 54872,
+    "sha256": "015a9165fac513d53375f570e5e31a5a2b8623c2fc6cbe099a7b534c1b99f0d2"
+  },
+  "lib/app/resources/vlc/vlc/plugins/stream_out/libstream_out_chromaprint_plugin.so": {
+    "bytes": 38496,
+    "sha256": "08a2e603cef1764ccc4276bbf8cb529941d2623ce42d616955577f18d1c5d45b"
+  },
+  "lib/app/resources/vlc/vlc/plugins/stream_out/libstream_out_chromecast_plugin.so": {
+    "bytes": 1933064,
+    "sha256": "cf77771c488560b37f0ae06716f90aa1c8dd09441dea85351b9ea40d1608e312"
+  },
+  "lib/app/resources/vlc/vlc/plugins/stream_out/libstream_out_cycle_plugin.so": {
+    "bytes": 42448,
+    "sha256": "058953e50d2765f4c144ef83cef9a0a7f4da6bf20710d6a599d317407b3678c7"
+  },
+  "lib/app/resources/vlc/vlc/plugins/stream_out/libstream_out_delay_plugin.so": {
+    "bytes": 38128,
+    "sha256": "b9affb16e888eb2c4b5354319ee42ae3adac28e3fbd1234a0a8c78c589967837"
+  },
+  "lib/app/resources/vlc/vlc/plugins/stream_out/libstream_out_description_plugin.so": {
+    "bytes": 38256,
+    "sha256": "1cedd21b9aec399e2020e50d5c2a600a735f50103ee25e3be3b63235f44e3486"
+  },
+  "lib/app/resources/vlc/vlc/plugins/stream_out/libstream_out_display_plugin.so": {
+    "bytes": 38400,
+    "sha256": "970a8653cec308c083cd22698681c147cf20e1aee516068da156cd3775bc7f1e"
+  },
+  "lib/app/resources/vlc/vlc/plugins/stream_out/libstream_out_dummy_plugin.so": {
+    "bytes": 33888,
+    "sha256": "e796117f194d32eaaabc6f0b8445b8a611e11cbe3693b79e3f5de724b7d52c70"
+  },
+  "lib/app/resources/vlc/vlc/plugins/stream_out/libstream_out_duplicate_plugin.so": {
+    "bytes": 50824,
+    "sha256": "394dd1d0c5a8a92a320024d07defdaa56038061556073bda67ca98ac462df320"
+  },
+  "lib/app/resources/vlc/vlc/plugins/stream_out/libstream_out_es_plugin.so": {
+    "bytes": 51048,
+    "sha256": "ebb6d3cbfbcc1d269b9e8c0cc1999e12bfba061735e39c8d9fd9cad4feeec151"
+  },
+  "lib/app/resources/vlc/vlc/plugins/stream_out/libstream_out_gather_plugin.so": {
+    "bytes": 38216,
+    "sha256": "1ccbc4b91bad1b5e40e36bf66423375138a3d504a8de07bb5cc53b945f36114c"
+  },
+  "lib/app/resources/vlc/vlc/plugins/stream_out/libstream_out_mosaic_bridge_plugin.so": {
+    "bytes": 68016,
+    "sha256": "d207b986741391cb0777b3dcc9e78ddc54934b4c40df4fdf39bfd896e1a8fd4f"
+  },
+  "lib/app/resources/vlc/vlc/plugins/stream_out/libstream_out_record_plugin.so": {
+    "bytes": 63224,
+    "sha256": "4824fefd6d1bb7847ea902d3be0be5829772ce911309f5371b16f71b9c33fda1"
+  },
+  "lib/app/resources/vlc/vlc/plugins/stream_out/libstream_out_rtp_plugin.so": {
+    "bytes": 464856,
+    "sha256": "61a11bce745953421148569b8d3b53679c7abf7238d4f700d790631c3e053a05"
+  },
+  "lib/app/resources/vlc/vlc/plugins/stream_out/libstream_out_setid_plugin.so": {
+    "bytes": 38128,
+    "sha256": "33995128a4935da4cffe2cbb05a137f969821a52dc094c21d682f17cd1af1598"
+  },
+  "lib/app/resources/vlc/vlc/plugins/stream_out/libstream_out_smem_plugin.so": {
+    "bytes": 46512,
+    "sha256": "20cfcd52dc2ab9f5b47500cfa707945a5d15aed61c32dd00593af58683382066"
+  },
+  "lib/app/resources/vlc/vlc/plugins/stream_out/libstream_out_standard_plugin.so": {
+    "bytes": 63672,
+    "sha256": "884ea48bfadb571d01015116b37105b83c9712ca4cf168026cc10a332d5a7e23"
+  },
+  "lib/app/resources/vlc/vlc/plugins/stream_out/libstream_out_stats_plugin.so": {
+    "bytes": 42560,
+    "sha256": "98ce9a9ff108e62d6b7bce1b3284425396d86809bc68702371598ee5cc67b722"
+  },
+  "lib/app/resources/vlc/vlc/plugins/stream_out/libstream_out_transcode_plugin.so": {
+    "bytes": 172056,
+    "sha256": "1a19bc54372050ee84b7b647a582b607c369159f9287b8dd4f68d3df4bafd90f"
+  },
+  "lib/app/resources/vlc/vlc/plugins/text_renderer/libfreetype_plugin.so": {
+    "bytes": 336240,
+    "sha256": "fe8c95f2f645cd591895bef0907def09bf8071d4ffdcf0632e0eaaab68d04ba6"
+  },
+  "lib/app/resources/vlc/vlc/plugins/text_renderer/libsvg_plugin.so": {
+    "bytes": 55464,
+    "sha256": "fedf4fa527628b7c441fb97249b6eb043a38e27c93e2d91212d6c1bfec6dd8ca"
+  },
+  "lib/app/resources/vlc/vlc/plugins/text_renderer/libtdummy_plugin.so": {
+    "bytes": 33816,
+    "sha256": "9bd65fa879aa1bf3d042b5b75c8ef6d223326a52921ab64ba01ced9d34a28f2a"
+  },
+  "lib/app/resources/vlc/vlc/plugins/vaapi/libvaapi_filters_plugin.so": {
+    "bytes": 364112,
+    "sha256": "314357f69a152842cb80f06d4ea2b40ef367b1ffc7187db09e8503871a960441"
+  },
+  "lib/app/resources/vlc/vlc/plugins/vdpau/libvdpau_adjust_plugin.so": {
+    "bytes": 54456,
+    "sha256": "c9d3adc04bb350d289e666cbd6ea7d310ed8b9c1fcea7274c3a7fbf3a301daef"
+  },
+  "lib/app/resources/vlc/vlc/plugins/vdpau/libvdpau_avcodec_plugin.so": {
+    "bytes": 116264,
+    "sha256": "9a92a84e6a18ce611143f52f4571028ee2c2f63d8ef07a67482509f5d9177748"
+  },
+  "lib/app/resources/vlc/vlc/plugins/vdpau/libvdpau_chroma_plugin.so": {
+    "bytes": 83848,
+    "sha256": "cce7a8ec0793648ac2d245903a2c524dbb898625e72c46d27d3d4734f653e32a"
+  },
+  "lib/app/resources/vlc/vlc/plugins/vdpau/libvdpau_deinterlace_plugin.so": {
+    "bytes": 46176,
+    "sha256": "c02e77a920469f99e488c59fd32cfe5a2852e36002a1bd6c7f3bb78e2b438dc6"
+  },
+  "lib/app/resources/vlc/vlc/plugins/vdpau/libvdpau_display_plugin.so": {
+    "bytes": 109784,
+    "sha256": "1faf99fe5bb866121cd4f16a7caa4057c96da432149acbadf863155c68a66bf6"
+  },
+  "lib/app/resources/vlc/vlc/plugins/vdpau/libvdpau_sharpen_plugin.so": {
+    "bytes": 46360,
+    "sha256": "84802d508d8b5022436eb88343955e7691a28840edd08903736db405552f4078"
+  },
+  "lib/app/resources/vlc/vlc/plugins/video_chroma/libchain_plugin.so": {
+    "bytes": 55528,
+    "sha256": "f6871dbb5924b15d422f23dd6a92e562d2ff5a23276971e1f619911eaf0794da"
+  },
+  "lib/app/resources/vlc/vlc/plugins/video_chroma/libgrey_yuv_plugin.so": {
+    "bytes": 50384,
+    "sha256": "6f21de637ac02ad0262ecf8e6837e8c12139e55a14c2d00b744849ba22bdc44e"
+  },
+  "lib/app/resources/vlc/vlc/plugins/video_chroma/libi420_10_p010_plugin.so": {
+    "bytes": 206248,
+    "sha256": "42f5c139ce496bb892f7f752025172f555cf940c4211940049d92980dfbdc0d4"
+  },
+  "lib/app/resources/vlc/vlc/plugins/video_chroma/libi420_nv12_plugin.so": {
+    "bytes": 214440,
+    "sha256": "5029b78d7db1a5b412049dd954ab40095ccb600fa4d495874e3b50c1e5eda146"
+  },
+  "lib/app/resources/vlc/vlc/plugins/video_chroma/libi420_rgb_mmx_plugin.so": {
+    "bytes": 128280,
+    "sha256": "acac2369420584d750f07bba90e811fb72286a1a53b8fa00b533373fbf2885b8"
+  },
+  "lib/app/resources/vlc/vlc/plugins/video_chroma/libi420_rgb_plugin.so": {
+    "bytes": 103704,
+    "sha256": "ee14b39558b192123fd349a3ee4277d2e838aa5cf1ee147bf547c8610dcee9a3"
+  },
+  "lib/app/resources/vlc/vlc/plugins/video_chroma/libi420_rgb_sse2_plugin.so": {
+    "bytes": 218392,
+    "sha256": "3178763767b59d00c624e02a108548838225ca057155472ae1952960c0907358"
+  },
+  "lib/app/resources/vlc/vlc/plugins/video_chroma/libi420_yuy2_mmx_plugin.so": {
+    "bytes": 50360,
+    "sha256": "bb0bbc5f2dc2d1e8b344d525c287ae460b2d05471717799715b86ff3bdfbfe07"
+  },
+  "lib/app/resources/vlc/vlc/plugins/video_chroma/libi420_yuy2_plugin.so": {
+    "bytes": 79024,
+    "sha256": "f34145dfbecbd56b42c8bead006a8f59cb57526ff85035c2cbd1b537c4b09ffd"
+  },
+  "lib/app/resources/vlc/vlc/plugins/video_chroma/libi420_yuy2_sse2_plugin.so": {
+    "bytes": 83128,
+    "sha256": "c637eda55740716a89498de4589eb43eb03ff426f19c5b09fbfbcc7ead28beb1"
+  },
+  "lib/app/resources/vlc/vlc/plugins/video_chroma/libi422_i420_plugin.so": {
+    "bytes": 42232,
+    "sha256": "f5aaa18b405cb9694e8bb250b6d4af291518610b44680065faa2b5782f83921e"
+  },
+  "lib/app/resources/vlc/vlc/plugins/video_chroma/libi422_yuy2_mmx_plugin.so": {
+    "bytes": 46264,
+    "sha256": "c5c8a8d3da54f07fb3216e57cdf7dfac497ea2c26fd774b85ec57d859c6e3031"
+  },
+  "lib/app/resources/vlc/vlc/plugins/video_chroma/libi422_yuy2_plugin.so": {
+    "bytes": 79024,
+    "sha256": "d94ac0bdad60a3b72e4175ff8d06a4bc4e14bf243e1a36b05ad0024a377b7d3f"
+  },
+  "lib/app/resources/vlc/vlc/plugins/video_chroma/libi422_yuy2_sse2_plugin.so": {
+    "bytes": 66744,
+    "sha256": "72a01e9d0824e9d8fb5692217a877c41ccd37b5380df6822f00b2d3387beb854"
+  },
+  "lib/app/resources/vlc/vlc/plugins/video_chroma/librv32_plugin.so": {
+    "bytes": 33960,
+    "sha256": "e02b143708c26fa1b890477cab78718e8eae1ae9d775f8e80aa375e90b6d0a9e"
+  },
+  "lib/app/resources/vlc/vlc/plugins/video_chroma/libswscale_plugin.so": {
+    "bytes": 79720,
+    "sha256": "192134b6a3cf480e6ac30554d0244ba06e4acd39bdcf099490b248c2005d2ea8"
+  },
+  "lib/app/resources/vlc/vlc/plugins/video_chroma/libyuvp_plugin.so": {
+    "bytes": 38056,
+    "sha256": "7bfc4060daf682dda6bf27d656c2960a231de5660a10c6c1c07088081f554604"
+  },
+  "lib/app/resources/vlc/vlc/plugins/video_chroma/libyuy2_i420_plugin.so": {
+    "bytes": 91312,
+    "sha256": "4efeb55866f396687c8f3561dbcab1f7c3cee47d4cc9d8deea2ddc08c495b7e8"
+  },
+  "lib/app/resources/vlc/vlc/plugins/video_chroma/libyuy2_i422_plugin.so": {
+    "bytes": 70832,
+    "sha256": "a415fadcdbccc0cf041ffb7fa2015ad3d986d4735fae8c907b3dee520d13dcb9"
+  },
+  "lib/app/resources/vlc/vlc/plugins/video_filter/libadjust_plugin.so": {
+    "bytes": 169592,
+    "sha256": "f3aef03e15973e7030d0880ecac9be1197cff5a64d0d14056de9d619f8def482"
+  },
+  "lib/app/resources/vlc/vlc/plugins/video_filter/libalphamask_plugin.so": {
+    "bytes": 42728,
+    "sha256": "784d1b821a71a62c1f60abad7059db3e9c38a5626f344678d25a6e0195b71d19"
+  },
+  "lib/app/resources/vlc/vlc/plugins/video_filter/libanaglyph_plugin.so": {
+    "bytes": 58752,
+    "sha256": "aea975c7217cc3ad9a84ea1904a63f032b73f55b923fefa4a882ae5ed69d76af"
+  },
+  "lib/app/resources/vlc/vlc/plugins/video_filter/libantiflicker_plugin.so": {
+    "bytes": 54800,
+    "sha256": "c41276448ed946fb480d88c861402e88783f25999fde89d4e9102a6ded9e631f"
+  },
+  "lib/app/resources/vlc/vlc/plugins/video_filter/libball_plugin.so": {
+    "bytes": 79600,
+    "sha256": "53ab611b6fceea9c570f8fb468c717f1e24024a766c97fab58595e9a6af3a3fd"
+  },
+  "lib/app/resources/vlc/vlc/plugins/video_filter/libblend_plugin.so": {
+    "bytes": 627960,
+    "sha256": "22ef0bdfadbe8ea0fcdefc072776e8e5d207b3f8edbccb4f6e1fe6b025bb3936"
+  },
+  "lib/app/resources/vlc/vlc/plugins/video_filter/libblendbench_plugin.so": {
+    "bytes": 42600,
+    "sha256": "e76961db8658bc6b92f858f5d13f65bc7532477b7e1903789ffc766e87cdd7b5"
+  },
+  "lib/app/resources/vlc/vlc/plugins/video_filter/libbluescreen_plugin.so": {
+    "bytes": 54904,
+    "sha256": "bfc64b65fc98ce6b57fb365d61a490cac389f7eea1f27c9bf828bbb693438a6d"
+  },
+  "lib/app/resources/vlc/vlc/plugins/video_filter/libcanvas_plugin.so": {
+    "bytes": 42808,
+    "sha256": "eddac07f445e6beac6d94bbcb1f05b7a54c2987bb9c5a62e1a5c6b6e6bf41bb5"
+  },
+  "lib/app/resources/vlc/vlc/plugins/video_filter/libcolorthres_plugin.so": {
+    "bytes": 46584,
+    "sha256": "9fb18547779c3e84632c12d2a86fdaa4bb66159e13f89cb3541323e2d5a8fae6"
+  },
+  "lib/app/resources/vlc/vlc/plugins/video_filter/libcroppadd_plugin.so": {
+    "bytes": 50656,
+    "sha256": "ff78e2ca873cfb99fbc6fcd9fb7f1e0573b4b4f8f535f4395091a0399d391a74"
+  },
+  "lib/app/resources/vlc/vlc/plugins/video_filter/libdeinterlace_plugin.so": {
+    "bytes": 329336,
+    "sha256": "c52b994020507b8c3074270a5fc0c3fbd9a0cfa4b41f7cd0f181a61f97cbc7be"
+  },
+  "lib/app/resources/vlc/vlc/plugins/video_filter/libedgedetection_plugin.so": {
+    "bytes": 38336,
+    "sha256": "dd3e60562a572cd900075b4b0eab63722ac3a1d72101bc2d96e92ac33eb4ea5d"
+  },
+  "lib/app/resources/vlc/vlc/plugins/video_filter/liberase_plugin.so": {
+    "bytes": 59200,
+    "sha256": "67d181dba623eb146b923492b0bd5794e57e802c200c0d51e349b53a9a0b5c59"
+  },
+  "lib/app/resources/vlc/vlc/plugins/video_filter/libextract_plugin.so": {
+    "bytes": 58992,
+    "sha256": "0a6398c0add151abf0057765d5880d3db9a8918fb2795d94075895cdbb13f9c2"
+  },
+  "lib/app/resources/vlc/vlc/plugins/video_filter/libfps_plugin.so": {
+    "bytes": 38416,
+    "sha256": "6577d55fb7ec9e59df18b8d7c38600db94a37bceb2f89f49d6f3f22be2b8a0af"
+  },
+  "lib/app/resources/vlc/vlc/plugins/video_filter/libfreeze_plugin.so": {
+    "bytes": 50592,
+    "sha256": "6413968e71317007f33629abaa19014bcbf91accd70d296a106235c5bbda24c0"
+  },
+  "lib/app/resources/vlc/vlc/plugins/video_filter/libgaussianblur_plugin.so": {
+    "bytes": 50624,
+    "sha256": "21e4908521511348bf25a2a8f1a5f8d620cfba32b8f68f175e7a6193804daf41"
+  },
+  "lib/app/resources/vlc/vlc/plugins/video_filter/libgradfun_plugin.so": {
+    "bytes": 59160,
+    "sha256": "2f1cd04ead98eecbe0abbda403e17a6b8a9469b00708485d0fa4675d02675d96"
+  },
+  "lib/app/resources/vlc/vlc/plugins/video_filter/libgradient_plugin.so": {
+    "bytes": 87792,
+    "sha256": "4de792ba4326e9e5f81cd69ddd3278dbb581979320ade89fcf1b0b59c0890cdc"
+  },
+  "lib/app/resources/vlc/vlc/plugins/video_filter/libgrain_plugin.so": {
+    "bytes": 63272,
+    "sha256": "274ea27c7e00c06f9fe53c2df6fc6695451821ab2fd789048c35a499d0aa7e98"
+  },
+  "lib/app/resources/vlc/vlc/plugins/video_filter/libhqdn3d_plugin.so": {
+    "bytes": 67360,
+    "sha256": "4e6c3b7560aeef4a5b22ae8b30f445419ac0f21635a7b76293eb1c849afd8968"
+  },
+  "lib/app/resources/vlc/vlc/plugins/video_filter/libinvert_plugin.so": {
+    "bytes": 38160,
+    "sha256": "a9eaa2b34a030bf5bc9a457e3cfab8330bfa83c8239921caf91da7fbd0c8a845"
+  },
+  "lib/app/resources/vlc/vlc/plugins/video_filter/libmagnify_plugin.so": {
+    "bytes": 54824,
+    "sha256": "2faad7d8a08f5bebcca3a1480091c442a05bb4ccee125a874408cb8ad21eb3e6"
+  },
+  "lib/app/resources/vlc/vlc/plugins/video_filter/libmirror_plugin.so": {
+    "bytes": 95696,
+    "sha256": "bec94d15855bf0a60c5853e88453bf88ab02925abd1cb7d4d99a1e9322ed66a4"
+  },
+  "lib/app/resources/vlc/vlc/plugins/video_filter/libmotionblur_plugin.so": {
+    "bytes": 42560,
+    "sha256": "a28d23f00431c37de309a43312c859d782f281d59d0fb78c894885f77334c733"
+  },
+  "lib/app/resources/vlc/vlc/plugins/video_filter/libmotiondetect_plugin.so": {
+    "bytes": 58696,
+    "sha256": "ae256225b42247a7ec8632291e24404a7046b05976f0d302c3e164d3183a351e"
+  },
+  "lib/app/resources/vlc/vlc/plugins/video_filter/liboldmovie_plugin.so": {
+    "bytes": 67176,
+    "sha256": "119f7f42bd3ca8865c834de200ad4a58fd457a34b4990ca3c8940485bd40179a"
+  },
+  "lib/app/resources/vlc/vlc/plugins/video_filter/libposterize_plugin.so": {
+    "bytes": 54736,
+    "sha256": "6962cd09651335d053722cbdafb37113dbabd738ce7b0f0854ed385a4ce2abec"
+  },
+  "lib/app/resources/vlc/vlc/plugins/video_filter/libpostproc_plugin.so": {
+    "bytes": 47112,
+    "sha256": "feb36abec0c3a896b8c17d8fcef75fd2fee8b129b89f5e900e33a6ca8b184da2"
+  },
+  "lib/app/resources/vlc/vlc/plugins/video_filter/libpsychedelic_plugin.so": {
+    "bytes": 46536,
+    "sha256": "5083725df23a26da0b9d015233877be4837fb268b2a1b855696626c9f97091a3"
+  },
+  "lib/app/resources/vlc/vlc/plugins/video_filter/libpuzzle_plugin.so": {
+    "bytes": 304992,
+    "sha256": "8f7cee7b0a00a7a56051f1b6541140627673dfe3ea8b04b6f75e994ca82c507e"
+  },
+  "lib/app/resources/vlc/vlc/plugins/video_filter/libripple_plugin.so": {
+    "bytes": 42432,
+    "sha256": "7ce8da425d779e90e0d2ecacf4c5143d73b01c09ca27c7b8a3a134a4485ca20a"
+  },
+  "lib/app/resources/vlc/vlc/plugins/video_filter/librotate_plugin.so": {
+    "bytes": 59032,
+    "sha256": "174974c1b9f6f58fe404caa6bb95197bc01f97b0be90a5b809fbbf3ba7f750fc"
+  },
+  "lib/app/resources/vlc/vlc/plugins/video_filter/libscale_plugin.so": {
+    "bytes": 38112,
+    "sha256": "044fbbfb200fcd075d14158bb86714b9e9ba41605d2d128a5b25154efd72e3cf"
+  },
+  "lib/app/resources/vlc/vlc/plugins/video_filter/libscene_plugin.so": {
+    "bytes": 46856,
+    "sha256": "eebac363d03429b0c5e17d3dff765be372ea4cd1ad933597a73bb81a5091c0ef"
+  },
+  "lib/app/resources/vlc/vlc/plugins/video_filter/libsepia_plugin.so": {
+    "bytes": 50608,
+    "sha256": "1dc90839288c419bf2725d440e43b52f5710d18d0f22cf9b37db349d67e691b8"
+  },
+  "lib/app/resources/vlc/vlc/plugins/video_filter/libsharpen_plugin.so": {
+    "bytes": 42552,
+    "sha256": "57d9d5c7164ecd99df8841c236fbc02c8f08438a1553773a29a58e49f96389f4"
+  },
+  "lib/app/resources/vlc/vlc/plugins/video_filter/libtransform_plugin.so": {
+    "bytes": 116208,
+    "sha256": "3b0e446566fb1931b75f4ba86b19e79c28e1d70ea01bcf8dbe971af375c7b9f2"
+  },
+  "lib/app/resources/vlc/vlc/plugins/video_filter/libvhs_plugin.so": {
+    "bytes": 54824,
+    "sha256": "707ce1bf68aa2cd4c32965457da37d6a9075fdab0af82b44ef3d3d535cd29851"
+  },
+  "lib/app/resources/vlc/vlc/plugins/video_filter/libwave_plugin.so": {
+    "bytes": 38336,
+    "sha256": "ee3d7b43e9df0511ad944581bcdfc2329c96dc01208428485b721960a1a6faaf"
+  },
+  "lib/app/resources/vlc/vlc/plugins/video_output/libcaca_plugin.so": {
+    "bytes": 101488,
+    "sha256": "2fe577f8c804c3ddde767db3f1a91c4ea560c143e970a88743b5bf4d90f741ef"
+  },
+  "lib/app/resources/vlc/vlc/plugins/video_output/libegl_x11_plugin.so": {
+    "bytes": 72032,
+    "sha256": "cb418d04b4e31239114ede2c8440dd719bfb27d5359daff9fd5b1e43d7ea7add"
+  },
+  "lib/app/resources/vlc/vlc/plugins/video_output/libfb_plugin.so": {
+    "bytes": 59312,
+    "sha256": "7a680b56debab5d6733d53e8344650ad3e431bfabb65be35e7ee103d15a82a5c"
+  },
+  "lib/app/resources/vlc/vlc/plugins/video_output/libflaschen_plugin.so": {
+    "bytes": 50800,
+    "sha256": "20aa3718067880a1ba1aca9010b580187457368bf4d149f904cfbe8a69554dc8"
+  },
+  "lib/app/resources/vlc/vlc/plugins/video_output/libgl_plugin.so": {
+    "bytes": 281864,
+    "sha256": "6e24f76147958d0cb89398f596a7a10de904d72c137a04732a4da349ad0295fd"
+  },
+  "lib/app/resources/vlc/vlc/plugins/video_output/libglconv_vaapi_drm_plugin.so": {
+    "bytes": 121960,
+    "sha256": "22009c04b66c159ad24b7b8360a75c40f03dc6ced916d82d4339991da23121eb"
+  },
+  "lib/app/resources/vlc/vlc/plugins/video_output/libglconv_vaapi_x11_plugin.so": {
+    "bytes": 159192,
+    "sha256": "ac50c1db91d3a8ed8ca75611812c16750191aaaa5062966ca520c29f1d93dd81"
+  },
+  "lib/app/resources/vlc/vlc/plugins/video_output/libglconv_vdpau_plugin.so": {
+    "bytes": 87496,
+    "sha256": "97b7faf9d74518488d6c7581ceb845d4a6739c8cea35631cefa771d8ccf6d722"
+  },
+  "lib/app/resources/vlc/vlc/plugins/video_output/libglx_plugin.so": {
+    "bytes": 68048,
+    "sha256": "8066a738e0ed6c785b88d229c55eff0a5b00e8370effff8a8489a27eac011128"
+  },
+  "lib/app/resources/vlc/vlc/plugins/video_output/libvdummy_plugin.so": {
+    "bytes": 38288,
+    "sha256": "69b4834e257440e422c664651ef8457ad68f9d8f6a7fe7bec51491ef7057ff29"
+  },
+  "lib/app/resources/vlc/vlc/plugins/video_output/libvmem_plugin.so": {
+    "bytes": 46592,
+    "sha256": "b7967b306bf534f6559d4dca39a347ba7356624d7aa1187f6c2eb35c1631660d"
+  },
+  "lib/app/resources/vlc/vlc/plugins/video_output/libxcb_window_plugin.so": {
+    "bytes": 101360,
+    "sha256": "81d162554e41391d97127a426ec8dfa1ebb094e445b5d341229056286e580c06"
+  },
+  "lib/app/resources/vlc/vlc/plugins/video_output/libxcb_x11_plugin.so": {
+    "bytes": 76144,
+    "sha256": "875a33758a1180bf23001f71b9f727fd628585c88289a0de7408deff7a5521fb"
+  },
+  "lib/app/resources/vlc/vlc/plugins/video_output/libxcb_xv_plugin.so": {
+    "bytes": 102032,
+    "sha256": "63fb2fafab49c0b85bb396469b7d96be6f7e5daca9cf313f113979b6a74ce95e"
+  },
+  "lib/app/resources/vlc/vlc/plugins/video_output/libyuv_plugin.so": {
+    "bytes": 42664,
+    "sha256": "9f04d5112cb7b2e98703245d776fcf0136a3394b9929db3c438adb25cbfc9308"
+  },
+  "lib/app/resources/vlc/vlc/plugins/video_splitter/libclone_plugin.so": {
+    "bytes": 38320,
+    "sha256": "f1f1669eb93c2c2dde0679a2872bbbc76f624ac6dc402a59887cc9686e4516e5"
+  },
+  "lib/app/resources/vlc/vlc/plugins/video_splitter/libpanoramix_plugin.so": {
+    "bytes": 117000,
+    "sha256": "ff3eb0a578099813f6f3b8bc71112208c27094671f6a09785ea52a656267e36d"
+  },
+  "lib/app/resources/vlc/vlc/plugins/video_splitter/libwall_plugin.so": {
+    "bytes": 50712,
+    "sha256": "e3210c84ef96f4bf48a88b02e4763d74ede8d4814c365675df04b1997c5d8b14"
+  },
+  "lib/app/resources/vlc/vlc/plugins/visualization/libglspectrum_plugin.so": {
+    "bytes": 88808,
+    "sha256": "67916d7f8244ca886c7678bc218a71878b02a022b14cbdc02f64ff3867230a84"
+  },
+  "lib/app/resources/vlc/vlc/plugins/visualization/libvisual_plugin.so": {
+    "bytes": 141528,
+    "sha256": "76936d9561525f4a8c96e9bd75df89f17274b8c60f120db65460c2d6730392a7"
+  },
+  "lib/app/resources-compose-jvm-0.23.0-209a6c9f99b7f4abf3fbef349444540.jar": {
+    "bytes": 17754,
+    "sha256": "000c11f7d903ff0fee58efa09f5991980cffbdba1d145e40a94e0603f7854a97"
+  },
+  "lib/app/resources-jvm-0.23.0-50d84e9447eeb94fb34da255b28e772.jar": {
+    "bytes": 58692,
+    "sha256": "d71fb7b4f318bc6b804fbb2190282f0ca4e9320c4bffe1a5913661e78d2a4ddd"
+  },
+  "lib/app/runtime-desktop-1.8.2-413c79fcc890b25dcb3052fb3c60afce.jar": {
+    "bytes": 1400930,
+    "sha256": "97fde7440d73405335528f53acd4a0dc60eecfdbb21e67dbc166d5fbcbc2e3f6"
+  },
+  "lib/app/runtime-saveable-desktop-1.8.2-a3b0eba0562dbf4e8bb4b8591bec3e.jar": {
+    "bytes": 41298,
+    "sha256": "ab2236f7b612a176fe3209c3d97fbaeb3831112c0f41ddc659fcb77762faee18"
+  },
+  "lib/app/skiko-awt-0.9.4.2-f846915f6ba387b4938049495a3cc3.jar": {
+    "bytes": 1249143,
+    "sha256": "7d0c61ad7429d2f9c16da18cb408b93c83a23bd884e7b25d20225c123b14590b"
+  },
+  "lib/app/skiko-awt-runtime-linux-x64-0.9.4.2-cd1119c11beea1a7a564e9e47154a9c0.jar": {
+    "bytes": 293,
+    "sha256": "7fb385fa3292e57e36d63e4bb304f135ae7ca189e1d374564af6a732efaa7774"
+  },
+  "lib/app/skiko-awt-runtime-macos-x64-0.7.58-f7ecf2a96b9a2414b659cbc1fcf19a46.jar": {
+    "bytes": 8946346,
+    "sha256": "4c0aedf89c64e91e02ab482adc1a84196270a1479b2ab306d597ebade72c9ec5"
+  },
+  "lib/app/slf4j-api-2.0.12-86eb51f2e2d6497a3a57810c963a9d6.jar": {
+    "bytes": 68115,
+    "sha256": "a79502b8abdfbd722846a27691226a4088682d6d35654f9b80e2a9ccacf7ed47"
+  },
+  "lib/app/slf4j-simple-2.0.12-66daf0383dfefdbac0d8eb7dbe4e49.jar": {
+    "bytes": 15701,
+    "sha256": "4cd8f3d6236044600e7054da7c124c6d2e9f45eb43c77d4e9b093fe1095edc85"
+  },
+  "lib/app/snakeyaml-2.2-d78aacf5f2de5b52f1a32747efd1ad7.jar": {
+    "bytes": 334352,
+    "sha256": "1467931448a0817696ae2805b7b8b20bfb082652bf9c4efaed528930dc49389b"
+  },
+  "lib/app/snakeyaml-engine-kmp-jvm-2.7.5-d4cea46a6f2fd8ff124a68cf8ad6d45.jar": {
+    "bytes": 421432,
+    "sha256": "2ccf3826c1d7c836c093c2401bcab350955c890812351d109f115f4469529b91"
+  },
+  "lib/app/trove4j-3.0.3-8fc4d4e0129244f9fd3965c5f30feb2.jar": {
+    "bytes": 2523218,
+    "sha256": "3c8616203d61a12a7e3487e8b34f3c198c2b5ba9e90da0c7ea32d99cd4958012"
+  },
+  "lib/app/two-slices-0.9.1-e985dafa5eabb7e49c2da285f279f91.jar": {
+    "bytes": 133984,
+    "sha256": "c264818a00cab1bed6759d0f8ab089cb2116a233f870ddd042a5dd620d0e4785"
+  },
+  "lib/app/ui-backhandler-desktop-1.8.2-d121ab1a43805bd2c2bafb1d6cf15e71.jar": {
+    "bytes": 28746,
+    "sha256": "a45b9fd3a97c60a36dac7d218f290d127f9e557e4d519ef6134d7c23b96e5991"
+  },
+  "lib/app/ui-desktop-1.8.2-af8dbbc1b94e37b40f6b4d533736f0.jar": {
+    "bytes": 3119324,
+    "sha256": "1a4a6eb7b1e9ea7c58a2c755a583516a28d2bd6073a42e575fe856d0214b6328"
+  },
+  "lib/app/ui-geometry-desktop-1.8.2-4d6d5a2450aa7bacde7a9fa76151c7.jar": {
+    "bytes": 56481,
+    "sha256": "5aaf8b78bed6e56b74ee893172cce2e316813b61d8a22cddc0587a527c5caa27"
+  },
+  "lib/app/ui-graphics-desktop-1.8.2-1ed98e63e47695264c83b9b92ca20a6.jar": {
+    "bytes": 566040,
+    "sha256": "3fc481656c6c9685cf593a9be822c5759b7008acc7395875caf6e2ee5a4e376c"
+  },
+  "lib/app/ui-text-desktop-1.8.2-ebd2246485729a59dd442991c8368935.jar": {
+    "bytes": 700552,
+    "sha256": "79fcaf9737dca385e46bc6f09d078f2e6305524891fee539c31c66d3c18353e7"
+  },
+  "lib/app/ui-tooling-preview-desktop-1.8.2-73677496a752bcd40d3273b24dbfbbc.jar": {
+    "bytes": 1868,
+    "sha256": "7a8862ad911984ff751d0499c3223e6a0c71a821bcb75a99f66964eedaa67d78"
+  },
+  "lib/app/ui-unit-desktop-1.8.2-ebaa3db6cbf39ece594c5925893aff.jar": {
+    "bytes": 83012,
+    "sha256": "296d23deaa78b508cf95d14cf5bda58a4f3ad5b42d85fcc8becf6e12ffbd037e"
+  },
+  "lib/app/ui-util-desktop-1.8.2-29b472df6ec25baec12f7979faef8a.jar": {
+    "bytes": 16970,
+    "sha256": "e3b1c439b4ea80285be90eaed8e7056437f671cfafe4b18a3a9cb5387c80be4a"
+  },
+  "lib/app/urlencoder-lib-jvm-1.5.0-4ec5318160a341b6613b3d7ee3f59aa.jar": {
+    "bytes": 6614,
+    "sha256": "b2caad7c083e001e21d405aaa6e6bef49445e012f730269b2c18894ec705f86c"
+  },
+  "lib/app/versioncompare-1.4.1-42f6d246ba6d9593effcf9bed3c510.jar": {
+    "bytes": 6417,
+    "sha256": "d26827bc70e3a6e070f5b728e2f84dbf0a29139b22181af6566e0c16f08d4465"
+  },
+  "lib/app/vlcj-4.8.3-d1a1f24be783244e351f42e4462e319.jar": {
+    "bytes": 399819,
+    "sha256": "1fe7b199241a2dce05f6e69591fc7729fb71cae6cd9a4476d19c5e3dd1ab6534"
+  },
+  "lib/app/vlcj-natives-4.8.3-b7745b2f9a723c7f83fe24adb7d70bb.jar": {
+    "bytes": 94899,
+    "sha256": "fb3cc3d7ae38d6ef906fae7d6601fc7d2870356b5de6335d341af9d0d2740592"
+  },
+  "lib/app/xml-apis-1.4.01-7eaad6fea5925cca6c36ee8b3e2ac9d.jar": {
+    "bytes": 220536,
+    "sha256": "a840968176645684bb01aed376e067ab39614885f9eee44abe35a5f20ebe7fad"
+  },
+  "lib/app/xml-apis-ext-1.3.04-bcb07d3b8d2397db7a3013b6465d347b.jar": {
+    "bytes": 85686,
+    "sha256": "d0b4887dc34d57de49074a58affad439a013d0baffa1a8034f8ef2a5ea191646"
+  },
+  "lib/app/xmlgraphics-commons-2.7-ec712218e2391e64672fd8ed1e9e1d71.jar": {
+    "bytes": 675889,
+    "sha256": "1fe37a1927bdd699730f0ad39f50a699c9ab4dff0ad047dff1e846cb120ae2b1"
+  },
+  "lib/app/zip4j-2.11.5-c6c0c175af57cc4e678f75dbddc721af.jar": {
+    "bytes": 210027,
+    "sha256": "fee9a941f286166d4a19719d818f20e9f3addb3cbd7291c08b67f0e0ce75a9fd"
+  },
+  "lib/libapplauncher.so": {
+    "bytes": 1618976,
+    "sha256": "336fe5e8ce1e8b36e0f8287f265f9456f52e776d48041f427e275c45c350e494"
+  },
+  "lib/qryptana.png": {
+    "bytes": 120491,
+    "sha256": "075a3211ccc7aac35bfef52b73623d92e8e332f15815b7bff1a85841354a9da2"
+  },
+  "lib/runtime/conf/jaxp.properties": {
+    "bytes": 7302,
+    "sha256": "7d95c49465d0c836d608d02856d3b097934dfb5dc4bd2279affaf337d045b708"
+  },
+  "lib/runtime/conf/logging.properties": {
+    "bytes": 2732,
+    "sha256": "b62d2733ab99556b108a1951d894c5a8d76b1ac7a00c02c388f9eb9be046c56f"
+  },
+  "lib/runtime/conf/net.properties": {
+    "bytes": 7441,
+    "sha256": "2e070ed1d97052f0ce8771ed2ef74a38d7c260a45fde7a3682c8844e5fdf58a4"
+  },
+  "lib/runtime/conf/sdp/sdp.conf.template": {
+    "bytes": 1455,
+    "sha256": "e9441e51f0d29e25313d33a9005640f11ad93c27f01bc46a34bf02f2a98ffd6b"
+  },
+  "lib/runtime/conf/security/java.policy": {
+    "bytes": 2294,
+    "sha256": "d51bcab7ed301caeff3779a5e777e6019864cecee5e2abc102ef991b0de77af2"
+  },
+  "lib/runtime/conf/security/java.security": {
+    "bytes": 72023,
+    "sha256": "819f635801f1e89bc4c6d319e7649e516a9eac18f7b821c9ffb5e5e7764f8083"
+  },
+  "lib/runtime/conf/security/policy/README.txt": {
+    "bytes": 2390,
+    "sha256": "6da0747334b0fea7592fd92614b2bbc8b126535e129b1fee483774d914e98eb5"
+  },
+  "lib/runtime/conf/security/policy/limited/default_US_export.policy": {
+    "bytes": 146,
+    "sha256": "758b930a526fc670ab7537f8c26321527050a31f5f42149a2dda623c56a0a1a9"
+  },
+  "lib/runtime/conf/security/policy/limited/default_local.policy": {
+    "bytes": 647,
+    "sha256": "2b2627548e61316150d47ffc3e6cad465ca05b3cccd4785eb7d21aa7baa0f441"
+  },
+  "lib/runtime/conf/security/policy/limited/exempt_local.policy": {
+    "bytes": 566,
+    "sha256": "8c3d7648abcd95a272ce12db870082937f4d7f6878d730d83cb7fbb31eb8b2c9"
+  },
+  "lib/runtime/conf/security/policy/unlimited/default_US_export.policy": {
+    "bytes": 146,
+    "sha256": "758b930a526fc670ab7537f8c26321527050a31f5f42149a2dda623c56a0a1a9"
+  },
+  "lib/runtime/conf/security/policy/unlimited/default_local.policy": {
+    "bytes": 193,
+    "sha256": "8d8a318e6d90dfd7e26612d2b6385aa704f686ca6134c551f8928418d92b851a"
+  },
+  "lib/runtime/conf/sound.properties": {
+    "bytes": 1210,
+    "sha256": "299c2360b6155eb28990ec49cd21753f97e43442fe8fab03e04f3e213df43a66"
+  },
+  "lib/runtime/legal/java.base/ADDITIONAL_LICENSE_INFO": {
+    "bytes": 2114,
+    "sha256": "a69bce275ba7a3570af6579cb0f55682cd75fedfcd49e0e8e9022270c447c916"
+  },
+  "lib/runtime/legal/java.base/ASSEMBLY_EXCEPTION": {
+    "bytes": 1514,
+    "sha256": "75292f03bf23d3db7c985aecc191029b93883200721ed23ed34a2e601463df33"
+  },
+  "lib/runtime/legal/java.base/LICENSE": {
+    "bytes": 19274,
+    "sha256": "4b9abebc4338048a7c2dc184e9f800deb349366bdf28eb23c2677a77b4c87726"
+  },
+  "lib/runtime/legal/java.base/aes.md": {
+    "bytes": 1444,
+    "sha256": "45c6d4da48325edfbff3dcf71c704e504c057904435ed23c6d57046d551eb69d"
+  },
+  "lib/runtime/legal/java.base/asm.md": {
+    "bytes": 1582,
+    "sha256": "683be15695bd248272d60f5b7fbe5e126a935ea6bf231a624a9aa164733e1d1d"
+  },
+  "lib/runtime/legal/java.base/c-libutl.md": {
+    "bytes": 1556,
+    "sha256": "bef40679922d6fdfb7e4ddb223ad6722300f6054ba737bbf6188d60fcec517f9"
+  },
+  "lib/runtime/legal/java.base/cldr.md": {
+    "bytes": 9601,
+    "sha256": "19515e14a240e022640e95b61b5095127fa9690755950b4a2b0a02e783e08163"
+  },
+  "lib/runtime/legal/java.base/gcc.md": {
+    "bytes": 128099,
+    "sha256": "589e34f142cdf7d1430daa573e61c2e3dd0330c9eb5a2c00d4a98b3a4450810b"
+  },
+  "lib/runtime/legal/java.base/icu.md": {
+    "bytes": 30197,
+    "sha256": "1bf28459c6e0af9f3429f4f8becd1668d6544055f8df240277456bc4b3d8a752"
+  },
+  "lib/runtime/legal/java.base/public_suffix.md": {
+    "bytes": 17783,
+    "sha256": "861de1e4992a7d28f1de25c73cd50d26a94779ebd749c0643fecfa56442c3429"
+  },
+  "lib/runtime/legal/java.base/siphash.md": {
+    "bytes": 8256,
+    "sha256": "5a792b5a74ad2a5f3d6a7ad8b7a841116e58a772c18bc6e392320a365b222c76"
+  },
+  "lib/runtime/legal/java.base/unicode.md": {
+    "bytes": 9078,
+    "sha256": "6f72f10d166b2c2e8a395e03e734c5afc852b59aeca73ced124f6b9c96268d53"
+  },
+  "lib/runtime/legal/java.base/zlib.md": {
+    "bytes": 1010,
+    "sha256": "c9c70c36a1f0325e8788771906202d42ba6ab4205caca44ec0f665707e83226b"
+  },
+  "lib/runtime/legal/java.datatransfer/ADDITIONAL_LICENSE_INFO": {
+    "bytes": 2114,
+    "sha256": "a69bce275ba7a3570af6579cb0f55682cd75fedfcd49e0e8e9022270c447c916"
+  },
+  "lib/runtime/legal/java.datatransfer/ASSEMBLY_EXCEPTION": {
+    "bytes": 1514,
+    "sha256": "75292f03bf23d3db7c985aecc191029b93883200721ed23ed34a2e601463df33"
+  },
+  "lib/runtime/legal/java.datatransfer/LICENSE": {
+    "bytes": 19274,
+    "sha256": "4b9abebc4338048a7c2dc184e9f800deb349366bdf28eb23c2677a77b4c87726"
+  },
+  "lib/runtime/legal/java.desktop/ADDITIONAL_LICENSE_INFO": {
+    "bytes": 2114,
+    "sha256": "a69bce275ba7a3570af6579cb0f55682cd75fedfcd49e0e8e9022270c447c916"
+  },
+  "lib/runtime/legal/java.desktop/ASSEMBLY_EXCEPTION": {
+    "bytes": 1514,
+    "sha256": "75292f03bf23d3db7c985aecc191029b93883200721ed23ed34a2e601463df33"
+  },
+  "lib/runtime/legal/java.desktop/LICENSE": {
+    "bytes": 19274,
+    "sha256": "4b9abebc4338048a7c2dc184e9f800deb349366bdf28eb23c2677a77b4c87726"
+  },
+  "lib/runtime/legal/java.desktop/colorimaging.md": {
+    "bytes": 167,
+    "sha256": "04d61e3e8e71dd452ebe52008af5378d9f6640d14578aeb515dc5375973b0189"
+  },
+  "lib/runtime/legal/java.desktop/freetype.md": {
+    "bytes": 30465,
+    "sha256": "553e804baecb7de7129d77c7259a6b70037d1893f1c600b41b35201695fb7758"
+  },
+  "lib/runtime/legal/java.desktop/giflib.md": {
+    "bytes": 1689,
+    "sha256": "206aab89ec75968e48a6a1ed6df7d8b9bfb7aea12cbe4c9345d93e5d97460a25"
+  },
+  "lib/runtime/legal/java.desktop/harfbuzz.md": {
+    "bytes": 3629,
+    "sha256": "5ec7cba7f8e7fc3a089213140aab6fa1b3bd5bf8a91bf8bddb3b8d315fc5f7d0"
+  },
+  "lib/runtime/legal/java.desktop/jpeg.md": {
+    "bytes": 3474,
+    "sha256": "c1dfb9719a71ad9f861f8728550542d681e25c8ef40e6393606e6e2a0c1d653a"
+  },
+  "lib/runtime/legal/java.desktop/lcms.md": {
+    "bytes": 2654,
+    "sha256": "843f9f6fa9c3f8109fcf4d5fe74caf7f2ae8e9bcd92238e4aff2d428c932b24b"
+  },
+  "lib/runtime/legal/java.desktop/libpng.md": {
+    "bytes": 7519,
+    "sha256": "f73afb394792f3aeecd959e89487603677a430e56b44eba596d8b572accfd540"
+  },
+  "lib/runtime/legal/java.desktop/mesa3d.md": {
+    "bytes": 5732,
+    "sha256": "63f4e6f75caebbccb95d903fb43e46ac7111b3624d0a34f146b276d7d9e7b152"
+  },
+  "lib/runtime/legal/java.desktop/pipewire.md": {
+    "bytes": 1479,
+    "sha256": "56a8fb1652c70ac204d13bb52ca4d678162e7d21a97d10209c2a633de8082de0"
+  },
+  "lib/runtime/legal/java.desktop/xwd.md": {
+    "bytes": 1348,
+    "sha256": "1d4ffa93c87f35084b02a7aa90a21084b4019db4fe1003c2e5ce775b4a384f59"
+  },
+  "lib/runtime/legal/java.logging/ADDITIONAL_LICENSE_INFO": {
+    "bytes": 2114,
+    "sha256": "a69bce275ba7a3570af6579cb0f55682cd75fedfcd49e0e8e9022270c447c916"
+  },
+  "lib/runtime/legal/java.logging/ASSEMBLY_EXCEPTION": {
+    "bytes": 1514,
+    "sha256": "75292f03bf23d3db7c985aecc191029b93883200721ed23ed34a2e601463df33"
+  },
+  "lib/runtime/legal/java.logging/LICENSE": {
+    "bytes": 19274,
+    "sha256": "4b9abebc4338048a7c2dc184e9f800deb349366bdf28eb23c2677a77b4c87726"
+  },
+  "lib/runtime/legal/java.prefs/ADDITIONAL_LICENSE_INFO": {
+    "bytes": 2114,
+    "sha256": "a69bce275ba7a3570af6579cb0f55682cd75fedfcd49e0e8e9022270c447c916"
+  },
+  "lib/runtime/legal/java.prefs/ASSEMBLY_EXCEPTION": {
+    "bytes": 1514,
+    "sha256": "75292f03bf23d3db7c985aecc191029b93883200721ed23ed34a2e601463df33"
+  },
+  "lib/runtime/legal/java.prefs/LICENSE": {
+    "bytes": 19274,
+    "sha256": "4b9abebc4338048a7c2dc184e9f800deb349366bdf28eb23c2677a77b4c87726"
+  },
+  "lib/runtime/legal/java.xml/ADDITIONAL_LICENSE_INFO": {
+    "bytes": 2114,
+    "sha256": "a69bce275ba7a3570af6579cb0f55682cd75fedfcd49e0e8e9022270c447c916"
+  },
+  "lib/runtime/legal/java.xml/ASSEMBLY_EXCEPTION": {
+    "bytes": 1514,
+    "sha256": "75292f03bf23d3db7c985aecc191029b93883200721ed23ed34a2e601463df33"
+  },
+  "lib/runtime/legal/java.xml/LICENSE": {
+    "bytes": 19274,
+    "sha256": "4b9abebc4338048a7c2dc184e9f800deb349366bdf28eb23c2677a77b4c87726"
+  },
+  "lib/runtime/legal/java.xml/bcel.md": {
+    "bytes": 11196,
+    "sha256": "cd578186ad93de46cca29ec8ace2b11f9da751987f3f140e6095c528596cc8c1"
+  },
+  "lib/runtime/legal/java.xml/dom.md": {
+    "bytes": 3761,
+    "sha256": "6686e8877667584a3a7c07344baadca1a03e29f677162d87c3c0811e990d1148"
+  },
+  "lib/runtime/legal/java.xml/jcup.md": {
+    "bytes": 1448,
+    "sha256": "8d5dcfdf50455a3c34c753a98f21e953248af200415a9084e3f102cb6c43b8bf"
+  },
+  "lib/runtime/legal/java.xml/xalan.md": {
+    "bytes": 13477,
+    "sha256": "c27eb875da4be683d4d7422be986e5e30f636ede31958ff1d39f9cd6109e7a00"
+  },
+  "lib/runtime/legal/java.xml/xerces.md": {
+    "bytes": 11848,
+    "sha256": "4a6bf6b367193ee68681cb2d9fed30ffc5d62dd2d477bd62e0271707d71b3244"
+  },
+  "lib/runtime/legal/jdk.crypto.ec/ADDITIONAL_LICENSE_INFO": {
+    "bytes": 2114,
+    "sha256": "a69bce275ba7a3570af6579cb0f55682cd75fedfcd49e0e8e9022270c447c916"
+  },
+  "lib/runtime/legal/jdk.crypto.ec/ASSEMBLY_EXCEPTION": {
+    "bytes": 1514,
+    "sha256": "75292f03bf23d3db7c985aecc191029b93883200721ed23ed34a2e601463df33"
+  },
+  "lib/runtime/legal/jdk.crypto.ec/LICENSE": {
+    "bytes": 19274,
+    "sha256": "4b9abebc4338048a7c2dc184e9f800deb349366bdf28eb23c2677a77b4c87726"
+  },
+  "lib/runtime/legal/jdk.unsupported/ADDITIONAL_LICENSE_INFO": {
+    "bytes": 2114,
+    "sha256": "a69bce275ba7a3570af6579cb0f55682cd75fedfcd49e0e8e9022270c447c916"
+  },
+  "lib/runtime/legal/jdk.unsupported/ASSEMBLY_EXCEPTION": {
+    "bytes": 1514,
+    "sha256": "75292f03bf23d3db7c985aecc191029b93883200721ed23ed34a2e601463df33"
+  },
+  "lib/runtime/legal/jdk.unsupported/LICENSE": {
+    "bytes": 19274,
+    "sha256": "4b9abebc4338048a7c2dc184e9f800deb349366bdf28eb23c2677a77b4c87726"
+  },
+  "lib/runtime/legal/jdk.zipfs/ADDITIONAL_LICENSE_INFO": {
+    "bytes": 2114,
+    "sha256": "a69bce275ba7a3570af6579cb0f55682cd75fedfcd49e0e8e9022270c447c916"
+  },
+  "lib/runtime/legal/jdk.zipfs/ASSEMBLY_EXCEPTION": {
+    "bytes": 1514,
+    "sha256": "75292f03bf23d3db7c985aecc191029b93883200721ed23ed34a2e601463df33"
+  },
+  "lib/runtime/legal/jdk.zipfs/LICENSE": {
+    "bytes": 19274,
+    "sha256": "4b9abebc4338048a7c2dc184e9f800deb349366bdf28eb23c2677a77b4c87726"
+  },
+  "lib/runtime/lib/classlist": {
+    "bytes": 77098,
+    "sha256": "e5ef97a1545ec5d99da80d2216620b71e0d43022f2333b36242121d05f61b6b1"
+  },
+  "lib/runtime/lib/jexec": {
+    "bytes": 12488,
+    "sha256": "67690e6a5fd09cf1e3958df770cd11b0f63683480e101f2a1a52e444b9b573ce"
+  },
+  "lib/runtime/lib/jrt-fs.jar": {
+    "bytes": 110123,
+    "sha256": "b3b49dbb3ce6e67eec8a5f9ca7a44667161af1dff0f31afc8c8143681d126ffa"
+  },
+  "lib/runtime/lib/jspawnhelper": {
+    "bytes": 17888,
+    "sha256": "a01ad6eeea570c32bdaa567f6e2609f0f1d274a9535be5d4fcd8f149bbf16e55"
+  },
+  "lib/runtime/lib/jvm.cfg": {
+    "bytes": 29,
+    "sha256": "aa9efb969444c1484e29adecab55a122458090616e766b2f1230ef05bc3867e0"
+  },
+  "lib/runtime/lib/libawt.so": {
+    "bytes": 813688,
+    "sha256": "e85b89af0f9278f3607e774bb24376868fac92d44ab3b39901f156419f23b28c"
+  },
+  "lib/runtime/lib/libawt_headless.so": {
+    "bytes": 38488,
+    "sha256": "55d55817cfc310947adc1b21e55475247aab77c6541206d8cad60daa9ffb141a"
+  },
+  "lib/runtime/lib/libawt_xawt.so": {
+    "bytes": 595192,
+    "sha256": "8645db054beb9bf34212338bef159569f0bec82e852ab9ef65b5a9c031829bae"
+  },
+  "lib/runtime/lib/libfontmanager.so": {
+    "bytes": 1951296,
+    "sha256": "7b06a02e3aefc953db0a2f139f5ee79b9dc64a9aee1f36ee25281b25a0a87f0f"
+  },
+  "lib/runtime/lib/libfreetype.so": {
+    "bytes": 747544,
+    "sha256": "18c1a93dd3f9135228e3033d8226a2d7f0aff9b00a951d331e6fe656a5ab67d3"
+  },
+  "lib/runtime/lib/libjava.so": {
+    "bytes": 178256,
+    "sha256": "424cd3c925897c3f4c285e2220b48482e00af95baf6e8d934375503b596eb540"
+  },
+  "lib/runtime/lib/libjavajpeg.so": {
+    "bytes": 235824,
+    "sha256": "02fec66a2070da1f53519a7318bf02c13348eb1f45965de3faad0d9db24b20f3"
+  },
+  "lib/runtime/lib/libjawt.so": {
+    "bytes": 7736,
+    "sha256": "26e615fb8724926c20c1e1b25dc33c6386b1240c3bea8e92e85b82d05a4df219"
+  },
+  "lib/runtime/lib/libjimage.so": {
+    "bytes": 145536,
+    "sha256": "b9ea2b93651469ede268071aefbb70d81a9e88ace15adf3a1f9339b2661322a8"
+  },
+  "lib/runtime/lib/libjli.so": {
+    "bytes": 115744,
+    "sha256": "97ba6c831c598e9fec7c44092f9f6f633caeac6c9d47c64d03753db0b5d0466a"
+  },
+  "lib/runtime/lib/libjsig.so": {
+    "bytes": 12728,
+    "sha256": "677fa55d7355d5d08862572d98e497e6f7e595abc191c4fc50eaea662fe97978"
+  },
+  "lib/runtime/lib/libjsound.so": {
+    "bytes": 80336,
+    "sha256": "fa85a2fca4ffe5cf54e1f04c481277a8bc0d6e20e570b48587bbc698ed1ea3b0"
+  },
+  "lib/runtime/lib/liblcms.so": {
+    "bytes": 607048,
+    "sha256": "55eef933f4962c891df28b777b6a647cb8b132ffcc4ce4fc9839b197c58451c3"
+  },
+  "lib/runtime/lib/libmlib_image.so": {
+    "bytes": 607208,
+    "sha256": "559782269a0ea9c3724df6a5e1acb61961e29f0c717f89aa2a775d7a02e8d7c6"
+  },
+  "lib/runtime/lib/libnet.so": {
+    "bytes": 61344,
+    "sha256": "134396b9b991de4176f17d4b328545371739eba25dd8517744ccd87ab9243018"
+  },
+  "lib/runtime/lib/libnio.so": {
+    "bytes": 104776,
+    "sha256": "1b1bd068e77d86d3b6fe5833d5a2c3f7e7cbab941599f71bb3860b2c3375aa57"
+  },
+  "lib/runtime/lib/libprefs.so": {
+    "bytes": 11968,
+    "sha256": "e3c86b20d66bde4247937863881e7204fff174d8b4b81ed3d41fe474551a3cd5"
+  },
+  "lib/runtime/lib/libsplashscreen.so": {
+    "bytes": 366424,
+    "sha256": "8ad401e8ad35f3f5e2653c797a9cdd8f26136945a6775f717b04b958701755b2"
+  },
+  "lib/runtime/lib/libsyslookup.so": {
+    "bytes": 7472,
+    "sha256": "84108f2487b041dfee509ab748ad0dc39fbca7df4b0e7ff7c1c54b6b09ad1adf"
+  },
+  "lib/runtime/lib/libverify.so": {
+    "bytes": 64008,
+    "sha256": "520af89f0f42610d6c35096a101be9a2daf3ae0d7283043660722609c0336cdb"
+  },
+  "lib/runtime/lib/libzip.so": {
+    "bytes": 124456,
+    "sha256": "ee142b8280889ba75de90c61e178158fec203ea68ff538f3463ba9fdac605343"
+  },
+  "lib/runtime/lib/modules": {
+    "bytes": 55653482,
+    "sha256": "9ca951b5001c58734815be6a28f4226e71f0369177860b7a4bdad2caa0c926af"
+  },
+  "lib/runtime/lib/psfont.properties.ja": {
+    "bytes": 3793,
+    "sha256": "5a4bd51b969bf187ff86d94f4a71fdfbfa602762975fa3c73d264b4575f7c78f"
+  },
+  "lib/runtime/lib/psfontj2d.properties": {
+    "bytes": 11390,
+    "sha256": "780c565d5af3ee6f68b887b75c041cdf46a0592f67012f12eeb691283e92630a"
+  },
+  "lib/runtime/lib/security/blocked.certs": {
+    "bytes": 2488,
+    "sha256": "96572f243f31c2ef81a6e627542e596f6a9295cff3c7ae095c1b595cb1457ded"
+  },
+  "lib/runtime/lib/security/cacerts": {
+    "bytes": 154503,
+    "sha256": "628b436e6698c364c5498a32c5bff91806bea7a9b501f75e2289ddc60b4ca7ef"
+  },
+  "lib/runtime/lib/security/default.policy": {
+    "bytes": 10742,
+    "sha256": "9b77a722ab832082b8f9312f72da1528989a3ca1b9fa4f9bf32767dfd5ebe099"
+  },
+  "lib/runtime/lib/security/public_suffix_list.dat": {
+    "bytes": 227396,
+    "sha256": "16b42002aa6f83a7763c4cdbd399ecf738460377d447e362884495545afd60a3"
+  },
+  "lib/runtime/lib/server/libjsig.so": {
+    "bytes": 12728,
+    "sha256": "677fa55d7355d5d08862572d98e497e6f7e595abc191c4fc50eaea662fe97978"
+  },
+  "lib/runtime/lib/server/libjvm.so": {
+    "bytes": 27056488,
+    "sha256": "b1a6a98962406718a491922ea6a3f8d898ea7c4a9ebe814a7963defc61ce62b2"
+  },
+  "lib/runtime/lib/tzdb.dat": {
+    "bytes": 103876,
+    "sha256": "a02e3a23d67255782b11ab81070902235ab564080f0f65ffe2a989cdaa86fe89"
+  },
+  "lib/runtime/release": {
+    "bytes": 147,
+    "sha256": "4c312d827b593340febca06175663f0df73d9639c8ac42bffdaac58edababdab"
+  }
+}

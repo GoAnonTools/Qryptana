@@ -1,5 +1,7 @@
 # Release gate
 
+Latest local Linux evidence: [toolchain acceptance report](../release/toolchain-acceptance-report.md). A verified Temurin 21.0.13+9 package now passes the helper-exit regression, 35 desktop tests and normal close/unlock/restart/close (exit 0). This supersedes the launcher-toolchain blocker below. Main-screen/Settings/Appearance/support/updater checks remain unperformed: disposable onboarding reached operator conditions and stopped before acceptance. Public-release HOLD and all device/legal/translation/installer/owner gates remain.
+
 Status: awaiting maintainer decision.
 Owner: [ASSIGN OWNER]
 Decision: [SELECT OPTION]

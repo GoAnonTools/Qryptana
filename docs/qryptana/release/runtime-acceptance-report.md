@@ -1,5 +1,7 @@
 # Linux runtime acceptance
 
+Follow-up: [toolchain-acceptance-report.md](toolchain-acceptance-report.md) records a verified Temurin replacement candidate with helper exit 0, normal shutdown/restart and further isolated onboarding/sizing evidence. This report preserves the original candidate's failure diagnosis; full UI acceptance still remains incomplete.
+
 Date: 2026-10-30. Outcome: **blocked**. The startup diagnostic is attributed; full Linux navigation acceptance is incomplete. No production code or artifact was changed, and no public-release readiness is claimed.
 
 Worktree: `/home/theanarchitect/code/Qryptana-release-validation`. Branch: `qryptana-runtime-fixes`, created from clean `qryptana-release-validation` at `12e0f7f6b422259f15aaab5491cd6aaab09b7d99`. Existing branches/history and profiles preserved. Release-gate follow-up commit: `db32a3b23`. No source-fix commits: no Qryptana application defect was confirmed. Resolve the final report commit with `git log -1 --format=%H -- docs/qryptana/release/runtime-acceptance-report.md`; a separate local receipt is retained in the diagnostic directory.
