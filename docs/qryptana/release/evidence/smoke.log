@@ -1,0 +1,3 @@
+pure virtual method called
+terminate called without an active exception
+Picked up JAVA_TOOL_OPTIONS: -Djava.io.tmpdir=/tmp/qryptana-rc-profile/tmp -Djava.util.prefs.userRoot=/tmp/qryptana-rc-profile/java-prefs
