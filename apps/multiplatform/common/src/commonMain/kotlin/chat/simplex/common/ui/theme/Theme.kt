@@ -652,8 +652,8 @@ fun darkPalette(isDesktop: Boolean) = if (isDesktop) darkColors(
   onBackground = QryptanaDarkText,
   onSurface = QryptanaDarkText,
 ) else darkColors(
-  primary = SimplexBlue,
-  primaryVariant = SimplexBlue,
+  primary = UpstreamSimplexBlue,
+  primaryVariant = UpstreamSimplexBlue,
   secondary = HighOrLowlight,
   secondaryVariant = DarkGray,
   surface = Color(0xFF222222),
@@ -669,7 +669,7 @@ fun darkAppPalette(isDesktop: Boolean) = if (isDesktop) AppColors(
   receivedMessage = QryptanaDarkCard,
   receivedQuote = Color(0xFF332F2B),
 ) else AppColors(
-  title = SimplexBlue,
+  title = UpstreamSimplexBlue,
   primaryVariant2 = Color(0xFF18262E),
   sentMessage = Color(0xFF18262E),
   sentQuote = Color(0xFF1D3847),
@@ -690,8 +690,8 @@ fun lightPalette(isDesktop: Boolean) = if (isDesktop) lightColors(
                                     onBackground = QryptanaLightText,
                                     onSurface = QryptanaLightText,
  ) else lightColors(
-  primary = SimplexBlue,
-  primaryVariant = SimplexBlue,
+  primary = UpstreamSimplexBlue,
+  primaryVariant = UpstreamSimplexBlue,
   secondary = HighOrLowlight,
   secondaryVariant = LightGray,
   error = Color.Red,
@@ -705,7 +705,7 @@ fun lightAppPalette(isDesktop: Boolean) = if (isDesktop) AppColors(
                                      receivedMessage = Color(0xFFFFFBF5),
                                      receivedQuote = Color(0xFFF1E9DF),
  ) else AppColors(
-  title = SimplexBlue,
+  title = UpstreamSimplexBlue,
   primaryVariant2 = Color(0xFFE9F7FF),
   sentMessage = Color(0xFFE9F7FF),
   sentQuote = Color(0xFFD6F0FF),

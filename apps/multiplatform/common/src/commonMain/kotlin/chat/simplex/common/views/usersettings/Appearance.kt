@@ -435,6 +435,13 @@ object AppearanceScope {
 
   @Composable
   fun ThemesSection(systemDarkTheme: SharedPreference<String?>) {
+    if (appPlatform.isDesktop) {
+      Text(
+        stringResource(MR.strings.qryptana_desktop_theme_description),
+        Modifier.padding(horizontal = DEFAULT_PADDING, vertical = 8.dp),
+        color = MaterialTheme.colors.secondary,
+      )
+    }
     val currentTheme by CurrentColors.collectAsState()
     val baseTheme = currentTheme.base
     val wallpaperType = MaterialTheme.wallpaper.type
@@ -949,9 +956,6 @@ object AppearanceScope {
     @Composable
     fun CustomizeThemeColorsSection(currentTheme: ThemeManager.ActiveTheme, editColor: (ThemeColor) -> Unit) {
       SectionView(stringResource(MR.strings.theme_colors_section_title)) {
-      if (appPlatform.isDesktop) {
-        Text(stringResource(MR.strings.qryptana_desktop_theme_description), color = MaterialTheme.colors.secondary)
-      }
         SectionItemViewSpaceBetween({ editColor(ThemeColor.PRIMARY) }) {
           val title = generalGetString(MR.strings.color_primary)
           Text(title)

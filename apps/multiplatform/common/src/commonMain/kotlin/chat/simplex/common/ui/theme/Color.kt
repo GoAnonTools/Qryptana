@@ -29,6 +29,8 @@ val QryptanaLightSurface = Color(0xFFFFF8EF)
 val QryptanaLightCard = Color(0xFFFFFBF5)
 val QryptanaLightText = Color(0xFF24201D)
 val QryptanaLightSecondary = Color(0xFF6E655D)
+// Verified in the pre-rebrand Color.kt at 423c8c0; mobile palette accents.
+val UpstreamSimplexBlue = Color(0xFF0088FF)
 // Kept under its compatibility name because other visual helpers still reference it.
 val SimplexBlue = QryptanaCopper
 val SimplexGreen = Color(77, 218, 103, 255)
