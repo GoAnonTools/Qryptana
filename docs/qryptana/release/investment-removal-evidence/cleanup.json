@@ -1,0 +1,13 @@
+{
+  "actual_candidate_normal_exit": 0,
+  "remaining_diagnostic_preview_pids_terminated": [
+    1534391,
+    1534823,
+    1535454,
+    1536302
+  ],
+  "temporary_display_stopped": true,
+  "manual_profile_accessed": false,
+  "temporary_profiles_preserved": true,
+  "all_recorded_task_processes_verified_gone": true
+}

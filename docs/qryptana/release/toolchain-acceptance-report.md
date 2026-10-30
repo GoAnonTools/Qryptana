@@ -1,5 +1,7 @@
 # Linux packaging toolchain acceptance
 
+Later implementation/candidates: [investment-removal-report.md](investment-removal-report.md) removes active investment promotion and rebuilds affected Linux/Android outputs with this verified toolchain. The archive below remains preserved; the later report records new paths/hashes and focused disposable verification without accessing the manual real-contact profile.
+
 Date: 2026-10-30. **The launcher helper crash is resolved in a new local candidate. Full Linux UI acceptance and public release remain on hold.** This follow-up supersedes the corrected-toolchain prerequisite and limited shutdown/navigation evidence in runtime-acceptance-report.md; that report remains the historical diagnosis of the original candidate.
 
 Branch: `qryptana-runtime-fixes`. Starting checkpoint: `2be173fd9e7a007d078be8fd03742fb0f8ddb349`. No application, dependency, protocol, JNI, Android, CI or production build configuration changed. This commit records a verified alternative packaging toolchain, local build instructions and selected non-secret evidence. Resolve its commit with `git log -1 --format=%H -- docs/qryptana/release/toolchain-acceptance-report.md`.

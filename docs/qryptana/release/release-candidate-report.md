@@ -1,5 +1,7 @@
 # Local release candidate report
 
+Latest affected candidates: [investment-removal-report.md](investment-removal-report.md) records implementation `08eb12a16`, rebuilt Linux/Android artifacts and focused disposable verification. Earlier candidates and receipts remain preserved.
+
 Later Linux candidate: [toolchain-acceptance-report.md](toolchain-acceptance-report.md) records the separately archived Temurin build that resolves the launcher helper abort. Original artifacts and this historical report are preserved; full UI and release gates remain open.
 
 Date: 2026-10-30. Outcome: local Linux runnable distribution and debug Android APKs produced; full runtime acceptance remains incomplete. Nothing published, uploaded, signed with production keys, installed on a physical device or pushed.

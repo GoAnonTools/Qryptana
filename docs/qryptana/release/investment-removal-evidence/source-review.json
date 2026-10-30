@@ -1,0 +1,28 @@
+{
+  "implementation": "08eb12a16e1df8c3f9d44fa7e192f7474d183db4",
+  "active_entrypoints_clear": [
+    "apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/ChatListView.kt",
+    "apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/newchat/OnboardingCards.kt",
+    "apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/SettingsView.kt",
+    "apps/ios/Shared/Views/ChatList/ChatListView.swift",
+    "apps/ios/Shared/Views/UserSettings/SettingsView.swift"
+  ],
+  "whats_new_campaign_feature_and_post_removed": true,
+  "changed_files": [
+    "apps/ios/Shared/Views/ChatList/ChatListView.swift",
+    "apps/ios/Shared/Views/Onboarding/WhatsNewView.swift",
+    "apps/ios/Shared/Views/UserSettings/SettingsView.swift",
+    "apps/ios/product/views/chat-list.md",
+    "apps/ios/spec/client/chat-list.md",
+    "apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/ChatListView.kt",
+    "apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/newchat/OnboardingCards.kt",
+    "apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/onboarding/WhatsNewView.kt",
+    "apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/SettingsView.kt",
+    "apps/multiplatform/product/views/chat-list.md",
+    "apps/multiplatform/spec/client/chat-list.md",
+    "docs/qryptana/decisions/privana-sidebar.md"
+  ],
+  "ios_tools_available": false,
+  "privana_runtime_widget_added": false,
+  "manual_profile_accessed": false
+}

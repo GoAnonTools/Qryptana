@@ -1,0 +1,16 @@
+allprojects { p ->
+    p.afterEvaluate {
+        if (p.path == ':desktop') {
+            p.compose.desktop.application.nativeDistributions.outputBaseDir.set(new File('/home/theanarchitect/code/Qryptana-release-artifacts/investment-removal-20261030/linux-temurin'))
+        }
+    }
+}
+allprojects { p ->
+    p.afterEvaluate {
+        if (p.path == ':desktop') {
+            p.tasks.matching { it.name == 'createRuntimeImage' }.configureEach {
+                inputs.property('qryptanaPackagingJdkRelease', new File(System.getProperty('java.home'), 'release').text)
+            }
+        }
+    }
+}

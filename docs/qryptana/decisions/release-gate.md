@@ -1,5 +1,7 @@
 # Release gate
 
+Investment-promotion follow-up: [removal report](../release/investment-removal-report.md), implementation `08eb12a16`. Active desktop/Android and iOS campaign entry points are removed; future Privana is documented directly below desktop sidebar search and remains hidden without a reserved gap. Desktop tests (35), desktop/Android compilation and fresh local Linux/FOSS APK rebuilds pass. Disposable component renders verify the changed screens; iOS remains source-reviewed only. New artifact paths/hashes are recorded in the report. The manual real-contact profile was untouched. This supersedes the open inherited-crowdfunding UI review below; other release gates remain.
+
 Latest local Linux evidence: [toolchain acceptance report](../release/toolchain-acceptance-report.md). A verified Temurin 21.0.13+9 package now passes the helper-exit regression, 35 desktop tests and normal close/unlock/restart/close (exit 0). This supersedes the launcher-toolchain blocker below. Main-screen/Settings/Appearance/support/updater checks remain unperformed: disposable onboarding reached operator conditions and stopped before acceptance. Public-release HOLD and all device/legal/translation/installer/owner gates remain.
 
 Status: awaiting maintainer decision.

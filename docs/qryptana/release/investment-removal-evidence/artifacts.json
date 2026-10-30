@@ -1,0 +1,17 @@
+[
+  {
+    "path": "/home/theanarchitect/code/Qryptana-release-artifacts/investment-removal-20261030/qryptana-7.0.3-android-foss-arm64-v8a-no-investment-debug.apk",
+    "bytes": 276231728,
+    "sha256": "476f659457172c99098e9dd1371cc0e2eb0d157ed2b9e36ea976eae977d35e7f"
+  },
+  {
+    "path": "/home/theanarchitect/code/Qryptana-release-artifacts/investment-removal-20261030/qryptana-7.0.3-android-foss-armeabi-v7a-no-investment-debug.apk",
+    "bytes": 261927072,
+    "sha256": "3a6c01a0bb8b3c1130e35980481ed724c90d9008cf56d984e87342abfc071cc3"
+  },
+  {
+    "path": "/home/theanarchitect/code/Qryptana-release-artifacts/investment-removal-20261030/qryptana-7.0.3-linux-x86_64-no-investment-local.tar.gz",
+    "bytes": 388968138,
+    "sha256": "d1703e0a813508fe6831cc677ad737264d7e6a5cd3751d5038f49f34aef9ea5d"
+  }
+]
