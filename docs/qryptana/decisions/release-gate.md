@@ -37,3 +37,12 @@ Decision remains HOLD for public release. Local Linux distribution and debug And
 | Requires maintainer input | Locale and store translations remain unreviewed; English fallback is not completed localization. | Assign reviewers to locale-followup.md and obtain reviewed translations before selected-locale publication. |
 
 No production keys or production identity generated; no push, upload, deployment or publication. Debug signing is only for isolated local testing. Native-binary download provenance is documented separately from upstream-binary updater safeguards: those safeguards were not relaxed.
+
+
+## Linux runtime attribution follow-up — 2026-10-30
+
+Evidence: ../release/runtime-acceptance-report.md and ../release/runtime-evidence/. The previously unresolved startup diagnostic is now attributed with high confidence to a pre-JVM jpackage launcher child: raw wait status 134 (SIGABRT with core flag), logger called from libapplauncher.so unload destructor. Its rpm/dpkg probes exit 127. The parent JVM is a separate surviving process; this does not make the child abort harmless. The dynamically linked JDK 21 launcher matches JDK-8348560. A corrected verified JDK packaging toolchain/launcher is required before closing this technical gate; no arbitrary native replacement or diagnostic suppression was made.
+
+Full Linux acceptance remains BLOCKED. Uninstrumented startup and an initial-profile restart were observed; onboarding completion, Settings/Appearance, runtime support/updater, resize/font scaling and normal UI shutdown remain UNPERFORMED. KDE Wayland was inspected first; one temporary compositor/uinput approach did not establish reliable navigation and was stopped. No further X11 focus retries. Use the exact isolated manual command/checklist in the runtime report. The temporary compositor script and virtual input device were removed; no global desktop configuration changed.
+
+No production source/build/native artifact changed. Existing 35 passing tests and APK build/signature evidence remain applicable; no builds were repeated. Device/legal/privacy/trademark/translation/installer gates remain as listed above. This update supersedes the earlier unresolved-attribution description, not the remaining runtime gates.
