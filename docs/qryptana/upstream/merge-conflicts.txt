@@ -1,0 +1,142 @@
+Auto-merging .github/workflows/build.yml
+Auto-merging .gitignore
+Auto-merging README.md
+Auto-merging apps/ios/SimpleX.xcodeproj/project.pbxproj
+CONFLICT (content): Merge conflict in apps/ios/SimpleX.xcodeproj/project.pbxproj
+Auto-merging apps/multiplatform/common/build.gradle.kts
+Auto-merging apps/multiplatform/common/src/androidMain/kotlin/chat/simplex/common/views/usersettings/Appearance.android.kt
+Auto-merging apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/App.kt
+CONFLICT (content): Merge conflict in apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/App.kt
+Auto-merging apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/model/SimpleXAPI.kt
+Auto-merging apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/platform/AppCommon.kt
+Auto-merging apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/ui/theme/Theme.kt
+CONFLICT (content): Merge conflict in apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/ui/theme/Theme.kt
+Auto-merging apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/WelcomeView.kt
+Auto-merging apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/ChatView.kt
+CONFLICT (content): Merge conflict in apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/ChatView.kt
+Auto-merging apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/ComposeFileView.kt
+CONFLICT (content): Merge conflict in apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/ComposeFileView.kt
+Auto-merging apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/ComposeView.kt
+Auto-merging apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/SendMsgView.kt
+Auto-merging apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/item/CIFileView.kt
+CONFLICT (content): Merge conflict in apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/item/CIFileView.kt
+Auto-merging apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/item/CIVideoView.kt
+Auto-merging apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/item/ChatItemView.kt
+Auto-merging apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/item/FramedItemView.kt
+Auto-merging apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/item/TextItemView.kt
+CONFLICT (content): Merge conflict in apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/item/TextItemView.kt
+Auto-merging apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/ChatListView.kt
+CONFLICT (content): Merge conflict in apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/ChatListView.kt
+Auto-merging apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/ChatPreviewView.kt
+Auto-merging apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/contacts/ContactPreviewView.kt
+Auto-merging apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/database/DatabaseEncryptionView.kt
+Auto-merging apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/helpers/AlertManager.kt
+CONFLICT (content): Merge conflict in apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/helpers/AlertManager.kt
+Auto-merging apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/helpers/ChatInfoImage.kt
+CONFLICT (content): Merge conflict in apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/helpers/ChatInfoImage.kt
+Auto-merging apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/helpers/ModalView.kt
+CONFLICT (content): Merge conflict in apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/helpers/ModalView.kt
+Auto-merging apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/helpers/SearchTextField.kt
+CONFLICT (content): Merge conflict in apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/helpers/SearchTextField.kt
+Auto-merging apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/helpers/Section.kt
+CONFLICT (content): Merge conflict in apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/helpers/Section.kt
+Auto-merging apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/newchat/ContactConnectionInfoView.kt
+CONFLICT (content): Merge conflict in apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/newchat/ContactConnectionInfoView.kt
+Auto-merging apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/newchat/NewChatSheet.kt
+Auto-merging apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/newchat/NewChatView.kt
+CONFLICT (content): Merge conflict in apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/newchat/NewChatView.kt
+Auto-merging apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/newchat/OnboardingCards.kt
+CONFLICT (content): Merge conflict in apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/newchat/OnboardingCards.kt
+Auto-merging apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/onboarding/ChooseServerOperators.kt
+CONFLICT (content): Merge conflict in apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/onboarding/ChooseServerOperators.kt
+Auto-merging apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/onboarding/LinkAMobileView.kt
+Auto-merging apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/Appearance.kt
+CONFLICT (content): Merge conflict in apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/Appearance.kt
+Auto-merging apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/SettingsView.kt
+CONFLICT (content): Merge conflict in apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/SettingsView.kt
+Auto-merging apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/UserAddressView.kt
+CONFLICT (content): Merge conflict in apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/UserAddressView.kt
+Auto-merging apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/networkAndServers/OperatorView.kt
+Auto-merging apps/multiplatform/common/src/commonMain/resources/MR/ar/strings.xml
+CONFLICT (content): Merge conflict in apps/multiplatform/common/src/commonMain/resources/MR/ar/strings.xml
+Auto-merging apps/multiplatform/common/src/commonMain/resources/MR/base/strings.xml
+CONFLICT (content): Merge conflict in apps/multiplatform/common/src/commonMain/resources/MR/base/strings.xml
+Auto-merging apps/multiplatform/common/src/commonMain/resources/MR/bg/strings.xml
+CONFLICT (content): Merge conflict in apps/multiplatform/common/src/commonMain/resources/MR/bg/strings.xml
+Auto-merging apps/multiplatform/common/src/commonMain/resources/MR/ca/strings.xml
+CONFLICT (content): Merge conflict in apps/multiplatform/common/src/commonMain/resources/MR/ca/strings.xml
+Auto-merging apps/multiplatform/common/src/commonMain/resources/MR/cs/strings.xml
+CONFLICT (content): Merge conflict in apps/multiplatform/common/src/commonMain/resources/MR/cs/strings.xml
+Auto-merging apps/multiplatform/common/src/commonMain/resources/MR/da/strings.xml
+Auto-merging apps/multiplatform/common/src/commonMain/resources/MR/de/strings.xml
+CONFLICT (content): Merge conflict in apps/multiplatform/common/src/commonMain/resources/MR/de/strings.xml
+Auto-merging apps/multiplatform/common/src/commonMain/resources/MR/el/strings.xml
+CONFLICT (content): Merge conflict in apps/multiplatform/common/src/commonMain/resources/MR/el/strings.xml
+Auto-merging apps/multiplatform/common/src/commonMain/resources/MR/es/strings.xml
+CONFLICT (content): Merge conflict in apps/multiplatform/common/src/commonMain/resources/MR/es/strings.xml
+Auto-merging apps/multiplatform/common/src/commonMain/resources/MR/fa/strings.xml
+CONFLICT (content): Merge conflict in apps/multiplatform/common/src/commonMain/resources/MR/fa/strings.xml
+Auto-merging apps/multiplatform/common/src/commonMain/resources/MR/fi/strings.xml
+CONFLICT (content): Merge conflict in apps/multiplatform/common/src/commonMain/resources/MR/fi/strings.xml
+Auto-merging apps/multiplatform/common/src/commonMain/resources/MR/fr/strings.xml
+CONFLICT (content): Merge conflict in apps/multiplatform/common/src/commonMain/resources/MR/fr/strings.xml
+Auto-merging apps/multiplatform/common/src/commonMain/resources/MR/hr/strings.xml
+CONFLICT (content): Merge conflict in apps/multiplatform/common/src/commonMain/resources/MR/hr/strings.xml
+Auto-merging apps/multiplatform/common/src/commonMain/resources/MR/hu/strings.xml
+CONFLICT (content): Merge conflict in apps/multiplatform/common/src/commonMain/resources/MR/hu/strings.xml
+Auto-merging apps/multiplatform/common/src/commonMain/resources/MR/in/strings.xml
+CONFLICT (content): Merge conflict in apps/multiplatform/common/src/commonMain/resources/MR/in/strings.xml
+Auto-merging apps/multiplatform/common/src/commonMain/resources/MR/it/strings.xml
+CONFLICT (content): Merge conflict in apps/multiplatform/common/src/commonMain/resources/MR/it/strings.xml
+Auto-merging apps/multiplatform/common/src/commonMain/resources/MR/iw/strings.xml
+CONFLICT (content): Merge conflict in apps/multiplatform/common/src/commonMain/resources/MR/iw/strings.xml
+Auto-merging apps/multiplatform/common/src/commonMain/resources/MR/ja/strings.xml
+CONFLICT (content): Merge conflict in apps/multiplatform/common/src/commonMain/resources/MR/ja/strings.xml
+Auto-merging apps/multiplatform/common/src/commonMain/resources/MR/ko/strings.xml
+CONFLICT (content): Merge conflict in apps/multiplatform/common/src/commonMain/resources/MR/ko/strings.xml
+Auto-merging apps/multiplatform/common/src/commonMain/resources/MR/ku/strings.xml
+CONFLICT (content): Merge conflict in apps/multiplatform/common/src/commonMain/resources/MR/ku/strings.xml
+Auto-merging apps/multiplatform/common/src/commonMain/resources/MR/lt/strings.xml
+CONFLICT (content): Merge conflict in apps/multiplatform/common/src/commonMain/resources/MR/lt/strings.xml
+Auto-merging apps/multiplatform/common/src/commonMain/resources/MR/nb-rNO/strings.xml
+Auto-merging apps/multiplatform/common/src/commonMain/resources/MR/nl/strings.xml
+CONFLICT (content): Merge conflict in apps/multiplatform/common/src/commonMain/resources/MR/nl/strings.xml
+Auto-merging apps/multiplatform/common/src/commonMain/resources/MR/pl/strings.xml
+CONFLICT (content): Merge conflict in apps/multiplatform/common/src/commonMain/resources/MR/pl/strings.xml
+Auto-merging apps/multiplatform/common/src/commonMain/resources/MR/pt-rBR/strings.xml
+CONFLICT (content): Merge conflict in apps/multiplatform/common/src/commonMain/resources/MR/pt-rBR/strings.xml
+Auto-merging apps/multiplatform/common/src/commonMain/resources/MR/pt/strings.xml
+CONFLICT (content): Merge conflict in apps/multiplatform/common/src/commonMain/resources/MR/pt/strings.xml
+Auto-merging apps/multiplatform/common/src/commonMain/resources/MR/ro/strings.xml
+CONFLICT (content): Merge conflict in apps/multiplatform/common/src/commonMain/resources/MR/ro/strings.xml
+Auto-merging apps/multiplatform/common/src/commonMain/resources/MR/ru/strings.xml
+CONFLICT (content): Merge conflict in apps/multiplatform/common/src/commonMain/resources/MR/ru/strings.xml
+Auto-merging apps/multiplatform/common/src/commonMain/resources/MR/th/strings.xml
+Auto-merging apps/multiplatform/common/src/commonMain/resources/MR/tr/strings.xml
+CONFLICT (content): Merge conflict in apps/multiplatform/common/src/commonMain/resources/MR/tr/strings.xml
+Auto-merging apps/multiplatform/common/src/commonMain/resources/MR/uk/strings.xml
+CONFLICT (content): Merge conflict in apps/multiplatform/common/src/commonMain/resources/MR/uk/strings.xml
+Auto-merging apps/multiplatform/common/src/commonMain/resources/MR/vi/strings.xml
+CONFLICT (content): Merge conflict in apps/multiplatform/common/src/commonMain/resources/MR/vi/strings.xml
+Auto-merging apps/multiplatform/common/src/commonMain/resources/MR/zh-rCN/strings.xml
+CONFLICT (content): Merge conflict in apps/multiplatform/common/src/commonMain/resources/MR/zh-rCN/strings.xml
+Auto-merging apps/multiplatform/common/src/commonMain/resources/MR/zh-rTW/strings.xml
+CONFLICT (content): Merge conflict in apps/multiplatform/common/src/commonMain/resources/MR/zh-rTW/strings.xml
+Auto-merging apps/multiplatform/common/src/desktopMain/kotlin/chat/simplex/common/views/chatlist/ChatListNavLinkView.desktop.kt
+CONFLICT (content): Merge conflict in apps/multiplatform/common/src/desktopMain/kotlin/chat/simplex/common/views/chatlist/ChatListNavLinkView.desktop.kt
+Auto-merging apps/multiplatform/common/src/desktopMain/kotlin/chat/simplex/common/views/helpers/AppUpdater.kt
+CONFLICT (content): Merge conflict in apps/multiplatform/common/src/desktopMain/kotlin/chat/simplex/common/views/helpers/AppUpdater.kt
+Auto-merging apps/multiplatform/common/src/desktopMain/kotlin/chat/simplex/common/views/usersettings/SettingsView.desktop.kt
+CONFLICT (content): Merge conflict in apps/multiplatform/common/src/desktopMain/kotlin/chat/simplex/common/views/usersettings/SettingsView.desktop.kt
+Auto-merging apps/multiplatform/desktop/build.gradle.kts
+Auto-merging apps/multiplatform/desktop/src/jvmMain/kotlin/chat/simplex/desktop/Main.kt
+CONFLICT (content): Merge conflict in apps/multiplatform/desktop/src/jvmMain/kotlin/chat/simplex/desktop/Main.kt
+Auto-merging apps/multiplatform/external/nanohttpd/build.gradle.kts
+CONFLICT (add/add): Merge conflict in apps/multiplatform/external/nanohttpd/build.gradle.kts
+Auto-merging apps/multiplatform/gradle.properties
+CONFLICT (content): Merge conflict in apps/multiplatform/gradle.properties
+Auto-merging docs/DIRECTORY.md
+Auto-merging docs/FAQ.md
+Auto-merging simplex-chat.cabal
+Auto-merging src/Simplex/Chat/Operators.hs
+Automatic merge failed; fix conflicts and then commit the result.

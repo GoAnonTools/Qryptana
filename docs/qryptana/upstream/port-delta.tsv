@@ -1,0 +1,702 @@
+M	.github/workflows/build.yml
+M	.github/workflows/qryptana-ci.yml
+M	.gitignore
+A	.gitmodules
+M	README.md
+M	apps/ios/CODE.md
+A	apps/ios/Shared/Assets.xcassets/badge-investor.imageset/Contents.json
+A	apps/ios/Shared/Assets.xcassets/badge-investor.imageset/badge-investor.svg
+A	apps/ios/Shared/Assets.xcassets/badge-legend.imageset/Contents.json
+A	apps/ios/Shared/Assets.xcassets/badge-legend.imageset/badge-legend.svg
+A	apps/ios/Shared/Assets.xcassets/badge-supporter.imageset/Contents.json
+A	apps/ios/Shared/Assets.xcassets/badge-supporter.imageset/badge-supporter.svg
+M	apps/ios/Shared/ContentView.swift
+M	apps/ios/Shared/Model/AppAPITypes.swift
+M	apps/ios/Shared/Model/ChatModel.swift
+M	apps/ios/Shared/Model/NtfManager.swift
+M	apps/ios/Shared/Model/SimpleXAPI.swift
+M	apps/ios/Shared/Theme/Theme.swift
+M	apps/ios/Shared/Views/Chat/ChatInfoToolbar.swift
+M	apps/ios/Shared/Views/Chat/ChatInfoView.swift
+M	apps/ios/Shared/Views/Chat/ChatItem/CIFileView.swift
+M	apps/ios/Shared/Views/Chat/ChatItem/CIImageView.swift
+M	apps/ios/Shared/Views/Chat/ChatItem/CIMetaView.swift
+M	apps/ios/Shared/Views/Chat/ChatItem/CIRcvDecryptionError.swift
+M	apps/ios/Shared/Views/Chat/ChatItem/CIVideoView.swift
+M	apps/ios/Shared/Views/Chat/ChatItem/FramedItemView.swift
+M	apps/ios/Shared/Views/Chat/ChatItem/MsgContentView.swift
+M	apps/ios/Shared/Views/Chat/ChatItemInfoView.swift
+M	apps/ios/Shared/Views/Chat/ChatView.swift
+M	apps/ios/Shared/Views/Chat/ComposeMessage/ComposeFileView.swift
+M	apps/ios/Shared/Views/Chat/ComposeMessage/ComposeView.swift
+M	apps/ios/Shared/Views/Chat/ComposeMessage/ContextProfilePickerView.swift
+M	apps/ios/Shared/Views/Chat/ComposeMessage/NativeTextEditor.swift
+M	apps/ios/Shared/Views/Chat/ComposeMessage/SendMessageView.swift
+M	apps/ios/Shared/Views/Chat/Group/AddGroupMembersView.swift
+M	apps/ios/Shared/Views/Chat/Group/ChannelMembersView.swift
+M	apps/ios/Shared/Views/Chat/Group/ChannelRelaysView.swift
+A	apps/ios/Shared/Views/Chat/Group/ChannelWebAccessView.swift
+M	apps/ios/Shared/Views/Chat/Group/GroupChatInfoView.swift
+M	apps/ios/Shared/Views/Chat/Group/GroupLinkView.swift
+M	apps/ios/Shared/Views/Chat/Group/GroupMemberInfoView.swift
+M	apps/ios/Shared/Views/Chat/Group/GroupMentions.swift
+M	apps/ios/Shared/Views/Chat/Group/GroupPreferencesView.swift
+M	apps/ios/Shared/Views/Chat/Group/MemberSupportChatToolbar.swift
+M	apps/ios/Shared/Views/Chat/Group/MemberSupportView.swift
+M	apps/ios/Shared/Views/Chat/VerifyCodeView.swift
+M	apps/ios/Shared/Views/ChatList/ChatHelp.swift
+M	apps/ios/Shared/Views/ChatList/ChatListNavLink.swift
+M	apps/ios/Shared/Views/ChatList/ChatListView.swift
+M	apps/ios/Shared/Views/ChatList/ChatPreviewView.swift
+M	apps/ios/Shared/Views/ChatList/ContactConnectionInfo.swift
+M	apps/ios/Shared/Views/ChatList/ContactRequestView.swift
+A	apps/ios/Shared/Views/ChatList/GetStakeBanner.swift
+M	apps/ios/Shared/Views/ChatList/UserPicker.swift
+M	apps/ios/Shared/Views/Contacts/ContactListNavLink.swift
+M	apps/ios/Shared/Views/Database/DatabaseView.swift
+A	apps/ios/Shared/Views/Helpers/NameBadge.swift
+M	apps/ios/Shared/Views/Helpers/ShareSheet.swift
+M	apps/ios/Shared/Views/NewChat/NewChatMenuButton.swift
+M	apps/ios/Shared/Views/NewChat/NewChatView.swift
+M	apps/ios/Shared/Views/Onboarding/ChooseServerOperators.swift
+M	apps/ios/Shared/Views/Onboarding/CreateProfile.swift
+M	apps/ios/Shared/Views/Onboarding/CreateSimpleXAddress.swift
+M	apps/ios/Shared/Views/Onboarding/WhatsNewView.swift
+M	apps/ios/Shared/Views/Onboarding/YourNetwork.swift
+M	apps/ios/Shared/Views/RemoteAccess/ConnectDesktopView.swift
+M	apps/ios/Shared/Views/UserSettings/NetworkAndServers/NetworkAndServers.swift
+M	apps/ios/Shared/Views/UserSettings/NetworkAndServers/OperatorView.swift
+M	apps/ios/Shared/Views/UserSettings/NetworkAndServers/ProtocolServerView.swift
+M	apps/ios/Shared/Views/UserSettings/NetworkAndServers/ProtocolServersView.swift
+M	apps/ios/Shared/Views/UserSettings/NotificationsView.swift
+M	apps/ios/Shared/Views/UserSettings/PrivacySettings.swift
+M	apps/ios/Shared/Views/UserSettings/SetDeliveryReceiptsView.swift
+M	apps/ios/Shared/Views/UserSettings/SettingsView.swift
+M	apps/ios/Shared/Views/UserSettings/UserAddressView.swift
+M	apps/ios/Shared/Views/UserSettings/UserProfile.swift
+M	apps/ios/Shared/Views/UserSettings/UserProfilesView.swift
+M	apps/ios/Shared/Views/UserSettings/VersionView.swift
+M	apps/ios/Shared/Views/ZoomableScrollView.swift
+M	apps/ios/SimpleX Localizations/ar.xcloc/Localized Contents/ar.xliff
+M	apps/ios/SimpleX Localizations/bg.xcloc/Localized Contents/bg.xliff
+M	apps/ios/SimpleX Localizations/bg.xcloc/Source Contents/en.lproj/SimpleX--iOS--InfoPlist.strings
+A	apps/ios/SimpleX Localizations/bg.xcloc/Source Contents/en.lproj/SimpleXChat-InfoPlist.strings
+M	apps/ios/SimpleX Localizations/bg.xcloc/contents.json
+M	apps/ios/SimpleX Localizations/bn.xcloc/Localized Contents/bn.xliff
+M	apps/ios/SimpleX Localizations/cs.xcloc/Localized Contents/cs.xliff
+M	apps/ios/SimpleX Localizations/cs.xcloc/Source Contents/en.lproj/SimpleX--iOS--InfoPlist.strings
+A	apps/ios/SimpleX Localizations/cs.xcloc/Source Contents/en.lproj/SimpleXChat-InfoPlist.strings
+M	apps/ios/SimpleX Localizations/cs.xcloc/contents.json
+M	apps/ios/SimpleX Localizations/de.xcloc/Localized Contents/de.xliff
+M	apps/ios/SimpleX Localizations/de.xcloc/Source Contents/en.lproj/SimpleX--iOS--InfoPlist.strings
+A	apps/ios/SimpleX Localizations/de.xcloc/Source Contents/en.lproj/SimpleXChat-InfoPlist.strings
+M	apps/ios/SimpleX Localizations/de.xcloc/contents.json
+M	apps/ios/SimpleX Localizations/el.xcloc/Localized Contents/el.xliff
+M	apps/ios/SimpleX Localizations/en.xcloc/Localized Contents/en.xliff
+M	apps/ios/SimpleX Localizations/en.xcloc/Source Contents/en.lproj/SimpleX--iOS--InfoPlist.strings
+A	apps/ios/SimpleX Localizations/en.xcloc/Source Contents/en.lproj/SimpleXChat-InfoPlist.strings
+M	apps/ios/SimpleX Localizations/en.xcloc/contents.json
+M	apps/ios/SimpleX Localizations/es.xcloc/Localized Contents/es.xliff
+M	apps/ios/SimpleX Localizations/es.xcloc/Source Contents/en.lproj/SimpleX--iOS--InfoPlist.strings
+A	apps/ios/SimpleX Localizations/es.xcloc/Source Contents/en.lproj/SimpleXChat-InfoPlist.strings
+M	apps/ios/SimpleX Localizations/es.xcloc/contents.json
+M	apps/ios/SimpleX Localizations/fi.xcloc/Localized Contents/fi.xliff
+M	apps/ios/SimpleX Localizations/fi.xcloc/Source Contents/en.lproj/SimpleX--iOS--InfoPlist.strings
+A	apps/ios/SimpleX Localizations/fi.xcloc/Source Contents/en.lproj/SimpleXChat-InfoPlist.strings
+M	apps/ios/SimpleX Localizations/fi.xcloc/contents.json
+M	apps/ios/SimpleX Localizations/fr.xcloc/Localized Contents/fr.xliff
+M	apps/ios/SimpleX Localizations/fr.xcloc/Source Contents/en.lproj/SimpleX--iOS--InfoPlist.strings
+A	apps/ios/SimpleX Localizations/fr.xcloc/Source Contents/en.lproj/SimpleXChat-InfoPlist.strings
+M	apps/ios/SimpleX Localizations/fr.xcloc/contents.json
+M	apps/ios/SimpleX Localizations/he.xcloc/Localized Contents/he.xliff
+M	apps/ios/SimpleX Localizations/hr.xcloc/Localized Contents/hr.xliff
+M	apps/ios/SimpleX Localizations/hu.xcloc/Localized Contents/hu.xliff
+M	apps/ios/SimpleX Localizations/hu.xcloc/Source Contents/en.lproj/SimpleX--iOS--InfoPlist.strings
+A	apps/ios/SimpleX Localizations/hu.xcloc/Source Contents/en.lproj/SimpleXChat-InfoPlist.strings
+M	apps/ios/SimpleX Localizations/hu.xcloc/contents.json
+M	apps/ios/SimpleX Localizations/it.xcloc/Localized Contents/it.xliff
+M	apps/ios/SimpleX Localizations/it.xcloc/Source Contents/en.lproj/SimpleX--iOS--InfoPlist.strings
+A	apps/ios/SimpleX Localizations/it.xcloc/Source Contents/en.lproj/SimpleXChat-InfoPlist.strings
+M	apps/ios/SimpleX Localizations/it.xcloc/contents.json
+M	apps/ios/SimpleX Localizations/ja.xcloc/Localized Contents/ja.xliff
+M	apps/ios/SimpleX Localizations/ja.xcloc/Source Contents/en.lproj/SimpleX--iOS--InfoPlist.strings
+A	apps/ios/SimpleX Localizations/ja.xcloc/Source Contents/en.lproj/SimpleXChat-InfoPlist.strings
+M	apps/ios/SimpleX Localizations/ja.xcloc/contents.json
+M	apps/ios/SimpleX Localizations/ko.xcloc/Localized Contents/ko.xliff
+M	apps/ios/SimpleX Localizations/lt.xcloc/Localized Contents/lt.xliff
+M	apps/ios/SimpleX Localizations/nl.xcloc/Localized Contents/nl.xliff
+M	apps/ios/SimpleX Localizations/nl.xcloc/Source Contents/en.lproj/SimpleX--iOS--InfoPlist.strings
+A	apps/ios/SimpleX Localizations/nl.xcloc/Source Contents/en.lproj/SimpleXChat-InfoPlist.strings
+M	apps/ios/SimpleX Localizations/nl.xcloc/contents.json
+M	apps/ios/SimpleX Localizations/pl.xcloc/Localized Contents/pl.xliff
+M	apps/ios/SimpleX Localizations/pl.xcloc/Source Contents/en.lproj/SimpleX--iOS--InfoPlist.strings
+A	apps/ios/SimpleX Localizations/pl.xcloc/Source Contents/en.lproj/SimpleXChat-InfoPlist.strings
+M	apps/ios/SimpleX Localizations/pl.xcloc/contents.json
+M	apps/ios/SimpleX Localizations/pt-BR.xcloc/Localized Contents/pt-BR.xliff
+M	apps/ios/SimpleX Localizations/pt.xcloc/Localized Contents/pt.xliff
+M	apps/ios/SimpleX Localizations/ru.xcloc/Localized Contents/ru.xliff
+M	apps/ios/SimpleX Localizations/ru.xcloc/Source Contents/en.lproj/SimpleX--iOS--InfoPlist.strings
+A	apps/ios/SimpleX Localizations/ru.xcloc/Source Contents/en.lproj/SimpleXChat-InfoPlist.strings
+M	apps/ios/SimpleX Localizations/ru.xcloc/contents.json
+M	apps/ios/SimpleX Localizations/th.xcloc/Localized Contents/th.xliff
+M	apps/ios/SimpleX Localizations/th.xcloc/Source Contents/en.lproj/SimpleX--iOS--InfoPlist.strings
+A	apps/ios/SimpleX Localizations/th.xcloc/Source Contents/en.lproj/SimpleXChat-InfoPlist.strings
+M	apps/ios/SimpleX Localizations/th.xcloc/contents.json
+M	apps/ios/SimpleX Localizations/tr.xcloc/Localized Contents/tr.xliff
+M	apps/ios/SimpleX Localizations/tr.xcloc/Source Contents/en.lproj/SimpleX--iOS--InfoPlist.strings
+A	apps/ios/SimpleX Localizations/tr.xcloc/Source Contents/en.lproj/SimpleXChat-InfoPlist.strings
+M	apps/ios/SimpleX Localizations/tr.xcloc/contents.json
+M	apps/ios/SimpleX Localizations/uk.xcloc/Localized Contents/uk.xliff
+M	apps/ios/SimpleX Localizations/uk.xcloc/Source Contents/en.lproj/SimpleX--iOS--InfoPlist.strings
+A	apps/ios/SimpleX Localizations/uk.xcloc/Source Contents/en.lproj/SimpleXChat-InfoPlist.strings
+M	apps/ios/SimpleX Localizations/uk.xcloc/contents.json
+M	apps/ios/SimpleX Localizations/zh-Hans.xcloc/Localized Contents/zh-Hans.xliff
+M	apps/ios/SimpleX Localizations/zh-Hans.xcloc/Source Contents/en.lproj/SimpleX--iOS--InfoPlist.strings
+A	apps/ios/SimpleX Localizations/zh-Hans.xcloc/Source Contents/en.lproj/SimpleXChat-InfoPlist.strings
+M	apps/ios/SimpleX Localizations/zh-Hans.xcloc/contents.json
+M	apps/ios/SimpleX Localizations/zh-Hant.xcloc/Localized Contents/zh-Hant.xliff
+M	apps/ios/SimpleX NSE/fr.lproj/Localizable.strings
+M	apps/ios/SimpleX SE/ShareModel.swift
+M	apps/ios/SimpleX SE/de.lproj/Localizable.strings
+M	apps/ios/SimpleX SE/es.lproj/Localizable.strings
+M	apps/ios/SimpleX SE/fr.lproj/Localizable.strings
+M	apps/ios/SimpleX SE/hu.lproj/Localizable.strings
+M	apps/ios/SimpleX SE/it.lproj/Localizable.strings
+M	apps/ios/SimpleX SE/nl.lproj/Localizable.strings
+M	apps/ios/SimpleX SE/pl.lproj/Localizable.strings
+M	apps/ios/SimpleX SE/ru.lproj/Localizable.strings
+M	apps/ios/SimpleX SE/tr.lproj/Localizable.strings
+M	apps/ios/SimpleX SE/uk.lproj/Localizable.strings
+M	apps/ios/SimpleX SE/zh-Hans.lproj/Localizable.strings
+M	apps/ios/SimpleX.xcodeproj/project.pbxproj
+M	apps/ios/SimpleXChat/APITypes.swift
+M	apps/ios/SimpleXChat/ChatTypes.swift
+M	apps/ios/SimpleXChat/ChatUtils.swift
+M	apps/ios/SimpleXChat/ErrorAlert.swift
+M	apps/ios/SimpleXChat/FileUtils.swift
+M	apps/ios/SimpleXChat/ImageUtils.swift
+M	apps/ios/bg.lproj/Localizable.strings
+M	apps/ios/cs.lproj/Localizable.strings
+M	apps/ios/de.lproj/Localizable.strings
+M	apps/ios/es.lproj/Localizable.strings
+M	apps/ios/fi.lproj/Localizable.strings
+M	apps/ios/fr.lproj/Localizable.strings
+M	apps/ios/hu.lproj/Localizable.strings
+M	apps/ios/it.lproj/Localizable.strings
+M	apps/ios/ja.lproj/Localizable.strings
+M	apps/ios/nl.lproj/Localizable.strings
+M	apps/ios/pl.lproj/Localizable.strings
+M	apps/ios/product/README.md
+M	apps/ios/product/concepts.md
+M	apps/ios/product/flows/connection.md
+M	apps/ios/product/flows/messaging.md
+M	apps/ios/product/views/chat-list.md
+M	apps/ios/product/views/new-chat.md
+M	apps/ios/product/views/settings.md
+M	apps/ios/ru.lproj/Localizable.strings
+M	apps/ios/spec/client/chat-list.md
+M	apps/ios/spec/client/navigation.md
+M	apps/ios/spec/impact.md
+M	apps/ios/th.lproj/Localizable.strings
+M	apps/ios/tr.lproj/Localizable.strings
+M	apps/ios/uk.lproj/Localizable.strings
+M	apps/ios/zh-Hans.lproj/Localizable.strings
+M	apps/multiplatform/.gitignore
+M	apps/multiplatform/CODE.md
+M	apps/multiplatform/README.md
+M	apps/multiplatform/android/build.gradle.kts
+A	apps/multiplatform/android/src/foss/java/chat/simplex/app/PlayStore.kt
+A	apps/multiplatform/android/src/google/java/chat/simplex/app/PlayStore.kt
+M	apps/multiplatform/android/src/main/AndroidManifest.xml
+M	apps/multiplatform/android/src/main/java/chat/simplex/app/MainActivity.kt
+M	apps/multiplatform/android/src/main/java/chat/simplex/app/SimplexApp.kt
+M	apps/multiplatform/common/build.gradle.kts
+M	apps/multiplatform/common/src/androidMain/kotlin/chat/simplex/common/views/chatlist/UserPicker.android.kt
+M	apps/multiplatform/common/src/androidMain/kotlin/chat/simplex/common/views/database/DatabaseEncryptionView.android.kt
+M	apps/multiplatform/common/src/androidMain/kotlin/chat/simplex/common/views/helpers/Utils.android.kt
+M	apps/multiplatform/common/src/androidMain/kotlin/chat/simplex/common/views/usersettings/Appearance.android.kt
+M	apps/multiplatform/common/src/androidMain/kotlin/chat/simplex/common/views/usersettings/SettingsView.android.kt
+M	apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/App.kt
+M	apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/model/ChatModel.kt
+M	apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/model/SimpleXAPI.kt
+M	apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/platform/AppCommon.kt
+M	apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/platform/NtfManager.kt
+M	apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/platform/Platform.kt
+M	apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/ui/theme/Theme.kt
+M	apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/WelcomeView.kt
+M	apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/ChatInfoView.kt
+M	apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/ChatItemInfoView.kt
+M	apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/ChatView.kt
+M	apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/ComposeContextProfilePickerView.kt
+M	apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/ComposeFileView.kt
+M	apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/ComposeView.kt
+M	apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/ContactPreferences.kt
+M	apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/SendMsgView.kt
+A	apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/SimplexNameView.kt
+M	apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/TextSelection.kt
+M	apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/VerifyCodeView.kt
+M	apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/group/AddGroupMembersView.kt
+M	apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/group/AddGroupRelayView.kt
+M	apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/group/ChannelMembersView.kt
+M	apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/group/ChannelRelaysView.kt
+A	apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/group/ChannelWebPageView.kt
+M	apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/group/GroupChatInfoView.kt
+M	apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/group/GroupLinkView.kt
+M	apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/group/GroupMemberInfoView.kt
+M	apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/group/GroupMentions.kt
+M	apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/group/GroupPreferences.kt
+M	apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/group/MemberAdmission.kt
+M	apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/group/MemberSupportChatView.kt
+M	apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/group/MemberSupportView.kt
+M	apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/item/CIFileView.kt
+M	apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/item/CIImageView.kt
+M	apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/item/CIMetaView.kt
+M	apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/item/CIVideoView.kt
+M	apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/item/ChatItemView.kt
+M	apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/item/FramedItemView.kt
+M	apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/item/TextItemView.kt
+M	apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/ChatListNavLinkView.kt
+M	apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/ChatListView.kt
+M	apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/ChatPreviewView.kt
+M	apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/ContactRequestView.kt
+A	apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/GetStakeBanner.kt
+M	apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/ServersSummaryView.kt
+M	apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/ShareListNavLinkView.kt
+M	apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/ShareListView.kt
+M	apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/TagListView.kt
+M	apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/UserPicker.kt
+M	apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/contacts/ContactListNavView.kt
+M	apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/contacts/ContactPreviewView.kt
+M	apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/database/DatabaseEncryptionView.kt
+M	apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/database/DatabaseView.kt
+M	apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/helpers/AlertManager.kt
+M	apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/helpers/AppBarTitle.kt
+M	apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/helpers/ChatInfoImage.kt
+M	apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/helpers/Enums.kt
+M	apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/helpers/GestureDetector.kt
+M	apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/helpers/ModalView.kt
+M	apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/helpers/SearchTextField.kt
+M	apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/helpers/Section.kt
+M	apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/helpers/TextEditor.kt
+M	apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/helpers/ThemeModeEditor.kt
+M	apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/helpers/Utils.kt
+M	apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/migration/MigrateFromDevice.kt
+M	apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/migration/MigrateToDevice.kt
+M	apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/newchat/AddChannelView.kt
+M	apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/newchat/AddGroupView.kt
+M	apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/newchat/ConnectPlan.kt
+M	apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/newchat/ContactConnectionInfoView.kt
+M	apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/newchat/NewChatSheet.kt
+M	apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/newchat/NewChatView.kt
+M	apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/newchat/OnboardingCards.kt
+M	apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/onboarding/ChooseServerOperators.kt
+M	apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/onboarding/LinkAMobileView.kt
+M	apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/onboarding/WhatsNewView.kt
+M	apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/remote/ConnectDesktopView.kt
+M	apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/remote/ConnectMobileView.kt
+M	apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/Appearance.kt
+M	apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/CallSettings.kt
+M	apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/DeveloperView.kt
+M	apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/HiddenProfileView.kt
+M	apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/NotificationsSettingsView.kt
+M	apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/Preferences.kt
+M	apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/PrivacySettings.kt
+A	apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/SetSimplexNameView.kt
+M	apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/SettingsView.kt
+M	apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/UserAddressView.kt
+M	apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/UserProfileView.kt
+M	apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/UserProfilesView.kt
+M	apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/VersionInfoView.kt
+M	apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/networkAndServers/AdvancedNetworkSettings.kt
+M	apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/networkAndServers/ChatRelayView.kt
+M	apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/networkAndServers/NetworkAndServers.kt
+M	apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/networkAndServers/OperatorView.kt
+M	apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/networkAndServers/ProtocolServerView.kt
+M	apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/networkAndServers/ProtocolServersView.kt
+M	apps/multiplatform/common/src/commonMain/resources/MR/ar/strings.xml
+M	apps/multiplatform/common/src/commonMain/resources/MR/base/strings.xml
+M	apps/multiplatform/common/src/commonMain/resources/MR/bg/strings.xml
+M	apps/multiplatform/common/src/commonMain/resources/MR/ca/strings.xml
+M	apps/multiplatform/common/src/commonMain/resources/MR/cs/strings.xml
+M	apps/multiplatform/common/src/commonMain/resources/MR/da/strings.xml
+M	apps/multiplatform/common/src/commonMain/resources/MR/de/strings.xml
+M	apps/multiplatform/common/src/commonMain/resources/MR/el/strings.xml
+M	apps/multiplatform/common/src/commonMain/resources/MR/es/strings.xml
+M	apps/multiplatform/common/src/commonMain/resources/MR/fa/strings.xml
+M	apps/multiplatform/common/src/commonMain/resources/MR/fi/strings.xml
+M	apps/multiplatform/common/src/commonMain/resources/MR/fr/strings.xml
+M	apps/multiplatform/common/src/commonMain/resources/MR/hi/strings.xml
+M	apps/multiplatform/common/src/commonMain/resources/MR/hr/strings.xml
+M	apps/multiplatform/common/src/commonMain/resources/MR/hu/strings.xml
+A	apps/multiplatform/common/src/commonMain/resources/MR/images/badge_investor.svg
+A	apps/multiplatform/common/src/commonMain/resources/MR/images/badge_legend.svg
+A	apps/multiplatform/common/src/commonMain/resources/MR/images/badge_supporter.svg
+A	apps/multiplatform/common/src/commonMain/resources/MR/images/ic_verified.svg
+A	apps/multiplatform/common/src/commonMain/resources/MR/images/ic_verified_filled.svg
+A	apps/multiplatform/common/src/commonMain/resources/MR/images/ic_verified_missing.svg
+M	apps/multiplatform/common/src/commonMain/resources/MR/in/strings.xml
+M	apps/multiplatform/common/src/commonMain/resources/MR/it/strings.xml
+M	apps/multiplatform/common/src/commonMain/resources/MR/iw/strings.xml
+M	apps/multiplatform/common/src/commonMain/resources/MR/ja/strings.xml
+M	apps/multiplatform/common/src/commonMain/resources/MR/ko/strings.xml
+M	apps/multiplatform/common/src/commonMain/resources/MR/ku/strings.xml
+M	apps/multiplatform/common/src/commonMain/resources/MR/lt/strings.xml
+M	apps/multiplatform/common/src/commonMain/resources/MR/nb-rNO/strings.xml
+M	apps/multiplatform/common/src/commonMain/resources/MR/nl/strings.xml
+M	apps/multiplatform/common/src/commonMain/resources/MR/pl/strings.xml
+M	apps/multiplatform/common/src/commonMain/resources/MR/pt-rBR/strings.xml
+M	apps/multiplatform/common/src/commonMain/resources/MR/pt/strings.xml
+M	apps/multiplatform/common/src/commonMain/resources/MR/ro/strings.xml
+M	apps/multiplatform/common/src/commonMain/resources/MR/ru/strings.xml
+M	apps/multiplatform/common/src/commonMain/resources/MR/th/strings.xml
+M	apps/multiplatform/common/src/commonMain/resources/MR/tr/strings.xml
+M	apps/multiplatform/common/src/commonMain/resources/MR/uk/strings.xml
+M	apps/multiplatform/common/src/commonMain/resources/MR/vi/strings.xml
+M	apps/multiplatform/common/src/commonMain/resources/MR/zh-rCN/strings.xml
+M	apps/multiplatform/common/src/commonMain/resources/MR/zh-rTW/strings.xml
+A	apps/multiplatform/common/src/commonMain/resources/assets/default/MR/images/crowdfunding_1.svg
+A	apps/multiplatform/common/src/commonMain/resources/assets/default/MR/images/crowdfunding_2.svg
+A	apps/multiplatform/common/src/commonMain/resources/assets/default/MR/images/crowdfunding_3.svg
+A	apps/multiplatform/common/src/commonMain/resources/assets/default/MR/images/crowdfunding_4.svg
+A	apps/multiplatform/common/src/commonMain/resources/assets/default/MR/images/own_stake.svg
+A	apps/multiplatform/common/src/commonMain/resources/assets/default/MR/images/own_stake_light.svg
+M	apps/multiplatform/common/src/commonMain/resources/assets/www/desktop/ui.js
+M	apps/multiplatform/common/src/desktopMain/kotlin/chat/simplex/common/platform/Files.desktop.kt
+M	apps/multiplatform/common/src/desktopMain/kotlin/chat/simplex/common/platform/Platform.desktop.kt
+M	apps/multiplatform/common/src/desktopMain/kotlin/chat/simplex/common/platform/RecAndPlay.desktop.kt
+A	apps/multiplatform/common/src/desktopMain/kotlin/chat/simplex/common/platform/StartupError.kt
+M	apps/multiplatform/common/src/desktopMain/kotlin/chat/simplex/common/platform/VideoPlayer.desktop.kt
+M	apps/multiplatform/common/src/desktopMain/kotlin/chat/simplex/common/platform/Videos.desktop.kt
+M	apps/multiplatform/common/src/desktopMain/kotlin/chat/simplex/common/views/call/CallView.desktop.kt
+M	apps/multiplatform/common/src/desktopMain/kotlin/chat/simplex/common/views/chatlist/ChatListNavLinkView.desktop.kt
+M	apps/multiplatform/common/src/desktopMain/kotlin/chat/simplex/common/views/chatlist/UserPicker.desktop.kt
+M	apps/multiplatform/common/src/desktopMain/kotlin/chat/simplex/common/views/database/DatabaseEncryptionView.desktop.kt
+M	apps/multiplatform/common/src/desktopMain/kotlin/chat/simplex/common/views/helpers/AppUpdater.kt
+M	apps/multiplatform/common/src/desktopMain/kotlin/chat/simplex/common/views/helpers/DefaultDialog.desktop.kt
+M	apps/multiplatform/common/src/desktopMain/kotlin/chat/simplex/common/views/helpers/Utils.desktop.kt
+M	apps/multiplatform/common/src/desktopMain/kotlin/chat/simplex/common/views/usersettings/Appearance.desktop.kt
+M	apps/multiplatform/common/src/desktopMain/kotlin/chat/simplex/common/views/usersettings/SettingsView.desktop.kt
+A	apps/multiplatform/common/src/desktopTest/kotlin/chat/simplex/app/CallServerAuthTest.kt
+A	apps/multiplatform/common/src/desktopTest/kotlin/chat/simplex/app/CallServerTokenTest.kt
+A	apps/multiplatform/common/src/desktopTest/kotlin/chat/simplex/app/ImageDecodeBoundsTest.kt
+A	apps/multiplatform/common/src/desktopTest/kotlin/chat/simplex/app/UtilsFileCopyTest.kt
+M	apps/multiplatform/desktop/build.gradle.kts
+M	apps/multiplatform/desktop/src/jvmMain/kotlin/chat/simplex/desktop/Main.kt
+M	apps/multiplatform/external/nanohttpd/build.gradle.kts
+A	apps/multiplatform/external/nanohttpd/upstream
+M	apps/multiplatform/gradle.properties
+M	apps/multiplatform/product/concepts.md
+M	apps/multiplatform/product/views/chat-list.md
+M	apps/multiplatform/spec/README.md
+M	apps/multiplatform/spec/architecture.md
+M	apps/multiplatform/spec/client/chat-list.md
+M	apps/multiplatform/spec/client/navigation.md
+M	apps/multiplatform/spec/impact.md
+M	apps/multiplatform/spec/state.md
+M	apps/simplex-broadcast-bot/src/Broadcast/Options.hs
+M	apps/simplex-chat/Main.hs
+M	apps/simplex-directory-service/README.md
+M	apps/simplex-directory-service/src/Directory/Events.hs
+M	apps/simplex-directory-service/src/Directory/Listing.hs
+M	apps/simplex-directory-service/src/Directory/Options.hs
+M	apps/simplex-directory-service/src/Directory/Service.hs
+M	apps/simplex-directory-service/src/Directory/Store.hs
+M	apps/simplex-directory-service/src/Directory/Store/Migrate.hs
+M	apps/simplex-directory-service/src/Directory/Util.hs
+A	apps/simplex-directory-service/web/directory.html
+A	apps/simplex-directory-service/web/directory.js
+M	apps/simplex-support-bot/bot.test.ts
+M	apps/simplex-support-bot/src/bot.ts
+M	apps/simplex-support-bot/src/messages.ts
+A	assets/multiplatform/resources/MR/images/crowdfunding_1@2x.jpg
+A	assets/multiplatform/resources/MR/images/crowdfunding_1@3x.jpg
+A	assets/multiplatform/resources/MR/images/crowdfunding_2@2x.jpg
+A	assets/multiplatform/resources/MR/images/crowdfunding_2@3x.jpg
+A	assets/multiplatform/resources/MR/images/crowdfunding_3@2x.jpg
+A	assets/multiplatform/resources/MR/images/crowdfunding_3@3x.jpg
+A	assets/multiplatform/resources/MR/images/crowdfunding_4@2x.jpg
+A	assets/multiplatform/resources/MR/images/crowdfunding_4@3x.jpg
+A	assets/multiplatform/resources/MR/images/own_stake@2x.png
+A	assets/multiplatform/resources/MR/images/own_stake@3x.png
+A	assets/multiplatform/resources/MR/images/own_stake_light@2x.png
+A	assets/multiplatform/resources/MR/images/own_stake_light@3x.png
+M	blog/20210914-simplex-chat-v0.4-released.md
+M	blog/20260430-simplex-channels-v6-5-consortium-crowdfunding-freedom-of-speech.md
+A	blog/20260722-simplex-public-names.md
+M	blog/README.md
+A	blog/images/20260722-connect-name.png
+A	blog/images/20260722-phone-name-light.webp
+A	blog/images/20260722-phone-name.webp
+A	blog/images/20260722-register-name.png
+M	bots/api/COMMANDS.md
+M	bots/api/TYPES.md
+M	bots/src/API/Docs/Commands.hs
+M	bots/src/API/Docs/Events.hs
+M	bots/src/API/Docs/Responses.hs
+M	bots/src/API/Docs/Types.hs
+M	bots/src/API/TypeInfo.hs
+M	cabal.project
+A	docs/CHAT-RELAY.md
+M	docs/CLI.md
+M	docs/DIRECTORY.md
+M	docs/FAQ.md
+M	docs/GLOSSARY.md
+M	docs/SECURITY.md
+M	docs/SERVER.md
+M	docs/contributing/PROJECT.md
+M	docs/guide/README.md
+A	docs/guide/channel-webpage.md
+A	docs/guide/diagrams/simplex-name-steps.mmd
+A	docs/guide/diagrams/simplex-name-steps.svg
+A	docs/guide/images/before-we-start.png
+A	docs/guide/images/create-your-profile.png
+A	docs/guide/images/register-name.png
+A	docs/guide/register-simplex-name.md
+M	docs/lang/fr/TRANSLATIONS.md
+M	docs/lang/pl/SERVER.md
+M	docs/lang/pl/TRANSLATIONS.md
+M	docs/lang/pl/WEBRTC.md
+M	docs/protocol/channels-overview.md
+A	docs/protocol/names-overview.md
+A	docs/qryptana/decisions/bundle-id-migration.md
+A	docs/qryptana/decisions/onboarding-video.md
+A	docs/qryptana/decisions/privacy-review-checklist.md
+A	docs/qryptana/decisions/release-gate.md
+A	docs/qryptana/decisions/support-contact.md
+A	docs/qryptana/decisions/trademark-and-naming.md
+A	docs/qryptana/upstream/base-analysis.md
+A	docs/qryptana/upstream/graft-android.log
+A	docs/qryptana/upstream/graft-compile.log
+A	docs/qryptana/upstream/graft-report.md
+A	docs/qryptana/upstream/graft-test.log
+A	docs/qryptana/upstream/release-metadata.json
+A	docs/qryptana/upstream/replay-map.tsv
+A	docs/qryptana/upstream/security-delta.md
+A	docs/rfcs/2026-05-21-public-namespaces.md
+A	docs/rfcs/2026-08-05-markdown-hyperlink-connect.md
+M	flake.nix
+A	images/github-banner.jpg
+M	libsimplex.dll.def
+M	packages/simplex-chat-client/types/typescript/package.json
+M	packages/simplex-chat-client/types/typescript/src/commands.ts
+M	packages/simplex-chat-client/types/typescript/src/responses.ts
+M	packages/simplex-chat-client/types/typescript/src/types.ts
+M	packages/simplex-chat-client/typescript/src/client.ts
+M	packages/simplex-chat-nodejs/package.json
+M	packages/simplex-chat-nodejs/src/api.ts
+M	packages/simplex-chat-nodejs/src/download-libs.js
+M	packages/simplex-chat-python/examples/squaring_bot.py
+M	packages/simplex-chat-python/src/simplex_chat/_version.py
+M	packages/simplex-chat-python/src/simplex_chat/api.py
+M	packages/simplex-chat-python/src/simplex_chat/bot.py
+M	packages/simplex-chat-python/src/simplex_chat/types/_commands.py
+M	packages/simplex-chat-python/src/simplex_chat/types/_responses.py
+M	packages/simplex-chat-python/src/simplex_chat/types/_types.py
+M	packages/simplex-chat-python/tests/test_bot_registration.py
+M	packages/simplex-chat-python/tests/test_native_cache.py
+M	packages/simplex-chat-python/tests/test_native_url.py
+M	packages/simplex-chat-webrtc/src/call.ts
+M	packages/simplex-chat-webrtc/src/desktop/ui.ts
+M	plans/2026-04-29-member-profile-sending-channels.md
+A	plans/2026-05-08-public-groups-via-relays-overview.md
+A	plans/2026-05-08-public-groups-via-relays.md
+A	plans/2026-05-15-fix-video-preview-snapshot-hang.md
+A	plans/2026-05-16-desktop-updater-fixes.md
+A	plans/2026-05-20-fix-copy-non-msg-items.md
+A	plans/2026-05-20-fix-hold-on-long-msg-android.md
+A	plans/2026-05-20-member-deletion-fulldelete.md
+A	plans/2026-05-25-channel-web-preview.md
+A	plans/2026-05-25-fix-e2e-encryption-section-divider.md
+A	plans/2026-05-26-fix-invalid-mention-on-edit.md
+A	plans/2026-05-26-fix-video-drag-and-drop.md
+A	plans/2026-05-26-public-groups-via-relays-unified.md
+A	plans/2026-05-29-fix-space-in-interface.md
+A	plans/2026-06-01-roster-members-multipart.md
+A	plans/2026-06-01-supporter-badges-v1.md
+A	plans/2026-06-04-channel-message-signing.md
+A	plans/2026-06-04-fix-corrupted-video-upload-error.md
+A	plans/2026-06-09-perf-group-members-merge-on2.md
+A	plans/2026-06-09-support-chat-unread-on-group-read.md
+A	plans/2026-06-12-fix-migrate-text-overlap.md
+A	plans/2026-06-15-fix-cli-outdated-help.md
+A	plans/2026-06-15-fix-file-upload-long-name.md
+A	plans/2026-06-17-fix-group-garbled-error.md
+A	plans/2026-06-17-message-info-file-xftp-servers.md
+A	plans/2026-06-19-channel-received-remove-right-gap.md
+A	plans/2026-06-19-fix-updater-open-file-location.md
+A	plans/2026-06-19-ios-open-simplex-links-in-messages.md
+A	plans/2026-06-20-channel-received-no-avatar-left-padding.md
+A	plans/2026-06-22-fix-card-section-stray-dividers.md
+A	plans/2026-06-22-roster-catchup-subscribers.md
+A	plans/2026-06-23-fix-windows-msi-update-running-app.md
+A	plans/2026-06-23-wide-image-crash.md
+A	plans/2026-06-25-name-resolution.md
+A	plans/2026-06-27-namespace-ui-display-set.md
+A	plans/2026-06-29-desktop-tmpdir-missing-call-sound.md
+A	plans/2026-06-29-fix-desktop-video-vlc-factory-race.md
+A	plans/2026-07-07-signed-files-and-history.md
+A	plans/2026-07-08-fix-image-empty-area-below.md
+A	plans/2026-07-09-channel-sign-messages-preference.md
+A	plans/2026-07-10-remove-status-preset-contact.md
+A	plans/2026-07-11-fix-desktop-clipboard-freeze.md
+A	plans/2026-07-11-simplex-name-ux.md
+A	plans/2026-07-12-directory-business-bot-registration.md
+A	plans/2026-07-13-fix-command-hover-cursor.md
+A	plans/2026-07-14-fix-draft-message-loss-on-restricted.md
+A	plans/2026-07-14-self-hosted-server-roles-implementation.md
+A	plans/2026-07-14-self-hosted-server-roles-product.md
+A	plans/2026-07-15-desktop-startup-error-window.md
+A	plans/2026-07-15-fix-windows-failed-to-launch-jvm-accessbridge.md
+A	plans/2026-07-21-fix-video-preview-black-area.md
+A	plans/2026-07-23-fix-updater-download-deleted-by-chat-switch.md
+A	plans/2026-07-25-fix-forward-moves-draft-to-target-chat.md
+A	plans/2026-07-25-fix-inflight-send-writes-other-chat-compose.md
+A	plans/2026-07-27-fix-accept-request-non-active-profile.md
+A	plans/2026-07-29-fix-live-message-sent-to-wrong-chat.md
+A	plans/2026-07-31-fix-db-passphrase-toggle-clipped.md
+A	plans/2026-08-04-directory-link-approval.md
+A	plans/2026-08-07-webm-video-detection.md
+A	plans/2026-09-23-android-app-links-exact-paths.md
+A	plans/delete-leave-dialog-with-profile-impl.md
+A	plans/delete-leave-dialog-with-profile.md
+M	scripts/android/build-android-bundle.sh
+M	scripts/android/build-android.sh
+M	scripts/desktop/build-lib-windows.sh
+M	scripts/desktop/prepare-vlc-linux.sh
+M	scripts/desktop/prepare-vlc-mac.sh
+M	scripts/desktop/prepare-vlc-windows.sh
+M	scripts/flatpak/chat.simplex.simplex.metainfo.xml
+A	scripts/ios/update-pbxproj.sh
+A	scripts/ios/update-version.sh
+M	scripts/nix/sha256map.nix
+A	scripts/relay/.dockerignore
+A	scripts/relay/.env.example
+A	scripts/relay/Dockerfile
+A	scripts/relay/docker-compose.yaml
+A	scripts/relay/entrypoint.py
+A	scripts/relay/sql_exporter.yml
+M	scripts/simplex-chat-reproduce-builds-android.sh
+M	scripts/simplex-chat-reproduce-builds.sh
+M	simplex-chat.cabal
+M	src/Simplex/Chat.hs
+A	src/Simplex/Chat/Badges.hs
+A	src/Simplex/Chat/Badges/CLI.hs
+M	src/Simplex/Chat/Bot.hs
+M	src/Simplex/Chat/Controller.hs
+M	src/Simplex/Chat/Core.hs
+M	src/Simplex/Chat/Delivery.hs
+M	src/Simplex/Chat/Help.hs
+M	src/Simplex/Chat/Library/Commands.hs
+M	src/Simplex/Chat/Library/Internal.hs
+M	src/Simplex/Chat/Library/Subscriber.hs
+M	src/Simplex/Chat/Markdown.hs
+M	src/Simplex/Chat/Messages.hs
+M	src/Simplex/Chat/Messages/Batch.hs
+M	src/Simplex/Chat/Mobile.hs
+A	src/Simplex/Chat/Mobile/Badges.hs
+A	src/Simplex/Chat/Names.hs
+M	src/Simplex/Chat/Operators.hs
+M	src/Simplex/Chat/Operators/Presets.hs
+M	src/Simplex/Chat/Options.hs
+M	src/Simplex/Chat/ProfileGenerator.hs
+M	src/Simplex/Chat/Protocol.hs
+M	src/Simplex/Chat/Remote.hs
+M	src/Simplex/Chat/Store/Connections.hs
+M	src/Simplex/Chat/Store/ContactRequest.hs
+M	src/Simplex/Chat/Store/Delivery.hs
+M	src/Simplex/Chat/Store/Direct.hs
+M	src/Simplex/Chat/Store/Files.hs
+M	src/Simplex/Chat/Store/Groups.hs
+M	src/Simplex/Chat/Store/Messages.hs
+M	src/Simplex/Chat/Store/Postgres/Migrations.hs
+A	src/Simplex/Chat/Store/Postgres/Migrations/M20260515_public_group_access.hs
+A	src/Simplex/Chat/Store/Postgres/Migrations/M20260516_supporter_badges.hs
+A	src/Simplex/Chat/Store/Postgres/Migrations/M20260529_delivery_job_senders.hs
+A	src/Simplex/Chat/Store/Postgres/Migrations/M20260530_client_services.hs
+A	src/Simplex/Chat/Store/Postgres/Migrations/M20260531_member_removed_at.hs
+A	src/Simplex/Chat/Store/Postgres/Migrations/M20260601_relay_sent_web_domain.hs
+A	src/Simplex/Chat/Store/Postgres/Migrations/M20260602_group_roster.hs
+A	src/Simplex/Chat/Store/Postgres/Migrations/M20260603_simplex_name.hs
+A	src/Simplex/Chat/Store/Postgres/Migrations/M20260629_roster_catchup.hs
+A	src/Simplex/Chat/Store/Postgres/Migrations/M20260707_file_digest.hs
+A	src/Simplex/Chat/Store/Postgres/Migrations/M20260714_member_security_code.hs
+A	src/Simplex/Chat/Store/Postgres/Migrations/M20260715_profile_description.hs
+A	src/Simplex/Chat/Store/Postgres/Migrations/M20260716_signed_history.hs
+A	src/Simplex/Chat/Store/Postgres/Migrations/M20260720_server_roles.hs
+M	src/Simplex/Chat/Store/Postgres/Migrations/chat_schema.sql
+M	src/Simplex/Chat/Store/Profiles.hs
+M	src/Simplex/Chat/Store/SQLite/Migrations.hs
+A	src/Simplex/Chat/Store/SQLite/Migrations/M20260515_public_group_access.hs
+A	src/Simplex/Chat/Store/SQLite/Migrations/M20260516_supporter_badges.hs
+A	src/Simplex/Chat/Store/SQLite/Migrations/M20260529_delivery_job_senders.hs
+A	src/Simplex/Chat/Store/SQLite/Migrations/M20260530_client_services.hs
+A	src/Simplex/Chat/Store/SQLite/Migrations/M20260531_member_removed_at.hs
+A	src/Simplex/Chat/Store/SQLite/Migrations/M20260601_relay_sent_web_domain.hs
+A	src/Simplex/Chat/Store/SQLite/Migrations/M20260602_group_roster.hs
+A	src/Simplex/Chat/Store/SQLite/Migrations/M20260603_simplex_name.hs
+A	src/Simplex/Chat/Store/SQLite/Migrations/M20260629_roster_catchup.hs
+A	src/Simplex/Chat/Store/SQLite/Migrations/M20260707_file_digest.hs
+A	src/Simplex/Chat/Store/SQLite/Migrations/M20260714_member_security_code.hs
+A	src/Simplex/Chat/Store/SQLite/Migrations/M20260715_profile_description.hs
+A	src/Simplex/Chat/Store/SQLite/Migrations/M20260716_signed_history.hs
+A	src/Simplex/Chat/Store/SQLite/Migrations/M20260720_server_roles.hs
+M	src/Simplex/Chat/Store/SQLite/Migrations/agent_query_plans.txt
+M	src/Simplex/Chat/Store/SQLite/Migrations/chat_query_plans.txt
+M	src/Simplex/Chat/Store/SQLite/Migrations/chat_schema.sql
+M	src/Simplex/Chat/Store/Shared.hs
+M	src/Simplex/Chat/Terminal/Main.hs
+M	src/Simplex/Chat/Types.hs
+M	src/Simplex/Chat/Types/Preferences.hs
+M	src/Simplex/Chat/Types/Shared.hs
+M	src/Simplex/Chat/View.hs
+A	src/Simplex/Chat/Web.hs
+A	tests/BadgeTests.hs
+M	tests/Bots/BroadcastTests.hs
+M	tests/Bots/DirectoryTests.hs
+M	tests/ChatClient.hs
+M	tests/ChatTests/ChatRelays.hs
+M	tests/ChatTests/Direct.hs
+M	tests/ChatTests/Groups.hs
+A	tests/ChatTests/Names.hs
+M	tests/ChatTests/Profiles.hs
+M	tests/ChatTests/Utils.hs
+M	tests/JSONFixtures.hs
+M	tests/MarkdownTests.hs
+M	tests/MessageBatching.hs
+M	tests/MobileTests.hs
+A	tests/NameResolver.hs
+M	tests/OperatorTests.hs
+M	tests/PostgresSchemaDump.hs
+M	tests/ProtocolTests.hs
+M	tests/RemoteTests.hs
+M	tests/SchemaDump.hs
+M	tests/Test.hs
+M	tests/ValidNames.hs
+M	website/.eleventy.js
+A	website/channel_sample.html
+M	website/langs/cs.json
+M	website/langs/de.json
+M	website/langs/en.json
+M	website/langs/es.json
+M	website/langs/fa.json
+M	website/langs/fr.json
+M	website/langs/hu.json
+M	website/langs/id.json
+M	website/langs/it.json
+M	website/langs/ja.json
+M	website/langs/ru.json
+M	website/langs/tr.json
+M	website/langs/zh_Hans.json
+M	website/langs/zh_Hant.json
+M	website/src/_data/docs_dropdown.json
+M	website/src/_data/docs_sidebar.json
+M	website/src/_includes/navbar.html
+M	website/src/blog.html
+A	website/src/credits/whitepaper.pdf
+M	website/src/css/design3.css
+M	website/src/index.html
+A	website/src/js/channel-preview.jsc
+R077	website/src/js/directory.js	website/src/js/directory.jsc
+A	website/src/js/simplex-lib.jsc
+A	website/src/news.html
+M	website/web.sh
