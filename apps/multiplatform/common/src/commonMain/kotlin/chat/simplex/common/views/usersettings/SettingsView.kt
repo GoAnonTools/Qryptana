@@ -75,8 +75,10 @@ fun SettingsView(chatModel: ChatModel, setPerformLA: (Boolean) -> Unit, close: (
   }
 }
 
-// TODO: configure this only after Qryptana has a verified support destination.
+// SimpleX contact link only, never mailto: or a general website URL.
+// TODO: configure this only after Qryptana has a verified support chat address.
 val qryptanaSupportUri: String? = null
+private const val qryptanaSourceUrl = "https://github.com/GoAnonTools/Qryptana"
 
 @Composable
 fun SettingsLayout(
@@ -124,9 +126,6 @@ fun SettingsLayout(
       if (!chatModel.desktopNoUserNoRemote && qryptanaSupportUri != null) {
         SettingsActionItem(painterResource(MR.images.ic_tag), stringResource(MR.strings.chat_with_the_founder), { uriHandler.openVerifiedSimplexUri(qryptanaSupportUri) }, textColor = MaterialTheme.colors.primary, disabled = stopped)
       }
-      if (qryptanaSupportUri != null) {
-        SettingsActionItem(painterResource(MR.images.ic_mail), stringResource(MR.strings.send_us_an_email), { uriHandler.openUriCatching(qryptanaSupportUri) }, textColor = MaterialTheme.colors.primary)
-      }
     }
     SectionDividerSpaced()
 
@@ -134,7 +133,6 @@ fun SettingsLayout(
       if (!BuildConfigCommon.ANDROID_BUNDLE) {
         ContributeItem(uriHandler)
       }
-      RateAppItem(uriHandler)
       StarOnGithubItem(uriHandler)
     }
     SectionDividerSpaced()
@@ -210,7 +208,7 @@ fun ChatLockItem(
 }
 
 @Composable private fun ContributeItem(uriHandler: UriHandler) {
-  SectionItemView({ uriHandler.openExternalLink("https://github.com/simplex-chat/simplex-chat#contribute") }) {
+  SectionItemView({ uriHandler.openExternalLink(qryptanaSourceUrl) }) {
     Icon(
       painterResource(MR.images.ic_keyboard),
          contentDescription = "GitHub",
@@ -221,24 +219,8 @@ fun ChatLockItem(
   }
 }
 
-@Composable private fun RateAppItem(uriHandler: UriHandler) {
-  SectionItemView({
-    runCatching { uriHandler.openUriCatching("market://details?id=chat.simplex.app") }
-    .onFailure { uriHandler.openUriCatching("https://play.google.com/store/apps/details?id=chat.simplex.app") }
-  }
-  ) {
-    Icon(
-      painterResource(MR.images.ic_star),
-         contentDescription = "Google Play",
-         tint = MaterialTheme.colors.secondary,
-    )
-    TextIconSpaced()
-    Text(generalGetString(MR.strings.rate_the_app), color = MaterialTheme.colors.primary)
-  }
-}
-
 @Composable private fun StarOnGithubItem(uriHandler: UriHandler) {
-  SectionItemView({ uriHandler.openExternalLink("https://github.com/simplex-chat/simplex-chat") }) {
+  SectionItemView({ uriHandler.openExternalLink(qryptanaSourceUrl) }) {
     Icon(
       painter = painterResource(MR.images.ic_github),
          contentDescription = "GitHub",
@@ -271,14 +253,14 @@ fun ChatLockItem(
 }
 
 @Composable fun InstallTerminalAppItem(uriHandler: UriHandler) {
-  SectionItemView({ uriHandler.openExternalLink("https://github.com/simplex-chat/simplex-chat") }) {
+  SectionItemView({ uriHandler.openExternalLink(qryptanaSourceUrl) }) {
     Icon(
       painter = painterResource(MR.images.ic_github),
          contentDescription = "GitHub",
          tint = MaterialTheme.colors.secondary,
     )
     TextIconSpaced()
-    Text(generalGetString(MR.strings.install_simplex_chat_for_terminal), color = MaterialTheme.colors.primary)
+    Text(generalGetString(MR.strings.qryptana_source_code), color = MaterialTheme.colors.primary)
   }
 }
 
