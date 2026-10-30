@@ -1026,7 +1026,7 @@ object AppearanceScope {
           SimpleXThemeOverride(currentColors()) {
             ChatThemePreview(theme, wallpaperImage, wallpaperType, previewBackgroundColor, previewTintColor)
           }
-          SectionSpacer()
+          Spacer(Modifier.height(30.dp))
         }
 
         var currentColor by remember { mutableStateOf(initialColor) }
