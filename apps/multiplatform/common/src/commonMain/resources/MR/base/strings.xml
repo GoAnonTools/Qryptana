@@ -579,7 +579,7 @@
   <string name="forward_message">Forward message…</string>
   <string name="forward_multiple">Forward messages…</string>
   <string name="share_channel">Share channel…</string>
-  <string name="share_address">Share address…</string>
+  
   <string name="cannot_share_message_alert_title">Cannot send message</string>
   <string name="cannot_share_message_alert_text">Selected chat preferences prohibit this message.</string>
   <string name="share_via_chat">Share via chat</string>

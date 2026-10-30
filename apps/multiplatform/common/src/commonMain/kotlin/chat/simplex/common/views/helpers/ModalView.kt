@@ -91,6 +91,8 @@ fun ModalView(
                 { NavigationButtonBack(onButtonClicked = if (enableClose) close else null) }
               } else null,
               onTop = !oneHandUI.value,
+              backgroundColor = appBarBackground,
+              contentColor = appBarContentColor,
               showSearch = showSearch,
               searchAlwaysVisible = searchAlwaysVisible,
               onSearchValueChanged = onSearchValueChanged,
@@ -112,10 +114,10 @@ enum class ModalPlacement {
 class ModalData(val keyboardCoversBar: Boolean = true) {
   private val state = mutableMapOf<String, MutableState<Any?>>()
   fun <T> stateGetOrPut (key: String, default: () -> T): MutableState<T> =
-  state.getOrPut(key) { mutableStateOf(default() as Any) } as MutableState<T>
+    state.getOrPut(key) { mutableStateOf(default() as Any) } as MutableState<T>
 
   fun <T> stateGetOrPutNullable (key: String, default: () -> T?): MutableState<T?> =
-  state.getOrPut(key) { mutableStateOf(default() as Any?) } as MutableState<T?>
+    state.getOrPut(key) { mutableStateOf(default() as Any?) } as MutableState<T?>
 
   val appBarHandler = AppBarHandler(null, null, keyboardCoversBar = keyboardCoversBar)
 }
@@ -141,11 +143,11 @@ class ModalManager(private val placement: ModalPlacement? = null) {
   // Don't use mutableStateOf() here, because it produces this if showing from SimpleXAPI.startChat():
   // java.lang.IllegalStateException: Reading a state that was created after the snapshot was taken or in a snapshot that has not yet been applied
   private var passcodeView: MutableStateFlow<(@Composable (close: () -> Unit) -> Unit)?> = MutableStateFlow(null)
-    private var onTimePasscodeView: MutableStateFlow<(@Composable (close: () -> Unit) -> Unit)?> = MutableStateFlow(null)
+  private var onTimePasscodeView: MutableStateFlow<(@Composable (close: () -> Unit) -> Unit)?> = MutableStateFlow(null)
 
-      fun hasModalOpen(id: ModalViewId): Boolean = modalViews.any { it.id == id }
+  fun hasModalOpen(id: ModalViewId): Boolean = modalViews.any { it.id == id }
 
-      fun isLastModalOpen(id: ModalViewId): Boolean = modalViews.lastOrNull()?.id == id
+  fun isLastModalOpen(id: ModalViewId): Boolean = modalViews.lastOrNull()?.id == id
 
   fun showModal(settings: Boolean = false, showClose: Boolean = true, id: ModalViewId? = null, forceAnimated: Boolean = false, cardScreen: Boolean = false, endButtons: @Composable RowScope.() -> Unit = {}, content: @Composable ModalData.() -> Unit) {
     showCustomModal(id = id, forceAnimated = forceAnimated) { close ->
@@ -233,170 +235,89 @@ class ModalManager(private val placement: ModalPlacement? = null) {
           it.modal(it.data, ::closeModal)
         }
       }
-
-      fun showModalCloseable(settings: Boolean = false, showClose: Boolean = true, id: ModalViewId? = null, endButtons: @Composable RowScope.() -> Unit = {}, content: @Composable ModalData.(close: () -> Unit) -> Unit) {
-        showCustomModal(id = id) { close ->
-          ModalView(close, showClose = showClose, endButtons = endButtons, content = { content(close) })
-        }
-      }
-
-      fun showCustomModal(animated: Boolean = true, keyboardCoversBar: Boolean = true, id: ModalViewId? = null, forceAnimated: Boolean = false, modal: @Composable ModalData.(close: () -> Unit) -> Unit) {
-        Log.d(TAG, "ModalManager.showCustomModal")
-        val data = ModalData(keyboardCoversBar = keyboardCoversBar)
-        // Means, animation is in progress or not started yet. Do not wait until animation finishes, just remove all from screen.
-        // This is useful when invoking close() and ShowCustomModal one after another without delay. Otherwise, screen will hold prev view
-        if (toRemove.isNotEmpty()) {
-          runAtomically { toRemove.removeIf { elem -> modalViews.removeAt(elem); true } }
-        }
-        // Make animated appearance only on Android (everytime) and on Desktop (when it's on the start part of the screen or modals > 0)
-        // to prevent unneeded animation on different situations
-        val anim = if (appPlatform.isAndroid) animated else (animated && (modalCount.value > 0 || placement == ModalPlacement.START)) || forceAnimated
-        modalViews.add(ModalViewHolder(id, anim, data, modal))
-        _modalCount.value = modalViews.size - toRemove.size
-
-        if (placement == ModalPlacement.CENTER) {
-          ChatModel.chatId.value = null
-        } else if (placement == ModalPlacement.END) {
-          desktopExpandWindowToWidth(DEFAULT_START_MODAL_WIDTH * sqrt(appPrefs.fontScale.get()) + DEFAULT_MIN_CENTER_MODAL_WIDTH + DEFAULT_END_MODAL_WIDTH * sqrt(appPrefs.fontScale.get()))
-        }
-      }
-
-      fun showPasscodeCustomModal(oneTime: Boolean, modal: @Composable (close: () -> Unit) -> Unit) {
-        Log.d(TAG, "ModalManager.showPasscodeCustomModal, oneTime: $oneTime")
-        if (oneTime) {
-          onTimePasscodeView.value = modal
+      return
+    }
+    AnimatedContent(targetState = modalCount.value,
+      transitionSpec = {
+        if (targetState > initialState) {
+          fromEndToStartTransition()
         } else {
-          passcodeView.value = modal
+          fromStartToEndTransition()
+        }.using(SizeTransform(clip = false))
+      }
+    ) {
+      modalViews.getOrNull(it - 1)?.let {
+        CompositionLocalProvider(LocalAppBarHandler provides adjustAppBarHandler(it.data.appBarHandler)) {
+          it.modal(it.data, ::closeModal)
         }
       }
-
-      fun hasModalsOpen() = modalCount.value > 0
-
-      val hasModalsOpen: Boolean
-      @Composable get () = remember { modalCount }.value > 0
-
-      fun openModalCount() = modalCount.value
-
-      fun closeModal() {
-        if (modalViews.isNotEmpty()) {
-          val lastModal = modalViews.lastOrNull()
-          if (lastModal != null) {
-            if (lastModal.id == ModalViewId.SECONDARY_CHAT) chatModel.secondaryChatsContext.value = null
-              if (!lastModal.animated)
-                modalViews.removeAt(modalViews.lastIndex)
-                else
-                  runAtomically { toRemove.add(modalViews.lastIndex - min(toRemove.size, modalViews.lastIndex)) }
-          }
-        }
-        _modalCount.value = modalViews.size - toRemove.size
+      // This is needed because if we delete from modalViews immediately on request, animation will be bad
+      if (toRemove.isNotEmpty() && it == modalCount.value && transition.currentState == EnterExitState.Visible && !transition.isRunning) {
+        runAtomically { toRemove.removeIf { elem -> modalViews.removeAt(elem); true } }
       }
+    }
+  }
 
-      fun closeModals() {
-        chatModel.secondaryChatsContext.value = null
-        modalViews.clear()
-        toRemove.clear()
-        _modalCount.value = 0
-      }
+  @Composable
+  fun showPasscodeInView() {
+    passcodeView.collectAsState().value?.invoke { passcodeView.value = null }
+  }
 
-      fun closeModalsExceptFirst() {
-        while (modalCount.value > 1) {
-          closeModal()
-        }
-      }
+  @Composable
+  fun showOneTimePasscodeInView() {
+    onTimePasscodeView.collectAsState().value?.invoke { onTimePasscodeView.value = null }
+  }
 
-      @OptIn(ExperimentalAnimationApi::class)
-      @Composable
-      fun showInView() {
-        // Without animation
-        if (modalCount.value > 0 && modalViews.lastOrNull()?.animated == false) {
-          modalViews.lastOrNull()?.let {
-            CompositionLocalProvider(LocalAppBarHandler provides adjustAppBarHandler(it.data.appBarHandler)) {
-              it.modal(it.data, ::closeModal)
-            }
-          }
-          return
-        }
-        AnimatedContent(targetState = modalCount.value,
-                        transitionSpec = {
-                          if (targetState > initialState) {
-                            fromEndToStartTransition()
-                          } else {
-                            fromStartToEndTransition()
-                          }.using(SizeTransform(clip = false))
-                        }
-        ) {
-          modalViews.getOrNull(it - 1)?.let {
-            CompositionLocalProvider(LocalAppBarHandler provides adjustAppBarHandler(it.data.appBarHandler)) {
-              it.modal(it.data, ::closeModal)
-            }
-          }
-          // This is needed because if we delete from modalViews immediately on request, animation will be bad
-          if (toRemove.isNotEmpty() && it == modalCount.value && transition.currentState == EnterExitState.Visible && !transition.isRunning) {
-            runAtomically { toRemove.removeIf { elem -> modalViews.removeAt(elem); true } }
-          }
-        }
-      }
+  /**
+  * Allows to modify a list without getting [ConcurrentModificationException]
+  * */
+  private fun runAtomically(atomicBoolean: AtomicBoolean = oldViewChanging, block: () -> Unit) {
+    while (!atomicBoolean.compareAndSet(false, true)) {
+      Thread.sleep(10)
+    }
+    block()
+    atomicBoolean.set(false)
+  }
+//  private fun <T> animationSpecFromStart() = tween<T>(durationMillis = 150, easing = FastOutLinearInEasing)
+//  private fun <T> animationSpecFromEnd() = tween<T>(durationMillis = 100, easing = FastOutSlowInEasing)
 
-      @Composable
-      fun showPasscodeInView() {
-        passcodeView.collectAsState().value?.invoke { passcodeView.value = null }
-      }
+  companion object {
+    private val shared = ModalManager()
+    val start = if (appPlatform.isAndroid) shared else ModalManager(ModalPlacement.START)
+    val center = if (appPlatform.isAndroid) shared else ModalManager(ModalPlacement.CENTER)
+    val end = if (appPlatform.isAndroid) shared else ModalManager(ModalPlacement.END)
+    val fullscreen = if (appPlatform.isAndroid) shared else ModalManager(ModalPlacement.FULLSCREEN)
 
-      @Composable
-      fun showOneTimePasscodeInView() {
-        onTimePasscodeView.collectAsState().value?.invoke { onTimePasscodeView.value = null }
-      }
+    val floatingTerminal = if (appPlatform.isAndroid) shared else ModalManager(ModalPlacement.START)
 
-      /**
-       * Allows to modify a list without getting [ConcurrentModificationException]
-       * */
-      private fun runAtomically(atomicBoolean: AtomicBoolean = oldViewChanging, block: () -> Unit) {
-        while (!atomicBoolean.compareAndSet(false, true)) {
-          Thread.sleep(10)
-        }
-        block()
-        atomicBoolean.set(false)
-      }
-      //  private fun <T> animationSpecFromStart() = tween<T>(durationMillis = 150, easing = FastOutLinearInEasing)
-      //  private fun <T> animationSpecFromEnd() = tween<T>(durationMillis = 100, easing = FastOutSlowInEasing)
+    fun closeAllModalsEverywhere() {
+      start.closeModals()
+      center.closeModals()
+      end.closeModals()
+      fullscreen.closeModals()
+      floatingTerminal.closeModals()
+    }
 
-      companion object {
-        private val shared = ModalManager()
-        val start = if (appPlatform.isAndroid) shared else ModalManager(ModalPlacement.START)
-        val center = if (appPlatform.isAndroid) shared else ModalManager(ModalPlacement.CENTER)
-        val end = if (appPlatform.isAndroid) shared else ModalManager(ModalPlacement.END)
-        val fullscreen = if (appPlatform.isAndroid) shared else ModalManager(ModalPlacement.FULLSCREEN)
+    @OptIn(ExperimentalAnimationApi::class)
+    fun fromStartToEndTransition() =
+      slideInHorizontally(
+        initialOffsetX = { fullWidth -> -fullWidth },
+        animationSpec = animationSpec()
+      ) with slideOutHorizontally(
+        targetOffsetX = { fullWidth -> fullWidth },
+        animationSpec = animationSpec()
+      )
 
-        val floatingTerminal = if (appPlatform.isAndroid) shared else ModalManager(ModalPlacement.START)
+    @OptIn(ExperimentalAnimationApi::class)
+    fun fromEndToStartTransition() =
+      slideInHorizontally(
+        initialOffsetX = { fullWidth -> fullWidth },
+        animationSpec = animationSpec()
+      ) with slideOutHorizontally(
+        targetOffsetX = { fullWidth -> -fullWidth },
+        animationSpec = animationSpec()
+      )
 
-        fun closeAllModalsEverywhere() {
-          start.closeModals()
-          center.closeModals()
-          end.closeModals()
-          fullscreen.closeModals()
-          floatingTerminal.closeModals()
-        }
-
-        @OptIn(ExperimentalAnimationApi::class)
-        fun fromStartToEndTransition() =
-        slideInHorizontally(
-          initialOffsetX = { fullWidth -> -fullWidth },
-          animationSpec = animationSpec()
-        ) with slideOutHorizontally(
-          targetOffsetX = { fullWidth -> fullWidth },
-          animationSpec = animationSpec()
-        )
-
-        @OptIn(ExperimentalAnimationApi::class)
-        fun fromEndToStartTransition() =
-        slideInHorizontally(
-          initialOffsetX = { fullWidth -> fullWidth },
-          animationSpec = animationSpec()
-        ) with slideOutHorizontally(
-          targetOffsetX = { fullWidth -> -fullWidth },
-          animationSpec = animationSpec()
-        )
-
-        private fun <T> animationSpec() = tween<T>(durationMillis = 250, easing = FastOutSlowInEasing)
-      }
+    private fun <T> animationSpec() = tween<T>(durationMillis = 250, easing = FastOutSlowInEasing)
+  }
 }

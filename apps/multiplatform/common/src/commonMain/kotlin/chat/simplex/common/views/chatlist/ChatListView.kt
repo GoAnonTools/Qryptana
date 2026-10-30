@@ -798,16 +798,16 @@ fun connectIfOpenedViaUri(rhId: Long?, uri: String, chatModel: ChatModel) {
 
 @Composable
 private fun ChatListSearchBar(listState: LazyListState, searchText: MutableState<TextFieldValue>, searchShowingSimplexLink: MutableState<Boolean>, searchChatFilteredBySimplexLink: MutableState<Set<String>>, connectNameCandidate: MutableState<String?>) {
-  val messagingTokens = qryptanaMessagingTokens()
   Box {
     Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.fillMaxWidth()) {
-      val focusRequester = remember { FocusRequester() }
+      val messagingTokens = qryptanaMessagingTokens()
+  val focusRequester = remember { FocusRequester() }
       var focused by remember { mutableStateOf(false) }
       Icon(
         painterResource(MR.images.ic_search),
-           contentDescription = null,
-           Modifier.padding(start = DEFAULT_PADDING, end = DEFAULT_PADDING_HALF).size(22.dp * fontSizeSqrtMultiplier),
-           tint = MaterialTheme.colors.secondary
+        contentDescription = null,
+        Modifier.padding(start = DEFAULT_PADDING, end = DEFAULT_PADDING_HALF).size(22.dp * fontSizeSqrtMultiplier),
+        tint = MaterialTheme.colors.secondary
       )
       SearchTextField(
         Modifier.weight(1f).onFocusChanged { focused = it.hasFocus }.focusRequester(focusRequester),
@@ -889,25 +889,7 @@ private fun ChatListSearchBar(listState: LazyListState, searchText: MutableState
                 searchChatFilteredBySimplexLink.value = emptySet()
               }
             }
-            searchShowingSimplexLink.value = true
-            searchChatFilteredBySimplexLink.value = null
-            connect(link.text, searchChatFilteredBySimplexLink) { searchText.value = TextFieldValue() }
-          } else if (!searchShowingSimplexLink.value || it.isEmpty()) {
-            if (it.isNotEmpty()) {
-              // if some other text is pasted, enter search mode
-              focusRequester.requestFocus()
-            } else {
-              if (!chatModel.appOpenUrlConnecting.value) {
-                connectProgressManager.cancelConnectProgress()
-              }
-              if (listState.layoutInfo.totalItemsCount > 0) {
-                listState.scrollToItem(0)
-              }
-            }
-            searchShowingSimplexLink.value = false
-            searchChatFilteredBySimplexLink.value = null
           }
-        }
       }
     }
     val oneHandUI = remember { appPrefs.oneHandUI.state }
