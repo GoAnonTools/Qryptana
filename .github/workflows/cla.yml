@@ -13,6 +13,9 @@ permissions:
 
 jobs:
   CLAssistant:
+    # This agreement/signature repository belongs to SimpleX, not Qryptana.
+    # A Qryptana contribution-policy decision must precede any replacement.
+    if: github.repository == 'simplex-chat/simplex-chat'
     runs-on: ubuntu-latest
     steps:
       - name: "CLA Assistant"
