@@ -6,7 +6,7 @@ This plan defines the safe order for rebranding work.
 
 ## Phase 1 — Documentation and compliance
 
-Status: complete for repository identity and documentation boundaries
+Status: repository identity established; privacy/legal review remains open
 
 - Add Qryptana scope documentation.
 - Add upstream attribution.
@@ -21,14 +21,14 @@ resources.
 
 ## Phase 2 — Branding assets
 
-Status: substantially complete for the current desktop/Labs scope
+Status: original artwork present; platform formats and device validation incomplete
 
 - Create original Qryptana logo and icons.
 - Do not reuse SimpleX logos, illustrations, app icons, or visual identity.
 - Locate all image/icon references before replacing assets.
 - Replace visible branding assets only after confirming build impact.
 
-The repository now contains original Qryptana symbol and wordmark assets. Desktop and Android distribution artwork is derived from the original Qryptana symbol; bundle/application IDs remain upstream-compatible by decision. Native ICNS tooling and a future identifier migration remain follow-up work.
+The repository contains original Qryptana symbol and wordmark assets from pre-remediation history (`f156294` and earlier). The initial remediation changed distribution references/ICO and re-encoded some existing pixels; it did not create all launcher artwork anew. The corrective pass regenerates density-correct adaptive foregrounds from that original symbol. Bundle/application IDs remain unchanged. ICNS generation, macOS packaging and Android launcher/notification device validation remain follow-up work; see [asset and ID status](BUNDLE_ID_MIGRATION.md).
 
 ## Phase 3 — User-facing text
 
@@ -38,7 +38,7 @@ Status: in progress
 - Avoid changing protocol names, package names, code namespaces, or technical references blindly.
 - Keep SimpleX references where they are required for attribution, upstream compatibility, or protocol explanation.
 
-Base-locale operator wording, store metadata, support routing and privacy-document boundaries have been reviewed. Translated operator strings remain a documented follow-up and are not hand-translated in this remediation.
+Base-locale operator wording, store metadata, support routing and privacy-document boundaries have corrective review coverage. The independent review found incomplete routing, palette and completion claims in the initial remediation. See the [remediation report](audits/remediation-report.md) rather than treating this plan as release certification. Translated operator/update/support/theme strings remain a [documented follow-up](audits/locale-followup.md); they are not hand-translated here.
 
 ## Phase 4 — Release target isolation
 
@@ -49,7 +49,7 @@ Status: partially complete
 - Remove upstream download links from Qryptana marketing.
 - Define Qryptana-supported platforms explicitly before release.
 
-The current decision is desktop-first Labs scope: Qryptana copper/titanium palettes apply to desktop, desktop uses a forced black-titanium finish, and mobile retains verified upstream palettes pending a deliberate rollout decision. See [ADR 0001](adr/0001-theme-scope.md).
+The current decision is desktop-first Labs scope: desktop retains copper/titanium and forced BLACK. The mobile base palettes use values verified against initial snapshot `423c8c0`; the corrective pass fixes the Light/Dark copper alias missed by `51ca731`. This is not a complete undo of mobile branding or a wallpaper change. Android copper remains deferred. See [ADR 0001](adr/0001-theme-scope.md). The historical range `006ea4d..2121b84` describes pre-remediation branding, not current acceptance evidence.
 
 ## Phase 5 — Self-hosted server path
 

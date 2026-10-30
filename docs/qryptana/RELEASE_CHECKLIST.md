@@ -13,7 +13,9 @@ This is a documented mapping, not a claim that the components are independently 
 
 - Complete the Qryptana support address and legal/privacy review.
 - Validate Android palettes, launcher/notification icons and the desktop distributions on target devices.
-- Provide native ICNS artwork or approve the PNG fallback.
+- Provide native ICNS artwork and validate macOS packaging; the PNG reference is an unverified placeholder, not an accepted fallback.
 - Decide bundle/application ID migration, video delivery and translated metadata.
 - Establish a verified Qryptana release feed and signing/update process before enabling the updater.
 - Run all three repository verification tasks and record the exact tested implementation commit.
+- Review the manual inherited website/Haskell workflows before any execution, and decide Qryptana contribution policy; the SimpleX CLA job is gated off for this fork.
+- Choose a future upstream integration strategy: the isolated v6.5.6 trial found unrelated histories, not a clean merge.
