@@ -1,3 +1,5 @@
+> Qryptana override: investment-banner, Settings and What’s New promotion entry points have been removed. The crowdfunding section below describes retained upstream components, not active Qryptana UI. See `docs/qryptana/decisions/privana-sidebar.md` for the future hidden desktop entry directly below search.
+
 # SimpleX Chat iOS -- Chat List Module
 
 > Technical specification for the conversation list, filtering, search, swipe actions, and user picker.

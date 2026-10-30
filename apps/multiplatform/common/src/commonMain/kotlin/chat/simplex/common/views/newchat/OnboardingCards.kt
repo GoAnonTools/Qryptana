@@ -41,10 +41,7 @@ import chat.simplex.common.model.*
 import chat.simplex.common.model.ChatController.appPrefs
 import chat.simplex.common.platform.*
 import chat.simplex.common.ui.theme.*
-import chat.simplex.common.views.chatlist.GetStakeBanner
-import chat.simplex.common.views.chatlist.openGetStake
 import chat.simplex.common.views.helpers.*
-import chat.simplex.common.views.onboarding.crowdfundingAvailable
 import chat.simplex.common.views.usersettings.UserAddressView
 import chat.simplex.res.MR
 import kotlinx.coroutines.launch

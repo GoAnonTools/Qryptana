@@ -93,7 +93,7 @@ When a relay address link (`/r` path) is opened via URL deep link, `ContentView.
 
 - **One-hand UI card** (`OneHandUICard`): Dismissible card shown to introduce bottom toolbar mode
 - **Address creation card** (`AddressCreationCard`): Prompts user to create a SimpleX address
-- **Crowdfunding banner** (`GetStakeBanner`): Shown to users in the US only, above the chats and below the onboarding pages. Tapping it opens `GetStakeView` (invest on Wefunder). The dismiss X appears once the banner has been tapped and there is at least one chat; dismissing hides it until hints are reset
+- **Investment promotion**: Removed in Qryptana from the chat list and onboarding. No replacement or reserved space is rendered.
 
 ### Pull-to-Refresh
 

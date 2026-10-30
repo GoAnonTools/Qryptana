@@ -672,14 +672,8 @@ private let versionDescriptions: [VersionDescription] = [
     ),
     VersionDescription(
         version: isInUS ? "v7.0.1" : "v7.0",
-        post: URL(string: "https://simplex.chat/blog/20260819-simplex-chat-crowdfunding.html"),
-        features: (isInUS ? [
-            .view(FeatureView(
-                icon: nil,
-                title: "You can now invest in SimpleX Chat",
-                view: { InvestInSimpleXChat() }
-            ))
-        ] : []) + [
+        post: nil, // Qryptana does not link to the upstream investment campaign.
+        features: [
             .feature(Description(
                 icon: "at",
                 title: "SimpleX public names (BETA)",

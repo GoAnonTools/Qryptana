@@ -184,8 +184,6 @@ fun ChatListView(chatModel: ChatModel, userPickerState: MutableStateFlow<Animate
     val showWhatsNew = shouldShowWhatsNew(chatModel)
     val showUpdatedConditions = chatModel.conditions.value.conditionsAction?.shouldShowNotice ?: false
     if (showWhatsNew || showUpdatedConditions) {
-      // Requested here, so that the country is known by the time the modal opens
-      platform.androidLoadPlayStoreCountry()
       delay(1000L)
       ModalManager.center.showCustomModal { close -> WhatsNewView(close = close, updatedConditions = showUpdatedConditions) }
     }
@@ -963,10 +961,6 @@ private fun BoxScope.ChatList(searchText: MutableState<TextFieldValue>, listStat
   val oneHandUI = remember { appPrefs.oneHandUI.state }
   val oneHandUICardShown = remember { appPrefs.oneHandUICardShown.state }
   val addressCreationCardShown = remember { appPrefs.addressCreationCardShown.state }
-  val getStakeBannerTapped = remember { appPrefs.getStakeBannerTapped.state }
-  val getStakeBannerDismissed = remember { appPrefs.getStakeBannerDismissed.state }
-  // read here rather than in the LazyColumn: it launches an effect, so it needs a composable scope
-  val crowdfunding = crowdfundingAvailable()
   val activeFilter = remember { chatModel.activeChatTagFilter }
 
   LaunchedEffect(listState.firstVisibleItemIndex, listState.firstVisibleItemScrollOffset) {
@@ -1040,6 +1034,8 @@ private fun BoxScope.ChatList(searchText: MutableState<TextFieldValue>, listStat
           }
         } else {
           ChatListSearchBar(listState, searchText, searchShowingSimplexLink, searchChatFilteredBySimplexLink, connectNameCandidate)
+          // Future desktop Privana entry: directly below search, before tags/connect-by-name.
+          // Documentation only; no control or reserved space until implemented.
           // top toolbar: search bar above, so on desktop the connect row goes above the tags
           TagsOrConnectByName(searchText, connectNameCandidate) { candidate ->
             ConnectByNameRow(candidate, searchText, connectNameCandidate, close = null)
@@ -1053,17 +1049,6 @@ private fun BoxScope.ChatList(searchText: MutableState<TextFieldValue>, listStat
     if (!oneHandUICardShown.value) {
       item {
         ToggleChatListCard()
-      }
-    }
-    if (crowdfunding && !getStakeBannerDismissed.value) {
-      item {
-        Box(Modifier.zIndex(1f).padding(16.dp)) {
-          GetStakeBanner(
-            showDismiss = getStakeBannerTapped.value && chatModel.chats.value.isNotEmpty(),
-            onTap = { openGetStake(ModalManager.start) },
-            onDismiss = { appPrefs.getStakeBannerDismissed.set(true) }
-          )
-        }
       }
     }
     itemsIndexed(chats, key = { _, chat -> chat.remoteHostId to chat.id }) { index, chat ->
