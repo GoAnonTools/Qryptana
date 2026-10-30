@@ -1,0 +1,3 @@
+pure virtual method called
+terminate called without an active exception
+Picked up JAVA_TOOL_OPTIONS: -Djava.io.tmpdir=/tmp/qryptana-runtime-ui/tmp -Djava.util.prefs.userRoot=/tmp/qryptana-runtime-ui/prefs

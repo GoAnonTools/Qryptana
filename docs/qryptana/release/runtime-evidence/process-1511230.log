@@ -1,0 +1,2 @@
+pid=1511230 ppid=1511229 exe=/home/theanarchitect/code/Qryptana-release-validation/apps/multiplatform/release/main/app/qryptana/bin/qryptana event=fork-child arg=
+pid=1511230 ppid=1511229 exe=/home/theanarchitect/code/Qryptana-release-validation/apps/multiplatform/release/main/app/qryptana/bin/qryptana event=execvp arg=rpm

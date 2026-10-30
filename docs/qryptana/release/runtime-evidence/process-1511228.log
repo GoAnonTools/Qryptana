@@ -1,0 +1,11 @@
+pid=1511228 ppid=1511217 exe=/home/theanarchitect/code/Qryptana-release-validation/apps/multiplatform/release/main/app/qryptana/bin/qryptana event=loaded arg=
+pid=1511228 ppid=1511217 exe=/home/theanarchitect/code/Qryptana-release-validation/apps/multiplatform/release/main/app/qryptana/bin/qryptana event=wait arg=child=1511229 status=134
+pid=1511228 ppid=1511217 exe=/home/theanarchitect/code/Qryptana-release-validation/apps/multiplatform/release/main/app/qryptana/bin/qryptana event=waitpid arg=child=1511278 status=0
+pid=1511228 ppid=1511217 exe=/home/theanarchitect/code/Qryptana-release-validation/apps/multiplatform/release/main/app/qryptana/bin/qryptana event=waitpid arg=child=1511280 status=0
+pid=1511228 ppid=1511217 exe=/home/theanarchitect/code/Qryptana-release-validation/apps/multiplatform/release/main/app/qryptana/bin/qryptana event=waitpid arg=child=1511281 status=0
+pid=1511228 ppid=1511217 exe=/home/theanarchitect/code/Qryptana-release-validation/apps/multiplatform/release/main/app/qryptana/bin/qryptana event=waitpid arg=child=1511302 status=0
+pid=1511228 ppid=1511217 exe=/home/theanarchitect/code/Qryptana-release-validation/apps/multiplatform/release/main/app/qryptana/bin/qryptana event=waitpid arg=child=1511321 status=0
+pid=1511228 ppid=1511217 exe=/home/theanarchitect/code/Qryptana-release-validation/apps/multiplatform/release/main/app/qryptana/bin/qryptana event=waitpid arg=child=1511326 status=0
+pid=1511228 ppid=1511217 exe=/home/theanarchitect/code/Qryptana-release-validation/apps/multiplatform/release/main/app/qryptana/bin/qryptana event=waitpid arg=child=1511351 status=0
+pid=1511228 ppid=1511217 exe=/home/theanarchitect/code/Qryptana-release-validation/apps/multiplatform/release/main/app/qryptana/bin/qryptana event=waitpid arg=child=1511356 status=0
+pid=1511228 ppid=1511217 exe=/home/theanarchitect/code/Qryptana-release-validation/apps/multiplatform/release/main/app/qryptana/bin/qryptana event=waitpid arg=child=1511372 status=0

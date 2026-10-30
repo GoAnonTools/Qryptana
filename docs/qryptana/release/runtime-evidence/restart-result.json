@@ -1,0 +1,8 @@
+{
+  "pid": 1513031,
+  "running_after_10_seconds": true,
+  "termination": "controlled SIGTERM, not clean UI shutdown",
+  "returncode": 143,
+  "profile": "/tmp/qryptana-runtime-ui",
+  "onboarding_complete": false
+}

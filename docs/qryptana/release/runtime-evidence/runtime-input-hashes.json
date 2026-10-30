@@ -1,0 +1,18 @@
+[
+  {
+    "file": "/home/theanarchitect/code/Qryptana-release-validation/apps/multiplatform/release/main/app/qryptana/bin/qryptana",
+    "sha256": "7fe37e51ff3c05c9c34dcd7438ef9ae733537ad63bfd6f6af9c5d392684e41c4"
+  },
+  {
+    "file": "/home/theanarchitect/code/Qryptana-release-validation/apps/multiplatform/release/main/app/qryptana/lib/libapplauncher.so",
+    "sha256": "aaa5504ada5e61d7d00a9d1e6093ae6ab3fa8a00879977f4f08efe74b5f4524e"
+  },
+  {
+    "file": "/home/theanarchitect/code/Qryptana-release-validation/apps/multiplatform/release/main/app/qryptana/lib/runtime/release",
+    "sha256": "332ad42dfe4f8fe58786d723fb9a0bbf4bc7c3b15a078bdd5b3a2deabb1c851a"
+  },
+  {
+    "file": "/tmp/qryptana-diagnostic-final.c",
+    "sha256": "bb28968d7c4ed41d687d4b57daef7546f4dcb5c0f73fffb79efd144c8430af7b"
+  }
+]

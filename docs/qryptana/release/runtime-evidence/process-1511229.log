@@ -1,0 +1,30 @@
+pid=1511229 ppid=1511228 exe=/home/theanarchitect/code/Qryptana-release-validation/apps/multiplatform/release/main/app/qryptana/bin/qryptana event=fork-child arg=
+pid=1511229 ppid=1511228 exe=/home/theanarchitect/code/Qryptana-release-validation/apps/multiplatform/release/main/app/qryptana/bin/qryptana event=waitpid arg=child=1511230 status=32512
+pid=1511229 ppid=1511228 exe=/home/theanarchitect/code/Qryptana-release-validation/apps/multiplatform/release/main/app/qryptana/bin/qryptana event=waitpid arg=child=1511231 status=32512
+pid=1511229 ppid=1511228 exe=/home/theanarchitect/code/Qryptana-release-validation/apps/multiplatform/release/main/app/qryptana/bin/qryptana event=PURE_VIRTUAL arg=
+/tmp/qryptana-diagnostic-final.so(__cxa_pure_virtual+0x52) [0x7f791d60a5af]
+/home/theanarchitect/code/Qryptana-release-validation/apps/multiplatform/release/main/app/qryptana/lib/libapplauncher.so(+0x21368) [0x7f791d5f5368]
+/home/theanarchitect/code/Qryptana-release-validation/apps/multiplatform/release/main/app/qryptana/lib/libapplauncher.so(+0x8e4a) [0x7f791d5dce4a]
+/lib64/ld-linux-x86-64.so.2(+0x2012) [0x7f791d645012]
+/lib64/ld-linux-x86-64.so.2(+0x60ae) [0x7f791d6490ae]
+/usr/lib/libc.so.6(+0x40fbf) [0x7f791d240fbf]
+/usr/lib/libc.so.6(+0x4109e) [0x7f791d24109e]
+/usr/lib/libc.so.6(+0x27788) [0x7f791d227788]
+/usr/lib/libc.so.6(__libc_start_main+0x89) [0x7f791d2278b9]
+/home/theanarchitect/code/Qryptana-release-validation/apps/multiplatform/release/main/app/qryptana/bin/qryptana(+0x1665) [0x5629c9022665]
+pid=1511229 ppid=1511228 exe=/home/theanarchitect/code/Qryptana-release-validation/apps/multiplatform/release/main/app/qryptana/bin/qryptana event=ABORT arg=
+/tmp/qryptana-diagnostic-final.so(abort+0x52) [0x7f791d60a6c2]
+/usr/lib/libstdc++.so.6(+0x9ac54) [0x7f791ce9ac54]
+/usr/lib/libstdc++.so.6(+0xb581a) [0x7f791ceb581a]
+/usr/lib/libstdc++.so.6(_ZSt10unexpectedv+0x0) [0x7f791ce9a5ed]
+/usr/lib/libstdc++.so.6(+0xb6705) [0x7f791ceb6705]
+/tmp/qryptana-diagnostic-final.so(abort+0x0) [0x7f791d60a670]
+/home/theanarchitect/code/Qryptana-release-validation/apps/multiplatform/release/main/app/qryptana/lib/libapplauncher.so(+0x21368) [0x7f791d5f5368]
+/home/theanarchitect/code/Qryptana-release-validation/apps/multiplatform/release/main/app/qryptana/lib/libapplauncher.so(+0x8e4a) [0x7f791d5dce4a]
+/lib64/ld-linux-x86-64.so.2(+0x2012) [0x7f791d645012]
+/lib64/ld-linux-x86-64.so.2(+0x60ae) [0x7f791d6490ae]
+/usr/lib/libc.so.6(+0x40fbf) [0x7f791d240fbf]
+/usr/lib/libc.so.6(+0x4109e) [0x7f791d24109e]
+/usr/lib/libc.so.6(+0x27788) [0x7f791d227788]
+/usr/lib/libc.so.6(__libc_start_main+0x89) [0x7f791d2278b9]
+/home/theanarchitect/code/Qryptana-release-validation/apps/multiplatform/release/main/app/qryptana/bin/qryptana(+0x1665) [0x5629c9022665]

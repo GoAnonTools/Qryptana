@@ -1,0 +1,23 @@
+{
+  "launcher_jvm_pid": 1511228,
+  "aborting_child_pid": 1511229,
+  "child_wait_status": 134,
+  "child_signal": "SIGABRT (6), core flag set",
+  "package_probe_pids": [
+    1511230,
+    1511231
+  ],
+  "probe_executables": [
+    "rpm",
+    "dpkg"
+  ],
+  "probe_wait_status": 32512,
+  "probe_exit_code": 127,
+  "crash_frames": [
+    "libapplauncher.so+0x21368 Logger::log / Log.cpp:129",
+    "libapplauncher.so+0x8e4a dcon / LinuxLauncherLib.cpp:171"
+  ],
+  "runtime_java_version": "21.0.13.0.2",
+  "classification": "JDK jpackage launcher helper failure; dynamic-libstdc++ teardown/logger defect",
+  "confidence": "high for process attribution and failure path; exact vendor repair not verified"
+}
