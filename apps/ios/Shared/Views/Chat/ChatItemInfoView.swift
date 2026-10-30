@@ -162,7 +162,28 @@ struct ChatItemInfoView: View {
             if let deleteAt = meta.itemTimed?.deleteAt {
                 infoRow("Disappears at", localTimestamp(deleteAt))
             }
+            if meta.msgVerified?.verified == true {
+                let signedText: LocalizedStringKey = ci.chatDir.sent ? "Signed" : "Signed & verified"
+                HStack {
+                    Label {
+                        Text(signedText)
+                    } icon: {
+                        Text(Image(systemName: "checkmark.seal")).foregroundColor(.secondary)
+                    }
+                    Spacer()
+                }
+            } else if meta.msgVerified == .sigMissing {
+                HStack {
+                    Label {
+                        Text("Signature missing")
+                    } icon: {
+                        Text(Image(systemName: "xmark.seal")).foregroundColor(.red)
+                    }
+                    Spacer()
+                }
+            }
             if developerTools {
+                Divider().padding(.vertical)
                 infoRow("Database ID", "\(meta.itemId)")
                 infoRow("Record updated at", localTimestamp(meta.updatedAt))
                 let msv = infoRow("Message status", ci.meta.itemStatus.id)
@@ -194,6 +215,9 @@ struct ChatItemInfoView: View {
                         }
                     }
                 }
+            }
+            if ci.file != nil, let servers = chatItemInfo?.fileXftpServers, !servers.isEmpty {
+                infoRow("File servers", servers.map(serverHostname).joined(separator: "\n"))
             }
         }
     }
@@ -387,23 +411,31 @@ struct ChatItemInfoView: View {
                     Text("you")
                         .italic()
                         .foregroundColor(theme.colors.onBackground)
-                    Text(forwardedFromItem.chatInfo.chatViewName)
-                        .foregroundColor(theme.colors.secondary)
-                        .lineLimit(1)
+                    NameWithBadge(
+                        Text(forwardedFromItem.chatInfo.chatViewName).foregroundColor(theme.colors.secondary),
+                        forwardedFromItem.chatInfo.nameBadge
+                    )
+                    .lineLimit(1)
                 }
             } else if case let .groupRcv(groupMember) = forwardedFromItem.chatItem.chatDir {
                 VStack(alignment: .leading) {
-                    Text(groupMember.chatViewName)
-                        .foregroundColor(theme.colors.onBackground)
-                        .lineLimit(1)
-                    Text(forwardedFromItem.chatInfo.chatViewName)
-                        .foregroundColor(theme.colors.secondary)
-                        .lineLimit(1)
+                    NameWithBadge(
+                        Text(groupMember.chatViewName).foregroundColor(theme.colors.onBackground),
+                        groupMember.nameBadge
+                    )
+                    .lineLimit(1)
+                    NameWithBadge(
+                        Text(forwardedFromItem.chatInfo.chatViewName).foregroundColor(theme.colors.secondary),
+                        forwardedFromItem.chatInfo.nameBadge
+                    )
+                    .lineLimit(1)
                 }
             } else {
-                Text(forwardedFromItem.chatInfo.chatViewName)
-                    .foregroundColor(theme.colors.onBackground)
-                    .lineLimit(1)
+                NameWithBadge(
+                    Text(forwardedFromItem.chatInfo.chatViewName).foregroundColor(theme.colors.onBackground),
+                    forwardedFromItem.chatInfo.nameBadge
+                )
+                .lineLimit(1)
             }
         }
     }
@@ -451,7 +483,7 @@ struct ChatItemInfoView: View {
         HStack{
             MemberProfileImage(member, size: 30)
                 .padding(.trailing, 2)
-            Text(member.chatViewName)
+            NameWithBadge(Text(member.chatViewName), member.nameBadge)
                 .lineLimit(1)
             Spacer()
             if sentViaProxy == true {
@@ -499,6 +531,13 @@ struct ChatItemInfoView: View {
         if let deleteAt = meta.itemTimed?.deleteAt {
             shareText += [String.localizedStringWithFormat(NSLocalizedString("Disappears at: %@", comment: "copied message info"), localTimestamp(deleteAt))]
         }
+        if meta.msgVerified?.verified == true {
+            shareText += [ci.chatDir.sent
+                ? NSLocalizedString("Signed", comment: "copied message info")
+                : NSLocalizedString("Signed & verified", comment: "copied message info")]
+        } else if meta.msgVerified == .sigMissing {
+            shareText += [NSLocalizedString("Signature missing", comment: "copied message info")]
+        }
         if developerTools {
             shareText += [
                 String.localizedStringWithFormat(NSLocalizedString("Database ID: %d", comment: "copied message info"), meta.itemId),
@@ -508,6 +547,9 @@ struct ChatItemInfoView: View {
             if let file = ci.file {
                 shareText += [String.localizedStringWithFormat(NSLocalizedString("File status: %@", comment: "copied message info"), file.fileStatus.id)]
             }
+        }
+        if ci.file != nil, let servers = chatItemInfo?.fileXftpServers, !servers.isEmpty {
+            shareText += [String.localizedStringWithFormat(NSLocalizedString("File servers: %@", comment: "copied message info"), servers.map(serverHostname).joined(separator: ", "))]
         }
         if let qi = ci.quotedItem {
             shareText += ["", NSLocalizedString("## In reply to", comment: "copied message info")]

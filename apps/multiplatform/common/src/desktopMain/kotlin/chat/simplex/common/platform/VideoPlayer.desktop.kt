@@ -6,6 +6,11 @@ import androidx.compose.ui.graphics.*
 import chat.simplex.common.views.helpers.*
 import chat.simplex.res.MR
 import kotlinx.coroutines.*
+import org.jetbrains.compose.videoplayer.SkiaBitmapVideoSurface
+import uk.co.caprica.vlcj.media.Media
+import uk.co.caprica.vlcj.media.MediaEventAdapter
+import uk.co.caprica.vlcj.media.MediaParsedStatus
+import uk.co.caprica.vlcj.media.ParseFlag
 import uk.co.caprica.vlcj.media.VideoOrientation
 import uk.co.caprica.vlcj.player.base.*
 import uk.co.caprica.vlcj.player.component.CallbackMediaPlayerComponent
@@ -214,7 +219,7 @@ actual class VideoPlayer actual constructor(
       }
     }
 
-    suspend fun getBitmapFromVideo(defaultPreview: ImageBitmap?, uri: URI?, withAlertOnException: Boolean = true): VideoPlayerInterface.PreviewAndDuration = withContext(playerThread.asCoroutineDispatcher()) {
+    suspend fun getBitmapFromVideo(defaultPreview: ImageBitmap?, uri: URI?, withAlertOnException: Boolean = true): VideoPlayerInterface.PreviewAndDuration = withContext(previewThread.asCoroutineDispatcher()) {
       val mediaComponent = getOrCreateHelperPlayer()
       val player = mediaComponent.mediaPlayer()
       if (uri == null || !uri.toFile().exists()) {
@@ -222,12 +227,12 @@ actual class VideoPlayer actual constructor(
 
         return@withContext VideoPlayerInterface.PreviewAndDuration(preview = defaultPreview, timestamp = 0L, duration = 0L)
       }
+      val surface = SkiaBitmapVideoSurface()
+      player.videoSurface().set(surface)
       player.media().startPaused(uri.toFile().absolutePath)
-      val start = System.currentTimeMillis()
-      var snap: BufferedImage? = null
-      while (snap == null && start + 1500 > System.currentTimeMillis()) {
-        snap = player.snapshots()?.get()
-        delay(50)
+      val snap = withTimeoutOrNull(1500L) {
+        while (surface.bitmap.value == null) delay(50)
+        surface.bitmap.value!!.toAwtImage()
       }
       val orientation = player.media().info().videoTracks().firstOrNull()?.orientation()
       if (orientation == null) {
@@ -254,7 +259,45 @@ actual class VideoPlayer actual constructor(
       return@withContext VideoPlayerInterface.PreviewAndDuration(preview = preview, timestamp = 0L, duration = duration)
     }
 
+    // Parsing a local container header takes a few dozen ms, this is only a guard against a stuck parse
+    private const val PARSE_TIMEOUT_MS = 3000L
+
+    // Reads container metadata to tell whether there is a video track at all, without decoding a frame.
+    // libvlc signals the end of parsing with an event, so no polling or frame-decoding budget is needed.
+    suspend fun hasVideoTrack(uri: URI): Boolean = withContext(previewThread.asCoroutineDispatcher()) {
+      if (!uri.toFile().exists()) return@withContext false
+      val media = try {
+        vlcPreviewFactory.media().newMedia(uri.toFile().absolutePath)
+      } catch (e: Exception) {
+        Log.e(TAG, "hasVideoTrack unable to create media: ${e.stackTraceToString()}")
+        null
+      } ?: return@withContext false
+      try {
+        val parsed = CompletableDeferred<MediaParsedStatus?>()
+        media.events().addMediaEventListener(object: MediaEventAdapter() {
+          // vlcj maps an unknown status int to null, and a null here would throw on its event thread
+          override fun mediaParsedChanged(parsedMedia: Media?, newStatus: MediaParsedStatus?) {
+            parsed.complete(newStatus)
+          }
+        })
+        if (!media.parsing().parse(PARSE_TIMEOUT_MS.toInt(), ParseFlag.PARSE_LOCAL)) {
+          return@withContext false
+        }
+        if (withTimeoutOrNull(PARSE_TIMEOUT_MS) { parsed.await() } != MediaParsedStatus.DONE) {
+          media.parsing().stop()
+          return@withContext false
+        }
+        media.info().videoTracks().isNotEmpty()
+      } catch (e: Exception) {
+        Log.e(TAG, "hasVideoTrack error: ${e.stackTraceToString()}")
+        false
+      } finally {
+        media.release()
+      }
+    }
+
     val playerThread = Executors.newSingleThreadExecutor()
+    private val previewThread = Executors.newSingleThreadExecutor()
     private val playersPool: ArrayList<Component> = ArrayList()
     private val helperPlayersPool: ArrayList<CallbackMediaPlayerComponent> = ArrayList()
 

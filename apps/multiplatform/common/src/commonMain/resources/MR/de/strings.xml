@@ -37,7 +37,7 @@
     <string name="description_via_contact_address_link_incognito">Inkognito über einen Kontaktadressen-Link</string>
     <string name="description_via_one_time_link">über einen Einmal-Link</string>
     <string name="description_via_one_time_link_incognito">Inkognito über einen Einmal-Link</string>
-    <!-- FormattedText, Qryptana links - ChatModel.kt -->
+    <!-- FormattedText, SimpleX links - ChatModel.kt -->
     <string name="simplex_link_contact">Qryptana-Kontaktadressen-Link</string>
     <string name="simplex_link_invitation">Qryptana-Einmal-Einladungslink</string>
     <string name="simplex_link_group">Qryptana-Gruppen-Link</string>
@@ -47,11 +47,11 @@
     <string name="simplex_link_mode_full">Vollständiger Link</string>
     <string name="simplex_link_mode_browser">Über den Browser</string>
     <string name="simplex_link_mode_browser_warning">Das Öffnen des Links über den Browser kann die Privatsphäre und Sicherheit der Verbindung reduzieren. Qryptana-Links, denen nicht vertraut wird, werden rot markiert.</string>
-    <!-- QryptanaAPI.kt -->
+    <!-- SimpleXAPI.kt -->
     <string name="error_saving_smp_servers">Fehler beim Speichern der SMP-Server</string>
     <string name="ensure_smp_server_address_are_correct_format_and_unique">Stellen Sie sicher, dass die SMP-Server-Adressen das richtige Format haben, zeilenweise getrennt und nicht doppelt vorhanden sind.</string>
     <string name="error_setting_network_config">Fehler bei der Aktualisierung der Netzwerkkonfiguration.</string>
-    <!-- API Error Responses - QryptanaAPI.kt -->
+    <!-- API Error Responses - SimpleXAPI.kt -->
     <string name="connection_timeout">Verbindungszeitüberschreitung</string>
     <string name="connection_error">Verbindungsfehler</string>
     <string name="network_error_desc">Bitte überprüfen Sie Ihre Netzwerkverbindung mit %1$s und versuchen Sie es erneut.</string>
@@ -66,11 +66,10 @@
     <string name="you_are_already_connected_to_vName_via_this_link">Sie sind bereits mit %1$s verbunden.</string>
     <string name="invalid_connection_link">Ungültiger Verbindungslink</string>
     <string name="please_check_correct_link_and_maybe_ask_for_a_new_one">Überprüfen Sie bitte, ob Sie den richtigen Link genutzt haben, oder bitten Sie Ihren Kontakt darum, Ihnen nochmal einen Link zuzusenden.</string>
-    <string name="connection_error_auth">Verbindungsfehler (AUTH)</string>
-    <string name="connection_error_auth_desc">Entweder hat Ihr Kontakt die Verbindung gelöscht, oder dieser Link wurde bereits verwendet, es könnte sich um einen Fehler handeln – bitte melden Sie ihn uns.
-\nBitten Sie Ihren Kontakt darum, einen weiteren Verbindungs-Link zu erzeugen, um sich neu verbinden zu können, und stellen Sie sicher, dass Sie eine stabile Netzwerkverbindung haben.</string>
+    <string name="connection_error_auth">Verbindungslink entfernt</string>
+    <string name="connection_error_auth_desc">Ihr Kontakt hat diesen Link entfernt oder es war ein Einmal‑Link, welcher bereits verwendet wurde.\nUm sich zu verbinden, bitten Sie Ihren Kontakt, einen neuen Link zu erstellen.</string>
     <string name="error_accepting_contact_request">Fehler beim Annehmen der Kontaktanfrage</string>
-    <string name="sender_may_have_deleted_the_connection_request">Der Absender hat möglicherweise die Verbindungsanfrage gelöscht.</string>
+    <string name="sender_may_have_deleted_the_connection_request">Der Absender hat die Verbindungsanfrage gelöscht.</string>
     <string name="error_deleting_contact">Fehler beim Löschen des Kontakts</string>
     <string name="error_deleting_group">Fehler beim Löschen der Gruppe</string>
     <string name="error_deleting_contact_request">Fehler beim Löschen der Kontaktanfrage</string>
@@ -84,7 +83,7 @@
     <string name="smp_server_test_secure_queue">Sichere Warteschlange</string>
     <string name="smp_server_test_delete_queue">Lösche Warteschlange</string>
     <string name="smp_server_test_disconnect">Trenne Verbindung</string>
-    <!-- background service notice - QryptanaAPI.kt -->
+    <!-- background service notice - SimpleXAPI.kt -->
     <string name="icon_descr_instant_notifications">Sofortige Benachrichtigungen</string>
     <string name="service_notifications">Sofortige Benachrichtigungen!</string>
     <string name="service_notifications_disabled">Sofortige Benachrichtigungen sind deaktiviert!</string>
@@ -99,7 +98,7 @@
     <string name="enter_passphrase_notification_desc">Geben Sie bitte das Datenbank-Passwort ein, um Benachrichtigungen zu erhalten.</string>
     <string name="database_initialization_error_title">Die Datenbank kann nicht initialisiert werden</string>
     <string name="database_initialization_error_desc">Die Datenbank arbeitet nicht richtig. Für weitere Informationen antippen.</string>
-    <!-- Qryptana foreground Service -->
+    <!-- SimpleX Chat foreground Service -->
     <string name="simplex_service_notification_title">Qryptana-Chat-Hintergrunddienst</string>
     <string name="simplex_service_notification_text">Empfange Nachrichten …</string>
     <string name="hide_notification">Verberge</string>
@@ -126,7 +125,7 @@
     <string name="notification_preview_new_message">Neue Nachricht</string>
     <string name="notification_new_contact_request">Neue Kontaktanfrage</string>
     <string name="notification_contact_connected">Verbunden</string>
-    <!-- local authentication notice - QryptanaAPI.kt -->
+    <!-- local authentication notice - SimpleXAPI.kt -->
     <string name="la_notice_title_simplex_lock">Qryptana-Sperre</string>
     <string name="la_notice_to_protect_your_information_turn_on_simplex_lock_you_will_be_prompted_to_complete_authentication_before_this_feature_is_enabled">Um Ihre Informationen zu schützen, schalten Sie die Qryptana Sperre ein.\nSie werden aufgefordert, die Authentifizierung abzuschließen, bevor diese Funktion aktiviert wird.</string>
     <string name="la_notice_turn_on">Aktivieren</string>
@@ -344,7 +343,7 @@
     <!-- settings - SettingsView.kt -->
     <string name="your_settings">Einstellungen</string>
     <string name="your_simplex_contact_address">Ihre Qryptana-Adresse</string>
-    <string name="database_passphrase_and_export">Datenbank-Passwort &amp; -Export</string>
+    <string name="database_passphrase_and_export">Datenbank-Passwort und -Export</string>
     <string name="about_simplex_chat">Über Qryptana</string>
     <string name="how_to_use_simplex_chat">Wie man Qryptana nutzt</string>
     <string name="markdown_help">Markdown-Hilfe</string>
@@ -389,7 +388,7 @@
     <string name="error_saving_ICE_servers">Fehler beim Speichern der ICE-Server</string>
     <string name="ensure_ICE_server_address_are_correct_format_and_unique">Stellen Sie sicher, dass die WebRTC-ICE-Server-Adressen das richtige Format haben, zeilenweise getrennt und nicht doppelt vorhanden sind.</string>
     <string name="save_servers_button">Speichern</string>
-    <string name="network_and_servers">Netzwerk &amp; Server</string>
+    <string name="network_and_servers">Netzwerk und Server</string>
     <string name="network_settings">Erweiterte Netzwerkeinstellungen</string>
     <string name="network_settings_title">Erweiterte Einstellungen</string>
     <string name="network_enable_socks">SOCKS-Proxy verwenden?</string>
@@ -404,7 +403,7 @@
     <string name="network_use_onion_hosts_no_desc">Onion-Hosts werden nicht verwendet.</string>
     <string name="network_use_onion_hosts_required_desc">Für die Verbindung werden Onion-Hosts benötigt.
 \nBitte beachten Sie: Ohne .onion-Adresse können Sie keine Verbindung mit den Servern herstellen.</string>
-    <string name="appearance_settings">Erscheinungsbild</string>
+    <string name="appearance_settings">Darstellung</string>
     <!-- Address Items - UserAddressView.kt -->
     <string name="create_address">Adresse erstellen</string>
     <string name="delete_address__question">Adresse löschen?</string>
@@ -461,7 +460,7 @@
     <string name="callstate_connecting">Verbindung wird hergestellt…</string>
     <string name="callstate_connected">Verbunden</string>
     <string name="callstate_ended">Beendet</string>
-    <!-- QryptanaInfo -->
+    <!-- SimpleXInfo -->
     <string name="next_generation_of_private_messaging">Die Zukunft des Messagings</string>
     <string name="privacy_redefined">Datenschutz neu definiert</string>
     <string name="first_platform_without_user_ids">Keine Benutzerkennungen.</string>
@@ -472,7 +471,7 @@
     <string name="create_your_profile">Ihr Profil erstellen</string>
     <string name="make_private_connection">Stellen Sie eine private Verbindung her</string>
     <string name="how_it_works">Wie es funktioniert</string>
-    <!-- How Qryptana Works -->
+    <!-- How SimpleX Works -->
     <string name="to_protect_privacy_simplex_has_ids_for_queues">Qryptana nutzt individuelle Kennungen für jeden Ihrer Kontakte, um Ihre Privatsphäre zu schützen.</string>
     <string name="only_client_devices_store_contacts_groups_e2e_encrypted_messages">Nur die Endgeräte speichern Benutzerprofile, Kontakte, Gruppen und Nachrichten.</string>
     <string name="read_more_in_github_with_link"><![CDATA[Erfahren Sie in unserem <font color="#B95F3A">GitHub-Repository</font> mehr dazu.]]></string>
@@ -493,16 +492,16 @@
     <string name="icon_descr_video_call">Videoanruf</string>
     <string name="icon_descr_audio_call">Audioanruf</string>
     <!-- Call settings -->
-    <string name="settings_audio_video_calls">Audio- &amp; Videoanrufe</string>
+    <string name="settings_audio_video_calls">Audio- und Videoanrufe</string>
     <string name="your_calls">Ihre Anrufe</string>
-    <string name="always_use_relay">Immer über ein Relais verbinden</string>
+    <string name="always_use_relay">Immer über einen Router verbinden</string>
     <string name="call_on_lock_screen">Anrufe auf Sperrbildschirm:</string>
     <string name="accept_call_on_lock_screen">Akzeptieren</string>
     <string name="show_call_on_lock_screen">Anzeigen</string>
     <string name="no_call_on_lock_screen">Deaktivieren</string>
     <string name="your_ice_servers">Ihre ICE-Server</string>
     <string name="webrtc_ice_servers">WebRTC-ICE-Server</string>
-    <string name="relay_server_protects_ip">Relais-Server schützen Ihre IP-Adresse, aber sie können die Anrufdauer erfassen.</string>
+    <string name="relay_server_protects_ip">Relais-Server schützen Ihre IP-Adresse, können aber die Anrufdauer erfassen.</string>
     <string name="relay_server_if_necessary">Relais-Server werden nur genutzt, wenn sie benötigt werden. Ihre IP-Adresse kann von Anderen erfasst werden.</string>
     <!-- Call Lock Screen -->
     <string name="open_simplex_chat_to_accept_call">Öffnen Sie Qryptana, um den Anruf anzunehmen.</string>
@@ -542,33 +541,33 @@
 \n2. Die Nachrichten-Entschlüsselung ist fehlgeschlagen, da von Ihnen oder Ihrem Kontakt ein altes Datenbank-Backup genutzt wurde.
 \n3. Die Verbindung wurde kompromittiert.</string>
     <!-- Privacy settings -->
-    <string name="privacy_and_security">Datenschutz &amp; Sicherheit</string>
+    <string name="privacy_and_security">Datenschutz und Sicherheit</string>
     <string name="your_privacy">Privatsphäre</string>
     <string name="protect_app_screen">App-Bildschirm schützen</string>
     <string name="auto_accept_images">Bilder automatisch akzeptieren</string>
     <string name="send_link_previews">Linkvorschau senden</string>
     <string name="full_backup">App-Datensicherung</string>
     <!-- Settings sections -->
-    <string name="settings_section_title_you">MEINE DATEN</string>
-    <string name="settings_section_title_settings">EINSTELLUNGEN</string>
-    <string name="settings_section_title_help">HILFE</string>
+    <string name="settings_section_title_you">Meine Daten</string>
+    <string name="settings_section_title_settings">Einstellungen</string>
+    <string name="settings_section_title_help">Hilfe</string>
     <string name="settings_section_title_support">UNTERSTÜTZUNG VON QRYPTANA</string>
-    <string name="settings_section_title_device">GERÄT</string>
-    <string name="settings_section_title_chats">CHATS</string>
+    <string name="settings_section_title_device">Gerät</string>
+    <string name="settings_section_title_chats">Chats</string>
     <string name="settings_developer_tools">Entwicklertools</string>
     <string name="settings_experimental_features">Experimentelle Funktionen</string>
-    <string name="settings_section_title_socks">SOCKS-PROXY</string>
-    <string name="settings_section_title_icon">APP-ICON</string>
-    <string name="settings_section_title_themes">DESIGN</string>
-    <string name="settings_section_title_messages">NACHRICHTEN und DATEIEN</string>
-    <string name="settings_section_title_calls">CALLS</string>
+    <string name="settings_section_title_socks">SOCKS-Proxy</string>
+    <string name="settings_section_title_icon">App-Icon</string>
+    <string name="settings_section_title_themes">Design</string>
+    <string name="settings_section_title_messages">Nachrichten und Dateien</string>
+    <string name="settings_section_title_calls">Calls</string>
     <string name="settings_section_title_incognito">Inkognito-Modus</string>
     <!-- DatabaseView.kt -->
     <string name="your_chat_database">Chat-Datenbank</string>
-    <string name="run_chat_section">CHAT STARTEN</string>
+    <string name="run_chat_section">Chat starten</string>
     <string name="chat_is_running">Der Chat läuft</string>
     <string name="chat_is_stopped">Der Chat ist beendet</string>
-    <string name="chat_database_section">CHAT-DATENBANK</string>
+    <string name="chat_database_section">Chat-Datenbank</string>
     <string name="database_passphrase">Datenbank-Passwort</string>
     <string name="export_database">Datenbank exportieren</string>
     <string name="import_database">Datenbank importieren</string>
@@ -747,7 +746,7 @@
     <string name="invite_prohibited_description">Sie versuchen, einen Kontakt, mit dem Sie ein Inkognito-Profil geteilt haben, in die Gruppe einzuladen, in der Sie Ihr Hauptprofil verwenden.</string>
     <!-- GroupChatInfoView.kt -->
     <string name="button_add_members">Mitglieder einladen</string>
-    <string name="group_info_section_title_num_members">%1$s MITGLIEDER</string>
+    <string name="group_info_section_title_num_members">%1$s Mitglieder</string>
     <string name="group_info_member_you">Sie: %1$s</string>
     <string name="button_delete_group">Gruppe löschen</string>
     <string name="delete_group_question">Gruppe löschen?</string>
@@ -765,7 +764,7 @@
     <string name="error_deleting_link_for_group">Fehler beim Löschen des Gruppen-Links</string>
     <string name="only_group_owners_can_change_prefs">Gruppen-Präferenzen können nur von Gruppen-Eigentümern geändert werden.</string>
     <!-- For Console chat info section -->
-    <string name="section_title_for_console">FÜR KONSOLE</string>
+    <string name="section_title_for_console">Für Konsole</string>
     <string name="info_row_local_name">Lokaler Name</string>
     <string name="info_row_database_id">Datenbank-ID</string>
     <!-- GroupMemberInfoView.kt -->
@@ -773,13 +772,13 @@
     <string name="button_send_direct_message">Direktnachricht senden</string>
     <string name="member_will_be_removed_from_group_cannot_be_undone">Das Mitglied wird aus der Gruppe entfernt. Dies kann nicht rückgängig gemacht werden!</string>
     <string name="remove_member_confirmation">Entfernen</string>
-    <string name="member_info_section_title_member">MITGLIED</string>
+    <string name="member_info_section_title_member">Mitglied</string>
     <string name="role_in_group">Rolle</string>
     <string name="change_role">Rolle ändern</string>
     <string name="change_verb">Ändern</string>
     <string name="switch_verb">Wechseln</string>
-    <string name="change_member_role_question">Die Mitgliederrolle ändern?</string>
-    <string name="member_role_will_be_changed_with_notification">Die Rolle wird auf %s geändert. Alle Mitglieder der Gruppe werden benachrichtigt.</string>
+    <string name="change_member_role_question">Rolle ändern?</string>
+    <string name="member_role_will_be_changed_with_notification">Die Rolle wird auf %s geändert. Alle Gruppenmitglieder werden benachrichtigt.</string>
     <string name="member_role_will_be_changed_with_invitation">Die Rolle wird auf %s geändert. Das Mitglied wird eine neue Einladung erhalten.</string>
     <string name="error_removing_member">Fehler beim Entfernen des Mitglieds</string>
     <string name="error_changing_role">Fehler beim Ändern der Rolle</string>
@@ -788,7 +787,7 @@
     <string name="conn_level_desc_direct">direkt</string>
     <string name="conn_level_desc_indirect">indirekt (%1$s)</string>
     <!-- ConnectionStats -->
-    <string name="conn_stats_section_title_servers">SERVER</string>
+    <string name="conn_stats_section_title_servers">Server</string>
     <string name="receiving_via">Empfangen über</string>
     <string name="sending_via">Senden über</string>
     <string name="network_status">Netzwerkstatus</string>
@@ -977,7 +976,7 @@
     <string name="network_option_ping_count">PING-Zähler</string>
     <string name="update_network_session_mode_question">Transport-Isolations-Modus aktualisieren\?</string>
     <string name="smp_servers_per_user">Nachrichten-Server für neue Verbindungen über Ihr aktuelles Chat-Profil</string>
-    <string name="files_and_media_section">Dateien &amp; Medien</string>
+    <string name="files_and_media_section">Dateien und Medien</string>
     <string name="network_session_mode_transport_isolation">Transport-Isolation</string>
     <string name="users_delete_question">Chat-Profil löschen\?</string>
     <string name="error_deleting_user">Fehler beim Löschen des Benutzerprofils</string>
@@ -1005,8 +1004,8 @@
     <string name="v4_5_reduced_battery_usage_descr">Weitere Verbesserungen sind bald verfügbar!</string>
     <string name="v4_5_multiple_chat_profiles_descr">Unterschiedliche Namen, Avatare und Transport-Isolation.</string>
     <string name="v4_5_transport_isolation">Transport-Isolation</string>
-    <string name="v4_5_italian_interface_descr">Dank der Nutzer - Tragen Sie per Weblate bei!</string>
-    <string name="v4_4_french_interface_descr">Dank der Nutzer - Tragen Sie per Weblate bei!</string>
+    <string name="v4_5_italian_interface_descr">Dank der Nutzer - Wirken Sie per Weblate mit!</string>
+    <string name="v4_4_french_interface_descr">Dank der Nutzer - Wirken Sie per Weblate mit!</string>
     <string name="v4_5_private_filenames_descr">Bild- und Sprachdateinamen enthalten UTC, um Informationen zur Zeitzone zu schützen.</string>
     <string name="moderated_description">Moderiert</string>
     <string name="moderated_item_description">Von %s moderiert</string>
@@ -1051,7 +1050,7 @@
     <string name="v4_6_reduced_battery_usage">Weiter reduzierter Batterieverbrauch</string>
     <string name="v4_6_reduced_battery_usage_descr">Weitere Verbesserungen sind bald verfügbar!</string>
     <string name="v4_6_group_welcome_message_descr">Definieren Sie eine Begrüßungsmeldung, die neuen Mitgliedern angezeigt wird!</string>
-    <string name="v4_6_chinese_spanish_interface_descr">Dank der Nutzer - Tragen Sie per Weblate bei!</string>
+    <string name="v4_6_chinese_spanish_interface_descr">Dank der Nutzer - Wirken Sie per Weblate mit!</string>
     <string name="v4_6_group_moderation">Gruppenmoderation</string>
     <string name="v4_6_hidden_chat_profiles">Verborgene Chat-Profile</string>
     <string name="user_hide">Verberge</string>
@@ -1065,7 +1064,7 @@
     <string name="confirm_database_upgrades">Datenbank-Aktualisierungen bestätigen</string>
     <string name="show_dev_options">Anzeigen:</string>
     <string name="show_developer_options">Entwickleroptionen anzeigen</string>
-    <string name="settings_section_title_experimenta">EXPERIMENTELL</string>
+    <string name="settings_section_title_experimenta">Experimentell</string>
     <string name="database_upgrade">Datenbank-Aktualisierung</string>
     <string name="mtr_error_different">Unterschiedlicher Migrationsstand in der App/Datenbank: %s / %s</string>
     <string name="downgrade_and_open_chat">Datenbank herabstufen und den Chat öffnen</string>
@@ -1172,12 +1171,12 @@
     <string name="v5_0_large_files_support_descr">Schnell und ohne zu warten, bis der Kontakt online ist!</string>
     <string name="v5_0_polish_interface">Polnische Bedienoberfläche</string>
     <string name="v5_0_app_passcode_descr">Anstelle der System-Authentifizierung festlegen.</string>
-    <string name="v5_0_polish_interface_descr">Dank der Nutzer - Tragen Sie per Weblate bei!</string>
+    <string name="v5_0_polish_interface_descr">Dank der Nutzer - Wirken Sie per Weblate mit!</string>
     <string name="only_your_contact_can_make_calls">Nur Ihr Kontakt kann Anrufe tätigen.</string>
     <string name="v5_0_app_passcode">App-Zugangscode</string>
     <string name="calls_prohibited_with_this_contact">Audio-/Video-Anrufe sind nicht erlaubt.</string>
     <string name="address_section_title">Adresse</string>
-    <string name="share_address">Adresse teilen</string>
+    <string name="share_address">Adresse teilen…</string>
     <string name="export_theme">Design exportieren</string>
     <string name="import_theme_error">Fehler beim Importieren des Designs</string>
     <string name="color_title">Bezeichnung</string>
@@ -1189,7 +1188,7 @@
     <string name="you_can_accept_or_reject_connection">Wenn Personen eine Verbindung anfordern, können Sie diese annehmen oder ablehnen.</string>
     <string name="you_wont_lose_your_contacts_if_delete_address">Sie werden Ihre damit verbundenen Kontakte nicht verlieren, wenn Sie diese Adresse später löschen.</string>
     <string name="customize_theme_title">Design anpassen</string>
-    <string name="theme_colors_section_title">INTERFACE-FARBEN</string>
+    <string name="theme_colors_section_title">Interface-Farben</string>
     <string name="add_address_to_your_profile">Fügen Sie die Adresse Ihrem Profil hinzu, damit Ihre Qryptana-Kontakte sie mit anderen Personen teilen können. Es wird eine Profilaktualisierung an Ihre Qryptana-Kontakte gesendet.</string>
     <string name="all_your_contacts_will_remain_connected_update_sent">Alle Ihre Kontakte bleiben verbunden. Es wird eine Profilaktualisierung an Ihre Kontakte gesendet.</string>
     <string name="create_address_and_let_people_connect">Erstellen Sie eine Adresse, damit sich Personen mit Ihnen verbinden können.</string>
@@ -1216,7 +1215,7 @@
     <string name="color_secondary_variant">Zweite Akzentfarbe</string>
     <string name="color_background">Hintergrund-Farbe</string>
     <string name="import_theme">Design importieren</string>
-    <string name="color_surface">Menüs &amp; Benachrichtigungen</string>
+    <string name="color_surface">Menüs und Benachrichtigungen</string>
     <string name="color_received_message">Empfangene Nachricht</string>
     <string name="color_secondary">Zweite Farbe</string>
     <string name="color_sent_message">Gesendete Nachricht</string>
@@ -1287,7 +1286,7 @@
     <string name="v5_1_japanese_portuguese_interface">Japanische und portugiesische Bedienoberfläche</string>
     <string name="custom_time_unit_minutes">Minuten</string>
     <string name="custom_time_unit_seconds">Sekunden</string>
-    <string name="whats_new_thanks_to_users_contribute_weblate">Dank der Nutzer - Tragen Sie per Weblate bei!</string>
+    <string name="whats_new_thanks_to_users_contribute_weblate">Dank der Nutzer - Wirken Sie per Weblate mit!</string>
     <string name="v5_1_better_messages">Verbesserungen bei Nachrichten</string>
     <string name="v5_1_custom_themes_descr">Farbdesigns anpassen und weitergeben.</string>
     <string name="custom_time_unit_days">Tage</string>
@@ -1309,7 +1308,7 @@
     <string name="non_fatal_errors_occured_during_import">Während des Imports sind nicht schwerwiegende Fehler aufgetreten:</string>
     <string name="shutdown_alert_question">Herunterfahren\?</string>
     <string name="shutdown_alert_desc">Bis zum Neustart der App erhalten Sie keine Benachrichtigungen mehr</string>
-    <string name="settings_section_title_app">APP</string>
+    <string name="settings_section_title_app">App</string>
     <string name="settings_restart_app">Neustart</string>
     <string name="settings_shutdown">Herunterfahren</string>
     <string name="error_aborting_address_change">Fehler beim Beenden des Adresswechsels</string>
@@ -1372,7 +1371,7 @@
     <string name="receipts_contacts_title_enable">Bestätigungen aktivieren\?</string>
     <string name="receipts_contacts_override_enabled">Das Senden von Bestätigungen an %d Kontakte ist aktiviert</string>
     <string name="receipts_contacts_enable_for_all">Für alle aktivieren</string>
-    <string name="settings_section_title_delivery_receipts">EMPFANGSBESTÄTIGUNGEN SENDEN AN</string>
+    <string name="settings_section_title_delivery_receipts">Empfangsbestätigungen senden an</string>
     <string name="receipts_contacts_disable_keep_overrides">Deaktivieren (vorgenommene Einstellungen bleiben erhalten)</string>
     <string name="send_receipts">Bestätigungen senden</string>
     <string name="v5_2_fix_encryption">Ihre Verbindungen beibehalten</string>
@@ -1384,7 +1383,7 @@
     <string name="v5_2_more_things_descr">- Stabilere Zustellung von Nachrichten.\n- Ein bisschen verbesserte Gruppen.\n- Und mehr!</string>
     <string name="dont_enable_receipts">Nicht aktivieren</string>
     <string name="sending_delivery_receipts_will_be_enabled">Das Senden von Empfangsbestätigungen an alle Kontakte wird aktiviert.</string>
-    <string name="you_can_enable_delivery_receipts_later_alert">Sie können diese später in den Datenschutz- und Sicherheits-Einstellungen der App aktivieren.</string>
+    <string name="you_can_enable_delivery_receipts_later_alert">Sie können diese später in Ihren Privatsphäre-Einstellungen der App aktivieren.</string>
     <string name="choose_file_title">Datei auswählen</string>
     <string name="in_developing_title">Kommt bald!</string>
     <string name="no_selected_chat">Kein Chat ausgewählt</string>
@@ -1437,10 +1436,10 @@
     <string name="open_database_folder">Datenbank-Ordner öffnen</string>
     <string name="passphrase_will_be_saved_in_settings">Das Passwort wird in Klartext in den Einstellungen gespeichert, nachdem Sie es geändert oder die App neu gestartet haben.</string>
     <string name="settings_is_storing_in_clear_text">Das Passwort wurde in Klartext in den Einstellungen gespeichert.</string>
-    <string name="socks_proxy_setting_limitations"><![CDATA[<b>Bitte beachten Sie</b>: Die Nachrichten- und Datei-Relais sind per SOCKS-Proxy verbunden. Anrufe nutzen eine direkte Verbindung.]]></string>
+    <string name="socks_proxy_setting_limitations"><![CDATA[<b>Bitte beachten Sie</b>: Die Nachrichten- und Datei-Router sind per SOCKS-Proxy verbunden. Anrufe nutzen eine direkte Verbindung.]]></string>
     <string name="encrypt_local_files">Lokale Dateien verschlüsseln</string>
     <string name="rcv_group_event_open_chat">Öffnen</string>
-    <string name="v5_3_encrypt_local_files">Gespeicherte Dateien &amp; Medien verschlüsseln</string>
+    <string name="v5_3_encrypt_local_files">Gespeicherte Dateien und Medien verschlüsseln</string>
     <string name="error_creating_member_contact">Fehler beim Anlegen eines Mitglied-Kontaktes</string>
     <string name="v5_3_new_desktop_app">Neue Desktop-App!</string>
     <string name="v5_3_new_interface_languages">6 neue Sprachen für die Bedienoberfläche</string>
@@ -1702,7 +1701,7 @@
     <string name="migrate_to_device_downloading_details">Link-Details werden heruntergeladen</string>
     <string name="migrate_to_device_downloading_archive">Archiv wird heruntergeladen</string>
     <string name="migrate_to_device_apply_onion">Anwenden</string>
-    <string name="migrate_from_device_all_data_will_be_uploaded">Alle Ihre Kontakte, Unterhaltungen und Dateien werden sicher verschlüsselt und in Daten-Paketen auf die konfigurierten XTFP-Relais hochgeladen.</string>
+    <string name="migrate_from_device_all_data_will_be_uploaded">Alle Ihre Kontakte, Unterhaltungen und Dateien werden sicher verschlüsselt und in Daten-Paketen auf die konfigurierten XTFP-Router hochgeladen.</string>
     <string name="migrate_from_device_archive_and_upload">Archivieren und Hochladen</string>
     <string name="migrate_from_device_archive_will_be_deleted"><![CDATA[<b>Warnung</b>: Das Archiv wird gelöscht.]]></string>
     <string name="migrate_from_device_check_connection_and_try_again">Überprüfen Sie Ihre Internetverbindung und probieren Sie es nochmals</string>
@@ -1840,8 +1839,8 @@
     <string name="network_smp_proxy_mode_never">Nie</string>
     <string name="network_smp_proxy_mode_unknown">Unbekannte Server</string>
     <string name="network_smp_proxy_mode_unprotected">Ungeschützt</string>
-    <string name="network_smp_proxy_mode_unknown_description">Sie nutzen privates Routing mit unbekannten Servern.</string>
-    <string name="network_smp_proxy_mode_never_description">Sie nutzen KEIN privates Routing.</string>
+    <string name="network_smp_proxy_mode_unknown_description">Bei unbekannten Servern privates Routing nutzen.</string>
+    <string name="network_smp_proxy_mode_never_description">KEIN privates Routing nutzen.</string>
     <string name="update_network_smp_proxy_mode_question">Modus für das Nachrichten-Routing</string>
     <string name="network_smp_proxy_fallback_allow">Ja</string>
     <string name="network_smp_proxy_fallback_prohibit">Nein</string>
@@ -1849,20 +1848,19 @@
     <string name="update_network_smp_proxy_fallback_question">Fallback für das Nachrichten-Routing</string>
     <string name="private_routing_show_message_status">Nachrichtenstatus anzeigen</string>
     <string name="network_smp_proxy_fallback_allow_downgrade">Herabstufung erlauben</string>
-    <string name="network_smp_proxy_mode_always_description">Sie nutzen immer privates Routing.</string>
+    <string name="network_smp_proxy_mode_always_description">Immer privates Routing nutzen.</string>
     <string name="network_smp_proxy_fallback_prohibit_description">Nachrichten werden nicht direkt versendet, selbst wenn Ihr oder der Ziel-Server kein privates Routing unterstützt.</string>
-    <string name="settings_section_title_private_message_routing">PRIVATES NACHRICHTEN-ROUTING</string>
+    <string name="settings_section_title_private_message_routing">Privates Nachrichten-Routing</string>
     <string name="network_smp_proxy_fallback_allow_protected_description">Nachrichten werden direkt versendet, wenn die IP-Adresse geschützt ist, und Ihr oder der Ziel-Server kein privates Routing unterstützt.</string>
     <string name="network_smp_proxy_fallback_allow_description">Nachrichten werden direkt versendet, wenn Ihr oder der Ziel-Server kein privates Routing unterstützt.</string>
-    <string name="private_routing_explanation">Zum Schutz Ihrer IP-Adresse, wird für die Nachrichten-Auslieferung privates Routing über Ihre konfigurierten SMP-Server genutzt.</string>
-    <string name="network_smp_proxy_mode_unprotected_description">Sie nutzen privates Routing mit unbekannten Servern, wenn Ihre IP-Adresse nicht geschützt ist.</string>
+    <string name="private_routing_explanation">Zum Schutz Ihrer IP-Adresse, wird für die Nachrichten-Auslieferung privates Routing über Ihre konfigurierten SMP-Router genutzt.</string>
+    <string name="network_smp_proxy_mode_unprotected_description">Bei unbekannten Servern privates Routing nutzen, wenn Ihre IP-Adresse nicht geschützt ist.</string>
     <string name="protect_ip_address">IP-Adresse schützen</string>
-    <string name="settings_section_title_files">DATEIEN</string>
+    <string name="settings_section_title_files">Dateien</string>
     <string name="app_will_ask_to_confirm_unknown_file_servers">Die App wird bei unbekannten Datei-Servern nach einer Download-Bestätigung fragen (außer bei .onion oder wenn ein SOCKS-Proxy aktiviert ist).</string>
     <string name="file_not_approved_title">Unbekannte Server!</string>
     <string name="without_tor_or_vpn_ip_address_will_be_visible_to_file_servers">Ohne Tor- oder VPN-Nutzung wird Ihre IP-Adresse für Datei-Server sichtbar sein.</string>
-    <string name="file_not_approved_descr">Ohne Tor- oder VPN-Nutzung wird Ihre IP-Adresse für diese XFTP-Relais sichtbar sein:
-\n%1$s.</string>
+    <string name="file_not_approved_descr">Ohne Tor- oder VPN-Nutzung wird Ihre IP-Adresse für diese XFTP-Router sichtbar sein: \n%1$s.</string>
     <string name="settings_section_title_user_theme">Profil-Design</string>
     <string name="theme_black">Schwarz</string>
     <string name="color_mode">Farbvariante</string>
@@ -1903,8 +1901,7 @@
     <string name="v5_8_chat_themes_descr">Gestalten Sie Ihre Chats unterschiedlich!</string>
     <string name="v5_8_chat_themes">Neue Chat-Designs</string>
     <string name="v5_8_private_routing">Privates Nachrichten-Routing 🚀</string>
-    <string name="v5_8_private_routing_descr">Schützen Sie Ihre IP-Adresse vor den Nachrichten-Relais , die Ihr Kontakt ausgewählt hat.
-\nAktivieren Sie es in den *Netzwerk &amp; Server* Einstellungen.</string>
+    <string name="v5_8_private_routing_descr">Schützen Sie Ihre IP-Adresse vor den Nachrichten-Routern, die Ihre Kontakte ausgewählt haben.\nAktivieren Sie es in den *Netzwerk und Server* Einstellungen.</string>
     <string name="v5_8_safe_files">Dateien sicher herunterladen</string>
     <string name="v5_8_message_delivery_descr">Mit reduziertem Akkuverbrauch.</string>
     <string name="message_queue_info_none">Keine Information</string>
@@ -2107,7 +2104,7 @@
     <string name="create_address_button">Erstellen</string>
     <string name="v6_0_upgrade_app_descr">Laden Sie neue Versionen von GitHub herunter.</string>
     <string name="v6_0_chat_list_media">Direkt aus der Chat-Liste abspielen.</string>
-    <string name="one_hand_ui_change_instruction">Kann von Ihnen in den Erscheinungsbild-Einstellungen geändert werden.</string>
+    <string name="one_hand_ui_change_instruction">Sie können dies in den Einstellungen unter „Darstellung“ ändern.</string>
     <string name="v6_0_your_contacts_descr">Kontakte für spätere Chats archivieren.</string>
     <string name="v6_0_private_routing_descr">Ihre IP-Adresse und Verbindungen werden geschützt.</string>
     <string name="v6_0_delete_many_messages_descr">Löschen Sie bis zu 20 Nachrichten auf einmal.</string>
@@ -2126,7 +2123,7 @@
     <string name="new_message">Neue Nachricht</string>
     <string name="error_parsing_uri_desc">Bitte überprüfen Sie, ob der Qryptana-Link korrekt ist.</string>
     <string name="error_parsing_uri_title">Ungültiger Link</string>
-    <string name="settings_section_title_chat_database">CHAT-DATENBANK</string>
+    <string name="settings_section_title_chat_database">Chat-Datenbank</string>
     <string name="switching_profile_error_title">Fehler beim Wechseln des Profils</string>
     <string name="delete_messages_cannot_be_undone_warning">Die Nachrichten werden gelöscht. Dies kann nicht rückgängig gemacht werden!</string>
     <string name="new_chat_share_profile">Profil teilen</string>
@@ -2135,15 +2132,15 @@
     <string name="select_chat_profile">Chat-Profil auswählen</string>
     <string name="migrate_from_device_remove_archive_question">Archiv entfernen?</string>
     <string name="network_proxy_auth_mode_username_password">Ihre Anmeldeinformationen können unverschlüsselt versendet werden.</string>
-    <string name="network_proxy_auth_mode_no_auth">Verwenden Sie keine Anmeldeinformationen mit einem Proxy.</string>
+    <string name="network_proxy_auth_mode_no_auth">Keine Anmeldeinformationen mit einem Proxy verwenden.</string>
     <string name="switching_profile_error_message">Ihre Verbindung wurde auf %s verschoben, aber während des Profil-Wechsels trat ein Fehler auf.</string>
     <string name="network_proxy_incorrect_config_desc">Stellen Sie sicher, dass die Proxy-Konfiguration richtig ist.</string>
     <string name="network_proxy_incorrect_config_title">Fehler beim Speichern des Proxys</string>
     <string name="network_proxy_password">Passwort</string>
     <string name="network_proxy_auth">Proxy-Authentifizierung</string>
-    <string name="network_proxy_auth_mode_isolate_by_auth_entity">Verwenden Sie für jede Verbindung unterschiedliche Proxy-Anmeldeinformationen.</string>
-    <string name="network_proxy_auth_mode_isolate_by_auth_user">Verwenden Sie für jedes Profil unterschiedliche Proxy-Anmeldeinformationen.</string>
-    <string name="network_proxy_random_credentials">Verwenden Sie zufällige Anmeldeinformationen</string>
+    <string name="network_proxy_auth_mode_isolate_by_auth_entity">Für jede Verbindung unterschiedliche Proxy-Anmeldeinformationen verwenden.</string>
+    <string name="network_proxy_auth_mode_isolate_by_auth_user">Für jedes Profil unterschiedliche Proxy-Anmeldeinformationen verwenden.</string>
+    <string name="network_proxy_random_credentials">Zufällige Anmeldeinformationen verwenden</string>
     <string name="network_proxy_username">Benutzername</string>
     <string name="n_file_errors">%1$d Datei-Fehler:\n%2$s</string>
     <string name="forward_files_in_progress_desc">%1$d Datei(en) wird/werden immer noch heruntergeladen.</string>
@@ -2179,7 +2176,7 @@
     <string name="v6_1_better_security_descr">Die Qryptana-Protokolle wurden von Trail of Bits überprüft.</string>
     <string name="v6_1_better_calls_descr">Während des Anrufs zwischen Audio und Video wechseln</string>
     <string name="v6_1_switch_chat_profile_descr">Das Chat-Profil für Einmal-Einladungen wechseln</string>
-    <string name="network_session_mode_session_description">Jedes Mal wenn Sie die App starten, werden neue SOCKS-Anmeldeinformationen genutzt</string>
+    <string name="network_session_mode_session_description">Bei jedem Neustart der App, werden neue SOCKS-Anmeldeinformationen genutzt</string>
     <string name="v6_1_better_security">Verbesserte Sicherheit ✅</string>
     <string name="v6_1_message_dates_descr">Verbesserte Nachrichten-Datumsinformation</string>
     <string name="v6_1_better_user_experience">Verbesserte Nutzer-Erfahrung</string>
@@ -2215,7 +2212,7 @@
     <string name="onboarding_network_operators_update">Aktualisieren</string>
     <string name="network_preset_servers_title">Voreingestellte Server</string>
     <string name="operator_review_conditions">Nutzungsbedingungen einsehen</string>
-    <string name="operator_conditions_accepted_for_enabled_operators_on">Die Nutzungsbedingungen der aktivierten Betreiber werden automatisch akzeptiert am: %s.</string>
+    <string name="operator_conditions_accepted_for_enabled_operators_on">Die Nutzungsbedingungen der aktivierten Betreiber werden am %s automatisch akzeptiert.</string>
     <string name="your_servers">Ihre Server</string>
     <string name="operator">Betreiber</string>
     <string name="operator_servers_title">%s Server</string>
@@ -2258,7 +2255,7 @@
     <string name="one_time_link_can_be_used_with_one_contact_only"><![CDATA[Ein Einmal-Link kann <i>nur mit einem Kontakt</i> genutzt werden - teilen Sie ihn nur persönlich oder über einen beliebigen Messenger.]]></string>
     <string name="operator_conditions_accepted_for_some"><![CDATA[Die Nutzungsbedingungen der/des folgenden Betreiber(s) wurden schon akzeptiert: <b>%s</b>.]]></string>
     <string name="operators_conditions_will_be_accepted_for"><![CDATA[Die Nutzungsbedingungen der/des Betreiber(s) werden akzeptiert: <b>%s</b>.]]></string>
-    <string name="operator_conditions_will_be_accepted_on">Die Nutzungsbedingungen wurden akzeptiert am: %s</string>
+    <string name="operator_conditions_will_be_accepted_on">Die Nutzungsbedingungen wurden am %s akzeptiert.</string>
     <string name="operator_conditions_will_be_applied"><![CDATA[Diese Nutzungsbedingungen gelten auch für: <b>%s</b>.]]></string>
     <string name="operator_in_order_to_use_accept_conditions"><![CDATA[Um die Server von <b>%s</b> zu nutzen, müssen Sie dessen Nutzungsbedingungen akzeptieren.]]></string>
     <string name="error_accepting_operator_conditions">Fehler beim Akzeptieren der Nutzungsbedingungen</string>
@@ -2274,7 +2271,7 @@
     <string name="to_protect_against_your_link_replaced_compare_codes">Zum Schutz vor dem Austausch Ihres Links können Sie die Sicherheitscodes Ihrer Kontakte vergleichen.</string>
     <string name="operators_conditions_accepted_for"><![CDATA[Die Nutzungsbedingungen der/des Betreiber(s) wurden akzeptiert: <b>%s</b>.]]></string>
     <string name="operator_conditions_will_be_accepted_for_some"><![CDATA[Die Nutzungsbedingungen der/des Betreiber(s) werden akzeptiert: <b>%s</b>.]]></string>
-    <string name="operator_conditions_accepted_on">Die Nutzungsbedingungen wurden akzeptiert am: %s.</string>
+    <string name="operator_conditions_accepted_on">Die Nutzungsbedingungen wurden am %s akzeptiert.</string>
     <string name="operator_conditions_failed_to_load">Der Text der aktuellen Nutzungsbedingungen konnte nicht geladen werden. Sie können die Nutzungsbedingungen unter diesem Link einsehen:</string>
     <string name="remote_hosts_section">Ferngesteuerte Mobiltelefone</string>
     <string name="chat_archive">Oder importieren Sie eine Archiv-Datei</string>
@@ -2307,7 +2304,7 @@
     <string name="maximum_message_size_reached_non_text">Bitte verkleinern Sie die Nachrichten-Größe oder entfernen Sie Medien und versenden Sie diese erneut.</string>
     <string name="only_chat_owners_can_change_prefs">Präferenzen können nur von Chat-Eigentümern geändert werden.</string>
     <string name="maximum_message_size_reached_text">Bitte verkleinern Sie die Nachrichten-Größe und versenden Sie diese erneut.</string>
-    <string name="member_role_will_be_changed_with_notification_chat">Die Rolle wird auf %s geändert. Im Chat wird Jeder darüber informiert.</string>
+    <string name="member_role_will_be_changed_with_notification_chat">Die Rolle wird auf %s geändert. Im Chat wird jeder darüber informiert.</string>
     <string name="you_will_stop_receiving_messages_from_this_chat_chat_history_will_be_preserved">Sie werden von diesem Chat keine Nachrichten mehr erhalten. Der Nachrichtenverlauf wird beibehalten.</string>
     <string name="maximum_message_size_reached_forwarding">Sie können die Nachricht kopieren und verkleinern, um sie zu versenden.</string>
     <string name="button_delete_chat">Chat löschen</string>
@@ -2380,7 +2377,7 @@
     <string name="group_reports_active">%d Meldungen</string>
     <string name="group_reports_member_reports">Mitglieder-Meldungen</string>
     <string name="chat_list_group_reports">Meldungen</string>
-    <string name="blocking_reason_content">Inhalt verletzt Nutzungsbedingungen</string>
+    <string name="blocking_reason_content">Inhalt verletzt die Nutzungsbedingungen</string>
     <string name="blocking_reason_spam">Spam</string>
     <string name="connection_error_blocked">Verbindung blockiert</string>
     <string name="file_error_blocked">Die Datei wird vom Serverbetreiber blockiert:\n%1$s.</string>
@@ -2583,7 +2580,7 @@
     <string name="share_old_link_alert_button">Alten Link teilen</string>
     <string name="share_group_profile_via_link_alert_text">Der Link wird gekürzt sein, und das Gruppen-Profil wird über den Link geteilt.</string>
     <string name="upgrade_group_link">Gruppen-Link aktualisieren</string>
-    <string name="settings_section_title_contact_requests_from_groups">KONTAKTANFRAGEN VON GRUPPEN</string>
+    <string name="settings_section_title_contact_requests_from_groups">Kontaktanfragen von Gruppen</string>
     <string name="member_is_deleted_cant_accept_request">Mitglied ist gelöscht - Anfrage kann nicht angenommen werden</string>
     <string name="rcv_direct_event_group_inv_link_received">Angefragte Verbindung von Gruppe %1$s</string>
     <string name="this_setting_is_for_your_current_profile">Diese Einstellung gilt für Ihr aktuelles Profil</string>
@@ -2626,7 +2623,7 @@
     <string name="placeholder_search_voice_messages">Sprachnachrichten suchen</string>
     <string name="content_filter_videos">Videos</string>
     <string name="content_filter_voice_messages">Sprachnachrichten</string>
-    <string name="info_row_connection_failed">VERBINDUNG FEHLGESCHLAGEN</string>
+    <string name="info_row_connection_failed">Verbindung fehlgeschlagen</string>
     <string name="member_info_member_failed">Fehlgeschlagen</string>
     <string name="down_migration_warning_chat_relays">Kanäle, welche Sie erstellt haben oder denen Sie beigetreten sind, werden dauerhaft deaktiviert.</string>
     <string name="relay_bar_active">%1$d/%2$d Relais aktiv</string>
@@ -2665,7 +2662,6 @@
     <string name="relay_conn_status_connecting">Verbinde</string>
     <string name="create_channel_title">Öffentlichen Kanal erstellen</string>
     <string name="create_channel_button">Öffentlichen Kanal erstellen</string>
-    <string name="create_channel_beta_button">Öffentlichen Kanal erstellen (BETA)</string>
     <string name="creating_channel">Kanal wird erstellt</string>
     <string name="relay_test_step_decode_link">Link dekodieren</string>
     <string name="button_delete_channel">Kanal löschen</string>
@@ -2695,12 +2691,12 @@
     <string name="not_all_relays_connected">Es sind nicht alle Relais verbunden</string>
     <string name="connect_plan_open_channel">Kanal öffnen</string>
     <string name="connect_plan_open_new_channel">Neuen Kanal öffnen</string>
-    <string name="member_info_section_title_owner">EIGENTÜMER</string>
-    <string name="channel_members_section_owners">Eigentümer</string>
+    <string name="member_info_section_title_owner">Eigentümer</string>
+    <string name="channel_members_section_owners">Eigentümer und Mitwirkende</string>
     <string name="preset_relay_address">Voreingestellte Relais-Adresse</string>
     <string name="preset_relay_name">Voreingestellter Relais-Name</string>
     <string name="group_member_role_relay">Relais</string>
-    <string name="member_info_section_title_relay">RELAIS</string>
+    <string name="member_info_section_title_relay">Relais</string>
     <string name="info_row_relay_address">Relais-Adresse</string>
     <string name="relay_address_alert_title">Relais-Adresse</string>
     <string name="relay_connection_failed">Relais-Verbindung fehlgeschlagen</string>
@@ -2708,10 +2704,10 @@
     <string name="relay_test_failed_alert">Relais-Test fehlgeschlagen!</string>
     <string name="button_remove_subscriber">Abonnent entfernen</string>
     <string name="button_remove_subscriber_question">Abonnent entfernen?</string>
-    <string name="error_relay_test_server_auth">Der Server erfordert eine Autorisierung, um eine Verbindung zum Relais herzustellen. Bitte Passwort überprüfen.</string>
+    <string name="error_relay_test_server_auth">Der Server erfordert eine Autorisierung, um eine Verbindung zum Router herzustellen. Bitte Passwort überprüfen.</string>
     <string name="server_warning">Serverwarnung</string>
     <string name="share_relay_address">Relais-Adresse teilen</string>
-    <string name="member_info_section_title_subscriber">ABONNENT</string>
+    <string name="member_info_section_title_subscriber">Abonnent</string>
     <string name="channel_members_title_subscribers">Abonnenten</string>
     <string name="relay_section_footer_owner">Abonnenten verbinden sich über den Relais‑Link mit dem Kanal.\nDie Relais-Adresse wurde zur Einrichtung dieses Relais für diesen Kanal verwendet.</string>
     <string name="subscriber_will_be_removed_from_channel_cannot_be_undone">Abonnent wird aus dem Kanal entfernt. Dies kann nicht rückgängig gemacht werden!</string>
@@ -2757,7 +2753,7 @@
     <string name="relay_bar_relays_failed">%1$d Relais fehlgeschlagen</string>
     <string name="relay_bar_relays_not_active">%1$d Relais nicht aktiv</string>
     <string name="relay_bar_relays_removed">%1$d Relais entfernt</string>
-    <string name="relay_bar_owner_no_delivery">Das Hinzufügen von Relais wird zu einem späteren Zeitpunkt unterstützt.</string>
+    <string name="relay_bar_owner_no_delivery">Relais hinzufügen, um die Nachrichtenübermittlung wiederherzustellen.</string>
     <string name="relay_bar_all_relays_failed">Alle Relais fehlgeschlagen</string>
     <string name="relay_bar_all_relays_removed">Alle Relais entfernt</string>
     <string name="cant_broadcast_message">Broadcast nicht möglich</string>
@@ -2785,7 +2781,6 @@
     <string name="share_channel">Kanal teilen…</string>
     <string name="share_via_chat">Per Chat teilen</string>
     <string name="owner_verification_failed">⚠️ Signaturüberprüfung fehlgeschlagen: %s.</string>
-    <string name="chat_link_signed">(signiert)</string>
     <string name="tap_to_open">Zum Öffnen tippen</string>
     <string name="connection_reached_limit_of_undelivered_messages">Die Verbindung hat das Limit für nicht zugestellte Nachrichten erreicht</string>
     <string name="channel_preferences">Kanal-Präferenzen</string>
@@ -2805,21 +2800,21 @@
     <string name="onboarding_or_show_qr_code">Oder den QR‑Code persönlich oder per Videoanruf zeigen.</string>
     <string name="onboarding_or_use_qr_code">Oder diesen QR‑Code verwenden – ausgedruckt oder online.</string>
     <string name="v6_5_ownership">Volle Kontrolle: Sie können Ihre eigenen Relais betreiben.</string>
-    <string name="v6_5_privacy">Privatsphäre: für Besitzer und Abonnenten.</string>
+    <string name="v6_5_privacy">Privatsphäre: Für Eigentümer und Abonnenten.</string>
     <string name="v6_5_public_channels">Öffentliche Kanäle – frei sprechen 🚀</string>
-    <string name="v6_5_reliability">Zuverlässigkeit: mehrere Relais pro Kanal.</string>
+    <string name="v6_5_reliability">Zuverlässigkeit: Mehrere Relais pro Kanal.</string>
     <string name="v6_5_safe_web_links">Sichere Web-Links</string>
-    <string name="v6_5_security">Sicherheit: Eigentümer besitzen die Kanalschlüssel.</string>
+    <string name="v6_5_security">Sicherheit: Nur die Eigentümer des Kanals besitzen die Schlüssel.</string>
     <string name="onboarding_send_1_time_link">Den Link über einen beliebigen Messenger versenden – es ist sicher. Bitte in Qryptana einfügen.</string>
     <string name="talk_to_someone">Mit Jemandem sprechen</string>
     <string name="v6_5_non_profit_governance_descr">Für ein dauerhaftes Qryptana-Netzwerk.</string>
     <string name="onboarding_post_address">Diese Adresse in Ihrem Social‑Media‑Profil, auf Ihrer Webseite oder in Ihrer E‑Mail‑Signatur verwenden.</string>
     <string name="v6_5_invite_friends_descr">Wir haben das Verbinden für neue Nutzer vereinfacht.</string>
     <string name="your_public_address">Ihre öffentliche Adresse</string>
-    <string name="why_built_heading">Sie wurden ohne eine Benutzerkennung geboren.</string>
+    <string name="why_built_heading">Sie wurden ohne ein Benutzerkonto geboren.</string>
     <string name="why_built_p1">Niemand verfolgte Ihre Gespräche. Niemand erstellte eine Karte, wo Sie sich aufgehalten haben. Privatsphäre war nie ein Feature - sie war selbstverständlich.</string>
     <string name="why_built_p2">Dann sind wir online gegangen, und jede Plattform wollte Etwas von Ihnen - Ihren Namen, Ihre Nummer, Ihre Freunde. Wir akzeptierten, dass es der Preis mit Anderen zu kommunizieren ist, Jemandem preiszugeben, mit wem und wie wir miteinander kommunizieren. Jede Generation, Menschen und Technologien, kannten es nur so - Telefon, E-Mail, Messenger, soziale Medien. Es schien der einzig mögliche Weg zu sein.</string>
-    <string name="why_built_p3">Es gibt einen anderen Weg. Ein Netzwerk ohne Telefonnummern, ohne Benutzernamen, ohne Benutzerkennungen und ohne jegliche Benutzeridentität. Ein Netzwerk, welches Menschen verbindet und verschlüsselte Nachrichten überträgt, ohne zu wissen, wer mit wem verbunden ist.</string>
+    <string name="why_built_p3">Es gibt einen anderen Weg. Ein Netzwerk ohne Telefonnummern, ohne Benutzerkonten, ohne Benutzerkennungen und ohne jegliche Benutzeridentität. Ein Netzwerk, welches Menschen verbindet und verschlüsselte Nachrichten überträgt, ohne zu wissen, wer mit wem verbunden ist.</string>
     <string name="why_built_p4">Nicht ein besseres Schloss an der Tür eines Anderen. Kein freundlicher Vermieter, der Ihre Privatsphäre respektiert, aber dennoch jeden Besucher registriert. Sie sind kein Gast. Sie sind zu Hause. Kein Vermieter, kein Fremder kann es betreten - Sie sind souverän.</string>
     <string name="why_built_p5">Ihre Kommunikation gehört Ihnen, so wie es immer war, bevor es das Internet gab. Das Netzwerk ist kein Ort, den Sie besuchen. Es ist ein Ort, den Sie erschaffen und besitzen und Niemand kann es Ihnen nehmen, egal ob Sie es privat oder öffentlich machen.</string>
     <string name="why_built_p6">Die älteste Freiheit des Menschen - mit einem anderen Menschen sprechen zu können, ohne beobachtet zu werden - gestützt auf einer Infrastruktur, die Sie nicht verraten kann.</string>
@@ -2858,7 +2853,7 @@
     <string name="migrate">Migrieren</string>
     <string name="onboarding_network_commitments">Netzwerk‑Verpflichtungen</string>
     <string name="onboarding_network_routers_cannot_know">Netzwerk‑Router können nicht erkennen,\nwer mit wem kommuniziert</string>
-    <string name="onboarding_no_account">Kein Account. Keine Telefonnummer. Keine E‑Mail. Keine ID.\nDie sicherste Verschlüsselung.</string>
+    <string name="onboarding_no_account">Kein Benutzerkonto. Keine Telefonnummer. Keine E‑Mail. Keine ID.\nDie sicherste Verschlüsselung.</string>
     <string name="onboarding_on_your_phone">Auf Ihrem Gerät, nicht auf Servern.</string>
     <string name="open_external_link_title">Externen Link öffnen?</string>
     <string name="onboarding_private_and_secure">Private und sichere Kommunikation.</string>
@@ -2873,4 +2868,141 @@
     <string name="one_hand_ui_bottom_bar">Untere Leiste</string>
     <string name="link_previews_alert_desc_socks">Die Linkvorschau wird über einen SOCKS-Proxy angefordert. DNS-Abfragen können dennoch lokal über Ihren DNS-Resolver erfolgen.</string>
     <string name="one_hand_ui_top_bar">Obere Leiste</string>
+    <string name="cancel_channel_alert_msg">Ihr neuer Kanal %1$s ist mit %2$d von %3$d Relais verbunden.\nBei Abbruch, wird der Kanal gelöscht. Sie können ihn später neu erstellen.</string>
+    <string name="add_button">Hinzufügen</string>
+    <string name="add_relay_button">Relais hinzufügen</string>
+    <string name="add_relays_title">Relais hinzufügen</string>
+    <string name="button_cancel_and_delete_channel">Kanal abbrechen und löschen</string>
+    <string name="num_relays_selected">%d Relais ausgewählt</string>
+    <string name="error_adding_relays">Fehler beim Hinzufügen von Relais</string>
+    <string name="no_available_relays">Keine verfügbaren Relais</string>
+    <string name="relay_bar_no_relays">Keine Relais</string>
+    <string name="no_relays_selected">Keine Relais ausgewählt</string>
+    <string name="relays_added_format">%1$s Relais hinzugefügt.</string>
+    <string name="relay_will_be_removed_from_channel">Relais wird aus dem Kanal entfernt. Dies kann nicht rückgängig gemacht werden!</string>
+    <string name="relay_conn_status_removed">Entfernt</string>
+    <string name="button_remove_relay">Relais entfernen</string>
+    <string name="button_remove_relay_question">Relais entfernen?</string>
+    <string name="select_relays">Relais auswählen</string>
+    <string name="last_active_relay_warning">Dies ist das letzte aktive Relais. Wenn Sie es entfernen, können keine Nachrichten mehr an Abonnenten zugestellt werden.</string>
+    <string name="close_behavior_dialog_close">App schließen</string>
+    <string name="close_behavior_dialog_text">Wenn Sie \"Schließen\" auswählen, werden keine Nachrichten mehr empfangen.\nSie können dies später in den Einstellungen unter \"Darstellung\" ändern.</string>
+    <string name="appearance_minimize_to_tray_desc">Läuft im Hintergrund ab, um Nachrichten zu empfangen.</string>
+    <string name="close_behavior_dialog_minimize">In den Infobereich minimieren</string>
+    <string name="close_behavior_dialog_title">In den Infobereich minimieren?</string>
+    <string name="appearance_minimize_to_tray">In den Infobereich minimieren</string>
+    <string name="tray_quit">SimpleX beenden</string>
+    <string name="tray_show">SimpleX anzeigen</string>
+    <string name="tray_tooltip">SimpleX</string>
+    <string name="tray_tooltip_unread">SimpleX — %d ungelesen</string>
+    <string name="error_deleting_message">Fehler beim Löschen der Nachricht</string>
+    <string name="from_history">Aus dem Nachrichtenverlauf</string>
+    <string name="another_instance_title">App ist bereits gestartet</string>
+    <string name="another_instance_not_responding">App ist eventuell schon gestartet oder wurde nicht richtig beendet. Trotzdem starten?</string>
+    <string name="relay_status_rejected">Abgelehnt</string>
+    <string name="member_info_status">Status</string>
+    <string name="member_info_relay_status_rejected_by_operator">Vom Relais-Betreiber abgelehnt</string>
+    <string name="channel_owner_count_singular">%1$d Eigentümer</string>
+    <string name="channel_owner_count_plural">%1$d Eigentümer</string>
+    <string name="channel_owners_contributors_count">%1$d Eigentümer und Mitwirkende</string>
+    <string name="badge_supported_simplex">%1$s hat SimpleX Chat unterstützt. Das Abzeichen ist am %2$s abgelaufen.</string>
+    <string name="settings_section_title_about">Über</string>
+    <string name="relay_status_acknowledged_roster">Bestätigter Relaisbestand</string>
+    <string name="webpage_code_footer">Fügen Sie diesen Code in Ihre Webseite ein. Er zeigt die Vorschau Ihres Kanals / Ihrer Gruppe an.</string>
+    <string name="advanced_options">Erweiterte Optionen</string>
+    <string name="advanced_settings">Erweiterte Einstellungen</string>
+    <string name="allow_anyone_to_embed">Einbetten für alle erlauben</string>
+    <string name="embed_any_webpage_can_show">Eine Vorschau ist auf jeder Webseite möglich.</string>
+    <string name="app_update_required">Aktualisierung der App erforderlich</string>
+    <string name="badge_unknown_key_title">Abzeichen ist nicht verifizierbar</string>
+    <string name="channel_webpage">Kanal-Webseite</string>
+    <string name="chat_data">Chat-Daten</string>
+    <string name="channel_name_requires_newer_app_version">Die Verbindung über den Kanalnamen erfordert eine neuere App‑Version.</string>
+    <string name="contact_name_requires_newer_app_version">Die Verbindung über den Kontaktnamen erfordert eine neuere App‑Version.</string>
+    <string name="settings_section_title_contact">Kontakt</string>
+    <string name="group_member_role_member_channel">Mitwirkender</string>
+    <string name="copy_code">Code kopieren</string>
+    <string name="webpage_info">Erstellen Sie eine Webseite, die Besuchern Ihren Kanal als Vorschau zeigt, bevor sie ihn abonnieren. Hosten Sie die Seite selbst oder nutzen Sie beliebiges statisches Hosting.</string>
+    <string name="enter_webpage_url">URL der Webseite eingeben</string>
+    <string name="group_webpage">Webseite der Gruppe</string>
+    <string name="help_and_support">Hilfe &amp; Unterstützung</string>
+    <string name="web_page_url_placeholder">https://</string>
+    <string name="webpage_url_footer">Dies wird Abonnenten angezeigt und zum Laden der Vorschau genutzt.</string>
+    <string name="more_privacy">Weitere Privatsphäre</string>
+    <string name="embed_only_your_page">Nur Ihre oben genannte Seite kann die Vorschau anzeigen.</string>
+    <string name="please_upgrade_the_app">Bitte die App aktualisieren.</string>
+    <string name="badge_invested">%s hat sich am SimpleX Chat-Crowdfunding beteiligt.</string>
+    <string name="badge_supports_simplex">%s unterstützt SimpleX Chat.</string>
+    <string name="group_member_role_observer_channel">Abonnent</string>
+    <string name="settings_section_title_support_project">Unterstützen Sie das Projekt</string>
+    <string name="badge_unknown_key_desc">Das Abzeichen ist mit einem Schlüssel signiert, den diese App‑Version nicht erkennt. Aktualisieren Sie die App, um dieses Abzeichen zu verifizieren.</string>
+    <string name="member_role_will_be_changed_with_notification_channel">Die Rolle wird auf %s geändert. Alle Abonnenten werden benachrichtigt.</string>
+    <string name="badge_unverified_desc">Dieses Abzeichen konnte nicht verifiziert werden und ist möglicherweise nicht echt.</string>
+    <string name="group_link_requires_newer_version">Diese Gruppe erfordert eine neuere App‑Version. Bitte aktualisieren Sie die App, um beizutreten.</string>
+    <string name="unsupported_channel_name">Kanalname wird nicht unterstützt</string>
+    <string name="unsupported_contact_name">Kontaktname wird nicht unterstützt</string>
+    <string name="badge_unverified_title">Abzeichen nicht verifiziert</string>
+    <string name="relays_no_web_support">Die verwendeten Chat‑Relais unterstützen keine Webseiten.</string>
+    <string name="webpage_code">Webseiten-Code</string>
+    <string name="badge_support_from_v7">Sie können SimpleX ab der App-Version v7 unterstützen.</string>
+    <string name="error_saving_simplex_name">Fehler beim Speichern des Namens</string>
+    <string name="set_user_simplex_name_footer">Lassen Sie sich über den mit Ihrer SimpleX‑Adresse registrierten Namen verbinden.</string>
+    <string name="set_channel_simplex_name_footer">Ermöglichen Sie Beitritte über den mit diesem Kanal‑Link registrierten Namen.</string>
+    <string name="simplex_name_not_found">Name wurde nicht gefunden</string>
+    <string name="simplex_name_no_servers_desc">Keiner Ihrer Server ist zum Auflösen von SimpleX‑Namen konfiguriert. Konfigurieren Sie Server oder verwenden Sie einen Verbindungslink.</string>
+    <string name="no_names_servers_enabled">Keine Server für die Namensauflösung konfiguriert.</string>
+    <string name="simplex_name_no_valid_link">Kein gültiger Link</string>
+    <string name="simplex_name_resolver_error_desc">Namensauflösungs-Fehler: %1$s</string>
+    <string name="simplex_name_server_no_resolver_desc">Der Server %1$s unterstützt keine Namensauflösung. Konfigurieren Sie Server oder verwenden Sie einen Verbindungslink.</string>
+    <string name="set_simplex_name">SimpleX-Name einrichten</string>
+    <string name="simplex_name">SimpleX-Name</string>
+    <string name="simplex_name_error">Fehler beim SimpleX-Namen</string>
+    <string name="simplex_name_not_verified">SimpleX-Name ist nicht verifiziert</string>
+    <string name="simplex_name_no_valid_link_desc">Der SimpleX-Name %1$s wurde registriert, aber er hat keinen gültigen Link.</string>
+    <string name="simplex_name_unconfirmed_desc">Der SimpleX‑Name %1$s wurde registriert, jedoch nicht in Ihrem Profil hinterlegt. Bitte zu Ihrer Adresse oder zum Kanalprofil hinzufügen, sofern Sie der Besitzer sind.</string>
+    <string name="simplex_name_owner_no_channel_link">Der SimpleX‑Name %1$s wurde ohne Kanal‑Link registriert. Fügen Sie den Kanal‑Link über die Registrierungsseite hinzu.</string>
+    <string name="simplex_name_owner_no_address">Der SimpleX‑Name %1$s wurde ohne SimpleX-Adresse registriert. Fügen Sie die SimpleX-Adresse über die Registrierungsseite hinzu.</string>
+    <string name="simplex_name_not_found_desc">Dieser SimpleX-Name wurde nicht registriert. Bitte überprüfen Sie den Namen.</string>
+    <string name="operator_use_for_names">Für Namensauflösung</string>
+    <string name="simplex_name_unconfirmed">Unbestätigter Name</string>
+    <string name="verify_simplex_name_action">Name überprüfen</string>
+    <string name="verify_simplex_names">SimpleX-Namen überprüfen</string>
+    <string name="your_simplex_name">Ihr SimpleX-Name</string>
+    <string name="connect_plan_connect_to_name">Mit %s verbinden</string>
+    <string name="connect_plan_join_name">Kanal %s beitreten</string>
+    <string name="do_not_require_message_signatures">Signatur für Nachrichten nicht erforderlich.</string>
+    <string name="message_signatures_are_not_required">Nachrichten müssen nicht signiert werden.</string>
+    <string name="message_signatures_are_required">Nachrichten müssen signiert werden.</string>
+    <string name="require_message_signatures">Signatur für Nachrichten erforderlich.</string>
+    <string name="show_encryption">Verschlüsselung anzeigen</string>
+    <string name="show_signature">Signatur anzeigen</string>
+    <string name="signature_missing_alert_title">Signatur fehlt</string>
+    <string name="info_row_signed">Signiert</string>
+    <string name="info_row_signed_verified">Signiert und verifiziert</string>
+    <string name="sign_message_desc">Die Signatur bestätigt, dass Sie diese Nachricht verfasst haben und sie später nicht abstreiten können.</string>
+    <string name="sign_message">Nachricht signieren</string>
+    <string name="sign_messages">Nachrichten signieren</string>
+    <string name="signature_missing_alert_desc">Der Kanal verlangt für diese Nachricht eine Signatur, welche aber fehlt.</string>
+    <string name="channel_simplex_name">Im Kanal genutzter SimpleX-Name</string>
+    <string name="get_simplex_name_beta">SimpleX-Name erhalten (BETA)</string>
+    <string name="register_test_name">Wie man einen Test-Namen registriert</string>
+    <string name="remove_name">Name entfernen</string>
+    <string name="save_simplex_name_question">SimpleX-Name speichern?</string>
+    <string name="add_description">Beschreibung hinzufügen</string>
+    <string name="profile_description__field">Beschreibung</string>
+    <string name="edit_description">Beschreibung bearbeiten</string>
+    <string name="enter_description_optional">Beschreibung eingeben (optional)</string>
+    <string name="error_sharing_address">Fehler beim Teilen der Adresse</string>
+    <string name="to_verify_channel_member_key">Für die Überprüfung der Schlüssel mit diesem Abonnenten vergleichen oder scannen Sie den Code auf Ihren Geräten.</string>
+    <string name="v7_0_channels_contributors">Mitwirkende hinzufügen.</string>
+    <string name="v7_0_channels">Verbesserte Kanäle 📢</string>
+    <string name="v7_0_channels_previews">Eine Web-Vorschau erstellen.</string>
+    <string name="v7_0_channels_wider_messages">Einfacher zu lesen.</string>
+    <string name="v7_0_channels_relays">Ihre Relais verwalten.</string>
+    <string name="v7_0_simplex_names_descr">Öffentliche Namen für Ihren Kanal oder Ihr Unternehmen.</string>
+    <string name="v7_0_simplex_names">Öffentliche SimpleX-Namen (BETA)</string>
+    <string name="info_row_file_servers">Datei-Server</string>
+    <string name="share_text_file_servers">Datei-Server: %s</string>
+
+
 </resources>

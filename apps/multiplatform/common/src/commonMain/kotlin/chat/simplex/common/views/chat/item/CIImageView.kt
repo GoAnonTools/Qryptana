@@ -12,10 +12,12 @@ import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.*
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.layout.layout
 import androidx.compose.ui.layout.layoutId
 import androidx.compose.ui.platform.*
 import dev.icerock.moko.resources.compose.painterResource
 import dev.icerock.moko.resources.compose.stringResource
+import androidx.compose.ui.unit.Constraints
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import chat.simplex.common.views.helpers.*
@@ -27,6 +29,7 @@ import chat.simplex.common.views.chat.chatViewScrollState
 import chat.simplex.res.MR
 import dev.icerock.moko.resources.StringResource
 import kotlinx.coroutines.*
+import kotlin.math.roundToInt
 
 @Composable
 fun CIImageView(
@@ -35,6 +38,7 @@ fun CIImageView(
   imageProvider: () -> ImageGalleryProvider,
   showMenu: MutableState<Boolean>,
   smallView: Boolean,
+  senderProfile: LocalProfile?,
   receiveFile: (Long) -> Unit
 ) {
   val blurred = remember { mutableStateOf(appPrefs.privacyMediaBlurRadius.get() > 0) }
@@ -160,13 +164,6 @@ fun CIImageView(
     }
   }
 
-  fun fileSizeValid(): Boolean {
-    if (file != null) {
-      return file.fileSize <= getMaxFileSize(file.fileProtocol)
-    }
-    return false
-  }
-
   suspend fun imageAndFilePath(file: CIFile?): Triple<ImageBitmap, ByteArray, String>? {
     val res = getLoadedImage(file)
     if (res != null) {
@@ -182,7 +179,13 @@ fun CIImageView(
       .then(
         if (!smallView) {
           val w = if (previewBitmap.width * 0.97 <= previewBitmap.height) imageViewFullWidth() * 0.75f else DEFAULT_MAX_IMAGE_WIDTH
-          Modifier.width(w).aspectRatio((previewBitmap.width.toFloat() / previewBitmap.height.toFloat()).coerceAtLeast(1f / 2.33f))
+          // Height follows the measured (clamped) width, not nominal w, else wide images get an empty strip below.
+          Modifier.width(w).layout { measurable, constraints ->
+            val width = constraints.maxWidth.coerceAtMost(w.roundToPx().coerceAtLeast(0))
+            val height = (width * (previewBitmap.height.toFloat() / previewBitmap.width.toFloat()).coerceAtMost(2.33f)).roundToInt().coerceAtMost(constraints.maxHeight)
+            val placeable = measurable.measure(Constraints.fixed(width, height))
+            layout(width, height) { placeable.place(0, 0) }
+          }
         } else Modifier
       )
       .desktopModifyBlurredState(!smallView, blurred, showMenu),
@@ -213,12 +216,12 @@ fun CIImageView(
         if (file != null) {
           when {
             file.fileStatus is CIFileStatus.RcvInvitation || file.fileStatus is CIFileStatus.RcvAborted ->
-              if (fileSizeValid()) {
+              if (fileSizeValid(file, senderProfile)) {
                 receiveFile(file.fileId)
               } else {
                 AlertManager.shared.showAlertMsg(
                   generalGetString(MR.strings.large_file),
-                  String.format(generalGetString(MR.strings.contact_sent_large_file), formatBytes(getMaxFileSize(file.fileProtocol)))
+                  String.format(generalGetString(MR.strings.contact_sent_large_file), formatBytes(getMaxFileSize(file.fileProtocol, senderProfile)))
                 )
               }
             file.fileStatus is CIFileStatus.RcvAccepted ->

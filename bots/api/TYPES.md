@@ -10,6 +10,10 @@ This file is generated automatically.
 - [AgentCryptoError](#agentcryptoerror)
 - [AgentErrorType](#agenterrortype)
 - [AutoAccept](#autoaccept)
+- [BadgeInfo](#badgeinfo)
+- [BadgeProof](#badgeproof)
+- [BadgeStatus](#badgestatus)
+- [BadgeType](#badgetype)
 - [BlockingInfo](#blockinginfo)
 - [BlockingReason](#blockingreason)
 - [BrokerErrorType](#brokererrortype)
@@ -83,6 +87,7 @@ This file is generated automatically.
 - [FileProtocol](#fileprotocol)
 - [FileStatus](#filestatus)
 - [FileTransferMeta](#filetransfermeta)
+- [FileType](#filetype)
 - [Format](#format)
 - [FormattedText](#formattedtext)
 - [FullGroupPreferences](#fullgrouppreferences)
@@ -122,6 +127,7 @@ This file is generated automatically.
 - [LinkContent](#linkcontent)
 - [LinkOwnerSig](#linkownersig)
 - [LinkPreview](#linkpreview)
+- [LocalBadge](#localbadge)
 - [LocalProfile](#localprofile)
 - [MemberCriteria](#membercriteria)
 - [MsgChatLink](#msgchatlink)
@@ -133,12 +139,15 @@ This file is generated automatically.
 - [MsgReaction](#msgreaction)
 - [MsgReceiptStatus](#msgreceiptstatus)
 - [MsgSigStatus](#msgsigstatus)
+- [MsgVerified](#msgverified)
+- [NameErrorType](#nameerrortype)
 - [NetworkError](#networkerror)
 - [NewUser](#newuser)
 - [NoteFolder](#notefolder)
 - [OwnerVerification](#ownerverification)
 - [PaginationByTime](#paginationbytime)
 - [PendingContactConnection](#pendingcontactconnection)
+- [PlanResolveMode](#planresolvemode)
 - [PrefEnabled](#prefenabled)
 - [Preferences](#preferences)
 - [PreparedContact](#preparedcontact)
@@ -146,6 +155,7 @@ This file is generated automatically.
 - [Profile](#profile)
 - [ProxyClientError](#proxyclienterror)
 - [ProxyError](#proxyerror)
+- [PublicGroupAccess](#publicgroupaccess)
 - [PublicGroupData](#publicgroupdata)
 - [PublicGroupProfile](#publicgroupprofile)
 - [RCErrorType](#rcerrortype)
@@ -157,6 +167,7 @@ This file is generated automatically.
 - [RcvFileTransfer](#rcvfiletransfer)
 - [RcvGroupEvent](#rcvgroupevent)
 - [RcvMsgError](#rcvmsgerror)
+- [RelayCapabilities](#relaycapabilities)
 - [RelayProfile](#relayprofile)
 - [RelayStatus](#relaystatus)
 - [ReportReason](#reportreason)
@@ -164,7 +175,14 @@ This file is generated automatically.
 - [SMPAgentError](#smpagenterror)
 - [SecurityCode](#securitycode)
 - [SimplePreference](#simplepreference)
+- [SimplexDomain](#simplexdomain)
+- [SimplexDomainClaim](#simplexdomainclaim)
+- [SimplexDomainError](#simplexdomainerror)
+- [SimplexDomainProof](#simplexdomainproof)
 - [SimplexLinkType](#simplexlinktype)
+- [SimplexNameInfo](#simplexnameinfo)
+- [SimplexNameType](#simplexnametype)
+- [SimplexTLD](#simplextld)
 - [SndCIStatusProgress](#sndcistatusprogress)
 - [SndConnEvent](#sndconnevent)
 - [SndError](#snderror)
@@ -301,6 +319,9 @@ FILE:
 - type: "FILE"
 - fileErr: [FileErrorType](#fileerrortype)
 
+NO_NAME_SERVERS:
+- type: "NO_NAME_SERVERS"
+
 PROXY:
 - type: "PROXY"
 - proxyServer: string
@@ -345,6 +366,49 @@ INACTIVE:
 
 **Record type**:
 - acceptIncognito: bool
+
+
+---
+
+## BadgeInfo
+
+**Record type**:
+- badgeType: [BadgeType](#badgetype)
+- badgeExpiry: UTCTime?
+- badgeExtra: string
+
+
+---
+
+## BadgeProof
+
+**Record type**:
+- badgeKeyIdx: int
+- presHeader: string
+- proof: string
+- badgeInfo: [BadgeInfo](#badgeinfo)
+
+
+---
+
+## BadgeStatus
+
+**Enum type**:
+- "active"
+- "expired"
+- "expiredOld"
+- "failed"
+- "unknownKey"
+
+
+---
+
+## BadgeType
+
+**Enum type**:
+- "supporter"
+- "legend"
+- "investor"
 
 
 ---
@@ -405,6 +469,7 @@ TIMEOUT:
 - chatType: [BusinessChatType](#businesschattype)
 - businessId: string
 - customerId: string
+- businessDomain: [SimplexDomainClaim](#simplexdomainclaim)?
 
 
 ---
@@ -809,7 +874,7 @@ Group:
 - editable: bool
 - forwardedByMember: int64?
 - showGroupAsSender: bool
-- msgSigned: [MsgSigStatus](#msgsigstatus)?
+- msgVerified: [MsgVerified](#msgverified)?
 - createdAt: UTCTime
 - updatedAt: UTCTime
 
@@ -992,9 +1057,6 @@ NoRcvFileUser:
 UserUnknown:
 - type: "userUnknown"
 
-ActiveUserExists:
-- type: "activeUserExists"
-
 UserExists:
 - type: "userExists"
 - contactName: string
@@ -1051,6 +1113,14 @@ ChatStoreChanged:
 
 InvalidConnReq:
 - type: "invalidConnReq"
+
+SimplexDomainNotReady:
+- type: "simplexDomainNotReady"
+- simplexDomain: [SimplexDomain](#simplexdomain)
+- simplexDomainError: [SimplexDomainError](#simplexdomainerror)
+
+NotResolvedLocally:
+- type: "notResolvedLocally"
 
 UnsupportedConnReq:
 - type: "unsupportedConnReq"
@@ -1760,6 +1830,7 @@ ContactViaAddress:
 - profile: [Profile](#profile)
 - message: [MsgContent](#msgcontent)?
 - business: bool
+- localBadge: [LocalBadge](#localbadge)?
 
 
 ---
@@ -1923,6 +1994,10 @@ EXPIRED:
 INTERNAL:
 - type: "INTERNAL"
 
+NAME:
+- type: "NAME"
+- nameErr: [NameErrorType](#nameerrortype)
+
 DUPLICATE_:
 - type: "DUPLICATE_"
 
@@ -2050,6 +2125,15 @@ NO_FILE:
 
 ---
 
+## FileType
+
+**Enum type**:
+- "normal"
+- "roster"
+
+
+---
+
 ## Format
 
 **Discriminated union type**:
@@ -2090,6 +2174,10 @@ SimplexLink:
 - linkType: [SimplexLinkType](#simplexlinktype)
 - simplexUri: string
 - smpHosts: [string]
+
+SimplexName:
+- type: "simplexName"
+- nameInfo: [SimplexNameInfo](#simplexnameinfo)
 
 Command:
 - type: "command"
@@ -2132,6 +2220,7 @@ Phone:
 - support: [SupportGroupPreference](#supportgrouppreference)
 - sessions: [RoleGroupPreference](#rolegrouppreference)
 - comments: [CommentsGroupPreference](#commentsgrouppreference)
+- signMessages: [GroupPreference](#grouppreference)
 - commands: [[ChatBotCommand](#chatbotcommand)]
 
 
@@ -2224,6 +2313,7 @@ MemberSupport:
 - "support"
 - "sessions"
 - "comments"
+- "signMessages"
 
 
 ---
@@ -2260,9 +2350,11 @@ MemberSupport:
 - uiThemes: [UIThemeEntityOverrides](#uithemeentityoverrides)?
 - customData: JSONObject?
 - groupSummary: [GroupSummary](#groupsummary)
+- rosterVersion: int64?
 - membersRequireAttention: int
 - viaGroupLinkUri: string?
 - groupKeys: [GroupKeys](#groupkeys)?
+- groupDomainVerified: bool?
 
 
 ---
@@ -2331,6 +2423,10 @@ NoRelays:
 - type: "noRelays"
 - groupSLinkData_: [GroupShortLinkData](#groupshortlinkdata)?
 
+UpdateRequired:
+- type: "updateRequired"
+- groupSLinkData_: [GroupShortLinkData](#groupshortlinkdata)?
+
 
 ---
 
@@ -2359,6 +2455,7 @@ NoRelays:
 - supportChat: [GroupSupportChat](#groupsupportchat)?
 - memberPubKey: string?
 - relayLink: string?
+- memberVerifiedCode: [SecurityCode](#securitycode)?
 
 
 ---
@@ -2459,6 +2556,7 @@ NoRelays:
 - support: [SupportGroupPreference](#supportgrouppreference)?
 - sessions: [RoleGroupPreference](#rolegrouppreference)?
 - comments: [CommentsGroupPreference](#commentsgrouppreference)?
+- signMessages: [GroupPreference](#grouppreference)?
 - commands: [[ChatBotCommand](#chatbotcommand)]?
 
 
@@ -2487,6 +2585,7 @@ NoRelays:
 - userChatRelay: [UserChatRelay](#userchatrelay)
 - relayStatus: [RelayStatus](#relaystatus)
 - relayLink: string?
+- relayCap: [RelayCapabilities](#relaycapabilities)
 
 
 ---
@@ -2659,6 +2758,15 @@ Unknown:
 
 ---
 
+## LocalBadge
+
+**Record type**:
+- badge: [BadgeInfo](#badgeinfo)
+- status: [BadgeStatus](#badgestatus)
+
+
+---
+
 ## LocalProfile
 
 **Record type**:
@@ -2666,11 +2774,15 @@ Unknown:
 - displayName: string
 - fullName: string
 - shortDescr: string?
+- description: string?
 - image: string?
 - contactLink: string?
 - preferences: [Preferences](#preferences)?
 - peerType: [ChatPeerType](#chatpeertype)?
+- localBadge: [LocalBadge](#localbadge)?
 - localAlias: string
+- contactDomain: [SimplexDomainClaim](#simplexdomainclaim)?
+- contactDomainVerified: bool?
 
 
 ---
@@ -2848,6 +2960,37 @@ Unknown:
 
 ---
 
+## MsgVerified
+
+**Discriminated union type**:
+
+Signed:
+- type: "signed"
+- sigStatus: [MsgSigStatus](#msgsigstatus)
+
+SigMissing:
+- type: "sigMissing"
+
+
+---
+
+## NameErrorType
+
+**Discriminated union type**:
+
+NO_RESOLVER:
+- type: "NO_RESOLVER"
+
+NOT_FOUND:
+- type: "NOT_FOUND"
+
+RESOLVER:
+- type: "RESOLVER"
+- resolverErr: string
+
+
+---
+
 ## NetworkError
 
 **Discriminated union type**:
@@ -2882,6 +3025,7 @@ SubscribeError:
 - profile: [Profile](#profile)?
 - pastTimestamp: bool
 - userChatRelay: bool
+- clientService: bool
 
 
 ---
@@ -2957,6 +3101,16 @@ count=<count>
 
 ---
 
+## PlanResolveMode
+
+**Enum type**:
+- "allGroups"
+- "unknown"
+- "never"
+
+
+---
+
 ## PrefEnabled
 
 **Record type**:
@@ -3010,10 +3164,13 @@ count=<count>
 - displayName: string
 - fullName: string
 - shortDescr: string?
+- description: string?
 - image: string?
 - contactLink: string?
 - preferences: [Preferences](#preferences)?
 - peerType: [ChatPeerType](#chatpeertype)?
+- badge: [BadgeProof](#badgeproof)?
+- contactDomain: [SimplexDomainClaim](#simplexdomainclaim)?
 
 
 ---
@@ -3058,6 +3215,17 @@ NO_SESSION:
 
 ---
 
+## PublicGroupAccess
+
+**Record type**:
+- groupWebPage: string?
+- groupDomainClaim: [SimplexDomainClaim](#simplexdomainclaim)?
+- domainWebPage: bool
+- allowEmbedding: bool
+
+
+---
+
 ## PublicGroupData
 
 **Record type**:
@@ -3072,6 +3240,7 @@ NO_SESSION:
 - groupType: [GroupType](#grouptype)
 - groupLink: string
 - publicGroupId: string
+- publicGroupAccess: [PublicGroupAccess](#publicgroupaccess)?
 
 
 ---
@@ -3232,6 +3401,7 @@ Cancelled:
 - xftpRcvFile: [XFTPRcvFile](#xftprcvfile)?
 - fileInvitation: [FileInvitation](#fileinvitation)
 - fileStatus: [RcvFileStatus](#rcvfilestatus)
+- fileType: [FileType](#filetype)
 - rcvFileInline: [InlineFileMode](#inlinefilemode)?
 - senderDisplayName: string
 - chunkSize: int64
@@ -3331,6 +3501,14 @@ ParseError:
 
 ---
 
+## RelayCapabilities
+
+**Record type**:
+- webDomain: string?
+
+
+---
+
 ## RelayProfile
 
 **Record type**:
@@ -3348,6 +3526,7 @@ ParseError:
 - "new"
 - "invited"
 - "accepted"
+- "acknowledgedRoster"
 - "active"
 - "inactive"
 - "rejected"
@@ -3426,6 +3605,48 @@ A_QUEUE:
 
 ---
 
+## SimplexDomain
+
+**Record type**:
+- nameTLD: [SimplexTLD](#simplextld)
+- domain: string
+- subDomain: [string]
+
+
+---
+
+## SimplexDomainClaim
+
+**Record type**:
+- domain: string
+- proof: [SimplexDomainProof](#simplexdomainproof)?
+
+
+---
+
+## SimplexDomainError
+
+**Discriminated union type**:
+
+NoValidLink:
+- type: "noValidLink"
+
+UnknownDomain:
+- type: "unknownDomain"
+
+
+---
+
+## SimplexDomainProof
+
+**Record type**:
+- linkOwnerId: string?
+- presHeader: string
+- signature: string
+
+
+---
+
 ## SimplexLinkType
 
 **Enum type**:
@@ -3434,6 +3655,34 @@ A_QUEUE:
 - "group"
 - "channel"
 - "relay"
+
+
+---
+
+## SimplexNameInfo
+
+**Record type**:
+- nameType: [SimplexNameType](#simplexnametype)
+- nameDomain: [SimplexDomain](#simplexdomain)
+
+
+---
+
+## SimplexNameType
+
+**Enum type**:
+- "publicGroup"
+- "contact"
+
+
+---
+
+## SimplexTLD
+
+**Enum type**:
+- "simplex"
+- "testing"
+- "web"
 
 
 ---
@@ -4086,8 +4335,9 @@ Handshake:
 - sendRcptsSmallGroups: bool
 - autoAcceptMemberContacts: bool
 - userMemberProfileUpdatedAt: UTCTime?
-- uiThemes: [UIThemeEntityOverrides](#uithemeentityoverrides)?
 - userChatRelay: bool
+- clientService: bool
+- uiThemes: [UIThemeEntityOverrides](#uithemeentityoverrides)?
 
 
 ---
@@ -4140,7 +4390,7 @@ Handshake:
 - cReqChatVRange: [VersionRange](#versionrange)
 - localDisplayName: string
 - profileId: int64
-- profile: [Profile](#profile)
+- profile: [LocalProfile](#localprofile)
 - createdAt: UTCTime
 - updatedAt: UTCTime
 - xContactId: string?

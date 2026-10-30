@@ -2,27 +2,21 @@ package chat.simplex.common.views.usersettings
 
 import SectionTextFooter
 import SectionView
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.padding
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
-import androidx.compose.ui.Modifier
+import androidx.compose.runtime.*
 import chat.simplex.common.model.ChatController.appPrefs
 import chat.simplex.common.model.ChatModel
-import chat.simplex.common.platform.AppUpdatesChannel
-import chat.simplex.common.ui.theme.DEFAULT_PADDING_HALF
+import chat.simplex.common.platform.*
 import chat.simplex.common.views.helpers.*
 import chat.simplex.res.MR
 import dev.icerock.moko.resources.compose.painterResource
 import dev.icerock.moko.resources.compose.stringResource
 
 @Composable
-actual fun SettingsSectionApp(
+actual fun AdvancedSettingsAppSection(
   showSettingsModal: (@Composable (ChatModel) -> Unit) -> (() -> Unit),
-  showVersion: () -> Unit,
-  withAuth: (title: String, desc: String, block: () -> Unit) -> Unit
+  withAuth: (title: String, desc: String, block: () -> Unit) -> Unit,
 ) {
-  SectionView(stringResource(MR.strings.settings_section_title_app)) {
+  SectionView {
     SettingsActionItem(painterResource(MR.images.ic_code), stringResource(MR.strings.settings_developer_tools), showSettingsModal { DeveloperView(withAuth) })
     val selectedChannel = remember { appPrefs.appUpdateChannel.state }
     val values = AppUpdatesChannel.entries.map { it to it.text }
@@ -31,6 +25,8 @@ actual fun SettingsSectionApp(
       setupUpdateChecker()
     }
     SectionTextFooter(stringResource(MR.strings.qryptana_upstream_notes_description))
-    AppVersionItem(showVersion)
   }
 }
+
+@Composable
+actual fun AppShutdownItem() {}

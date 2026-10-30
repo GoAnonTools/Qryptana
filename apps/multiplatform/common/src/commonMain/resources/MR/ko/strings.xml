@@ -107,7 +107,7 @@
     <string name="icon_descr_contact_checked">대화 상대 확인됨</string>
     <string name="create_group_link">그룹 링크 생성</string>
     <string name="button_create_group_link">링크 생성</string>
-    <string name="change_member_role_question">그룹 역할을 바꾸시겠습니까\?</string>
+    <string name="change_member_role_question">그룹 역할을 바꾸시겠습니까?</string>
     <string name="info_row_connection">연결</string>
     <string name="users_add">프로필 추가</string>
     <string name="chat_preferences_always">항상</string>
@@ -307,8 +307,7 @@
     <string name="connected_to_server_to_receive_messages_from_contact">이 대화 상대로부터의 메시지를 수신할 서버와 연결되었어요.</string>
     <string name="app_name">Qryptana</string>
     <string name="contact_developers">앱 업데이트 후 개발자에게 연락해 주세요.</string>
-    <string name="connection_error_auth_desc">대화 상대가 나갔거나 초대 링크가 이미 사용된 경우가 아니면 버그일 수 있어요. 이 경우 개발자에게 알려주세요.
-\n대화 상대에게 다른 초대 링크 만들도록 부탁하고 네트워크 연결이 안정적인지 확인하세요.</string>
+    <string name="connection_error_auth_desc">대화 상대가 나갔거나 초대 링크가 이미 사용된 경우가 아니면 버그일 수 있어요. 이 경우 개발자에게 알려주세요. \n대화 상대에게 다른 초대 링크 만들도록 부탁하고 네트워크 연결이 안정적인지 확인하세요.</string>
     <string name="auth_enable_simplex_lock">Qryptana 잠금 활성화</string>
     <string name="auth_log_in_using_credential">자격 증명으로 로그인</string>
     <string name="auth_open_chat_console">채팅 콘솔 열기</string>
@@ -1521,4 +1520,6 @@
     <string name="report_archive_alert_title_nth">신고 %d건을 보관하시겠습니까?</string>
     <string name="failed_to_create_user_invalid_desc">이 표시 이름은 유효하지 않습니다. 다른 이름을 선택하세요.</string>
     <string name="remote_ctrl_error_timeout">데스크톱에 연결하는 동안 시간 초과되었습니다</string>
+
+
 </resources>

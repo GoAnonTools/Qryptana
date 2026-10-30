@@ -141,8 +141,7 @@
     <string name="smp_server_test_delete_queue">حذف صف</string>
     <string name="smp_server_test_create_file">ایجاد فایل</string>
     <string name="error_smp_test_server_auth">سرور برای ایجاد صف‌ها نیاز به مجوز دارد، گذرواژه را بررسی کنید.</string>
-    <string name="connection_error_auth_desc">مگر اینکه مخاطبتان اتصال را حذف کرده یا این لینک قبلا استفاده شده باشد، ممکن است این یک اشکال باشد - لطفا آن را گزارش دهید.
-\nبرای متصل شدن، لطفا از مخاطبتان بخواهید لینک اتصال دیگری ایجاد کند و بررسی کنید که اتصال شبکه باثباتی دارید.</string>
+    <string name="connection_error_auth_desc">مگر اینکه مخاطبتان اتصال را حذف کرده یا این لینک قبلا استفاده شده باشد، ممکن است این یک اشکال باشد - لطفا آن را گزارش دهید. \nبرای متصل شدن، لطفا از مخاطبتان بخواهید لینک اتصال دیگری ایجاد کند و بررسی کنید که اتصال شبکه باثباتی دارید.</string>
     <string name="possible_slow_function_title">عملکرد کند</string>
     <string name="possible_slow_function_desc">اجرای این عملکرد زمان زیادی می‌گیرد: %1$d ثانیه: %2$s</string>
     <string name="icon_descr_instant_notifications">اعلان‌های آنی</string>
@@ -2530,4 +2529,6 @@
     <string name="smp_proxy_error_unknown_ca">اثر انگشت در نشانی سرور انتقال با گواهی مطابقت ندارد: ‎%1$s.</string>
     <string name="network_error_unknown_ca">اثر انگشت در نشانی سرور با گواهی مطابقت ندارد: ‎%1$s.</string>
     <string name="button_delete_member_messages">پاک کردن پیام کاربر</string>
+
+
 </resources>

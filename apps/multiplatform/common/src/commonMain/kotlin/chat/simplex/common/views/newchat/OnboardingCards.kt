@@ -26,6 +26,7 @@ import androidx.compose.ui.layout.onSizeChanged
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -40,7 +41,10 @@ import chat.simplex.common.model.*
 import chat.simplex.common.model.ChatController.appPrefs
 import chat.simplex.common.platform.*
 import chat.simplex.common.ui.theme.*
+import chat.simplex.common.views.chatlist.GetStakeBanner
+import chat.simplex.common.views.chatlist.openGetStake
 import chat.simplex.common.views.helpers.*
+import chat.simplex.common.views.onboarding.crowdfundingAvailable
 import chat.simplex.common.views.usersettings.UserAddressView
 import chat.simplex.res.MR
 import kotlinx.coroutines.launch

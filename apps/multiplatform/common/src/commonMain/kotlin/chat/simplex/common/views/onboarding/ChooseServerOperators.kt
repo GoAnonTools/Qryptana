@@ -59,7 +59,7 @@ fun OnboardingConditionsView(chatModel: ChatModel) {
     OnboardingConditionsDesktop(selectedOperatorIds)
   } else {
     CompositionLocalProvider(LocalAppBarHandler provides rememberAppBarHandler()) {
-      ModalView({}, showClose = false, showAppBar = false) {
+      ModalView({}, showClose = false, showAppBar = false, cardScreen = true) {
         OnboardingShrinkingLayout(
           modifier = Modifier.fillMaxSize().themedBackground(bgLayerSize = LocalAppBarHandler.current?.backgroundGraphicsLayerSize, bgLayer = LocalAppBarHandler.current?.backgroundGraphicsLayer)
           .systemBarsPadding()
@@ -541,7 +541,7 @@ private fun ChooseServerOperatorsInfoView() {
 
     SectionDividerSpaced()
 
-    SectionView(title = stringResource(MR.strings.onboarding_network_about_operators).uppercase()) {
+    SectionView(title = stringResource(MR.strings.onboarding_network_about_operators)) {
       chatModel.conditions.value.serverOperators.forEach { op ->
         ServerOperatorRow(op)
       }

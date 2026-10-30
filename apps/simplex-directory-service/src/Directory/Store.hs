@@ -37,12 +37,13 @@ module Directory.Store
     getAllGroupRegs_,
     getDuplicateGroupRegs,
     getGroupReg,
-    getGroupAndReg,
+    getGroupAndRegLink,
     listLastGroups,
     listPendingGroups,
     getAllListedGroups,
     getAllListedGroups_,
     searchListedGroups,
+    verifiedGroupDomain,
     groupRegStatusText,
     pendingApproval,
     groupRemoved,
@@ -52,6 +53,7 @@ module Directory.Store
     basicJoinFilter,
     moderateJoinFilter,
     strongJoinFilter,
+    newGroupJoinFilter,
     groupDBError,
     logGCreate,
     logGDelete,
@@ -85,12 +87,14 @@ import Data.Time.Clock.System (systemEpochDay)
 import Directory.Search
 import Directory.Util
 import Simplex.Chat.Controller
-import Simplex.Chat.Protocol (supportedChatVRange)
+import Simplex.Chat.Names (claimDomain)
 import Simplex.Chat.Options.DB (FromField (..), ToField (..))
 import Simplex.Chat.Store
 import Simplex.Chat.Store.Groups
 import Simplex.Chat.Store.Shared (groupInfoQueryFields, groupInfoQueryFrom)
 import Simplex.Chat.Types
+import Simplex.Chat.Types.Shared (GroupMemberRole (..))
+import Simplex.Messaging.Agent.Protocol (CreatedConnLink (..), SimplexDomain)
 import Simplex.Messaging.Agent.Store.DB (BoolInt (..), fromTextField_)
 import qualified Simplex.Messaging.Agent.Store.DB as DB
 import Simplex.Messaging.Encoding.String
@@ -165,6 +169,16 @@ strongJoinFilter =
       makeObserver = Nothing
     }
 
+-- Default applied to newly registered groups: a captcha challenge is required
+-- from every joining member unless the owner changes it with /filter.
+newGroupJoinFilter :: DirectoryMemberAcceptance
+newGroupJoinFilter =
+  DirectoryMemberAcceptance
+    { rejectNames = Nothing,
+      passCaptcha = Just PCAll,
+      makeObserver = Nothing
+    }
+
 type UserGroupRegId = Int64
 
 type GroupApprovalId = Int64
@@ -211,6 +225,11 @@ grDirectoryStatus = \case
   GRSSuspendedBadRoles -> DSReserved
   GRSRemoved -> DSRemoved
   _ -> DSRegistered
+
+verifiedGroupDomain :: GroupInfo -> Maybe SimplexDomain
+verifiedGroupDomain GroupInfo {groupProfile = GroupProfile {publicGroup}, groupDomainVerified}
+  | groupDomainVerified == Just True = claimDomain <$> (publicGroup >>= publicGroupAccess >>= groupDomainClaim)
+  | otherwise = Nothing
 
 $(JQ.deriveJSON (enumJSON $ dropPrefix "PC") ''ProfileCondition)
 
@@ -312,45 +331,48 @@ getGroupReg_ db gId =
       |]
       (Only gId)
 
-getGroupAndReg :: ChatController -> User -> GroupId -> IO (Either String (GroupInfo, GroupReg))
-getGroupAndReg cc user@User {userId, userContactId} gId =
-  withDB "getGroupAndReg" cc $ \db ->
-    ExceptT $ firstRow (toGroupInfoReg (vr cc) user) ("group " ++ show gId ++ " not found") $
-    DB.query db (groupReqQuery <> " AND g.group_id = ?") (userId, userContactId, gId)
+getGroupAndRegLink :: ChatController -> User -> GroupId -> IO (Either String (GroupInfo, GroupReg, Maybe GroupLink))
+getGroupAndRegLink cc user@User {userId, userContactId} gId =
+  withDB "getGroupAndRegLink" cc $ \db -> do
+    currentTs <- liftIO getCurrentTime
+    ExceptT $ firstRow (toGroupInfoRegLink currentTs (storeCxt cc) user) ("group " ++ show gId ++ " not found") $
+      DB.query db (groupReqQuery <> " AND g.group_id = ?") (userId, userContactId, gId)
 
 getUserGroupReg :: ChatController -> User -> ContactId -> UserGroupRegId -> IO (Either String (GroupInfo, GroupReg))
 getUserGroupReg cc user@User {userId, userContactId} ctId ugrId =
-  withDB "getUserGroupReg" cc $ \db ->
-    ExceptT $ firstRow (toGroupInfoReg (vr cc) user) ("group " ++ show ugrId ++ " not found") $
+  withDB "getUserGroupReg" cc $ \db -> do
+    currentTs <- liftIO getCurrentTime
+    ExceptT $ firstRow (toGroupInfoReg currentTs (storeCxt cc) user) ("group " ++ show ugrId ++ " not found") $
       DB.query db (groupReqQuery <> " AND r.contact_id = ? AND r.user_group_reg_id = ?") (userId, userContactId, ctId, ugrId)
 
 getUserGroupRegs :: ChatController -> User -> ContactId -> IO (Either String [(GroupInfo, GroupReg)])
 getUserGroupRegs cc user@User {userId, userContactId} ctId =
-  withDB' "getUserGroupRegs" cc $ \db ->
-    map (toGroupInfoReg (vr cc) user)
+  withDB' "getUserGroupRegs" cc $ \db -> do
+    currentTs <- getCurrentTime
+    map (toGroupInfoReg currentTs (storeCxt cc) user)
       <$> DB.query db (groupReqQuery <> " AND r.contact_id = ? ORDER BY r.user_group_reg_id") (userId, userContactId, ctId)
 
 getAllListedGroups :: ChatController -> User -> IO (Either String [(GroupInfo, GroupReg, Maybe GroupLink)])
-getAllListedGroups cc user = withDB' "getAllListedGroups" cc $ \db -> getAllListedGroups_ db (vr cc) user
+getAllListedGroups cc user = withDB' "getAllListedGroups" cc $ \db -> getAllListedGroups_ db (storeCxt cc) user
 
-getAllListedGroups_ :: DB.Connection -> VersionRangeChat -> User -> IO [(GroupInfo, GroupReg, Maybe GroupLink)]
-getAllListedGroups_ db vr' user@User {userId, userContactId} =
-  DB.query db (groupReqQuery <> " AND r.group_reg_status = ?") (userId, userContactId, GRSActive)
-    >>= mapM (withGroupLink . toGroupInfoReg vr' user)
-  where
-    withGroupLink (g, gr) = (g,gr,) . eitherToMaybe <$> runExceptT (getGroupLink db user g)
+getAllListedGroups_ :: DB.Connection -> StoreCxt -> User -> IO [(GroupInfo, GroupReg, Maybe GroupLink)]
+getAllListedGroups_ db cxt user@User {userId, userContactId} = do
+  currentTs <- getCurrentTime
+  map (toGroupInfoRegLink currentTs cxt user)
+    <$> DB.query db (groupReqQuery <> " AND r.group_reg_status = ?") (userId, userContactId, GRSActive)
 
-searchListedGroups :: ChatController -> User -> SearchType -> Maybe GroupId -> Int -> IO (Either String ([(GroupInfo, GroupReg)], Int))
+searchListedGroups :: ChatController -> User -> SearchType -> Maybe GroupId -> Int -> IO (Either String ([(GroupInfo, GroupReg, Maybe GroupLink)], Int))
 searchListedGroups cc user@User {userId, userContactId} searchType lastGroup_ pageSize =
-  withDB' "searchListedGroups" cc $ \db ->
+  withDB' "searchListedGroups" cc $ \db -> do
+    currentTs <- getCurrentTime
     case searchType of
       STAll -> case lastGroup_ of
         Nothing -> do
-          gs <- groups $ DB.query db (listedGroupQuery <> orderBy <> " LIMIT ?") (userId, userContactId, GRSActive, pageSize)
+          gs <- groups currentTs $ DB.query db (listedGroupQuery <> orderBy <> " LIMIT ?") (userId, userContactId, GRSActive, pageSize)
           n <- count $ DB.query db countQuery' (Only GRSActive)
           pure (gs, n)
         Just gId -> do
-          gs <- groups $ DB.query db (listedGroupQuery <> " AND r.group_id > ? " <> orderBy <> " LIMIT ?") (userId, userContactId, GRSActive, gId, pageSize)
+          gs <- groups currentTs $ DB.query db (listedGroupQuery <> " AND r.group_id > ? " <> orderBy <> " LIMIT ?") (userId, userContactId, GRSActive, gId, pageSize)
           n <- count $ DB.query db (countQuery' <> " AND r.group_id > ?") (GRSActive, gId)
           pure (gs, n)
         where
@@ -358,11 +380,11 @@ searchListedGroups cc user@User {userId, userContactId} searchType lastGroup_ pa
           orderBy = " ORDER BY g.summary_current_members_count DESC, r.group_reg_id ASC "
       STRecent -> case lastGroup_ of
         Nothing -> do
-          gs <- groups $ DB.query db (listedGroupQuery <> orderBy <> " LIMIT ?") (userId, userContactId, GRSActive, pageSize)
+          gs <- groups currentTs $ DB.query db (listedGroupQuery <> orderBy <> " LIMIT ?") (userId, userContactId, GRSActive, pageSize)
           n <- count $ DB.query db countQuery' (Only GRSActive)
           pure (gs, n)
         Just gId -> do
-          gs <- groups $ DB.query db (listedGroupQuery <> " AND r.group_id > ? " <> orderBy <> " LIMIT ?") (userId, userContactId, GRSActive, gId, pageSize)
+          gs <- groups currentTs $ DB.query db (listedGroupQuery <> " AND r.group_id > ? " <> orderBy <> " LIMIT ?") (userId, userContactId, GRSActive, gId, pageSize)
           n <- count $ DB.query db (countQuery' <> " AND r.group_id > ?") (GRSActive, gId)
           pure (gs, n)
         where
@@ -370,19 +392,23 @@ searchListedGroups cc user@User {userId, userContactId} searchType lastGroup_ pa
           orderBy = " ORDER BY r.created_at DESC, r.group_reg_id ASC "
       STSearch search -> case lastGroup_ of
         Nothing -> do
-          gs <- groups $ DB.query db (listedGroupQuery <> searchCond <> orderBy <> " LIMIT ?") (userId, userContactId, GRSActive, s, s, s, s, pageSize)
-          n <- count $ DB.query db (countQuery' <> searchCond) (GRSActive, s, s, s, s)
+          gs <- groups currentTs $ DB.query db (listedGroupQuery <> searchCond <> orderBy <> " LIMIT ?") ((userId, userContactId, GRSActive, s, s, s, s) :. (sDomain, pageSize))
+          n <- count $ DB.query db (countQuery' <> searchCond) (GRSActive, s, s, s, s, sDomain)
           pure (gs, n)
         Just gId -> do
-          gs <- groups $ DB.query db (listedGroupQuery <> " AND r.group_id > ? " <> searchCond <> orderBy <> " LIMIT ?") (userId, userContactId, GRSActive, gId, s, s, s, s, pageSize)
-          n <- count $ DB.query db (countQuery' <> " AND r.group_id > ? " <> searchCond) (GRSActive, gId, s, s, s, s)
+          gs <- groups currentTs $ DB.query db (listedGroupQuery <> " AND r.group_id > ? " <> searchCond <> orderBy <> " LIMIT ?") ((userId, userContactId, GRSActive, gId, s, s, s, s) :. (sDomain, pageSize))
+          n <- count $ DB.query db (countQuery' <> " AND r.group_id > ? " <> searchCond) (GRSActive, gId, s, s, s, s, sDomain)
           pure (gs, n)
         where
           s = T.toLower search
+          -- a bare "#"/"@" maps to "#", matching no stored domain (domains are stored unprefixed)
+          sDomain = case T.uncons s of
+            Just (c, rest) | c == '#' || c == '@' -> if T.null rest then "#" else rest
+            _ -> s
           countQuery' = countQuery <> " JOIN group_profiles gp ON gp.group_profile_id = g.group_profile_id WHERE r.group_reg_status = ? "
           orderBy = " ORDER BY g.summary_current_members_count DESC, r.group_reg_id ASC "
   where
-    groups = (map (toGroupInfoReg (vr cc) user) <$>)
+    groups currentTs = (map (toGroupInfoRegLink currentTs (storeCxt cc) user) <$>)
     count = maybeFirstRow' 0 fromOnly
     listedGroupQuery = groupReqQuery <> " AND r.group_reg_status = ? "
     countQuery = "SELECT COUNT(1) FROM groups g JOIN sx_directory_group_regs r ON g.group_id = r.group_id "
@@ -392,25 +418,29 @@ searchListedGroups cc user@User {userId, userContactId} searchType lastGroup_ pa
           OR LOWER(gp.full_name) LIKE '%' || ? || '%'
           OR LOWER(gp.short_descr) LIKE '%' || ? || '%'
           OR LOWER(gp.description) LIKE '%' || ? || '%'
+          OR (LOWER(gp.group_domain) LIKE '%' || ? || '%' AND g.group_domain_verified = 1)
         )
       |]
 
-getAllGroupRegs_ :: DB.Connection -> User -> IO [(GroupInfo, GroupReg)]
-getAllGroupRegs_ db user@User {userId, userContactId} =
-  map (toGroupInfoReg supportedChatVRange user)
+getAllGroupRegs_ :: DB.Connection -> StoreCxt -> User -> IO [(GroupInfo, GroupReg)]
+getAllGroupRegs_ db cxt user@User {userId, userContactId} = do
+  currentTs <- getCurrentTime
+  map (toGroupInfoReg currentTs cxt user)
     <$> DB.query db groupReqQuery (userId, userContactId)
 
 getDuplicateGroupRegs :: ChatController -> User -> Text -> IO (Either String [(GroupInfo, GroupReg)])
 getDuplicateGroupRegs cc user@User {userId, userContactId} displayName =
-  withDB' "getDuplicateGroupRegs" cc $ \db ->
-    map (toGroupInfoReg (vr cc) user)
+  withDB' "getDuplicateGroupRegs" cc $ \db -> do
+    currentTs <- getCurrentTime
+    map (toGroupInfoReg currentTs (storeCxt cc) user)
       <$> DB.query db (groupReqQuery <> " AND gp.display_name = ?") (userId, userContactId, displayName)
 
 listLastGroups :: ChatController -> User -> Int -> IO (Either String ([(GroupInfo, GroupReg)], Int))
 listLastGroups cc user@User {userId, userContactId} count =
   withDB' "getUserGroupRegs" cc $ \db -> do
+    currentTs <- getCurrentTime
     gs <-
-      map (toGroupInfoReg (vr cc) user)
+      map (toGroupInfoReg currentTs (storeCxt cc) user)
         <$> DB.query db (groupReqQuery <> " ORDER BY group_reg_id DESC LIMIT ?") (userId, userContactId, count)
     n <- maybeFirstRow' 0 fromOnly $ DB.query_ db "SELECT COUNT(1) FROM sx_directory_group_regs"
     pure (gs, n)
@@ -418,15 +448,19 @@ listLastGroups cc user@User {userId, userContactId} count =
 listPendingGroups :: ChatController -> User -> Int -> IO (Either String ([(GroupInfo, GroupReg)], Int))
 listPendingGroups cc user@User {userId, userContactId} count =
   withDB' "getUserGroupRegs" cc $ \db -> do
+    currentTs <- getCurrentTime
     gs <-
-      map (toGroupInfoReg (vr cc) user)
+      map (toGroupInfoReg currentTs (storeCxt cc) user)
         <$> DB.query db (groupReqQuery <> " AND r.group_reg_status LIKE 'pending_approval%' ORDER BY group_reg_id DESC LIMIT ?") (userId, userContactId, count)
     n <- maybeFirstRow' 0 fromOnly $ DB.query_ db "SELECT COUNT(1) FROM sx_directory_group_regs WHERE group_reg_status LIKE 'pending_approval%'"
     pure (gs, n)
 
-toGroupInfoReg :: VersionRangeChat -> User -> (GroupInfoRow :. GroupRegRow) -> (GroupInfo, GroupReg)
-toGroupInfoReg vr' User {userContactId} (groupRow :. grRow) =
-  (toGroupInfo vr' userContactId [] groupRow, rowToGroupReg grRow)
+toGroupInfoReg :: UTCTime -> StoreCxt -> User -> (GroupInfoRow :. GroupRegRow :. GroupLinkRow) -> (GroupInfo, GroupReg)
+toGroupInfoReg currentTs cxt user row = let (g, gr, _) = toGroupInfoRegLink currentTs cxt user row in (g, gr)
+
+toGroupInfoRegLink :: UTCTime -> StoreCxt -> User -> (GroupInfoRow :. GroupRegRow :. GroupLinkRow) -> (GroupInfo, GroupReg, Maybe GroupLink)
+toGroupInfoRegLink currentTs cxt User {userContactId} (groupRow :. grRow :. linkRow) =
+  (toGroupInfo currentTs cxt userContactId [] groupRow, rowToGroupReg grRow, toMaybeGroupLink linkRow)
 
 type GroupRegRow = (GroupId, UserGroupRegId, ContactId, Maybe GroupMemberId, GroupRegStatus, BoolInt, UTCTime)
 
@@ -434,10 +468,30 @@ rowToGroupReg :: GroupRegRow -> GroupReg
 rowToGroupReg (dbGroupId, userGroupRegId, dbContactId, dbOwnerMemberId, groupRegStatus, BI promoted, createdAt) =
   GroupReg {dbGroupId, userGroupRegId, dbContactId, dbOwnerMemberId, groupRegStatus, promoted, createdAt}
 
+type GroupLinkRow = (Maybe Int64, Maybe ConnReqContact, Maybe ShortLinkContact, Maybe BoolInt, Maybe BoolInt, Maybe GroupLinkId, Maybe GroupMemberRole)
+
+toMaybeGroupLink :: GroupLinkRow -> Maybe GroupLink
+toMaybeGroupLink (Just userContactLinkId, Just cReq, shortLink, slDataSet, slLarge, Just groupLinkId, mRole_) =
+  Just
+    GroupLink
+      { userContactLinkId,
+        connLinkContact = CCLink cReq shortLink,
+        shortLinkDataSet = boolInt slDataSet,
+        shortLinkLargeDataSet = BoolDef $ boolInt slLarge,
+        groupLinkId,
+        acceptMemberRole = fromMaybe GRMember mRole_
+      }
+  where
+    boolInt = maybe False (\(BI b) -> b)
+toMaybeGroupLink _ = Nothing
+
+-- group with its registration and its join link (user_contact_links) in one query
 groupReqQuery :: Query
-groupReqQuery = groupInfoQueryFields <> groupRegFields <> groupInfoQueryFrom <> groupRegFromCond
+groupReqQuery = groupInfoQueryFields <> groupRegFields <> groupLinkFields <> groupInfoQueryFrom <> groupLinkJoin <> groupRegFromCond
   where
     groupRegFields = ", r.group_id, r.user_group_reg_id, r.contact_id, r.owner_member_id, r.group_reg_status, r.group_promoted, r.created_at "
+    groupLinkFields = ", uc.user_contact_link_id, uc.conn_req_contact, uc.short_link_contact, uc.short_link_data_set, uc.short_link_large_data_set, uc.group_link_id, uc.group_link_member_role "
+    groupLinkJoin = " LEFT JOIN user_contact_links uc ON uc.group_id = g.group_id AND uc.user_id = g.user_id "
     groupRegFromCond = " JOIN sx_directory_group_regs r ON r.group_id = g.group_id WHERE g.user_id = ? AND mu.contact_id = ? "
 
 data DirectoryLogRecord
