@@ -51,32 +51,9 @@ private fun initHaskell() {
   //discoverVlcLibs(File(File(vlcDir, "vlc"), "plugins").absolutePath)
   initHS()
 
-  platform = object: PlatformInterface {
-    @Composable
-    override fun desktopShowAppUpdateNotice() {
-      fun showNoticeIfNeeded() {
-        if (
-          !chatModel.controller.appPrefs.appUpdateNoticeShown.get()
-          && chatModel.controller.appPrefs.onboardingStage.get() == OnboardingStage.OnboardingComplete
-          && chatModel.chats.size > 3
-          && chatModel.activeCallInvitation.value == null
-        ) {
-          appPrefs.appUpdateNoticeShown.set(true)
-          showAppUpdateNotice()
-        }
-      }
-      // Will show notice if chats were loaded before that moment and number of chats > 3
-      LaunchedEffect(Unit) {
-        showNoticeIfNeeded()
-      }
-      // Will show notice if chats were loaded later (a lot of chats/slow query) and number of chats > 3
-      KeyChangeEffect(chatModel.chats.size) { oldSize ->
-        if (oldSize == 0) {
-          showNoticeIfNeeded()
-        }
-      }
-    }
-  }
+  // No automatic opt-in prompt: this checker only provides upstream notes,
+  // not Qryptana updates. Users may enable it explicitly in Settings.
+  platform = object: PlatformInterface {}
 }
 
 private fun windowsLoadRequiredLibs(libsTmpDir: File, vlcDir: File) {

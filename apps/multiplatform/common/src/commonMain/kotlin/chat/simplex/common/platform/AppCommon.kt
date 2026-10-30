@@ -69,7 +69,7 @@ enum class AppUpdatesChannel {
   val text: String
     get() = when (this) {
       DISABLED -> generalGetString(MR.strings.app_check_for_updates_disabled)
-      STABLE -> generalGetString(MR.strings.app_check_for_updates_stable)
-      BETA -> generalGetString(MR.strings.app_check_for_updates_beta)
+      STABLE -> generalGetString(MR.strings.qryptana_upstream_stable)
+      BETA -> generalGetString(MR.strings.qryptana_upstream_beta)
     }
 }

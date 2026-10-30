@@ -1136,6 +1136,10 @@
   <string name="app_check_for_updates_notice_desc">To review upstream SimpleX release notes, turn on periodic checking for Stable or Beta versions. This does not enable Qryptana updates.</string>
   <string name="app_check_for_updates_upstream_title">Upstream SimpleX release available for reference: %s</string>
   <string name="app_check_for_updates_upstream_only">This is an upstream SimpleX release note only. It is not a Qryptana release, and no Qryptana binary is offered here.</string>
+  <string name="qryptana_upstream_release_notes">Upstream SimpleX release notes</string>
+  <string name="qryptana_upstream_stable">Upstream stable</string>
+  <string name="qryptana_upstream_beta">Upstream beta</string>
+  <string name="qryptana_upstream_notes_description">Optional periodic checks contact GitHub for upstream SimpleX notes only. No Qryptana update or binary is offered.</string>
   <string name="app_check_for_updates_notice_disable">Disable</string>
 
   <string name="show_dev_options">Show:</string>

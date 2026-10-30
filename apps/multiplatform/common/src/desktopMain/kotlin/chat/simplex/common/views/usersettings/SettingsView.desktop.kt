@@ -1,5 +1,6 @@
 package chat.simplex.common.views.usersettings
 
+import SectionTextFooter
 import SectionView
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.padding
@@ -25,10 +26,11 @@ actual fun SettingsSectionApp(
     SettingsActionItem(painterResource(MR.images.ic_code), stringResource(MR.strings.settings_developer_tools), showSettingsModal { DeveloperView(withAuth) })
     val selectedChannel = remember { appPrefs.appUpdateChannel.state }
     val values = AppUpdatesChannel.entries.map { it to it.text }
-    ExposedDropDownSettingRow(stringResource(MR.strings.app_check_for_updates), values, selectedChannel) {
+    ExposedDropDownSettingRow(stringResource(MR.strings.qryptana_upstream_release_notes), values, selectedChannel) {
       appPrefs.appUpdateChannel.set(it)
       setupUpdateChecker()
     }
+    SectionTextFooter(stringResource(MR.strings.qryptana_upstream_notes_description))
     AppVersionItem(showVersion)
   }
 }

@@ -65,8 +65,6 @@ import java.time.format.DateTimeFormatter
 import java.time.format.FormatStyle
 import java.util.Date
 
-internal fun defaultAppUpdateChannel(): AppUpdatesChannel = AppUpdatesChannel.DISABLED
-
 typealias ChatCtrl = Long
 
 // version range that supports establishing direct connection with a group member (xGrpDirectInvVRange in core)
@@ -195,7 +193,7 @@ class AppPreferences {
   val showMuteProfileAlert = mkBoolPreference(SHARED_PREFS_SHOW_MUTE_PROFILE_ALERT, true)
   val showReportsInSupportChatAlert = mkBoolPreference(SHARED_PREFS_SHOW_REPORTS_IN_SUPPORT_CHAT_ALERT, true)
   val appLanguage = mkStrPreference(SHARED_PREFS_APP_LANGUAGE, null)
-  val appUpdateChannel = mkEnumPreference(SHARED_PREFS_APP_UPDATE_CHANNEL, defaultAppUpdateChannel()) { AppUpdatesChannel.entries.firstOrNull { it.name == this } }
+  val appUpdateChannel = appUpdateChannelPreference(settings)
   val appSkippedUpdate = mkStrPreference(SHARED_PREFS_APP_SKIPPED_UPDATE, "")
   val appUpdateNoticeShown = mkBoolPreference(SHARED_PREFS_APP_UPDATE_NOTICE_SHOWN, false)
 
@@ -381,6 +379,15 @@ class AppPreferences {
     )
 
   companion object {
+    // Construct the real persisted preference independently of unrelated app state.
+    internal fun appUpdateChannelPreference(store: Settings): SharedPreference<AppUpdatesChannel> = SharedPreference(
+      get = {
+        val saved = store.getString(SHARED_PREFS_APP_UPDATE_CHANNEL, "")
+        AppUpdatesChannel.entries.firstOrNull { it.name == saved } ?: AppUpdatesChannel.DISABLED
+      },
+      set = { store.putString(SHARED_PREFS_APP_UPDATE_CHANNEL, it.name) },
+    )
+
     const val SHARED_PREFS_ID = "chat.simplex.app.SIMPLEX_APP_PREFS"
     internal const val SHARED_PREFS_THEMES_ID = "chat.simplex.app.THEMES"
     private const val SHARED_PREFS_AUTO_RESTART_WORKER_VERSION = "AutoRestartWorkerVersion"

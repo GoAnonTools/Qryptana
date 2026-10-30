@@ -136,39 +136,6 @@ private fun updateButtonColor(): Color = if (appPlatform.isDesktop) QryptanaMeta
     @Composable
     private fun updateCancelColor(): Color = if (appPlatform.isDesktop) QryptanaMetal.textSupport else Color.Red
 
-      fun showAppUpdateNotice() {
-        AlertManager.shared.showAlertDialogButtonsColumn(
-          generalGetString(MR.strings.app_check_for_updates_notice_title),
-                                                         text = generalGetString(MR.strings.app_check_for_updates_notice_desc),
-                                                         buttons = {
-                                                           Column {
-                                                             SectionItemView({
-                                                               AlertManager.shared.hideAlert()
-                                                               appPrefs.appUpdateChannel.set(AppUpdatesChannel.STABLE)
-                                                               setupUpdateChecker()
-                                                             }) {
-                                                               Text(generalGetString(MR.strings.app_check_for_updates_stable), Modifier.fillMaxWidth(), textAlign = TextAlign.Center, color = updateButtonColor())
-                                                             }
-
-                                                             SectionItemView({
-                                                               AlertManager.shared.hideAlert()
-                                                               appPrefs.appUpdateChannel.set(AppUpdatesChannel.BETA)
-                                                               setupUpdateChecker()
-                                                             }) {
-                                                               Text(generalGetString(MR.strings.app_check_for_updates_beta), Modifier.fillMaxWidth(), textAlign = TextAlign.Center, color = updateButtonColor())
-                                                             }
-
-                                                             SectionItemView({
-                                                               AlertManager.shared.hideAlert()
-                                                               appPrefs.appUpdateChannel.set(AppUpdatesChannel.DISABLED)
-                                                             }) {
-                                                               Text(generalGetString(MR.strings.app_check_for_updates_notice_disable), Modifier.fillMaxWidth(), textAlign = TextAlign.Center, color = updateButtonColor())
-                                                             }
-                                                           }
-                                                         }
-        )
-      }
-
       private var updateCheckerJob: Job = Job()
         fun setupUpdateChecker() = withLongRunningApi {
           updateCheckerJob.cancel()
