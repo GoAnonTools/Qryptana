@@ -60,7 +60,6 @@ import chat.simplex.common.views.migration.MigrateToDeviceView
 import chat.simplex.common.views.migration.MigrationToState
 import chat.simplex.res.MR
 import dev.icerock.moko.resources.StringResource
-import java.io.File
 import java.net.URI
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.first
@@ -444,9 +443,10 @@ private fun QryptanaWelcomeContent(
   modifier: Modifier = Modifier
 ) {
   // Choreography: wordmark first, then the identity plaque assembles and settles,
-  // and only then does the copy introduce itself. Platforms without the plaque
-  // video (mobile) have nothing to wait for, so they start immediately.
-  var plaqueSettled by remember { mutableStateOf(!appPlatform.isDesktop) }
+  // and only then does the copy introduce itself. If the platform cannot load or
+  // play the clip, QryptanaIdentityReveal releases the copy on its timeout.
+  val revealMotionEnabled = remember { qryptanaIdentityRevealMotionEnabled() }
+  var plaqueSettled by remember { mutableStateOf(!revealMotionEnabled) }
   val logoReveal = rememberReveal(delayMs = 0, durationMs = 1100)
   val supportReveal = rememberReveal(delayMs = 1000, durationMs = 900, start = plaqueSettled)
   val actionsReveal = rememberReveal(delayMs = 1250, durationMs = 900, start = plaqueSettled)
@@ -454,7 +454,7 @@ private fun QryptanaWelcomeContent(
   // the "activation" moment. Runs once, then the mark is static.
   val wordmarkSweep = remember { Animatable(0f) }
   LaunchedEffect(plaqueSettled) {
-    if (plaqueSettled && appPlatform.isDesktop) {
+    if (plaqueSettled && revealMotionEnabled) {
       delay(500)
       wordmarkSweep.animateTo(1f, tween(2000, easing = FastOutSlowInEasing))
     }
@@ -551,7 +551,7 @@ private fun QryptanaWelcomeContent(
     Spacer(Modifier.height(if (appPlatform.isDesktop) 4.dp else 46.dp))
 
     // 2. Identity / invitation object (placeholder, unchanged design).
-    if (appPlatform.isDesktop) {
+    if ((appPlatform.isDesktop || appPlatform.isAndroid) && revealMotionEnabled) {
       // No card: no shadow, no clip, no border. The plaque is an object resting
       // in the scene; its edges dissolve into the app background (see
       // QryptanaIdentityReveal).
@@ -573,7 +573,7 @@ private fun QryptanaWelcomeContent(
         onSettled = { plaqueSettled = true }
       )
     } else {
-      InvitationPreviewCard()
+      InvitationPreviewCard(floating = false)
     }
     Spacer(Modifier.height(if (appPlatform.isDesktop) 26.dp else 58.dp))
 
@@ -650,19 +650,13 @@ private fun QryptanaWelcomeContent(
   }
 }
 
-private const val QRYPTANA_IDENTITY_REVEAL_RESOURCE = "videos/qryptana_identity_card_reveal.mp4"
+internal const val QRYPTANA_IDENTITY_REVEAL_RESOURCE = "videos/qryptana_identity_card_reveal.mp4"
 
-private fun qryptanaIdentityRevealUri(): URI? {
-  val videoFile = File(tmpDir, QRYPTANA_IDENTITY_REVEAL_RESOURCE)
-  if (!videoFile.exists()) {
-    videoFile.parentFile?.mkdirs()
-    val resource = object {}.javaClass.getResourceAsStream("/$QRYPTANA_IDENTITY_REVEAL_RESOURCE") ?: return null
-    resource.use { input ->
-      videoFile.outputStream().use { output -> input.copyTo(output) }
-    }
-  }
-  return videoFile.toURI()
-}
+internal expect fun qryptanaIdentityRevealUri(): URI?
+
+internal expect fun qryptanaIdentityRevealMotionEnabled(): Boolean
+
+internal expect fun qryptanaPrepareIdentityRevealPlayer(player: VideoPlayer)
 
 /** Width / height of the plaque clip (1280 x 714). The reveal box is sized from this, so the plaque scales with the window. */
 private const val QRYPTANA_REVEAL_ASPECT = 1280f / 714f
@@ -674,9 +668,9 @@ private const val QRYPTANA_TEXT_REVEAL_AT_MS = 8_800L
 private const val QRYPTANA_TEXT_REVEAL_TIMEOUT_MS = 12_500L
 
 /**
- * Desktop-only identity reveal surface. Playback is isolated from the
- * onboarding composition so it can later gain replay, audio, or platform
- * variants without changing the screen hierarchy.
+ * Desktop and Android identity reveal surface. Playback is isolated from the
+ * onboarding composition so it can later gain replay or platform variants
+ * without changing the screen hierarchy.
  *
  * The clip carries the app's own graphite as its background, and here its
  * four edges are feathered to transparent, so there is no visible frame, card
@@ -688,17 +682,21 @@ private const val QRYPTANA_TEXT_REVEAL_TIMEOUT_MS = 12_500L
 private fun QryptanaIdentityReveal(modifier: Modifier, onSettled: () -> Unit) {
   val uri = remember { qryptanaIdentityRevealUri() }
   val player = remember(uri) {
-    uri?.let {
-      VideoPlayerHolder.getOrCreate(
-        uri = it,
-        gallery = true,
-        defaultPreview = ImageBitmap(1, 1),
-                                    defaultDuration = 11_300L,
-                                    soundEnabled = false
-      )
+    uri?.let { revealUri ->
+      runCatching {
+        VideoPlayerHolder.getOrCreate(
+          uri = revealUri,
+          gallery = true,
+          defaultPreview = ImageBitmap(1, 1),
+          defaultDuration = 11_300L,
+          soundEnabled = false
+        ).also(::qryptanaPrepareIdentityRevealPlayer)
+      }.getOrNull()
     }
   }
-  var visible by remember { mutableStateOf(false) }
+  // A missing player shows the static card immediately; a valid player fades
+  // in once and is not restarted by ordinary recomposition.
+  var visible by remember(player) { mutableStateOf(player == null) }
   var settled by remember { mutableStateOf(false) }
   val alpha by animateFloatAsState(
     targetValue = if (visible) 1f else 0f,
@@ -779,7 +777,7 @@ private fun QryptanaIdentityReveal(modifier: Modifier, onSettled: () -> Unit) {
         )
       }
     ) {
-      if (player != null) {
+      if (player != null && !player.brokenVideo.value) {
         PlayerView(
           player = player,
           width = 620.dp,
@@ -789,6 +787,10 @@ private fun QryptanaIdentityReveal(modifier: Modifier, onSettled: () -> Unit) {
           modifier = Modifier.fillMaxSize(),
                    contentScale = ContentScale.Crop
         )
+      } else {
+        // Missing resources and decoder/player failures retain the authored
+        // mobile card instead of leaving an empty gap in onboarding.
+        InvitationPreviewCard(floating = false)
       }
     }
   }
@@ -804,7 +806,9 @@ private fun QryptanaIdentityReveal(modifier: Modifier, onSettled: () -> Unit) {
   LaunchedEffect(player) {
     if (player != null) {
       withTimeoutOrNull(QRYPTANA_TEXT_REVEAL_TIMEOUT_MS) {
-        snapshotFlow { player.progress.value >= QRYPTANA_TEXT_REVEAL_AT_MS }.first { it }
+        snapshotFlow {
+          player.progress.value >= QRYPTANA_TEXT_REVEAL_AT_MS || player.brokenVideo.value
+        }.first { it }
       }
     }
     settled = true
@@ -819,16 +823,20 @@ private fun QryptanaIdentityReveal(modifier: Modifier, onSettled: () -> Unit) {
 }
 
 @Composable
-private fun InvitationPreviewCard() {
-  val transition = rememberInfiniteTransition()
-  val floatOffset by transition.animateFloat(
-    initialValue = -3f,
-    targetValue = 3f,
-    animationSpec = infiniteRepeatable(
-      animation = tween(3600, easing = FastOutSlowInEasing),
-                                       repeatMode = RepeatMode.Reverse
-    )
-  )
+private fun InvitationPreviewCard(floating: Boolean = true) {
+  val floatOffset = if (floating) {
+    val transition = rememberInfiniteTransition()
+    transition.animateFloat(
+      initialValue = -3f,
+      targetValue = 3f,
+      animationSpec = infiniteRepeatable(
+        animation = tween(3600, easing = FastOutSlowInEasing),
+        repeatMode = RepeatMode.Reverse
+      )
+    ).value
+  } else {
+    0f
+  }
   val cardShape = RoundedCornerShape(24.dp)
   Box(
     contentAlignment = Alignment.Center,

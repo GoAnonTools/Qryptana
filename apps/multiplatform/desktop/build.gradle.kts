@@ -30,7 +30,7 @@ kotlin {
 // The identity reveal is an arbitrary runtime video, not an MR image.
 // Package it in the final desktop jar for classloader-based playback.
 tasks.named<ProcessResources>("jvmProcessResources") {
-  from(project(":common").file("src/commonMain/resources/MR/videos")) {
+  from(project(":common").file("src/commonMain/resources/assets/videos")) {
     into("videos")
   }
 }
