@@ -15,19 +15,15 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.colorspace.ColorSpaces
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.layout.layout
-import androidx.compose.ui.layout.onSizeChanged
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.Dp
-import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import chat.simplex.common.views.onboarding.QryptanaHairline
@@ -128,44 +124,35 @@ fun OnboardingCardView(
   title: String,
   subtitle: String? = null,
   labelHeightRatio: Float,
-  onClick: () -> Unit
+  onClick: () -> Unit,
+  androidStyle: Boolean = appPlatform.isAndroid,
 ) {
-  if (appPlatform.isDesktop) {
+  if (!androidStyle && appPlatform.isDesktop) {
     QryptanaOnboardingCard(icon, title, subtitle, labelHeightRatio, onClick)
     return
   }
-  val qryptanaDesktop = appPlatform.isDesktop
-  var imageAreaSize by remember { mutableStateOf(IntSize.Zero) }
+  QryptanaAndroidInvitationCard(imageName, imageNameLight, icon, title, subtitle, onClick)
+}
+
+/** Android invitation card: neutral titanium body, copper action glyph and no saturated colour wash. */
+@Composable
+internal fun QryptanaAndroidInvitationCard(
+  imageName: dev.icerock.moko.resources.ImageResource,
+  imageNameLight: dev.icerock.moko.resources.ImageResource,
+  icon: dev.icerock.moko.resources.ImageResource,
+  title: String,
+  subtitle: String?,
+  onClick: () -> Unit,
+) {
+  val shape = RoundedCornerShape(20.dp)
   val isDark = isInDarkTheme()
-  val stops = if (isDark) darkStops else lightStops
-  val scale = if (isDark) 1.5f else 1.2f
-
-  val brush = remember(imageAreaSize, isDark) {
-    if (imageAreaSize.width > 0 && imageAreaSize.height > 0) {
-      val aspect = imageAreaSize.height.toFloat() / imageAreaSize.width.toFloat()
-      val gp = gradientPoints(aspect, scale)
-      Brush.linearGradient(
-        colorStops = stops,
-        start = Offset(gp.startX * imageAreaSize.width, gp.startY * imageAreaSize.height),
-                           end = Offset(gp.endX * imageAreaSize.width, gp.endY * imageAreaSize.height)
-      )
-    } else {
-      Brush.linearGradient(colorStops = stops)
-    }
-  }
-
-  val labelBg = MaterialTheme.colors.background.mixWith(MaterialTheme.colors.onBackground, 0.97f)
-  .copy(alpha = appPrefs.inAppBarsAlpha.get())
-
+  val colors = MaterialTheme.colors
   Box(
     Modifier
     .fillMaxSize()
-    .border(
-      width = if (qryptanaDesktop) 1.dp else 0.dp,
-            color = if (qryptanaDesktop) QryptanaDarkBorder else Color.Transparent,
-            shape = RoundedCornerShape(24.dp)
-    )
-    .clip(RoundedCornerShape(24.dp))
+    .clip(shape)
+    .background(colors.surface)
+    .border(1.dp, colors.secondaryVariant, shape)
     .clickable(onClick = onClick)
   ) {
     Column(Modifier.fillMaxSize()) {
@@ -173,37 +160,42 @@ fun OnboardingCardView(
         Modifier
         .fillMaxWidth()
         .weight(1f)
-        .then(if (qryptanaDesktop) Modifier.background(QryptanaDarkSurface) else Modifier.background(brush))
-        .onSizeChanged { imageAreaSize = it }
-      ) {
-        if (qryptanaDesktop) {
-          Icon(
-            painterResource(icon),
-               contentDescription = null,
-               modifier = Modifier.size(64.dp).align(Alignment.Center),
-               tint = QryptanaCopperLight
+        .background(
+          Brush.verticalGradient(
+            listOf(
+              colors.surface,
+              colors.background.mixWith(colors.surface, if (isDark) 0.45f else 0.72f)
+            )
           )
-        } else if (BuildConfigCommon.SIMPLEX_ASSETS) {
+        ),
+        contentAlignment = Alignment.Center
+      ) {
+        if (BuildConfigCommon.SIMPLEX_ASSETS) {
           Image(
             painterResource(if (isDark) imageNameLight else imageName),
                 contentDescription = null,
                 contentScale = ContentScale.Fit,
-                modifier = Modifier.fillMaxSize()
+                modifier = Modifier.fillMaxSize().padding(12.dp)
           )
         } else {
-          Icon(
-            painterResource(icon),
-               contentDescription = null,
-               modifier = Modifier.size(64.dp).align(Alignment.Center),
-               tint = MaterialTheme.colors.primary
-          )
+          Box(
+            Modifier
+            .size(92.dp)
+            .clip(CircleShape)
+            .background(colors.background)
+            .border(1.dp, colors.secondaryVariant, CircleShape),
+            contentAlignment = Alignment.Center
+          ) {
+            Icon(painterResource(icon), contentDescription = null, modifier = Modifier.size(46.dp), tint = colors.primary)
+          }
         }
       }
+      Box(Modifier.fillMaxWidth().height(1.dp).background(colors.secondaryVariant))
       Box(
         Modifier
         .fillMaxWidth()
-        .aspectRatio(1f / labelHeightRatio)
-        .background(if (qryptanaDesktop) QryptanaDarkCard else labelBg),
+        .heightIn(min = 92.dp)
+        .padding(horizontal = 14.dp, vertical = 12.dp),
           contentAlignment = Alignment.Center
       ) {
         Column(
@@ -211,27 +203,36 @@ fun OnboardingCardView(
           verticalArrangement = Arrangement.spacedBy(6.dp)
         ) {
           Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-            if (qryptanaDesktop || BuildConfigCommon.SIMPLEX_ASSETS) {
+            if (BuildConfigCommon.SIMPLEX_ASSETS) {
               Icon(
                 painterResource(icon),
                    contentDescription = null,
                    modifier = Modifier.size(24.dp),
-                   tint = if (qryptanaDesktop) QryptanaCopperLight else MaterialTheme.colors.primary
+                   tint = colors.primary
               )
             }
             Text(
               title,
-              style = (if (appPlatform.isDesktop) MaterialTheme.typography.h3 else MaterialTheme.typography.h4).copy(fontWeight = FontWeight.Medium),
-                 color = if (qryptanaDesktop) QryptanaDarkText else MaterialTheme.colors.onBackground,
-                 maxLines = 1,
+              style = MaterialTheme.typography.subtitle1.copy(
+                fontWeight = FontWeight.SemiBold,
+                fontSize = 18.sp,
+                lineHeight = 22.sp,
+              ),
+                 color = colors.onSurface,
+                 textAlign = TextAlign.Center,
+                 maxLines = 3,
                  overflow = TextOverflow.Ellipsis
             )
           }
           if (subtitle != null) {
             Text(
               subtitle,
-              style = if (appPlatform.isDesktop) MaterialTheme.typography.body1 else MaterialTheme.typography.body2,
-                 color = if (qryptanaDesktop) QryptanaDarkSecondary else MaterialTheme.colors.onBackground.copy(alpha = 0.7f)
+              style = MaterialTheme.typography.body2,
+                 color = colors.secondary,
+                 textAlign = TextAlign.Center,
+                 lineHeight = 18.sp,
+                 maxLines = 3,
+                 overflow = TextOverflow.Ellipsis
             )
           }
         }

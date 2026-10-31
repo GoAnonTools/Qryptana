@@ -30,30 +30,79 @@ class ThemesTest {
   }
 
   @Test
-  fun mobilePalettesMatchUpstreamBeforeRebrand() {
-    // Independent expected values from 423c8c0's Color.kt / Theme.kt, including
-    // Material lightColors/darkColors defaults, not the current shared aliases.
+  fun androidPalettesMapSemanticRolesAndRemainDistinct() {
+    val roles = listOf(
+      QryptanaAndroidThemeRoles.light,
+      QryptanaAndroidThemeRoles.dark,
+      QryptanaAndroidThemeRoles.simplex,
+      QryptanaAndroidThemeRoles.black,
+    )
     val palettes = listOf(
       ThemeDefaults.lightPalette(false) to ThemeDefaults.lightAppPalette(false),
       ThemeDefaults.darkPalette(false) to ThemeDefaults.darkAppPalette(false),
       ThemeDefaults.simplexPalette(false) to ThemeDefaults.simplexAppPalette(false),
       ThemeDefaults.blackPalette(false) to ThemeDefaults.blackAppPalette(false),
     )
-    val expected = listOf(
-      listOf(0xFF0088FF, 0xFF0088FF, 0xFF8B8786, 0xFFF1F2F6, 0xFFFFFFFF, 0xFFFFFFFF, 0xFF000000, 0xFF000000,
-        0xFF0088FF, 0xFFE9F7FF, 0xFFE9F7FF, 0xFFD6F0FF, 0xFFF5F5F6, 0xFFECECEE),
-      listOf(0xFF0088FF, 0xFF0088FF, 0xFF8B8786, 0xFF2B2C2E, 0xFF121212, 0xFF222222, 0xFFFFFBFA, 0xFFFFFBFA,
-        0xFF0088FF, 0xFF18262E, 0xFF18262E, 0xFF1D3847, 0xFF262627, 0xFF373739),
-      listOf(0xFF70F0F9, 0xFF1298A5, 0xFF8B8786, 0xFF2C464D, 0xFF111528, 0xFF121C37, 0xFFFFFFFF, 0xFFFFFFFF,
-        0xFF267BE5, 0xFF172941, 0xFF172941, 0xFF1C3A57, 0xFF25283A, 0xFF36394A),
-      listOf(0xFF0077E0, 0xFF0077E0, 0xFF8B8786, 0xFF2B2C2E, 0xFF070707, 0xFF161617, 0xFFFFFBFA, 0xFFFFFBFA,
-        0xFF0077E0, 0xFF243747, 0xFF18262E, 0xFF1D3847, 0xFF1B1B1B, 0xFF29292B),
-    )
-    palettes.forEachIndexed { index, (colors, app) ->
-      assertEquals(expected[index].map { Color(it) }, paletteValues(colors, app), "Mobile palette $index")
+    palettes.zip(roles).forEachIndexed { index, (pair, role) ->
+      val (colors, app) = pair
+      assertEquals(role.actionText, colors.primary)
+      assertEquals(role.filledControl, colors.primaryVariant)
+      assertEquals(role.secondaryText, colors.secondary)
+      assertEquals(role.structuralBorder, colors.secondaryVariant)
+      assertEquals(role.background, colors.background)
+      assertEquals(role.surface, colors.surface)
+      assertEquals(role.body, colors.onBackground)
+      assertEquals(role.body, colors.onSurface)
+      assertEquals(role.error, colors.error)
+      assertEquals(role.heading, app.title)
+      assertEquals(role.sentMessage, app.sentMessage)
+      assertEquals(role.receivedMessage, app.receivedMessage)
       assertEquals(index == 0, colors.isLight)
-      assertEquals(Color.Red, colors.error)
     }
+    assertEquals(4, palettes.map { paletteValues(it.first, it.second) }.distinct().size)
+  }
+
+  @Test
+  fun androidSemanticRolesMeetEnabledContrastTargets() {
+    listOf(
+      QryptanaAndroidThemeRoles.light,
+      QryptanaAndroidThemeRoles.dark,
+      QryptanaAndroidThemeRoles.simplex,
+      QryptanaAndroidThemeRoles.black,
+    ).forEach { role ->
+      assertContrastAtLeast(role.heading, role.background, 4.5, "heading/background")
+      assertContrastAtLeast(role.body, role.background, 4.5, "body/background")
+      assertContrastAtLeast(role.secondaryText, role.background, 4.5, "secondary/background")
+      assertContrastAtLeast(role.actionText, role.background, 4.5, "action/background")
+      assertContrastAtLeast(role.actionText, role.surface, 4.5, "action/surface")
+      assertContrastAtLeast(role.onFilledControl, role.filledControl, 4.5, "filled-control foreground")
+      assertContrastAtLeast(role.onFilledControl, role.actionText, 4.5, "Material primary-button foreground")
+      assertContrastAtLeast(role.filledControl, role.surface, 3.0, "filled control/surface")
+      assertContrastAtLeast(role.structuralBorder, role.surface, 3.0, "border/surface")
+      assertContrastAtLeast(role.error, role.background, 4.5, "error/background")
+      kotlin.test.assertNotEquals(role.error, role.actionText)
+      kotlin.test.assertNotEquals(SimplexGreen, role.actionText)
+      kotlin.test.assertNotEquals(WarningOrange, role.actionText)
+    }
+  }
+
+  private fun assertContrastAtLeast(foreground: Color, background: Color, minimum: Double, role: String) {
+    val ratio = contrastRatio(foreground, background)
+    kotlin.test.assertTrue(ratio >= minimum, "$role contrast $ratio is below $minimum")
+  }
+
+  private fun contrastRatio(a: Color, b: Color): Double {
+    val l1 = relativeLuminance(a)
+    val l2 = relativeLuminance(b)
+    return (maxOf(l1, l2) + 0.05) / (minOf(l1, l2) + 0.05)
+  }
+
+  private fun relativeLuminance(color: Color): Double {
+    fun linear(channel: Float): Double {
+      val c = channel.toDouble()
+      return if (c <= 0.04045) c / 12.92 else Math.pow((c + 0.055) / 1.055, 2.4)
+    }
+    return 0.2126 * linear(color.red) + 0.7152 * linear(color.green) + 0.0722 * linear(color.blue)
   }
 
   private fun paletteValues(c: Colors, a: AppColors) = listOf(

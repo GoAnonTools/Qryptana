@@ -3220,7 +3220,7 @@
 <string name="smart_invite_scan">Scan an invite</string>
 <string name="smart_invite_paste">Paste an invite</string>
 <string name="qryptana_source_code">Qryptana source code</string>
-<string name="qryptana_desktop_theme_description">Qryptana desktop uses one black-titanium finish. Mobile keeps the original SimpleX palettes while the Qryptana mobile theme rollout is evaluated.</string>
+<string name="qryptana_desktop_theme_description">Qryptana desktop uses one black-titanium finish. Android follows system or user selection with warm Light, charcoal Dark, cool Titanium and Black copper presets; custom themes remain available.</string>
 <string name="app_check_for_updates_upstream_title">Upstream SimpleX release available for reference: %s</string>
 <string name="app_check_for_updates_upstream_only">This is an upstream SimpleX release note only. It is not a Qryptana release, and no Qryptana binary is offered here.</string>
 <string name="qryptana_upstream_release_notes">Upstream SimpleX release notes</string>

@@ -668,6 +668,43 @@ object ThemeDefaults {
     else if (savedTheme != DefaultTheme.SYSTEM_THEME_NAME) savedTheme
     else if (systemDark) savedDarkTheme else DefaultTheme.LIGHT.themeName
 
+private fun androidPalette(roles: QryptanaAndroidColorRoles, light: Boolean) = if (light) lightColors(
+  primary = roles.actionText,
+  primaryVariant = roles.filledControl,
+  secondary = roles.secondaryText,
+  secondaryVariant = roles.structuralBorder,
+  background = roles.background,
+  surface = roles.surface,
+  error = roles.error,
+  onPrimary = roles.onFilledControl,
+  onSecondary = roles.heading,
+  onBackground = roles.body,
+  onSurface = roles.body,
+  onError = roles.onError,
+) else darkColors(
+  primary = roles.actionText,
+  primaryVariant = roles.filledControl,
+  secondary = roles.secondaryText,
+  secondaryVariant = roles.structuralBorder,
+  background = roles.background,
+  surface = roles.surface,
+  error = roles.error,
+  onPrimary = roles.onFilledControl,
+  onSecondary = roles.heading,
+  onBackground = roles.body,
+  onSurface = roles.body,
+  onError = roles.onError,
+)
+
+private fun androidAppPalette(roles: QryptanaAndroidColorRoles) = AppColors(
+  title = roles.heading,
+  primaryVariant2 = roles.surface,
+  sentMessage = roles.sentMessage,
+  sentQuote = roles.sentQuote,
+  receivedMessage = roles.receivedMessage,
+  receivedQuote = roles.receivedQuote,
+)
+
 fun darkPalette(isDesktop: Boolean) = if (isDesktop) darkColors(
   primary = QryptanaCopper,
   primaryVariant = QryptanaCopperLight,
@@ -679,16 +716,7 @@ fun darkPalette(isDesktop: Boolean) = if (isDesktop) darkColors(
   onPrimary = QryptanaDarkBackground,
   onBackground = QryptanaDarkText,
   onSurface = QryptanaDarkText,
-) else darkColors(
-  primary = UpstreamSimplexBlue,
-  primaryVariant = UpstreamSimplexBlue,
-  secondary = HighOrLowlight,
-  secondaryVariant = DarkGray,
-  surface = Color(0xFF222222),
-  error = Color.Red,
-  onBackground = Color(0xFFFFFBFA),
-  onSurface = Color(0xFFFFFBFA),
-  )
+) else androidPalette(QryptanaAndroidThemeRoles.dark, light = false)
 fun darkAppPalette(isDesktop: Boolean) = if (isDesktop) AppColors(
   title = QryptanaCopperLight,
   primaryVariant2 = QryptanaDarkCard,
@@ -696,14 +724,7 @@ fun darkAppPalette(isDesktop: Boolean) = if (isDesktop) AppColors(
                                        sentQuote = Color(0xFF4A3428),
                                        receivedMessage = QryptanaDarkCard,
                                        receivedQuote = Color(0xFF332F2B),
-) else AppColors(
-  title = UpstreamSimplexBlue,
-  primaryVariant2 = Color(0xFF18262E),
-  sentMessage = Color(0xFF18262E),
-  sentQuote = Color(0xFF1D3847),
-  receivedMessage = Color(0xff262627),
-  receivedQuote = Color(0xff373739),
-  )
+) else androidAppPalette(QryptanaAndroidThemeRoles.dark)
 
 fun lightPalette(isDesktop: Boolean) = if (isDesktop) lightColors(
   primary = QryptanaCopperDark,
@@ -717,14 +738,7 @@ fun lightPalette(isDesktop: Boolean) = if (isDesktop) lightColors(
                                     onSecondary = QryptanaLightText,
                                     onBackground = QryptanaLightText,
                                     onSurface = QryptanaLightText,
- ) else lightColors(
-  primary = UpstreamSimplexBlue,
-  primaryVariant = UpstreamSimplexBlue,
-  secondary = HighOrLowlight,
-  secondaryVariant = LightGray,
-  error = Color.Red,
-  surface = Color.White,
-  )
+ ) else androidPalette(QryptanaAndroidThemeRoles.light, light = true)
 fun lightAppPalette(isDesktop: Boolean) = if (isDesktop) AppColors(
   title = QryptanaCopperDark,
   primaryVariant2 = QryptanaLightCard,
@@ -732,14 +746,7 @@ fun lightAppPalette(isDesktop: Boolean) = if (isDesktop) AppColors(
                                      sentQuote = Color(0xFFEBD0BE),
                                      receivedMessage = Color(0xFFFFFBF5),
                                      receivedQuote = Color(0xFFF1E9DF),
-) else AppColors(
-  title = UpstreamSimplexBlue,
-  primaryVariant2 = Color(0xFFE9F7FF),
-  sentMessage = Color(0xFFE9F7FF),
-  sentQuote = Color(0xFFD6F0FF),
-  receivedMessage = Color(0xfff5f5f6),
-  receivedQuote = Color(0xffececee),
-  )
+) else androidAppPalette(QryptanaAndroidThemeRoles.light)
 
 fun simplexPalette(isDesktop: Boolean) = if (isDesktop) darkColors(
   primary = QryptanaCopperLight,
@@ -752,15 +759,7 @@ fun simplexPalette(isDesktop: Boolean) = if (isDesktop) darkColors(
   onPrimary = QryptanaDarkBackground,
   onBackground = QryptanaDarkText,
   onSurface = QryptanaDarkText,
-) else darkColors(
-  primary = Color(0xFF70F0F9),
-  primaryVariant = Color(0xFF1298A5),
-  secondary = HighOrLowlight,
-  secondaryVariant = Color(0xFF2C464D),
-  background = Color(0xFF111528),
-  surface = Color(0xFF121C37),
-  error = Color.Red,
-  )
+) else androidPalette(QryptanaAndroidThemeRoles.simplex, light = false)
 fun simplexAppPalette(isDesktop: Boolean) = if (isDesktop) AppColors(
   title = QryptanaCopperLight,
   primaryVariant2 = QryptanaDarkCard,
@@ -768,17 +767,10 @@ fun simplexAppPalette(isDesktop: Boolean) = if (isDesktop) AppColors(
                                        sentQuote = Color(0xFF4A3428),
                                        receivedMessage = QryptanaDarkCard,
                                        receivedQuote = Color(0xFF332F2B),
-) else AppColors(
-  title = Color(0xFF267BE5),
-  primaryVariant2 = Color(0xFF172941),
-  sentMessage = Color(0xFF172941),
-  sentQuote = Color(0xFF1C3A57),
-  receivedMessage = Color(0xff25283a),
-  receivedQuote = Color(0xff36394a),
-  )
+) else androidAppPalette(QryptanaAndroidThemeRoles.simplex)
 
 // On desktop this is the Qryptana black-titanium palette (ThemeManager always selects it there).
-// Mobile keeps the original BLACK palette.
+// Android exposes the same identity as a separately tuned mobile preset.
 fun blackPalette(isDesktop: Boolean) = if (isDesktop) darkColors(
   primary = QryptanaMetal.copperLight,
   primaryVariant = QryptanaMetal.copperMid,
@@ -790,17 +782,7 @@ fun blackPalette(isDesktop: Boolean) = if (isDesktop) darkColors(
   onPrimary = QryptanaMetal.void,
   onBackground = QryptanaMetal.textBright,
   onSurface = QryptanaMetal.textBright,
-) else darkColors(
-  primary = Color(0xff0077e0),
-  primaryVariant = Color(0xff0077e0),
-  secondary = HighOrLowlight,
-  secondaryVariant = DarkGray,
-  background = Color(0xff070707),
-  surface = Color(0xff161617),
-  error = Color.Red,
-  onBackground = Color(0xFFFFFBFA),
-  onSurface = Color(0xFFFFFBFA),
-  )
+) else androidPalette(QryptanaAndroidThemeRoles.black, light = false)
 fun blackAppPalette(isDesktop: Boolean) = if (isDesktop) AppColors(
   title = QryptanaMetal.copperLight,
   primaryVariant2 = QryptanaMetal.titaniumMid,
@@ -808,14 +790,7 @@ fun blackAppPalette(isDesktop: Boolean) = if (isDesktop) AppColors(
                                                                 sentQuote = Color(0xFF3A3530),
                                                                 receivedMessage = Color(0xFF1B1A18),
                                                                 receivedQuote = Color(0xFF262421),
-) else AppColors(
-  title = Color(0xff0077e0),
-  primaryVariant2 = Color(0xff243747),
-  sentMessage = Color(0xFF18262E),
-  sentQuote = Color(0xFF1D3847),
-  receivedMessage = Color(0xff1b1b1b),
-  receivedQuote = Color(0xff29292b),
-  )
+) else androidAppPalette(QryptanaAndroidThemeRoles.black)
 }
 
 val DarkColorPalette = ThemeDefaults.darkPalette(appPlatform.isDesktop)

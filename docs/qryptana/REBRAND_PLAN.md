@@ -49,7 +49,7 @@ Status: partially complete
 - Remove upstream download links from Qryptana marketing.
 - Define Qryptana-supported platforms explicitly before release.
 
-The current decision is desktop-first Labs scope: desktop retains copper/titanium and forced BLACK. The mobile base palettes use values verified against initial snapshot `423c8c0`; the corrective pass fixes the Light/Dark copper alias missed by `51ca731`. This is not a complete undo of mobile branding or a wallpaper change. Android copper remains deferred. See [ADR 0001](adr/0001-theme-scope.md). The historical range `006ea4d..2121b84` describes pre-remediation branding, not current acceptance evidence.
+The current decision keeps desktop copper/titanium and forced BLACK while authorizing a complete semantic copper/titanium rollout on Android. Android continues to honor system/user selection, named Light/Dark/SimpleX/Black presets and custom overrides; wallpapers are unchanged. See [ADR 0001](adr/0001-theme-scope.md). The earlier stock-palette remediation and historical range `006ea4d..2121b84` remain history, not the current design acceptance rule.
 
 ## Phase 5 — Self-hosted server path
 

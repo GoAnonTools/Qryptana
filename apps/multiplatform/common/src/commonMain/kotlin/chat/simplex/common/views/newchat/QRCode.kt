@@ -57,6 +57,7 @@ fun SimpleXCreatedLinkQRCode(
                              tintColor: Color = Color(0xff062d56),
                              withLogo: Boolean = true,
                              onShare: (() -> Unit)? = null,
+  androidStyle: Boolean = appPlatform.isAndroid,
 ) {
   QRCode(
     connLink.simplexChatUri(short),
@@ -67,6 +68,7 @@ fun SimpleXCreatedLinkQRCode(
          withLogo,
          branded = true,
          onShare,
+         androidStyle,
   )
 }
 
@@ -78,6 +80,7 @@ fun SimpleXLinkQRCode(
                       tintColor: Color = Color(0xff062d56),
                       withLogo: Boolean = true,
                       onShare: (() -> Unit)? = null,
+  androidStyle: Boolean = appPlatform.isAndroid,
 ) {
   QRCode(
     simplexChatLink(connReq),
@@ -88,6 +91,7 @@ fun SimpleXLinkQRCode(
          withLogo,
          branded = true,
          onShare,
+         androidStyle,
   )
 }
 
@@ -101,6 +105,7 @@ fun QRCode(
            withLogo: Boolean = true,
            branded: Boolean = false,
            onShare: (() -> Unit)? = null,
+           androidStyle: Boolean = appPlatform.isAndroid,
 ) {
   val scope = rememberCoroutineScope()
   var revealed by remember(connReq) { mutableStateOf(false) }
@@ -122,10 +127,15 @@ fun QRCode(
   val logoSize = if (small) 0.21f else 0.16f
   val errorLevel = if (small) QrCode.ErrorLevel.M else QrCode.ErrorLevel.L
   // Desktop smart invite: modules are near-black and the light areas are multiplied onto an engraved copper plate
-  val copperPlaque = branded && appPlatform.isDesktop
-  val tintColor = if (copperPlaque) QryptanaMetal.void else tintColor
-  val qr = remember(connReq, tintColor, withLogo) {
-    qrCodeBitmap(connReq, 1024, errorLevel).replaceColor(Color.Black.toArgb(), tintColor.toArgb())
+  val copperPlaque = branded && appPlatform.isDesktop && !androidStyle
+  val androidSmartInvite = branded && androidStyle
+  val resolvedTint = when {
+    copperPlaque -> QryptanaMetal.void
+    androidSmartInvite -> Color(0xFF11100F)
+    else -> tintColor
+  }
+  val qr = remember(connReq, resolvedTint, withLogo) {
+    qrCodeBitmap(connReq, 1024, errorLevel).replaceColor(Color.Black.toArgb(), resolvedTint.toArgb())
     .let { if (withLogo) it.addLogo(logoSize) else it }
   }
   val isLightTheme = MaterialTheme.colors.isLight
@@ -139,7 +149,7 @@ fun QRCode(
                          pulse = foilPulse,
                          onClick = {
                            scope.launch {
-                             val image = qrCodeBitmap(connReq, 1024, errorLevel).replaceColor(Color.Black.toArgb(), tintColor.toArgb())
+                             val image = qrCodeBitmap(connReq, 1024, errorLevel).replaceColor(Color.Black.toArgb(), resolvedTint.toArgb())
                              .let { if (withLogo) it.addLogo(logoSize) else it }
                              val file = saveTempImageUncompressed(image, true)
                              if (file != null) {
@@ -148,6 +158,28 @@ fun QRCode(
                              }
                            }
                          }
+    )
+    return
+  }
+  if (androidSmartInvite) {
+    QryptanaAndroidSmartInvite(
+      qr = qr,
+      contentDescription = stringResource(MR.strings.image_descr_qr_code),
+      title = stringResource(MR.strings.smart_invite_title),
+      hint = stringResource(MR.strings.smart_invite_scan_hint),
+      revealAlpha = revealAlpha,
+      small = small,
+      onClick = {
+        scope.launch {
+          val image = qrCodeBitmap(connReq, 1024, errorLevel).replaceColor(Color.Black.toArgb(), resolvedTint.toArgb())
+            .let { if (withLogo) it.addLogo(logoSize) else it }
+          val file = saveTempImageUncompressed(image, true)
+          if (file != null) {
+            shareFile("", CryptoFile.plain(file.absolutePath))
+            onShare?.invoke()
+          }
+        }
+      }
     )
     return
   }
@@ -223,6 +255,89 @@ fun QRCode(
           Text(stringResource(MR.strings.smart_invite_scan_hint), Modifier.padding(bottom = DEFAULT_PADDING_HALF), color = MaterialTheme.colors.secondary)
         }
       }
+    }
+  }
+}
+
+/**
+ * Android Smart Invite keeps the QR itself conventional and high contrast.
+ * Copper belongs to the heading/action role; the surrounding card is a quiet
+ * titanium surface with a single neutral border and resilient wrapping.
+ */
+@Composable
+internal fun QryptanaAndroidSmartInvite(
+  qr: ImageBitmap,
+  contentDescription: String,
+  title: String,
+  hint: String,
+  revealAlpha: Float,
+  small: Boolean,
+  onClick: () -> Unit,
+) {
+  val shape = RoundedCornerShape(18.dp)
+  val qrShape = RoundedCornerShape(12.dp)
+  Box(
+    Modifier.fillMaxWidth().padding(horizontal = DEFAULT_PADDING),
+    contentAlignment = Alignment.Center
+  ) {
+    Column(
+      Modifier
+      .widthIn(max = 400.dp)
+      .fillMaxWidth()
+      .clip(shape)
+      .background(MaterialTheme.colors.surface)
+      .border(1.dp, MaterialTheme.colors.secondaryVariant, shape)
+      .padding(16.dp),
+      horizontalAlignment = Alignment.CenterHorizontally,
+      verticalArrangement = Arrangement.spacedBy(14.dp)
+    ) {
+      Row(
+        Modifier.fillMaxWidth(),
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.spacedBy(10.dp)
+      ) {
+        Image(
+          painterResource(MR.images.qryptana_symbol),
+          stringResource(MR.strings.qryptana_logo_description),
+          Modifier.size(24.dp)
+        )
+        Text(
+          title,
+          modifier = Modifier.weight(1f),
+          style = MaterialTheme.typography.subtitle1,
+          color = MaterialTheme.colors.primary,
+          maxLines = 2,
+        )
+      }
+      Box(
+        Modifier
+        .fillMaxWidth(if (small) 0.82f else 1f)
+        .aspectRatio(1f)
+        .clip(qrShape)
+        .background(Color.White)
+        .border(1.dp, Color(0xFF6B655F), qrShape)
+        .padding(12.dp),
+        contentAlignment = Alignment.Center
+      ) {
+        Image(
+          bitmap = qr,
+          contentDescription = contentDescription,
+          modifier = Modifier
+          .fillMaxSize()
+          .alpha(revealAlpha)
+          .semantics { role = Role.Button }
+          .clickable(onClick = onClick),
+          filterQuality = FilterQuality.None,
+        )
+      }
+      Text(
+        hint,
+        modifier = Modifier.fillMaxWidth().padding(horizontal = 4.dp),
+        color = MaterialTheme.colors.secondary,
+        style = MaterialTheme.typography.body2,
+        lineHeight = 20.sp,
+        textAlign = TextAlign.Center,
+      )
     }
   }
 }
