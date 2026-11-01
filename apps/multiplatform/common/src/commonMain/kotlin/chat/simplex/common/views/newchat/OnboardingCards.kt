@@ -144,100 +144,33 @@ internal fun QryptanaAndroidInvitationCard(
   subtitle: String?,
   onClick: () -> Unit,
 ) {
-  val shape = RoundedCornerShape(20.dp)
-  val isDark = isInDarkTheme()
   val colors = MaterialTheme.colors
+  val iconBrush = Brush.verticalGradient(
+    listOf(QryptanaAndroidThemeRoles.dark.copperHighlight, QryptanaAndroidThemeRoles.dark.copperBody, QryptanaAndroidThemeRoles.dark.copperShadow)
+  )
   Box(
     Modifier
     .fillMaxSize()
-    .clip(shape)
+    .clip(RoundedCornerShape(14.dp))
     .background(colors.surface)
-    .border(1.dp, colors.secondaryVariant, shape)
     .clickable(onClick = onClick)
   ) {
-    Column(Modifier.fillMaxSize()) {
-      Box(
-        Modifier
-        .fillMaxWidth()
-        .weight(1f)
-        .background(
-          Brush.verticalGradient(
-            listOf(
-              colors.surface,
-              colors.background.mixWith(colors.surface, if (isDark) 0.45f else 0.72f)
-            )
-          )
-        ),
-        contentAlignment = Alignment.Center
-      ) {
-        if (BuildConfigCommon.SIMPLEX_ASSETS) {
-          Image(
-            painterResource(if (isDark) imageNameLight else imageName),
-                contentDescription = null,
-                contentScale = ContentScale.Fit,
-                modifier = Modifier.fillMaxSize().padding(12.dp)
-          )
-        } else {
-          Box(
-            Modifier
-            .size(92.dp)
-            .clip(CircleShape)
-            .background(colors.background)
-            .border(1.dp, colors.secondaryVariant, CircleShape),
-            contentAlignment = Alignment.Center
-          ) {
-            Icon(painterResource(icon), contentDescription = null, modifier = Modifier.size(46.dp), tint = colors.primary)
-          }
-        }
+    Row(
+      Modifier.fillMaxWidth().heightIn(min = 100.dp).padding(horizontal = 18.dp, vertical = 16.dp),
+      verticalAlignment = Alignment.CenterVertically,
+      horizontalArrangement = Arrangement.spacedBy(16.dp)
+    ) {
+      Icon(painterResource(icon), null, Modifier.size(28.dp), tint = colors.primary)
+      Text(
+        title,
+        Modifier.weight(1f),
+        style = MaterialTheme.typography.subtitle1.copy(fontWeight = FontWeight.Medium),
+        color = colors.onSurface,
+        maxLines = 3,
+        overflow = TextOverflow.Ellipsis
+      )
+      Icon(painterResource(MR.images.ic_chevron_right), null, Modifier.size(20.dp), tint = colors.secondary)
       }
-      Box(Modifier.fillMaxWidth().height(1.dp).background(colors.secondaryVariant))
-      Box(
-        Modifier
-        .fillMaxWidth()
-        .heightIn(min = 92.dp)
-        .padding(horizontal = 14.dp, vertical = 12.dp),
-          contentAlignment = Alignment.Center
-      ) {
-        Column(
-          horizontalAlignment = Alignment.CenterHorizontally,
-          verticalArrangement = Arrangement.spacedBy(6.dp)
-        ) {
-          Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-            if (BuildConfigCommon.SIMPLEX_ASSETS) {
-              Icon(
-                painterResource(icon),
-                   contentDescription = null,
-                   modifier = Modifier.size(24.dp),
-                   tint = colors.primary
-              )
-            }
-            Text(
-              title,
-              style = MaterialTheme.typography.subtitle1.copy(
-                fontWeight = FontWeight.SemiBold,
-                fontSize = 18.sp,
-                lineHeight = 22.sp,
-              ),
-                 color = colors.onSurface,
-                 textAlign = TextAlign.Center,
-                 maxLines = 3,
-                 overflow = TextOverflow.Ellipsis
-            )
-          }
-          if (subtitle != null) {
-            Text(
-              subtitle,
-              style = MaterialTheme.typography.body2,
-                 color = colors.secondary,
-                 textAlign = TextAlign.Center,
-                 lineHeight = 18.sp,
-                 maxLines = 3,
-                 overflow = TextOverflow.Ellipsis
-            )
-          }
-        }
-      }
-    }
   }
 }
 

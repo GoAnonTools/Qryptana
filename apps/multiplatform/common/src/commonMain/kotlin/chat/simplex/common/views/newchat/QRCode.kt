@@ -286,7 +286,7 @@ internal fun QryptanaAndroidSmartInvite(
       .fillMaxWidth()
       .clip(shape)
       .background(MaterialTheme.colors.surface)
-      .border(1.dp, MaterialTheme.colors.secondaryVariant, shape)
+      .border(0.5.dp, MaterialTheme.colors.secondaryVariant, shape)
       .padding(16.dp),
       horizontalAlignment = Alignment.CenterHorizontally,
       verticalArrangement = Arrangement.spacedBy(14.dp)
@@ -305,7 +305,7 @@ internal fun QryptanaAndroidSmartInvite(
           title,
           modifier = Modifier.weight(1f),
           style = MaterialTheme.typography.subtitle1,
-          color = MaterialTheme.colors.primary,
+          color = MaterialTheme.colors.onSurface,
           maxLines = 2,
         )
       }
