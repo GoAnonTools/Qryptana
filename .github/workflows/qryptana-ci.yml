@@ -36,12 +36,12 @@ jobs:
 
       - name: Compile desktop Kotlin
         working-directory: apps/multiplatform
-        run: ./gradlew :common:compileKotlinDesktop --no-daemon --max-workers=1 --no-parallel -Dorg.gradle.jvmargs="-Xmx1536m -XX:MaxMetaspaceSize=512m -Dfile.encoding=UTF-8" -Pkotlin.compiler.execution.strategy=in-process
+        run: ./gradlew :common:compileKotlinDesktop --no-daemon --max-workers=1 --no-parallel -Dorg.gradle.jvmargs="-Xmx4g -XX:MaxMetaspaceSize=512m -Dfile.encoding=UTF-8" -Pkotlin.compiler.execution.strategy=in-process
 
       - name: Run desktop tests
         working-directory: apps/multiplatform
-        run: ./gradlew :common:desktopTest --no-daemon --max-workers=1 --no-parallel -Dorg.gradle.jvmargs="-Xmx1536m -XX:MaxMetaspaceSize=512m -Dfile.encoding=UTF-8" -Pkotlin.compiler.execution.strategy=in-process
+        run: ./gradlew :common:desktopTest --no-daemon --max-workers=1 --no-parallel -Dorg.gradle.jvmargs="-Xmx4g -XX:MaxMetaspaceSize=512m -Dfile.encoding=UTF-8" -Pkotlin.compiler.execution.strategy=in-process
 
       - name: Compile Android Kotlin
         working-directory: apps/multiplatform
-        run: ./gradlew :android:compileFossDebugKotlin --no-daemon --max-workers=1 --no-parallel -Dorg.gradle.jvmargs="-Xmx1536m -XX:MaxMetaspaceSize=512m -Dfile.encoding=UTF-8" -Pkotlin.compiler.execution.strategy=in-process
+        run: ./gradlew :android:compileFossDebugKotlin --no-daemon --max-workers=1 --no-parallel -Dorg.gradle.jvmargs="-Xmx4g -XX:MaxMetaspaceSize=512m -Dfile.encoding=UTF-8" -Pkotlin.compiler.execution.strategy=in-process
