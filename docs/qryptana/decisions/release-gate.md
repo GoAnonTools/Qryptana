@@ -18,7 +18,9 @@ Options: (A) keep local development checkpoint; (B) internal unsigned test distr
 
 Technical gates: exact ancestry/tree-equivalence evidence; stable-target metadata/tag hash; completed merge with reviewed integration conflicts; all three required Gradle checks and test counts at the final implementation hash; upstream protocol source/dependency provenance; compatible native core/JNI libraries; Android device, desktop runtime, packaging, ICNS and notifications; upgrade/import/export and rollback validation. No production code may hide missing native dependencies.
 
-Behavior gates: desktop forced BLACK copper/titanium; selected upstream stock mobile palettes; disabled update preference and no upstream binaries; null support hiding; retained IDs; dispatch-only inherited website deployment; unchanged intended wallpaper; original assets/licenses. Review new upstream crowdfunding/news/store/support UI for truthful product boundaries.
+Behavior gates: desktop forced BLACK copper/titanium; Android semantic copper/titanium palettes with retained system/user/custom selection; disabled update preference and no upstream binaries; null support hiding; retained IDs; dispatch-only inherited website deployment; unchanged intended wallpaper; original assets/licenses. Review new upstream crowdfunding/news/store/support UI for truthful product boundaries.
+
+Android theme implementation and local candidate evidence: [titanium/copper theme report](../release/android-copper-theme-report.md). Android-specific visual acceptance remains open because only shared Compose desktop previews were available; the report records their limitations and device checklist.
 
 Decision gates: support-contact, privacy-review-checklist, bundle-id-migration, onboarding-video, trademark-and-naming; locale/store translations; signing custody and platform/distribution scope; CI execution. Population/install history remains unknown.
 
