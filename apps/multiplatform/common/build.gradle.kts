@@ -14,6 +14,7 @@ version = extra["android.version_name"] as String
 val simplexAssetsDir = rootProject.findProperty("simplex.assets.dir") as String?
 val simplexAssetsLocal = file("src/commonMain/resources/assets/simplex")
 val hasSimplexAssets = simplexAssetsDir != null
+val mokoAssetsLocal = if (hasSimplexAssets) simplexAssetsLocal else file("src/commonMain/resources/assets/default")
 
 if (simplexAssetsDir != null) {
   val resolvedAssetsDir = rootProject.rootDir.resolve(simplexAssetsDir)
@@ -182,7 +183,7 @@ multiplatformResources {
   resourcesPackage.set("chat.simplex.res")
   resourcesClassName.set("MR")
   resourcesSourceSets {
-    getByName("commonMain").srcDirs(simplexAssetsLocal.resolve("MR"))
+    getByName("commonMain").srcDirs(mokoAssetsLocal.resolve("MR"))
   }
 }
 
