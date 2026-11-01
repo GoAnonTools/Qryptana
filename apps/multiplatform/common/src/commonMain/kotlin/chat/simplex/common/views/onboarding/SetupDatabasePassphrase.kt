@@ -129,7 +129,7 @@ private fun SetupDatabasePassphraseLayout(
       }
       Spacer(Modifier.height(26.dp))
     } else {
-      AppBarTitle(stringResource(MR.strings.setup_database_passphrase), overrideTitleColor = primaryText, withPadding = true, textAlign = TextAlign.Center)
+      AppBarTitle(stringResource(if (appPlatform.isAndroid) MR.strings.android_profile_protection_password else MR.strings.setup_database_passphrase), overrideTitleColor = primaryText, withPadding = true, textAlign = TextAlign.Center)
     }
 
     val onClickUpdate = {
@@ -151,9 +151,13 @@ private fun SetupDatabasePassphraseLayout(
         Modifier.then(if (qryptanaDesktop) Modifier.graphicsLayer { alpha = bodyReveal.value } else Modifier),
              horizontalAlignment = Alignment.CenterHorizontally
       ) {
-        ReadableText(MR.strings.you_have_to_enter_passphrase_every_time, TextAlign.Center, padding = PaddingValues(), style = textStyle )
+        ReadableText(if (appPlatform.isAndroid) MR.strings.android_password_needed_each_start else MR.strings.you_have_to_enter_passphrase_every_time, TextAlign.Center, padding = PaddingValues(), style = textStyle )
+        if (appPlatform.isAndroid) {
+          Spacer(Modifier.height(DEFAULT_PADDING))
+          ReadableText(MR.strings.android_profile_protection_password_description, TextAlign.Center, padding = PaddingValues(), style = textStyle)
+        }
         Spacer(Modifier.height(DEFAULT_PADDING))
-        ReadableText(MR.strings.impossible_to_recover_passphrase, TextAlign.Center, padding = PaddingValues(), style = textStyle)
+        ReadableText(if (appPlatform.isAndroid) MR.strings.android_profile_password_not_recoverable else MR.strings.impossible_to_recover_passphrase, TextAlign.Center, padding = PaddingValues(), style = textStyle)
       }
       Spacer(Modifier.height(if (qryptanaDesktop) 34.dp else DEFAULT_PADDING))
 
@@ -166,7 +170,7 @@ private fun SetupDatabasePassphraseLayout(
       Column(Modifier.then(if (qryptanaDesktop) Modifier.graphicsLayer { alpha = formReveal.value } else Modifier)) {
         PassphraseField(
           newKey,
-          generalGetString(if (qryptanaDesktop) MR.strings.onboarding_secret_phrase else MR.strings.new_passphrase),
+          generalGetString(if (qryptanaDesktop) MR.strings.onboarding_secret_phrase else if (appPlatform.isAndroid) MR.strings.android_new_profile_password else MR.strings.new_passphrase),
                         modifier = Modifier
                         .padding(horizontal = DEFAULT_PADDING)
                         .focusRequester(focusRequester)
@@ -193,7 +197,7 @@ private fun SetupDatabasePassphraseLayout(
         if (qryptanaDesktop) Spacer(Modifier.height(14.dp))
           PassphraseField(
             confirmNewKey,
-            generalGetString(if (qryptanaDesktop) MR.strings.onboarding_confirm_secret_phrase else MR.strings.confirm_new_passphrase),
+            generalGetString(if (qryptanaDesktop) MR.strings.onboarding_confirm_secret_phrase else if (appPlatform.isAndroid) MR.strings.android_confirm_profile_password else MR.strings.confirm_new_passphrase),
                           modifier = Modifier
                           .padding(horizontal = DEFAULT_PADDING)
                           .onPreviewKeyEvent {
@@ -263,7 +267,7 @@ private fun SetupDatabasePassphraseLayout(
 private fun SetPassphraseButton(disabled: Boolean, onClick: () -> Unit, qryptanaDesktop: Boolean) {
   OnboardingActionButton(
     if (appPlatform.isAndroid) Modifier.padding(horizontal = DEFAULT_PADDING).fillMaxWidth() else Modifier.widthIn(min = 300.dp),
-      labelId = if (qryptanaDesktop) MR.strings.onboarding_create_secret_phrase else MR.strings.set_database_passphrase,
+      labelId = if (qryptanaDesktop) MR.strings.onboarding_create_secret_phrase else if (appPlatform.isAndroid) MR.strings.android_setup_profile_password else MR.strings.set_database_passphrase,
                          onboarding = null,
                          onclick = onClick,
                          enabled =  !disabled
@@ -272,7 +276,7 @@ private fun SetPassphraseButton(disabled: Boolean, onClick: () -> Unit, qryptana
 
 @Composable
 private fun SkipButton(disabled: Boolean, color: Color = Color.Unspecified, qryptanaDesktop: Boolean, onClick: () -> Unit) {
-  TextButtonBelowOnboardingButton(stringResource(if (qryptanaDesktop) MR.strings.onboarding_generate_secure_phrase else MR.strings.use_random_passphrase), onClick = if (disabled) null else onClick, color = color)
+  TextButtonBelowOnboardingButton(stringResource(if (qryptanaDesktop) MR.strings.onboarding_generate_secure_phrase else if (appPlatform.isAndroid) MR.strings.android_random_profile_password else MR.strings.use_random_passphrase), onClick = if (disabled) null else onClick, color = color)
 }
 
 @Composable

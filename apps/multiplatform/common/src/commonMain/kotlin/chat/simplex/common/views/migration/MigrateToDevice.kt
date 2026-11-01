@@ -217,7 +217,7 @@ private fun MutableState<MigrationToState?>.PasteOrScanLinkView(close: () -> Uni
       }
       SectionSpacer()
 
-      SectionView(stringResource(MR.strings.chat_archive)) {
+      SectionView(stringResource(if (appPlatform.isAndroid) MR.strings.android_restore_backup_file else MR.strings.chat_archive)) {
         ArchiveImportView(progressIndicator, close)
       }
     }
@@ -241,24 +241,27 @@ private fun MutableState<MigrationToState?>.PasteLinkView() {
 private fun ArchiveImportView(progressIndicator: MutableState<Boolean>, close: () -> Unit) {
   val importArchiveLauncher = rememberFileChooserLauncher(true) { to: URI? ->
     if (to != null) {
-      withLongRunningApi {
-        val success = importArchive(to, mutableStateOf(0 to 0), progressIndicator, true)
-        if (success) {
-          startChat(
-            chatModel,
-            mutableStateOf(Clock.System.now()),
-            chatModel.chatDbChanged,
-            progressIndicator
-          )
-          hideView(close)
+      val importSelectedArchive: () -> Unit = {
+        withLongRunningApi {
+          val success = importArchive(to, mutableStateOf(0 to 0), progressIndicator, true)
+          if (success) {
+            startChat(
+              chatModel,
+              mutableStateOf(Clock.System.now()),
+              chatModel.chatDbChanged,
+              progressIndicator
+            )
+            hideView(close)
+          }
         }
       }
+      if (appPlatform.isAndroid) importArchiveAlert(importSelectedArchive) else importSelectedArchive()
     }
   }
   SectionItemView({
     withLongRunningApi { importArchiveLauncher.launch("application/zip") }
   }) {
-    Text(stringResource(MR.strings.import_database))
+    Text(stringResource(if (appPlatform.isAndroid) MR.strings.android_import_profiles_chats else MR.strings.import_database))
   }
 }
 
@@ -389,7 +392,7 @@ private fun MutableState<MigrationToState?>.DownloadFailedView(link: String, cha
 @Composable
 private fun MutableState<MigrationToState?>.ArchiveImportView(archivePath: String, netCfg: NetCfg, networkProxy: NetworkProxy?) {
   Box {
-    SectionView(stringResource(MR.strings.migrate_to_device_importing_archive)) {}
+    SectionView(stringResource(if (appPlatform.isAndroid) MR.strings.android_importing_profiles_chats else MR.strings.migrate_to_device_importing_archive)) {}
     ProgressView()
   }
   LaunchedEffect(Unit) {
@@ -420,7 +423,7 @@ private fun MutableState<MigrationToState?>.PassphraseEnteringView(currentKey: S
 
   Box {
     val view = LocalMultiplatformView()
-    SectionView(stringResource(MR.strings.migrate_to_device_enter_passphrase)) {
+    SectionView(stringResource(if (appPlatform.isAndroid) MR.strings.android_enter_profile_password else MR.strings.migrate_to_device_enter_passphrase)) {
       SavePassphraseSetting(
         useKeychain.value,
         false,
@@ -429,11 +432,11 @@ private fun MutableState<MigrationToState?>.PassphraseEnteringView(currentKey: S
         smallPadding = false
       ) { checked -> useKeychain.value = checked }
 
-      PassphraseField(currentKey, placeholder = stringResource(MR.strings.current_passphrase), Modifier.padding(horizontal = DEFAULT_PADDING), isValid = ::validKey, requestFocus = true)
+      PassphraseField(currentKey, placeholder = stringResource(if (appPlatform.isAndroid) MR.strings.android_current_profile_password else MR.strings.current_passphrase), Modifier.padding(horizontal = DEFAULT_PADDING), isValid = ::validKey, requestFocus = true)
 
       SettingsActionItemWithContent(
         icon = painterResource(MR.images.ic_vpn_key_filled),
-        text = stringResource(MR.strings.open_chat),
+        text = stringResource(if (appPlatform.isAndroid) MR.strings.android_open_profiles_and_chats else MR.strings.open_chat),
         textColor = MaterialTheme.colors.primary,
         disabled = verifyingPassphrase.value || currentKey.value.isEmpty(),
         click = {
@@ -653,11 +656,11 @@ private fun MutableState<MigrationToState?>.importArchive(archivePath: String, n
         MigrationToDeviceState.save(MigrationToDeviceState.Passphrase(netCfg, networkProxy))
       } catch (e: Exception) {
         state = MigrationToState.ArchiveImportFailed(archivePath, netCfg, networkProxy)
-        AlertManager.shared.showAlertMsg (generalGetString(MR.strings.error_importing_database), e.stackTraceToString())
+        AlertManager.shared.showAlertMsg (generalGetString(if (appPlatform.isAndroid) MR.strings.android_error_importing else MR.strings.error_importing_database), e.stackTraceToString())
       }
     } catch (e: Exception) {
       state = MigrationToState.ArchiveImportFailed(archivePath, netCfg, networkProxy)
-      AlertManager.shared.showAlertMsg (generalGetString(MR.strings.error_deleting_database), e.stackTraceToString())
+      AlertManager.shared.showAlertMsg (generalGetString(if (appPlatform.isAndroid) MR.strings.android_error_deleting_for_import else MR.strings.error_deleting_database), e.stackTraceToString())
     }
   }
 }

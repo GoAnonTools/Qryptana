@@ -32,7 +32,7 @@ actual fun SavePassphraseSetting(
     Row(verticalAlignment = Alignment.CenterVertically) {
       Icon(
         if (storedKey) painterResource(MR.images.ic_vpn_key_filled) else painterResource(MR.images.ic_vpn_key_off_filled),
-        stringResource(MR.strings.save_passphrase_in_keychain),
+        stringResource(MR.strings.android_save_password_in_keystore),
         tint = if (storedKey) SimplexGreen else MaterialTheme.colors.secondary
       )
       if (smallPadding) {
@@ -41,7 +41,7 @@ actual fun SavePassphraseSetting(
         TextIconSpaced(false)
       }
       Text(
-        stringResource(MR.strings.save_passphrase_in_keychain),
+        stringResource(MR.strings.android_save_password_in_keystore),
         Modifier.weight(1f).padding(end = 24.dp),
         color = Color.Unspecified
       )
@@ -63,29 +63,29 @@ actual fun DatabaseEncryptionFooter(
   migration: Boolean,
 ) {
   if (chatDbEncrypted == false) {
-    SectionTextFooter(generalGetString(MR.strings.database_is_not_encrypted))
+    SectionTextFooter(generalGetString(MR.strings.android_profiles_not_password_protected))
   } else if (useKeychain.value) {
     if (storedKey.value) {
-      SectionTextFooter(generalGetString(MR.strings.keychain_is_storing_securely))
+      SectionTextFooter(generalGetString(MR.strings.android_password_saved_in_keystore))
       if (initialRandomDBPassphrase.value && !migration) {
-        SectionTextFooter(generalGetString(MR.strings.encrypted_with_random_passphrase))
+        SectionTextFooter(generalGetString(MR.strings.android_random_password_can_change))
       } else {
-        SectionTextFooter(annotatedStringResource(MR.strings.impossible_to_recover_passphrase))
+        SectionTextFooter(annotatedStringResource(MR.strings.android_profile_password_not_recoverable))
       }
     } else {
-      SectionTextFooter(generalGetString(MR.strings.keychain_allows_to_receive_ntfs))
+      SectionTextFooter(generalGetString(MR.strings.android_password_saved_after_restart))
     }
   } else {
-    SectionTextFooter(generalGetString(MR.strings.you_have_to_enter_passphrase_every_time))
-    SectionTextFooter(annotatedStringResource(MR.strings.impossible_to_recover_passphrase))
+    SectionTextFooter(generalGetString(MR.strings.android_password_needed_each_start))
+    SectionTextFooter(annotatedStringResource(MR.strings.android_profile_password_not_recoverable))
   }
 }
 
 actual fun encryptDatabaseSavedAlert(onConfirm: () -> Unit) {
   AlertManager.shared.showAlertDialog(
-    title = generalGetString(MR.strings.encrypt_database_question),
-    text = generalGetString(MR.strings.database_will_be_encrypted_and_passphrase_stored) + "\n" + storeSecurelySaved(),
-    confirmText = generalGetString(MR.strings.encrypt_database),
+    title = generalGetString(MR.strings.android_encrypt_profiles_question),
+    text = generalGetString(MR.strings.android_password_saved_securely_in_keystore) + "\n" + generalGetString(MR.strings.android_store_password_securely),
+    confirmText = generalGetString(MR.strings.android_save_password),
     onConfirm = onConfirm,
     destructive = true,
   )
@@ -93,9 +93,9 @@ actual fun encryptDatabaseSavedAlert(onConfirm: () -> Unit) {
 
 actual fun changeDatabaseKeySavedAlert(onConfirm: () -> Unit) {
   AlertManager.shared.showAlertDialog(
-    title = generalGetString(MR.strings.change_database_passphrase_question),
-    text = generalGetString(MR.strings.database_encryption_will_be_updated) + "\n" + storeSecurelySaved(),
-    confirmText = generalGetString(MR.strings.update_database),
+    title = generalGetString(MR.strings.android_change_profile_password_question),
+    text = generalGetString(MR.strings.android_profile_password_will_be_updated) + "\n" + generalGetString(MR.strings.android_store_password_securely),
+    confirmText = generalGetString(MR.strings.android_update_password),
     onConfirm = onConfirm,
     destructive = false,
   )
@@ -103,9 +103,9 @@ actual fun changeDatabaseKeySavedAlert(onConfirm: () -> Unit) {
 
 actual fun removePassphraseAlert(onConfirm: () -> Unit) {
   AlertManager.shared.showAlertDialog(
-    title = generalGetString(MR.strings.remove_passphrase_from_keychain),
+    title = generalGetString(MR.strings.android_remove_password_from_keystore),
     text = generalGetString(MR.strings.notifications_will_be_hidden) + "\n" + storeSecurelyDanger(),
-    confirmText = generalGetString(MR.strings.remove_passphrase),
+    confirmText = generalGetString(MR.strings.android_remove_password),
     onConfirm = onConfirm,
     destructive = true,
   )

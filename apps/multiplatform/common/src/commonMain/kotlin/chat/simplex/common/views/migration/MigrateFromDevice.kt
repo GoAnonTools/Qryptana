@@ -227,12 +227,12 @@ private fun MutableState<MigrationFromState>.PassphraseConfirmationView() {
       ChatStoppedView()
       SectionDividerSpaced()
 
-      SectionView(stringResource(MR.strings.migrate_from_device_verify_database_passphrase)) {
-        PassphraseField(currentKey, placeholder = stringResource(MR.strings.current_passphrase), Modifier.padding(horizontal = DEFAULT_PADDING), isValid = ::validKey, requestFocus = true)
+      SectionView(stringResource(if (appPlatform.isAndroid) MR.strings.android_verify_profile_password else MR.strings.migrate_from_device_verify_database_passphrase)) {
+        PassphraseField(currentKey, placeholder = stringResource(if (appPlatform.isAndroid) MR.strings.android_current_profile_password else MR.strings.current_passphrase), Modifier.padding(horizontal = DEFAULT_PADDING), isValid = ::validKey, requestFocus = true)
 
         SettingsActionItemWithContent(
           icon = painterResource(if (useKeychain) MR.images.ic_vpn_key_filled else MR.images.ic_lock),
-          text = stringResource(MR.strings.migrate_from_device_verify_passphrase),
+          text = stringResource(if (appPlatform.isAndroid) MR.strings.android_verify_password else MR.strings.migrate_from_device_verify_passphrase),
           textColor = MaterialTheme.colors.primary,
           disabled = verifyingPassphrase.value || currentKey.value.isEmpty(),
           click = {
@@ -245,7 +245,7 @@ private fun MutableState<MigrationFromState>.PassphraseConfirmationView() {
           }
         ) {}
       }
-      SectionTextFooter(stringResource(MR.strings.migrate_from_device_confirm_you_remember_passphrase))
+      SectionTextFooter(stringResource(if (appPlatform.isAndroid) MR.strings.android_remember_password_for_transfer else MR.strings.migrate_from_device_confirm_you_remember_passphrase))
     }
     if (verifyingPassphrase.value) {
       ProgressView()

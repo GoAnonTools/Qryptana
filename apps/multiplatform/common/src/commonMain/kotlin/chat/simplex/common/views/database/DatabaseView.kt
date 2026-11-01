@@ -146,7 +146,7 @@ fun DatabaseLayout(
       SettingsActionItem(
         if (unencrypted) painterResource(MR.images.ic_lock_open_right) else if (useKeyChain) painterResource(MR.images.ic_vpn_key_filled)
         else painterResource(MR.images.ic_lock),
-        stringResource(MR.strings.database_passphrase_and_export),
+        stringResource(if (appPlatform.isAndroid) MR.strings.android_backup_restore else MR.strings.database_passphrase_and_export),
         click = showDatabaseManagement,
         iconColor = if (unencrypted || (appPlatform.isDesktop && passphraseSaved)) WarningOrange else MaterialTheme.colors.secondary,
         disabled = operationsDisabled
@@ -212,7 +212,7 @@ fun DatabaseManagementView() {
 
   Box(Modifier.fillMaxSize()) {
     ColumnWithScrollBar {
-      AppBarTitle(stringResource(MR.strings.database_passphrase_and_export))
+      AppBarTitle(stringResource(if (appPlatform.isAndroid) MR.strings.android_backup_restore else MR.strings.database_passphrase_and_export))
 
       val toggleEnabled = remember { chatModel.remoteHosts }.none { it.sessionState is RemoteHostSessionState.Connected }
       val disconnectAllHosts = {
@@ -231,11 +231,12 @@ fun DatabaseManagementView() {
         SettingsActionItem(
           if (unencrypted) painterResource(MR.images.ic_lock_open_right) else if (useKeychain.value) painterResource(MR.images.ic_vpn_key_filled)
           else painterResource(MR.images.ic_lock),
-          stringResource(MR.strings.database_passphrase),
+          stringResource(if (appPlatform.isAndroid) MR.strings.android_profile_protection_password else MR.strings.database_passphrase),
           click = { ModalManager.start.showModal(cardScreen = true) { DatabaseEncryptionView(chatModel, false) } },
           iconColor = if (unencrypted || (appPlatform.isDesktop && prefs.storeDBPassphrase.state.value)) WarningOrange else MaterialTheme.colors.secondary,
           disabled = operationsDisabled
         )
+        if (appPlatform.isAndroid) SectionTextFooter(stringResource(MR.strings.android_profile_protection_password_description))
         if (appPlatform.isDesktop) {
           SettingsActionItem(
             painterResource(MR.images.ic_folder_open),
@@ -246,7 +247,7 @@ fun DatabaseManagementView() {
         }
         SettingsActionItem(
           painterResource(MR.images.ic_ios_share),
-          stringResource(MR.strings.export_database),
+          stringResource(if (appPlatform.isAndroid) MR.strings.android_export_profiles_chats else MR.strings.export_database),
           click = {
             if (prefs.initialRandomDBPassphrase.get()) {
               exportProhibitedAlert()
@@ -263,9 +264,10 @@ fun DatabaseManagementView() {
           iconColor = MaterialTheme.colors.primary,
           disabled = operationsDisabled
         )
+        if (appPlatform.isAndroid) SectionTextFooter(stringResource(MR.strings.android_export_all_profiles_description))
         SettingsActionItem(
           painterResource(MR.images.ic_download),
-          stringResource(MR.strings.import_database),
+          stringResource(if (appPlatform.isAndroid) MR.strings.android_import_profiles_chats else MR.strings.import_database),
           { withLongRunningApi { importArchiveLauncher.launch("application/zip") } },
           textColor = Color.Red,
           iconColor = Color.Red,
@@ -443,7 +445,7 @@ fun startChat(
 private fun stopChatAlert(m: ChatModel, progressIndicator: MutableState<Boolean>? = null) {
   AlertManager.shared.showAlertDialog(
     title = generalGetString(MR.strings.stop_chat_question),
-    text = generalGetString(MR.strings.stop_chat_to_export_import_or_delete_chat_database),
+    text = generalGetString(if (appPlatform.isAndroid) MR.strings.android_stop_to_backup_restore else MR.strings.stop_chat_to_export_import_or_delete_chat_database),
     confirmText = generalGetString(MR.strings.stop_chat_confirmation),
     onConfirm = { authStopChat(m, progressIndicator = progressIndicator) },
     onDismiss = { m.chatRunning.value = true }
@@ -454,8 +456,8 @@ expect fun restartChatOrApp()
 
 private fun exportProhibitedAlert() {
   AlertManager.shared.showAlertMsg(
-    title = generalGetString(MR.strings.set_password_to_export),
-    text = generalGetString(MR.strings.set_password_to_export_desc),
+    title = generalGetString(if (appPlatform.isAndroid) MR.strings.android_export_password_title else MR.strings.set_password_to_export),
+    text = generalGetString(if (appPlatform.isAndroid) MR.strings.android_export_password_message else MR.strings.set_password_to_export_desc),
   )
 }
 
@@ -607,7 +609,7 @@ private suspend fun exportArchive(
     if (archiveErrors.isEmpty()) {
       saveArchiveLauncher.launch(archiveFile.substringAfterLast(File.separator))
     } else {
-      showArchiveExportedWithErrorsAlert(generalGetString(MR.strings.chat_database_exported_save), archiveErrors) {
+      showArchiveExportedWithErrorsAlert(generalGetString(if (appPlatform.isAndroid) MR.strings.android_exported_save else MR.strings.chat_database_exported_save), archiveErrors) {
         withLongRunningApi {
           saveArchiveLauncher.launch(archiveFile.substringAfterLast(File.separator))
         }
@@ -615,7 +617,7 @@ private suspend fun exportArchive(
     }
     progressIndicator.value = false
   } catch (e: Throwable) {
-    AlertManager.shared.showAlertMsg(generalGetString(MR.strings.error_exporting_chat_database), e.toString())
+    AlertManager.shared.showAlertMsg(generalGetString(if (appPlatform.isAndroid) MR.strings.android_error_exporting else MR.strings.error_exporting_chat_database), e.toString())
     progressIndicator.value = false
   }
   return false
@@ -663,11 +665,12 @@ fun deleteOldChatArchive() {
   }
 }
 
-private fun importArchiveAlert(onConfirm: () -> Unit, ) {
+fun importArchiveAlert(onConfirm: () -> Unit) {
   AlertManager.shared.showAlertDialog(
-    title = generalGetString(MR.strings.import_database_question),
-    text = generalGetString(MR.strings.your_current_chat_database_will_be_deleted_and_replaced_with_the_imported_one),
-    confirmText = generalGetString(MR.strings.import_database_confirmation),
+    title = generalGetString(if (appPlatform.isAndroid) MR.strings.android_import_replace_title else MR.strings.import_database_question),
+    text = generalGetString(if (appPlatform.isAndroid) MR.strings.android_import_replace_message else MR.strings.your_current_chat_database_will_be_deleted_and_replaced_with_the_imported_one),
+    confirmText = generalGetString(if (appPlatform.isAndroid) MR.strings.android_import_replace_confirm else MR.strings.import_database_confirmation),
+    dismissText = generalGetString(if (appPlatform.isAndroid) MR.strings.android_cancel else MR.strings.cancel_verb),
     onConfirm = onConfirm,
     destructive = true,
   )
@@ -675,14 +678,14 @@ private fun importArchiveAlert(onConfirm: () -> Unit, ) {
 
 fun showArchiveImportedWithErrorsAlert(archiveErrors: List<ArchiveError>) {
   AlertManager.shared.showAlertMsg(
-    title = generalGetString(MR.strings.chat_database_imported),
-    text = generalGetString(MR.strings.restart_the_app_to_use_imported_chat_database) + "\n\n" + generalGetString(MR.strings.non_fatal_errors_occured_during_import) + archiveErrorsText(archiveErrors))
+    title = generalGetString(if (appPlatform.isAndroid) MR.strings.android_imported_title else MR.strings.chat_database_imported),
+    text = generalGetString(if (appPlatform.isAndroid) MR.strings.android_restart_to_use_imported else MR.strings.restart_the_app_to_use_imported_chat_database) + "\n\n" + generalGetString(MR.strings.non_fatal_errors_occured_during_import) + archiveErrorsText(archiveErrors))
 }
 
 fun showArchiveExportedWithErrorsAlert(description: String, archiveErrors: List<ArchiveError>, onConfirm: () -> Unit) {
   AlertManager.shared.showAlertMsg(
-    title = generalGetString(MR.strings.chat_database_exported_title),
-    text = description + "\n\n" + generalGetString(MR.strings.chat_database_exported_not_all_files) + archiveErrorsText(archiveErrors),
+    title = generalGetString(if (appPlatform.isAndroid) MR.strings.android_exported_title else MR.strings.chat_database_exported_title),
+    text = description + "\n\n" + generalGetString(if (appPlatform.isAndroid) MR.strings.android_exported_not_all_files else MR.strings.chat_database_exported_not_all_files) + archiveErrorsText(archiveErrors),
     confirmText = generalGetString(MR.strings.chat_database_exported_continue),
     onConfirm = onConfirm
   )
@@ -716,7 +719,7 @@ suspend fun importArchive(
         appFilesCountAndSize.value = directoryFileCountAndSize(appFilesDir.absolutePath)
         if (archiveErrors.isEmpty()) {
           operationEnded(m, progressIndicator) {
-            AlertManager.shared.showAlertMsg(generalGetString(MR.strings.chat_database_imported), text = generalGetString(MR.strings.restart_the_app_to_use_imported_chat_database))
+            AlertManager.shared.showAlertMsg(generalGetString(if (appPlatform.isAndroid) MR.strings.android_imported_title else MR.strings.chat_database_imported), text = generalGetString(if (appPlatform.isAndroid) MR.strings.android_restart_to_use_imported else MR.strings.restart_the_app_to_use_imported_chat_database))
           }
           if (chatModel.localUserCreated.value == false) {
             chatModel.chatRunning.value = false
@@ -730,12 +733,12 @@ suspend fun importArchive(
         }
       } catch (e: Error) {
         operationEnded(m, progressIndicator) {
-          AlertManager.shared.showAlertMsg(generalGetString(MR.strings.error_importing_database), e.toString())
+          AlertManager.shared.showAlertMsg(generalGetString(if (appPlatform.isAndroid) MR.strings.android_error_importing else MR.strings.error_importing_database), e.toString())
         }
       }
     } catch (e: Error) {
       operationEnded(m, progressIndicator) {
-        AlertManager.shared.showAlertMsg(generalGetString(MR.strings.error_deleting_database), e.toString())
+        AlertManager.shared.showAlertMsg(generalGetString(if (appPlatform.isAndroid) MR.strings.android_error_deleting_for_import else MR.strings.error_deleting_database), e.toString())
       }
     } finally {
       File(archivePath).delete()
@@ -760,7 +763,7 @@ private fun saveArchiveFromURI(importedArchiveURI: URI): String? {
       null
     }
   } catch (e: Exception) {
-    AlertManager.shared.showAlertMsg(generalGetString(MR.strings.error_saving_database), e.stackTraceToString())
+    AlertManager.shared.showAlertMsg(generalGetString(if (appPlatform.isAndroid) MR.strings.android_error_saving_backup else MR.strings.error_saving_database), e.stackTraceToString())
     Log.e(TAG, "saveArchiveFromURI error: ${e.stackTraceToString()}")
     null
   }

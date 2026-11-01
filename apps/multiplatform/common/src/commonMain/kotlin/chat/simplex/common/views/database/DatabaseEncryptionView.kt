@@ -1,6 +1,7 @@
 package chat.simplex.common.views.database
 
 import SectionBottomSpacer
+import SectionTextFooter
 import SectionItemViewSpaceBetween
 import SectionSpacer
 import SectionView
@@ -119,12 +120,12 @@ fun DatabaseEncryptionLayout(
   fun Layout() {
     Column {
       if (!migration) {
-        AppBarTitle(stringResource(MR.strings.database_passphrase))
+        AppBarTitle(stringResource(if (appPlatform.isAndroid) MR.strings.android_profile_protection_password else MR.strings.database_passphrase))
       } else {
         ChatStoppedView()
         SectionSpacer()
       }
-      SectionView(if (migration) generalGetString(MR.strings.database_passphrase) else null) {
+      SectionView(if (migration) generalGetString(if (appPlatform.isAndroid) MR.strings.android_profile_protection_password else MR.strings.database_passphrase) else null) {
         SavePassphraseSetting(
           useKeychain.value,
           initialRandomDBPassphrase.value,
@@ -146,7 +147,7 @@ fun DatabaseEncryptionLayout(
         if (!initialRandomDBPassphrase.value && chatDbEncrypted == true) {
           PassphraseField(
             currentKey,
-            generalGetString(MR.strings.current_passphrase),
+            generalGetString(if (appPlatform.isAndroid) MR.strings.android_current_profile_password else MR.strings.current_passphrase),
                           modifier = Modifier.padding(horizontal = DEFAULT_PADDING),
                           isValid = ::validKey,
                           keyboardActions = KeyboardActions(onNext = { defaultKeyboardAction(ImeAction.Next) }),
@@ -155,7 +156,7 @@ fun DatabaseEncryptionLayout(
 
         PassphraseField(
           newKey,
-          generalGetString(MR.strings.new_passphrase),
+          generalGetString(if (appPlatform.isAndroid) MR.strings.android_new_profile_password else MR.strings.new_passphrase),
                         modifier = Modifier.padding(horizontal = DEFAULT_PADDING),
                         showStrength = true,
                         isValid = ::validKey,
@@ -186,7 +187,7 @@ fun DatabaseEncryptionLayout(
 
         PassphraseField(
           confirmNewKey,
-          generalGetString(MR.strings.confirm_new_passphrase),
+          generalGetString(if (appPlatform.isAndroid) MR.strings.android_confirm_profile_password else MR.strings.confirm_new_passphrase),
                         modifier = Modifier.padding(horizontal = DEFAULT_PADDING),
                         isValid = { confirmNewKey.value == "" || newKey.value == confirmNewKey.value },
                         keyboardActions = KeyboardActions(onDone = {
@@ -196,8 +197,9 @@ fun DatabaseEncryptionLayout(
         )
 
         SectionItemViewSpaceBetween(onClickUpdate, disabled = disabled, minHeight = TextFieldDefaults.MinHeight) {
-          Text(generalGetString(if (migration) MR.strings.set_passphrase else MR.strings.update_database_passphrase), color = if (disabled) MaterialTheme.colors.secondary else MaterialTheme.colors.primary)
+          Text(generalGetString(if (appPlatform.isAndroid) { if (migration) MR.strings.android_setup_profile_password else MR.strings.android_update_profile_password } else { if (migration) MR.strings.set_passphrase else MR.strings.update_database_passphrase }), color = if (disabled) MaterialTheme.colors.secondary else MaterialTheme.colors.primary)
         }
+        if (appPlatform.isAndroid) SectionTextFooter(stringResource(MR.strings.android_profile_protection_password_description))
       }
 
       Column {
@@ -221,9 +223,9 @@ expect fun encryptDatabaseSavedAlert(onConfirm: () -> Unit)
 
 fun encryptDatabaseAlert(onConfirm: () -> Unit) {
   AlertManager.shared.showAlertDialog(
-    title = generalGetString(MR.strings.encrypt_database_question),
-                                      text = generalGetString(MR.strings.database_will_be_encrypted) +"\n" + storeSecurelyDanger(),
-                                      confirmText = generalGetString(MR.strings.encrypt_database),
+    title = generalGetString(if (appPlatform.isAndroid) MR.strings.android_encrypt_profiles_question else MR.strings.encrypt_database_question),
+                                      text = generalGetString(if (appPlatform.isAndroid) MR.strings.android_profiles_will_be_encrypted else MR.strings.database_will_be_encrypted) +"\n" + storeSecurelyDanger(),
+                                      confirmText = generalGetString(if (appPlatform.isAndroid) MR.strings.android_save_password else MR.strings.encrypt_database),
                                       onConfirm = onConfirm,
                                       destructive = true,
   )
@@ -233,9 +235,9 @@ expect fun changeDatabaseKeySavedAlert(onConfirm: () -> Unit)
 
 fun changeDatabaseKeyAlert(onConfirm: () -> Unit) {
   AlertManager.shared.showAlertDialog(
-    title = generalGetString(MR.strings.change_database_passphrase_question),
-                                      text = generalGetString(MR.strings.database_passphrase_will_be_updated) + "\n" + storeSecurelyDanger(),
-                                      confirmText = generalGetString(MR.strings.update_database),
+    title = generalGetString(if (appPlatform.isAndroid) MR.strings.android_change_profile_password_question else MR.strings.change_database_passphrase_question),
+                                      text = generalGetString(if (appPlatform.isAndroid) MR.strings.android_profile_password_will_be_updated else MR.strings.database_passphrase_will_be_updated) + "\n" + storeSecurelyDanger(),
+                                      confirmText = generalGetString(if (appPlatform.isAndroid) MR.strings.android_update_password else MR.strings.update_database),
                                       onConfirm = onConfirm,
                                       destructive = true,
   )
@@ -304,9 +306,9 @@ private fun removePassphraseFromKeyChain(useKeychain: MutableState<Boolean>, sto
   storedKey.value = false
 }
 
-fun storeSecurelySaved() = generalGetString(MR.strings.store_passphrase_securely)
+fun storeSecurelySaved() = generalGetString(if (appPlatform.isAndroid) MR.strings.android_store_password_securely else MR.strings.store_passphrase_securely)
 
-fun storeSecurelyDanger() = generalGetString(MR.strings.store_passphrase_securely_without_recover)
+fun storeSecurelyDanger() = generalGetString(if (appPlatform.isAndroid) MR.strings.android_store_password_securely_or_lose_access else MR.strings.store_passphrase_securely_without_recover)
 
 private fun operationEnded(m: ChatModel, progressIndicator: MutableState<Boolean>, alert: () -> Unit) {
   m.chatDbChanged.value = true
@@ -472,8 +474,8 @@ suspend fun encryptDatabase(
       sqliteError is SQLiteError.ErrorNotADatabase -> {
         operationEnded(m, progressIndicator) {
           AlertManager.shared.showAlertMsg(
-            generalGetString(MR.strings.wrong_passphrase_title),
-                                           generalGetString(MR.strings.enter_correct_current_passphrase)
+            generalGetString(if (appPlatform.isAndroid) MR.strings.android_wrong_profile_password else MR.strings.wrong_passphrase_title),
+                                           generalGetString(if (appPlatform.isAndroid) MR.strings.android_enter_correct_current_password else MR.strings.enter_correct_current_passphrase)
           )
         }
         false

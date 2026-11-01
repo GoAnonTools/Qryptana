@@ -83,8 +83,8 @@ fun DatabaseErrorView(
     when (val status = chatDbStatus.value) {
       is DBMigrationResult.ErrorNotADatabase ->
         if (useKeychain && !storedDBKey.isNullOrEmpty()) {
-          DatabaseErrorDetails(MR.strings.wrong_passphrase) {
-            Text(generalGetString(MR.strings.passphrase_is_different))
+          DatabaseErrorDetails(if (appPlatform.isAndroid) MR.strings.android_wrong_profile_password else MR.strings.wrong_passphrase) {
+            Text(generalGetString(if (appPlatform.isAndroid) MR.strings.android_saved_profile_password_mismatch else MR.strings.passphrase_is_different))
             DatabaseKeyField(dbKey, buttonEnabled) {
               saveAndRunChatOnClick()
             }
@@ -94,7 +94,7 @@ fun DatabaseErrorView(
           }
         } else {
           DatabaseErrorDetails(MR.strings.encrypted_database) {
-            Text(generalGetString(MR.strings.database_passphrase_is_required))
+            Text(generalGetString(if (appPlatform.isAndroid) MR.strings.android_password_needed_to_open else MR.strings.database_passphrase_is_required))
             if (useKeychain) {
               DatabaseKeyField(dbKey, buttonEnabled, ::saveAndRunChatOnClick)
               SaveAndOpenButton(buttonEnabled, ::saveAndRunChatOnClick)
@@ -295,7 +295,7 @@ private fun DatabaseKeyField(text: MutableState<String>, enabled: Boolean, onCli
   }
   PassphraseField(
     text,
-    generalGetString(MR.strings.enter_passphrase),
+    generalGetString(if (appPlatform.isAndroid) MR.strings.android_enter_profile_password else MR.strings.enter_passphrase),
     isValid = ::validKey,
     // Don't enable this on desktop since it interfere with key event listener
     keyboardActions = KeyboardActions(onDone = if (enabled && appPlatform.isAndroid) {
@@ -316,7 +316,7 @@ private fun DatabaseKeyField(text: MutableState<String>, enabled: Boolean, onCli
 @Composable
 private fun ColumnScope.SaveAndOpenButton(enabled: Boolean, onClick: () -> Unit) {
   TextButton(onClick, Modifier.align(Alignment.CenterHorizontally), enabled = enabled) {
-    Text(generalGetString(MR.strings.save_passphrase_and_open_chat))
+    Text(generalGetString(if (appPlatform.isAndroid) MR.strings.android_save_password_and_open else MR.strings.save_passphrase_and_open_chat))
   }
 }
 
@@ -335,7 +335,7 @@ private fun OpenDatabaseDirectoryButton() {
 @Composable
 private fun ColumnScope.OpenChatButton(enabled: Boolean, onClick: () -> Unit) {
   TextButton(onClick, Modifier.align(Alignment.CenterHorizontally), enabled = enabled) {
-    Text(generalGetString(MR.strings.open_chat))
+    Text(generalGetString(if (appPlatform.isAndroid) MR.strings.android_open_profiles_and_chats else MR.strings.open_chat))
   }
 }
 
