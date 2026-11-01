@@ -85,7 +85,7 @@ actual fun encryptDatabaseSavedAlert(onConfirm: () -> Unit) {
   AlertManager.shared.showAlertDialog(
     title = generalGetString(MR.strings.android_encrypt_profiles_question),
     text = generalGetString(MR.strings.android_password_saved_securely_in_keystore) + "\n" + generalGetString(MR.strings.android_store_password_securely),
-    confirmText = generalGetString(MR.strings.android_save_password),
+    confirmText = generalGetString(MR.strings.android_setup_profile_password),
     onConfirm = onConfirm,
     destructive = true,
   )
@@ -95,7 +95,7 @@ actual fun changeDatabaseKeySavedAlert(onConfirm: () -> Unit) {
   AlertManager.shared.showAlertDialog(
     title = generalGetString(MR.strings.android_change_profile_password_question),
     text = generalGetString(MR.strings.android_profile_password_will_be_updated) + "\n" + generalGetString(MR.strings.android_store_password_securely),
-    confirmText = generalGetString(MR.strings.android_update_password),
+    confirmText = generalGetString(MR.strings.android_update_profile_password),
     onConfirm = onConfirm,
     destructive = false,
   )

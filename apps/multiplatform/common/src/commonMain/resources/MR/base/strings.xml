@@ -1705,6 +1705,7 @@
 
   <!-- Android-specific backup and restore wording. Keep shared platform strings above unchanged. -->
   <string name="android_backup_restore">Backup &amp; restore</string>
+  <string name="android_restore_from_backup">Restore from backup</string>
   <string name="android_restore_backup_file">Restore from a backup file</string>
   <string name="android_export_profiles_chats">Export profiles &amp; chats</string>
   <string name="android_import_profiles_chats">Import profiles &amp; chats</string>
@@ -1712,18 +1713,14 @@
   <string name="android_profile_protection_password_description">This password protects your profiles and chats on this device and is needed to restore an exported backup.</string>
   <string name="android_export_all_profiles_description">The export includes all profiles and chats on this device, not just the profile you are using now.</string>
   <string name="android_import_replace_title">Replace your current profiles and chats?</string>
-  <string name="android_import_replace_message">Importing this backup will replace all profiles and chats currently stored in Qryptana. Make sure you have exported anything you want to keep.</string>
+  <string name="android_import_replace_message">Importing replaces your current profiles and chats with those in the backup. Profile names do not need to match. Make sure you have exported anything you want to keep.</string>
   <string name="android_import_replace_confirm">Import and replace</string>
-  <string name="android_cancel">Cancel</string>
   <string name="android_exported_title">Profiles and chats exported</string>
-  <string name="android_exported_save">Choose where to save your exported profiles and chats.</string>
-  <string name="android_exported_not_all_files">Some files were not exported.</string>
   <string name="android_imported_title">Profiles and chats imported</string>
   <string name="android_restart_to_use_imported">Restart Qryptana to use the imported profiles and chats.</string>
   <string name="android_error_exporting">Could not export profiles and chats</string>
   <string name="android_error_importing">Could not import profiles and chats</string>
   <string name="android_error_deleting_for_import">Could not prepare Qryptana to import the backup</string>
-  <string name="android_error_saving_backup">Could not save the backup</string>
   <string name="android_wrong_profile_password">Wrong profile protection password</string>
   <string name="android_saved_profile_password_mismatch">Profile protection password does not match the one saved in Android Keystore.</string>
   <string name="android_stop_to_backup_restore">Stop chat in Qryptana before exporting or importing profiles and chats. You will not be able to send or receive messages while chat is stopped.</string>
@@ -1740,7 +1737,6 @@
   <string name="android_importing_profiles_chats">Transferring profiles and chats from your other device</string>
   <string name="android_save_password_and_open">Save password and open profiles and chats</string>
   <string name="android_encrypt_profiles_question">Protect profiles and chats with a password?</string>
-  <string name="android_profiles_will_be_encrypted">Your profiles and chats will be protected with a password.</string>
   <string name="android_profiles_not_password_protected">Your profiles and chats are not protected by a password yet.</string>
   <string name="android_password_saved_securely_in_keystore">Your profiles and chats will be protected with a password saved securely in Android Keystore.</string>
   <string name="android_change_profile_password_question">Change profile protection password?</string>
@@ -1755,13 +1751,16 @@
   <string name="android_random_password_can_change">A randomly generated password protects your profiles and chats. You can change it.</string>
   <string name="android_store_password_securely">Please store your password securely. You will not be able to change it if you lose it.</string>
   <string name="android_store_password_securely_or_lose_access">Please store your password securely. You will not be able to access your profiles and chats if you lose it.</string>
-  <string name="android_save_password">Save password</string>
-  <string name="android_update_password">Update password</string>
   <string name="android_remove_password">Remove password</string>
   <string name="android_remove_password_from_keystore">Remove password from Android Keystore?</string>
   <string name="android_verify_profile_password">Verify profile protection password</string>
   <string name="android_verify_password">Verify password</string>
   <string name="android_remember_password_for_transfer">Make sure you remember this password. You will need it on your other device.</string>
+  <string name="android_profiles_chats_section">Profiles &amp; chats</string>
+  <string name="android_delete_profiles_chats_action">Delete all profiles &amp; chats</string>
+  <string name="android_delete_profiles_chats_title">Delete all profiles and chats?</string>
+  <string name="android_delete_profiles_chats_message">This permanently deletes all profiles and chats stored in Qryptana on this device. Export a backup first if you want to keep them.\n\nContacts, messages, files, media, and saved remote-device data will also be deleted.</string>
+  <string name="android_delete_profiles_chats_success">Profiles and chats deleted</string>
 
   <!-- DatabaseEncryptionView.kt -->
   <string name="save_passphrase_in_keychain">Save passphrase in Keystore</string>

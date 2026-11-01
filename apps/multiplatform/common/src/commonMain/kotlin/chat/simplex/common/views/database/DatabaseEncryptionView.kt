@@ -224,8 +224,8 @@ expect fun encryptDatabaseSavedAlert(onConfirm: () -> Unit)
 fun encryptDatabaseAlert(onConfirm: () -> Unit) {
   AlertManager.shared.showAlertDialog(
     title = generalGetString(if (appPlatform.isAndroid) MR.strings.android_encrypt_profiles_question else MR.strings.encrypt_database_question),
-                                      text = generalGetString(if (appPlatform.isAndroid) MR.strings.android_profiles_will_be_encrypted else MR.strings.database_will_be_encrypted) +"\n" + storeSecurelyDanger(),
-                                      confirmText = generalGetString(if (appPlatform.isAndroid) MR.strings.android_save_password else MR.strings.encrypt_database),
+                                      text = generalGetString(if (appPlatform.isAndroid) MR.strings.android_profile_protection_password_description else MR.strings.database_will_be_encrypted) +"\n" + storeSecurelyDanger(),
+                                      confirmText = generalGetString(if (appPlatform.isAndroid) MR.strings.android_setup_profile_password else MR.strings.encrypt_database),
                                       onConfirm = onConfirm,
                                       destructive = true,
   )
@@ -237,7 +237,7 @@ fun changeDatabaseKeyAlert(onConfirm: () -> Unit) {
   AlertManager.shared.showAlertDialog(
     title = generalGetString(if (appPlatform.isAndroid) MR.strings.android_change_profile_password_question else MR.strings.change_database_passphrase_question),
                                       text = generalGetString(if (appPlatform.isAndroid) MR.strings.android_profile_password_will_be_updated else MR.strings.database_passphrase_will_be_updated) + "\n" + storeSecurelyDanger(),
-                                      confirmText = generalGetString(if (appPlatform.isAndroid) MR.strings.android_update_password else MR.strings.update_database),
+                                      confirmText = generalGetString(if (appPlatform.isAndroid) MR.strings.android_update_profile_password else MR.strings.update_database),
                                       onConfirm = onConfirm,
                                       destructive = true,
   )

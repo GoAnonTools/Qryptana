@@ -160,6 +160,29 @@ fun ModalData.MigrateToDeviceView(close: () -> Unit) {
   }
 }
 
+/** Archive-only restore entry used by Android onboarding before any profile exists. */
+@Composable
+fun ModalData.RestoreFromBackupView(close: () -> Unit) {
+  val progressIndicator = remember { mutableStateOf(false) }
+  ModalView(
+    enableClose = !progressIndicator.value,
+    close = close,
+    cardScreen = true,
+  ) {
+    Box {
+      ColumnWithScrollBar(maxIntrinsicSize = true) {
+        AppBarTitle(stringResource(MR.strings.android_restore_from_backup))
+        SectionView(stringResource(MR.strings.android_restore_backup_file)) {
+          ArchiveImportView(progressIndicator, close)
+        }
+        SectionBottomSpacer()
+      }
+      if (progressIndicator.value) ProgressView()
+    }
+  }
+  platform.androidLockPortraitOrientation()
+}
+
 @Composable
 private fun ModalData.MigrateToDeviceLayout(
   migrationState: MutableState<MigrationToState?>,

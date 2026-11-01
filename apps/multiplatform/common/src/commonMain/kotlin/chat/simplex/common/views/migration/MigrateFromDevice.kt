@@ -398,13 +398,14 @@ private fun MutableState<MigrationFromState>.FinishedView(chatDeletion: Boolean)
 
       SettingsActionItemWithContent(
         icon = painterResource(MR.images.ic_delete_forever),
-        text = stringResource(MR.strings.migrate_from_device_delete_database_from_device),
+        text = stringResource(if (appPlatform.isAndroid) MR.strings.android_delete_profiles_chats_action else MR.strings.migrate_from_device_delete_database_from_device),
         textColor = MaterialTheme.colors.primary,
         click = {
           AlertManager.shared.showAlertDialog(
-            title = generalGetString(MR.strings.delete_chat_profile_question),
-            text = generalGetString(MR.strings.delete_chat_profile_action_cannot_be_undone_warning),
-            confirmText = generalGetString(MR.strings.delete_verb),
+            title = generalGetString(if (appPlatform.isAndroid) MR.strings.android_delete_profiles_chats_title else MR.strings.delete_chat_profile_question),
+            text = generalGetString(if (appPlatform.isAndroid) MR.strings.android_delete_profiles_chats_message else MR.strings.delete_chat_profile_action_cannot_be_undone_warning),
+            confirmText = generalGetString(if (appPlatform.isAndroid) MR.strings.android_delete_profiles_chats_action else MR.strings.delete_verb),
+            dismissText = generalGetString(MR.strings.cancel_verb),
             onConfirm = {
               deleteChatAndDismiss()
             }

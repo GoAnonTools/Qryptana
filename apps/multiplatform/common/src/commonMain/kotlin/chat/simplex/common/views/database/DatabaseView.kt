@@ -221,7 +221,7 @@ fun DatabaseManagementView() {
           controller.stopRemoteHostAndReloadHosts(h, index == connected.lastIndex && chatModel.connectedToRemote())
         }
       }
-      SectionView(stringResource(MR.strings.chat_database_section)) {
+      SectionView(stringResource(if (appPlatform.isAndroid) MR.strings.android_profiles_chats_section else MR.strings.chat_database_section)) {
         if (chatModel.localUserCreated.value != true && !toggleEnabled) {
           SectionItemView(disconnectAllHosts) {
             Text(generalGetString(MR.strings.disconnect_remote_hosts), Modifier.fillMaxWidth(), color = WarningOrange)
@@ -275,7 +275,7 @@ fun DatabaseManagementView() {
         )
         SettingsActionItem(
           painterResource(MR.images.ic_delete_forever),
-          stringResource(MR.strings.delete_database),
+          stringResource(if (appPlatform.isAndroid) MR.strings.android_delete_profiles_chats_action else MR.strings.delete_database),
           {
             deleteChatAlert {
               stopChatRunBlockStartChat(stopped, chatLastStart, progressIndicator) {
@@ -609,7 +609,7 @@ private suspend fun exportArchive(
     if (archiveErrors.isEmpty()) {
       saveArchiveLauncher.launch(archiveFile.substringAfterLast(File.separator))
     } else {
-      showArchiveExportedWithErrorsAlert(generalGetString(if (appPlatform.isAndroid) MR.strings.android_exported_save else MR.strings.chat_database_exported_save), archiveErrors) {
+      showArchiveExportedWithErrorsAlert(generalGetString(MR.strings.chat_database_exported_save), archiveErrors) {
         withLongRunningApi {
           saveArchiveLauncher.launch(archiveFile.substringAfterLast(File.separator))
         }
@@ -670,7 +670,7 @@ fun importArchiveAlert(onConfirm: () -> Unit) {
     title = generalGetString(if (appPlatform.isAndroid) MR.strings.android_import_replace_title else MR.strings.import_database_question),
     text = generalGetString(if (appPlatform.isAndroid) MR.strings.android_import_replace_message else MR.strings.your_current_chat_database_will_be_deleted_and_replaced_with_the_imported_one),
     confirmText = generalGetString(if (appPlatform.isAndroid) MR.strings.android_import_replace_confirm else MR.strings.import_database_confirmation),
-    dismissText = generalGetString(if (appPlatform.isAndroid) MR.strings.android_cancel else MR.strings.cancel_verb),
+    dismissText = generalGetString(MR.strings.cancel_verb),
     onConfirm = onConfirm,
     destructive = true,
   )
@@ -685,7 +685,7 @@ fun showArchiveImportedWithErrorsAlert(archiveErrors: List<ArchiveError>) {
 fun showArchiveExportedWithErrorsAlert(description: String, archiveErrors: List<ArchiveError>, onConfirm: () -> Unit) {
   AlertManager.shared.showAlertMsg(
     title = generalGetString(if (appPlatform.isAndroid) MR.strings.android_exported_title else MR.strings.chat_database_exported_title),
-    text = description + "\n\n" + generalGetString(if (appPlatform.isAndroid) MR.strings.android_exported_not_all_files else MR.strings.chat_database_exported_not_all_files) + archiveErrorsText(archiveErrors),
+    text = description + "\n\n" + generalGetString(MR.strings.chat_database_exported_not_all_files) + archiveErrorsText(archiveErrors),
     confirmText = generalGetString(MR.strings.chat_database_exported_continue),
     onConfirm = onConfirm
   )
@@ -763,7 +763,7 @@ private fun saveArchiveFromURI(importedArchiveURI: URI): String? {
       null
     }
   } catch (e: Exception) {
-    AlertManager.shared.showAlertMsg(generalGetString(if (appPlatform.isAndroid) MR.strings.android_error_saving_backup else MR.strings.error_saving_database), e.stackTraceToString())
+    AlertManager.shared.showAlertMsg(generalGetString(if (appPlatform.isAndroid) MR.strings.android_error_exporting else MR.strings.error_saving_database), e.stackTraceToString())
     Log.e(TAG, "saveArchiveFromURI error: ${e.stackTraceToString()}")
     null
   }
@@ -771,9 +771,10 @@ private fun saveArchiveFromURI(importedArchiveURI: URI): String? {
 
 private fun deleteChatAlert(onConfirm: () -> Unit) {
   AlertManager.shared.showAlertDialog(
-    title = generalGetString(MR.strings.delete_chat_profile_question),
-    text = generalGetString(MR.strings.delete_chat_profile_action_cannot_be_undone_warning),
-    confirmText = generalGetString(MR.strings.delete_verb),
+    title = generalGetString(if (appPlatform.isAndroid) MR.strings.android_delete_profiles_chats_title else MR.strings.delete_chat_profile_question),
+    text = generalGetString(if (appPlatform.isAndroid) MR.strings.android_delete_profiles_chats_message else MR.strings.delete_chat_profile_action_cannot_be_undone_warning),
+    confirmText = generalGetString(if (appPlatform.isAndroid) MR.strings.android_delete_profiles_chats_action else MR.strings.delete_verb),
+    dismissText = generalGetString(MR.strings.cancel_verb),
     onConfirm = onConfirm,
     destructive = true,
   )
@@ -787,7 +788,10 @@ private suspend fun deleteChat(m: ChatModel, progressIndicator: MutableState<Boo
   try {
     deleteChatAsync(m)
     operationEnded(m, progressIndicator) {
-      AlertManager.shared.showAlertMsg(generalGetString(MR.strings.chat_database_deleted), generalGetString(MR.strings.restart_the_app_to_create_a_new_chat_profile))
+      AlertManager.shared.showAlertMsg(
+        generalGetString(if (appPlatform.isAndroid) MR.strings.android_delete_profiles_chats_success else MR.strings.chat_database_deleted),
+        generalGetString(MR.strings.restart_the_app_to_create_a_new_chat_profile)
+      )
     }
   } catch (e: Throwable) {
     operationEnded(m, progressIndicator) {
