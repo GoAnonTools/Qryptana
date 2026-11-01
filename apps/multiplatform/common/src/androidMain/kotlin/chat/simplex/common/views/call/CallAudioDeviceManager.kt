@@ -9,6 +9,16 @@ import androidx.compose.runtime.*
 import chat.simplex.common.platform.*
 import dev.icerock.moko.resources.ImageResource
 import chat.simplex.res.MR
+import chat.simplex.res.audio_device_bluetooth
+import chat.simplex.res.audio_device_earpiece
+import chat.simplex.res.audio_device_speaker
+import chat.simplex.res.audio_device_wired_headphones
+import chat.simplex.res.ic_bluetooth
+import chat.simplex.res.ic_brand_awareness_filled
+import chat.simplex.res.ic_headphones
+import chat.simplex.res.ic_usb
+import chat.simplex.res.ic_volume_down
+import chat.simplex.res.ic_volume_up
 import dev.icerock.moko.resources.StringResource
 import java.util.concurrent.Executors
 

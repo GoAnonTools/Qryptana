@@ -9,6 +9,9 @@ import chat.simplex.common.model.User
 import chat.simplex.common.views.helpers.ModalManager
 import chat.simplex.common.views.migration.RestoreFromBackupView
 import chat.simplex.res.MR
+import chat.simplex.res.android_restore_from_backup
+import chat.simplex.res.make_private_connection
+import chat.simplex.res.qryptana_create_profile
 import dev.icerock.moko.resources.compose.stringResource
 
 @Composable

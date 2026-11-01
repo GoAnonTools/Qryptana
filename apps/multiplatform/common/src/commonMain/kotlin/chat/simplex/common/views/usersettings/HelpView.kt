@@ -13,6 +13,7 @@ import chat.simplex.common.ui.theme.SimpleXTheme
 import chat.simplex.common.views.chatlist.ChatHelpView
 import chat.simplex.common.views.helpers.AppBarTitle
 import chat.simplex.res.MR
+import chat.simplex.res.personal_welcome
 
 @Composable
 fun HelpView(userDisplayName: String) {

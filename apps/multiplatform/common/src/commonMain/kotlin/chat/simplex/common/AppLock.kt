@@ -11,6 +11,19 @@ import chat.simplex.common.views.helpers.*
 import chat.simplex.common.views.localauth.SetAppPasscodeView
 import chat.simplex.common.views.usersettings.*
 import chat.simplex.res.MR
+import chat.simplex.res.auth_confirm_credential
+import chat.simplex.res.auth_disable_simplex_lock
+import chat.simplex.res.auth_enable_simplex_lock
+import chat.simplex.res.auth_log_in_using_credential
+import chat.simplex.res.auth_unlock
+import chat.simplex.res.la_enter_app_passcode
+import chat.simplex.res.la_lock_mode
+import chat.simplex.res.la_lock_mode_passcode
+import chat.simplex.res.la_lock_mode_system
+import chat.simplex.res.la_notice_title_simplex_lock
+import chat.simplex.res.la_notice_to_protect_your_information_turn_on_simplex_lock_you_will_be_prompted_to_complete_authentication_before_this_feature_is_enabled
+import chat.simplex.res.la_notice_turn_on
+import chat.simplex.res.new_passcode
 import kotlinx.coroutines.*
 
 // Spec: spec/client/navigation.md#AppLock

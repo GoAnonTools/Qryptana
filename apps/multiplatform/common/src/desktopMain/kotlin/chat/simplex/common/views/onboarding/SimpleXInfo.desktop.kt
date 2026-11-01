@@ -10,6 +10,9 @@ import chat.simplex.common.model.SharedPreference
 import chat.simplex.common.model.User
 import chat.simplex.common.platform.chatModel
 import chat.simplex.res.MR
+import chat.simplex.res.make_private_connection
+import chat.simplex.res.qryptana_create_profile
+import chat.simplex.res.qryptana_link_device
 
 @Composable
 actual fun OnboardingActionButton(user: User?, onboardingStage: SharedPreference<OnboardingStage>, onclick: (() -> Unit)?) {

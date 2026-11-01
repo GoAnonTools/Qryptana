@@ -11,6 +11,7 @@ import androidx.compose.ui.unit.sp
 import chat.simplex.common.views.helpers.generalGetString
 import chat.simplex.common.model.*
 import chat.simplex.res.MR
+import chat.simplex.res.rcv_group_event_open_chat
 
 @Composable
 fun CIMemberCreatedContactView(

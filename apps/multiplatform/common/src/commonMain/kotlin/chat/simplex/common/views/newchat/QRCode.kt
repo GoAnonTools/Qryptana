@@ -46,6 +46,11 @@ import chat.simplex.common.platform.*
 import chat.simplex.common.ui.theme.*
 import chat.simplex.common.views.helpers.*
 import chat.simplex.res.MR
+import chat.simplex.res.image_descr_qr_code
+import chat.simplex.res.qryptana_logo_description
+import chat.simplex.res.qryptana_symbol
+import chat.simplex.res.smart_invite_scan_hint
+import chat.simplex.res.smart_invite_title
 import kotlinx.coroutines.launch
 
 @Composable

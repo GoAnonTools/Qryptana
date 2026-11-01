@@ -13,6 +13,8 @@ import androidx.compose.ui.unit.*
 import chat.simplex.common.ui.theme.*
 import chat.simplex.common.views.chatlist.*
 import chat.simplex.res.MR
+import chat.simplex.res.ic_desktop
+import chat.simplex.res.ic_smartphone_300
 import dev.icerock.moko.resources.compose.painterResource
 import kotlin.math.absoluteValue
 

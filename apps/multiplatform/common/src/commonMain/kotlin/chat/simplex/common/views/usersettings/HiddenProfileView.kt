@@ -22,6 +22,13 @@ import chat.simplex.common.views.chatlist.UserProfileRow
 import chat.simplex.common.views.database.PassphraseField
 import chat.simplex.common.views.helpers.*
 import chat.simplex.res.MR
+import chat.simplex.res.confirm_password
+import chat.simplex.res.error_saving_user_password
+import chat.simplex.res.hidden_profile_password
+import chat.simplex.res.hide_profile
+import chat.simplex.res.password_to_show
+import chat.simplex.res.save_profile_password
+import chat.simplex.res.to_reveal_profile_enter_password
 
 @Composable
 fun HiddenProfileView(

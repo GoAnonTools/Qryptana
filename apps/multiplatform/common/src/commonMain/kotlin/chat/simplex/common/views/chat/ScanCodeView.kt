@@ -10,6 +10,9 @@ import chat.simplex.common.ui.theme.DEFAULT_PADDING
 import chat.simplex.common.views.helpers.*
 import chat.simplex.common.views.newchat.QRCodeScanner
 import chat.simplex.res.MR
+import chat.simplex.res.incorrect_code
+import chat.simplex.res.scan_code
+import chat.simplex.res.scan_code_from_contacts_app
 import dev.icerock.moko.resources.compose.stringResource
 
 @Composable

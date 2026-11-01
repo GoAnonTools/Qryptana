@@ -29,6 +29,12 @@ import chat.simplex.common.views.newchat.gradientPoints
 import chat.simplex.common.views.newchat.lightStops
 import chat.simplex.common.views.onboarding.GetStakeView
 import chat.simplex.res.MR
+import chat.simplex.res.decentralized
+import chat.simplex.res.decentralized_light
+import chat.simplex.res.ic_close
+import chat.simplex.res.icon_descr_close_button
+import chat.simplex.res.invest_banner_subtitle
+import chat.simplex.res.invest_banner_title
 
 // Spec: spec/client/chat-list.md#GetStakeBanner
 @Composable

@@ -20,6 +20,14 @@ import chat.simplex.common.ui.theme.*
 import chat.simplex.common.views.helpers.*
 import chat.simplex.common.model.*
 import chat.simplex.res.MR
+import chat.simplex.res.group_invitation_expired
+import chat.simplex.res.group_invitation_tap_to_join
+import chat.simplex.res.group_invitation_tap_to_join_incognito
+import chat.simplex.res.ic_supervised_user_circle_filled
+import chat.simplex.res.you_are_invited_to_group
+import chat.simplex.res.you_joined_this_group
+import chat.simplex.res.you_rejected_group_invitation
+import chat.simplex.res.you_sent_group_invitation
 import kotlinx.coroutines.delay
 
 @Composable

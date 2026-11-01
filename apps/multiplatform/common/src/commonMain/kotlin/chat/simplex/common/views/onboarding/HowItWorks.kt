@@ -19,6 +19,15 @@ import chat.simplex.common.ui.theme.*
 import chat.simplex.common.views.chat.item.MarkdownText
 import chat.simplex.common.views.helpers.*
 import chat.simplex.res.MR
+import chat.simplex.res.why_built_heading
+import chat.simplex.res.why_built_p1
+import chat.simplex.res.why_built_p2
+import chat.simplex.res.why_built_p3
+import chat.simplex.res.why_built_p4
+import chat.simplex.res.why_built_p5
+import chat.simplex.res.why_built_p6
+import chat.simplex.res.why_built_p7
+import chat.simplex.res.why_built_tagline
 import dev.icerock.moko.resources.StringResource
 
 @Composable

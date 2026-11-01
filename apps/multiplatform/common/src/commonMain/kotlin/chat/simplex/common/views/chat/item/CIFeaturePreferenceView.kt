@@ -12,6 +12,8 @@ import androidx.compose.ui.unit.sp
 import chat.simplex.common.views.helpers.generalGetString
 import chat.simplex.common.model.*
 import chat.simplex.res.MR
+import chat.simplex.res.accept_feature
+import chat.simplex.res.accept_feature_set_1_day
 
 @Composable
 fun CIFeaturePreferenceView(

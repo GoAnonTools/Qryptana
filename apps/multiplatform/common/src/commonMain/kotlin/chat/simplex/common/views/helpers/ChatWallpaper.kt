@@ -15,6 +15,15 @@ import chat.simplex.common.platform.*
 import chat.simplex.common.ui.theme.*
 import chat.simplex.common.ui.theme.ThemeManager.colorFromReadableHex
 import chat.simplex.res.MR
+import chat.simplex.res.wallpaper_cats
+import chat.simplex.res.wallpaper_flowers
+import chat.simplex.res.wallpaper_hearts
+import chat.simplex.res.wallpaper_kids
+import chat.simplex.res.wallpaper_scale_fill
+import chat.simplex.res.wallpaper_scale_fit
+import chat.simplex.res.wallpaper_scale_repeat
+import chat.simplex.res.wallpaper_school
+import chat.simplex.res.wallpaper_travel
 import dev.icerock.moko.resources.ImageResource
 import dev.icerock.moko.resources.StringResource
 import kotlinx.serialization.SerialName

@@ -25,6 +25,25 @@ import chat.simplex.common.model.*
 import chat.simplex.common.platform.*
 import chat.simplex.common.views.usersettings.SettingsActionItem
 import chat.simplex.res.MR
+import chat.simplex.res.chat_relay
+import chat.simplex.res.chat_relays
+import chat.simplex.res.chat_relays_forward_messages_in_channels
+import chat.simplex.res.how_to_use_your_servers
+import chat.simplex.res.ic_add
+import chat.simplex.res.ic_do_not_disturb_on
+import chat.simplex.res.ic_error
+import chat.simplex.res.ic_open_in_new
+import chat.simplex.res.media_and_file_servers
+import chat.simplex.res.message_servers
+import chat.simplex.res.smp_servers_add
+import chat.simplex.res.smp_servers_enter_manually
+import chat.simplex.res.smp_servers_per_user
+import chat.simplex.res.smp_servers_scan_qr
+import chat.simplex.res.smp_servers_test_failed
+import chat.simplex.res.smp_servers_test_servers
+import chat.simplex.res.smp_servers_test_some_failed
+import chat.simplex.res.xftp_servers_per_user
+import chat.simplex.res.your_servers
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 

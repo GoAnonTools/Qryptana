@@ -7,6 +7,16 @@ import chat.simplex.common.views.call.CallMediaType
 import chat.simplex.common.views.call.RcvCallInvitation
 import chat.simplex.common.views.helpers.*
 import chat.simplex.res.MR
+import chat.simplex.res.accept
+import chat.simplex.res.audio_call_no_encryption
+import chat.simplex.res.encrypted_audio_call
+import chat.simplex.res.encrypted_video_call
+import chat.simplex.res.error_showing_desktop_notification
+import chat.simplex.res.icon_foreground_common
+import chat.simplex.res.notification_preview_new_message
+import chat.simplex.res.notification_preview_somebody
+import chat.simplex.res.reject
+import chat.simplex.res.video_call_no_encryption
 import com.sshtools.twoslices.*
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock

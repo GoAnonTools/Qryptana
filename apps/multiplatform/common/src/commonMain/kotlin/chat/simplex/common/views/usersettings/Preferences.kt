@@ -19,6 +19,13 @@ import chat.simplex.common.model.*
 import chat.simplex.common.platform.ColumnWithScrollBar
 import chat.simplex.common.platform.chatModel
 import chat.simplex.res.MR
+import chat.simplex.res.delete_after
+import chat.simplex.res.exit_without_saving
+import chat.simplex.res.reset_verb
+import chat.simplex.res.save_and_notify_contacts
+import chat.simplex.res.save_preferences_question
+import chat.simplex.res.time_to_disappear_is_set_only_for_new_contacts
+import chat.simplex.res.your_preferences
 import kotlinx.coroutines.*
 
 @Composable

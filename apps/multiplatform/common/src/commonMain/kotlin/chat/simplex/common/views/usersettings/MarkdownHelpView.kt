@@ -15,6 +15,13 @@ import chat.simplex.common.model.FormatColor
 import chat.simplex.common.ui.theme.DEFAULT_PADDING
 import chat.simplex.common.ui.theme.SimpleXTheme
 import chat.simplex.res.MR
+import chat.simplex.res.a_plus_b
+import chat.simplex.res.bold_text
+import chat.simplex.res.colored_text
+import chat.simplex.res.italic_text
+import chat.simplex.res.secret_text
+import chat.simplex.res.strikethrough_text
+import chat.simplex.res.you_can_use_markdown_to_format_messages__prompt
 
 @Composable
 fun MarkdownHelpView() {

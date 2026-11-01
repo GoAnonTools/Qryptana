@@ -16,6 +16,14 @@ import chat.simplex.common.model.*
 import chat.simplex.common.platform.appPreferences
 import chat.simplex.common.ui.theme.isInDarkTheme
 import chat.simplex.res.MR
+import chat.simplex.res.ic_arrow_forward
+import chat.simplex.res.ic_circle_filled
+import chat.simplex.res.ic_edit
+import chat.simplex.res.ic_lock
+import chat.simplex.res.ic_lock_open_right
+import chat.simplex.res.ic_timer
+import chat.simplex.res.ic_verified
+import chat.simplex.res.ic_verified_missing
 import kotlinx.datetime.Clock
 
 @Composable

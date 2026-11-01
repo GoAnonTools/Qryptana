@@ -11,6 +11,7 @@ import chat.simplex.common.model.*
 import chat.simplex.common.platform.AudioPlayer.duration
 import chat.simplex.common.views.helpers.*
 import chat.simplex.res.MR
+import chat.simplex.res.unknown_error
 import kotlinx.coroutines.*
 import java.io.*
 

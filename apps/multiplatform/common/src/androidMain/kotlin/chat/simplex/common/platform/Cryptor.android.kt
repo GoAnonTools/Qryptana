@@ -6,6 +6,11 @@ import android.security.keystore.KeyProperties
 import chat.simplex.common.views.helpers.AlertManager
 import chat.simplex.common.views.helpers.generalGetString
 import chat.simplex.res.MR
+import chat.simplex.res.error_reading_passphrase
+import chat.simplex.res.restore_passphrase_can_not_be_read_desc
+import chat.simplex.res.restore_passphrase_can_not_be_read_enter_manually_desc
+import chat.simplex.res.restore_passphrase_not_found_desc
+import chat.simplex.res.wrong_passphrase
 import java.security.KeyStore
 import javax.crypto.*
 import javax.crypto.spec.GCMParameterSpec

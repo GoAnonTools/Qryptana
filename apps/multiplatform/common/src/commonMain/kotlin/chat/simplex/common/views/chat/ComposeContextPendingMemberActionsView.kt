@@ -17,6 +17,14 @@ import chat.simplex.common.views.chat.group.removeMember
 import chat.simplex.common.views.chat.group.removeMemberDialog
 import chat.simplex.common.views.helpers.*
 import chat.simplex.res.MR
+import chat.simplex.res.accept_pending_member_alert_confirmation_as_member
+import chat.simplex.res.accept_pending_member_alert_confirmation_as_observer
+import chat.simplex.res.accept_pending_member_alert_question
+import chat.simplex.res.accept_pending_member_alert_title
+import chat.simplex.res.accept_pending_member_button
+import chat.simplex.res.cancel_verb
+import chat.simplex.res.reject_pending_member_alert_title
+import chat.simplex.res.reject_pending_member_button
 import dev.icerock.moko.resources.compose.stringResource
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext

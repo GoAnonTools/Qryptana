@@ -21,6 +21,9 @@ import chat.simplex.common.views.TerminalView
 import chat.simplex.common.views.helpers.*
 import chat.simplex.common.views.onboarding.OnboardingStage
 import chat.simplex.res.MR
+import chat.simplex.res.app_was_crashed
+import chat.simplex.res.chat_console
+import chat.simplex.res.qryptana_symbol
 import dev.icerock.moko.resources.compose.painterResource
 import dev.icerock.moko.resources.compose.stringResource
 import kotlinx.coroutines.*

@@ -17,6 +17,11 @@ import chat.simplex.common.ui.theme.WarningOrange
 import chat.simplex.common.views.chat.*
 import chat.simplex.common.views.helpers.*
 import chat.simplex.res.MR
+import chat.simplex.res.ic_back_hand
+import chat.simplex.res.ic_delete
+import chat.simplex.res.ic_do_not_touch
+import chat.simplex.res.ic_person
+import chat.simplex.res.ic_person_edit
 import dev.icerock.moko.resources.compose.painterResource
 
 @Composable

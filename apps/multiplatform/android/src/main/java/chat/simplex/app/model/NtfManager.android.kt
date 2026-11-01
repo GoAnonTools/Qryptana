@@ -23,6 +23,16 @@ import chat.simplex.common.views.call.CallMediaType
 import chat.simplex.common.views.call.RcvCallInvitation
 import kotlinx.datetime.Clock
 import chat.simplex.res.MR
+import chat.simplex.res.accept
+import chat.simplex.res.audio_call_no_encryption
+import chat.simplex.res.encrypted_audio_call
+import chat.simplex.res.encrypted_video_call
+import chat.simplex.res.notification_preview_new_message
+import chat.simplex.res.notification_preview_somebody
+import chat.simplex.res.ntf_channel_calls
+import chat.simplex.res.ntf_channel_messages
+import chat.simplex.res.reject
+import chat.simplex.res.video_call_no_encryption
 
 object NtfManager {
   const val MessageChannel: String = "chat.simplex.app.MESSAGE_NOTIFICATION"

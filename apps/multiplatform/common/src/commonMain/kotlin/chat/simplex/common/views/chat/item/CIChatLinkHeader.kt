@@ -12,6 +12,7 @@ import chat.simplex.common.model.*
 import chat.simplex.common.ui.theme.*
 import chat.simplex.common.views.helpers.ProfileImage
 import chat.simplex.res.MR
+import chat.simplex.res.tap_to_open
 import dev.icerock.moko.resources.compose.stringResource
 
 @Composable

@@ -1,5 +1,8 @@
 package chat.simplex.common.views
 
+import chat.simplex.res.MR
+import chat.simplex.res.logo
+
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable

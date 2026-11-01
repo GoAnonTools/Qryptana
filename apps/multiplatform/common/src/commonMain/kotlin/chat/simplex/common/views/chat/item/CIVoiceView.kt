@@ -22,6 +22,11 @@ import chat.simplex.common.views.helpers.*
 import chat.simplex.common.model.*
 import chat.simplex.common.platform.*
 import chat.simplex.res.MR
+import chat.simplex.res.ic_close
+import chat.simplex.res.ic_pause_filled
+import chat.simplex.res.ic_play_arrow_filled
+import chat.simplex.res.ic_sync_problem
+import chat.simplex.res.ic_warning_filled
 import dev.icerock.moko.resources.ImageResource
 import kotlinx.coroutines.flow.*
 import kotlin.math.*

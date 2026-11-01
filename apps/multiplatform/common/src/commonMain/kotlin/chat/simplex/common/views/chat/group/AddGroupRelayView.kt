@@ -20,6 +20,16 @@ import chat.simplex.common.views.helpers.*
 import chat.simplex.common.views.newchat.chatRelayDisplayName
 import chat.simplex.common.views.usersettings.SettingsActionItem
 import chat.simplex.res.MR
+import chat.simplex.res.add_relays_title
+import chat.simplex.res.error_adding_relays
+import chat.simplex.res.ic_check
+import chat.simplex.res.ic_check_circle_filled
+import chat.simplex.res.ic_circle
+import chat.simplex.res.no_available_relays
+import chat.simplex.res.no_relays_selected
+import chat.simplex.res.num_relays_selected
+import chat.simplex.res.relays_added_format
+import chat.simplex.res.select_relays
 import dev.icerock.moko.resources.compose.painterResource
 import kotlinx.coroutines.launch
 

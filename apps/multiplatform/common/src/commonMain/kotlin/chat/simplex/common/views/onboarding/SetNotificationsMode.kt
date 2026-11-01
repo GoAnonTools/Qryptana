@@ -19,6 +19,22 @@ import chat.simplex.common.platform.*
 import chat.simplex.common.ui.theme.*
 import chat.simplex.common.views.helpers.*
 import chat.simplex.res.MR
+import chat.simplex.res.ic_bolt
+import chat.simplex.res.ic_bolt_off
+import chat.simplex.res.ic_timer
+import chat.simplex.res.ok
+import chat.simplex.res.onboarding_notifications_mode_battery
+import chat.simplex.res.onboarding_notifications_mode_off
+import chat.simplex.res.onboarding_notifications_mode_off_desc
+import chat.simplex.res.onboarding_notifications_mode_off_desc_short
+import chat.simplex.res.onboarding_notifications_mode_periodic
+import chat.simplex.res.onboarding_notifications_mode_periodic_desc
+import chat.simplex.res.onboarding_notifications_mode_periodic_desc_short
+import chat.simplex.res.onboarding_notifications_mode_service
+import chat.simplex.res.onboarding_notifications_mode_service_desc
+import chat.simplex.res.onboarding_notifications_mode_service_desc_short
+import chat.simplex.res.onboarding_notifications_mode_subtitle
+import chat.simplex.res.onboarding_notifications_mode_title
 import dev.icerock.moko.resources.compose.painterResource
 
 @Composable

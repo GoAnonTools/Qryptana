@@ -33,6 +33,19 @@ import chat.simplex.common.views.newchat.darkStops
 import chat.simplex.common.views.newchat.gradientPoints
 import chat.simplex.common.views.newchat.lightStops
 import chat.simplex.res.MR
+import chat.simplex.res.ic_dns
+import chat.simplex.res.ic_forum
+import chat.simplex.res.ic_person
+import chat.simplex.res.ic_shield
+import chat.simplex.res.intro
+import chat.simplex.res.intro_light
+import chat.simplex.res.network_commitments
+import chat.simplex.res.network_commitments_light
+import chat.simplex.res.qryptana_symbol
+import chat.simplex.res.your_network
+import chat.simplex.res.your_network_light
+import chat.simplex.res.your_profile
+import chat.simplex.res.your_profile_light
 import dev.icerock.moko.resources.ImageResource
 import dev.icerock.moko.resources.compose.painterResource
 

@@ -18,6 +18,12 @@ import chat.simplex.common.views.call.Call
 import chat.simplex.common.views.chat.item.ItemAction
 import chat.simplex.common.views.helpers.*
 import chat.simplex.res.MR
+import chat.simplex.res.ic_call_end_filled
+import chat.simplex.res.ic_call_filled
+import chat.simplex.res.ic_videocam_filled
+import chat.simplex.res.icon_descr_audio_call
+import chat.simplex.res.icon_descr_hang_up
+import chat.simplex.res.icon_descr_video_call
 import dev.icerock.moko.resources.compose.painterResource
 import dev.icerock.moko.resources.compose.stringResource
 

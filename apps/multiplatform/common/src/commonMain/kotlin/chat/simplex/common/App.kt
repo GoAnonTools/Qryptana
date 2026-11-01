@@ -38,6 +38,12 @@ import chat.simplex.common.views.newchat.*
 import chat.simplex.common.views.onboarding.*
 import chat.simplex.common.views.usersettings.*
 import chat.simplex.res.MR
+import chat.simplex.res.auth_unlock
+import chat.simplex.res.database_migration_in_progress
+import chat.simplex.res.ic_lock
+import chat.simplex.res.no_connected_mobile
+import chat.simplex.res.no_selected_chat
+import chat.simplex.res.opening_database
 import dev.icerock.moko.resources.compose.painterResource
 import dev.icerock.moko.resources.compose.stringResource
 import kotlinx.coroutines.*

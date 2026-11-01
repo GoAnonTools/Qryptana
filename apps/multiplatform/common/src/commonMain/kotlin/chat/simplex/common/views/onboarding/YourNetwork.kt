@@ -34,6 +34,20 @@ import chat.simplex.common.views.newchat.gradientPoints
 import chat.simplex.common.views.newchat.lightStops
 import chat.simplex.common.views.usersettings.changeNotificationsMode
 import chat.simplex.res.MR
+import chat.simplex.res.ic_bolt
+import chat.simplex.res.ic_bolt_off
+import chat.simplex.res.ic_dns
+import chat.simplex.res.ic_timer
+import chat.simplex.res.onboarding_choose_private_routing
+import chat.simplex.res.onboarding_configure_notifications
+import chat.simplex.res.onboarding_configure_routers
+import chat.simplex.res.onboarding_connections_stay_private
+import chat.simplex.res.onboarding_network_operators_continue
+import chat.simplex.res.onboarding_network_routers_cannot_know
+import chat.simplex.res.onboarding_private_network
+import chat.simplex.res.onboarding_your_network
+import chat.simplex.res.your_network
+import chat.simplex.res.your_network_light
 import dev.icerock.moko.resources.compose.painterResource
 import dev.icerock.moko.resources.compose.stringResource
 

@@ -15,6 +15,23 @@ import androidx.compose.ui.unit.dp
 import chat.simplex.common.ui.theme.WarningOrange
 import chat.simplex.common.views.helpers.*
 import chat.simplex.res.MR
+import chat.simplex.res.change_database_passphrase_question
+import chat.simplex.res.database_encryption_will_be_updated_in_settings
+import chat.simplex.res.database_is_not_encrypted
+import chat.simplex.res.database_will_be_encrypted_and_passphrase_stored_in_settings
+import chat.simplex.res.encrypt_database
+import chat.simplex.res.encrypt_database_question
+import chat.simplex.res.encrypted_with_random_passphrase
+import chat.simplex.res.ic_vpn_key_filled
+import chat.simplex.res.ic_vpn_key_off_filled
+import chat.simplex.res.impossible_to_recover_passphrase
+import chat.simplex.res.passphrase_will_be_saved_in_settings
+import chat.simplex.res.remove_passphrase
+import chat.simplex.res.remove_passphrase_from_settings
+import chat.simplex.res.save_passphrase_in_settings
+import chat.simplex.res.settings_is_storing_in_clear_text
+import chat.simplex.res.update_database
+import chat.simplex.res.you_have_to_enter_passphrase_every_time
 import dev.icerock.moko.resources.compose.painterResource
 import dev.icerock.moko.resources.compose.stringResource
 

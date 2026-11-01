@@ -22,6 +22,9 @@ import chat.simplex.common.views.chat.subscriberCountStr
 import chat.simplex.common.views.chat.topPaddingToContent
 import chat.simplex.common.views.helpers.*
 import chat.simplex.res.MR
+import chat.simplex.res.channel_member_you
+import chat.simplex.res.channel_members_section_owners
+import chat.simplex.res.channel_members_title_subscribers
 
 @Composable
 fun ModalData.ChannelMembersView(

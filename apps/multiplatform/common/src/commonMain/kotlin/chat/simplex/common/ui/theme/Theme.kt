@@ -20,6 +20,20 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import chat.simplex.res.MR
+import chat.simplex.res.color_background
+import chat.simplex.res.color_primary
+import chat.simplex.res.color_primary_variant
+import chat.simplex.res.color_primary_variant2
+import chat.simplex.res.color_received_message
+import chat.simplex.res.color_received_quote
+import chat.simplex.res.color_secondary
+import chat.simplex.res.color_secondary_variant
+import chat.simplex.res.color_sent_message
+import chat.simplex.res.color_sent_quote
+import chat.simplex.res.color_surface
+import chat.simplex.res.color_title
+import chat.simplex.res.color_wallpaper_background
+import chat.simplex.res.color_wallpaper_tint
 import kotlinx.serialization.Transient
 import java.util.UUID
 

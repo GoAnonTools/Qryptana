@@ -4,6 +4,8 @@ import androidx.compose.runtime.*
 import chat.simplex.common.model.*
 import chat.simplex.common.views.helpers.*
 import chat.simplex.res.MR
+import chat.simplex.res.unknown_error
+import chat.simplex.res.voice_recording_not_supported
 import kotlinx.coroutines.*
 import uk.co.caprica.vlcj.factory.MediaPlayerFactory
 import uk.co.caprica.vlcj.player.base.MediaPlayer

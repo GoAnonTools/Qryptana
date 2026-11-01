@@ -5,6 +5,8 @@ import chat.simplex.common.model.*
 import chat.simplex.common.ui.theme.*
 import chat.simplex.common.views.helpers.*
 import chat.simplex.res.MR
+import chat.simplex.res.error_saving_file
+import chat.simplex.res.file_saved
 import com.charleskorn.kaml.*
 import kotlinx.serialization.encodeToString
 import java.io.*

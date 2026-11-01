@@ -17,6 +17,7 @@ import chat.simplex.common.model.ChatInfo
 import chat.simplex.common.model.getTimestampText
 import chat.simplex.common.views.helpers.*
 import chat.simplex.res.MR
+import chat.simplex.res.contact_wants_to_connect_with_you
 
 @Composable
 fun ContactRequestView(contactRequest: ChatInfo.ContactRequest) {

@@ -19,6 +19,15 @@ import chat.simplex.common.model.*
 import chat.simplex.common.platform.ColumnWithScrollBar
 import chat.simplex.common.platform.chatModel
 import chat.simplex.res.MR
+import chat.simplex.res.admission_stage_review
+import chat.simplex.res.admission_stage_review_descr
+import chat.simplex.res.exit_without_saving
+import chat.simplex.res.member_admission
+import chat.simplex.res.member_criteria_all
+import chat.simplex.res.member_criteria_off
+import chat.simplex.res.reset_verb
+import chat.simplex.res.save_admission_question
+import chat.simplex.res.save_and_notify_group_members
 import dev.icerock.moko.resources.StringResource
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext

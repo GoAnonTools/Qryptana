@@ -6,6 +6,7 @@ import androidx.compose.ui.unit.IntSize
 import boofcv.io.image.ConvertBufferedImage
 import boofcv.struct.image.GrayU8
 import chat.simplex.res.MR
+import chat.simplex.res.icon_foreground_common
 import org.jetbrains.skia.Image
 import java.awt.RenderingHints
 import java.awt.geom.AffineTransform

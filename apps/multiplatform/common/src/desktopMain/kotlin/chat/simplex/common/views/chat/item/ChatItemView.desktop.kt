@@ -16,6 +16,10 @@ import chat.simplex.common.platform.*
 import chat.simplex.common.ui.theme.EmojiFont
 import chat.simplex.common.views.helpers.*
 import chat.simplex.res.MR
+import chat.simplex.res.copied
+import chat.simplex.res.ic_download
+import chat.simplex.res.ic_heart
+import chat.simplex.res.save_verb
 import dev.icerock.moko.resources.compose.painterResource
 import dev.icerock.moko.resources.compose.stringResource
 import java.io.File

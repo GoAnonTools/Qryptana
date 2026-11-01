@@ -18,6 +18,15 @@ import chat.simplex.common.ui.theme.isInDarkTheme
 import chat.simplex.common.views.helpers.AlertManager
 import chat.simplex.common.views.helpers.generalGetString
 import chat.simplex.res.MR
+import chat.simplex.res.close_behavior_dialog_close
+import chat.simplex.res.close_behavior_dialog_minimize
+import chat.simplex.res.close_behavior_dialog_text
+import chat.simplex.res.close_behavior_dialog_title
+import chat.simplex.res.qryptana_symbol
+import chat.simplex.res.tray_quit
+import chat.simplex.res.tray_show
+import chat.simplex.res.tray_tooltip
+import chat.simplex.res.tray_tooltip_unread
 import dev.icerock.moko.resources.compose.painterResource
 import dev.icerock.moko.resources.compose.stringResource
 import java.awt.AWTException

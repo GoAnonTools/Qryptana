@@ -30,6 +30,7 @@ import chat.simplex.common.views.onboarding.SelectableCard
 import androidx.compose.foundation.interaction.collectIsHoveredAsState
 import chat.simplex.common.views.usersettings.SettingsActionItemWithContent
 import chat.simplex.res.MR
+import chat.simplex.res.ic_check
 
 val SectionCardShape = RoundedCornerShape(16.dp)
 val CARD_PADDING = 18.dp

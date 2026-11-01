@@ -10,6 +10,8 @@ import dev.icerock.moko.resources.compose.stringResource
 import androidx.compose.ui.unit.dp
 import chat.simplex.common.platform.rememberFileChooserLauncher
 import chat.simplex.res.MR
+import chat.simplex.res.from_gallery_button
+import chat.simplex.res.ic_image
 import chat.simplex.common.views.newchat.ActionButton
 import java.net.URI
 

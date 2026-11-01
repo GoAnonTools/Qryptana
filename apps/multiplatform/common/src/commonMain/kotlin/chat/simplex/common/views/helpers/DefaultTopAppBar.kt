@@ -20,6 +20,14 @@ import chat.simplex.common.platform.appPlatform
 import chat.simplex.common.ui.theme.*
 import chat.simplex.common.views.chat.item.CenteredRowLayout
 import chat.simplex.res.MR
+import chat.simplex.res.back
+import chat.simplex.res.ic_arrow_back_ios_new
+import chat.simplex.res.ic_close
+import chat.simplex.res.ic_menu
+import chat.simplex.res.ic_share
+import chat.simplex.res.icon_descr_settings
+import chat.simplex.res.search_verb
+import chat.simplex.res.share_verb
 import kotlin.math.absoluteValue
 
 @Composable

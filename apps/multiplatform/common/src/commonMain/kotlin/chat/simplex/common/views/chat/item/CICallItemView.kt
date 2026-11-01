@@ -13,6 +13,18 @@ import chat.simplex.common.ui.theme.*
 import chat.simplex.common.model.*
 import chat.simplex.common.views.helpers.SimpleButton
 import chat.simplex.res.MR
+import chat.simplex.res.answer_call
+import chat.simplex.res.ic_call
+import chat.simplex.res.ic_call_end
+import chat.simplex.res.ic_phone_in_talk_filled
+import chat.simplex.res.ic_ring_volume
+import chat.simplex.res.ic_settings_phone
+import chat.simplex.res.icon_descr_call_connecting
+import chat.simplex.res.icon_descr_call_ended
+import chat.simplex.res.icon_descr_call_missed
+import chat.simplex.res.icon_descr_call_pending_sent
+import chat.simplex.res.icon_descr_call_progress
+import chat.simplex.res.icon_descr_call_rejected
 
 @Composable
 fun CICallItemView(

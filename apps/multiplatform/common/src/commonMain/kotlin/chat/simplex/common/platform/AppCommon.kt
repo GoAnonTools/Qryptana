@@ -7,6 +7,9 @@ import chat.simplex.common.model.*
 import chat.simplex.common.ui.theme.DefaultTheme
 import chat.simplex.common.views.helpers.generalGetString
 import chat.simplex.res.MR
+import chat.simplex.res.app_check_for_updates_disabled
+import chat.simplex.res.qryptana_upstream_beta
+import chat.simplex.res.qryptana_upstream_stable
 import java.util.*
 
 enum class AppPlatform {

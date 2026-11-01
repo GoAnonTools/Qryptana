@@ -9,6 +9,10 @@ import chat.simplex.common.platform.BackHandler
 import chat.simplex.common.views.localauth.LocalAuthView
 import chat.simplex.common.views.usersettings.LAMode
 import chat.simplex.res.MR
+import chat.simplex.res.authentication_cancelled
+import chat.simplex.res.la_authenticate
+import chat.simplex.res.la_enter_app_passcode
+import chat.simplex.res.la_no_app_password
 
 sealed class LAResult {
   object Success: LAResult()

@@ -15,6 +15,9 @@ import dev.icerock.moko.resources.compose.stringResource
 import androidx.compose.ui.unit.dp
 import chat.simplex.common.platform.base64ToBitmap
 import chat.simplex.res.MR
+import chat.simplex.res.ic_close
+import chat.simplex.res.ic_videocam_filled
+import chat.simplex.res.icon_descr_cancel_image_preview
 import chat.simplex.common.ui.theme.*
 import chat.simplex.common.views.helpers.UploadContent
 

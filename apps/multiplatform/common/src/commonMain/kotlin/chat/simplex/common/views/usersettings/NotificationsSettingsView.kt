@@ -18,6 +18,22 @@ import chat.simplex.common.model.*
 import chat.simplex.common.platform.*
 import chat.simplex.common.views.helpers.*
 import chat.simplex.res.MR
+import chat.simplex.res.notification_display_mode_hidden_desc
+import chat.simplex.res.notification_preview_mode_contact
+import chat.simplex.res.notification_preview_mode_contact_desc
+import chat.simplex.res.notification_preview_mode_hidden
+import chat.simplex.res.notification_preview_mode_message
+import chat.simplex.res.notification_preview_mode_message_desc
+import chat.simplex.res.notifications
+import chat.simplex.res.notifications_mode_off
+import chat.simplex.res.notifications_mode_off_desc
+import chat.simplex.res.notifications_mode_periodic
+import chat.simplex.res.notifications_mode_periodic_desc
+import chat.simplex.res.notifications_mode_service
+import chat.simplex.res.notifications_mode_service_desc
+import chat.simplex.res.settings_notification_preview_title
+import chat.simplex.res.settings_notifications_mode_title
+import chat.simplex.res.xiaomi_ignore_battery_optimization
 import kotlin.collections.ArrayList
 
 @Composable

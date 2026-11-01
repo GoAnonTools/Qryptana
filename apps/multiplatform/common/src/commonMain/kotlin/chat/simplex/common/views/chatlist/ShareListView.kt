@@ -20,6 +20,19 @@ import chat.simplex.common.ui.theme.themedBackground
 import chat.simplex.common.views.chat.topPaddingToContent
 import chat.simplex.common.views.newchat.ActiveProfilePicker
 import chat.simplex.res.MR
+import chat.simplex.res.chat_is_stopped_indication
+import chat.simplex.res.forward_message
+import chat.simplex.res.forward_multiple
+import chat.simplex.res.ic_report_filled
+import chat.simplex.res.ic_search_500
+import chat.simplex.res.search_verb
+import chat.simplex.res.share_address
+import chat.simplex.res.share_channel
+import chat.simplex.res.share_file
+import chat.simplex.res.share_image
+import chat.simplex.res.share_message
+import chat.simplex.res.you_can_start_chat_via_setting_or_by_restarting_the_app
+import chat.simplex.res.you_have_no_chats
 
 @Composable
 fun ShareListView(chatModel: ChatModel, stopped: Boolean) {

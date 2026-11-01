@@ -45,6 +45,14 @@ import chat.simplex.common.ui.theme.*
 import chat.simplex.common.views.call.*
 import chat.simplex.common.views.helpers.*
 import chat.simplex.res.MR
+import chat.simplex.res.accept
+import chat.simplex.res.allow_accepting_calls_from_lock_screen
+import chat.simplex.res.ignore
+import chat.simplex.res.image_descr_simplex_logo
+import chat.simplex.res.open_simplex_chat_to_accept_call
+import chat.simplex.res.open_verb
+import chat.simplex.res.qryptana_symbol
+import chat.simplex.res.reject
 import com.google.accompanist.permissions.rememberMultiplePermissionsState
 import dev.icerock.moko.resources.compose.stringResource
 import dev.icerock.moko.resources.compose.painterResource as mokoPainterResource

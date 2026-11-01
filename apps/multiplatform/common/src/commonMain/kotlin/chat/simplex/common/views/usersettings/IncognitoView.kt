@@ -13,6 +13,11 @@ import chat.simplex.common.views.helpers.AppBarTitle
 import chat.simplex.common.views.helpers.generalGetString
 import chat.simplex.common.views.onboarding.ReadableTextWithLink
 import chat.simplex.res.MR
+import chat.simplex.res.incognito_info_allows
+import chat.simplex.res.incognito_info_protects
+import chat.simplex.res.incognito_info_share
+import chat.simplex.res.read_more_in_user_guide_with_link
+import chat.simplex.res.settings_section_title_incognito
 
 @Composable
 fun IncognitoView() {

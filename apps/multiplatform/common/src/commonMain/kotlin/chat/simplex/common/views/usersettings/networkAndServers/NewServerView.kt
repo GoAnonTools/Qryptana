@@ -9,6 +9,13 @@ import chat.simplex.common.model.ServerAddress.Companion.parseServerAddress
 import chat.simplex.common.views.helpers.*
 import chat.simplex.common.platform.*
 import chat.simplex.res.MR
+import chat.simplex.res.error_adding_server
+import chat.simplex.res.operator_server_alert_title
+import chat.simplex.res.server_added_to_operator__name
+import chat.simplex.res.smp_servers_check_address
+import chat.simplex.res.smp_servers_invalid_address
+import chat.simplex.res.smp_servers_new_server
+import chat.simplex.res.smp_servers_test_failed
 import kotlinx.coroutines.*
 
 @Composable

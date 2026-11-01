@@ -7,6 +7,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.graphics.ImageBitmap
 import chat.simplex.common.views.helpers.*
 import chat.simplex.res.MR
+import chat.simplex.res.unknown_error
 import com.google.android.exoplayer2.*
 import com.google.android.exoplayer2.C.*
 import com.google.android.exoplayer2.audio.AudioAttributes

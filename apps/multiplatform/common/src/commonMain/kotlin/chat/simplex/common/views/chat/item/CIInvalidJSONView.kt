@@ -15,6 +15,7 @@ import chat.simplex.common.platform.shareText
 import chat.simplex.common.ui.theme.DEFAULT_PADDING
 import chat.simplex.common.views.helpers.*
 import chat.simplex.res.MR
+import chat.simplex.res.invalid_data
 
 @Composable
 fun CIInvalidJSONView(json: String) {

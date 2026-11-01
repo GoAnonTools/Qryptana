@@ -32,6 +32,11 @@ import chat.simplex.common.views.remote.AddingMobileDevice
 import chat.simplex.common.views.remote.DeviceNameField
 import chat.simplex.common.views.usersettings.PreferenceToggle
 import chat.simplex.res.MR
+import chat.simplex.res.link_a_mobile
+import chat.simplex.res.linked_mobiles
+import chat.simplex.res.multicast_discoverable_via_local_network
+import chat.simplex.res.this_device_name
+import chat.simplex.res.this_device_name_shared_with_mobile
 import dev.icerock.moko.resources.compose.stringResource
 
 @Composable

@@ -28,6 +28,11 @@ import chat.simplex.common.platform.TAG
 import chat.simplex.common.ui.theme.DEFAULT_PADDING_HALF
 import chat.simplex.common.views.helpers.*
 import chat.simplex.res.MR
+import chat.simplex.res.camera_not_available
+import chat.simplex.res.enable_camera_access
+import chat.simplex.res.ic_camera_enhance
+import chat.simplex.res.ic_qr_code
+import chat.simplex.res.tap_to_scan
 import com.google.accompanist.permissions.PermissionStatus
 import com.google.accompanist.permissions.rememberPermissionState
 import com.google.common.util.concurrent.ListenableFuture

@@ -9,6 +9,8 @@ import chat.simplex.common.views.helpers.DatabaseUtils.ksDatabasePassword
 import chat.simplex.common.views.helpers.DatabaseUtils.randomDatabasePassword
 import chat.simplex.common.views.onboarding.OnboardingStage
 import chat.simplex.res.MR
+import chat.simplex.res.chat_is_stopped_you_should_transfer_database
+import chat.simplex.res.start_chat_question
 import kotlinx.coroutines.*
 import java.io.File
 import java.nio.ByteBuffer

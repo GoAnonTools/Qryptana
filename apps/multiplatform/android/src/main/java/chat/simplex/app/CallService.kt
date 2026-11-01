@@ -17,6 +17,10 @@ import chat.simplex.common.model.NotificationPreviewMode
 import chat.simplex.common.platform.*
 import chat.simplex.common.views.helpers.*
 import chat.simplex.res.MR
+import chat.simplex.res.call_service_notification_audio_call
+import chat.simplex.res.call_service_notification_end_call
+import chat.simplex.res.call_service_notification_video_call
+import chat.simplex.res.notification_preview_somebody
 import kotlinx.datetime.Instant
 
 class CallService: Service() {

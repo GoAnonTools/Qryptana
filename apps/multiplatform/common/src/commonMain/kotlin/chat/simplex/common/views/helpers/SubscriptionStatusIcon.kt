@@ -6,6 +6,10 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import chat.simplex.res.MR
+import chat.simplex.res.ic_radiowaves_up_forward_1_bar
+import chat.simplex.res.ic_radiowaves_up_forward_2_bar
+import chat.simplex.res.ic_radiowaves_up_forward_3_bar
+import chat.simplex.res.ic_radiowaves_up_forward_4_bar
 import dev.icerock.moko.resources.compose.painterResource
 
 @Composable

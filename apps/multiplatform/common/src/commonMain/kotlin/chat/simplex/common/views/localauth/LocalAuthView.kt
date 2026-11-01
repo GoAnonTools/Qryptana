@@ -12,6 +12,10 @@ import chat.simplex.common.views.onboarding.OnboardingStage
 import chat.simplex.common.platform.*
 import chat.simplex.common.views.database.*
 import chat.simplex.res.MR
+import chat.simplex.res.authentication_cancelled
+import chat.simplex.res.incorrect_passcode
+import chat.simplex.res.la_enter_app_passcode
+import chat.simplex.res.submit_passcode
 import kotlinx.coroutines.delay
 
 @Composable

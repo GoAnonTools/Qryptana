@@ -18,6 +18,8 @@ import chat.simplex.common.model.PendingContactConnection
 import chat.simplex.common.model.getTimestampText
 import chat.simplex.common.views.helpers.*
 import chat.simplex.res.MR
+import chat.simplex.res.ic_add_link
+import chat.simplex.res.ic_link
 
 @Composable
 fun ContactConnectionView(contactConnection: PendingContactConnection) {

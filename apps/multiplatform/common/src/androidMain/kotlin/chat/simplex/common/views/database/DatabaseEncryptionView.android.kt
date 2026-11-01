@@ -15,6 +15,25 @@ import androidx.compose.ui.unit.dp
 import chat.simplex.common.ui.theme.SimplexGreen
 import chat.simplex.common.views.helpers.*
 import chat.simplex.res.MR
+import chat.simplex.res.android_change_profile_password_question
+import chat.simplex.res.android_encrypt_profiles_question
+import chat.simplex.res.android_password_needed_each_start
+import chat.simplex.res.android_password_saved_after_restart
+import chat.simplex.res.android_password_saved_in_keystore
+import chat.simplex.res.android_password_saved_securely_in_keystore
+import chat.simplex.res.android_profile_password_not_recoverable
+import chat.simplex.res.android_profile_password_will_be_updated
+import chat.simplex.res.android_profiles_not_password_protected
+import chat.simplex.res.android_random_password_can_change
+import chat.simplex.res.android_remove_password
+import chat.simplex.res.android_remove_password_from_keystore
+import chat.simplex.res.android_save_password_in_keystore
+import chat.simplex.res.android_setup_profile_password
+import chat.simplex.res.android_store_password_securely
+import chat.simplex.res.android_update_profile_password
+import chat.simplex.res.ic_vpn_key_filled
+import chat.simplex.res.ic_vpn_key_off_filled
+import chat.simplex.res.notifications_will_be_hidden
 import dev.icerock.moko.resources.compose.painterResource
 import dev.icerock.moko.resources.compose.stringResource
 

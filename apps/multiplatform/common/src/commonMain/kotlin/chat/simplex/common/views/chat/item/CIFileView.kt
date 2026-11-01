@@ -26,6 +26,27 @@ import chat.simplex.common.platform.*
 import chat.simplex.common.ui.theme.*
 import chat.simplex.common.views.helpers.*
 import chat.simplex.res.MR
+import chat.simplex.res.contact_sent_large_file
+import chat.simplex.res.error
+import chat.simplex.res.file_error
+import chat.simplex.res.file_not_found
+import chat.simplex.res.file_will_be_received_when_contact_completes_uploading
+import chat.simplex.res.file_will_be_received_when_contact_is_online
+import chat.simplex.res.how_it_works
+import chat.simplex.res.ic_arrow_downward
+import chat.simplex.res.ic_check_filled
+import chat.simplex.res.ic_close
+import chat.simplex.res.ic_draft_filled
+import chat.simplex.res.ic_more_horiz
+import chat.simplex.res.ic_priority_high
+import chat.simplex.res.ic_question_mark
+import chat.simplex.res.ic_sync_problem
+import chat.simplex.res.ic_warning_filled
+import chat.simplex.res.icon_descr_file
+import chat.simplex.res.large_file
+import chat.simplex.res.ok
+import chat.simplex.res.temporary_file_error
+import chat.simplex.res.waiting_for_file
 import java.io.File
 import java.net.URI
 

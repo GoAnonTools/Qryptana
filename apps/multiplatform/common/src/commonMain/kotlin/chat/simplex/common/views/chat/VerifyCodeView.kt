@@ -22,6 +22,18 @@ import chat.simplex.common.ui.theme.*
 import chat.simplex.common.views.helpers.*
 import chat.simplex.common.views.newchat.QRCode
 import chat.simplex.res.MR
+import chat.simplex.res.clear_verification
+import chat.simplex.res.ic_qr_code
+import chat.simplex.res.ic_share_filled
+import chat.simplex.res.ic_shield
+import chat.simplex.res.ic_verified_user
+import chat.simplex.res.incorrect_code
+import chat.simplex.res.is_not_verified
+import chat.simplex.res.is_verified
+import chat.simplex.res.mark_code_verified
+import chat.simplex.res.scan_code
+import chat.simplex.res.security_code
+import chat.simplex.res.to_verify_compare
 
 @Composable
 fun VerifyCodeView(

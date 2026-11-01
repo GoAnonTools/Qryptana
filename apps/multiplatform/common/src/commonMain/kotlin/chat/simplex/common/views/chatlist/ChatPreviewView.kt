@@ -34,6 +34,33 @@ import chat.simplex.common.views.chat.*
 import chat.simplex.common.views.newchat.planAndConnect
 import chat.simplex.common.views.chat.item.*
 import chat.simplex.res.MR
+import chat.simplex.res.contact_connection_pending
+import chat.simplex.res.contact_should_accept
+import chat.simplex.res.contact_tap_to_connect
+import chat.simplex.res.favorite_chat
+import chat.simplex.res.group_connection_pending
+import chat.simplex.res.group_preview_join_as
+import chat.simplex.res.group_preview_open_to_join
+import chat.simplex.res.group_preview_rejected
+import chat.simplex.res.group_preview_you_are_invited
+import chat.simplex.res.ic_alternate_email
+import chat.simplex.res.ic_arrow_outward
+import chat.simplex.res.ic_cancel_filled
+import chat.simplex.res.ic_draft_filled
+import chat.simplex.res.ic_edit_note
+import chat.simplex.res.ic_flag
+import chat.simplex.res.ic_image
+import chat.simplex.res.ic_play_arrow_filled
+import chat.simplex.res.ic_star_filled
+import chat.simplex.res.ic_theater_comedy
+import chat.simplex.res.ic_verified_user
+import chat.simplex.res.icon_descr_group_inactive
+import chat.simplex.res.notifications
+import chat.simplex.res.open_to_accept
+import chat.simplex.res.open_to_connect
+import chat.simplex.res.open_to_use_bot
+import chat.simplex.res.reviewed_by_admins
+import chat.simplex.res.thousand_abbreviation
 import dev.icerock.moko.resources.ImageResource
 
 // Spec: spec/client/chat-list.md#ChatPreviewView

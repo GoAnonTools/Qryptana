@@ -17,6 +17,9 @@ import chat.simplex.common.views.chat.*
 import chat.simplex.common.views.chatlist.*
 import chat.simplex.common.views.helpers.*
 import chat.simplex.res.MR
+import chat.simplex.res.ic_search
+import chat.simplex.res.search_verb
+import chat.simplex.res.support_chat
 import dev.icerock.moko.resources.compose.painterResource
 import dev.icerock.moko.resources.compose.stringResource
 

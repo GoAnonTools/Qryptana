@@ -22,6 +22,15 @@ import chat.simplex.common.views.helpers.*
 import chat.simplex.common.views.newchat.IncognitoOptionImage
 import chat.simplex.common.views.usersettings.IncognitoView
 import chat.simplex.res.MR
+import chat.simplex.res.context_user_picker_cant_change_profile_alert_message
+import chat.simplex.res.context_user_picker_cant_change_profile_alert_title
+import chat.simplex.res.context_user_picker_your_profile
+import chat.simplex.res.ic_chevron_down
+import chat.simplex.res.ic_chevron_up
+import chat.simplex.res.ic_info
+import chat.simplex.res.incognito
+import chat.simplex.res.switching_profile_error_message
+import chat.simplex.res.switching_profile_error_title
 import dev.icerock.moko.resources.compose.painterResource
 import dev.icerock.moko.resources.compose.stringResource
 

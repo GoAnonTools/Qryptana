@@ -22,6 +22,26 @@ import chat.simplex.common.platform.ColumnWithScrollBar
 import chat.simplex.common.platform.chatModel
 import chat.simplex.common.views.usersettings.SettingsActionItem
 import chat.simplex.res.MR
+import chat.simplex.res.channel_preferences
+import chat.simplex.res.chat_preferences
+import chat.simplex.res.chat_with_admins_relay_note
+import chat.simplex.res.custom_time_picker_select
+import chat.simplex.res.delete_after
+import chat.simplex.res.enable_chats_with_admins
+import chat.simplex.res.enable_chats_with_admins_question
+import chat.simplex.res.exit_without_saving
+import chat.simplex.res.feature_enabled_for
+import chat.simplex.res.feature_roles_admins
+import chat.simplex.res.feature_roles_all_members
+import chat.simplex.res.feature_roles_moderators
+import chat.simplex.res.feature_roles_owners
+import chat.simplex.res.group_preferences
+import chat.simplex.res.ic_toggle_on
+import chat.simplex.res.member_admission
+import chat.simplex.res.reset_verb
+import chat.simplex.res.save_and_notify_channel_subscribers
+import chat.simplex.res.save_and_notify_group_members
+import chat.simplex.res.save_preferences_question
 import dev.icerock.moko.resources.compose.painterResource
 import kotlinx.coroutines.*
 

@@ -19,6 +19,11 @@ import chat.simplex.common.platform.chatModel
 import chat.simplex.common.ui.theme.DEFAULT_PADDING_HALF
 import chat.simplex.common.views.helpers.AppBarTitle
 import chat.simplex.res.MR
+import chat.simplex.res.app_version_code
+import chat.simplex.res.app_version_name
+import chat.simplex.res.app_version_title
+import chat.simplex.res.core_simplexmq_version
+import chat.simplex.res.core_version
 
 @Composable
 fun VersionInfoView(

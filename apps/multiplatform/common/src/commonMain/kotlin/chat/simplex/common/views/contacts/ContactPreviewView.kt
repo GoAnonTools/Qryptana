@@ -16,6 +16,12 @@ import chat.simplex.common.ui.theme.*
 import chat.simplex.common.views.newchat.ContactType
 import chat.simplex.common.views.newchat.chatContactType
 import chat.simplex.res.MR
+import chat.simplex.res.ic_check
+import chat.simplex.res.ic_inventory_2
+import chat.simplex.res.ic_mail
+import chat.simplex.res.ic_star_filled
+import chat.simplex.res.ic_theater_comedy
+import chat.simplex.res.ic_verified_user
 
 @Composable
 fun ContactPreviewView(

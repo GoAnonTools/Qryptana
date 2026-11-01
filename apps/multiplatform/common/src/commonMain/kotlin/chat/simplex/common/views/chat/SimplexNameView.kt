@@ -16,6 +16,11 @@ import chat.simplex.common.platform.*
 import chat.simplex.common.ui.theme.DEFAULT_PADDING_HALF
 import chat.simplex.common.views.helpers.*
 import chat.simplex.res.MR
+import chat.simplex.res.copied
+import chat.simplex.res.ic_check_filled
+import chat.simplex.res.ic_close
+import chat.simplex.res.simplex_name_not_verified
+import chat.simplex.res.verify_simplex_name_action
 import dev.icerock.moko.resources.compose.painterResource
 import dev.icerock.moko.resources.compose.stringResource
 import kotlinx.coroutines.*

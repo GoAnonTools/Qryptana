@@ -24,6 +24,20 @@ import chat.simplex.common.ui.theme.*
 import chat.simplex.common.views.call.parseRTCIceServers
 import chat.simplex.common.views.helpers.*
 import chat.simplex.res.MR
+import chat.simplex.res.cancel_verb
+import chat.simplex.res.configure_ICE_servers
+import chat.simplex.res.confirm_verb
+import chat.simplex.res.edit_verb
+import chat.simplex.res.ensure_ICE_server_address_are_correct_format_and_unique
+import chat.simplex.res.enter_one_ICE_server_per_line
+import chat.simplex.res.error_saving_ICE_servers
+import chat.simplex.res.how_to
+import chat.simplex.res.ic_open_in_new
+import chat.simplex.res.save_servers_button
+import chat.simplex.res.saved_ICE_servers_will_be_removed
+import chat.simplex.res.use_simplex_chat_servers__question
+import chat.simplex.res.using_simplex_chat_servers
+import chat.simplex.res.your_ICE_servers
 
 @Composable
 fun RTCServersView(

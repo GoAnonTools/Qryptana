@@ -9,6 +9,9 @@ import java.io.File
 import java.net.URI
 import java.net.URLEncoder
 import chat.simplex.res.MR
+import chat.simplex.res.copied
+import chat.simplex.res.error
+import chat.simplex.res.file_saved
 import java.awt.Desktop
 
 actual fun UriHandler.sendEmail(subject: String, body: CharSequence) {

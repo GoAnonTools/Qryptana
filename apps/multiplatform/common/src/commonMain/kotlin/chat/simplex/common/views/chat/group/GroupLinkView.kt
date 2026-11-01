@@ -25,6 +25,31 @@ import chat.simplex.common.views.helpers.*
 import chat.simplex.common.views.newchat.*
 import chat.simplex.common.views.usersettings.SettingsActionItem
 import chat.simplex.res.MR
+import chat.simplex.res.all_group_members_will_remain_connected
+import chat.simplex.res.button_create_group_link
+import chat.simplex.res.cancel_verb
+import chat.simplex.res.channel_link
+import chat.simplex.res.continue_to_next_step
+import chat.simplex.res.delete_link
+import chat.simplex.res.delete_link_question
+import chat.simplex.res.delete_verb
+import chat.simplex.res.group_link
+import chat.simplex.res.ic_add
+import chat.simplex.res.ic_add_link
+import chat.simplex.res.ic_check
+import chat.simplex.res.ic_delete
+import chat.simplex.res.ic_forward
+import chat.simplex.res.ic_share
+import chat.simplex.res.initial_member_role
+import chat.simplex.res.share_group_profile_via_link
+import chat.simplex.res.share_group_profile_via_link_alert_text
+import chat.simplex.res.share_link
+import chat.simplex.res.share_old_link_alert_button
+import chat.simplex.res.share_profile_via_link_alert_confirm
+import chat.simplex.res.share_via_chat
+import chat.simplex.res.upgrade_group_link
+import chat.simplex.res.you_can_share_channel_link_anybody_will_be_able_to_connect
+import chat.simplex.res.you_can_share_group_link_anybody_will_be_able_to_connect
 
 @Composable
 fun GroupLinkView(

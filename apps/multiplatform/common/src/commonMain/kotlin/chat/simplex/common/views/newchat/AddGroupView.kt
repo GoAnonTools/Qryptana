@@ -30,6 +30,15 @@ import chat.simplex.common.views.usersettings.*
 import androidx.compose.ui.layout.ContentScale
 import chat.simplex.common.BuildConfigCommon
 import chat.simplex.res.MR
+import chat.simplex.res.create_group
+import chat.simplex.res.create_group_button
+import chat.simplex.res.create_group_light
+import chat.simplex.res.create_secret_group_title
+import chat.simplex.res.group_display_name_field
+import chat.simplex.res.group_is_decentralized
+import chat.simplex.res.ic_check
+import chat.simplex.res.ic_info
+import chat.simplex.res.ic_supervised_user_circle_filled
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.*

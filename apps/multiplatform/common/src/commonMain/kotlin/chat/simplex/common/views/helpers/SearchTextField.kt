@@ -24,6 +24,9 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.*
 import chat.simplex.common.platform.*
 import chat.simplex.res.MR
+import chat.simplex.res.ic_close
+import chat.simplex.res.icon_descr_close_button
+import chat.simplex.res.search_verb
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.launch

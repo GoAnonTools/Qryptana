@@ -21,6 +21,22 @@ import chat.simplex.common.views.helpers.*
 import chat.simplex.common.views.newchat.*
 import chat.simplex.common.views.onboarding.*
 import chat.simplex.res.MR
+import chat.simplex.res.address_or_1_time_link
+import chat.simplex.res.connection_security
+import chat.simplex.res.create_1_time_link
+import chat.simplex.res.create_simplex_address
+import chat.simplex.res.ic_add_link
+import chat.simplex.res.ic_mail
+import chat.simplex.res.ic_shield
+import chat.simplex.res.one_time_link_can_be_used_with_one_contact_only
+import chat.simplex.res.read_more_in_user_guide_with_link
+import chat.simplex.res.share_1_time_link_with_a_friend
+import chat.simplex.res.share_address_publicly
+import chat.simplex.res.share_simplex_address_on_social_media
+import chat.simplex.res.simplex_address_and_1_time_links_are_safe_to_share
+import chat.simplex.res.to_protect_against_your_link_replaced_compare_codes
+import chat.simplex.res.you_can_set_connection_name_to_remember
+import chat.simplex.res.you_wont_lose_your_contacts_if_delete_address
 import dev.icerock.moko.resources.compose.painterResource
 
 @Composable

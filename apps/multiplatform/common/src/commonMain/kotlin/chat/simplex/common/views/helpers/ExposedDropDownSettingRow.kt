@@ -17,6 +17,9 @@ import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.*
 import chat.simplex.res.MR
+import chat.simplex.res.ic_arrow_drop_down
+import chat.simplex.res.ic_arrow_drop_up
+import chat.simplex.res.icon_descr_more_button
 import chat.simplex.common.ui.theme.*
 import chat.simplex.common.views.usersettings.SettingsActionItemWithContent
 import dev.icerock.moko.resources.ImageResource

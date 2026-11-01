@@ -27,6 +27,22 @@ import chat.simplex.common.views.chat.*
 import chat.simplex.common.views.chat.item.ItemAction
 import chat.simplex.common.views.chatlist.*
 import chat.simplex.res.MR
+import chat.simplex.res.accept_pending_member_button
+import chat.simplex.res.delete_member_support_chat_alert_title
+import chat.simplex.res.delete_member_support_chat_button
+import chat.simplex.res.ic_alternate_email
+import chat.simplex.res.ic_check
+import chat.simplex.res.ic_delete
+import chat.simplex.res.ic_flag_filled
+import chat.simplex.res.ic_refresh
+import chat.simplex.res.mark_read
+import chat.simplex.res.member_info_member_disabled
+import chat.simplex.res.member_info_member_failed
+import chat.simplex.res.member_info_member_inactive
+import chat.simplex.res.member_support
+import chat.simplex.res.no_support_chats
+import chat.simplex.res.notifications
+import chat.simplex.res.support_chats_disabled
 import dev.icerock.moko.resources.compose.painterResource
 import kotlinx.coroutines.*
 

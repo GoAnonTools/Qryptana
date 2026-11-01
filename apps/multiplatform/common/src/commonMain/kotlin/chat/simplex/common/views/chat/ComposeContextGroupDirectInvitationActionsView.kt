@@ -17,6 +17,14 @@ import chat.simplex.common.platform.chatModel
 import chat.simplex.common.ui.theme.DEFAULT_PADDING_HALF
 import chat.simplex.common.views.helpers.*
 import chat.simplex.res.MR
+import chat.simplex.res.accept_contact_button
+import chat.simplex.res.ic_check
+import chat.simplex.res.ic_close
+import chat.simplex.res.ic_info
+import chat.simplex.res.member_is_deleted_cant_accept_request
+import chat.simplex.res.reject_contact_button
+import chat.simplex.res.reject_contact_request
+import chat.simplex.res.the_sender_will_not_be_notified
 import dev.icerock.moko.resources.compose.painterResource
 import dev.icerock.moko.resources.compose.stringResource
 import kotlinx.coroutines.*

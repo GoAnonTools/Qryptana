@@ -24,6 +24,9 @@ import chat.simplex.common.views.chat.chatViewScrollState
 import chat.simplex.common.views.chat.item.CHAT_IMAGE_LAYOUT_ID
 import chat.simplex.common.views.chat.item.imageViewFullWidth
 import chat.simplex.res.MR
+import chat.simplex.res.ic_close
+import chat.simplex.res.icon_descr_cancel_link_preview
+import chat.simplex.res.image_descr_link_preview
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock

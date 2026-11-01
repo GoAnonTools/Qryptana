@@ -13,6 +13,10 @@ import chat.simplex.common.model.*
 import chat.simplex.common.ui.theme.*
 import chat.simplex.common.views.helpers.*
 import chat.simplex.res.MR
+import chat.simplex.res.cannot_share_message_alert_text
+import chat.simplex.res.cannot_share_message_alert_title
+import chat.simplex.res.ic_folder_filled
+import chat.simplex.res.ic_supervised_user_circle_filled
 import kotlinx.coroutines.launch
 
 @Composable

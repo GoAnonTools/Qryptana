@@ -13,6 +13,10 @@ import dev.icerock.moko.resources.compose.stringResource
 import androidx.compose.ui.unit.dp
 import chat.simplex.common.ui.theme.*
 import chat.simplex.res.MR
+import chat.simplex.res.ic_close
+import chat.simplex.res.ic_draft_filled
+import chat.simplex.res.icon_descr_cancel_file_preview
+import chat.simplex.res.icon_descr_file
 
 @Composable
 fun ComposeFileView(fileName: String, cancelFile: () -> Unit, cancelEnabled: Boolean) {

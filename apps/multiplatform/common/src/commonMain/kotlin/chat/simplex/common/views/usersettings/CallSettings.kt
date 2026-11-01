@@ -19,6 +19,16 @@ import chat.simplex.common.model.*
 import chat.simplex.common.platform.ColumnWithScrollBar
 import chat.simplex.common.platform.appPlatform
 import chat.simplex.res.MR
+import chat.simplex.res.accept_call_on_lock_screen
+import chat.simplex.res.always_use_relay
+import chat.simplex.res.call_on_lock_screen
+import chat.simplex.res.no_call_on_lock_screen
+import chat.simplex.res.relay_server_if_necessary
+import chat.simplex.res.relay_server_protects_ip
+import chat.simplex.res.settings_section_title_settings
+import chat.simplex.res.show_call_on_lock_screen
+import chat.simplex.res.webrtc_ice_servers
+import chat.simplex.res.your_calls
 
 @Composable
 fun CallSettingsView(m: ChatModel,

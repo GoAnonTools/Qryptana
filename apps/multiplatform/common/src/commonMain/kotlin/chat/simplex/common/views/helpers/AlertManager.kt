@@ -30,6 +30,12 @@ import chat.simplex.common.ui.theme.*
 import chat.simplex.common.views.onboarding.QryptanaMetal
 import chat.simplex.common.views.onboarding.rememberQryptanaSerif
 import chat.simplex.res.MR
+import chat.simplex.res.cancel_verb
+import chat.simplex.res.connect_plan_open_chat
+import chat.simplex.res.ic_desktop
+import chat.simplex.res.ic_smartphone_300
+import chat.simplex.res.ok
+import chat.simplex.res.share_verb
 import dev.icerock.moko.resources.StringResource
 import dev.icerock.moko.resources.compose.painterResource
 import dev.icerock.moko.resources.compose.stringResource

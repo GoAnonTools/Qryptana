@@ -40,6 +40,9 @@ import chat.simplex.common.views.chat.item.itemPrefixText
 import chat.simplex.common.views.chat.item.itemSegmentDisplayText
 import chat.simplex.common.views.helpers.generalGetString
 import chat.simplex.res.MR
+import chat.simplex.res.copied
+import chat.simplex.res.copy_verb
+import chat.simplex.res.ic_content_copy
 import dev.icerock.moko.resources.compose.painterResource
 import kotlinx.coroutines.*
 

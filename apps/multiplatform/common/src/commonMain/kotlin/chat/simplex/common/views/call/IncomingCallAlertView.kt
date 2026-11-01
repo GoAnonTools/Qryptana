@@ -20,6 +20,16 @@ import chat.simplex.common.ui.theme.*
 import chat.simplex.common.views.helpers.ProfileImage
 import chat.simplex.common.views.usersettings.ProfilePreview
 import chat.simplex.res.MR
+import chat.simplex.res.accept
+import chat.simplex.res.ic_call_end_filled
+import chat.simplex.res.ic_call_filled
+import chat.simplex.res.ic_check_filled
+import chat.simplex.res.ic_close
+import chat.simplex.res.ic_videocam_filled
+import chat.simplex.res.icon_descr_audio_call
+import chat.simplex.res.icon_descr_video_call
+import chat.simplex.res.ignore
+import chat.simplex.res.reject
 import kotlinx.datetime.Clock
 
 // Spec: spec/services/calls.md#IncomingCallAlertView

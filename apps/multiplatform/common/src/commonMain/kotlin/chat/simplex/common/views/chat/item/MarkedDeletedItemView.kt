@@ -16,6 +16,16 @@ import chat.simplex.common.model.ChatModel.getChatItemIndexOrNull
 import chat.simplex.common.ui.theme.*
 import chat.simplex.common.views.helpers.generalGetString
 import chat.simplex.res.MR
+import chat.simplex.res.blocked_by_admin_item_description
+import chat.simplex.res.blocked_by_admin_items_description
+import chat.simplex.res.blocked_item_description
+import chat.simplex.res.blocked_items_description
+import chat.simplex.res.marked_deleted_description
+import chat.simplex.res.marked_deleted_items_description
+import chat.simplex.res.moderated_item_description
+import chat.simplex.res.moderated_items_description
+import chat.simplex.res.report_item_archived
+import chat.simplex.res.report_item_archived_by
 import dev.icerock.moko.resources.compose.stringResource
 import kotlinx.datetime.Clock
 

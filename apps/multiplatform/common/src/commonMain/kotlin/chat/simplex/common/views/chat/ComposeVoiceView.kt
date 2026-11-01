@@ -23,6 +23,11 @@ import chat.simplex.common.ui.theme.*
 import chat.simplex.common.views.helpers.*
 import chat.simplex.common.platform.AudioPlayer
 import chat.simplex.res.MR
+import chat.simplex.res.ic_close
+import chat.simplex.res.ic_pause_filled
+import chat.simplex.res.ic_play_arrow_filled
+import chat.simplex.res.icon_descr_cancel_file_preview
+import chat.simplex.res.icon_descr_file
 import kotlinx.coroutines.flow.distinctUntilChanged
 
 @Composable

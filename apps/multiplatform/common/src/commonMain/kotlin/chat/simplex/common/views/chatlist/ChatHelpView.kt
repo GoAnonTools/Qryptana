@@ -19,6 +19,20 @@ import chat.simplex.common.views.onboarding.ReadableTextWithLink
 import chat.simplex.common.views.usersettings.MarkdownHelpView
 import chat.simplex.common.views.usersettings.qryptanaSupportUri
 import chat.simplex.res.MR
+import chat.simplex.res.above_then_preposition_continuation
+import chat.simplex.res.add_contact
+import chat.simplex.res.add_contact_button_to_create_link_or_connect_via_link
+import chat.simplex.res.chat_help_tap_button
+import chat.simplex.res.create_group_button_to_create_new_group
+import chat.simplex.res.desktop_scan_QR_code_from_app_via_scan_QR_code
+import chat.simplex.res.ic_person_add
+import chat.simplex.res.if_you_received_simplex_invitation_link_you_can_open_in_browser
+import chat.simplex.res.markdown_in_messages
+import chat.simplex.res.mobile_tap_open_in_mobile_app_then_tap_connect_in_app
+import chat.simplex.res.thank_you_for_installing_simplex
+import chat.simplex.res.to_connect_via_link_title
+import chat.simplex.res.to_start_a_new_chat_help_header
+import chat.simplex.res.you_can_connect_to_simplex_chat_founder
 
 val bold = SpanStyle(fontWeight = FontWeight.Bold)
 

@@ -7,6 +7,9 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.fragment.app.FragmentActivity
 import chat.simplex.common.model.ChatModel
 import chat.simplex.res.MR
+import chat.simplex.res.ic_visibility_off
+import chat.simplex.res.protect_app_screen
+import chat.simplex.res.settings_section_title_device
 import dev.icerock.moko.resources.compose.painterResource
 import dev.icerock.moko.resources.compose.stringResource
 

@@ -12,6 +12,10 @@ import chat.simplex.common.views.helpers.KeyChangeEffect
 import chat.simplex.common.views.onboarding.ReadableText
 import chat.simplex.common.views.onboarding.ReadableTextWithLink
 import chat.simplex.res.MR
+import chat.simplex.res.if_you_cant_meet_in_person
+import chat.simplex.res.one_time_link
+import chat.simplex.res.read_more_in_user_guide_with_link
+import chat.simplex.res.scan_qr_to_connect_to_contact
 
 @Composable
 fun AddContactLearnMore(close: () -> Unit) {

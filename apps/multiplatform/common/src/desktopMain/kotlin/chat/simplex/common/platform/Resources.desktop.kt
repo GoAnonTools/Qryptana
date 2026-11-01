@@ -10,6 +10,7 @@ import androidx.compose.ui.unit.*
 import chat.simplex.common.simplexWindowState
 import chat.simplex.common.views.helpers.*
 import chat.simplex.res.MR
+import chat.simplex.res.prefs_error_saving_settings
 import com.jthemedetecor.OsThemeDetector
 import com.russhwolf.settings.*
 import dev.icerock.moko.resources.ImageResource

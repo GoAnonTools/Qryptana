@@ -14,6 +14,8 @@ import androidx.compose.ui.unit.dp
 import chat.simplex.common.ui.theme.DEFAULT_PADDING_HALF
 import chat.simplex.common.views.helpers.DefaultDropdownMenu
 import chat.simplex.res.MR
+import chat.simplex.res.ic_add_reaction
+import chat.simplex.res.search_verb
 import dev.icerock.moko.resources.compose.painterResource
 import dev.icerock.moko.resources.compose.stringResource
 

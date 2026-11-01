@@ -22,6 +22,9 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.*
 import chat.simplex.common.views.database.PassphraseStrength
 import chat.simplex.res.MR
+import chat.simplex.res.ic_error
+import chat.simplex.res.ic_visibility_filled
+import chat.simplex.res.ic_visibility_off_filled
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.launch

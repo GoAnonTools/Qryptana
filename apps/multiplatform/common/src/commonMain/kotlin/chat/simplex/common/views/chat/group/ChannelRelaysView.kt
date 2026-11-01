@@ -21,6 +21,21 @@ import chat.simplex.common.views.chat.item.ItemAction
 import chat.simplex.common.views.chatlist.setGroupMembers
 import chat.simplex.common.views.helpers.*
 import chat.simplex.res.MR
+import chat.simplex.res.add_relay_button
+import chat.simplex.res.button_remove_relay
+import chat.simplex.res.channel_relays_title
+import chat.simplex.res.chat_relays_forward_messages
+import chat.simplex.res.ic_add
+import chat.simplex.res.ic_delete
+import chat.simplex.res.member_info_member_disabled
+import chat.simplex.res.member_info_member_inactive
+import chat.simplex.res.no_chat_relays
+import chat.simplex.res.relay_conn_status_connected
+import chat.simplex.res.relay_conn_status_connecting
+import chat.simplex.res.relay_conn_status_deleted
+import chat.simplex.res.relay_conn_status_failed
+import chat.simplex.res.relay_conn_status_removed_by_operator
+import chat.simplex.res.relay_status_rejected
 import dev.icerock.moko.resources.compose.painterResource
 
 @Composable

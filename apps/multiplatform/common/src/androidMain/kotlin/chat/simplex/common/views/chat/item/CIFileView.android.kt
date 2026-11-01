@@ -6,6 +6,10 @@ import chat.simplex.common.model.CryptoFile
 import chat.simplex.common.platform.*
 import chat.simplex.common.views.helpers.DefaultDropdownMenu
 import chat.simplex.res.MR
+import chat.simplex.res.ic_download
+import chat.simplex.res.ic_open_in_new
+import chat.simplex.res.open_with_app
+import chat.simplex.res.save_verb
 import dev.icerock.moko.resources.compose.painterResource
 import dev.icerock.moko.resources.compose.stringResource
 import java.net.URI

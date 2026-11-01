@@ -23,6 +23,15 @@ import chat.simplex.common.model.*
 import chat.simplex.common.platform.getLoadedFilePath
 import chat.simplex.common.views.helpers.*
 import chat.simplex.res.MR
+import chat.simplex.res.cancel_verb
+import chat.simplex.res.compose_forward_messages_n
+import chat.simplex.res.compose_save_messages_n
+import chat.simplex.res.ic_close
+import chat.simplex.res.ic_draft_filled
+import chat.simplex.res.ic_edit_filled
+import chat.simplex.res.ic_image
+import chat.simplex.res.ic_play_arrow_filled
+import chat.simplex.res.icon_descr_context
 import dev.icerock.moko.resources.ImageResource
 import kotlinx.datetime.Clock
 

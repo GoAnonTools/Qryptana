@@ -7,6 +7,10 @@ import chat.simplex.common.views.chatlist.openChat
 import chat.simplex.common.views.helpers.*
 import chat.simplex.common.views.onboarding.OnboardingStage
 import chat.simplex.res.MR
+import chat.simplex.res.call_already_ended
+import chat.simplex.res.notification_contact_connected
+import chat.simplex.res.notification_group_report
+import chat.simplex.res.notification_new_contact_request
 import kotlinx.coroutines.delay
 
 enum class NotificationAction {

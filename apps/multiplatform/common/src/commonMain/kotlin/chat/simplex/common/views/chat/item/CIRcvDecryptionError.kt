@@ -18,6 +18,17 @@ import chat.simplex.common.ui.theme.appColors
 import chat.simplex.common.views.helpers.AlertManager
 import chat.simplex.common.views.helpers.generalGetString
 import chat.simplex.res.MR
+import chat.simplex.res.alert_text_decryption_error_n_messages_failed_to_decrypt
+import chat.simplex.res.alert_text_decryption_error_too_many_skipped
+import chat.simplex.res.alert_text_encryption_renegotiation_failed
+import chat.simplex.res.alert_text_fragment_encryption_out_of_sync_old_database
+import chat.simplex.res.decryption_error
+import chat.simplex.res.fix_connection
+import chat.simplex.res.fix_connection_confirm
+import chat.simplex.res.fix_connection_not_supported_by_contact
+import chat.simplex.res.fix_connection_not_supported_by_group_member
+import chat.simplex.res.fix_connection_question
+import chat.simplex.res.ic_sync_problem
 import dev.icerock.moko.resources.compose.painterResource
 import dev.icerock.moko.resources.compose.stringResource
 

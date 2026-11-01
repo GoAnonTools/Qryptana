@@ -16,6 +16,9 @@ import chat.simplex.common.views.chat.group.ProgressIndicator
 import chat.simplex.common.views.helpers.SimpleButton
 import chat.simplex.common.views.helpers.*
 import chat.simplex.res.MR
+import chat.simplex.res.cancel_verb
+import chat.simplex.res.ic_close
+import chat.simplex.res.ic_done_filled
 
 @Composable
 fun PasscodeView(

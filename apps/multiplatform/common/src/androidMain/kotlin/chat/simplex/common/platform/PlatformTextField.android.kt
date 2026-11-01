@@ -41,6 +41,7 @@ import chat.simplex.common.ui.theme.qryptanaMessagingTokens
 import chat.simplex.common.views.chat.*
 import chat.simplex.common.views.helpers.*
 import chat.simplex.res.MR
+import chat.simplex.res.voice_message_send_text
 import dev.icerock.moko.resources.StringResource
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.filter

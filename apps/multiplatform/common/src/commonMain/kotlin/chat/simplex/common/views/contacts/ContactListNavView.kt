@@ -13,6 +13,8 @@ import chat.simplex.common.views.helpers.*
 import chat.simplex.common.views.newchat.ContactType
 import chat.simplex.common.views.newchat.chatContactType
 import chat.simplex.res.MR
+import chat.simplex.res.delete_contact_menu_action
+import chat.simplex.res.ic_delete
 import kotlinx.coroutines.delay
 
 fun onRequestAccepted(chat: Chat) {

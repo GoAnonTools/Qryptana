@@ -30,7 +30,14 @@ import chat.simplex.common.ui.theme.qryptanaMessagingTokens
 import chat.simplex.common.ui.theme.DEFAULT_PADDING
 import chat.simplex.common.views.chat.SelectionHighlightColor
 import chat.simplex.common.views.helpers.*
-import chat.simplex.res.*
+import chat.simplex.res.MR
+import chat.simplex.res.cancel_verb
+import chat.simplex.res.error_parsing_uri_title
+import chat.simplex.res.open_verb
+import chat.simplex.res.privacy_chat_list_open_clean_web_link
+import chat.simplex.res.privacy_chat_list_open_full_web_link
+import chat.simplex.res.privacy_chat_list_open_web_link_question
+import chat.simplex.res.profile_description__field
 import kotlinx.coroutines.*
 
 val reserveTimestampStyle = SpanStyle(color = Color.Transparent)

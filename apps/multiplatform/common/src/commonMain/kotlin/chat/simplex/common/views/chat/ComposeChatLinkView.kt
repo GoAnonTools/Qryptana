@@ -13,6 +13,7 @@ import chat.simplex.common.ui.theme.appColors
 import chat.simplex.common.views.helpers.ProfileImage
 import dev.icerock.moko.resources.compose.painterResource
 import chat.simplex.res.MR
+import chat.simplex.res.ic_close
 
 @Composable
 fun ComposeChatLinkView(

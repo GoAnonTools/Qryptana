@@ -12,6 +12,11 @@ import androidx.compose.ui.unit.dp
 import chat.simplex.common.platform.*
 import chat.simplex.common.views.helpers.getBitmapFromByteArray
 import chat.simplex.res.MR
+import chat.simplex.res.decentralized
+import chat.simplex.res.ic_arrow_back_ios_new
+import chat.simplex.res.ic_pause_filled
+import chat.simplex.res.ic_play_arrow_filled
+import chat.simplex.res.image_descr
 import dev.icerock.moko.resources.compose.painterResource
 import dev.icerock.moko.resources.compose.stringResource
 import org.jetbrains.compose.videoplayer.SkiaBitmapVideoSurface

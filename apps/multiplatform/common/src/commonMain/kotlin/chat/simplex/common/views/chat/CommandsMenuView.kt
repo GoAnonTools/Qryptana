@@ -26,6 +26,8 @@ import chat.simplex.common.views.chat.group.*
 import chat.simplex.common.views.chat.item.sendCommandMsg
 import chat.simplex.common.views.helpers.commandMenuAnimSpec
 import chat.simplex.res.MR
+import chat.simplex.res.ic_arrow_back_ios_new
+import chat.simplex.res.ic_chevron_right
 import dev.icerock.moko.resources.compose.painterResource
 import kotlinx.coroutines.launch
 

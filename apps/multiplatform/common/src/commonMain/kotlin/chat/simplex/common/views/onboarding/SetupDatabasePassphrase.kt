@@ -26,6 +26,28 @@ import chat.simplex.common.ui.theme.*
 import chat.simplex.common.views.database.*
 import chat.simplex.common.views.helpers.*
 import chat.simplex.res.MR
+import chat.simplex.res.android_confirm_profile_password
+import chat.simplex.res.android_new_profile_password
+import chat.simplex.res.android_password_needed_each_start
+import chat.simplex.res.android_profile_password_not_recoverable
+import chat.simplex.res.android_profile_protection_password
+import chat.simplex.res.android_profile_protection_password_description
+import chat.simplex.res.android_random_profile_password
+import chat.simplex.res.android_setup_profile_password
+import chat.simplex.res.confirm_new_passphrase
+import chat.simplex.res.impossible_to_recover_passphrase
+import chat.simplex.res.new_passphrase
+import chat.simplex.res.ok
+import chat.simplex.res.onboarding_confirm_secret_phrase
+import chat.simplex.res.onboarding_create_secret_phrase
+import chat.simplex.res.onboarding_generate_secure_phrase
+import chat.simplex.res.onboarding_protect_app
+import chat.simplex.res.onboarding_secret_phrase
+import chat.simplex.res.set_database_passphrase
+import chat.simplex.res.setup_database_passphrase
+import chat.simplex.res.use_random_passphrase
+import chat.simplex.res.you_can_change_it_later
+import chat.simplex.res.you_have_to_enter_passphrase_every_time
 import kotlinx.coroutines.delay
 
 @Composable

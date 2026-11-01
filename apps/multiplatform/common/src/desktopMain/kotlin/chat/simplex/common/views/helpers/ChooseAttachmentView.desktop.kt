@@ -6,6 +6,12 @@ import androidx.compose.runtime.MutableState
 import androidx.compose.ui.Modifier
 import chat.simplex.common.views.newchat.ActionButton
 import chat.simplex.res.MR
+import chat.simplex.res.choose_file
+import chat.simplex.res.gallery_image_button
+import chat.simplex.res.gallery_video_button
+import chat.simplex.res.ic_add_photo
+import chat.simplex.res.ic_note_add
+import chat.simplex.res.ic_smart_display
 import dev.icerock.moko.resources.compose.painterResource
 import dev.icerock.moko.resources.compose.stringResource
 

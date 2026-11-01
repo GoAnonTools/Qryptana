@@ -27,6 +27,20 @@ import chat.simplex.common.model.PendingContactConnection
 import chat.simplex.common.platform.*
 import chat.simplex.common.views.usersettings.*
 import chat.simplex.res.MR
+import chat.simplex.res.delete_verb
+import chat.simplex.res.ic_delete
+import chat.simplex.res.ic_info
+import chat.simplex.res.ic_share
+import chat.simplex.res.ic_theater_comedy_filled
+import chat.simplex.res.incognito
+import chat.simplex.res.learn_more
+import chat.simplex.res.one_time_link
+import chat.simplex.res.share_invitation_link
+import chat.simplex.res.you_accepted_connection
+import chat.simplex.res.you_invited_a_contact
+import chat.simplex.res.you_will_be_connected_when_group_host_device_is_online
+import chat.simplex.res.you_will_be_connected_when_your_connection_request_is_accepted
+import chat.simplex.res.you_will_be_connected_when_your_contacts_device_is_online
 import kotlinx.coroutines.*
 
 @Composable

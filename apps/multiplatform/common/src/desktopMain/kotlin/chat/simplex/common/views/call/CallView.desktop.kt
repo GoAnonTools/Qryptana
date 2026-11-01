@@ -7,6 +7,11 @@ import chat.simplex.common.model.*
 import chat.simplex.common.platform.*
 import chat.simplex.common.views.helpers.*
 import chat.simplex.res.MR
+import chat.simplex.res.call_desktop_permission_denied_chrome
+import chat.simplex.res.call_desktop_permission_denied_safari
+import chat.simplex.res.call_desktop_permission_denied_title
+import chat.simplex.res.unable_to_open_browser_desc
+import chat.simplex.res.unable_to_open_browser_title
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.*
 import kotlinx.datetime.Clock

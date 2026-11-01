@@ -22,6 +22,15 @@ import chat.simplex.common.model.*
 import chat.simplex.common.platform.ColumnWithScrollBar
 import chat.simplex.common.platform.chatModel
 import chat.simplex.res.MR
+import chat.simplex.res.chat_preferences_contact_allows
+import chat.simplex.res.chat_preferences_you_allow
+import chat.simplex.res.contact_preferences
+import chat.simplex.res.custom_time_picker_select
+import chat.simplex.res.delete_after
+import chat.simplex.res.exit_without_saving
+import chat.simplex.res.reset_verb
+import chat.simplex.res.save_and_notify_contact
+import chat.simplex.res.save_preferences_question
 import kotlinx.coroutines.*
 
 @Composable

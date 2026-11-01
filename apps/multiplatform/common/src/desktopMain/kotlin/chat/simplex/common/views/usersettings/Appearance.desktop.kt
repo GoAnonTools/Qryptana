@@ -27,6 +27,13 @@ import chat.simplex.common.platform.*
 import chat.simplex.common.ui.theme.*
 import chat.simplex.common.views.helpers.*
 import chat.simplex.res.MR
+import chat.simplex.res.appearance_minimize_to_tray
+import chat.simplex.res.appearance_minimize_to_tray_desc
+import chat.simplex.res.appearance_settings
+import chat.simplex.res.appearance_zoom
+import chat.simplex.res.chat_bottom_bar
+import chat.simplex.res.one_hand_ui
+import chat.simplex.res.settings_section_title_language
 import dev.icerock.moko.resources.compose.stringResource
 import kotlinx.coroutines.delay
 import java.util.Locale

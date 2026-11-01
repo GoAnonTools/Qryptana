@@ -15,6 +15,18 @@ import androidx.compose.ui.unit.dp
 import chat.simplex.common.model.ChatModel
 import chat.simplex.common.platform.*
 import chat.simplex.res.MR
+import chat.simplex.res.delivery_receipts_are_disabled
+import chat.simplex.res.delivery_receipts_title
+import chat.simplex.res.dont_enable_receipts
+import chat.simplex.res.dont_show_again
+import chat.simplex.res.enable_receipts_all
+import chat.simplex.res.error_enabling_delivery_receipts
+import chat.simplex.res.ic_chevron_right
+import chat.simplex.res.ok
+import chat.simplex.res.sending_delivery_receipts_will_be_enabled
+import chat.simplex.res.sending_delivery_receipts_will_be_enabled_all_profiles
+import chat.simplex.res.you_can_enable_delivery_receipts_later
+import chat.simplex.res.you_can_enable_delivery_receipts_later_alert
 import chat.simplex.common.ui.theme.DEFAULT_PADDING
 import chat.simplex.common.views.helpers.*
 

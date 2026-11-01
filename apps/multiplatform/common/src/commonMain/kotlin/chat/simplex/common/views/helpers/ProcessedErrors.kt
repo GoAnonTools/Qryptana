@@ -6,6 +6,11 @@ import chat.simplex.common.platform.TAG
 import chat.simplex.common.platform.ntfManager
 import chat.simplex.common.views.database.restartChatOrApp
 import chat.simplex.res.MR
+import chat.simplex.res.agent_critical_error_desc
+import chat.simplex.res.agent_critical_error_title
+import chat.simplex.res.agent_internal_error_desc
+import chat.simplex.res.agent_internal_error_title
+import chat.simplex.res.restart_chat_button
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 

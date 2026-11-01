@@ -16,6 +16,26 @@ import dev.icerock.moko.resources.compose.stringResource
 import chat.simplex.common.views.TerminalView
 import chat.simplex.common.views.helpers.*
 import chat.simplex.res.MR
+import chat.simplex.res.auth_log_in_using_credential
+import chat.simplex.res.auth_open_chat_console
+import chat.simplex.res.confirm_database_upgrades
+import chat.simplex.res.debug_logs
+import chat.simplex.res.deprecated_options_section
+import chat.simplex.res.developer_options
+import chat.simplex.res.developer_options_section
+import chat.simplex.res.hide_dev_options
+import chat.simplex.res.ic_avg_pace
+import chat.simplex.res.ic_breaking_news
+import chat.simplex.res.ic_code
+import chat.simplex.res.ic_drive_folder_upload
+import chat.simplex.res.ic_report
+import chat.simplex.res.in_developing_desc
+import chat.simplex.res.in_developing_title
+import chat.simplex.res.settings_developer_tools
+import chat.simplex.res.show_dev_options
+import chat.simplex.res.show_developer_options
+import chat.simplex.res.show_internal_errors
+import chat.simplex.res.show_slow_api_calls
 
 @Composable
 fun DeveloperView(withAuth: (title: String, desc: String, block: () -> Unit) -> Unit

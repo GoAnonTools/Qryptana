@@ -29,6 +29,19 @@ import chat.simplex.common.model.ChatModel
 import chat.simplex.common.model.GroupInfo
 import chat.simplex.common.platform.*
 import chat.simplex.res.MR
+import chat.simplex.res.copy_verb
+import chat.simplex.res.edit_verb
+import chat.simplex.res.enter_welcome_message
+import chat.simplex.res.exit_without_saving
+import chat.simplex.res.group_welcome_preview
+import chat.simplex.res.group_welcome_title
+import chat.simplex.res.ic_content_copy
+import chat.simplex.res.ic_edit
+import chat.simplex.res.ic_visibility
+import chat.simplex.res.message_too_large
+import chat.simplex.res.save_and_update_group_profile
+import chat.simplex.res.save_welcome_message_question
+import chat.simplex.res.welcome_message_is_too_long
 import kotlinx.coroutines.*
 
 private const val maxByteCount = 1200

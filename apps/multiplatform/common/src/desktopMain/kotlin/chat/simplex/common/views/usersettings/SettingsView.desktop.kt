@@ -8,6 +8,10 @@ import chat.simplex.common.model.ChatModel
 import chat.simplex.common.platform.*
 import chat.simplex.common.views.helpers.*
 import chat.simplex.res.MR
+import chat.simplex.res.ic_code
+import chat.simplex.res.qryptana_upstream_notes_description
+import chat.simplex.res.qryptana_upstream_release_notes
+import chat.simplex.res.settings_developer_tools
 import dev.icerock.moko.resources.compose.painterResource
 import dev.icerock.moko.resources.compose.stringResource
 

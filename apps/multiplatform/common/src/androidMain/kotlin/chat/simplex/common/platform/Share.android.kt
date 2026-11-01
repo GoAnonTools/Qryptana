@@ -16,6 +16,9 @@ import chat.simplex.common.helpers.*
 import chat.simplex.common.model.*
 import chat.simplex.common.views.helpers.*
 import chat.simplex.res.MR
+import chat.simplex.res.error
+import chat.simplex.res.file_not_found
+import chat.simplex.res.image_saved
 import java.io.BufferedOutputStream
 import java.io.File
 import java.net.URI

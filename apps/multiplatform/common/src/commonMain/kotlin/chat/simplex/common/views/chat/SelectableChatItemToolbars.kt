@@ -18,6 +18,13 @@ import chat.simplex.common.platform.chatModel
 import chat.simplex.common.views.helpers.*
 import dev.icerock.moko.resources.compose.stringResource
 import chat.simplex.res.MR
+import chat.simplex.res.back
+import chat.simplex.res.ic_checklist
+import chat.simplex.res.ic_delete
+import chat.simplex.res.ic_flag
+import chat.simplex.res.ic_forward
+import chat.simplex.res.selected_chat_items_nothing_selected
+import chat.simplex.res.selected_chat_items_selected_n
 import dev.icerock.moko.resources.compose.painterResource
 
 @Composable

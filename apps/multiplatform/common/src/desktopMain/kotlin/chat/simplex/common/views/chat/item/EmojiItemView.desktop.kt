@@ -9,6 +9,7 @@ import androidx.compose.ui.unit.dp
 import chat.simplex.common.model.MREmojiChar
 import chat.simplex.common.platform.desktopPlatform
 import chat.simplex.res.MR
+import chat.simplex.res.ic_heart
 import dev.icerock.moko.resources.compose.painterResource
 
 @Composable

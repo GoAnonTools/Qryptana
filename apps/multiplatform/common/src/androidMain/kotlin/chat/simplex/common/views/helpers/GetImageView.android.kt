@@ -34,6 +34,15 @@ import chat.simplex.common.model.json
 import chat.simplex.common.platform.*
 import chat.simplex.common.views.newchat.ActionButton
 import chat.simplex.res.MR
+import chat.simplex.res.from_gallery_button
+import chat.simplex.res.ic_image
+import chat.simplex.res.ic_photo_camera
+import chat.simplex.res.images_limit_desc
+import chat.simplex.res.images_limit_title
+import chat.simplex.res.toast_permission_denied
+import chat.simplex.res.use_camera_button
+import chat.simplex.res.videos_limit_desc
+import chat.simplex.res.videos_limit_title
 import kotlinx.serialization.builtins.*
 import java.io.File
 import java.net.URI

@@ -59,6 +59,19 @@ import chat.simplex.common.views.newchat.lightStops
 import chat.simplex.common.views.migration.MigrateToDeviceView
 import chat.simplex.common.views.migration.MigrationToState
 import chat.simplex.res.MR
+import chat.simplex.res.cormorantgaramond_italic
+import chat.simplex.res.cormorantgaramond_light
+import chat.simplex.res.cormorantgaramond_regular
+import chat.simplex.res.how_it_works
+import chat.simplex.res.ic_info
+import chat.simplex.res.onboarding_be_free
+import chat.simplex.res.onboarding_first_network
+import chat.simplex.res.onboarding_invitation_card_subtitle
+import chat.simplex.res.onboarding_invitation_card_title
+import chat.simplex.res.onboarding_private_and_secure
+import chat.simplex.res.qryptana_logo_description
+import chat.simplex.res.qryptana_symbol
+import chat.simplex.res.qryptana_wordmark
 import dev.icerock.moko.resources.StringResource
 import java.net.URI
 import kotlinx.coroutines.delay
@@ -428,14 +441,14 @@ private fun QryptanaSignatureWord(text: String, delayMs: Int, start: Boolean = t
 
 /**
  * Bundled serif so the headline is identical on Windows, macOS and Linux.
- * Files live in commonMain/resources/MR/fonts (CormorantGaramond-Light/Regular/Italic.ttf).
+ * Files live in commonMain/moko-resources/fonts (CormorantGaramond-Light/Regular/Italic.ttf).
  * Falls back to the platform serif if a font cannot be loaded.
  */
 @Composable
 internal fun rememberQryptanaSerif(): FontFamily {
-  val light = MR.fonts.CormorantGaramond.light.asFont(FontWeight.Light, FontStyle.Normal)
-  val regular = MR.fonts.CormorantGaramond.regular.asFont(FontWeight.Normal, FontStyle.Normal)
-  val italic = MR.fonts.CormorantGaramond.italic.asFont(FontWeight.Normal, FontStyle.Italic)
+  val light = MR.fonts.cormorantgaramond_light.asFont(FontWeight.Light, FontStyle.Normal)
+  val regular = MR.fonts.cormorantgaramond_regular.asFont(FontWeight.Normal, FontStyle.Normal)
+  val italic = MR.fonts.cormorantgaramond_italic.asFont(FontWeight.Normal, FontStyle.Italic)
   return remember(light, regular, italic) {
     val fonts = listOfNotNull(light, regular, italic)
     if (fonts.isEmpty()) FontFamily.Serif else FontFamily(fonts)

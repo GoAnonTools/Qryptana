@@ -15,6 +15,8 @@ import chat.simplex.common.platform.FileChooserLauncher
 import chat.simplex.common.platform.saveImage
 import chat.simplex.common.views.helpers.*
 import chat.simplex.res.MR
+import chat.simplex.res.ic_download
+import chat.simplex.res.save_verb
 import com.google.accompanist.permissions.PermissionStatus
 import com.google.accompanist.permissions.rememberPermissionState
 import dev.icerock.moko.resources.compose.painterResource

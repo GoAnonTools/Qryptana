@@ -5,6 +5,10 @@ import chat.simplex.common.*
 import chat.simplex.common.views.helpers.AlertManager
 import chat.simplex.common.views.helpers.generalGetString
 import chat.simplex.res.MR
+import chat.simplex.res.choose_file
+import chat.simplex.res.gallery_image_button
+import chat.simplex.res.gallery_video_button
+import chat.simplex.res.unknown_error
 import java.awt.Desktop
 import java.io.*
 import java.net.URI

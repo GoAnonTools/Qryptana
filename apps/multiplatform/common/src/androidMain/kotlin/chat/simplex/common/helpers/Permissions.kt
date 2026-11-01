@@ -7,6 +7,9 @@ import chat.simplex.common.platform.*
 import chat.simplex.common.views.helpers.AlertManager
 import chat.simplex.common.views.helpers.generalGetString
 import chat.simplex.res.MR
+import chat.simplex.res.permissions_find_in_settings_and_grant
+import chat.simplex.res.permissions_grant_in_settings
+import chat.simplex.res.permissions_open_settings
 
 fun Context.openAppSettingsInSystem() {
   Intent().apply {

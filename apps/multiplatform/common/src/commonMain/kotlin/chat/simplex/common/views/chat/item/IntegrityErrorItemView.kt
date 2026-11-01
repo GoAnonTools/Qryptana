@@ -22,6 +22,16 @@ import chat.simplex.common.ui.theme.*
 import chat.simplex.common.views.helpers.AlertManager
 import chat.simplex.common.views.helpers.generalGetString
 import chat.simplex.res.MR
+import chat.simplex.res.alert_text_fragment_encryption_out_of_sync_old_database
+import chat.simplex.res.alert_text_fragment_please_report_to_developers
+import chat.simplex.res.alert_text_msg_bad_hash
+import chat.simplex.res.alert_text_msg_bad_id
+import chat.simplex.res.alert_text_msg_reception_error
+import chat.simplex.res.alert_text_skipped_messages_it_can_happen_when
+import chat.simplex.res.alert_title_msg_bad_hash
+import chat.simplex.res.alert_title_msg_bad_id
+import chat.simplex.res.alert_title_msg_error
+import chat.simplex.res.alert_title_skipped_messages
 
 @Composable
 fun IntegrityErrorItemView(msgError: MsgErrorType, ci: ChatItem, showTimestamp: Boolean, timedMessagesTTL: Int?) {

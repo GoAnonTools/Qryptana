@@ -12,6 +12,7 @@ import chat.simplex.common.helpers.toURI
 import chat.simplex.common.platform.*
 import chat.simplex.common.views.helpers.*
 import chat.simplex.res.MR
+import chat.simplex.res.toast_permission_denied
 import java.net.URI
 
 @Composable

@@ -24,7 +24,6 @@ import androidx.core.text.HtmlCompat
 import chat.simplex.common.helpers.*
 import chat.simplex.common.model.*
 import chat.simplex.common.platform.*
-import chat.simplex.res.MR
 import dev.icerock.moko.resources.StringResource
 import java.io.*
 import java.net.URI

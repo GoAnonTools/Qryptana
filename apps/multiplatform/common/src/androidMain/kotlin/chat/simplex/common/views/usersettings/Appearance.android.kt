@@ -33,6 +33,14 @@ import chat.simplex.common.helpers.APPLICATION_ID
 import chat.simplex.common.helpers.saveAppLocale
 import chat.simplex.common.model.ChatController.appPrefs
 import chat.simplex.res.MR
+import chat.simplex.res.appearance_settings
+import chat.simplex.res.change_verb
+import chat.simplex.res.chat_bottom_bar
+import chat.simplex.res.one_hand_ui
+import chat.simplex.res.qryptana_symbol
+import chat.simplex.res.settings_section_title_icon
+import chat.simplex.res.settings_section_title_interface
+import chat.simplex.res.settings_section_title_language
 import dev.icerock.moko.resources.ImageResource
 import dev.icerock.moko.resources.compose.painterResource
 import kotlinx.coroutines.delay

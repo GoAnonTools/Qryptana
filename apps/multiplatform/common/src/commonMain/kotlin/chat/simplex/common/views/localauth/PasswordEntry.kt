@@ -17,6 +17,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.*
 import chat.simplex.common.platform.appPlatform
 import chat.simplex.res.MR
+import chat.simplex.res.ic_backspace
+import chat.simplex.res.ic_close
 
 @Composable
 fun PasscodeEntry(
