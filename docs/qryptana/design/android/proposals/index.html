@@ -1,0 +1,2398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Qryptana Android Design Proposal • Precision Titanium with Directional Lighting</title>
+  <style>
+    :root {
+      /* Palette Tokens (Dark Mode) */
+      --charcoal-bg: #0E1013;
+      --titanium-surface: #161A1F;
+      --titanium-raised: #1E232A;
+      --titanium-recessed: #111418;
+      --silver-primary: #DDE2E8;
+      --silver-secondary: #9BA4AF;
+      --titanium-muted: #6A737E;
+      --titanium-border-subtle: #242A32;
+      --titanium-border-mid: #38414D;
+      
+      /* Material Specular & Lighting */
+      --titanium-specular-hi: rgba(221, 226, 232, 0.14);
+      --titanium-specular-lo: rgba(0, 0, 0, 0.55);
+      
+      /* Authentic Copper Material */
+      --copper-reference: #B87333;
+      --copper-action: #D3A78F;
+      --copper-fill-base: #9F634C;
+      --copper-fill-hi: #B27357;
+      --copper-fill-shadow: #874E3B;
+      --copper-specular: rgba(255, 235, 224, 0.35);
+      --copper-border: #6F3B2A;
+      
+      /* Palette Tokens (Light Mode) */
+      --light-charcoal-bg: #F1F3F5;
+      --light-titanium-surface: #FCFDFE;
+      --light-titanium-raised: #FFFFFF;
+      --light-titanium-recessed: #E8ECEF;
+      --light-silver-primary: #20262B;
+      --light-silver-secondary: #59636C;
+      --light-titanium-muted: #88939E;
+      --light-titanium-border-subtle: #D8DEE4;
+      --light-titanium-border-mid: #BAC2CA;
+      --light-copper-action: #80513E;
+      --light-specular-hi: rgba(255, 255, 255, 0.85);
+
+      /* Semantic Status */
+      --verified-green: #34A853;
+      --error-crimson: #FFB4AB;
+      --error-crimson-light: #B3261E;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, Helvetica, Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      background: #070809;
+      color: #DDE2E8;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 32px 20px 100px;
+    }
+
+    header {
+      max-width: 1280px;
+      width: 100%;
+      margin-bottom: 28px;
+      text-align: center;
+    }
+
+    .badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      padding: 5px 14px;
+      border-radius: 100px;
+      background: #161A1F;
+      color: #D3A78F;
+      border: 1px solid rgba(184, 115, 51, 0.45);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+      margin-bottom: 14px;
+    }
+
+    .badge-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #B87333;
+    }
+
+    h1 {
+      font-size: 28px;
+      font-weight: 600;
+      letter-spacing: -0.6px;
+      color: #DDE2E8;
+      margin-bottom: 10px;
+    }
+
+    .subtitle {
+      font-size: 15px;
+      color: #9BA4AF;
+      max-width: 760px;
+      margin: 0 auto 24px;
+      line-height: 1.55;
+    }
+
+    /* Master Mode Selector */
+    .view-selector-bar {
+      background: #121519;
+      border: 1px solid #242A32;
+      border-radius: 14px;
+      padding: 4px;
+      display: flex;
+      gap: 4px;
+      margin-bottom: 36px;
+      box-shadow: inset 0 1px 2px rgba(0,0,0,0.4);
+    }
+
+    .view-btn {
+      background: transparent;
+      border: none;
+      color: #9BA4AF;
+      font-size: 13.5px;
+      font-weight: 500;
+      padding: 8px 18px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .view-btn:hover {
+      color: #DDE2E8;
+    }
+
+    .view-btn.active {
+      background: #1E232A;
+      color: #DDE2E8;
+      font-weight: 600;
+      border: 1px solid rgba(221, 226, 232, 0.12);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    }
+
+    .view-btn.active.copper-tab {
+      border-color: rgba(184, 115, 51, 0.45);
+      color: #D3A78F;
+    }
+
+    /* Section Containers */
+    .section-wrap {
+      max-width: 1280px;
+      width: 100%;
+      display: none;
+      flex-direction: column;
+      gap: 36px;
+    }
+
+    .section-wrap.visible {
+      display: flex;
+    }
+
+    .side-by-side-row {
+      display: flex;
+      justify-content: center;
+      gap: 36px;
+      flex-wrap: wrap;
+    }
+
+    .screen-column {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .column-header {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      color: #9BA4AF;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .column-header .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+    }
+
+    /* Phone Device Canvas */
+    .phone-canvas {
+      width: 390px;
+      height: 844px;
+      border-radius: 44px;
+      background: #000000;
+      padding: 12px;
+      box-shadow: 0 28px 70px rgba(0, 0, 0, 0.85), 0 0 0 1px #2B323D;
+      position: relative;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .phone-screen {
+      width: 100%;
+      height: 100%;
+      border-radius: 34px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* System Bars */
+    .status-bar {
+      height: 40px;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 24px;
+      font-size: 13px;
+      font-weight: 600;
+      z-index: 50;
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .camera-punch {
+      position: absolute;
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: #000000;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      z-index: 60;
+    }
+
+    .status-right {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+    }
+
+    .gesture-bar-bottom {
+      height: 22px;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 50;
+      padding-bottom: 4px;
+      flex-shrink: 0;
+    }
+
+    .gesture-indicator {
+      width: 104px;
+      height: 4.5px;
+      border-radius: 100px;
+    }
+
+    /* Viewport Scroll Body */
+    .viewport-scroll {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      overflow-y: auto;
+      position: relative;
+    }
+
+    /* Universal scrollbar elimination for phone mockups */
+    .phone-screen,
+    .phone-canvas,
+    .viewport-scroll,
+    .filter-chip-row,
+    .onboarding-screen-content,
+    .chat-scroll-area {
+      scrollbar-width: none !important;
+      -ms-overflow-style: none !important;
+    }
+    .phone-screen::-webkit-scrollbar,
+    .phone-canvas::-webkit-scrollbar,
+    .viewport-scroll::-webkit-scrollbar,
+    .filter-chip-row::-webkit-scrollbar,
+    .onboarding-screen-content::-webkit-scrollbar,
+    .chat-scroll-area::-webkit-scrollbar {
+      display: none !important;
+      width: 0 !important;
+      height: 0 !important;
+    }
+
+    /* ==========================================================================
+       MATERIAL DIRECTION: DIRECTIONAL LIGHTING ARCHITECTURE
+       ========================================================================== */
+
+    /* Dark Mode Theme */
+    .theme-dark {
+      background: var(--charcoal-bg);
+      color: var(--silver-primary);
+    }
+    .theme-dark .status-bar { color: var(--silver-primary); }
+    .theme-dark .gesture-indicator { background: #4D5663; }
+
+    /* Light Mode Theme */
+    .theme-light {
+      background: var(--light-charcoal-bg);
+      color: var(--light-silver-primary);
+    }
+    .theme-light .status-bar { color: var(--light-silver-primary); }
+    .theme-light .gesture-indicator { background: #BAC2CA; }
+
+    /* 1. Milled Top App Bar with Directional Specular Lip */
+    .app-bar-milled {
+      height: 58px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 16px;
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      flex-shrink: 0;
+    }
+
+    .theme-dark .app-bar-milled {
+      background: linear-gradient(180deg, #1B2129 0%, #15191F 60%, #13171D 100%);
+      box-shadow: inset 0 1px 0 0 var(--titanium-specular-hi), 0 2px 8px rgba(0, 0, 0, 0.4);
+      border-bottom: 1px solid #20262E;
+    }
+
+    .theme-light .app-bar-milled {
+      background: linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 60%, #EEF2F6 100%);
+      box-shadow: inset 0 1px 0 0 var(--light-specular-hi), 0 2px 6px rgba(0, 0, 0, 0.04);
+      border-bottom: 1px solid var(--light-titanium-border-subtle);
+    }
+
+    .bar-nav-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .nav-avatar-ring {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: #1E232A;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid #38414D;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12);
+      font-weight: 600;
+      font-size: 15px;
+      flex-shrink: 0;
+      position: relative;
+    }
+
+    .theme-light .nav-avatar-ring {
+      background: #E8ECEF;
+      border-color: #BAC2CA;
+      color: #20262B;
+    }
+
+    .bar-title-block {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .bar-heading {
+      font-size: 16px;
+      font-weight: 600;
+      letter-spacing: -0.2px;
+    }
+
+    .bar-subheading {
+      font-size: 12px;
+      color: var(--silver-secondary);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .theme-light .bar-subheading { color: var(--light-silver-secondary); }
+
+    .verified-icon {
+      color: var(--verified-green);
+      font-size: 11px;
+    }
+
+    .touch-target-48 {
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: transparent;
+      border: none;
+      border-radius: 50%;
+      color: inherit;
+      cursor: pointer;
+    }
+
+    /* 2. Message Stream & MATTE Bubbles (Strictly Zero Shine) */
+    .stream-container {
+      padding: 16px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      flex: 1;
+    }
+
+    .stream-date-badge {
+      align-self: center;
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      padding: 4px 14px;
+      border-radius: 100px;
+      margin: 4px 0 8px;
+    }
+
+    .theme-dark .stream-date-badge {
+      background: #161A1F;
+      color: #9BA4AF;
+      border: 1px solid #242A32;
+    }
+
+    .theme-light .stream-date-badge {
+      background: #E5E9EE;
+      color: #59636C;
+      border: 1px solid #D8DEE4;
+    }
+
+    .msg-row {
+      display: flex;
+      width: 100%;
+    }
+
+    .msg-row.sent { justify-content: flex-end; }
+    .msg-row.recv { justify-content: flex-start; }
+
+    /* Matte Bubbles: Crisp, readable, zero shiny gradients */
+    .matte-bubble {
+      max-width: 82%;
+      padding: 11px 15px;
+      border-radius: 16px;
+      font-size: 14.5px;
+      line-height: 1.48;
+      position: relative;
+    }
+
+    /* SENT BUBBLE (Dark) */
+    .theme-dark .matte-bubble.sent {
+      background: #1E232A;
+      color: #DDE2E8;
+      border: 1px solid #2B333E;
+      border-bottom-right-radius: 4px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+    }
+
+    /* RECV BUBBLE (Dark) */
+    .theme-dark .matte-bubble.recv {
+      background: #161A1F;
+      color: #DDE2E8;
+      border: 1px solid #222830;
+      border-bottom-left-radius: 4px;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    }
+
+    /* SENT BUBBLE (Light) */
+    .theme-light .matte-bubble.sent {
+      background: #E1E5EA;
+      color: #20262B;
+      border: 1px solid #CCD2DA;
+      border-bottom-right-radius: 4px;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+    }
+
+    /* RECV BUBBLE (Light) */
+    .theme-light .matte-bubble.recv {
+      background: #FFFFFF;
+      color: #20262B;
+      border: 1px solid #E2E6EA;
+      border-bottom-left-radius: 4px;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+    }
+
+    .bubble-footer {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 5px;
+      margin-top: 5px;
+      font-size: 11px;
+      color: #9BA4AF;
+    }
+
+    .theme-light .bubble-footer { color: #59636C; }
+
+    .tick-copper-accent {
+      color: #B87333;
+      font-weight: 700;
+      letter-spacing: -1px;
+    }
+
+    /* Quoted Reply Plate with Copper Conductor */
+    .quote-plate {
+      border-left: 2.5px solid #B87333;
+      border-radius: 6px;
+      padding: 7px 11px;
+      margin-bottom: 9px;
+      font-size: 12.5px;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .theme-dark .quote-plate {
+      background: #111418;
+      border-top: 1px solid rgba(0,0,0,0.3);
+    }
+
+    .theme-light .quote-plate {
+      background: #D9DEE4;
+      border-left-color: #80513E;
+    }
+
+    .quote-author {
+      font-weight: 600;
+      color: #D3A78F;
+    }
+
+    .theme-light .quote-author { color: #80513E; }
+
+    .quote-content {
+      color: #9BA4AF;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .theme-light .quote-content { color: #59636C; }
+
+    /* Voice Note Player Pill */
+    .voice-player-pill {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 4px 0 2px;
+    }
+
+    .play-circle-copper {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: linear-gradient(180deg, #B27357 0%, #9F634C 60%, #874E3B 100%);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3), 0 2px 6px rgba(159, 99, 76, 0.35);
+      border: 1px solid #733F2E;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #FFFFFF;
+      flex-shrink: 0;
+      cursor: pointer;
+    }
+
+    .waveform-visualizer {
+      display: flex;
+      align-items: center;
+      gap: 2.5px;
+      flex: 1;
+      height: 24px;
+    }
+
+    .wave-bar {
+      width: 3px;
+      border-radius: 2px;
+      background: #6A737E;
+    }
+
+    .wave-bar.played {
+      background: #B87333;
+    }
+
+    /* 3. Milled Composer Bar with Inset Well */
+    .composer-milled-shelf {
+      padding: 9px 12px 11px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+      position: sticky;
+      bottom: 0;
+      z-index: 40;
+    }
+
+    .theme-dark .composer-milled-shelf {
+      background: linear-gradient(180deg, #181E26 0%, #14171E 60%, #111419 100%);
+      box-shadow: inset 0 1px 0 0 var(--titanium-specular-hi), 0 -2px 10px rgba(0, 0, 0, 0.45);
+      border-top: 1px solid #20262E;
+    }
+
+    .theme-light .composer-milled-shelf {
+      background: linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 60%, #EEF2F6 100%);
+      box-shadow: inset 0 1px 0 0 var(--light-specular-hi), 0 -2px 6px rgba(0, 0, 0, 0.04);
+      border-top: 1px solid var(--light-titanium-border-subtle);
+    }
+
+    /* Inset Well for Text Field (Recessed into Titanium) */
+    .inset-input-well {
+      flex: 1;
+      height: 44px;
+      border-radius: 22px;
+      display: flex;
+      align-items: center;
+      padding: 0 16px;
+      font-size: 14.5px;
+      position: relative;
+    }
+
+    .theme-dark .inset-input-well {
+      background: #0E1014;
+      border: 1px solid #28303C;
+      box-shadow: inset 0 1.5px 3.5px rgba(0, 0, 0, 0.55), 0 1px 0 rgba(221, 226, 232, 0.05);
+      color: #DDE2E8;
+    }
+
+    .theme-light .inset-input-well {
+      background: #FFFFFF;
+      border: 1px solid #BAC2CA;
+      box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.06), 0 1px 0 rgba(255, 255, 255, 0.8);
+      color: #20262B;
+    }
+
+    .blinking-cursor {
+      display: inline-block;
+      width: 2px;
+      height: 18px;
+      background: #B87333;
+      margin-left: 2px;
+      vertical-align: middle;
+      animation: blink 1.1s infinite;
+    }
+
+    @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+    /* Machined Copper Action Button */
+    .copper-action-btn-44 {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: linear-gradient(180deg, #B27357 0%, #9F634C 55%, #874E3B 100%);
+      box-shadow: inset 0 1px 0 var(--copper-specular), 0 2px 7px rgba(159, 99, 76, 0.38);
+      border: 1px solid var(--copper-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #FFFFFF;
+      flex-shrink: 0;
+      cursor: pointer;
+    }
+
+    /* 4. Chat List Screen Architecture */
+    .search-recessed-shelf {
+      padding: 10px 16px 8px;
+    }
+
+    .search-recessed-pill {
+      height: 42px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 0 14px;
+      font-size: 14px;
+    }
+
+    .theme-dark .search-recessed-pill {
+      background: #0E1014;
+      border: 1px solid #28303C;
+      box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5), 0 1px 0 rgba(221, 226, 232, 0.05);
+      color: #9BA4AF;
+    }
+
+    .theme-light .search-recessed-pill {
+      background: #FFFFFF;
+      border: 1px solid #D8DEE4;
+      box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.05);
+      color: #59636C;
+    }
+
+    .chips-carousel {
+      display: flex;
+      gap: 8px;
+      padding: 6px 16px 12px;
+      overflow-x: auto;
+      scrollbar-width: none !important;
+      -ms-overflow-style: none !important;
+    }
+
+    .chips-carousel::-webkit-scrollbar {
+      display: none !important;
+      width: 0 !important;
+      height: 0 !important;
+    }
+
+    .chip-item {
+      padding: 6px 14px;
+      border-radius: 100px;
+      font-size: 13px;
+      font-weight: 500;
+      white-space: nowrap;
+      cursor: pointer;
+    }
+
+    .theme-dark .chip-item {
+      background: #161A1F;
+      border: 1px solid #242A32;
+      color: #9BA4AF;
+    }
+
+    .theme-dark .chip-item.active {
+      background: #1E232A;
+      border-color: #B87333;
+      color: #DDE2E8;
+      font-weight: 600;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    }
+
+    .theme-light .chip-item {
+      background: #FFFFFF;
+      border: 1px solid #D8DEE4;
+      color: #59636C;
+    }
+
+    .theme-light .chip-item.active {
+      background: #E1E5EA;
+      border-color: #9F634C;
+      color: #20262B;
+      font-weight: 600;
+    }
+
+    .chat-row-titanium {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 12px 16px;
+      min-height: 72px;
+      cursor: pointer;
+      border-bottom: 0.5px solid transparent;
+    }
+
+    .theme-dark .chat-row-titanium {
+      border-bottom-color: #161A20;
+    }
+
+    .theme-dark .chat-row-titanium:hover {
+      background: #161B21;
+    }
+
+    .theme-light .chat-row-titanium {
+      border-bottom-color: #E2E6EA;
+    }
+
+    .theme-light .chat-row-titanium:hover {
+      background: #E8ECEF;
+    }
+
+    .unread-pill-copper {
+      background: #9F634C;
+      color: #FFFFFF;
+      font-size: 11.5px;
+      font-weight: 700;
+      min-width: 20px;
+      height: 20px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 6px;
+      box-shadow: 0 1px 4px rgba(159, 99, 76, 0.4);
+    }
+
+    .fab-floating-copper {
+      position: absolute;
+      bottom: 24px;
+      right: 20px;
+      width: 56px;
+      height: 56px;
+      border-radius: 18px;
+      background: linear-gradient(180deg, #B27357 0%, #9F634C 55%, #874E3B 100%);
+      box-shadow: inset 0 1px 0 var(--copper-specular), 0 6px 18px rgba(0, 0, 0, 0.55);
+      border: 1px solid var(--copper-border);
+      color: #FFFFFF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 30;
+    }
+
+    /* 5. Onboarding Screen Architecture & Sequence Controls */
+    .sequence-control-panel {
+      max-width: 820px;
+      width: 100%;
+      margin: 0 auto 24px;
+      background: #121519;
+      border: 1px solid #242A32;
+      border-radius: 16px;
+      padding: 16px 20px;
+      box-shadow: inset 0 1px 0 rgba(221, 226, 232, 0.08), 0 8px 24px rgba(0, 0, 0, 0.45);
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .control-top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .seq-badge-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .seq-state-badge {
+      font-size: 11px;
+      font-family: monospace;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      padding: 4px 10px;
+      border-radius: 6px;
+      background: rgba(184, 115, 51, 0.15);
+      color: #D3A78F;
+      border: 1px solid rgba(184, 115, 51, 0.35);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .seq-time-readout {
+      font-size: 13.5px;
+      font-variant-numeric: tabular-nums;
+      font-family: monospace;
+      color: #DDE2E8;
+      background: #0B0D10;
+      padding: 4px 10px;
+      border-radius: 6px;
+      border: 1px solid #1E232A;
+    }
+
+    .control-btn-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .ctrl-btn {
+      background: #1A1F26;
+      border: 1px solid #2D3540;
+      color: #DDE2E8;
+      font-size: 12.5px;
+      font-weight: 500;
+      padding: 6px 13px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .ctrl-btn:hover {
+      background: #252D37;
+      border-color: #3D4856;
+      color: #FFF;
+    }
+
+    .ctrl-btn.active {
+      background: #9F634C;
+      border-color: #B27357;
+      color: #FFF;
+      box-shadow: 0 0 10px rgba(184, 115, 51, 0.35);
+    }
+
+    .timeline-slider-row {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .scrubber-slider {
+      width: 100%;
+      accent-color: #B87333;
+      cursor: pointer;
+    }
+
+    .timeline-markers {
+      display: flex;
+      justify-content: space-between;
+      font-size: 10.5px;
+      color: #6A737E;
+    }
+
+    .timeline-marker-highlight {
+      color: #D3A78F;
+      font-weight: 600;
+    }
+
+    .onboarding-screen-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 20px 18px;
+      text-align: center;
+      overflow-y: auto;
+      position: relative;
+    }
+
+    .brand-wordmark-wrap {
+      margin-top: 4px;
+      margin-bottom: 6px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .brand-wordmark {
+      width: 172px;
+      max-width: 75%;
+      height: auto;
+      object-fit: contain;
+      display: block;
+    }
+
+    /* Subtle Neutral Backing for Original Wordmark in Dark Mode */
+    .theme-dark .brand-wordmark-backing {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 6px 18px;
+      border-radius: 18px;
+      background: linear-gradient(180deg, #E2E6EB 0%, #CCD3DB 100%);
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+      border: 1px solid #BAC2CA;
+    }
+
+    /* Video Hero Stage Area */
+    .onboard-hero-stage {
+      width: 100%;
+      max-width: 320px;
+      margin: 0 auto;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Dark Mode: Edge feathering matching SimpleXInfo DstOut falloff */
+    .theme-dark .dark-video-stage {
+      width: 100%;
+      aspect-ratio: 1280 / 714;
+      background: radial-gradient(ellipse at 50% 50%, #1B1917 0%, #141210 70%, #0E1013 100%);
+      position: relative;
+    }
+
+    .theme-dark .dark-video-feather {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      -webkit-mask-image: 
+        linear-gradient(to right, transparent 0%, black 17%, black 83%, transparent 100%),
+        linear-gradient(to bottom, transparent 0%, black 14%, black 86%, transparent 100%);
+      -webkit-mask-composite: source-in;
+      mask-image: 
+        linear-gradient(to right, transparent 0%, black 17%, black 83%, transparent 100%),
+        linear-gradient(to bottom, transparent 0%, black 14%, black 86%, transparent 100%);
+      mask-composite: intersect;
+    }
+
+    /* Light Mode: Intentional Dark Titanium Pedestal Chamber */
+    .theme-light .light-video-chamber {
+      width: 100%;
+      border-radius: 18px;
+      background: #141210;
+      border: 1px solid #38414D;
+      box-shadow: inset 0 1px 0 rgba(221, 226, 232, 0.22), 0 10px 24px rgba(0, 0, 0, 0.12);
+      padding: 6px 6px 10px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .light-chamber-badge {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 2px 0 5px;
+      font-size: 9.5px;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      color: #9BA4AF;
+    }
+
+    .light-chamber-badge .chamber-dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: #B87333;
+    }
+
+    .theme-light .light-video-inner {
+      width: 100%;
+      aspect-ratio: 1280 / 714;
+      border-radius: 12px;
+      overflow: hidden;
+      background: #141210;
+      position: relative;
+    }
+
+    .reveal-video-el {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+      background: transparent;
+    }
+
+    /* Contact Shadow Layer (Renders under settled plaque at 89.5% height) */
+    .settled-contact-shadow {
+      position: absolute;
+      top: 89.5%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 48%;
+      height: 14%;
+      border-radius: 50%;
+      background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0.22) 55%, transparent 80%);
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 1.2s ease-out;
+      z-index: 5;
+    }
+
+    .settled-contact-shadow.active {
+      opacity: 1;
+    }
+
+    /* Fallback / Reduced Motion Poster Container */
+    .fallback-static-view {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 8;
+      background: #141210;
+    }
+
+    .fallback-static-view img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    /* Staged Copy & Actions Hierarchy */
+    .staged-content-block {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 8px;
+    }
+
+    .staged-hero-title {
+      font-size: 23px;
+      font-weight: 600;
+      line-height: 1.22;
+      letter-spacing: -0.4px;
+      margin-bottom: 12px;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .theme-dark .staged-hero-title { color: #DDE2E8; }
+    .theme-light .staged-hero-title { color: #20262B; }
+
+    .staged-copper-divider {
+      width: 36px;
+      height: 1px;
+      background: #B87333;
+      margin-bottom: 14px;
+      opacity: 0;
+      transform: scaleX(0.3);
+      transition: opacity 0.8s ease 0.25s, transform 0.8s ease 0.25s;
+    }
+    .theme-light .staged-copper-divider {
+      background: #80513E;
+    }
+
+    .staged-copy-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      max-width: 290px;
+      margin-bottom: 18px;
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.35s, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.35s;
+    }
+
+    .staged-subhead {
+      font-size: 13.5px;
+      line-height: 1.42;
+      font-weight: 500;
+    }
+    .theme-dark .staged-subhead { color: #DDE2E8; }
+    .theme-light .staged-subhead { color: #20262B; }
+
+    .staged-body {
+      font-size: 12.5px;
+      line-height: 1.45;
+    }
+    .theme-dark .staged-body { color: #9BA4AF; }
+    .theme-light .staged-body { color: #59636C; }
+
+    .staged-actions-wrap {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      opacity: 0;
+      transform: translateY(8px);
+      pointer-events: none;
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.5s, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.5s;
+    }
+
+    /* Revealed class turns on visibility and slides elements into resting position */
+    .staged-revealed {
+      opacity: 1 !important;
+      transform: translateY(0) scaleX(1) !important;
+      pointer-events: auto !important;
+    }
+
+    .primary-cta-machined {
+      width: 100%;
+      height: 48px;
+      border-radius: 14px;
+      background: linear-gradient(180deg, #B27357 0%, #9F634C 55%, #874E3B 100%);
+      box-shadow: inset 0 1px 0 var(--copper-specular), 0 4px 14px rgba(159, 99, 76, 0.35);
+      border: 1px solid var(--copper-border);
+      color: #FFFFFF;
+      font-size: 15px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    .secondary-action-btn {
+      background: transparent;
+      border: none;
+      font-size: 13.5px;
+      font-weight: 500;
+      cursor: pointer;
+      padding: 6px;
+      transition: color 0.15s ease;
+    }
+    .theme-dark .secondary-action-btn { color: #9BA4AF; }
+    .theme-dark .secondary-action-btn:hover { color: #DDE2E8; }
+    .theme-light .secondary-action-btn { color: #59636C; }
+    .theme-light .secondary-action-btn:hover { color: #20262B; }
+
+    /* Close-up Inspection Cards */
+    .inspection-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+      gap: 24px;
+      width: 100%;
+    }
+
+    .inspect-card {
+      background: #111418;
+      border: 1px solid #242A32;
+      border-radius: 18px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+    }
+
+    .inspect-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      border-bottom: 1px solid #1E232A;
+      padding-bottom: 12px;
+    }
+
+    .inspect-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: #DDE2E8;
+    }
+
+    .inspect-badge {
+      font-size: 11px;
+      font-family: monospace;
+      color: #D3A78F;
+      background: rgba(184, 115, 51, 0.12);
+      padding: 3px 8px;
+      border-radius: 6px;
+      border: 1px solid rgba(184, 115, 51, 0.25);
+    }
+
+    .inspect-canvas {
+      background: #0E1013;
+      border-radius: 12px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid #1E232A;
+      min-height: 160px;
+    }
+
+    .inspect-notes {
+      font-size: 13px;
+      color: #9BA4AF;
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="badge-pill">
+      <span class="badge-dot"></span>
+      Refined Visual Direction Proposal
+    </div>
+    <h1>Precision Titanium with Directional Material Depth</h1>
+    <p class="subtitle">
+      A single, definitive design direction pairing cool charcoal foundations with bead-blasted titanium surfaces, 
+      controlled directional lighting on structural headers and composer shelves, and authentic machined copper controls.
+      <strong>Zero shiny message bubbles; strictly calm, readable matte typography.</strong>
+    </p>
+
+    <!-- Master Mode Tabs -->
+    <div class="view-selector-bar">
+      <button class="view-btn active copper-tab" onclick="switchSection('side-by-side')">
+        <span>📱</span> Side-by-Side Presentation (Dark & Light)
+      </button>
+      <button class="view-btn" onclick="switchSection('closeups')">
+        <span>🔬</span> Material Lighting & Anatomy Close-ups
+      </button>
+    </div>
+  </header>
+
+  <!-- =========================================================================
+       SECTION 1: SIDE-BY-SIDE PRESENTATION (Dark & Light Complete Screens)
+       ========================================================================= -->
+  <div class="section-wrap visible" id="section-side-by-side">
+
+    <!-- SUB-TABS: Screen Selection -->
+    <div style="display:flex; justify-content:center; gap:8px; margin-bottom:8px;">
+      <button class="view-btn active" id="btn-screen-conv" onclick="showScreenType('conv')">1. Complete Conversation & Composer</button>
+      <button class="view-btn" id="btn-screen-list" onclick="showScreenType('list')">2. Chat List & Filters</button>
+      <button class="view-btn" id="btn-screen-onboard" onclick="showScreenType('onboard')">3. Welcome & Onboarding Hero</button>
+    </div>
+
+    <!-- 1. CONVERSATION SCREEN SIDE-BY-SIDE -->
+    <div class="side-by-side-row" id="view-conv">
+      <!-- DARK VERSION -->
+      <div class="screen-column">
+        <div class="column-header">
+          <span class="dot" style="background:#B87333;"></span> Dark Mode Foundation (#0E1013)
+        </div>
+        <div class="phone-canvas">
+          <div class="phone-screen theme-dark">
+            <div class="status-bar">
+              <div class="camera-punch"></div>
+              <span>09:41</span>
+              <div class="status-right"><span>5G</span><span>100%</span></div>
+            </div>
+
+            <!-- Top App Bar with Directional Specular Lip -->
+            <div class="app-bar-milled">
+              <div class="bar-nav-group">
+                <button class="touch-target-48" style="width:36px; height:36px; margin-left:-6px;">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                </button>
+                <div class="nav-avatar-ring">ER</div>
+                <div class="bar-title-block">
+                  <span class="bar-heading">Elena Rostova</span>
+                  <span class="bar-subheading">
+                    <span class="verified-icon">✓</span> Verified Contact • Direct
+                  </span>
+                </div>
+              </div>
+              <div style="display:flex; align-items:center;">
+                <button class="touch-target-48">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                </button>
+                <button class="touch-target-48">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="1"/><circle cx="12" cy="5" r="1"/><circle cx="12" cy="19" r="1"/></svg>
+                </button>
+              </div>
+            </div>
+
+            <!-- Complete Conversation Stream with Matte Bubbles -->
+            <div class="viewport-scroll">
+              <div class="stream-container">
+                <div class="stream-date-badge">Today</div>
+
+                <!-- Recv Bubble -->
+                <div class="msg-row recv">
+                  <div class="matte-bubble recv">
+                    Did you get a chance to test the new relay server config?
+                    <div class="bubble-footer"><span>14:18</span></div>
+                  </div>
+                </div>
+
+                <!-- Sent Bubble with Quoted Reply -->
+                <div class="msg-row sent">
+                  <div class="matte-bubble sent">
+                    <div class="quote-plate">
+                      <span class="quote-author">Elena Rostova</span>
+                      <span class="quote-content">Did you get a chance to test the new relay...</span>
+                    </div>
+                    Yes, the self-hosted cluster on GoAnon node 04 is responding under 45ms. Zero dropped messages.
+                    <div class="bubble-footer">
+                      <span>14:20</span>
+                      <span class="tick-copper-accent">✓✓</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Recv Voice Note -->
+                <div class="msg-row recv">
+                  <div class="matte-bubble recv" style="min-width:230px;">
+                    <div class="voice-player-pill">
+                      <div class="play-circle-copper">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                      </div>
+                      <div class="waveform-visualizer">
+                        <div class="wave-bar played" style="height:8px;"></div>
+                        <div class="wave-bar played" style="height:14px;"></div>
+                        <div class="wave-bar played" style="height:20px;"></div>
+                        <div class="wave-bar played" style="height:12px;"></div>
+                        <div class="wave-bar played" style="height:18px;"></div>
+                        <div class="wave-bar" style="height:22px;"></div>
+                        <div class="wave-bar" style="height:16px;"></div>
+                        <div class="wave-bar" style="height:10px;"></div>
+                        <div class="wave-bar" style="height:18px;"></div>
+                        <div class="wave-bar" style="height:14px;"></div>
+                        <div class="wave-bar" style="height:8px;"></div>
+                      </div>
+                      <span style="font-size:12px; color:#9BA4AF; font-variant-numeric:tabular-nums;">0:38</span>
+                    </div>
+                    <div class="bubble-footer"><span>14:21</span></div>
+                  </div>
+                </div>
+
+                <!-- Recv Follow-up -->
+                <div class="msg-row recv">
+                  <div class="matte-bubble recv">
+                    I'll verify our safety numbers over the phone before we migrate the group keys.
+                    <div class="bubble-footer"><span>14:22</span></div>
+                  </div>
+                </div>
+
+                <!-- Sent Final -->
+                <div class="msg-row sent">
+                  <div class="matte-bubble sent">
+                    Sounds good. I'm ready whenever you are.
+                    <div class="bubble-footer">
+                      <span>14:23</span>
+                      <span class="tick-copper-accent">✓✓</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Milled Composer Shelf with Inset Well & Machined Copper Button -->
+            <div class="composer-milled-shelf">
+              <button class="touch-target-48" style="width:40px; height:40px; color:#9BA4AF;">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+              </button>
+              <div class="inset-input-well">
+                <span>Message</span><span class="blinking-cursor"></span>
+              </div>
+              <button class="touch-target-48" style="width:40px; height:40px; color:#9BA4AF;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+              </button>
+              <div class="copper-action-btn-44">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+              </div>
+            </div>
+
+            <div class="gesture-bar-bottom"><div class="gesture-indicator"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- LIGHT VERSION -->
+      <div class="screen-column">
+        <div class="column-header">
+          <span class="dot" style="background:#80513E;"></span> Matching Light Foundation (#F1F3F5)
+        </div>
+        <div class="phone-canvas">
+          <div class="phone-screen theme-light">
+            <div class="status-bar">
+              <div class="camera-punch"></div>
+              <span>09:41</span>
+              <div class="status-right"><span>5G</span><span>100%</span></div>
+            </div>
+
+            <!-- Top App Bar (Light) -->
+            <div class="app-bar-milled">
+              <div class="bar-nav-group">
+                <button class="touch-target-48" style="width:36px; height:36px; margin-left:-6px;">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                </button>
+                <div class="nav-avatar-ring">ER</div>
+                <div class="bar-title-block">
+                  <span class="bar-heading">Elena Rostova</span>
+                  <span class="bar-subheading">
+                    <span class="verified-icon">✓</span> Verified Contact • Direct
+                  </span>
+                </div>
+              </div>
+              <div style="display:flex; align-items:center;">
+                <button class="touch-target-48">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                </button>
+                <button class="touch-target-48">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="1"/><circle cx="12" cy="5" r="1"/><circle cx="12" cy="19" r="1"/></svg>
+                </button>
+              </div>
+            </div>
+
+            <!-- Complete Conversation Stream (Light) -->
+            <div class="viewport-scroll">
+              <div class="stream-container">
+                <div class="stream-date-badge">Today</div>
+
+                <!-- Recv Bubble -->
+                <div class="msg-row recv">
+                  <div class="matte-bubble recv">
+                    Did you get a chance to test the new relay server config?
+                    <div class="bubble-footer"><span>14:18</span></div>
+                  </div>
+                </div>
+
+                <!-- Sent Bubble with Quoted Reply -->
+                <div class="msg-row sent">
+                  <div class="matte-bubble sent">
+                    <div class="quote-plate">
+                      <span class="quote-author">Elena Rostova</span>
+                      <span class="quote-content">Did you get a chance to test the new relay...</span>
+                    </div>
+                    Yes, the self-hosted cluster on GoAnon node 04 is responding under 45ms. Zero dropped messages.
+                    <div class="bubble-footer">
+                      <span>14:20</span>
+                      <span class="tick-copper-accent">✓✓</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Recv Voice Note -->
+                <div class="msg-row recv">
+                  <div class="matte-bubble recv" style="min-width:230px;">
+                    <div class="voice-player-pill">
+                      <div class="play-circle-copper">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                      </div>
+                      <div class="waveform-visualizer">
+                        <div class="wave-bar played" style="height:8px;"></div>
+                        <div class="wave-bar played" style="height:14px;"></div>
+                        <div class="wave-bar played" style="height:20px;"></div>
+                        <div class="wave-bar played" style="height:12px;"></div>
+                        <div class="wave-bar played" style="height:18px;"></div>
+                        <div class="wave-bar" style="height:22px;"></div>
+                        <div class="wave-bar" style="height:16px;"></div>
+                        <div class="wave-bar" style="height:10px;"></div>
+                        <div class="wave-bar" style="height:18px;"></div>
+                        <div class="wave-bar" style="height:14px;"></div>
+                        <div class="wave-bar" style="height:8px;"></div>
+                      </div>
+                      <span style="font-size:12px; color:#59636C; font-variant-numeric:tabular-nums;">0:38</span>
+                    </div>
+                    <div class="bubble-footer"><span>14:21</span></div>
+                  </div>
+                </div>
+
+                <!-- Recv Follow-up -->
+                <div class="msg-row recv">
+                  <div class="matte-bubble recv">
+                    I'll verify our safety numbers over the phone before we migrate the group keys.
+                    <div class="bubble-footer"><span>14:22</span></div>
+                  </div>
+                </div>
+
+                <!-- Sent Final -->
+                <div class="msg-row sent">
+                  <div class="matte-bubble sent">
+                    Sounds good. I'm ready whenever you are.
+                    <div class="bubble-footer">
+                      <span>14:23</span>
+                      <span class="tick-copper-accent">✓✓</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Composer (Light) -->
+            <div class="composer-milled-shelf">
+              <button class="touch-target-48" style="width:40px; height:40px; color:#59636C;">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+              </button>
+              <div class="inset-input-well">
+                <span>Message</span><span class="blinking-cursor"></span>
+              </div>
+              <button class="touch-target-48" style="width:40px; height:40px; color:#59636C;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+              </button>
+              <div class="copper-action-btn-44">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+              </div>
+            </div>
+
+            <div class="gesture-bar-bottom"><div class="gesture-indicator"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. CHAT LIST SCREEN SIDE-BY-SIDE -->
+    <div class="side-by-side-row" id="view-list" style="display:none;">
+      <!-- DARK -->
+      <div class="screen-column">
+        <div class="column-header"><span class="dot" style="background:#B87333;"></span> Dark Mode Chat List</div>
+        <div class="phone-canvas">
+          <div class="phone-screen theme-dark">
+            <div class="status-bar">
+              <div class="camera-punch"></div>
+              <span>09:41</span>
+              <div class="status-right"><span>5G</span><span>100%</span></div>
+            </div>
+
+            <div class="app-bar-milled">
+              <div class="bar-nav-group">
+                <div class="nav-avatar-ring">
+                  <img src="assets/qryptana-symbol.png" alt="Profile" style="width:24px; height:24px; object-fit:contain;">
+                </div>
+                <span class="bar-heading" style="font-size:18px;">Chats</span>
+              </div>
+              <div style="display:flex; align-items:center;">
+                <button class="touch-target-48">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+                </button>
+              </div>
+            </div>
+
+            <div class="search-recessed-shelf">
+              <div class="search-recessed-pill">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                <span>Search messages and contacts...</span>
+              </div>
+            </div>
+
+            <div class="chips-carousel">
+              <div class="chip-item active">All Chats</div>
+              <div class="chip-item">Direct</div>
+              <div class="chip-item">Groups</div>
+              <div class="chip-item">Relays</div>
+              <div class="chip-item">Unread (2)</div>
+            </div>
+
+            <div class="viewport-scroll">
+              <div class="chat-row-titanium">
+                <div class="nav-avatar-ring" style="width:48px; height:48px;">ER</div>
+                <div style="flex:1; min-width:0;">
+                  <div style="display:flex; justify-content:space-between; margin-bottom:3px;">
+                    <span style="font-weight:600; font-size:15px;">Elena Rostova</span>
+                    <span style="font-size:12px; color:#9BA4AF;">14:23</span>
+                  </div>
+                  <div style="display:flex; justify-content:space-between; align-items:center;">
+                    <span style="font-size:13.5px; color:#9BA4AF; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">Sounds good. I'm ready whenever...</span>
+                    <div class="unread-pill-copper">2</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="chat-row-titanium">
+                <div class="nav-avatar-ring" style="width:48px; height:48px;">KV</div>
+                <div style="flex:1; min-width:0;">
+                  <div style="display:flex; justify-content:space-between; margin-bottom:3px;">
+                    <span style="font-weight:600; font-size:15px;">Kaelen Vance</span>
+                    <span style="font-size:12px; color:#9BA4AF;">Yesterday</span>
+                  </div>
+                  <div style="display:flex; justify-content:space-between; align-items:center;">
+                    <span style="font-size:13.5px; color:#9BA4AF; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">Sent the encrypted design proposal file.</span>
+                    <span class="tick-copper-accent">✓✓</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="chat-row-titanium">
+                <div class="nav-avatar-ring" style="width:48px; height:48px;">MT</div>
+                <div style="flex:1; min-width:0;">
+                  <div style="display:flex; justify-content:space-between; margin-bottom:3px;">
+                    <span style="font-weight:600; font-size:15px;">Dr. Marcus Thorne</span>
+                    <span style="font-size:12px; color:#9BA4AF;">Oct 30</span>
+                  </div>
+                  <div style="display:flex; justify-content:space-between; align-items:center;">
+                    <span style="font-size:13.5px; color:#9BA4AF; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">Voice message (0:48)</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="chat-row-titanium">
+                <div class="nav-avatar-ring" style="width:48px; height:48px;">⚙️</div>
+                <div style="flex:1; min-width:0;">
+                  <div style="display:flex; justify-content:space-between; margin-bottom:3px;">
+                    <span style="font-weight:600; font-size:15px;">GoAnon Node 04</span>
+                    <span style="font-size:12px; color:#9BA4AF;">Oct 28</span>
+                  </div>
+                  <div style="display:flex; justify-content:space-between; align-items:center;">
+                    <span style="font-size:13.5px; color:#9BA4AF; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">Relay rotation successful.</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="fab-floating-copper">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </div>
+
+            <div class="gesture-bar-bottom"><div class="gesture-indicator"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- LIGHT -->
+      <div class="screen-column">
+        <div class="column-header"><span class="dot" style="background:#80513E;"></span> Light Mode Chat List</div>
+        <div class="phone-canvas">
+          <div class="phone-screen theme-light">
+            <div class="status-bar">
+              <div class="camera-punch"></div>
+              <span>09:41</span>
+              <div class="status-right"><span>5G</span><span>100%</span></div>
+            </div>
+
+            <div class="app-bar-milled">
+              <div class="bar-nav-group">
+                <div class="nav-avatar-ring">
+                  <img src="assets/qryptana-symbol.png" alt="Profile" style="width:24px; height:24px; object-fit:contain;">
+                </div>
+                <span class="bar-heading" style="font-size:18px;">Chats</span>
+              </div>
+              <div style="display:flex; align-items:center;">
+                <button class="touch-target-48">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+                </button>
+              </div>
+            </div>
+
+            <div class="search-recessed-shelf">
+              <div class="search-recessed-pill">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                <span>Search messages and contacts...</span>
+              </div>
+            </div>
+
+            <div class="chips-carousel">
+              <div class="chip-item active">All Chats</div>
+              <div class="chip-item">Direct</div>
+              <div class="chip-item">Groups</div>
+              <div class="chip-item">Relays</div>
+              <div class="chip-item">Unread (2)</div>
+            </div>
+
+            <div class="viewport-scroll">
+              <div class="chat-row-titanium">
+                <div class="nav-avatar-ring" style="width:48px; height:48px;">ER</div>
+                <div style="flex:1; min-width:0;">
+                  <div style="display:flex; justify-content:space-between; margin-bottom:3px;">
+                    <span style="font-weight:600; font-size:15px;">Elena Rostova</span>
+                    <span style="font-size:12px; color:#59636C;">14:23</span>
+                  </div>
+                  <div style="display:flex; justify-content:space-between; align-items:center;">
+                    <span style="font-size:13.5px; color:#59636C; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">Sounds good. I'm ready whenever...</span>
+                    <div class="unread-pill-copper">2</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="chat-row-titanium">
+                <div class="nav-avatar-ring" style="width:48px; height:48px;">KV</div>
+                <div style="flex:1; min-width:0;">
+                  <div style="display:flex; justify-content:space-between; margin-bottom:3px;">
+                    <span style="font-weight:600; font-size:15px;">Kaelen Vance</span>
+                    <span style="font-size:12px; color:#59636C;">Yesterday</span>
+                  </div>
+                  <div style="display:flex; justify-content:space-between; align-items:center;">
+                    <span style="font-size:13.5px; color:#59636C; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">Sent the encrypted design proposal file.</span>
+                    <span class="tick-copper-accent">✓✓</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="chat-row-titanium">
+                <div class="nav-avatar-ring" style="width:48px; height:48px;">MT</div>
+                <div style="flex:1; min-width:0;">
+                  <div style="display:flex; justify-content:space-between; margin-bottom:3px;">
+                    <span style="font-weight:600; font-size:15px;">Dr. Marcus Thorne</span>
+                    <span style="font-size:12px; color:#59636C;">Oct 30</span>
+                  </div>
+                  <div style="display:flex; justify-content:space-between; align-items:center;">
+                    <span style="font-size:13.5px; color:#59636C; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">Voice message (0:48)</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="chat-row-titanium">
+                <div class="nav-avatar-ring" style="width:48px; height:48px;">⚙️</div>
+                <div style="flex:1; min-width:0;">
+                  <div style="display:flex; justify-content:space-between; margin-bottom:3px;">
+                    <span style="font-weight:600; font-size:15px;">GoAnon Node 04</span>
+                    <span style="font-size:12px; color:#59636C;">Oct 28</span>
+                  </div>
+                  <div style="display:flex; justify-content:space-between; align-items:center;">
+                    <span style="font-size:13.5px; color:#59636C; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">Relay rotation successful.</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="fab-floating-copper">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </div>
+
+            <div class="gesture-bar-bottom"><div class="gesture-indicator"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. ONBOARDING SCREEN SIDE-BY-SIDE WITH REAL VIDEO REVEAL -->
+    <div id="view-onboard" style="display:none; flex-direction:column; align-items:center; width:100%;">
+
+      <!-- SEQUENCE REVIEW CONTROL DECK -->
+      <div class="sequence-control-panel">
+        <div class="control-top-bar">
+          <div class="seq-badge-group">
+            <span id="seq-state-badge" class="seq-state-badge">
+              <span class="badge-dot"></span>
+              STATE: ACTIVE REVEAL PLAYBACK
+            </span>
+            <span class="seq-badge-pill" style="font-size:11px; color:#9BA4AF;">
+              Compose Spec: <code>QRYPTANA_TEXT_REVEAL_AT_MS = 8800ms</code>
+            </span>
+          </div>
+          <div id="seq-time-display" class="seq-time-readout">00:00.0 / 00:11.3</div>
+        </div>
+
+        <!-- Interactive Control Buttons -->
+        <div class="control-btn-row">
+          <button id="btn-play-pause" class="ctrl-btn" onclick="togglePlayPause()">
+            <span>⏸</span> Pause
+          </button>
+          <button class="ctrl-btn" onclick="resetToPoster()">
+            <span>⏮</span> Poster / Start (0.0s)
+          </button>
+          <button class="ctrl-btn" onclick="jumpToSettled()">
+            <span>⏭</span> Settled Frame (8.8s)
+          </button>
+          <button id="btn-reduced-motion" class="ctrl-btn" onclick="toggleReducedMotion()">
+            <span>♿</span> Reduced Motion / Fallback
+          </button>
+          <button class="ctrl-btn" onclick="triggerSafetyTimeout()">
+            <span>⏱</span> Test 12.5s Safety Net
+          </button>
+          <button id="btn-loop-toggle" class="ctrl-btn active" onclick="toggleLoop()">
+            <span>🔁</span> Auto-Loop: ON
+          </button>
+        </div>
+
+        <!-- Scrubbable Video Timeline Slider -->
+        <div class="timeline-slider-row">
+          <input type="range" id="video-scrubber" class="scrubber-slider" min="0" max="11.29" step="0.05" value="0" oninput="scrubVideo(this.value)">
+          <div class="timeline-markers">
+            <span>0.0s • Initial Poster</span>
+            <span class="timeline-marker-highlight">8.8s • Plaque Rest & Title Reveal</span>
+            <span>10.0s • Copy In</span>
+            <span>11.3s • Final Held State</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- SIDE-BY-SIDE PHONES (Dark & Light) -->
+      <div class="side-by-side-row" style="width:100%; justify-content:center;">
+        
+        <!-- DARK ONBOARDING HERO -->
+        <div class="screen-column">
+          <div class="column-header">
+            <span class="dot" style="background:#B87333;"></span> Dark Onboarding (Seamless Edge Blend)
+          </div>
+          <div class="phone-canvas">
+            <div class="phone-screen theme-dark">
+              <div class="status-bar">
+                <div class="camera-punch"></div>
+                <span>09:41</span>
+                <div class="status-right"><span>5G</span><span>100%</span></div>
+              </div>
+
+              <div class="onboarding-screen-content">
+                <!-- Approved Canonical Wordmark on Subtle Neutral Backing for Dark Readability -->
+                <div class="brand-wordmark-wrap">
+                  <div class="brand-wordmark-backing">
+                    <img src="assets/qryptana-wordmark.png" alt="Qryptana" class="brand-wordmark">
+                  </div>
+                </div>
+
+                <!-- Video Reveal Hero Stage (Edge Feathered into Dark Screen) -->
+                <div class="onboard-hero-stage">
+                  <div class="dark-video-stage">
+                    <div class="dark-video-feather">
+                      <video id="vid-onboard-dark" class="reveal-video-el" playsinline muted preload="auto" poster="assets/frame_start.png">
+                        <source src="assets/qryptana_identity_card_reveal.mp4" type="video/mp4">
+                      </video>
+                      
+                      <!-- Fallback / Reduced Motion Static Card -->
+                      <div class="fallback-static-view fallback-view-dark">
+                        <img src="assets/frame_end.png" alt="Identity Plaque">
+                      </div>
+
+                      <!-- Contact Shadow under settled plaque -->
+                      <div class="settled-contact-shadow"></div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Staged Copy & Actions (Revealed at 8.8s / Settled) -->
+                <div class="staged-content-block">
+                  <h2 class="staged-hero-title">Private conversations,<br>reimagined</h2>
+                  <div class="staged-copper-divider"></div>
+                  <div class="staged-copy-wrap">
+                    <p class="staged-subhead">Connect with the people you choose, privately and freely.</p>
+                    <p class="staged-body">Your conversations stay yours, with no phone number or email required.</p>
+                  </div>
+                  <div class="staged-actions-wrap">
+                    <button class="primary-cta-machined">Create my identity</button>
+                    <button class="secondary-action-btn">How it works</button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="gesture-bar-bottom"><div class="gesture-indicator"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- LIGHT ONBOARDING HERO -->
+        <div class="screen-column">
+          <div class="column-header">
+            <span class="dot" style="background:#80513E;"></span> Light Onboarding (Dark Titanium Chamber)
+          </div>
+          <div class="phone-canvas">
+            <div class="phone-screen theme-light">
+              <div class="status-bar">
+                <div class="camera-punch"></div>
+                <span>09:41</span>
+                <div class="status-right"><span>5G</span><span>100%</span></div>
+              </div>
+
+              <div class="onboarding-screen-content">
+                <!-- Approved Canonical Wordmark -->
+                <div class="brand-wordmark-wrap">
+                  <img src="assets/qryptana-wordmark.png" alt="Qryptana" class="brand-wordmark">
+                </div>
+
+                <!-- Video Reveal Hero Stage (Housed in Intentional Dark Titanium Chamber) -->
+                <div class="onboard-hero-stage">
+                  <div class="light-video-chamber">
+                    <div class="light-video-inner">
+                      <video id="vid-onboard-light" class="reveal-video-el" playsinline muted preload="auto" poster="assets/frame_start.png">
+                        <source src="assets/qryptana_identity_card_reveal.mp4" type="video/mp4">
+                      </video>
+                      
+                      <!-- Fallback / Reduced Motion Static Card -->
+                      <div class="fallback-static-view fallback-view-light">
+                        <img src="assets/frame_end.png" alt="Identity Plaque">
+                      </div>
+
+                      <!-- Contact Shadow -->
+                      <div class="settled-contact-shadow"></div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Staged Copy & Actions (Revealed at 8.8s / Settled on Light Canvas) -->
+                <div class="staged-content-block">
+                  <h2 class="staged-hero-title">Private conversations,<br>reimagined</h2>
+                  <div class="staged-copper-divider"></div>
+                  <div class="staged-copy-wrap">
+                    <p class="staged-subhead">Connect with the people you choose, privately and freely.</p>
+                    <p class="staged-body">Your conversations stay yours, with no phone number or email required.</p>
+                  </div>
+                  <div class="staged-actions-wrap">
+                    <button class="primary-cta-machined">Create my identity</button>
+                    <button class="secondary-action-btn">How it works</button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="gesture-bar-bottom"><div class="gesture-indicator"></div></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- TECHNICAL PARITY DOCUMENTATION CARD -->
+      <div style="max-width:820px; width:100%; margin:24px auto 0; background:#121519; border:1px solid #242A32; border-radius:14px; padding:18px 22px; font-size:13px; line-height:1.55; color:#9BA4AF;">
+        <div style="font-weight:600; color:#DDE2E8; margin-bottom:6px; font-size:14px; display:flex; align-items:center; gap:8px;">
+          <span>📋</span> Technical Parity & Android Compose Implementation Notes
+        </div>
+        <ul style="padding-left:18px; display:flex; flex-direction:column; gap:6px;">
+          <li><strong>Exact Asset Aspect Ratio:</strong> The video <code>assets/videos/qryptana_identity_card_reveal.mp4</code> is preserved at its authored <code>1280x714</code> resolution (~1.7927:1) with zero stretching, cropping, tinting, or recoloring.</li>
+          <li><strong>Pixel-Matched Dark Backdrop:</strong> Edge sampling of <code>frame_start.png</code> through <code>frame_end.png</code> confirmed perimeter luminance in the <code>#141210</code> to <code>#1B1917</code> range. Dark mode utilizes the <code>SimpleXInfo.kt</code> 17% horizontal and 14% vertical <code>DstOut</code> gradient mask, dissolving edges cleanly into the dark screen foundation without rectangular seams.</li>
+          <li><strong>Intentional Light Mode Hero Chamber:</strong> Rather than forcing fake transparency onto an opaque MP4, light mode houses the video inside a milled dark titanium pedestal with a 1px border (<code>#38414D</code>), top specular highlight, and soft elevation, honoring the video's dark physical lighting on top of the light canvas.</li>
+          <li><strong>Staged Reveal Sequencing:</strong> Headlines, copy, and action buttons remain hidden during initial floating motion. When the video hits <code>8800ms</code> (<code>QRYPTANA_TEXT_REVEAL_AT_MS</code>), the plaque settles, the contact shadow renders at 89.5% height, and the copy cascades in. A <code>12500ms</code> safety timeout ensures copy is never trapped if playback stalls.</li>
+          <li><strong>Reduced Motion Fallback:</strong> Activating reduced motion instantly bypasses video playback, mounts the static plaque card (<code>InvitationPreviewCard</code> equivalent), and renders copy immediately without waiting.</li>
+          <li><strong>Canonical Reviewed Copy:</strong> Uses verified strings from <code>MR.strings</code> (<code>onboarding_be_free</code>, <code>onboarding_private_and_secure</code>, <code>onboarding_first_network</code>, <code>get_started</code>, <code>how_it_works</code>), with zero unreviewed claims.</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       SECTION 2: CLOSE-UP MATERIAL DETAILS & LIGHTING ANATOMY
+       ========================================================================= -->
+  <div class="section-wrap" id="section-closeups">
+    <div style="max-width:800px; margin:0 auto 16px; text-align:center;">
+      <h2 style="font-size:22px; font-weight:600; margin-bottom:8px;">Material Anatomy & Directional Lighting Breakdown</h2>
+      <p style="font-size:14px; color:#9BA4AF;">
+        Magnified 2.5x inspection views demonstrating physical material depth, top specular highlights, recessed titanium wells, and matte reading surfaces.
+      </p>
+    </div>
+
+    <div class="inspection-grid">
+
+      <!-- Detail 1: Milled Composer Shelf & Recessed Well -->
+      <div class="inspect-card">
+        <div class="inspect-header">
+          <span class="inspect-title">1. Milled Composer Shelf & Inset Well</span>
+          <span class="inspect-badge">DEPTH ARCHITECTURE</span>
+        </div>
+        <div class="inspect-canvas">
+          <!-- Magnified Composer Fragment -->
+          <div style="width:100%; max-width:320px; padding:12px; background:linear-gradient(180deg, #181E26 0%, #14171E 60%, #111419 100%); box-shadow:inset 0 1px 0 rgba(221, 226, 232, 0.18), 0 4px 12px rgba(0,0,0,0.6); border-radius:18px; border:1px solid #20262E; display:flex; align-items:center; gap:8px;">
+            <div style="flex:1; height:44px; border-radius:22px; background:#0E1014; border:1px solid #28303C; box-shadow:inset 0 2px 4px rgba(0,0,0,0.6), 0 1px 0 rgba(221,226,232,0.06); display:flex; align-items:center; padding:0 14px; font-size:14px;">
+              <span>Type message</span><span class="blinking-cursor"></span>
+            </div>
+            <div style="width:44px; height:44px; border-radius:50%; background:linear-gradient(180deg, #B27357 0%, #9F634C 55%, #874E3B 100%); box-shadow:inset 0 1px 0 rgba(255,235,224,0.4), 0 3px 8px rgba(159,99,76,0.45); border:1px solid #6F3B2A; display:flex; align-items:center; justify-content:center; color:#fff;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+            </div>
+          </div>
+        </div>
+        <div class="inspect-notes">
+          <strong>Directional Depth:</strong> The shelf features a micro 1px top specular hairline (<code>rgba(221, 226, 232, 0.18)</code>) simulating overhead studio light. The text field is rendered as a milled recession with an internal top-drop shadow (<code>inset 0 2px 4px rgba(0,0,0,0.6)</code>). The copper button features a controlled specular crown.
+        </div>
+      </div>
+
+      <!-- Detail 2: Top App Bar Specular Lip -->
+      <div class="inspect-card">
+        <div class="inspect-header">
+          <span class="inspect-title">2. Top App Bar Specular Lip</span>
+          <span class="inspect-badge">135° DIRECTIONAL LIGHT</span>
+        </div>
+        <div class="inspect-canvas">
+          <div style="width:100%; max-width:320px; height:54px; background:linear-gradient(180deg, #1B2129 0%, #15191F 60%, #13171D 100%); box-shadow:inset 0 1px 0 rgba(221, 226, 232, 0.16), 0 3px 10px rgba(0,0,0,0.5); border-bottom:1px solid #20262E; border-radius:12px; display:flex; align-items:center; padding:0 14px; gap:12px;">
+            <div style="width:34px; height:34px; border-radius:50%; background:#1E232A; border:1px solid #38414D; box-shadow:inset 0 1px 0 rgba(255,255,255,0.15); display:flex; align-items:center; justify-content:center; font-weight:600; font-size:13px;">ER</div>
+            <div>
+              <div style="font-size:14.5px; font-weight:600;">Elena Rostova</div>
+              <div style="font-size:11px; color:#9BA4AF;"><span style="color:#34A853;">✓</span> Verified Contact</div>
+            </div>
+          </div>
+        </div>
+        <div class="inspect-notes">
+          <strong>Bevel Physics:</strong> Light strikes the top edge of the titanium bar, creating a crisp metallic lip while maintaining pure desaturated charcoal foundations below. Avoids heavy outlines or decorative clutter.
+        </div>
+      </div>
+
+      <!-- Detail 3: Matte Bubble vs. Copper Status Accent -->
+      <div class="inspect-card">
+        <div class="inspect-header">
+          <span class="inspect-title">3. Matte Bubble & Quoted Conductor</span>
+          <span class="inspect-badge">ZERO FATIGUE READING</span>
+        </div>
+        <div class="inspect-canvas">
+          <div style="max-width:280px; padding:12px 14px; background:#1E232A; border:1px solid #2B333E; border-radius:14px; border-bottom-right-radius:4px; font-size:13.5px; line-height:1.45; box-shadow:0 1px 3px rgba(0,0,0,0.3);">
+            <div style="border-left:2.5px solid #B87333; background:#111418; border-radius:6px; padding:6px 10px; margin-bottom:8px; font-size:12px;">
+              <div style="color:#D3A78F; font-weight:600;">Elena Rostova</div>
+              <div style="color:#9BA4AF;">Did you get a chance to test...</div>
+            </div>
+            <span>Keys rotated cleanly on GoAnon node 04.</span>
+            <div style="display:flex; justify-content:flex-end; gap:4px; margin-top:4px; font-size:11px; color:#9BA4AF;">
+              <span>14:20</span>
+              <span style="color:#B87333; font-weight:700;">✓✓</span>
+            </div>
+          </div>
+        </div>
+        <div class="inspect-notes">
+          <strong>Strictly Matte Reading:</strong> The message bubble body uses calm Raised Titanium (<code>#1E232A</code>) with zero gloss or sheen. Text contrast is 12.1:1. The quote bar acts as an authentic copper wire conductor (<code>#B87333</code>) anchoring the context.
+        </div>
+      </div>
+
+      <!-- Detail 4: Machined Switch & Control Hardware -->
+      <div class="inspect-card">
+        <div class="inspect-header">
+          <span class="inspect-title">4. Accessible Machined Switch Hardware</span>
+          <span class="inspect-badge">4.81:1 WCAG CONTRAST</span>
+        </div>
+        <div class="inspect-canvas">
+          <div style="display:flex; align-items:center; gap:28px;">
+            <!-- Checked State -->
+            <div style="display:flex; flex-direction:column; align-items:center; gap:8px;">
+              <div style="width:46px; height:28px; border-radius:14px; background:linear-gradient(180deg, #A86950 0%, #9F634C 60%, #874E3B 100%); border:1px solid #6F3B2A; box-shadow:inset 0 1px 2px rgba(0,0,0,0.35); position:relative; cursor:pointer;">
+                <div style="width:22px; height:22px; border-radius:50%; background:linear-gradient(180deg, #FFFFFF 0%, #EEF2F6 100%); position:absolute; top:2px; right:3px; box-shadow:0 2px 5px rgba(0,0,0,0.4), inset 0 1px 0 #fff;"></div>
+              </div>
+              <span style="font-size:11.5px; color:#D3A78F; font-weight:600;">ON (4.81:1)</span>
+            </div>
+
+            <!-- Unchecked State -->
+            <div style="display:flex; flex-direction:column; align-items:center; gap:8px;">
+              <div style="width:46px; height:28px; border-radius:14px; background:#2A313C; border:1px solid #1E232A; box-shadow:inset 0 1px 2px rgba(0,0,0,0.4); position:relative; cursor:pointer;">
+                <div style="width:22px; height:22px; border-radius:50%; background:#9BA4AF; position:absolute; top:2px; left:3px; box-shadow:0 1px 3px rgba(0,0,0,0.4);"></div>
+              </div>
+              <span style="font-size:11.5px; color:#9BA4AF;">OFF (Neutral)</span>
+            </div>
+          </div>
+        </div>
+        <div class="inspect-notes">
+          <strong>Tactile Micro-Control:</strong> Active track uses solid dark copper (<code>#9F634C</code>) with a crisp white thumb reaching verified 4.81:1 contrast. Unchecked state is neutral slate grey, avoiding unselected orange clutter.
+        </div>
+      </div>
+
+      <!-- Detail 5: Video Edge Boundary & Light Titanium Chamber Integration -->
+      <div class="inspect-card" style="grid-column: 1 / -1;">
+        <div class="inspect-header">
+          <span class="inspect-title">5. Video Edge Integration & Dual-Theme Architecture</span>
+          <span class="inspect-badge">ASSET PARITY • 1280x714 (1.7927:1)</span>
+        </div>
+        <div class="inspect-canvas" style="display:flex; flex-direction:row; gap:32px; justify-content:center; flex-wrap:wrap; padding:28px 16px;">
+          <!-- Dark Seamless Blend Magnified -->
+          <div style="display:flex; flex-direction:column; align-items:center; gap:10px; max-width:340px;">
+            <div style="font-size:12px; font-weight:600; color:#D3A78F; letter-spacing:0.5px;">DARK MODE: SEAMLESS PERIMETER FEATHERING</div>
+            <div style="width:280px; height:156px; border-radius:12px; background:radial-gradient(ellipse at 50% 50%, #1B1917 0%, #141210 70%, #0E1013 100%); position:relative; overflow:hidden; border:1px dashed #38414D; display:flex; align-items:center; justify-content:center;">
+              <img src="assets/frame_end.png" alt="Video Frame" style="width:100%; height:100%; object-fit:contain; -webkit-mask-image: linear-gradient(to right, transparent 0%, black 17%, black 83%, transparent 100%), linear-gradient(to bottom, transparent 0%, black 14%, black 86%, transparent 100%); -webkit-mask-composite: source-in; mask-composite: intersect;">
+              <div style="position:absolute; bottom:6px; font-size:10px; color:#9BA4AF; background:rgba(0,0,0,0.65); padding:2px 8px; border-radius:4px;">SimpleXInfo DstOut Mask (fx=17%, fy=14%)</div>
+            </div>
+            <p style="font-size:11.5px; color:#9BA4AF; line-height:1.4; text-align:center;">
+              Video edge pixels (sampled at <code>#141210</code> - <code>#1B1917</code>) dissolve completely into the dark titanium canvas. No harsh box or visible border.
+            </p>
+          </div>
+
+          <!-- Light Titanium Chamber Magnified -->
+          <div style="display:flex; flex-direction:column; align-items:center; gap:10px; max-width:340px;">
+            <div style="font-size:12px; font-weight:600; color:#80513E; letter-spacing:0.5px;">LIGHT MODE: DARK TITANIUM HARDWARE PEDESTAL</div>
+            <div style="width:280px; height:156px; border-radius:14px; background:#141210; border:1px solid #38414D; box-shadow:inset 0 1px 0 rgba(221,226,232,0.22), 0 8px 20px rgba(0,0,0,0.14); padding:6px; position:relative; display:flex; flex-direction:column;">
+              <div style="flex:1; border-radius:8px; overflow:hidden; position:relative;">
+                <img src="assets/frame_end.png" alt="Video Frame" style="width:100%; height:100%; object-fit:contain;">
+              </div>
+            </div>
+            <p style="font-size:11.5px; color:#59636C; line-height:1.4; text-align:center;">
+              Instead of faking transparency on an opaque MP4, light mode mounts the video in an intentional dark titanium pedestal with top specular highlight on the <code>#F1F3F5</code> canvas.
+            </p>
+          </div>
+        </div>
+        <div class="inspect-notes">
+          <strong>Physical Integrity:</strong> The authored video carries its own directional key and rim lighting rendered against deep charcoal. The surrounding interface embraces this physical reality across both colorways rather than clipping or applying synthetic filters.
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    // Tab switching
+    function switchSection(secId) {
+      document.querySelectorAll('.view-selector-bar .view-btn').forEach((b, idx) => {
+        b.classList.toggle('active', (idx === 0 && secId === 'side-by-side') || (idx === 1 && secId === 'closeups'));
+      });
+      document.getElementById('section-side-by-side').classList.toggle('visible', secId === 'side-by-side');
+      document.getElementById('section-closeups').classList.toggle('visible', secId === 'closeups');
+    }
+
+    // Screen sub-tab switching
+    function showScreenType(type) {
+      document.getElementById('btn-screen-conv').classList.toggle('active', type === 'conv');
+      document.getElementById('btn-screen-list').classList.toggle('active', type === 'list');
+      document.getElementById('btn-screen-onboard').classList.toggle('active', type === 'onboard');
+
+      document.getElementById('view-conv').style.display = type === 'conv' ? 'flex' : 'none';
+      document.getElementById('view-list').style.display = type === 'list' ? 'flex' : 'none';
+      document.getElementById('view-onboard').style.display = type === 'onboard' ? 'flex' : 'none';
+
+      // Lifecycle handling: pause playback when navigating away from onboarding
+      if (type !== 'onboard') {
+        pausePlayback();
+      } else {
+        if (!isReducedMotion && isPlaying) {
+          startPlayback();
+        }
+      }
+    }
+
+    // Video & Reveal Sequence Controller
+    const vidDark = document.getElementById('vid-onboard-dark');
+    const vidLight = document.getElementById('vid-onboard-light');
+    const scrubber = document.getElementById('video-scrubber');
+    const timeDisplay = document.getElementById('seq-time-display');
+    const stateBadge = document.getElementById('seq-state-badge');
+    const playPauseBtn = document.getElementById('btn-play-pause');
+    const reducedMotionBtn = document.getElementById('btn-reduced-motion');
+    const loopBtn = document.getElementById('btn-loop-toggle');
+
+    const SETTLE_THRESHOLD_S = 8.8; // SimpleXInfo QRYPTANA_TEXT_REVEAL_AT_MS
+    const SAFETY_TIMEOUT_MS = 12500; // SimpleXInfo QRYPTANA_TEXT_REVEAL_TIMEOUT_MS
+    let isPlaying = true;
+    let isLooping = true;
+    let isReducedMotion = false;
+    let plaqueSettled = false;
+    let safetyTimeoutTimer = null;
+    let loopHoldTimer = null;
+
+    function formatTime(s) {
+      const mins = Math.floor(s / 60);
+      const secs = (s % 60).toFixed(1);
+      return (mins < 10 ? '0' : '') + mins + ':' + (secs < 10 ? '0' : '') + secs;
+    }
+
+    function setStageRevealed(revealed) {
+      document.querySelectorAll('.staged-hero-title, .staged-copper-divider, .staged-copy-wrap, .staged-actions-wrap').forEach(el => {
+        el.classList.toggle('staged-revealed', revealed);
+      });
+      document.querySelectorAll('.settled-contact-shadow').forEach(el => {
+        el.classList.toggle('active', revealed);
+      });
+    }
+
+    function updateSequenceState(curTime) {
+      timeDisplay.textContent = formatTime(curTime) + ' / 00:11.3';
+      scrubber.value = curTime;
+
+      if (isReducedMotion) {
+        stateBadge.innerHTML = '<span class="badge-dot" style="background:#34A853;"></span> STATE: REDUCED MOTION / FALLBACK (STATIC CARD)';
+        setStageRevealed(true);
+        return;
+      }
+
+      if (curTime >= SETTLE_THRESHOLD_S) {
+        if (!plaqueSettled) {
+          plaqueSettled = true;
+          setStageRevealed(true);
+        }
+        stateBadge.innerHTML = '<span class="badge-dot" style="background:#B87333;"></span> STATE: CARD SETTLED • COPY REVEALED (8.8s+)';
+      } else {
+        if (plaqueSettled) {
+          plaqueSettled = false;
+          setStageRevealed(false);
+        }
+        if (curTime < 0.25) {
+          stateBadge.innerHTML = '<span class="badge-dot" style="background:#6A737E;"></span> STATE: INITIAL POSTER (0.0s)';
+        } else {
+          stateBadge.innerHTML = '<span class="badge-dot" style="background:#D3A78F;"></span> STATE: ACTIVE REVEAL PLAYBACK';
+        }
+      }
+    }
+
+    function syncVideos(curTime) {
+      if (Math.abs(vidDark.currentTime - curTime) > 0.08) {
+        vidDark.currentTime = curTime;
+      }
+      if (Math.abs(vidLight.currentTime - curTime) > 0.08) {
+        vidLight.currentTime = curTime;
+      }
+    }
+
+    function scrubVideo(val) {
+      const time = parseFloat(val);
+      syncVideos(time);
+      updateSequenceState(time);
+    }
+
+    function startPlayback() {
+      isPlaying = true;
+      playPauseBtn.innerHTML = '<span>⏸</span> Pause';
+      vidDark.play().catch(() => {});
+      vidLight.play().catch(() => {});
+
+      // Clear any prior safety timeout
+      clearTimeout(safetyTimeoutTimer);
+      safetyTimeoutTimer = setTimeout(() => {
+        if (!plaqueSettled && !isReducedMotion) {
+          console.log('Safety net timeout (12.5s) triggered.');
+          plaqueSettled = true;
+          setStageRevealed(true);
+          stateBadge.innerHTML = '<span class="badge-dot" style="background:#FFB4AB;"></span> STATE: 12.5s SAFETY NET TRIGGERED';
+        }
+      }, SAFETY_TIMEOUT_MS);
+    }
+
+    function pausePlayback() {
+      isPlaying = false;
+      playPauseBtn.innerHTML = '<span>▶</span> Play';
+      vidDark.pause();
+      vidLight.pause();
+      clearTimeout(safetyTimeoutTimer);
+    }
+
+    function togglePlayPause() {
+      if (isPlaying) {
+        pausePlayback();
+      } else {
+        startPlayback();
+      }
+    }
+
+    function resetToPoster() {
+      pausePlayback();
+      clearTimeout(loopHoldTimer);
+      vidDark.currentTime = 0;
+      vidLight.currentTime = 0;
+      updateSequenceState(0);
+    }
+
+    function jumpToSettled() {
+      syncVideos(SETTLE_THRESHOLD_S);
+      updateSequenceState(SETTLE_THRESHOLD_S);
+    }
+
+    function toggleReducedMotion() {
+      isReducedMotion = !isReducedMotion;
+      reducedMotionBtn.classList.toggle('active', isReducedMotion);
+      document.querySelectorAll('.fallback-static-view').forEach(el => {
+        el.style.display = isReducedMotion ? 'flex' : 'none';
+      });
+      document.querySelectorAll('.reveal-video-el').forEach(el => {
+        el.style.display = isReducedMotion ? 'none' : 'block';
+      });
+
+      if (isReducedMotion) {
+        pausePlayback();
+        updateSequenceState(11.29);
+      } else {
+        resetToPoster();
+        startPlayback();
+      }
+    }
+
+    function triggerSafetyTimeout() {
+      // Simulate stalled video at 2.0s
+      syncVideos(2.0);
+      vidDark.pause();
+      vidLight.pause();
+      isPlaying = false;
+      playPauseBtn.innerHTML = '<span>▶</span> Play';
+      plaqueSettled = true;
+      setStageRevealed(true);
+      stateBadge.innerHTML = '<span class="badge-dot" style="background:#FFB4AB;"></span> STATE: 12.5s SAFETY NET TRIGGERED (STALL SIMULATION)';
+    }
+
+    function toggleLoop() {
+      isLooping = !isLooping;
+      loopBtn.classList.toggle('active', isLooping);
+      loopBtn.innerHTML = isLooping ? '<span>🔁</span> Auto-Loop: ON' : '<span>⏹</span> Auto-Loop: OFF';
+    }
+
+    // Video event listeners
+    vidDark.addEventListener('timeupdate', () => {
+      if (!isReducedMotion) {
+        updateSequenceState(vidDark.currentTime);
+        // Soft sync light video
+        if (Math.abs(vidLight.currentTime - vidDark.currentTime) > 0.12) {
+          vidLight.currentTime = vidDark.currentTime;
+        }
+      }
+    });
+
+    vidDark.addEventListener('ended', () => {
+      if (isLooping && !isReducedMotion) {
+        // Hold final rest position for 2.8 seconds before smoothly looping
+        loopHoldTimer = setTimeout(() => {
+          if (isLooping && !isReducedMotion) {
+            resetToPoster();
+            startPlayback();
+          }
+        }, 2800);
+      } else {
+        pausePlayback();
+      }
+    });
+
+    // Handle background tab / screen switching
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        vidDark.pause();
+        vidLight.pause();
+      } else {
+        const onboardView = document.getElementById('view-onboard');
+        if (onboardView && onboardView.style.display === 'flex' && isPlaying && !isReducedMotion) {
+          vidDark.play().catch(() => {});
+          vidLight.play().catch(() => {});
+        }
+      }
+    });
+
+    // Check system prefers-reduced-motion on launch
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      toggleReducedMotion();
+    } else {
+      // Initialize sequence in poster state
+      updateSequenceState(0);
+    }
+
+    // Hash routing for direct linking
+    function handleHash() {
+      const hash = window.location.hash.toLowerCase();
+      if (hash === '#onboard' || hash === '#onboarding') {
+        switchSection('side-by-side');
+        showScreenType('onboard');
+      } else if (hash === '#settled' || hash === '#onboard-settled') {
+        switchSection('side-by-side');
+        showScreenType('onboard');
+        jumpToSettled();
+      } else if (hash === '#reduced-motion' || hash === '#fallback' || hash === '#onboard-fallback') {
+        switchSection('side-by-side');
+        showScreenType('onboard');
+        if (!isReducedMotion) toggleReducedMotion();
+      } else if (hash === '#list' || hash === '#chats') {
+        switchSection('side-by-side');
+        showScreenType('list');
+      } else if (hash === '#conv' || hash === '#conversation') {
+        switchSection('side-by-side');
+        showScreenType('conv');
+      } else if (hash === '#closeups' || hash === '#details') {
+        switchSection('closeups');
+      }
+    }
+    window.addEventListener('hashchange', handleHash);
+    handleHash();
+  </script>
+</body>
+</html>
