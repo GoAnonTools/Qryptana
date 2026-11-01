@@ -1051,40 +1051,12 @@ private fun InvitationPreviewCard(floating: Boolean = true) {
 
 @Composable
 fun QryptanaWordmark(modifier: Modifier = Modifier, lightOnDark: Boolean = false) {
-  if (appPlatform.isAndroid && lightOnDark) {
-    Box(
-      modifier = modifier,
-      contentAlignment = Alignment.Center
-    ) {
-      Box(
-        modifier = Modifier
-          .shadow(elevation = 6.dp, shape = RoundedCornerShape(18.dp), clip = false)
-          .background(
-            brush = Brush.verticalGradient(
-              listOf(Color(0xFFE2E6EB), Color(0xFFCCD3DB))
-            ),
-            shape = RoundedCornerShape(18.dp)
-          )
-          .border(1.dp, Color(0xFFBAC2CA), RoundedCornerShape(18.dp))
-          .padding(horizontal = 18.dp, vertical = 6.dp),
-        contentAlignment = Alignment.Center
-      ) {
-        Image(
-          painter = painterResource(MR.images.qryptana_wordmark),
-          contentDescription = stringResource(MR.strings.qryptana_logo_description),
-          contentScale = ContentScale.Fit,
-          modifier = Modifier.padding(bottom = DEFAULT_PADDING_HALF)
-        )
-      }
-    }
-  } else {
-    Image(
-      painter = painterResource(MR.images.qryptana_wordmark),
-      contentDescription = stringResource(MR.strings.qryptana_logo_description),
-      contentScale = ContentScale.Fit,
-      modifier = modifier.padding(bottom = DEFAULT_PADDING_HALF)
-    )
-  }
+  Image(
+    painter = painterResource(MR.images.qryptana_wordmark),
+    contentDescription = stringResource(MR.strings.qryptana_logo_description),
+    contentScale = ContentScale.Fit,
+    modifier = modifier.padding(bottom = DEFAULT_PADDING_HALF)
+  )
 }
 
 @Composable

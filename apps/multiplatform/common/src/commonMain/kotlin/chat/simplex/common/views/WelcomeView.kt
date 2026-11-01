@@ -247,9 +247,9 @@ private fun CreateFirstProfileMobile(chatModel: ChatModel, close: () -> Unit) {
     ModalView(
       close = { onboardingBackAction(chatModel, close) },
               endButtons = { MigrateButton(refocusTrigger) },
-              background = if (appPlatform.isAndroid) QryptanaAndroidOnboardingPalette.Background else Color.Unspecified,
-              appBarBackground = if (appPlatform.isAndroid) QryptanaAndroidOnboardingPalette.Background else Color.Unspecified,
-              appBarContentColor = if (appPlatform.isAndroid) QryptanaAndroidOnboardingPalette.TitaniumLight else Color.Unspecified,
+              background = if (appPlatform.isAndroid) (if (isInDarkTheme()) QryptanaAndroidOnboardingPalette.Background else QryptanaAndroidOnboardingPalette.LightBackground) else Color.Unspecified,
+              appBarBackground = if (appPlatform.isAndroid) (if (isInDarkTheme()) QryptanaAndroidOnboardingPalette.Background else QryptanaAndroidOnboardingPalette.LightBackground) else Color.Unspecified,
+              appBarContentColor = if (appPlatform.isAndroid) (if (isInDarkTheme()) QryptanaAndroidOnboardingPalette.TitaniumLight else QryptanaAndroidOnboardingPalette.LightTextPrimary) else Color.Unspecified,
               appBarNavigationTint = if (appPlatform.isAndroid) QryptanaAndroidOnboardingPalette.Copper else Color.Unspecified
     ) {
       val profileContent: @Composable () -> Unit = {

@@ -28,6 +28,9 @@ if (simplexAssetsDir != null) {
   tasks.register<Sync>("copySimplexAssets") {
     dependsOn(verifySimplexAssets)
     from(srcImagesDir)
+    // The canonical wordmark is provided by common resources as
+    // qryptana_wordmark; this upstream duplicate is not a valid MR name.
+    exclude("qryptana-wordmark.png")
     into(simplexAssetsLocal.resolve("MR/images"))
   }
 } else {

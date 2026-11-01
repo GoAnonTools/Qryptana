@@ -2,6 +2,7 @@ package chat.simplex.common.views.onboarding
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Divider
@@ -116,14 +117,15 @@ internal fun QryptanaOnboardingIllustrationFallback(
 ) {
   val isDark = isInDarkTheme()
   if (androidTreatment) {
-    // The packaged default SVGs are intentionally empty when upstream
-    // illustrations are absent. Leave the art slot unillustrated rather than
-    // substituting a generic icon for the missing authored artwork.
+    // When upstream illustration assets are absent (SIMPLEX_ASSETS=false),
+    // provide a clean themed surface matching the onboarding finish
+    // instead of an unstyled black box or generic replacement icon.
     Box(
       modifier
       .aspectRatio(aspectRatio)
       .clip(RoundedCornerShape(24.dp))
-      .background(QryptanaAndroidOnboardingPalette.Surface)
+      .background(if (isDark) QryptanaAndroidOnboardingPalette.Surface else QryptanaAndroidOnboardingPalette.LightSurface)
+      .border(1.dp, if (isDark) QryptanaAndroidOnboardingPalette.TitaniumDark.copy(alpha = 0.3f) else QryptanaAndroidOnboardingPalette.LightBorder, RoundedCornerShape(24.dp))
     )
   } else {
     val scale = if (isDark) 1.5f else 1.2f
