@@ -3,12 +3,27 @@ package chat.simplex.app
 import androidx.compose.material.Colors
 import androidx.compose.ui.graphics.Color
 import chat.simplex.common.ui.theme.*
+import chat.simplex.common.views.onboarding.QryptanaAndroidOnboardingPalette
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
 // use this command for testing:
 // ./gradlew desktopTest
 class ThemesTest {
+  @Test
+  fun androidOnboardingMaterialTokensMatchApprovedDarkFinish() {
+    val p = QryptanaAndroidOnboardingPalette
+    assertEquals(Color(0xFF0E1013), p.Background)
+    assertEquals(Color(0xFF161A1F), p.Surface)
+    assertEquals(Color(0xFF1E232A), p.SurfaceRaised)
+    assertEquals(Color(0xFFDDE2E8), p.TitaniumLight)
+    assertEquals(Color(0xFF9BA4AF), p.TitaniumMedium)
+    assertEquals(Color(0xFF6A737E), p.TitaniumDark)
+    assertEquals(Color(0xFFB87333), p.Copper)
+    assertContrastAtLeast(p.TitaniumLight, p.Background, 4.5, "onboarding heading/background")
+    assertContrastAtLeast(p.TitaniumMedium, p.Surface, 4.5, "onboarding secondary/surface")
+  }
+
   @Test
   fun desktopAlwaysSelectsBlackButMobileHonorsPreferences() {
     for (saved in listOf("LIGHT", "DARK", "SIMPLEX", "BLACK", "SYSTEM")) {

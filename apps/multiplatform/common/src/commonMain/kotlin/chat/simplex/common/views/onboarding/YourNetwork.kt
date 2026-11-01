@@ -62,9 +62,10 @@ fun YourNetworkView(chatModel: ChatModel) {
     YourNetworkDesktop(serverOperators, selectedOperatorIds)
   } else {
     CompositionLocalProvider(LocalAppBarHandler provides rememberAppBarHandler()) {
-      ModalView({}, showClose = false, showAppBar = false) {
+      ModalView({}, showClose = false, showAppBar = false, background = if (appPlatform.isAndroid) QryptanaAndroidOnboardingPalette.Background else Color.Unspecified) {
+        val networkContent: @Composable () -> Unit = {
         OnboardingShrinkingLayout(
-          modifier = Modifier.fillMaxSize().themedBackground(bgLayerSize = LocalAppBarHandler.current?.backgroundGraphicsLayerSize, bgLayer = LocalAppBarHandler.current?.backgroundGraphicsLayer)
+          modifier = Modifier.fillMaxSize().then(if (appPlatform.isAndroid) Modifier.background(QryptanaAndroidOnboardingPalette.Background) else Modifier.themedBackground(bgLayerSize = LocalAppBarHandler.current?.backgroundGraphicsLayerSize, bgLayer = LocalAppBarHandler.current?.backgroundGraphicsLayer))
           .systemBarsPadding()
           .padding(horizontal = DEFAULT_ONBOARDING_HORIZONTAL_PADDING),
                                   topPadding = DEFAULT_PADDING,
@@ -130,6 +131,8 @@ fun YourNetworkView(chatModel: ChatModel) {
                                     }
                                   }
         )
+        }
+        if (appPlatform.isAndroid) QryptanaAndroidOnboardingTheme(networkContent) else networkContent()
       }
     }
   }

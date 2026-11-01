@@ -165,13 +165,56 @@ internal object QryptanaMetal {
   val textQuiet = Color(0xFF746C65)
 }
 
+/** Dark Android onboarding finish, scoped to the onboarding pages only. */
+internal object QryptanaAndroidOnboardingPalette {
+  val Background = Color(0xFF0E1013)
+  val Surface = Color(0xFF161A1F)
+  val SurfaceRaised = Color(0xFF1E232A)
+  val TitaniumLight = Color(0xFFDDE2E8)
+  val TitaniumMedium = Color(0xFF9BA4AF)
+  val TitaniumDark = Color(0xFF6A737E)
+  val Copper = Color(0xFFB87333)
+}
+
+@Composable
+internal fun QryptanaAndroidOnboardingTheme(content: @Composable () -> Unit) {
+  val inherited = MaterialTheme.colors
+  val typography = MaterialTheme.typography
+  val shapes = MaterialTheme.shapes
+  MaterialTheme(
+    colors = darkColors(
+      primary = QryptanaAndroidOnboardingPalette.Copper,
+      primaryVariant = QryptanaAndroidOnboardingPalette.SurfaceRaised,
+      secondary = QryptanaAndroidOnboardingPalette.TitaniumMedium,
+      secondaryVariant = QryptanaAndroidOnboardingPalette.TitaniumDark,
+      background = QryptanaAndroidOnboardingPalette.Background,
+      surface = QryptanaAndroidOnboardingPalette.Surface,
+      error = inherited.error,
+      onPrimary = QryptanaAndroidOnboardingPalette.TitaniumLight,
+      onSecondary = QryptanaAndroidOnboardingPalette.TitaniumLight,
+      onBackground = QryptanaAndroidOnboardingPalette.TitaniumLight,
+      onSurface = QryptanaAndroidOnboardingPalette.TitaniumLight,
+      onError = inherited.onError
+    ),
+    typography = typography,
+    shapes = shapes,
+    content = {
+      CompositionLocalProvider(
+        LocalContentColor provides QryptanaAndroidOnboardingPalette.TitaniumLight,
+        content = content
+      )
+    }
+  )
+}
+
 /**
  * The shared Qryptana stage: layered graphite, a neutral key light, a brushed diagonal sheen,
  * corner falloff and a barely-there grain. Every onboarding page sits on this so the flow
  * reads as one lit surface.
  */
-internal fun Modifier.qryptanaBackdrop(): Modifier = this
-.background(
+internal fun Modifier.qryptanaBackdrop(): Modifier {
+  if (appPlatform.isAndroid) return background(QryptanaAndroidOnboardingPalette.Background)
+  return this.background(
   Brush.verticalGradient(
     colorStops = arrayOf(
       0.0f to QryptanaMetal.void,
@@ -235,13 +278,15 @@ internal fun Modifier.qryptanaBackdrop(): Modifier = this
     i++
   }
 }
+}
 
 @Composable
 private fun QryptanaOnboardingLayout(
   user: User?,
   onboardingStage: SharedPreference<OnboardingStage>
 ) {
-  Box(
+  val onboardingContent: @Composable () -> Unit = {
+    Box(
     Modifier
     .fillMaxSize()
     .qryptanaBackdrop()
@@ -259,6 +304,8 @@ private fun QryptanaOnboardingLayout(
       QryptanaWelcomeContent(user, onboardingStage, Modifier.widthIn(max = 620.dp).fillMaxWidth())
     }
   }
+  }
+  if (appPlatform.isAndroid) QryptanaAndroidOnboardingTheme(onboardingContent) else onboardingContent()
 }
 
 @Composable
@@ -330,7 +377,8 @@ private fun QryptanaSignatureWord(text: String, delayMs: Int, start: Boolean = t
       val pos = if (n > 1) i.toFloat() / (n - 1) else 0f
       val start = pos * 0.55f
       val a = FastOutSlowInEasing.transform(((p - start) / 0.45f).coerceIn(0f, 1f))
-      val tone = lerp(QryptanaMetal.copperWord, QryptanaMetal.copperWordHi, pos * 0.5f)
+      val tone = if (appPlatform.isAndroid) QryptanaAndroidOnboardingPalette.TitaniumLight
+      else lerp(QryptanaMetal.copperWord, QryptanaMetal.copperWordHi, pos * 0.5f)
       withStyle(SpanStyle(color = tone.copy(alpha = a))) { append(ch) }
     }
   }
@@ -392,7 +440,7 @@ private fun QryptanaHeroTitle(text: String, start: Boolean = true) {
          letterSpacing = 0.4.sp,
          lineHeight = 42.sp,
          textAlign = TextAlign.Center,
-         color = QryptanaMetal.textHero
+         color = if (appPlatform.isAndroid) QryptanaAndroidOnboardingPalette.TitaniumLight else QryptanaMetal.textHero
     )
     if (lines.size > 1) {
       Spacer(Modifier.height(8.dp))
@@ -442,10 +490,9 @@ private fun QryptanaWelcomeContent(
   onboardingStage: SharedPreference<OnboardingStage>?,
   modifier: Modifier = Modifier
 ) {
-  // Android's old welcome sweep/glow used an icy blue cast. Keep the desktop
-  // lighting untouched while Android uses its neutral and copper theme roles.
-  val welcomeTitaniumGlow = if (appPlatform.isAndroid) MaterialTheme.colors.onSurface else QryptanaMetal.titaniumGlow
-  val welcomeWordmarkSheen = if (appPlatform.isAndroid) MaterialTheme.colors.primary else Color(0xFFE6EDF7)
+  // Desktop keeps its one-shot specular sweep. Android displays the original
+  // wordmark directly, without a tint or overlay.
+  val welcomeWordmarkSheen = Color(0xFFE6EDF7)
   // Choreography: wordmark first, then the identity plaque assembles and settles,
   // and only then does the copy introduce itself. If the platform cannot load or
   // play the clip, QryptanaIdentityReveal releases the copy on its timeout.
@@ -458,23 +505,21 @@ private fun QryptanaWelcomeContent(
   // the "activation" moment. Runs once, then the mark is static.
   val wordmarkSweep = remember { Animatable(0f) }
   LaunchedEffect(plaqueSettled) {
-    if (plaqueSettled && revealMotionEnabled) {
+    if (plaqueSettled && revealMotionEnabled && !appPlatform.isAndroid) {
       delay(500)
       wordmarkSweep.animateTo(1f, tween(2000, easing = FastOutSlowInEasing))
     }
   }
   Column(modifier, horizontalAlignment = Alignment.CenterHorizontally) {
-    // 1. Wordmark: a floating metal object in darkness. No divider lines —
-    // just a cool titanium pool of light behind the letters (an elliptical
-    // wash plus a tighter core) so the dark metallic letterforms separate
-    // from the background. The asset is untouched and untinted, so the
-    // copper reflection on the Q is exactly as authored.
+    // Desktop keeps its authored light pool. Android shows the original logo
+    // without adding a logo tint or lighting effect.
     Box(
       Modifier
       .widthIn(max = 400.dp)
       .fillMaxWidth(0.9f)
       .graphicsLayer { alpha = logoReveal.value * 0.9f }
       .drawBehind {
+        if (!appPlatform.isAndroid) {
         // A flat, wide pool of cool light — a reflection on a surface, not a round
         // halo — with its source a little up and to the left, the same direction
         // as the light on the plaque and the buttons.
@@ -485,8 +530,8 @@ private fun QryptanaWelcomeContent(
           drawCircle(
             brush = Brush.radialGradient(
               colors = listOf(
-                welcomeTitaniumGlow.copy(alpha = 0.10f),
-                              welcomeTitaniumGlow.copy(alpha = 0.035f),
+                QryptanaMetal.titaniumGlow.copy(alpha = 0.10f),
+                              QryptanaMetal.titaniumGlow.copy(alpha = 0.035f),
                               Color.Transparent
               ),
               center = c,
@@ -499,13 +544,14 @@ private fun QryptanaWelcomeContent(
         // Tight core directly behind the letterforms.
         drawCircle(
           brush = Brush.radialGradient(
-            colors = listOf(welcomeTitaniumGlow.copy(alpha = 0.04f), Color.Transparent),
+            colors = listOf(QryptanaMetal.titaniumGlow.copy(alpha = 0.04f), Color.Transparent),
                                        center = c,
                                        radius = size.width * 0.26f
           ),
           radius = size.width * 0.26f,
           center = c
         )
+        }
       }
       .padding(vertical = 20.dp)
       // The asset carries ~28% / ~30% transparent margin above / below the letters.
@@ -524,30 +570,31 @@ private fun QryptanaWelcomeContent(
       },
       contentAlignment = Alignment.Center
     ) {
-      // The specular pass is drawn only where the wordmark's own pixels are
-      // (SrcAtop inside an offscreen layer), so the asset itself is never tinted
-      // or altered — it is simply lit as it passes.
-      Box(
-        Modifier
-        .graphicsLayer { compositingStrategy = CompositingStrategy.Offscreen }
-        .drawWithContent {
-          drawContent()
-          val t = wordmarkSweep.value
-          if (t > 0f && t < 1f) {
-            val bw = size.width * 0.22f
-            val cx = -bw + (size.width + 2f * bw) * t
-            drawRect(
-              brush = Brush.linearGradient(
-                colors = listOf(Color.Transparent, welcomeWordmarkSheen.copy(alpha = 0.22f), Color.Transparent),
-                                           start = Offset(cx - bw, 0f),
-                                           end = Offset(cx + bw, size.height * 0.4f)
-              ),
-              blendMode = BlendMode.SrcAtop
-            )
-          }
-        }
-      ) {
+      if (appPlatform.isAndroid) {
         QryptanaWordmark(Modifier.fillMaxWidth(), lightOnDark = true)
+      } else {
+        Box(
+          Modifier
+            .graphicsLayer { compositingStrategy = CompositingStrategy.Offscreen }
+            .drawWithContent {
+              drawContent()
+              val t = wordmarkSweep.value
+              if (t > 0f && t < 1f) {
+                val bw = size.width * 0.22f
+                val cx = -bw + (size.width + 2f * bw) * t
+                drawRect(
+                  brush = Brush.linearGradient(
+                    colors = listOf(Color.Transparent, welcomeWordmarkSheen.copy(alpha = 0.22f), Color.Transparent),
+                    start = Offset(cx - bw, 0f),
+                    end = Offset(cx + bw, size.height * 0.4f)
+                  ),
+                  blendMode = BlendMode.SrcAtop
+                )
+              }
+            }
+        ) {
+          QryptanaWordmark(Modifier.fillMaxWidth(), lightOnDark = true)
+        }
       }
     }
     // On desktop the plaque clip already carries generous empty margin inside its
@@ -595,18 +642,18 @@ private fun QryptanaWelcomeContent(
         Modifier
         .width(36.dp)
         .height(1.dp)
-        .background(
+        .then(if (appPlatform.isAndroid) Modifier.background(QryptanaAndroidOnboardingPalette.Copper) else Modifier.background(
           Brush.horizontalGradient(
             listOf(Color.Transparent, QryptanaMetal.copperMid.copy(alpha = 0.7f), Color.Transparent)
           )
-        )
+        ))
       )
       Spacer(Modifier.height(24.dp))
       QryptanaBalancedText(
         stringResource(MR.strings.onboarding_private_and_secure),
                            style = MaterialTheme.typography.h3.merge(
                              TextStyle(
-                               color = QryptanaMetal.textBright.copy(alpha = 0.86f),
+                               color = if (appPlatform.isAndroid) QryptanaAndroidOnboardingPalette.TitaniumLight else QryptanaMetal.textBright.copy(alpha = 0.86f),
                                        fontWeight = FontWeight.Normal,
                                        fontSize = 18.sp,
                                        letterSpacing = 0.1.sp,
@@ -624,7 +671,7 @@ private fun QryptanaWelcomeContent(
                            modifier = Modifier.padding(top = 14.dp),
                            style = MaterialTheme.typography.body2.merge(
                              TextStyle(
-                               color = Color(0xFFCAC2BA),
+                               color = if (appPlatform.isAndroid) QryptanaAndroidOnboardingPalette.TitaniumMedium else Color(0xFFCAC2BA),
                                        fontWeight = FontWeight.Normal,
                                        fontSize = 16.sp,
                                        letterSpacing = 0.1.sp,
@@ -647,7 +694,7 @@ private fun QryptanaWelcomeContent(
         TextButtonBelowOnboardingButton(
           stringResource(MR.strings.how_it_works),
                                         onClick = { ModalManager.fullscreen.showModal { HowItWorks(user, onboardingStage) } },
-                                        color = QryptanaMetal.textTertiary
+                                        color = if (appPlatform.isAndroid) QryptanaAndroidOnboardingPalette.TitaniumMedium else QryptanaMetal.textTertiary
         )
       }
     }
@@ -847,6 +894,7 @@ private fun InvitationPreviewCard(floating: Boolean = true) {
     modifier = Modifier
     .padding(horizontal = 24.dp)
     .drawBehind {
+      if (!appPlatform.isAndroid) {
       // Halo behind the card: reduced to a trace so it never reads as an
       // orange glow.
       drawCircle(
@@ -858,6 +906,7 @@ private fun InvitationPreviewCard(floating: Boolean = true) {
         radius = size.maxDimension * 0.76f,
         center = Offset(size.width / 2f, size.height / 2f)
       )
+      }
     }
   ) {
     Box(
@@ -866,9 +915,15 @@ private fun InvitationPreviewCard(floating: Boolean = true) {
       .fillMaxWidth(0.96f)
       .height(268.dp)
       .offset(y = floatOffset.dp)
-      .shadow(34.dp, cardShape, clip = false)
+      .then(if (appPlatform.isAndroid) Modifier.shadow(
+        6.dp,
+        cardShape,
+        clip = false,
+        ambientColor = Color.Black.copy(alpha = 0.16f),
+        spotColor = Color.Black.copy(alpha = 0.16f)
+      ) else Modifier.shadow(34.dp, cardShape, clip = false))
       .clip(cardShape)
-      .background(
+      .then(if (appPlatform.isAndroid) Modifier.background(QryptanaAndroidOnboardingPalette.SurfaceRaised) else Modifier.background(
         // A three-stop diagonal gradient, not a flat fill: this is what
         // reads as a real graphite surface catching light from one corner
         // rather than a flat-colored card.
@@ -877,9 +932,9 @@ private fun InvitationPreviewCard(floating: Boolean = true) {
                              start = Offset.Zero,
                              end = Offset(420f, 240f)
         )
-      )
-      .border(
-        1.dp,
+      ))
+      .then(if (appPlatform.isAndroid) Modifier.border(1.dp, QryptanaAndroidOnboardingPalette.TitaniumDark, cardShape) else Modifier.border(
+        BorderStroke(1.dp,
         // The edge catches light like real metal: brightest where the
         // light source is, fading to nothing — not a uniform stroke.
         Brush.linearGradient(
@@ -890,13 +945,13 @@ private fun InvitationPreviewCard(floating: Boolean = true) {
           ),
           start = Offset.Zero,
           end = Offset(420f, 300f)
-        ),
+        )),
         cardShape
-      )
+      ))
       .padding(horizontal = 38.dp, vertical = 34.dp)
     ) {
       Box(Modifier.fillMaxSize()) {
-        Box(
+        if (!appPlatform.isAndroid) Box(
           Modifier
           .align(Alignment.TopEnd)
           .size(78.dp)
@@ -907,24 +962,19 @@ private fun InvitationPreviewCard(floating: Boolean = true) {
         )
         Column(Modifier.fillMaxSize(), verticalArrangement = Arrangement.SpaceBetween) {
           Row(verticalAlignment = Alignment.CenterVertically) {
-            Image(
-              painter = painterResource(MR.images.qryptana_symbol),
-                  contentDescription = stringResource(MR.strings.qryptana_logo_description),
-                  contentScale = ContentScale.Fit,
-                  modifier = Modifier.size(74.dp)
-            )
+            QryptanaSymbol(size = 74.dp)
             Spacer(Modifier.width(20.dp))
             Column {
               Text(
                 stringResource(MR.strings.onboarding_invitation_card_title),
-                   color = QryptanaMetal.textBright,
+                   color = if (appPlatform.isAndroid) QryptanaAndroidOnboardingPalette.TitaniumLight else QryptanaMetal.textBright,
                    style = MaterialTheme.typography.h3,
                    fontSize = 21.sp,
                    fontWeight = FontWeight.Medium
               )
               Text(
                 stringResource(MR.strings.onboarding_invitation_card_subtitle),
-                   color = QryptanaMetal.textSoft,
+                   color = if (appPlatform.isAndroid) QryptanaAndroidOnboardingPalette.TitaniumMedium else QryptanaMetal.textSoft,
                    style = MaterialTheme.typography.body2,
                    modifier = Modifier.padding(top = 3.dp)
               )
@@ -932,7 +982,7 @@ private fun InvitationPreviewCard(floating: Boolean = true) {
           }
           Text(
             "A private way to connect",
-            color = QryptanaMetal.copperLight.copy(alpha = 0.9f),
+            color = if (appPlatform.isAndroid) QryptanaAndroidOnboardingPalette.Copper else QryptanaMetal.copperLight.copy(alpha = 0.9f),
                style = MaterialTheme.typography.body2,
                fontWeight = FontWeight.Medium
           )
@@ -944,12 +994,7 @@ private fun InvitationPreviewCard(floating: Boolean = true) {
 
 @Composable
 fun QryptanaWordmark(modifier: Modifier = Modifier, lightOnDark: Boolean = false) {
-  // Single asset, no runtime recolor: qryptana_wordmark.png carries its own
-  // metallic bevel/sheen shading on the dark letterforms and reads correctly
-  // against the charcoal background as-is. A BlendMode.SrcIn tint here would
-  // flatten that shading (and the copper Q) to one flat color, which is the
-  // bug this used to have. `lightOnDark` is kept in the signature for API
-  // compatibility with existing call sites but no longer changes rendering.
+  // Use the original artwork directly. `lightOnDark` remains for API compatibility.
   Image(
     painter = painterResource(MR.images.qryptana_wordmark),
         contentDescription = stringResource(MR.strings.qryptana_logo_description),
@@ -974,7 +1019,7 @@ internal fun QryptanaSerifTitle(text: String, modifier: Modifier = Modifier, siz
   Text(
     text,
     modifier,
-    color = QryptanaMetal.textHero,
+    color = if (appPlatform.isAndroid) QryptanaAndroidOnboardingPalette.TitaniumLight else QryptanaMetal.textHero,
     fontFamily = rememberQryptanaSerif(),
        fontWeight = FontWeight.Light,
        fontSize = sizeSp.sp,
@@ -1023,7 +1068,19 @@ fun OnboardingActionButton(
     .height(56.dp)
     .graphicsLayer { scaleX = pressScale; scaleY = pressScale; alpha = if (enabled) 1f else 0.42f }
     .then(
-      if (secondary) {
+      if (appPlatform.isAndroid) {
+        Modifier
+        .then(if (secondary) Modifier else Modifier.shadow(
+          6.dp,
+          shape,
+          clip = false,
+          ambientColor = Color.Black.copy(alpha = 0.16f),
+          spotColor = Color.Black.copy(alpha = 0.16f)
+        ))
+        .clip(shape)
+        .background(if (secondary) QryptanaAndroidOnboardingPalette.Surface else QryptanaAndroidOnboardingPalette.SurfaceRaised)
+        .border(1.dp, if (secondary) QryptanaAndroidOnboardingPalette.TitaniumDark else QryptanaAndroidOnboardingPalette.Copper, shape)
+      } else if (secondary) {
         // Deliberately quiet: no drop shadow, no copper, a faint translucent
         // titanium body and a low-contrast neutral hairline. It reads as
         // available, never as competing with the primary action.
@@ -1112,14 +1169,14 @@ fun OnboardingActionButton(
              Modifier.padding(end = DEFAULT_PADDING_HALF),
              // Copper reserved for this one small detail — an engraved accent,
              // not a filled surface — on both button variants.
-             tint = QryptanaMetal.copperLight
+             tint = if (appPlatform.isAndroid) QryptanaAndroidOnboardingPalette.Copper else QryptanaMetal.copperLight
         )
       }
       Text(
         stringResource(labelId),
            style = MaterialTheme.typography.h2,
            // Primary: full-bright titanium text. Secondary: noticeably dimmer.
-           color = if (secondary) QryptanaMetal.textBright.copy(alpha = 0.82f) else QryptanaMetal.textHero,
+           color = if (appPlatform.isAndroid) QryptanaAndroidOnboardingPalette.TitaniumLight else if (secondary) QryptanaMetal.textBright.copy(alpha = 0.82f) else QryptanaMetal.textHero,
            fontSize = 15.sp,
            letterSpacing = 0.9.sp,
            fontWeight = if (secondary) FontWeight.Normal else FontWeight.Medium
