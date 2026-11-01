@@ -55,8 +55,9 @@ fun ContactPreviewView(
                     if (cInfo.contact.verified) {
                         VerifiedIcon()
                     }
-                    Text(
+                    NameWithBadge(
                         cInfo.chatViewName,
+                        cInfo.nameBadge,
                         maxLines = 1,
                         overflow = TextOverflow.Ellipsis,
                         color = textColor
@@ -64,8 +65,9 @@ fun ContactPreviewView(
                 }
             is ChatInfo.ContactRequest ->
                 Row(verticalAlignment = Alignment.CenterVertically) {
-                    Text(
+                    NameWithBadge(
                         cInfo.chatViewName,
+                        cInfo.nameBadge,
                         maxLines = 1,
                         overflow = TextOverflow.Ellipsis,
                         color = textColor

@@ -2,21 +2,21 @@ plugins {
   `java-library`
 }
 
-// Built from NanoHTTPD commit efb2ebf85a2b06f7c508aba9eaad5377e3a01e81.
-// Only the core and websocket modules are included; samples are excluded.
+// Built from the upstream submodule pinned at efb2ebf85a2b06f7c508aba9eaad5377e3a01e81, because
+// upstream never released the org.nanohttpd packages and JitPack no longer serves or builds that
+// commit. Only the core and websocket modules are used, the samples are not.
 group = "org.nanohttpd"
 version = "efb2ebf"
 
-val core = layout.projectDirectory.dir("core")
-val websocket = layout.projectDirectory.dir("websocket")
+val upstream = layout.projectDirectory.dir("upstream")
 
 sourceSets {
   main {
     java {
-      setSrcDirs(listOf(core.dir("src/main/java"), websocket.dir("src/main/java")))
+      setSrcDirs(listOf(upstream.dir("core/src/main/java"), upstream.dir("websocket/src/main/java")))
       exclude("org/nanohttpd/samples/**")
     }
-    resources.setSrcDirs(listOf(core.dir("src/main/resources")))
+    resources.setSrcDirs(listOf(upstream.dir("core/src/main/resources")))
   }
 }
 
@@ -26,20 +26,24 @@ java {
   targetCompatibility = jvmVersion
 }
 
-val nanohttpdSources = sourceSets.main.get().java.matching { include("org/nanohttpd/**") }
+val upstreamSources = sourceSets.main.get().java.matching { include("org/nanohttpd/**") }
 
-val checkNanohttpdSources by tasks.registering {
+// compileJava and jar silently succeed without the sources, so the check needs its own task.
+// It cannot run during configuration, Android builds must work without the submodule.
+val checkUpstreamSources by tasks.registering {
   doFirst {
-    if (nanohttpdSources.isEmpty) {
-      throw GradleException("NanoHTTPD sources are missing")
+    if (upstreamSources.isEmpty) {
+      throw GradleException("nanohttpd sources are missing, run: git submodule update --init --recursive")
     }
   }
 }
 
 tasks.compileJava {
-  dependsOn(checkNanohttpdSources)
+  dependsOn(checkUpstreamSources)
 }
 
+// Without this the jar records the build machine's timestamps, file order and file modes,
+// which makes the desktop packages unreproducible
 tasks.jar {
   isPreserveFileTimestamps = false
   isReproducibleFileOrder = true

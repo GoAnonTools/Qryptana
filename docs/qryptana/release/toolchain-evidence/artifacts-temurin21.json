@@ -1,0 +1,25 @@
+{
+  "artifact": "/home/theanarchitect/code/Qryptana-release-artifacts/qryptana-7.0.3-linux-x86_64-temurin21-local.tar.gz",
+  "bytes": 388974500,
+  "sha256": "c148a7d683de018126e362a83aebbce2b930739545d89b7e4f7ff0ea9665bac4",
+  "archive_files_verified": 1017,
+  "jdk_version": "Temurin 21.0.13+9",
+  "jdk_archive_sha256": "d7f5d5cf865a2902b70ff549b97586a7d3f234e016f041ab447ea740c7d66d1c",
+  "source_checkpoint": "2be173fd9e7a007d078be8fd03742fb0f8ddb349",
+  "launcher_sha256": "b6c11c88fd797451e6c81f075fef8d4d044a1187eb91698ecf932914f57e4654",
+  "libapplauncher_sha256": "336fe5e8ce1e8b36e0f8287f265f9456f52e776d48041f427e275c45c350e494",
+  "tests": {
+    "tests": 35,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "native_provenance": "unchanged verified SimpleX v7.0.3 inputs; package-comparison.json",
+  "ui_exits": {
+    "accepted-ui": 0,
+    "restart-ui": 0,
+    "traced": 0
+  },
+  "full_ui_acceptance": false,
+  "operator_conditions_accepted": false
+}

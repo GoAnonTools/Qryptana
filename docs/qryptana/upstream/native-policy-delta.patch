@@ -1,0 +1,26 @@
+diff --git a/simplex-chat.cabal b/simplex-chat.cabal
+index 511b252cf..bc41cd99e 100644
+--- a/simplex-chat.cabal
++++ b/simplex-chat.cabal
+@@ -16,7 +16,7 @@ license-file:   LICENSE
+ build-type:     Simple
+ extra-source-files:
+     README.md
+-    PRIVACY.md
++    docs/upstream/SIMPLEX_PRIVACY.md
+     cabal.project
+ 
+ flag swift
+diff --git a/src/Simplex/Chat/Operators.hs b/src/Simplex/Chat/Operators.hs
+index a216bbb1f..7f07f9438 100644
+--- a/src/Simplex/Chat/Operators.hs
++++ b/src/Simplex/Chat/Operators.hs
+@@ -67,7 +67,7 @@ previousConditionsCommit = "7471fd2af5838dc0467aebc570b5ea75e5df3209"
+ 
+ usageConditionsText :: Text
+ usageConditionsText =
+-  $( let s = $(embedFile "PRIVACY.md")
++  $( let s = $(embedFile "docs/upstream/SIMPLEX_PRIVACY.md")
+       in [|stripFrontMatter $(lift (safeDecodeUtf8 s))|]
+    )
+ 

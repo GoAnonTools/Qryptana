@@ -1,0 +1,17 @@
+[
+  {
+    "path": "/home/theanarchitect/code/Qryptana-release-artifacts/qryptana-7.0.3-linux-x86_64-local.tar.gz",
+    "bytes": 388669580,
+    "sha256": "cf299c5faf220b5039ee84e64d9616f078e717458bd7894be8d02da5785bad9f"
+  },
+  {
+    "path": "/home/theanarchitect/code/Qryptana-release-artifacts/android-foss-arm64-v8a-debug.apk",
+    "bytes": 275322182,
+    "sha256": "40d1927698d460bce7c7395b46bb2701895a17ba6b4fa29f2f9d4f707e56ca5c"
+  },
+  {
+    "path": "/home/theanarchitect/code/Qryptana-release-artifacts/android-foss-armeabi-v7a-debug.apk",
+    "bytes": 261017526,
+    "sha256": "173c97e424ba60b084613158bbb90d28314ab29889b35e06365da933d10e712d"
+  }
+]

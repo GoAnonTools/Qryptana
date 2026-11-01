@@ -1,0 +1,19 @@
+{
+  "source_commit": "a410c3bcc30cd1b1189fc4dfb1d7be321256995a",
+  "build": "Gradle 8.12 offline, one worker, Temurin 21.0.13+9; desktopTest and Android compile/assemble succeeded",
+  "signature_verification": "Android build-tools 36.0.0 apksigner; both APKs verified using APK Signature Scheme v2; Android debug signer",
+  "artifacts": [
+    {
+      "abi": "arm64-v8a",
+      "path": "/home/theanarchitect/code/Qryptana-release-artifacts/android-titanium-copper-20261101/qryptana-7.0.3-android-foss-arm64-v8a-titanium-copper-debug.apk",
+      "bytes": 292155393,
+      "sha256": "88dbd5af99fd03c08d10e73623a00e9ead5541a31dc0c1cae721337ae60a4c7a"
+    },
+    {
+      "abi": "armeabi-v7a",
+      "path": "/home/theanarchitect/code/Qryptana-release-artifacts/android-titanium-copper-20261101/qryptana-7.0.3-android-foss-armeabi-v7a-titanium-copper-debug.apk",
+      "bytes": 277850737,
+      "sha256": "7d11049fd040d525696cbf5a60509118dbe4295b7d6caa0f86ff51db08bf4210"
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "date": "2026-10-31",
+  "branch": "qryptana-runtime-fixes",
+  "implementation_commit": "0240806288c85c1ea5b31a2a700fa0ea509a4025",
+  "toolchain": {
+    "java_home": "/home/theanarchitect/.local/share/qryptana-toolchains/jdk-21.0.13+9",
+    "android_sdk": "/home/theanarchitect/Android/Sdk",
+    "build_tools": "36.0.0"
+  },
+  "build": {
+    "tasks": [
+      ":common:desktopTest",
+      ":android:assembleFossDebug"
+    ],
+    "result": "BUILD SUCCESSFUL",
+    "elapsed": "3m23s",
+    "desktop_tests": 35,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "video": {
+    "apk_path": "assets/videos/qryptana_identity_card_reveal.mp4",
+    "desktop_path": "videos/qryptana_identity_card_reveal.mp4",
+    "bytes": 10509268,
+    "sha256": "8e80519593fc43114432646fab8bcaa644cb58eecdf5c4b888579130ae1f1b59",
+    "codec": "h264",
+    "width": 1280,
+    "height": 714,
+    "duration_seconds": 11.291667,
+    "audio_streams": 0
+  },
+  "artifacts": [
+    {
+      "abi": "arm64-v8a",
+      "path": "/home/theanarchitect/code/Qryptana-release-artifacts/android-identity-reveal-20261031/qryptana-7.0.3-android-foss-arm64-v8a-identity-reveal-debug.apk",
+      "bytes": 286741169,
+      "sha256": "b0c8138381ef8793bf027200bec6a209109d1d25e8cfec52c3d6dd5d47fe66e6",
+      "apk_v2_signature_verified": true
+    },
+    {
+      "abi": "armeabi-v7a",
+      "path": "/home/theanarchitect/code/Qryptana-release-artifacts/android-identity-reveal-20261031/qryptana-7.0.3-android-foss-armeabi-v7a-identity-reveal-debug.apk",
+      "bytes": 272436513,
+      "sha256": "cb7f3fda8689233a67f9648caf7d5b4d310901c3ee7083f746105e992663399d",
+      "apk_v2_signature_verified": true
+    }
+  ],
+  "runtime": {
+    "attached_devices": 0,
+    "available_avd_abi": "x86_64",
+    "candidate_abis": ["arm64-v8a", "armeabi-v7a"],
+    "kvm_available": false,
+    "physical_device_confirmation_required": true
+  }
+}

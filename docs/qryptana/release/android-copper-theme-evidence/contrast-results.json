@@ -1,0 +1,31 @@
+{
+  "method": "WCAG relative luminance and contrast on opaque 8-bit sRGB role values",
+  "thresholds": {"enabled_text": 4.5, "essential_indicator": 3.0},
+  "light": {
+    "heading_on_background": 13.74,
+    "body_on_background": 10.71,
+    "secondary_on_background": 5.51,
+    "action_on_background": 5.97,
+    "white_thumb_on_checked_track": 4.81,
+    "neutral_icon_on_card": 4.76,
+    "border_on_card": 3.68
+  },
+  "dark": {
+    "heading_on_background": 16.69,
+    "body_on_background": 16.69,
+    "secondary_on_background": 7.55,
+    "action_on_background": 8.74,
+    "white_thumb_on_checked_track": 4.81,
+    "neutral_icon_on_card": 8.32,
+    "border_on_card": 3.46
+  },
+  "filled_control_adjustment": {
+    "requested_decorative_copper": "#AD7257",
+    "measured_white_foreground": 3.95,
+    "adjusted_solid_control": "#9F634C",
+    "measured_white_foreground_after_adjustment": 4.81,
+    "decorative_gradient": ["#6A3E32", "#AD7257", "#F0D4C4"],
+    "gradient_used_for_text": false
+  },
+  "disabled_controls": "Excluded from enabled contrast targets. Disabled state remains semantically available."
+}

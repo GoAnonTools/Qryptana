@@ -54,7 +54,9 @@ downloads, support channels, or product commitments.
 
 | 30/03/2023 | EN, [FR](/docs/lang/fr/README.md), [CZ](/docs/lang/cs/README.md), [PL](/docs/lang/pl/README.md) |
 
-<img src="images/simplex-chat-logo.svg" alt="SimpleX logo" width="100%">
+<img src="images/github-banner.jpg" alt="SimpleX logo" width="100%">
+
+Invest in SimpleX Chat. [Learn more on Wefunder](https://wefunder.com/simplexchat).
 
 # SimpleX - the first messaging platform that has no user identifiers of any kind - 100% private by design!
 
@@ -266,11 +268,13 @@ You can use SimpleX with your own servers and still communicate with people usin
 
 Recent and important updates:
 
-[Jul 29, 2025 SimpleX Chat v6.4.1: welcome your contacts, review members to protect groups, and more.](./blog/20250729-simplex-chat-v6-4-1-welcome-contacts-protect-groups-app-security.md)
+[Jul 22, 2026. SimpleX Public Names — a Name Nobody Can Take From You](./blog/20260722-simplex-public-names.md)
+
+[Apr 30, 2026. SimpleX Channels, SimpleX Network Consortium and Community Crowdfunding - to Preserve Freedom of Speech](./blog/20260430-simplex-channels-v6-5-consortium-crowdfunding-freedom-of-speech.md)
+
+[Jul 29, 2025. SimpleX Chat v6.4.1: welcome your contacts, review members to protect groups, and more.](./blog/20250729-simplex-chat-v6-4-1-welcome-contacts-protect-groups-app-security.md)
 
 [Jul 3, 2025 SimpleX network: new experience of connecting with people &mdash; available in SimpleX Chat v6.4-beta.4](./blog/20250703-simplex-network-protocol-extension-for-securely-connecting-people.md)
-
-[Mar 8, 2025. SimpleX Chat v6.3: new user experience and safety in public groups](./blog/20250308-simplex-chat-v6-3-new-user-experience-safety-in-public-groups.md)
 
 [Jan 14, 2025. SimpleX network: large groups and privacy-preserving content moderation](./blog/20250114-simplex-network-large-groups-privacy-preserving-content-moderation.md)
 
@@ -287,10 +291,6 @@ Recent and important updates:
 [Nov 25, 2023. SimpleX Chat v5.4 released: link mobile and desktop apps via quantum resistant protocol, and much better groups](./blog/20231125-simplex-chat-v5-4-link-mobile-desktop-quantum-resistant-better-groups.md).
 
 [Apr 22, 2023. SimpleX Chat: vision and funding, v5.0 released with videos and files up to 1gb](./blog/20230422-simplex-chat-vision-funding-v5-videos-files-passcode.md).
-
-[Mar 1, 2023. SimpleX File Transfer Protocol – send large files efficiently, privately and securely, soon to be integrated into SimpleX Chat apps.](./blog/20230301-simplex-file-transfer-protocol.md).
-
-[Nov 8, 2022. Security audit by Trail of Bits, the new website and v4.2 released](./blog/20221108-simplex-chat-v4.2-security-audit-new-website.md).
 
 [All updates](./blog)
 
@@ -457,17 +457,19 @@ The cryptographic review of SimpleX protocols was done in July 2024 by Trail of 
 
 SimpleX Chat is still a relatively early stage platform (the mobile apps were released in March 2022), so you may discover some bugs and missing features. We would really appreciate if you let us know anything that needs to be fixed or improved.
 
+The following server statements are retained upstream SimpleX operator claims, not Qryptana service commitments or independently verified availability measurements:
+
 The default servers configured in the app are provided on the best effort basis. We are currently not guaranteeing any SLAs, although historically our servers had over 99.9% uptime each.
 
 We have never provided or have been requested access to our servers or any information from our servers by any third parties. If we are ever requested to provide such access or information, we will be following due legal process.
 
 We do not log IP addresses of the users and we do not perform any traffic correlation on our servers. If transport level security is critical you must use Tor or some other similar network to access messaging servers. We will be improving the client applications to reduce the opportunities for traffic correlation.
 
-Please read more in [Privacy Policy](./PRIVACY.md).
+Please read more in the retained [upstream operator privacy policy](./docs/upstream/SIMPLEX_PRIVACY.md). Qryptana's separate [privacy draft](./PRIVACY.md) requires legal review.
 
 ## Security contact
 
-Please see our [Security Policy](./docs/SECURITY.md) on how to report security vulnerabilities to us. We will coordinate the fix and disclosure.
+Qryptana has not yet published a verified security contact or disclosure process. See [Qryptana security notes](./SECURITY.md). The retained [upstream security policy](./docs/SECURITY.md) describes SimpleX's contacts, not Qryptana support; do not send Qryptana-specific reports there as if they were the fork's maintainers.
 
 Please do NOT report security vulnerabilities via GitHub issues.
 

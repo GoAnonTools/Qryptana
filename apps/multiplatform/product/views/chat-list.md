@@ -115,6 +115,7 @@ Each chat type provides specific dropdown menu items:
 | One-hand UI card (`ToggleChatListCard`) | `oneHandUICardShown == false` | Dismissible card introducing bottom toolbar mode with toggle switch |
 | Address creation card (`AddressCreationCard`) | `addressCreationCardShown == false` | Prompts user to create a SimpleX address; tappable card opens `UserAddressLearnMore` |
 | FAB (new chat button) | Standard mode, search empty, chat running | `FloatingActionButton` at bottom-right, pencil icon, opens `NewChatSheet` |
+| Investment promotion | Removed in Qryptana | No banner or reserved space. Future Privana placement is documented directly below the desktop sidebar search bar; no entry is rendered. |
 
 ### Empty States
 
@@ -134,3 +135,4 @@ Each chat type provides specific dropdown menu items:
 | `ChatPreviewView.kt` | `views/chatlist/ChatPreviewView.kt` |
 | `UserPicker.kt` | `views/chatlist/UserPicker.kt` |
 | `TagListView.kt` | `views/chatlist/TagListView.kt` |
+| `GetStakeBanner.kt` | `views/chatlist/GetStakeBanner.kt` |

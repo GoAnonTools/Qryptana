@@ -1,9 +1,9 @@
 name: Reproduce latest release
 
+# Reproduces SimpleX releases and uses upstream webhook secrets, not Qryptana
+# artifacts. Retain for reference/manual use; never schedule it for this fork.
 on:
   workflow_dispatch:
-  schedule:
-    - cron: '0 2 * * *' # every day at 02:00 night
 
 jobs:
   reproduce:

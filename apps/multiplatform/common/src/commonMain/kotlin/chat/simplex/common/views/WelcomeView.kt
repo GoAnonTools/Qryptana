@@ -218,7 +218,8 @@ private fun MigrateButton(refocusTrigger: MutableState<Int>, inContent: Boolean 
     modifier = Modifier.padding(if (inContent) PaddingValues(top = 12.dp) else PaddingValues(end = DEFAULT_PADDING_HALF))
   ) {
     // On the Qryptana onboarding page this is a quiet graphite link, not a bright primary-coloured one.
-    val tint = if (inContent) QryptanaMetal.textTertiary else MaterialTheme.colors.primary
+    val tint = if (appPlatform.isAndroid) QryptanaAndroidOnboardingPalette.Copper
+    else if (inContent) QryptanaMetal.textTertiary else MaterialTheme.colors.primary
     Icon(painterResource(MR.images.ic_download), null, Modifier.size(if (inContent) 18.dp else 22.dp), tint = tint)
     Spacer(Modifier.width(if (inContent) 8.dp else 4.dp))
     Text(
@@ -245,8 +246,13 @@ private fun CreateFirstProfileMobile(chatModel: ChatModel, close: () -> Unit) {
     val refocusTrigger = remember { mutableStateOf(0) }
     ModalView(
       close = { onboardingBackAction(chatModel, close) },
-              endButtons = { MigrateButton(refocusTrigger) }
+              endButtons = { MigrateButton(refocusTrigger) },
+              background = if (appPlatform.isAndroid) QryptanaAndroidOnboardingPalette.Background else Color.Unspecified,
+              appBarBackground = if (appPlatform.isAndroid) QryptanaAndroidOnboardingPalette.Background else Color.Unspecified,
+              appBarContentColor = if (appPlatform.isAndroid) QryptanaAndroidOnboardingPalette.TitaniumLight else Color.Unspecified,
+              appBarNavigationTint = if (appPlatform.isAndroid) QryptanaAndroidOnboardingPalette.Copper else Color.Unspecified
     ) {
+      val profileContent: @Composable () -> Unit = {
       val displayName = rememberSaveable { mutableStateOf("") }
       val keyboardState by getKeyboardState()
       val imageHeightModifier = if (keyboardState == KeyboardState.Opened) {
@@ -311,6 +317,8 @@ private fun CreateFirstProfileMobile(chatModel: ChatModel, close: () -> Unit) {
       LaunchedEffect(Unit) {
         setLastVersionDefault(chatModel)
       }
+      }
+      if (appPlatform.isAndroid) QryptanaAndroidOnboardingTheme(profileContent) else profileContent()
     }
   }
 }
@@ -424,7 +432,7 @@ fun createProfileInProfiles(chatModel: ChatModel, displayName: String, shortDesc
   withBGApi {
     val rhId = chatModel.remoteHostId()
     val user = chatModel.controller.apiCreateActiveUser(
-      rhId, Profile(displayName.trim(), "", shortDescr.trim().ifEmpty { null }, image)
+      rhId, Profile(displayName.trim(), "", shortDescr.trim().ifEmpty { null }, image = image)
     ) ?: return@withBGApi
     chatModel.currentUser.value = user
     if (chatModel.users.isEmpty()) {
@@ -446,6 +454,8 @@ fun createProfileOnboarding(chatModel: ChatModel, displayName: String, close: ()
       null, Profile(displayName.trim(), "", null, null)
     ) ?: return@withBGApi
     chatModel.localUserCreated.value = true
+    // new users don't need the local file encryption indicator (all files are encrypted); existing users keep it on
+    chatModel.controller.appPrefs.privacyShowEncryption.set(false)
     val onboardingStage = chatModel.controller.appPrefs.onboardingStage
     // No users or no visible users
     if (chatModel.users.none { u -> !u.user.hidden }) {

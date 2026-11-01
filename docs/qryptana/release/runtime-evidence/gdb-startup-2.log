@@ -1,0 +1,21 @@
+Catchpoint 1 (signal SIGABRT)
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/usr/lib/libthread_db.so.1".
+[New inferior 2 (process 1509051)]
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/usr/lib/libthread_db.so.1".
+[New inferior 3 (process 1509052)]
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/usr/lib/libthread_db.so.1".
+[Inferior 3 (process 1509052) exited with code 0177]
+  Num  Description       Connection           Executable        
+  1    process 1509048   1 (native)           /home/theanarchitect/code/Qryptana-release-validation/apps/multiplatform/release/main/app/qryptana/bin/qryptana 
+  2    process 1509051   1 (native)           /home/theanarchitect/code/Qryptana-release-validation/apps/multiplatform/release/main/app/qryptana/bin/qryptana 
+* 3    <null>                                 /home/theanarchitect/code/Qryptana-release-validation/apps/multiplatform/release/main/app/qryptana/bin/qryptana 
+No stack.
+warning: Could not load shared library symbols for linux-vdso.so.1.
+Do you need "set solib-search-path" or "set sysroot"?
+From                To                  Syms Read   Shared Object Library
+                                        No          linux-vdso.so.1
+0x00007ffff7c00000  0x00007ffff7e23000  No          /usr/lib/libc.so.6
+0x00007ffff7fbe000  0x00007ffff7fff000  No          /lib64/ld-linux-x86-64.so.2

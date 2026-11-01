@@ -30,7 +30,7 @@ kotlin {
 // The identity reveal is an arbitrary runtime video, not an MR image.
 // Package it in the final desktop jar for classloader-based playback.
 tasks.named<ProcessResources>("jvmProcessResources") {
-  from(project(":common").file("src/commonMain/resources/MR/videos")) {
+  from(project(":common").file("src/commonMain/resources/assets/videos")) {
     into("videos")
   }
 }
@@ -58,6 +58,14 @@ compose {
           // 'jdk.unsupported' is for vlcj
           modules("jdk.zipfs", "jdk.unsupported")
         }
+        val os = System.getProperty("os.name", "generic").toDefaultLowerCase()
+        // 'jdk.accessibility' provides Java Access Bridge on Windows - without it the app
+        // fails to start with "Failed to launch JVM" when assistive technologies are enabled
+        // in the system (see #4146). Packages are always built on the target OS, so only
+        // the Windows build needs to bundle it.
+        if (os.contains("win")) {
+          modules("jdk.accessibility")
+        }
         //includeAllModules = true
         outputBaseDir.set(project.file("../release"))
         appResourcesRootDir.set(project.file("../build/links"))
@@ -66,12 +74,12 @@ compose {
           //, TargetFormat.AppImage // Gradle doesn't sync on Mac with it
         )
         linux {
-          iconFile.set(project.file("src/jvmMain/resources/distribute/simplex.png"))
+          iconFile.set(project.file("src/jvmMain/resources/distribute/qryptana.png"))
           appCategory = "Messenger"
         }
         windows {
           packageName = "Qryptana"
-          iconFile.set(project.file("src/jvmMain/resources/distribute/simplex.ico"))
+          iconFile.set(project.file("src/jvmMain/resources/distribute/qryptana.ico"))
           console = false
           perUserInstall = false
           dirChooser = true
@@ -80,7 +88,8 @@ compose {
         }
         macOS {
           packageName = "Qryptana"
-          iconFile.set(project.file("src/jvmMain/resources/distribute/simplex.icns"))
+          // Native ICNS tooling is not available in this build environment; use the derived PNG.
+          iconFile.set(project.file("src/jvmMain/resources/distribute/qryptana.png"))
           appCategory = "public.app-category.social-networking"
           bundleID = "chat.simplex.app"
           infoPlist {
@@ -107,7 +116,6 @@ compose {
             }
           }
         }
-        val os = System.getProperty("os.name", "generic").toDefaultLowerCase()
         if (os.contains("mac") || os.contains("win")) {
           packageName = "Qryptana"
         } else {

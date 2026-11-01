@@ -1,0 +1,69 @@
+To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/8.12/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Daemon will be stopped at the end of the build
+
+> Configure project :common
+MR file generation for iOS is not supported on your system!
+
+> Task :common:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :common:convertXmlValueResourcesForCommonMain NO-SOURCE
+> Task :common:copyNonXmlValueResourcesForCommonMain NO-SOURCE
+> Task :common:prepareComposeResourcesTaskForCommonMain NO-SOURCE
+> Task :common:generateResourceAccessorsForCommonMain SKIPPED
+> Task :common:convertXmlValueResourcesForDesktopMain NO-SOURCE
+> Task :common:copyNonXmlValueResourcesForDesktopMain NO-SOURCE
+> Task :common:prepareComposeResourcesTaskForDesktopMain NO-SOURCE
+> Task :common:generateResourceAccessorsForDesktopMain SKIPPED
+> Task :common:generateActualResourceCollectorsForDesktopMain SKIPPED
+> Task :common:generateComposeResClass SKIPPED
+> Task :common:generateDesktopMainNonAndroidBuildConfig SKIPPED
+> Task :common:generateExpectResourceCollectorsForCommonMain SKIPPED
+> Task :common:adjustFormatting
+> Task :common:cleanSimplexAssets UP-TO-DATE
+> Task :common:generateMRcommonMain UP-TO-DATE
+> Task :common:generateMRdesktopMain UP-TO-DATE
+> Task :common:generateNonAndroidBuildConfig UP-TO-DATE
+> Task :external:nanohttpd:checkUpstreamSources
+> Task :external:nanohttpd:compileJava UP-TO-DATE
+> Task :external:nanohttpd:processResources UP-TO-DATE
+> Task :external:nanohttpd:classes UP-TO-DATE
+> Task :external:nanohttpd:jar UP-TO-DATE
+> Task :common:compileKotlinDesktop UP-TO-DATE
+> Task :common:compileDesktopMainJava NO-SOURCE
+> Task :common:assembleDesktopMainResources UP-TO-DATE
+> Task :common:desktopProcessResources UP-TO-DATE
+> Task :common:processDesktopMainResources SKIPPED
+> Task :common:desktopMainClasses UP-TO-DATE
+> Task :common:desktopJar UP-TO-DATE
+> Task :desktop:checkRuntime UP-TO-DATE
+> Task :desktop:createRuntimeImage
+> Task :desktop:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :desktop:cmakemain_linux-amd64 UP-TO-DATE
+> Task :desktop:main_linux-amd64_runGeneratorUnix_Makefiles UP-TO-DATE
+> Task :desktop:cmakeBuild UP-TO-DATE
+> Task :desktop:cmakeBuildAndCopy
+> Task :desktop:convertXmlValueResourcesForCommonMain NO-SOURCE
+> Task :desktop:copyNonXmlValueResourcesForCommonMain NO-SOURCE
+> Task :desktop:prepareComposeResourcesTaskForCommonMain NO-SOURCE
+> Task :desktop:generateResourceAccessorsForCommonMain SKIPPED
+> Task :desktop:convertXmlValueResourcesForJvmMain NO-SOURCE
+> Task :desktop:copyNonXmlValueResourcesForJvmMain NO-SOURCE
+> Task :desktop:prepareComposeResourcesTaskForJvmMain NO-SOURCE
+> Task :desktop:generateResourceAccessorsForJvmMain SKIPPED
+> Task :desktop:generateActualResourceCollectorsForJvmMain SKIPPED
+> Task :desktop:generateComposeResClass SKIPPED
+> Task :desktop:generateExpectResourceCollectorsForCommonMain SKIPPED
+> Task :desktop:compileKotlinJvm UP-TO-DATE
+> Task :desktop:compileJvmMainJava NO-SOURCE
+> Task :desktop:assembleJvmMainResources UP-TO-DATE
+> Task :desktop:jvmProcessResources UP-TO-DATE
+> Task :desktop:processJvmMainResources SKIPPED
+> Task :desktop:jvmMainClasses UP-TO-DATE
+> Task :desktop:jvmJar UP-TO-DATE
+> Task :desktop:prepareAppResources UP-TO-DATE
+> Task :desktop:unpackDefaultComposeDesktopJvmApplicationResources UP-TO-DATE
+
+> Task :desktop:createDistributable
+The distribution is written to /home/theanarchitect/code/Qryptana-release-artifacts/toolchain-regression-20261030/qryptana-temurin/main/app
+
+BUILD SUCCESSFUL in 19s
+25 actionable tasks: 5 executed, 20 up-to-date

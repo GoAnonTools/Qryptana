@@ -1,0 +1,33 @@
+To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/8.12/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Daemon will be stopped at the end of the build 
+
+> Configure project :common
+MR file generation for iOS is not supported on your system!
+
+> Task :common:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :common:convertXmlValueResourcesForCommonMain NO-SOURCE
+> Task :common:copyNonXmlValueResourcesForCommonMain NO-SOURCE
+> Task :common:prepareComposeResourcesTaskForCommonMain NO-SOURCE
+> Task :common:generateResourceAccessorsForCommonMain SKIPPED
+> Task :common:convertXmlValueResourcesForDesktopMain NO-SOURCE
+> Task :common:copyNonXmlValueResourcesForDesktopMain NO-SOURCE
+> Task :common:prepareComposeResourcesTaskForDesktopMain NO-SOURCE
+> Task :common:generateResourceAccessorsForDesktopMain SKIPPED
+> Task :common:generateActualResourceCollectorsForDesktopMain SKIPPED
+> Task :common:generateComposeResClass SKIPPED
+> Task :common:generateDesktopMainNonAndroidBuildConfig SKIPPED
+> Task :common:generateExpectResourceCollectorsForCommonMain SKIPPED
+> Task :common:adjustFormatting
+> Task :common:cleanSimplexAssets UP-TO-DATE
+> Task :common:generateMRcommonMain UP-TO-DATE
+> Task :common:generateMRdesktopMain UP-TO-DATE
+> Task :common:generateNonAndroidBuildConfig UP-TO-DATE
+> Task :external:nanohttpd:checkUpstreamSources
+> Task :external:nanohttpd:compileJava UP-TO-DATE
+> Task :external:nanohttpd:processResources UP-TO-DATE
+> Task :external:nanohttpd:classes UP-TO-DATE
+> Task :external:nanohttpd:jar UP-TO-DATE
+> Task :common:compileKotlinDesktop UP-TO-DATE
+
+BUILD SUCCESSFUL in 8s
+10 actionable tasks: 2 executed, 8 up-to-date

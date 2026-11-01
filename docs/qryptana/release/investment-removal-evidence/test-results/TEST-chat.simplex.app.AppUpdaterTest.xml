@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="chat.simplex.app.AppUpdaterTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2026-10-30T18:18:55" hostname="maya" time="0.049">
+  <properties/>
+  <testcase name="upstreamAssetsAreNeverOfferedAsQryptanaUpdates[desktop]" classname="chat.simplex.app.AppUpdaterTest" time="0.025"/>
+  <testcase name="updateChannelDefaultIsDisabled[desktop]" classname="chat.simplex.app.AppUpdaterTest" time="0.023"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

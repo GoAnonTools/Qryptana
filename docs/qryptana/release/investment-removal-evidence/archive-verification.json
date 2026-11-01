@@ -1,0 +1,6 @@
+{
+  "regular_files_checked": 1017,
+  "native_and_launcher_files_unchanged": 806,
+  "libapplauncher_sha256": "336fe5e8ce1e8b36e0f8287f265f9456f52e776d48041f427e275c45c350e494",
+  "runtime_release": "JAVA_VERSION=\"21.0.13\"\nMODULES=\"java.base java.datatransfer java.xml java.prefs java.desktop java.logging jdk.crypto.ec jdk.unsupported jdk.zipfs\"\n"
+}

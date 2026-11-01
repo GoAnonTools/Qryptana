@@ -331,7 +331,7 @@ Nous n'avons jamais fourni ou demandé l'accès à nos serveurs ou à toute info
 
 Nous n'enregistrons pas les adresses IP des utilisateurs et nous n'effectuons aucune corrélation de trafic sur nos serveurs. Si la sécurité au niveau du trafic est primordiale, vous devez utiliser Tor ou un autre réseau similaire pour accéder aux serveurs de messagerie. Nous allons améliorer les applications client afin de réduire les possibilités de corrélation du trafic.
 
-Pour en savoir plus, consultez la section [Conditions et politique de confidentialité](/PRIVACY.md).
+Pour en savoir plus, consultez la section [Conditions et politique de confidentialité](../../upstream/SIMPLEX_PRIVACY.md).
 
 ## Contact de sécurité
 

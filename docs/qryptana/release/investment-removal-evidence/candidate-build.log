@@ -1,0 +1,156 @@
+To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/8.12/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Daemon will be stopped at the end of the build
+
+> Configure project :common
+MR file generation for iOS is not supported on your system!
+Warning: SDK processing. This version only understands SDK XML versions up to 3 but an SDK XML file of version 4 was encountered. This can happen if you use versions of Android Studio and the command-line tools that were released at different times.
+
+> Task :common:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :common:convertXmlValueResourcesForCommonMain NO-SOURCE
+> Task :common:copyNonXmlValueResourcesForCommonMain NO-SOURCE
+> Task :common:prepareComposeResourcesTaskForCommonMain NO-SOURCE
+> Task :common:generateResourceAccessorsForCommonMain SKIPPED
+> Task :common:convertXmlValueResourcesForDesktopMain NO-SOURCE
+> Task :common:copyNonXmlValueResourcesForDesktopMain NO-SOURCE
+> Task :common:prepareComposeResourcesTaskForDesktopMain NO-SOURCE
+> Task :common:generateResourceAccessorsForDesktopMain SKIPPED
+> Task :common:generateActualResourceCollectorsForDesktopMain SKIPPED
+> Task :common:generateComposeResClass SKIPPED
+> Task :common:generateDesktopMainNonAndroidBuildConfig SKIPPED
+> Task :common:generateExpectResourceCollectorsForCommonMain SKIPPED
+> Task :common:adjustFormatting
+> Task :common:cleanSimplexAssets UP-TO-DATE
+> Task :common:generateMRcommonMain UP-TO-DATE
+> Task :common:generateMRdesktopMain UP-TO-DATE
+> Task :common:generateNonAndroidBuildConfig UP-TO-DATE
+> Task :external:nanohttpd:checkUpstreamSources
+> Task :external:nanohttpd:compileJava UP-TO-DATE
+> Task :external:nanohttpd:processResources UP-TO-DATE
+> Task :external:nanohttpd:classes UP-TO-DATE
+> Task :external:nanohttpd:jar UP-TO-DATE
+> Task :common:compileKotlinDesktop UP-TO-DATE
+> Task :common:compileDesktopMainJava NO-SOURCE
+> Task :common:assembleDesktopMainResources UP-TO-DATE
+> Task :common:desktopProcessResources UP-TO-DATE
+> Task :common:processDesktopMainResources SKIPPED
+> Task :common:desktopMainClasses UP-TO-DATE
+> Task :common:desktopJar UP-TO-DATE
+> Task :desktop:checkRuntime UP-TO-DATE
+> Task :desktop:createRuntimeImage UP-TO-DATE
+> Task :desktop:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :desktop:cmakemain_linux-amd64 UP-TO-DATE
+> Task :desktop:main_linux-amd64_runGeneratorUnix_Makefiles UP-TO-DATE
+> Task :desktop:cmakeBuild UP-TO-DATE
+> Task :desktop:cmakeBuildAndCopy
+> Task :desktop:convertXmlValueResourcesForCommonMain NO-SOURCE
+> Task :desktop:copyNonXmlValueResourcesForCommonMain NO-SOURCE
+> Task :desktop:prepareComposeResourcesTaskForCommonMain NO-SOURCE
+> Task :desktop:generateResourceAccessorsForCommonMain SKIPPED
+> Task :desktop:convertXmlValueResourcesForJvmMain NO-SOURCE
+> Task :desktop:copyNonXmlValueResourcesForJvmMain NO-SOURCE
+> Task :desktop:prepareComposeResourcesTaskForJvmMain NO-SOURCE
+> Task :desktop:generateResourceAccessorsForJvmMain SKIPPED
+> Task :desktop:generateActualResourceCollectorsForJvmMain SKIPPED
+> Task :desktop:generateComposeResClass SKIPPED
+> Task :desktop:generateExpectResourceCollectorsForCommonMain SKIPPED
+> Task :desktop:compileKotlinJvm
+> Task :desktop:compileJvmMainJava NO-SOURCE
+> Task :desktop:assembleJvmMainResources UP-TO-DATE
+> Task :desktop:jvmProcessResources UP-TO-DATE
+> Task :desktop:processJvmMainResources SKIPPED
+> Task :desktop:jvmMainClasses
+> Task :desktop:jvmJar UP-TO-DATE
+> Task :desktop:prepareAppResources UP-TO-DATE
+> Task :desktop:unpackDefaultComposeDesktopJvmApplicationResources UP-TO-DATE
+
+> Task :desktop:createDistributable
+The distribution is written to /home/theanarchitect/code/Qryptana-release-artifacts/investment-removal-20261030/linux-temurin/main/app
+
+> Task :android:preBuild UP-TO-DATE
+> Task :android:preFossDebugBuild UP-TO-DATE
+> Task :android:mergeFossDebugNativeDebugMetadata NO-SOURCE
+> Task :android:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :android:generateFossDebugBuildConfig UP-TO-DATE
+> Task :common:preBuild UP-TO-DATE
+> Task :common:preDebugBuild UP-TO-DATE
+> Task :common:writeDebugAarMetadata UP-TO-DATE
+> Task :android:checkFossDebugAarMetadata UP-TO-DATE
+> Task :android:generateFossDebugResValues UP-TO-DATE
+> Task :common:generateMRandroidMain UP-TO-DATE
+> Task :common:generateDebugResValues UP-TO-DATE
+> Task :common:generateDebugResources UP-TO-DATE
+> Task :common:packageDebugResources UP-TO-DATE
+> Task :android:mapFossDebugSourceSetPaths UP-TO-DATE
+> Task :android:generateFossDebugResources UP-TO-DATE
+> Task :android:mergeFossDebugResources UP-TO-DATE
+> Task :android:packageFossDebugResources UP-TO-DATE
+> Task :android:parseFossDebugLocalResources UP-TO-DATE
+> Task :android:createFossDebugCompatibleScreenManifests UP-TO-DATE
+> Task :android:extractDeepLinksFossDebug UP-TO-DATE
+> Task :common:extractDeepLinksDebug UP-TO-DATE
+> Task :common:processDebugManifest UP-TO-DATE
+> Task :android:processFossDebugMainManifest UP-TO-DATE
+> Task :android:processFossDebugManifest UP-TO-DATE
+> Task :android:processFossDebugManifestForPackage UP-TO-DATE
+> Task :common:compileDebugLibraryResources UP-TO-DATE
+> Task :common:parseDebugLocalResources UP-TO-DATE
+> Task :common:generateDebugRFile UP-TO-DATE
+> Task :android:processFossDebugResources UP-TO-DATE
+> Task :common:convertXmlValueResourcesForAndroidMain NO-SOURCE
+> Task :common:copyNonXmlValueResourcesForAndroidMain NO-SOURCE
+> Task :common:prepareComposeResourcesTaskForAndroidMain NO-SOURCE
+> Task :common:generateResourceAccessorsForAndroidMain SKIPPED
+> Task :common:generateActualResourceCollectorsForAndroidMain SKIPPED
+> Task :common:generateAndroidDebugNonAndroidBuildConfig SKIPPED
+> Task :common:generateAndroidMainNonAndroidBuildConfig SKIPPED
+> Task :common:convertXmlValueResourcesForAndroidDebug NO-SOURCE
+> Task :common:copyNonXmlValueResourcesForAndroidDebug NO-SOURCE
+> Task :common:prepareComposeResourcesTaskForAndroidDebug NO-SOURCE
+> Task :common:generateResourceAccessorsForAndroidDebug SKIPPED
+> Task :common:compileDebugKotlinAndroid UP-TO-DATE
+> Task :common:javaPreCompileDebug UP-TO-DATE
+> Task :common:compileDebugJavaWithJavac NO-SOURCE
+> Task :common:bundleLibCompileToJarDebug UP-TO-DATE
+> Task :android:compileFossDebugKotlin UP-TO-DATE
+> Task :android:javaPreCompileFossDebug UP-TO-DATE
+> Task :android:compileFossDebugJavaWithJavac UP-TO-DATE
+> Task :android:mergeFossDebugShaders UP-TO-DATE
+> Task :android:compileFossDebugShaders NO-SOURCE
+> Task :android:generateFossDebugAssets UP-TO-DATE
+> Task :common:mergeDebugShaders UP-TO-DATE
+> Task :common:compileDebugShaders NO-SOURCE
+> Task :common:copyDebugComposeResourcesToAndroidAssets UP-TO-DATE
+> Task :common:debugAssetsCopyForAGP NO-SOURCE
+> Task :common:generateDebugAssets UP-TO-DATE
+> Task :common:packageDebugAssets UP-TO-DATE
+> Task :android:mergeFossDebugAssets UP-TO-DATE
+> Task :android:compressFossDebugAssets UP-TO-DATE
+> Task :android:checkFossDebugDuplicateClasses UP-TO-DATE
+> Task :android:desugarFossDebugFileDependencies UP-TO-DATE
+> Task :android:mergeExtDexFossDebug UP-TO-DATE
+> Task :android:processFossDebugJavaRes UP-TO-DATE
+> Task :common:processDebugJavaRes UP-TO-DATE
+> Task :android:mergeFossDebugJavaResource UP-TO-DATE
+> Task :common:bundleLibRuntimeToDirDebug
+> Task :android:mergeLibDexFossDebug
+> Task :android:dexBuilderFossDebug UP-TO-DATE
+> Task :android:mergeProjectDexFossDebug UP-TO-DATE
+> Task :android:configureCMakeDebug[arm64-v8a]
+> Task :android:buildCMakeDebug[arm64-v8a]
+> Task :android:configureCMakeDebug[armeabi-v7a]
+> Task :android:buildCMakeDebug[armeabi-v7a]
+> Task :android:mergeFossDebugJniLibFolders UP-TO-DATE
+> Task :common:mergeDebugJniLibFolders UP-TO-DATE
+> Task :common:mergeDebugNativeLibs NO-SOURCE
+> Task :common:copyDebugJniLibsProjectOnly UP-TO-DATE
+> Task :android:mergeFossDebugNativeLibs UP-TO-DATE
+> Task :android:stripFossDebugDebugSymbols UP-TO-DATE
+> Task :android:validateSigningFossDebug UP-TO-DATE
+> Task :android:writeFossDebugAppMetadata UP-TO-DATE
+> Task :android:writeFossDebugSigningConfigVersions UP-TO-DATE
+> Task :android:packageFossDebug
+> Task :android:createFossDebugApkListingFileRedirect UP-TO-DATE
+> Task :android:assembleFossDebug
+
+BUILD SUCCESSFUL in 54s
+85 actionable tasks: 12 executed, 73 up-to-date

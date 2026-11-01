@@ -1,0 +1,2 @@
+pid=68 ppid=3 exe=/home/theanarchitect/code/Qryptana-release-artifacts/toolchain-regression-20261030/original/OriginalProbe/bin/OriginalProbe event=loaded arg=
+pid=68 ppid=3 exe=/home/theanarchitect/code/Qryptana-release-artifacts/toolchain-regression-20261030/original/OriginalProbe/bin/OriginalProbe event=wait arg=child=69 status=134

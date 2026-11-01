@@ -1,16 +1,9 @@
 name: Build Eleventy
 
+# This inherited site includes upstream branding and deploys to GitHub Pages.
+# Keep deployment manual until a Qryptana website/privacy publishing decision.
 on:
-  push:
-    branches:
-      - master
-    paths:
-      - website/**
-      - images/**
-      - blog/**
-      - docs/**
-      - .github/workflows/web.yml
-      - PRIVACY.md
+  workflow_dispatch:
 
 jobs:
   build:

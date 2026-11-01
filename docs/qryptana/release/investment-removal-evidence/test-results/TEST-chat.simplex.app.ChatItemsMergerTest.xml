@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="chat.simplex.app.ChatItemsMergerTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2026-10-30T18:18:55" hostname="maya" time="0.147">
+  <properties/>
+  <testcase name="testItemsMerging[desktop]" classname="chat.simplex.app.ChatItemsMergerTest" time="0.146"/>
+  <testcase name="testRecalculateSplitPositions[desktop]" classname="chat.simplex.app.ChatItemsMergerTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

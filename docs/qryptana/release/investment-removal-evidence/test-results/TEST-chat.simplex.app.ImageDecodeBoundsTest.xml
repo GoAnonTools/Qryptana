@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="chat.simplex.app.ImageDecodeBoundsTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2026-10-30T18:18:55" hostname="maya" time="0.334">
+  <properties/>
+  <testcase name="testDecodeRejectsImageExceedingSourceLimit[desktop]" classname="chat.simplex.app.ImageDecodeBoundsTest" time="0.055"/>
+  <testcase name="testSampleSizeCapsDecodedPixelsForExtremeAspectRatios[desktop]" classname="chat.simplex.app.ImageDecodeBoundsTest" time="0.0"/>
+  <testcase name="testSampleSizeKeepsSmallerSideAtTarget[desktop]" classname="chat.simplex.app.ImageDecodeBoundsTest" time="0.0"/>
+  <testcase name="testSourceDimensionsRejectAbsurdSizes[desktop]" classname="chat.simplex.app.ImageDecodeBoundsTest" time="0.0"/>
+  <testcase name="testDecodeAcceptsElongatedImageWithinSourceLimit[desktop]" classname="chat.simplex.app.ImageDecodeBoundsTest" time="0.017"/>
+  <testcase name="testDecodeDownsamplesLargeImageInsteadOfRejecting[desktop]" classname="chat.simplex.app.ImageDecodeBoundsTest" time="0.261"/>
+  <system-out><![CDATA[E: WebSocket exception: java.io.EOFException
+	at org.nanohttpd.protocols.websockets.WebSocketFrame.checkedRead(WebSocketFrame.java:59)
+	at org.nanohttpd.protocols.websockets.WebSocketFrame.read(WebSocketFrame.java:65)
+	at org.nanohttpd.protocols.websockets.WebSocket.readWebsocket(WebSocket.java:234)
+	at org.nanohttpd.protocols.websockets.WebSocket$1.send(WebSocket.java:73)
+	at org.nanohttpd.protocols.http.HTTPSession.execute(HTTPSession.java:432)
+	at org.nanohttpd.protocols.http.ClientHandler.run(ClientHandler.java:75)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

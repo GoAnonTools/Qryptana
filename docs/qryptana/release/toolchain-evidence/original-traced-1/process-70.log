@@ -1,0 +1,2 @@
+pid=70 ppid=69 exe=/home/theanarchitect/code/Qryptana-release-artifacts/toolchain-regression-20261030/original/OriginalProbe/bin/OriginalProbe event=fork-child arg=
+pid=70 ppid=69 exe=/home/theanarchitect/code/Qryptana-release-artifacts/toolchain-regression-20261030/original/OriginalProbe/bin/OriginalProbe event=execvp arg=rpm

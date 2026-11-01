@@ -304,7 +304,7 @@ Nikdy jsme neposkytli ani jsme nebyli požádáni o přístup k našim serverům
 
 Nezaznamenáváme IP adresy uživatelů a na našich serverech neprovádíme žádnou korelaci provozu. Pokud je pro vás bezpečnost na úrovni přenosu kritická, musíte pro přístup k serverům pro zasílání zpráv používat Tor nebo jinou podobnou síť. Klientské aplikace budeme vylepšovat, abychom omezili možnosti korelace provozu.
 
-Více informací naleznete v [Podmínky a zásady ochrany osobních údajů](./PRIVACY.md).
+Více informací naleznete v [Podmínky a zásady ochrany osobních údajů](../../upstream/SIMPLEX_PRIVACY.md).
 
 ## Bezpečnostní kontakt
 

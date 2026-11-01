@@ -1,0 +1,67 @@
+To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/8.12/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Daemon will be stopped at the end of the build 
+
+> Configure project :common
+MR file generation for iOS is not supported on your system!
+Warning: SDK processing. This version only understands SDK XML versions up to 3 but an SDK XML file of version 4 was encountered. This can happen if you use versions of Android Studio and the command-line tools that were released at different times.
+
+> Task :android:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :android:preBuild UP-TO-DATE
+> Task :android:preFossDebugBuild UP-TO-DATE
+> Task :android:generateFossDebugBuildConfig UP-TO-DATE
+> Task :common:preBuild UP-TO-DATE
+> Task :common:preDebugBuild UP-TO-DATE
+> Task :common:writeDebugAarMetadata UP-TO-DATE
+> Task :android:checkFossDebugAarMetadata UP-TO-DATE
+> Task :android:generateFossDebugResValues UP-TO-DATE
+> Task :common:adjustFormatting
+> Task :common:cleanSimplexAssets UP-TO-DATE
+> Task :common:generateMRcommonMain UP-TO-DATE
+> Task :common:generateMRandroidMain UP-TO-DATE
+> Task :common:generateDebugResValues UP-TO-DATE
+> Task :common:generateDebugResources UP-TO-DATE
+> Task :common:packageDebugResources UP-TO-DATE
+> Task :android:mapFossDebugSourceSetPaths UP-TO-DATE
+> Task :android:generateFossDebugResources UP-TO-DATE
+> Task :android:mergeFossDebugResources UP-TO-DATE
+> Task :android:packageFossDebugResources UP-TO-DATE
+> Task :android:parseFossDebugLocalResources UP-TO-DATE
+> Task :android:createFossDebugCompatibleScreenManifests UP-TO-DATE
+> Task :android:extractDeepLinksFossDebug UP-TO-DATE
+> Task :common:extractDeepLinksDebug UP-TO-DATE
+> Task :common:processDebugManifest UP-TO-DATE
+> Task :android:processFossDebugMainManifest UP-TO-DATE
+> Task :android:processFossDebugManifest UP-TO-DATE
+> Task :android:processFossDebugManifestForPackage UP-TO-DATE
+> Task :common:compileDebugLibraryResources UP-TO-DATE
+> Task :common:parseDebugLocalResources UP-TO-DATE
+> Task :common:generateDebugRFile UP-TO-DATE
+> Task :android:processFossDebugResources UP-TO-DATE
+> Task :common:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :common:convertXmlValueResourcesForAndroidMain NO-SOURCE
+> Task :common:copyNonXmlValueResourcesForAndroidMain NO-SOURCE
+> Task :common:prepareComposeResourcesTaskForAndroidMain NO-SOURCE
+> Task :common:generateResourceAccessorsForAndroidMain SKIPPED
+> Task :common:convertXmlValueResourcesForCommonMain NO-SOURCE
+> Task :common:copyNonXmlValueResourcesForCommonMain NO-SOURCE
+> Task :common:prepareComposeResourcesTaskForCommonMain NO-SOURCE
+> Task :common:generateResourceAccessorsForCommonMain SKIPPED
+> Task :common:generateActualResourceCollectorsForAndroidMain SKIPPED
+> Task :common:generateAndroidDebugNonAndroidBuildConfig SKIPPED
+> Task :common:generateAndroidMainNonAndroidBuildConfig SKIPPED
+> Task :common:generateComposeResClass SKIPPED
+> Task :common:generateExpectResourceCollectorsForCommonMain SKIPPED
+> Task :common:generateMRdesktopMain UP-TO-DATE
+> Task :common:generateNonAndroidBuildConfig UP-TO-DATE
+> Task :common:convertXmlValueResourcesForAndroidDebug NO-SOURCE
+> Task :common:copyNonXmlValueResourcesForAndroidDebug NO-SOURCE
+> Task :common:prepareComposeResourcesTaskForAndroidDebug NO-SOURCE
+> Task :common:generateResourceAccessorsForAndroidDebug SKIPPED
+> Task :common:compileDebugKotlinAndroid UP-TO-DATE
+> Task :common:javaPreCompileDebug UP-TO-DATE
+> Task :common:compileDebugJavaWithJavac NO-SOURCE
+> Task :common:bundleLibCompileToJarDebug UP-TO-DATE
+> Task :android:compileFossDebugKotlin UP-TO-DATE
+
+BUILD SUCCESSFUL in 9s
+33 actionable tasks: 1 executed, 32 up-to-date

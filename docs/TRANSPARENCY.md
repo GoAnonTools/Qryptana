@@ -6,6 +6,8 @@ revision: 09.02.2026
 
 # Transparency Reports
 
+This is retained upstream SimpleX documentation, not a Qryptana transparency report or contact channel. See the [policy boundary](upstream/README.md).
+
 **Updated**: Feb 09, 2026
 
 SimpleX Chat Ltd. is a company registered in the UK – it develops communication software enabling users to operate and communicate via SimpleX network, without user profile identifiers of any kind, and without having their data hosted by any network infrastructure operators.
@@ -19,7 +21,7 @@ In 2024 we received enquiries from several law enforcement agencies seeking info
 Our objective is to consistently ensure that no user data and absolute minimum of the metadata required for the network to function is available for disclosure by any infrastructure operators, under any circumstances.
 
 **Helpful resources**:
-- [Privacy policy](/PRIVACY.md)
+- [Upstream operator privacy policy](upstream/SIMPLEX_PRIVACY.md)
 - [Privacy and security: technical details and limitations](https://github.com/simplex-chat/simplex-chat/blob/stable/README.md#privacy-and-security-technical-details-and-limitations)
 - Whitepaper:
   - [Trust in servers](https://github.com/simplex-chat/simplexmq/blob/stable/protocol/overview-tjr.md#trust-in-servers)

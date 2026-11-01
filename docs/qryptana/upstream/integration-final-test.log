@@ -1,0 +1,60 @@
+To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/8.12/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Daemon will be stopped at the end of the build 
+
+> Configure project :common
+MR file generation for iOS is not supported on your system!
+
+> Task :common:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :common:convertXmlValueResourcesForCommonMain NO-SOURCE
+> Task :common:copyNonXmlValueResourcesForCommonMain NO-SOURCE
+> Task :common:prepareComposeResourcesTaskForCommonMain NO-SOURCE
+> Task :common:generateResourceAccessorsForCommonMain SKIPPED
+> Task :common:convertXmlValueResourcesForDesktopMain NO-SOURCE
+> Task :common:copyNonXmlValueResourcesForDesktopMain NO-SOURCE
+> Task :common:prepareComposeResourcesTaskForDesktopMain NO-SOURCE
+> Task :common:generateResourceAccessorsForDesktopMain SKIPPED
+> Task :common:generateActualResourceCollectorsForDesktopMain SKIPPED
+> Task :common:generateComposeResClass SKIPPED
+> Task :common:generateDesktopMainNonAndroidBuildConfig SKIPPED
+> Task :common:generateExpectResourceCollectorsForCommonMain SKIPPED
+> Task :common:adjustFormatting
+> Task :common:cleanSimplexAssets UP-TO-DATE
+> Task :common:generateMRcommonMain UP-TO-DATE
+> Task :common:generateMRdesktopMain UP-TO-DATE
+> Task :common:generateNonAndroidBuildConfig UP-TO-DATE
+> Task :external:nanohttpd:checkUpstreamSources
+> Task :external:nanohttpd:compileJava UP-TO-DATE
+> Task :external:nanohttpd:processResources UP-TO-DATE
+> Task :external:nanohttpd:classes UP-TO-DATE
+> Task :external:nanohttpd:jar UP-TO-DATE
+> Task :common:compileKotlinDesktop UP-TO-DATE
+> Task :common:compileDesktopMainJava NO-SOURCE
+> Task :common:assembleDesktopMainResources
+> Task :common:desktopProcessResources
+> Task :common:processDesktopMainResources SKIPPED
+> Task :common:desktopMainClasses
+> Task :common:desktopJar
+> Task :common:generateDesktopTestNonAndroidBuildConfig SKIPPED
+> Task :common:convertXmlValueResourcesForCommonTest NO-SOURCE
+> Task :common:copyNonXmlValueResourcesForCommonTest NO-SOURCE
+> Task :common:prepareComposeResourcesTaskForCommonTest NO-SOURCE
+> Task :common:generateResourceAccessorsForCommonTest SKIPPED
+> Task :common:convertXmlValueResourcesForDesktopTest NO-SOURCE
+> Task :common:copyNonXmlValueResourcesForDesktopTest NO-SOURCE
+> Task :common:prepareComposeResourcesTaskForDesktopTest NO-SOURCE
+> Task :common:generateResourceAccessorsForDesktopTest SKIPPED
+> Task :common:generateTestNonAndroidBuildConfig SKIPPED
+
+> Task :common:compileTestKotlinDesktop
+w: Opt-in requirement marker com.arkivanov.decompose.ExperimentalDecomposeApi is unresolved. Please make sure it's present in the module dependencies
+w: Opt-in requirement marker com.google.accompanist.permissions.ExperimentalPermissionsApi is unresolved. Please make sure it's present in the module dependencies
+
+> Task :common:compileDesktopTestJava NO-SOURCE
+> Task :common:assembleDesktopTestResources
+> Task :common:desktopTestProcessResources
+> Task :common:processDesktopTestResources SKIPPED
+> Task :common:desktopTestClasses
+> Task :common:desktopTest
+
+BUILD SUCCESSFUL in 18s
+17 actionable tasks: 9 executed, 8 up-to-date

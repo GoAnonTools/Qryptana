@@ -1,0 +1,30 @@
+pid=69 ppid=68 exe=/home/theanarchitect/code/Qryptana-release-artifacts/toolchain-regression-20261030/original/OriginalProbe/bin/OriginalProbe event=fork-child arg=
+pid=69 ppid=68 exe=/home/theanarchitect/code/Qryptana-release-artifacts/toolchain-regression-20261030/original/OriginalProbe/bin/OriginalProbe event=waitpid arg=child=70 status=32512
+pid=69 ppid=68 exe=/home/theanarchitect/code/Qryptana-release-artifacts/toolchain-regression-20261030/original/OriginalProbe/bin/OriginalProbe event=waitpid arg=child=71 status=32512
+pid=69 ppid=68 exe=/home/theanarchitect/code/Qryptana-release-artifacts/toolchain-regression-20261030/original/OriginalProbe/bin/OriginalProbe event=PURE_VIRTUAL arg=
+/tmp/qryptana-diagnostic-final.so(__cxa_pure_virtual+0x52) [0x7f6be3a345af]
+/home/theanarchitect/code/Qryptana-release-artifacts/toolchain-regression-20261030/original/OriginalProbe/lib/libapplauncher.so(+0x21368) [0x7f6be37ef368]
+/home/theanarchitect/code/Qryptana-release-artifacts/toolchain-regression-20261030/original/OriginalProbe/lib/libapplauncher.so(+0x8e4a) [0x7f6be37d6e4a]
+/lib64/ld-linux-x86-64.so.2(+0x2012) [0x7f6be3a6f012]
+/lib64/ld-linux-x86-64.so.2(+0x60ae) [0x7f6be3a730ae]
+/usr/lib/libc.so.6(+0x40fbf) [0x7f6be3840fbf]
+/usr/lib/libc.so.6(+0x4109e) [0x7f6be384109e]
+/usr/lib/libc.so.6(+0x27788) [0x7f6be3827788]
+/usr/lib/libc.so.6(__libc_start_main+0x89) [0x7f6be38278b9]
+/home/theanarchitect/code/Qryptana-release-artifacts/toolchain-regression-20261030/original/OriginalProbe/bin/OriginalProbe(+0x1665) [0x55cc844a0665]
+pid=69 ppid=68 exe=/home/theanarchitect/code/Qryptana-release-artifacts/toolchain-regression-20261030/original/OriginalProbe/bin/OriginalProbe event=ABORT arg=
+/tmp/qryptana-diagnostic-final.so(abort+0x52) [0x7f6be3a346c2]
+/usr/lib/libstdc++.so.6(+0x9ac54) [0x7f6be349ac54]
+/usr/lib/libstdc++.so.6(+0xb581a) [0x7f6be34b581a]
+/usr/lib/libstdc++.so.6(_ZSt10unexpectedv+0x0) [0x7f6be349a5ed]
+/usr/lib/libstdc++.so.6(+0xb6705) [0x7f6be34b6705]
+/tmp/qryptana-diagnostic-final.so(abort+0x0) [0x7f6be3a34670]
+/home/theanarchitect/code/Qryptana-release-artifacts/toolchain-regression-20261030/original/OriginalProbe/lib/libapplauncher.so(+0x21368) [0x7f6be37ef368]
+/home/theanarchitect/code/Qryptana-release-artifacts/toolchain-regression-20261030/original/OriginalProbe/lib/libapplauncher.so(+0x8e4a) [0x7f6be37d6e4a]
+/lib64/ld-linux-x86-64.so.2(+0x2012) [0x7f6be3a6f012]
+/lib64/ld-linux-x86-64.so.2(+0x60ae) [0x7f6be3a730ae]
+/usr/lib/libc.so.6(+0x40fbf) [0x7f6be3840fbf]
+/usr/lib/libc.so.6(+0x4109e) [0x7f6be384109e]
+/usr/lib/libc.so.6(+0x27788) [0x7f6be3827788]
+/usr/lib/libc.so.6(__libc_start_main+0x89) [0x7f6be38278b9]
+/home/theanarchitect/code/Qryptana-release-artifacts/toolchain-regression-20261030/original/OriginalProbe/bin/OriginalProbe(+0x1665) [0x55cc844a0665]

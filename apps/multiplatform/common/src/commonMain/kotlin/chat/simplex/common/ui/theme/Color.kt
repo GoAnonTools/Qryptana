@@ -29,6 +29,132 @@ val QryptanaLightSurface = Color(0xFFFFF8EF)
 val QryptanaLightCard = Color(0xFFFFFBF5)
 val QryptanaLightText = Color(0xFF24201D)
 val QryptanaLightSecondary = Color(0xFF6E655D)
+
+/**
+ * Android's semantic Qryptana roles. Material 2 has fewer slots than the
+ * design language needs, so these names are the source of truth and the
+ * palette factories below map them onto Material and app-specific colours.
+ */
+internal data class QryptanaAndroidColorRoles(
+  val actionText: Color,
+  val filledControl: Color,
+  val onFilledControl: Color,
+  val secondaryText: Color,
+  val structuralBorder: Color,
+  val background: Color,
+  val surface: Color,
+  val raisedSurface: Color,
+  val heading: Color,
+  val body: Color,
+  val error: Color,
+  val onError: Color,
+  val sentMessage: Color,
+  val sentQuote: Color,
+  val receivedMessage: Color,
+  val receivedQuote: Color,
+  val neutralIcon: Color,
+  val copperShadow: Color,
+  val copperBody: Color,
+  val copperHighlight: Color,
+)
+
+internal object QryptanaAndroidThemeRoles {
+  val light = QryptanaAndroidColorRoles(
+    actionText = Color(0xFF80513E),
+    filledControl = Color(0xFF9F634C),
+    onFilledControl = Color(0xFFFFFFFF),
+    secondaryText = Color(0xFF59636C),
+    structuralBorder = Color(0xFF7C858D),
+    background = Color(0xFFF1F3F5),
+    surface = Color(0xFFFCFDFE),
+    raisedSurface = Color(0xFFFFFFFF),
+    heading = Color(0xFF20262B),
+    body = Color(0xFF30383F),
+    error = Color(0xFFB3261E),
+    onError = Color.White,
+    sentMessage = Color(0xFFF1DFD3),
+    sentQuote = Color(0xFFE7C6B0),
+    receivedMessage = Color(0xFFFFFBF7),
+    receivedQuote = Color(0xFFE9E2DB),
+    neutralIcon = Color(0xFF68737C),
+    copperShadow = Color(0xFF6A3E32),
+    copperBody = Color(0xFFAD7257),
+    copperHighlight = Color(0xFFF0D4C4),
+  )
+
+  val dark = QryptanaAndroidColorRoles(
+    actionText = Color(0xFFD3A78F),
+    filledControl = Color(0xFF9F634C),
+    onFilledControl = Color(0xFFFFFFFF),
+    secondaryText = Color(0xFF9AA5AE),
+    structuralBorder = Color(0xFF68737C),
+    background = Color(0xFF0E1114),
+    surface = Color(0xFF191E23),
+    raisedSurface = Color(0xFF20272D),
+    heading = Color(0xFFEEF1F3),
+    body = Color(0xFFEEF1F3),
+    error = Color(0xFFFFB4AB),
+    onError = Color(0xFF690005),
+    sentMessage = Color(0xFF3A2B24),
+    sentQuote = Color(0xFF4A3428),
+    receivedMessage = Color(0xFF2B2926),
+    receivedQuote = Color(0xFF3A3733),
+    neutralIcon = Color(0xFFAEB8C0),
+    copperShadow = Color(0xFF6A3E32),
+    copperBody = Color(0xFFAD7257),
+    copperHighlight = Color(0xFFF0D4C4),
+  )
+
+  // The named SimpleX preset remains available, now as a cooler titanium
+  // variant rather than a saturated blue theme.
+  val simplex = QryptanaAndroidColorRoles(
+    actionText = Color(0xFFD3A78F),
+    filledControl = Color(0xFF9F634C),
+    onFilledControl = Color(0xFFFFFFFF),
+    secondaryText = Color(0xFF9AA5AE),
+    structuralBorder = Color(0xFF68737C),
+    background = Color(0xFF0E1114),
+    surface = Color(0xFF191E23),
+    raisedSurface = Color(0xFF20272D),
+    heading = Color(0xFFEEF1F3),
+    body = Color(0xFFEEF1F3),
+    error = Color(0xFFFFB4AB),
+    onError = Color(0xFF690005),
+    sentMessage = Color(0xFF222A30),
+    sentQuote = Color(0xFF303A42),
+    receivedMessage = Color(0xFF292C2F),
+    receivedQuote = Color(0xFF383C40),
+    neutralIcon = Color(0xFFAEB8C0),
+    copperShadow = Color(0xFF6A3E32),
+    copperBody = Color(0xFFAD7257),
+    copperHighlight = Color(0xFFF0D4C4),
+  )
+
+  val black = QryptanaAndroidColorRoles(
+    actionText = Color(0xFFD3A78F),
+    filledControl = Color(0xFF9F634C),
+    onFilledControl = Color(0xFFFFFFFF),
+    secondaryText = Color(0xFF9AA5AE),
+    structuralBorder = Color(0xFF68737C),
+    background = Color(0xFF090C0F),
+    surface = Color(0xFF151A1F),
+    raisedSurface = Color(0xFF1C2329),
+    heading = Color(0xFFEEF1F3),
+    body = Color(0xFFEEF1F3),
+    error = Color(0xFFFFB4AB),
+    onError = Color(0xFF690005),
+    sentMessage = Color(0xFF20272D),
+    sentQuote = Color(0xFF2D353C),
+    receivedMessage = Color(0xFF151A1F),
+    receivedQuote = Color(0xFF252C32),
+    neutralIcon = Color(0xFFAEB8C0),
+    copperShadow = Color(0xFF6A3E32),
+    copperBody = Color(0xFFAD7257),
+    copperHighlight = Color(0xFFF0D4C4),
+  )
+}
+// Verified in the pre-rebrand Color.kt at 423c8c0; mobile palette accents.
+val UpstreamSimplexBlue = Color(0xFF0088FF)
 // Kept under its compatibility name because other visual helpers still reference it.
 val SimplexBlue = QryptanaCopper
 val SimplexGreen = Color(77, 218, 103, 255)

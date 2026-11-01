@@ -1,0 +1,3 @@
+pid=1521416 ppid=1521352 exe=/home/theanarchitect/code/Qryptana-release-artifacts/toolchain-regression-20261030/qryptana-temurin/main/app/qryptana/lib/runtime/lib/jspawnhelper event=loaded arg=
+pid=1521416 ppid=1521352 exe=/home/theanarchitect/code/Qryptana-release-artifacts/toolchain-regression-20261030/qryptana-temurin/main/app/qryptana/lib/runtime/lib/jspawnhelper event=execvp arg=gsettings
+pid=1521416 ppid=1521352 exe=/usr/bin/gsettings event=loaded arg=

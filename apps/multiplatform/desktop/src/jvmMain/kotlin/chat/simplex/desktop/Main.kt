@@ -20,18 +20,29 @@ import kotlinx.coroutines.*
 import java.io.File
 
 fun main() {
-  if (!acquireSingleInstance()) return
-  // Use software rendering for the desktop onboarding video surface. This avoids
-  // a native SIGSEGV observed in the Linux Gallium/OpenGL stack while the card
-  // animation is active; the video frames are already copied through Skia.
-  System.setProperty("skiko.renderApi", "SOFTWARE")
-  initHaskell()
-  runMigrations()
-  setupUpdateChecker()
-  initApp()
-  tmpDir.deleteRecursively()
-  tmpDir.mkdir()
-  return showApp()
+  try {
+    if (!acquireSingleInstance()) return
+    // Clean shared temp dirs only in the owning instance (not in a Files.desktop val
+    // initializer, which a transient second instance would also run). Early: before settings writes.
+    preferencesTmpDir.deleteRecursively()
+    // Disable hardware acceleration
+    System.setProperty("skiko.renderApi", "SOFTWARE")
+    initHaskell()
+    runMigrations()
+    setupUpdateChecker()
+    initApp()
+    tmpDir.deleteRecursively()
+    tmpDir.mkdir()
+    // Only the owning instance cleans tmpDir on exit (see preferencesTmpDir above).
+    tmpDir.deleteOnExit()
+    // showApp is inside the try: its first statements (SystemTray probe, Compose setup) are the
+    // process's first AWT init, which is itself a known startup failure cause (#4146). Crashes
+    // after the window appears are handled by the WindowExceptionHandler in showApp instead.
+    return showApp()
+  } catch (e: Throwable) {
+    showStartupError(e) // the jpackage launcher otherwise hides the error behind "Failed to launch JVM" (#4146)
+    throw e
+  }
 }
 
 @OptIn(ExperimentalComposeUiApi::class)
@@ -51,32 +62,9 @@ private fun initHaskell() {
   //discoverVlcLibs(File(File(vlcDir, "vlc"), "plugins").absolutePath)
   initHS()
 
-  platform = object: PlatformInterface {
-    @Composable
-    override fun desktopShowAppUpdateNotice() {
-      fun showNoticeIfNeeded() {
-        if (
-          !chatModel.controller.appPrefs.appUpdateNoticeShown.get()
-          && chatModel.controller.appPrefs.onboardingStage.get() == OnboardingStage.OnboardingComplete
-          && chatModel.chats.size > 3
-          && chatModel.activeCallInvitation.value == null
-        ) {
-          appPrefs.appUpdateNoticeShown.set(true)
-          showAppUpdateNotice()
-        }
-      }
-      // Will show notice if chats were loaded before that moment and number of chats > 3
-      LaunchedEffect(Unit) {
-        showNoticeIfNeeded()
-      }
-      // Will show notice if chats were loaded later (a lot of chats/slow query) and number of chats > 3
-      KeyChangeEffect(chatModel.chats.size) { oldSize ->
-        if (oldSize == 0) {
-          showNoticeIfNeeded()
-        }
-      }
-    }
-  }
+  // No automatic opt-in prompt: this checker only provides upstream notes,
+  // not Qryptana updates. Users may enable it explicitly in Settings.
+  platform = object: PlatformInterface {}
 }
 
 private fun windowsLoadRequiredLibs(libsTmpDir: File, vlcDir: File) {

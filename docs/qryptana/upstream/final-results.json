@@ -1,0 +1,12 @@
+{
+  ":common:compileKotlinDesktop": 0,
+  ":common:desktopTest": 0,
+  ":android:compileFossDebugKotlin": 0,
+  "implementation": "3ad2abd2c1dc19a57871cdca3fabe4b86e123165",
+  "tests": {
+    "tests": 35,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  }
+}

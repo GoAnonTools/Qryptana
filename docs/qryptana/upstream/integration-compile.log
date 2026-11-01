@@ -1,0 +1,843 @@
+To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/8.12/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Daemon will be stopped at the end of the build 
+
+> Configure project :android
+w: file:///tmp/qryptana-7x/apps/multiplatform/android/build.gradle.kts:196:24: 'creating(Task.() -> Unit): NamedDomainObjectContainerCreatingDelegateProvider<Task!>' is deprecated. Use registering instead. See https://docs.gradle.org/current/userguide/task_configuration_avoidance.html for more information.
+w: file:///tmp/qryptana-7x/apps/multiplatform/android/build.gradle.kts:227:17: 'exec(Action<ExecSpec>): ExecResult' is deprecated. This method will be removed in Gradle 9.0. Use ExecOperations.exec(Action) or ProviderFactory.exec(Action) instead.
+
+> Configure project :common
+w: file:///tmp/qryptana-7x/apps/multiplatform/common/build.gradle.kts:204:9: 'create(String!, Action<in Task!>!): Task!' is deprecated. Deprecated in Java
+MR file generation for iOS is not supported on your system!
+
+> Configure project :desktop
+w: file:///tmp/qryptana-7x/apps/multiplatform/desktop/build.gradle.kts:180:9: 'create(String!, Action<in Task!>!): Task!' is deprecated. Deprecated in Java
+w: file:///tmp/qryptana-7x/apps/multiplatform/desktop/build.gradle.kts:184:37: 'getter for buildDir: File!' is deprecated. Deprecated in Java
+w: file:///tmp/qryptana-7x/apps/multiplatform/desktop/build.gradle.kts:208:37: 'getter for buildDir: File!' is deprecated. Deprecated in Java
+w: file:///tmp/qryptana-7x/apps/multiplatform/desktop/build.gradle.kts:218:37: 'getter for buildDir: File!' is deprecated. Deprecated in Java
+w: file:///tmp/qryptana-7x/apps/multiplatform/desktop/build.gradle.kts:228:37: 'getter for buildDir: File!' is deprecated. Deprecated in Java
+w: file:///tmp/qryptana-7x/apps/multiplatform/desktop/build.gradle.kts:238:37: 'getter for buildDir: File!' is deprecated. Deprecated in Java
+w: file:///tmp/qryptana-7x/apps/multiplatform/desktop/build.gradle.kts:248:37: 'getter for buildDir: File!' is deprecated. Deprecated in Java
+
+> Task :common:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :common:convertXmlValueResourcesForCommonMain NO-SOURCE
+> Task :common:copyNonXmlValueResourcesForCommonMain NO-SOURCE
+> Task :common:prepareComposeResourcesTaskForCommonMain NO-SOURCE
+> Task :common:generateResourceAccessorsForCommonMain SKIPPED
+> Task :common:convertXmlValueResourcesForDesktopMain NO-SOURCE
+> Task :common:copyNonXmlValueResourcesForDesktopMain NO-SOURCE
+> Task :common:prepareComposeResourcesTaskForDesktopMain NO-SOURCE
+> Task :common:generateResourceAccessorsForDesktopMain SKIPPED
+> Task :common:generateActualResourceCollectorsForDesktopMain SKIPPED
+> Task :common:generateComposeResClass SKIPPED
+> Task :common:generateDesktopMainNonAndroidBuildConfig SKIPPED
+> Task :common:generateExpectResourceCollectorsForCommonMain SKIPPED
+> Task :common:adjustFormatting
+> Task :common:cleanSimplexAssets UP-TO-DATE
+> Task :common:generateMRcommonMain
+> Task :common:generateMRdesktopMain
+> Task :common:generateNonAndroidBuildConfig
+> Task :external:nanohttpd:checkUpstreamSources
+
+> Task :external:nanohttpd:compileJava
+Note: /tmp/qryptana-7x/apps/multiplatform/external/nanohttpd/upstream/core/src/main/java/org/nanohttpd/util/ServerRunner.java uses or overrides a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+
+> Task :external:nanohttpd:processResources
+> Task :external:nanohttpd:classes
+> Task :external:nanohttpd:jar
+
+> Task :common:compileKotlinDesktop
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/App.kt:34:55 Unresolved reference 'ModalManager'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/App.kt:35:55 Unresolved reference 'ModalManager'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/App.kt:113:20 Unresolved reference 'closeAllModalsEverywhere'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/App.kt:162:68 Unresolved reference 'start'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/App.kt:182:17 Unresolved reference 'fromEndToStartTransition'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/App.kt:184:17 Unresolved reference 'fromStartToEndTransition'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/App.kt:205:22 Unresolved reference 'fullscreen'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/App.kt:222:22 Unresolved reference 'fullscreen'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/App.kt:238:20 Unresolved reference 'fullscreen'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/App.kt:275:18 Unresolved reference 'fullscreen'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/App.kt:398:24 Unresolved reference 'center'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/App.kt:404:11 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/App.kt:404:45 Unresolved reference 'center'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/App.kt:405:22 Unresolved reference 'center'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/App.kt:442:16 Unresolved reference 'end'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/App.kt:455:18 Unresolved reference 'start'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/App.kt:462:22 Unresolved reference 'end'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/App.kt:469:75 Unresolved reference 'start'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/App.kt:469:112 Unresolved reference 'center'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/App.kt:476:26 Unresolved reference 'start'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/App.kt:483:16 Unresolved reference 'fullscreen'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/AppLock.kt:116:18 Unresolved reference 'fullscreen'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/AppLock.kt:116:47 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/AppLock.kt:117:7 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/AppLock.kt:117:61 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/AppLock.kt:117:122 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/model/ChatModel.kt:1192:24 Unresolved reference 'start'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/model/ChatModel.kt:1193:24 Unresolved reference 'end'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/model/ChatModel.kt:1207:20 Unresolved reference 'start'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/model/ChatModel.kt:1208:20 Unresolved reference 'center'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/model/ChatModel.kt:1209:20 Unresolved reference 'end'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/model/SimpleXAPI.kt:3172:29 Unresolved reference 'end'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/model/SimpleXAPI.kt:3180:28 Unresolved reference 'end'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/model/SimpleXAPI.kt:3352:22 Unresolved reference 'start'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/model/SimpleXAPI.kt:3424:24 Unresolved reference 'fullscreen'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/model/SimpleXAPI.kt:3640:18 Unresolved reference 'center'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/model/SimpleXAPI.kt:3641:18 Unresolved reference 'end'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/TerminalView.kt:181:28 Unresolved reference 'floatingTerminal'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/TerminalView.kt:183:28 Unresolved reference 'start'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/TerminalView.kt:185:24 Unresolved reference 'showModal'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/TerminalView.kt:185:49 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/TerminalView.kt:186:15 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/WelcomeView.kt:211:20 Unresolved reference 'fullscreen'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/WelcomeView.kt:211:106 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/WelcomeView.kt:212:9 Unresolved reference 'MigrateToDeviceView'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/WelcomeView.kt:213:11 Unresolved reference 'close'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/ChatInfoView.kt:108:22 Unresolved reference 'end'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/ChatInfoView.kt:108:44 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/ChatInfoView.kt:111:13 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/ChatInfoView.kt:159:22 Unresolved reference 'end'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/ChatInfoView.kt:159:47 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/ChatInfoView.kt:160:11 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/ChatInfoView.kt:160:135 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/ChatInfoView.kt:161:13 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/ChatInfoView.kt:489:22 Unresolved reference 'end'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/ChatInfoView.kt:609:22 Unresolved reference 'end'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/ChatInfoView.kt:610:22 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/ChatInfoView.kt:613:13 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/ChatInfoView.kt:613:13 Unresolved reference. None of the following candidates is applicable because of a receiver type mismatch:
+fun ModalData.ChatWallpaperEditorModal(chat: Chat): Unit
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/ChatItemInfoView.kt:215:26 Unresolved reference 'end'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/ChatView.kt:131:24 Unresolved reference 'end'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/ChatView.kt:393:32 Unresolved reference 'end'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/ChatView.kt:394:24 Unresolved reference 'end'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/ChatView.kt:414:32 Unresolved reference 'end'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/ChatView.kt:414:54 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/ChatView.kt:415:32 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/ChatView.kt:416:19 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/ChatView.kt:437:23 Unresolved reference. None of the following candidates is applicable because of a receiver type mismatch:
+fun ModalData.GroupChatInfoView(chatsCtx: ChatModel.ChatsContext, rhId: Long?, chatId: String, groupLink: GroupLink?, selectedItems: MutableState<Set<Long>?>, appBar: MutableState<@Composable() ComposableFunction1<BoxScope, Unit>?>, scrollToItemId: MutableState<Long?>, onGroupLinkUpdated: (GroupLink?) -> Unit, close: () -> Unit, onSearchClicked: () -> Unit): Unit
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/ChatView.kt:443:21 Unresolved reference 'close'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/ChatView.kt:460:32 Unresolved reference 'end'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/ChatView.kt:461:24 Unresolved reference 'end'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/ChatView.kt:471:32 Unresolved reference 'end'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/ChatView.kt:472:24 Unresolved reference 'end'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/ChatView.kt:478:32 Unresolved reference 'end'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/ChatView.kt:478:54 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/ChatView.kt:479:21 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/ChatView.kt:479:21 Unresolved reference. None of the following candidates is applicable because of a receiver type mismatch:
+fun ModalData.MemberSupportView(rhId: Long?, chat: Chat, groupInfo: GroupInfo, scrollToItemId: MutableState<Long?>, close: () -> Unit): Unit
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/ChatView.kt:517:24 Unresolved reference 'end'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/ChatView.kt:519:30 Unresolved reference 'end'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/ChatView.kt:519:92 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/ChatView.kt:520:19 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/ChatView.kt:520:105 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/ChatView.kt:521:21 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/ChatView.kt:714:35 Unresolved reference 'end'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/ChatView.kt:715:24 Unresolved reference 'end'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/ChatView.kt:717:30 Unresolved reference 'end'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/ChatView.kt:718:19 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/ChatView.kt:721:22 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/ChatView.kt:722:33 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/ChatView.kt:723:19 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/ChatView.kt:724:19 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/ChatView.kt:738:19 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/ChatView.kt:739:21 Unresolved reference 'close'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/ChatView.kt:744:131 Unresolved reference 'end'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/ChatView.kt:745:132 Unresolved reference 'end'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/ChatView.kt:816:24 Unresolved reference 'end'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/ChatView.kt:829:24 Unresolved reference 'end'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/ChatView.kt:1159:171 Unresolved reference 'end'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/ChatView.kt:1178:67 Unresolved reference 'end'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/ChatView.kt:1925:24 Unresolved reference 'end'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/ChatView.kt:3017:90 Unresolved reference 'end'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/ChatView.kt:3267:18 Unresolved reference 'end'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/ChatView.kt:3267:61 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/ChatView.kt:3268:7 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/ChatView.kt:3278:18 Unresolved reference 'end'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/ChatView.kt:3279:7 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/ComposeContextPendingMemberActionsView.kt:48:91 Unresolved reference 'end'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/ComposeContextPendingMemberActionsView.kt:62:80 Unresolved reference 'end'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/ComposeContextProfilePickerView.kt:199:30 Unresolved reference 'end'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/ComposeContextProfilePickerView.kt:200:28 Unresolved reference 'end'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/ComposeContextProfilePickerView.kt:202:28 Unresolved reference 'end'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/ComposeContextProfilePickerView.kt:202:92 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/VerifyCodeView.kt:112:26 Unresolved reference 'end'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/VerifyCodeView.kt:113:15 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/group/AddGroupMembersView.kt:53:20 Unresolved reference 'end'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/group/AddGroupMembersView.kt:53:42 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/group/AddGroupMembersView.kt:54:9 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/group/AddGroupMembersView.kt:58:20 Unresolved reference 'end'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/group/AddGroupMembersView.kt:58:42 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/group/AddGroupMembersView.kt:59:9 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/group/ChannelRelaysView.kt:115:24 Unresolved reference 'end'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/group/ChannelRelaysView.kt:115:86 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/group/ChannelRelaysView.kt:116:13 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/group/GroupChatInfoView.kt:120:24 Unresolved reference 'end'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/group/GroupChatInfoView.kt:120:67 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/group/GroupChatInfoView.kt:121:13 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/group/GroupChatInfoView.kt:135:24 Unresolved reference 'end'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/group/GroupChatInfoView.kt:135:86 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/group/GroupChatInfoView.kt:136:13 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/group/GroupChatInfoView.kt:136:99 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/group/GroupChatInfoView.kt:137:15 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/group/GroupChatInfoView.kt:138:17 Unresolved reference 'closeCurrent'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/group/GroupChatInfoView.kt:146:22 Unresolved reference 'end'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/group/GroupChatInfoView.kt:146:44 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/group/GroupChatInfoView.kt:146:53 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/group/GroupChatInfoView.kt:149:22 Unresolved reference 'end'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/group/GroupChatInfoView.kt:149:44 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/group/GroupChatInfoView.kt:149:53 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/group/GroupChatInfoView.kt:152:22 Unresolved reference 'end'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/group/GroupChatInfoView.kt:152:44 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/group/GroupChatInfoView.kt:153:11 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/group/GroupChatInfoView.kt:163:22 Unresolved reference 'end'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/group/GroupChatInfoView.kt:163:44 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/group/GroupChatInfoView.kt:164:11 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/group/GroupChatInfoView.kt:176:24 Unresolved reference 'end'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/group/GroupChatInfoView.kt:176:59 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/group/GroupChatInfoView.kt:179:24 Unresolved reference 'end'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/group/GroupChatInfoView.kt:179:46 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/group/GroupChatInfoView.kt:179:55 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/group/GroupChatInfoView.kt:182:24 Unresolved reference 'end'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/group/GroupChatInfoView.kt:182:46 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/group/GroupChatInfoView.kt:184:13 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/group/GroupChatInfoView.kt:237:28 Unresolved reference 'end'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/group/GroupChatInfoView.kt:535:38 Unresolved reference 'closeAllModalsEverywhere'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/group/GroupChatInfoView.kt:647:28 Unresolved reference 'closeAllModalsEverywhere'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/group/GroupChatInfoView.kt:737:24 Unresolved reference 'end'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/group/GroupChatInfoView.kt:738:24 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/group/GroupChatInfoView.kt:741:15 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/group/GroupChatInfoView.kt:1305:22 Unresolved reference 'end'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/group/GroupChatInfoView.kt:1305:53 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/group/GroupChatInfoView.kt:1306:11 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/group/GroupChatInfoView.kt:1306:11 Unresolved reference. None of the following candidates is applicable because of a receiver type mismatch:
+fun ModalData.ChannelMembersView(rhId: Long?, groupInfo: GroupInfo, chatModel: ChatModel, close: () -> Unit, showMemberInfo: (GroupMember) -> Unit): Unit
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/group/GroupChatInfoView.kt:1322:22 Unresolved reference 'end'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/group/GroupChatInfoView.kt:1322:53 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/group/GroupChatInfoView.kt:1323:11 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/group/GroupLinkView.kt:273:30 Unresolved reference 'closeAllModalsEverywhere'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/group/GroupMemberInfoView.kt:59:18 Unresolved reference 'end'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/group/GroupMemberInfoView.kt:208:22 Unresolved reference 'end'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/group/GroupMemberInfoView.kt:208:47 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/group/GroupMemberInfoView.kt:209:11 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/group/GroupMemberInfoView.kt:209:97 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/group/GroupMemberInfoView.kt:210:13 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/group/GroupMemberInfoView.kt:990:63 Unresolved reference 'closeAllModalsEverywhere'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/group/GroupPreferences.kt:83:22 Unresolved reference 'end'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/group/GroupPreferences.kt:83:44 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/group/GroupPreferences.kt:84:11 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/group/GroupReportsView.kt:82:16 Unresolved reference 'end'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/group/GroupReportsView.kt:82:77 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/group/GroupReportsView.kt:83:5 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/group/GroupReportsView.kt:89:11 Unresolved reference 'close'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/group/MemberSupportChatView.kt:31:18 Unresolved reference 'end'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/group/MemberSupportChatView.kt:88:24 Unresolved reference 'end'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/group/MemberSupportChatView.kt:88:86 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/group/MemberSupportChatView.kt:89:13 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/group/MemberSupportChatView.kt:89:105 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/group/MemberSupportChatView.kt:90:15 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/group/MemberSupportChatView.kt:91:17 Unresolved reference 'closeCurrent'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/group/MemberSupportChatView.kt:158:16 Unresolved reference 'end'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/group/MemberSupportChatView.kt:158:77 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/group/MemberSupportChatView.kt:159:5 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/group/MemberSupportChatView.kt:164:11 Unresolved reference 'close'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/group/MemberSupportView.kt:42:18 Unresolved reference 'end'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/item/CIInvalidJSONView.kt:24:20 Unresolved reference 'center'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/item/CIInvalidJSONView.kt:25:20 Unresolved reference 'end'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/item/CIInvalidJSONView.kt:26:20 Unresolved reference 'center'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/item/CIInvalidJSONView.kt:26:58 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/item/CIInvalidJSONView.kt:26:105 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/item/CIVideoView.kt:76:28 Unresolved reference 'showCustomModal'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/item/CIVideoView.kt:78:22 Unresolved reference 'fullscreen'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/item/CIVideoView.kt:78:69 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/item/CIVideoView.kt:79:11 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/item/ChatItemView.kt:1377:45 Unresolved reference 'end'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/item/ChatItemView.kt:1378:18 Unresolved reference 'end'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/item/TextItemView.kt:54:16 Unresolved reference 'end'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/item/TextItemView.kt:54:41 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/item/TextItemView.kt:55:5 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/ChatListNavLinkView.kt:396:20 Unresolved reference 'start'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/ChatListNavLinkView.kt:396:47 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/ChatListNavLinkView.kt:398:11 Unresolved reference 'TagListEditor'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/ChatListNavLinkView.kt:400:11 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/ChatListNavLinkView.kt:584:20 Unresolved reference 'center'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/ChatListNavLinkView.kt:585:20 Unresolved reference 'end'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/ChatListNavLinkView.kt:586:20 Unresolved reference 'center'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/ChatListNavLinkView.kt:586:119 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/ChatListNavLinkView.kt:587:9 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/ChatListNavLinkView.kt:811:26 Unresolved reference 'end'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/ChatListNavLinkView.kt:934:22 Unresolved reference 'end'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/ChatListView.kt:67:16 Unresolved reference 'start'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/ChatListView.kt:68:16 Unresolved reference 'end'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/ChatListView.kt:70:16 Unresolved reference 'start'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/ChatListView.kt:70:40 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/ChatListView.kt:71:17 Unresolved reference 'close'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/ChatListView.kt:75:7 Unresolved reference 'close'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/ChatListView.kt:77:5 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/ChatListView.kt:83:7 Unresolved reference. None of the following candidates is applicable because of a receiver type mismatch:
+fun ModalData.NewChatSheet(rh: RemoteHostInfo?, close: () -> Unit): Unit
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/ChatListView.kt:190:20 Unresolved reference 'center'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/ChatListView.kt:190:45 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/ChatListView.kt:190:54 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/ChatListView.kt:190:54 Unresolved reference. None of the following candidates is applicable because of a receiver type mismatch:
+fun ModalData.WhatsNewView(updatedConditions: Boolean = ..., viaSettings: Boolean = ..., close: () -> Unit): Unit
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/ChatListView.kt:196:59 Unresolved reference 'end'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/ChatListView.kt:197:22 Unresolved reference 'end'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/ChatListView.kt:352:24 Unresolved reference 'start'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/ChatListView.kt:352:51 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/ChatListView.kt:353:13 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/ChatListView.kt:353:13 Unresolved reference. None of the following candidates is applicable because of a receiver type mismatch:
+fun ModalData.NewChatView(rh: RemoteHostInfo?, selection: NewChatOption, showQRCodeScanner: Boolean = ..., onboarding: Boolean = ..., close: () -> Unit): Unit
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/ChatListView.kt:390:24 Unresolved reference 'start'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/ChatListView.kt:390:51 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/ChatListView.kt:391:13 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/ChatListView.kt:391:13 Unresolved reference. None of the following candidates is applicable because of a receiver type mismatch:
+fun ModalData.NewChatView(rh: RemoteHostInfo?, selection: NewChatOption, showQRCodeScanner: Boolean = ..., onboarding: Boolean = ..., close: () -> Unit): Unit
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/ChatListView.kt:615:24 Unresolved reference 'start'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/ChatListView.kt:615:70 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/ChatListView.kt:616:13 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/ChatListView.kt:650:28 Unresolved reference 'start'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/ChatListView.kt:652:28 Unresolved reference 'start'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/ChatListView.kt:655:21 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/ChatListView.kt:664:19 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/ChatListView.kt:664:19 Unresolved reference. None of the following candidates is applicable because of a receiver type mismatch:
+fun ModalData.ServersSummaryView(rh: RemoteHostInfo?, serversSummary: MutableState<PresentedServersSummary?>): Unit
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/ChatListView.kt:700:88 Unresolved reference 'start'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/ChatListView.kt:700:127 Unresolved reference 'fullscreen'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/ChatListView.kt:794:56 Unresolved reference 'closeAllModalsEverywhere'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/ChatListView.kt:893:53 Null cannot be a value of a non-null type 'Set<String>'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/ChatListView.kt:894:21 Unresolved reference 'link'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/ChatListView.kt:895:13 Syntax error: Unexpected tokens (use ';' to separate expressions on the same line).
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/ChatListView.kt:896:17 Unresolved reference 'it'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/ChatListView.kt:904:27 Suspension functions can only be called within coroutine body.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/ChatListView.kt:908:53 Null cannot be a value of a non-null type 'Set<String>'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/ChatListView.kt:914:22 Unresolved reference 'align'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/ChatListView.kt:916:1 Syntax error: Expecting a top level declaration.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/ChatListView.kt:1081:49 Unresolved reference 'start'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/ChatListView.kt:1376:20 Unresolved reference 'start'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/ChatListView.kt:1376:47 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/ChatListView.kt:1377:9 Unresolved reference 'TagListEditor'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/GetStakeBanner.kt:77:90 Unresolved reference 'center'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/ServersSummaryView.kt:181:20 Unresolved reference 'start'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/ServersSummaryView.kt:181:44 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/ServersSummaryView.kt:182:9 Unresolved reference 'SMPServerSummaryView'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/ServersSummaryView.kt:255:20 Unresolved reference 'start'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/ServersSummaryView.kt:255:44 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/ServersSummaryView.kt:256:9 Unresolved reference 'XFTPServerSummaryView'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/ServersSummaryView.kt:308:22 Unresolved reference 'start'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/ServersSummaryView.kt:308:46 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/ServersSummaryView.kt:308:55 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/ServersSummaryView.kt:308:55 Unresolved reference. None of the following candidates is applicable because of a receiver type mismatch:
+fun ModalData.DetailedSMPStatsView(rh: RemoteHostInfo?, close: () -> Unit, stats: AgentSMPServerStatsData, statsStartedAt: Instant): Unit
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/ServersSummaryView.kt:430:22 Unresolved reference 'start'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/ServersSummaryView.kt:430:46 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/ServersSummaryView.kt:430:55 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/ServersSummaryView.kt:430:55 Unresolved reference. None of the following candidates is applicable because of a receiver type mismatch:
+fun ModalData.DetailedXFTPStatsView(rh: RemoteHostInfo?, close: () -> Unit, stats: AgentXFTPServerStatsData, statsStartedAt: Instant): Unit
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/ShareListView.kt:110:24 Unresolved reference 'start'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/ShareListView.kt:110:75 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/ShareListView.kt:111:26 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/ShareListView.kt:112:13 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/ShareListView.kt:113:17 Unresolved reference 'close'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/TagListView.kt:85:22 Unresolved reference 'start'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/TagListView.kt:85:49 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/TagListView.kt:86:11 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/TagListView.kt:86:11 Unresolved reference. None of the following candidates is applicable because of a receiver type mismatch:
+fun ModalData.TagListEditor(rhId: Long?, chat: Chat? = ..., tagId: Long? = ..., emoji: String? = ..., name: String = ..., close: () -> Unit): Unit
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/TagListView.kt:119:36 Unresolved reference 'start'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/TagListView.kt:119:63 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/TagListView.kt:120:25 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/TagListView.kt:120:25 Unresolved reference. None of the following candidates is applicable because of a receiver type mismatch:
+fun ModalData.TagListEditor(rhId: Long?, chat: Chat? = ..., tagId: Long? = ..., emoji: String? = ..., name: String = ..., close: () -> Unit): Unit
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/TagListView.kt:325:20 Unresolved reference 'start'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/TagListView.kt:325:47 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/TagListView.kt:326:9 Unresolved reference 'TagListEditor'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/TagListView.kt:346:20 Unresolved reference 'start'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/TagListView.kt:346:47 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/TagListView.kt:347:9 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/UserPicker.kt:88:7 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/UserPicker.kt:88:35 Unresolved reference 'start'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/UserPicker.kt:89:10 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/UserPicker.kt:89:10 Not enough information to infer type argument for 'T'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/UserPicker.kt:89:17 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/UserPicker.kt:89:22 'operator' modifier is required on 'FirNamedFunctionSymbol kotlin/compareTo' in 'compareTo'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/UserPicker.kt:90:18 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/UserPicker.kt:157:22 Unresolved reference 'start'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/UserPicker.kt:157:46 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/UserPicker.kt:157:55 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/UserPicker.kt:157:76 No value passed for parameter 'p3'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/UserPicker.kt:166:26 Unresolved reference 'closeAllModalsEverywhere'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/UserPicker.kt:258:28 Unresolved reference 'center'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/UserPicker.kt:258:56 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/UserPicker.kt:259:17 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/UserPicker.kt:262:17 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/UserPicker.kt:272:26 Unresolved reference 'start'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/UserPicker.kt:272:77 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/UserPicker.kt:273:28 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/UserPicker.kt:274:35 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/UserPicker.kt:275:32 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/UserPicker.kt:275:32 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/UserPicker.kt:275:43 Unresolved reference 'stateGetOrPut'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/UserPicker.kt:276:15 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/UserPicker.kt:277:19 Unresolved reference 'close'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/UserPicker.kt:285:38 Unresolved reference 'value'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/UserPicker.kt:292:38 Unresolved reference 'value'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/UserPicker.kt:361:22 Unresolved reference 'start'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/UserPicker.kt:361:46 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/UserPicker.kt:362:11 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/UserPicker.kt:373:22 Unresolved reference 'start'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/UserPicker.kt:374:11 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/UserPicker.kt:383:20 Unresolved reference 'start'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/UserPicker.kt:383:66 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/UserPicker.kt:384:9 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/UserPicker.kt:669:20 Unresolved reference 'closeAllModalsEverywhere'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/contacts/ContactListNavView.kt:21:22 Unresolved reference 'start'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/contacts/ContactListNavView.kt:59:46 Unresolved reference 'start'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/contacts/ContactListNavView.kt:67:56 Unresolved reference 'start'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/database/DatabaseView.kt:86:22 Unresolved reference 'start'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/database/DatabaseView.kt:86:59 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/database/DatabaseView.kt:235:34 Unresolved reference 'start'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/database/DatabaseView.kt:235:71 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/database/DatabaseView.kt:253:28 Unresolved reference 'start'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/database/DatabaseView.kt:254:17 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/database/DatabaseView.kt:420:22 Unresolved reference 'closeAllModalsEverywhere'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/database/DatabaseView.kt:425:22 Unresolved reference 'closeAllModalsEverywhere'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/database/DatabaseView.kt:497:22 Unresolved reference 'end'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/helpers/ChatInfoImage.kt:8:38 Conflicting import: imported name 'FontWeight' is ambiguous.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/helpers/ChatInfoImage.kt:32:38 Conflicting import: imported name 'FontWeight' is ambiguous.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/helpers/LocalAuthentication.kt:49:16 Unresolved reference 'fullscreen'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/helpers/LocalAuthentication.kt:49:62 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/helpers/LocalAuthentication.kt:50:5 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/helpers/LocalAuthentication.kt:51:7 Unresolved reference 'close'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/helpers/LocalAuthentication.kt:54:5 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/helpers/LocalAuthentication.kt:54:59 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/helpers/LocalAuthentication.kt:54:120 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/helpers/LocalAuthentication.kt:56:9 Unresolved reference 'close'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/helpers/ModalView.kt:168:7 Unresolved reference 'runAtomically'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/helpers/ModalView.kt:207:11 Unresolved reference 'runAtomically'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/helpers/ModalView.kt:249:11 Unresolved reference 'runAtomically'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/helpers/ModalView.kt:276:7 This annotation is not applicable to target 'expression'. Applicable targets: function, type usage, type parameter, getter
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/helpers/ModalView.kt:276:19 None of the following candidates is applicable:
+fun <T : TransitionEffect> EnterTransition.get(key: TransitionEffectKey<T>): T?
+fun <T : TransitionEffect> ExitTransition.get(key: TransitionEffectKey<T>): T?
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/helpers/ModalView.kt:276:19 Variable expected.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/helpers/ModalView.kt:288:19 Unresolved reference 'runAtomically'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/helpers/ModalView.kt:322:29 Unresolved reference 'fromEndToStartTransition'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/helpers/ModalView.kt:324:29 Unresolved reference 'fromStartToEndTransition'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/helpers/ModalView.kt:335:13 Unresolved reference 'runAtomically'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/helpers/ModalView.kt:353:7 Modifier 'private' is not applicable to 'local function'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/helpers/ModalView.kt:363:7 Unresolved reference 'companion'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/helpers/ModalView.kt:363:16 Syntax error: Unexpected tokens (use ';' to separate expressions on the same line).
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/helpers/ModalView.kt:402:2 Syntax error: Expecting '}'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/helpers/SearchTextField.kt:56:43 Unresolved reference 'start'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/helpers/SearchTextField.kt:58:9 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/helpers/SearchTextField.kt:58:37 Unresolved reference 'start'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/helpers/SearchTextField.kt:59:12 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/helpers/SearchTextField.kt:59:12 Not enough information to infer type argument for 'T'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/helpers/SearchTextField.kt:59:19 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/helpers/SearchTextField.kt:59:24 'operator' modifier is required on 'FirNamedFunctionSymbol kotlin/text/compareTo' in 'compareTo'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/helpers/SearchTextField.kt:60:20 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/helpers/Section.kt:2:48 Conflicting import: imported name 'MutableInteractionSource' is ambiguous.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/helpers/Section.kt:30:48 Conflicting import: imported name 'MutableInteractionSource' is ambiguous.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/helpers/ThemeModeEditor.kt:281:20 Unresolved reference 'end'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/helpers/ThemeModeEditor.kt:282:29 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/helpers/ThemeModeEditor.kt:282:77 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/helpers/ThemeModeEditor.kt:303:25 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/helpers/ThemeModeEditor.kt:306:25 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/localauth/LocalAuthView.kt:93:20 Unresolved reference 'closeAllModalsEverywhere'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/migration/MigrateFromDevice.kt:641:22 Unresolved reference 'fullscreen'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/migration/MigrateFromDevice.kt:672:18 Unresolved reference 'fullscreen'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/newchat/AddChannelView.kt:70:26 Unresolved reference 'end'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/newchat/AddChannelView.kt:70:88 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/newchat/AddChannelView.kt:71:15 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/newchat/AddChannelView.kt:321:26 Unresolved reference 'start'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/newchat/AddChannelView.kt:321:50 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/newchat/AddChannelView.kt:322:15 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/newchat/AddChannelView.kt:322:15 Unresolved reference. None of the following candidates is applicable because of a receiver type mismatch:
+fun ModalData.NetworkAndServersView(closeNetworkAndServers: () -> Unit): Unit
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/newchat/AddChannelView.kt:569:22 Unresolved reference 'start'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/newchat/AddGroupView.kt:56:26 Unresolved reference 'end'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/newchat/AddGroupView.kt:56:69 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/newchat/AddGroupView.kt:57:15 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/newchat/AddGroupView.kt:60:26 Unresolved reference 'end'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/newchat/AddGroupView.kt:60:88 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/newchat/AddGroupView.kt:61:15 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/newchat/AddGroupView.kt:170:68 Unresolved reference 'start'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/newchat/AddGroupView.kt:170:86 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/newchat/ConnectPlan.kt:717:20 Unresolved reference 'closeAllModalsEverywhere'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/newchat/ContactConnectionInfoView.kt:53:25 Unresolved reference 'center'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/newchat/ContactConnectionInfoView.kt:69:20 Unresolved reference 'end'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/newchat/ContactConnectionInfoView.kt:69:45 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/newchat/ContactConnectionInfoView.kt:70:9 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/newchat/ContactConnectionInfoView.kt:93:32 Unresolved reference 'end'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/newchat/ContactConnectionInfoView.kt:93:48 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/newchat/NewChatSheet.kt:53:20 Unresolved reference 'closeModals'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/newchat/NewChatSheet.kt:53:35 Unresolved reference 'start'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/newchat/NewChatSheet.kt:58:24 Unresolved reference 'start'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/newchat/NewChatSheet.kt:58:64 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/newchat/NewChatSheet.kt:58:97 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/newchat/NewChatSheet.kt:58:102 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/newchat/NewChatSheet.kt:61:24 Unresolved reference 'start'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/newchat/NewChatSheet.kt:61:64 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/newchat/NewChatSheet.kt:61:97 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/newchat/NewChatSheet.kt:61:102 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/newchat/NewChatSheet.kt:64:24 Unresolved reference 'start'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/newchat/NewChatSheet.kt:64:48 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/newchat/NewChatSheet.kt:64:57 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/newchat/NewChatSheet.kt:67:24 Unresolved reference 'start'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/newchat/NewChatSheet.kt:67:48 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/newchat/NewChatSheet.kt:67:57 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/newchat/NewChatSheet.kt:232:28 Unresolved reference 'start'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/newchat/NewChatSheet.kt:232:52 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/newchat/NewChatSheet.kt:233:17 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/newchat/NewChatSheet.kt:241:34 Unresolved reference 'start'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/newchat/NewChatView.kt:76:69 Unresolved reference 'start'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/newchat/NewChatView.kt:91:32 Unresolved reference 'start'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/newchat/NewChatView.kt:255:36 Unresolved reference 'start'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/newchat/NewChatView.kt:255:54 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/newchat/NewChatView.kt:403:31 Unresolved reference 'start'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/newchat/NewChatView.kt:403:49 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/newchat/NewChatView.kt:533:24 Unresolved reference 'start'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/newchat/NewChatView.kt:533:75 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/newchat/NewChatView.kt:534:26 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/newchat/NewChatView.kt:535:13 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/newchat/NewChatView.kt:536:17 Unresolved reference 'close'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/newchat/NewChatView.kt:614:20 Unresolved reference 'start'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/newchat/NewChatView.kt:614:47 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/newchat/NewChatView.kt:615:9 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/newchat/OnboardingCards.kt:444:63 Unresolved reference 'start'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/newchat/OnboardingCards.kt:448:20 Unresolved reference 'start'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/newchat/OnboardingCards.kt:486:58 Unresolved reference 'start'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/newchat/OnboardingCards.kt:486:85 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/newchat/OnboardingCards.kt:487:47 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/newchat/OnboardingCards.kt:487:47 Unresolved reference. None of the following candidates is applicable because of a receiver type mismatch:
+fun ModalData.NewChatView(rh: RemoteHostInfo?, selection: NewChatOption, showQRCodeScanner: Boolean = ..., onboarding: Boolean = ..., close: () -> Unit): Unit
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/newchat/OnboardingCards.kt:508:58 Unresolved reference 'start'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/newchat/OnboardingCards.kt:508:85 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/newchat/OnboardingCards.kt:509:47 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/newchat/OnboardingCards.kt:509:47 Unresolved reference. None of the following candidates is applicable because of a receiver type mismatch:
+fun ModalData.NewChatView(rh: RemoteHostInfo?, selection: NewChatOption, showQRCodeScanner: Boolean = ..., onboarding: Boolean = ..., close: () -> Unit): Unit
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/newchat/OnboardingCards.kt:523:58 Unresolved reference 'start'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/newchat/OnboardingCards.kt:523:85 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/newchat/OnboardingCards.kt:524:47 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/onboarding/ChooseServerOperators.kt:115:61 Unresolved reference 'fullscreen'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/onboarding/ChooseServerOperators.kt:115:97 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/onboarding/ChooseServerOperators.kt:116:50 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/onboarding/ChooseServerOperators.kt:117:65 Unresolved reference 'fullscreen'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/onboarding/ChooseServerOperators.kt:184:35 Unresolved reference 'fullscreen'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/onboarding/ChooseServerOperators.kt:184:93 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/onboarding/ChooseServerOperators.kt:185:24 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/onboarding/ChooseServerOperators.kt:186:39 Unresolved reference 'fullscreen'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/onboarding/ChooseServerOperators.kt:279:64 Unresolved reference 'fullscreen'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/onboarding/ChooseServerOperators.kt:279:87 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/onboarding/ChooseServerOperators.kt:346:68 Unresolved reference 'fullscreen'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/onboarding/ChooseServerOperators.kt:346:91 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/onboarding/ChooseServerOperators.kt:559:20 Unresolved reference 'fullscreen'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/onboarding/ChooseServerOperators.kt:559:52 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/onboarding/ChooseServerOperators.kt:560:9 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/onboarding/HowItWorks.kt:45:80 Unresolved reference 'fullscreen'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/onboarding/OnboardingLayout.kt:148:26 Unresolved reference 'fullscreen'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/onboarding/OnboardingLayout.kt:203:26 Unresolved reference 'fullscreen'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/onboarding/SetNotificationsMode.kt:35:38 Unresolved reference 'fullscreen'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/onboarding/SetNotificationsMode.kt:35:70 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/onboarding/SimpleXInfo.kt:106:65 Unresolved reference 'fullscreen'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/onboarding/SimpleXInfo.kt:107:20 Unresolved reference 'fullscreen'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/onboarding/SimpleXInfo.kt:107:67 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/onboarding/SimpleXInfo.kt:107:76 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/onboarding/SimpleXInfo.kt:107:76 Unresolved reference. None of the following candidates is applicable because of a receiver type mismatch:
+fun ModalData.MigrateToDeviceView(close: () -> Unit): Unit
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/onboarding/SimpleXInfo.kt:288:65 Unresolved reference 'fullscreen'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/onboarding/SimpleXInfo.kt:289:20 Unresolved reference 'fullscreen'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/onboarding/SimpleXInfo.kt:289:67 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/onboarding/SimpleXInfo.kt:289:76 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/onboarding/SimpleXInfo.kt:289:76 Unresolved reference. None of the following candidates is applicable because of a receiver type mismatch:
+fun ModalData.MigrateToDeviceView(close: () -> Unit): Unit
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/onboarding/SimpleXInfo.kt:645:66 Unresolved reference 'fullscreen'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/onboarding/SimpleXInfo.kt:645:89 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/onboarding/WhatsNewView.kt:178:56 Unresolved reference 'start'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/onboarding/WhatsNewView.kt:178:80 Unresolved reference 'center'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/onboarding/WhatsNewView.kt:206:28 Unresolved reference 'showModalCloseable'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/onboarding/WhatsNewView.kt:206:49 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/onboarding/WhatsNewView.kt:207:17 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/onboarding/WhatsNewView.kt:1019:19 Unresolved reference 'center'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/onboarding/WhatsNewView.kt:1210:18 Unresolved reference 'fullscreen'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/onboarding/WhatsNewView.kt:1210:47 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/onboarding/WhatsNewView.kt:1211:7 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/onboarding/WhatsNewView.kt:1212:7 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/onboarding/WhatsNewView.kt:1216:42 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/onboarding/YourNetwork.kt:104:56 Unresolved reference 'fullscreen'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/onboarding/YourNetwork.kt:104:85 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/onboarding/YourNetwork.kt:105:45 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/onboarding/YourNetwork.kt:105:45 Unresolved reference. None of the following candidates is applicable because of a receiver type mismatch:
+fun ModalData.ChooseServerOperators(serverOperators: State<List<ServerOperator>>, selectedOperatorIds: MutableState<Set<Long>>, close: () -> Unit): Unit
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/onboarding/YourNetwork.kt:109:56 Unresolved reference 'fullscreen'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/onboarding/YourNetwork.kt:109:88 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/onboarding/YourNetwork.kt:110:45 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/onboarding/YourNetwork.kt:180:30 Unresolved reference 'fullscreen'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/onboarding/YourNetwork.kt:180:81 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/onboarding/YourNetwork.kt:181:19 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/onboarding/YourNetwork.kt:181:19 Unresolved reference. None of the following candidates is applicable because of a receiver type mismatch:
+fun ModalData.ChooseServerOperators(serverOperators: State<List<ServerOperator>>, selectedOperatorIds: MutableState<Set<Long>>, close: () -> Unit): Unit
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/remote/ConnectDesktopView.kt:355:36 Unresolved reference 'start'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/remote/ConnectDesktopView.kt:355:54 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/remote/ConnectMobileView.kt:263:16 Unresolved reference 'start'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/remote/ConnectMobileView.kt:263:43 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/remote/ConnectMobileView.kt:264:5 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/remote/ConnectMobileView.kt:264:30 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/remote/ConnectMobileView.kt:351:16 Unresolved reference 'start'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/remote/ConnectMobileView.kt:351:43 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/remote/ConnectMobileView.kt:352:20 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/remote/ConnectMobileView.kt:353:25 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/remote/ConnectMobileView.kt:354:22 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/remote/ConnectMobileView.kt:355:31 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/remote/ConnectMobileView.kt:356:28 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/remote/ConnectMobileView.kt:378:19 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/remote/ConnectMobileView.kt:384:30 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/remote/ConnectMobileView.kt:388:5 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/remote/ConnectMobileView.kt:389:46 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/remote/ConnectMobileView.kt:389:95 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/remote/ConnectMobileView.kt:404:5 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/remote/ConnectMobileView.kt:404:20 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/remote/ConnectMobileView.kt:406:9 Unresolved reference 'close'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/remote/ConnectMobileView.kt:409:5 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/remote/ConnectMobileView.kt:411:9 Unresolved reference 'close'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/remote/ConnectMobileView.kt:414:5 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/remote/ConnectMobileView.kt:431:16 Unresolved reference 'start'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/remote/ConnectMobileView.kt:431:43 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/remote/ConnectMobileView.kt:436:5 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/remote/ConnectMobileView.kt:449:5 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/remote/ConnectMobileView.kt:449:21 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/remote/ConnectMobileView.kt:450:7 Unresolved reference 'close'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/Appearance.kt:607:24 Unresolved reference 'start'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/Appearance.kt:608:43 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/Appearance.kt:611:13 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/Appearance.kt:614:24 Unresolved reference 'start'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/Appearance.kt:614:70 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/Appearance.kt:615:13 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/Appearance.kt:615:13 Unresolved reference. None of the following candidates is applicable because of a receiver type mismatch:
+fun ModalData.UserWallpaperEditorModal(remoteHostId: Long?, userId: Long, close: () -> Unit): Unit
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/Appearance.kt:803:20 Unresolved reference 'start'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/Appearance.kt:804:39 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/Appearance.kt:805:54 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/Appearance.kt:805:140 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/Appearance.kt:806:48 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/Appearance.kt:810:47 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/Appearance.kt:811:55 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/Appearance.kt:812:49 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/Appearance.kt:813:57 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/Appearance.kt:814:50 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/Appearance.kt:815:47 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/Appearance.kt:816:45 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/Appearance.kt:817:56 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/Appearance.kt:818:52 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/Appearance.kt:819:50 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/Appearance.kt:820:56 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/Appearance.kt:821:54 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/Appearance.kt:823:9 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/Appearance.kt:823:66 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/Appearance.kt:920:28 Unresolved reference 'start'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/Appearance.kt:1029:11 Unresolved reference 'SectionSpacer'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/DeveloperView.kt:32:161 Unresolved reference 'start'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/DeveloperView.kt:32:188 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/NotificationsSettingsView.kt:30:20 Unresolved reference 'start'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/NotificationsSettingsView.kt:31:9 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/PrivacySettings.kt:174:24 Unresolved reference 'start'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/PrivacySettings.kt:175:13 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/PrivacySettings.kt:532:28 Unresolved reference 'fullscreen'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/PrivacySettings.kt:532:57 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/PrivacySettings.kt:533:17 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/PrivacySettings.kt:533:71 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/PrivacySettings.kt:533:132 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/PrivacySettings.kt:560:26 Unresolved reference 'fullscreen'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/PrivacySettings.kt:560:55 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/PrivacySettings.kt:561:15 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/PrivacySettings.kt:576:24 Unresolved reference 'fullscreen'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/PrivacySettings.kt:576:53 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/PrivacySettings.kt:577:13 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/PrivacySettings.kt:577:67 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/PrivacySettings.kt:577:128 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/PrivacySettings.kt:600:24 Unresolved reference 'fullscreen'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/PrivacySettings.kt:600:53 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/PrivacySettings.kt:601:13 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/PrivacySettings.kt:601:67 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/PrivacySettings.kt:601:128 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/PrivacySettings.kt:635:28 Unresolved reference 'fullscreen'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/PrivacySettings.kt:635:57 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/PrivacySettings.kt:636:17 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/PrivacySettings.kt:636:71 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/PrivacySettings.kt:636:132 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/PrivacySettings.kt:684:24 Unresolved reference 'showModal'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/PrivacySettings.kt:685:24 Unresolved reference 'start'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/PrivacySettings.kt:686:13 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/SetSimplexNameView.kt:128:40 Unresolved reference 'start'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/SettingsView.kt:43:108 Unresolved reference 'start'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/SettingsView.kt:43:162 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/SettingsView.kt:49:47 Unresolved reference 'start'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/SettingsView.kt:49:65 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/SettingsView.kt:52:20 Unresolved reference 'start'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/SettingsView.kt:52:44 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/SettingsView.kt:53:22 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/SettingsView.kt:54:9 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/SettingsView.kt:63:53 Unresolved reference 'start'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/SettingsView.kt:63:77 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/SettingsView.kt:63:86 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/SettingsView.kt:63:107 No value passed for parameter 'p3'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/SettingsView.kt:65:20 Unresolved reference 'start'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/SettingsView.kt:65:57 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/SettingsView.kt:108:286 Unresolved reference 'fullscreen'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/SettingsView.kt:108:315 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/SettingsView.kt:108:324 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/SettingsView.kt:128:26 Unresolved reference 'start'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/SettingsView.kt:128:72 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/SettingsView.kt:128:81 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/SettingsView.kt:448:18 Unresolved reference 'fullscreen'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/SettingsView.kt:448:50 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/SettingsView.kt:451:11 Unresolved reference 'close'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/SettingsView.kt:456:7 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/SettingsView.kt:462:7 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/SettingsView.kt:462:37 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/SettingsView.kt:462:98 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/UserAddressLearnMore.kt:63:26 Unresolved reference 'start'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/UserAddressLearnMore.kt:63:53 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/UserAddressLearnMore.kt:64:15 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/UserAddressLearnMore.kt:64:128 Unresolved reference 'start'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/UserAddressLearnMore.kt:74:24 Unresolved reference 'closeModals'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/UserAddressLearnMore.kt:74:39 Unresolved reference 'start'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/UserAddressLearnMore.kt:77:26 Unresolved reference 'start'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/UserAddressLearnMore.kt:77:66 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/UserAddressLearnMore.kt:77:99 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/UserAddressLearnMore.kt:78:15 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/UserAddressLearnMore.kt:78:15 Unresolved reference. None of the following candidates is applicable because of a receiver type mismatch:
+fun ModalData.NewChatView(rh: RemoteHostInfo?, selection: NewChatOption, showQRCodeScanner: Boolean = ..., onboarding: Boolean = ..., close: () -> Unit): Unit
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/UserAddressView.kt:135:22 Unresolved reference 'start'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/UserAddressView.kt:136:11 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/UserAddressView.kt:359:34 Unresolved reference 'closeAllModalsEverywhere'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/UserAddressView.kt:362:30 Unresolved reference 'closeAllModalsEverywhere'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/UserAddressView.kt:381:30 Unresolved reference 'start'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/UserAddressView.kt:381:54 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/UserAddressView.kt:382:19 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/UserAddressView.kt:463:18 Unresolved reference 'closeModals'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/UserAddressView.kt:463:33 Unresolved reference 'start'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/UserAddressView.kt:468:37 Unresolved reference 'start'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/UserAddressView.kt:468:77 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/UserAddressView.kt:468:110 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/UserAddressView.kt:469:26 Unresolved reference 'NewChatView'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/UserAddressView.kt:509:37 Unresolved reference 'start'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/UserAddressView.kt:509:61 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/UserAddressView.kt:510:26 Unresolved reference 'UserAddressSettings'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/UserAddressView.kt:550:38 Unresolved reference 'start'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/UserProfileView.kt:121:42 Unresolved reference 'start'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/UserProfilesView.kt:51:22 Unresolved reference 'center'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/UserProfilesView.kt:51:50 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/UserProfilesView.kt:52:11 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/UserProfilesView.kt:58:22 Unresolved reference 'center'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/UserProfilesView.kt:59:22 Unresolved reference 'end'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/UserProfilesView.kt:102:24 Unresolved reference 'start'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/UserProfilesView.kt:102:57 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/UserProfilesView.kt:103:13 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/UserProfilesView.kt:106:17 Unresolved reference 'close'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/UserProfilesView.kt:131:22 Unresolved reference 'start'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/UserProfilesView.kt:131:55 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/UserProfilesView.kt:132:11 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/UserProfilesView.kt:138:13 Unresolved reference 'close'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/UserProfilesView.kt:145:18 Unresolved reference 'start'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/UserProfilesView.kt:332:18 Unresolved reference 'start'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/UserProfilesView.kt:332:51 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/UserProfilesView.kt:333:7 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/UserProfilesView.kt:336:11 Unresolved reference 'close'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/UserProfilesView.kt:361:26 Unresolved reference 'closeAllModalsEverywhere'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/networkAndServers/NetworkAndServers.kt:85:38 Unresolved reference 'start'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/networkAndServers/NetworkAndServers.kt:191:30 Unresolved reference 'start'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/networkAndServers/NetworkAndServers.kt:191:70 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/networkAndServers/NetworkAndServers.kt:191:98 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/networkAndServers/NetworkAndServers.kt:192:9 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/networkAndServers/NetworkAndServers.kt:208:21 Unresolved reference 'showModal'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/networkAndServers/NetworkAndServers.kt:208:76 Unresolved reference 'start'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/networkAndServers/NetworkAndServers.kt:209:27 Unresolved reference 'showCustomModal'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/networkAndServers/NetworkAndServers.kt:209:89 Unresolved reference 'start'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/networkAndServers/NetworkAndServers.kt:209:113 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/networkAndServers/NetworkAndServers.kt:209:122 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/networkAndServers/NetworkAndServers.kt:237:24 Unresolved reference 'start'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/networkAndServers/NetworkAndServers.kt:238:13 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/networkAndServers/NetworkAndServers.kt:238:13 Unresolved reference. None of the following candidates is applicable because of a receiver type mismatch:
+fun ModalData.YourServersView(userServers: MutableState<List<UserOperatorServers>>, serverErrors: MutableState<List<UserServersError>>, serverWarnings: MutableState<List<UserServersWarning>>, operatorIndex: Int, rhId: Long?): Unit
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/networkAndServers/NetworkAndServers.kt:265:125 Unresolved reference 'start'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/networkAndServers/NetworkAndServers.kt:265:149 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/networkAndServers/NetworkAndServers.kt:265:149 Unresolved reference. None of the following candidates is applicable because of a receiver type mismatch:
+fun ModalData.AdvancedNetworkSettingsView(showModal: (@Composable() ComposableFunction1<ModalData, Unit>) -> Unit, close: () -> Unit): Unit
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/networkAndServers/NetworkAndServers.kt:265:188 Unresolved reference 'it'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/networkAndServers/NetworkAndServers.kt:303:139 Unresolved reference 'start'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/networkAndServers/NetworkAndServers.kt:303:157 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/networkAndServers/NetworkAndServers.kt:328:19 Unresolved reference 'showModal'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/networkAndServers/NetworkAndServers.kt:328:75 Unresolved reference 'fullscreen'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/networkAndServers/NetworkAndServers.kt:329:25 Unresolved reference 'showCustomModal'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/networkAndServers/NetworkAndServers.kt:329:87 Unresolved reference 'fullscreen'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/networkAndServers/NetworkAndServers.kt:329:116 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/networkAndServers/NetworkAndServers.kt:329:125 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/networkAndServers/NetworkAndServers.kt:685:20 Unresolved reference 'start'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/networkAndServers/NetworkAndServers.kt:685:47 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/networkAndServers/NetworkAndServers.kt:686:9 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/networkAndServers/OperatorView.kt:100:16 Unresolved reference 'start'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/networkAndServers/OperatorView.kt:100:40 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/networkAndServers/OperatorView.kt:101:5 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/networkAndServers/OperatorView.kt:114:9 Unresolved reference 'close'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/networkAndServers/OperatorView.kt:147:16 Unresolved reference 'start'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/networkAndServers/OperatorView.kt:147:40 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/networkAndServers/OperatorView.kt:148:5 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/networkAndServers/OperatorView.kt:152:9 Unresolved reference 'close'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/networkAndServers/OperatorView.kt:186:38 Unresolved reference 'start'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/networkAndServers/OperatorView.kt:186:65 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/networkAndServers/OperatorView.kt:186:70 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/networkAndServers/OperatorView.kt:576:30 Unresolved reference 'start'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/networkAndServers/OperatorView.kt:576:70 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/networkAndServers/OperatorView.kt:576:98 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/networkAndServers/OperatorView.kt:577:19 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/networkAndServers/OperatorView.kt:668:22 Unresolved reference 'start'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/networkAndServers/OperatorView.kt:668:62 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/networkAndServers/OperatorView.kt:668:90 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/networkAndServers/OperatorView.kt:669:11 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/networkAndServers/ProtocolServersView.kt:275:24 Unresolved reference 'start'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/networkAndServers/ProtocolServersView.kt:275:48 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/networkAndServers/ProtocolServersView.kt:276:13 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/networkAndServers/ProtocolServersView.kt:276:13 Unresolved reference. None of the following candidates is applicable because of a receiver type mismatch:
+fun ModalData.NewServerView(userServers: MutableState<List<UserOperatorServers>>, serverErrors: MutableState<List<UserServersError>>, serverWarnings: MutableState<List<UserServersWarning>>, rhId: Long?, close: () -> Unit): Unit
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/networkAndServers/ProtocolServersView.kt:284:26 Unresolved reference 'start'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/networkAndServers/ProtocolServersView.kt:284:53 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/networkAndServers/ProtocolServersView.kt:285:15 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/networkAndServers/ProtocolServersView.kt:304:24 Unresolved reference 'start'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/networkAndServers/ProtocolServersView.kt:304:48 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/networkAndServers/ProtocolServersView.kt:305:13 @Composable invocations can only happen from the context of a @Composable function
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/usersettings/networkAndServers/ProtocolServersView.kt:305:13 Unresolved reference. None of the following candidates is applicable because of a receiver type mismatch:
+fun ModalData.NewChatRelayView(userServers: MutableState<List<UserOperatorServers>>, serverErrors: MutableState<List<UserServersError>>, serverWarnings: MutableState<List<UserServersWarning>>, rhId: Long?, close: () -> Unit): Unit
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/desktopMain/kotlin/chat/simplex/common/DesktopApp.kt:57:30 Unresolved reference 'start'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/desktopMain/kotlin/chat/simplex/common/DesktopApp.kt:58:28 Unresolved reference 'start'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/desktopMain/kotlin/chat/simplex/common/DesktopApp.kt:59:37 Unresolved reference 'center'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/desktopMain/kotlin/chat/simplex/common/DesktopApp.kt:59:76 Unresolved reference 'end'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/desktopMain/kotlin/chat/simplex/common/DesktopApp.kt:60:28 Unresolved reference 'center'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/desktopMain/kotlin/chat/simplex/common/DesktopApp.kt:61:28 Unresolved reference 'end'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/desktopMain/kotlin/chat/simplex/common/DesktopApp.kt:226:26 Unresolved reference 'floatingTerminal'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/desktopMain/kotlin/chat/simplex/common/DesktopApp.kt:229:30 Unresolved reference 'floatingTerminal'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/desktopMain/kotlin/chat/simplex/common/views/chat/item/CIImageView.desktop.kt:23:20 Unresolved reference 'fullscreen'.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/desktopMain/kotlin/chat/simplex/common/views/chat/item/CIImageView.desktop.kt:23:67 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///tmp/qryptana-7x/apps/multiplatform/common/src/desktopMain/kotlin/chat/simplex/common/views/chat/item/CIImageView.desktop.kt:24:9 @Composable invocations can only happen from the context of a @Composable function
+
+> Task :common:compileKotlinDesktop FAILED
+
+[Incubating] Problems report is available at: file:///tmp/qryptana-7x/apps/multiplatform/build/reports/problems/problems-report.html
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':common:compileKotlinDesktop'.
+> A failure occurred while executing org.jetbrains.kotlin.compilerRunner.GradleCompilerRunnerWithWorkers$GradleKotlinCompilerWorkAction
+   > Compilation error. See log for more details
+
+* Try:
+> Run with --stacktrace option to get the stack trace.
+> Run with --info or --debug option to get more log output.
+> Run with --scan to get full insights.
+> Get more help at https://help.gradle.org.
+
+BUILD FAILED in 47s
+10 actionable tasks: 9 executed, 1 up-to-date

@@ -27,16 +27,12 @@ object ThemeManager {
       else -> SimplexColorPalette to DefaultTheme.SIMPLEX
     }
 
-    private fun nonSystemThemeName(): String {
-      // Qryptana desktop is a single black-titanium finish, whatever the saved or system theme is
-      if (appPlatform.isDesktop) return DefaultTheme.BLACK.themeName
-        val themeName = appPrefs.currentTheme.get()!!
-        return if (themeName != DefaultTheme.SYSTEM_THEME_NAME) {
-          themeName
-        } else {
-          if (systemInDarkThemeCurrently) appPrefs.systemDarkTheme.get()!! else DefaultTheme.LIGHT.themeName
-        }
-    }
+    private fun nonSystemThemeName(): String = ThemeDefaults.themeName(
+      isDesktop = appPlatform.isDesktop,
+      savedTheme = appPrefs.currentTheme.get()!!,
+      systemDark = systemInDarkThemeCurrently,
+      savedDarkTheme = appPrefs.systemDarkTheme.get()!!,
+    )
 
     fun defaultActiveTheme(appSettingsTheme: List<ThemeOverrides>): ThemeOverrides? {
       val nonSystemThemeName = nonSystemThemeName()

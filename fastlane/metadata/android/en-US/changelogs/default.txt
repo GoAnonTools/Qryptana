@@ -1,0 +1,3 @@
+Qryptana Labs development snapshot, derived from SimpleX Chat (AGPL-3.0).
+
+This remediation separates Qryptana support and release information from upstream services, restores upstream mobile base palettes, and corrects launcher resources. Android device validation and privacy/legal review remain pending. This metadata does not announce an official public Qryptana release or an independent security assessment.
