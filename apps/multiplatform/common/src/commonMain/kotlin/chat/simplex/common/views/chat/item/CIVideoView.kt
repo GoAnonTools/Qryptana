@@ -24,7 +24,6 @@ import chat.simplex.res.ic_more_horiz
 import chat.simplex.res.ic_play_arrow_filled
 import chat.simplex.res.ic_question_mark
 import chat.simplex.res.ic_sync_problem
-import chat.simplex.res.ic_volume_off_filled
 import chat.simplex.res.ic_warning_filled
 import chat.simplex.res.icon_descr_file
 import chat.simplex.res.icon_descr_video_asked_to_receive
@@ -403,12 +402,6 @@ private fun DurationProgress(file: CIFile, playing: MutableState<Boolean>, durat
           fontSize = 13.sp,
           color = Color.White
         )
-        /*if (!soundEnabled.value) {
-        Icon(painterResource(MR.images.ic_volume_off_filled), null,
-          Modifier.padding(start = 5.dp).size(10.dp),
-          tint = Color.White
-        )
-      }*/
       }
       if (!playing.value) {
         Box(
