@@ -9,7 +9,7 @@
 
 ## Executive Summary & Scope Reconciliation
 
-This report documents the completed implementation and verification of the approved "Precision Titanium with Directional Material Depth" design direction across production Android Compose code, unit tests, and debug APK packages.
+This report documents the approved "Precision Titanium with Directional Material Depth" implementation and the 2026-11-01 Android onboarding correction across production Compose code, unit tests, and debug APK packages. Automated checks establish compilation, resource selection, package identity, and byte preservation; physical-device rendering remains unverified.
 
 1. **Production Compose Multiplatform Implementation**:
    - Directionally lit titanium top app bars across all app screens via [`DefaultTopAppBar.kt`](file:///home/theanarchitect/Qryptana/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/helpers/DefaultTopAppBar.kt#L64-L103) and [`AppBarDivider`](file:///home/theanarchitect/Qryptana/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/helpers/DefaultTopAppBar.kt#L195-L215).
@@ -18,9 +18,11 @@ This report documents the completed implementation and verification of the appro
    - Machined copper controls via [`qryptanaCopperControl`](file:///home/theanarchitect/Qryptana/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/ui/theme/QryptanaAndroidMaterial.kt#L143-L170) applied to send button ([`SendMsgView.kt#L503-L525`](file:///home/theanarchitect/Qryptana/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/SendMsgView.kt#L503-L525)), floating action button ([`ChatListView.kt#L465-L495`](file:///home/theanarchitect/Qryptana/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/ChatListView.kt#L465-L495)), connect button ([`ChatListView.kt#L500-L515`](file:///home/theanarchitect/Qryptana/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chatlist/ChatListView.kt#L500-L515)), and primary action buttons ([`SimpleXInfo.kt#L1155-L1175`](file:///home/theanarchitect/Qryptana/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/onboarding/SimpleXInfo.kt#L1155-L1175)).
    - Light-mode onboarding chamber in [`SimpleXInfo.kt`](file:///home/theanarchitect/Qryptana/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/onboarding/SimpleXInfo.kt#L648-L678) staging the unchanged reveal video inside a milled dark titanium pedestal chamber with top specular highlight and soft elevation, with matching dark-mode edge dissolution and complete light-theme onboarding palette support.
 2. **Platform Isolation Guarding**:
-   - 100% of platform-specific behavior is guarded by `appPlatform.isAndroid`. Desktop (`appPlatform.isDesktop`) and iOS remain completely untouched.
+   - The corrected colors, fallback surface, and removed wordmark backing are Android-guarded. The common wordmark path is unchanged for desktop and iOS because only the former `appPlatform.isAndroid && lightOnDark` branch was removed.
+   - `SIMPLEX_ASSETS` remains opt-in through `simplex.assets.dir`; no automatic repository-directory fallback was added, preserving unconfigured desktop/iOS build behavior.
 3. **Asset & Identity Preservation**:
-   - Canonical artwork (`qryptana-wordmark.png`, `qryptana-symbol.png`, `qryptana_identity_card_reveal.mp4`) remains 100% untouched.
+   - Canonical artwork (`qryptana_wordmark@1x.png`, `qryptana_symbol@1x.png`, `qryptana_identity_card_reveal.mp4`) remains byte-for-byte untouched.
+   - The configured upstream illustration directory is explicit in ignored `apps/multiplatform/local.properties`. The sync excludes only the invalid duplicate `qryptana-wordmark.png`; the source file itself is preserved.
    - User-local candidate identity restored via `apps/multiplatform/local.properties` (`application_id.suffix=.debug`, `app.name=Qryptana Debug`).
    - Signing certificate SHA-256 matches previously tested candidate identically (`76fec71b...`).
 
@@ -41,7 +43,7 @@ This report documents the completed implementation and verification of the appro
 | **Matte Received Bubbles** | `#161A1F` (dark) / `#FFFFFF` (light) | `receivedMessage = Color(0xFF191E23)` (dark) / `Color(0xFFFFFFFF)` (light) ([`Color.kt#L77,L100`](file:///home/theanarchitect/Qryptana/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/ui/theme/Color.kt#L77)) | `ThemesTest.kt#L113,L124` assertions pass; feeds `qryptanaMessagingTokens()` | **Implemented & Verified** |
 | **Recessed Quote Wells** | `#111418` (dark) / `#D8DEE4` (light) with copper bar | `sentQuote = Color(0xFF13171B)`, `receivedQuote = Color(0xFF13171B)` (dark) / `Color(0xFFD8DEE4)`, `Color(0xFFE8ECEF)` (light) ([`Color.kt#L76,L78,L99,L101`](file:///home/theanarchitect/Qryptana/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/ui/theme/Color.kt#L76)) | `ThemesTest.kt#L112,L123` assertions pass | **Implemented & Verified** |
 | **Light Onboarding Video Chamber** | Dark titanium chamber with contact shadow housing dark video on light canvas | Implemented in [`SimpleXInfo.kt#L648-L678`](file:///home/theanarchitect/Qryptana/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/onboarding/SimpleXInfo.kt#L648-L678) with 18dp shape, 10dp shadow, `#38414D` border, top specular highlight line, and light onboarding theme | Token assertions pass in `ThemesTest.kt#L182-L193` | **Implemented & Verified** |
-| **Wordmark Dark Readability** | `.brand-wordmark-backing` pill with `#E2E6EB` $\to$ `#CCD3DB` gradient & `#BAC2CA` border | Box container with vertical gradient, 18dp rounded corners, and 1dp `#BAC2CA` border in `QryptanaWordmark` ([`SimpleXInfo.kt#L1030-L1055`](file:///home/theanarchitect/Qryptana/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/onboarding/SimpleXInfo.kt#L1030-L1055)) | Visual rendering in headless Firefox; compilation in `desktopTest` & Android APK | **Implemented & Verified** |
+| **Wordmark Without Oversized Backing** | Preserve the original wordmark without the oversized metallic pill | `QryptanaWordmark` now renders the canonical `MR.images.qryptana_wordmark` directly; no Android-only backing, shadow, gradient, border, or extra inset remains | Source inspection, successful desktop/Android compilation, and APK entry SHA-256 matching the canonical source | **Structurally Verified** |
 | **Onboarding Video Lifecycle** | Full 11.3s choreography, DstOut feathering, contact shadow | Implemented in `SimpleXInfo.kt#L760-L900` via `QryptanaIdentityReveal` | Tested via `desktopTest` & APK packaging; video asset bundled | **Implemented in Both Themes** |
 
 ---
@@ -53,7 +55,7 @@ Every screen from [`screen-inventory.md`](file:///home/theanarchitect/Qryptana/d
 1. **Screens 1–2 (System Splash & Compose SplashView)**:
    - *Status*: Inherited Unchanged. Window background in `themes.xml` remains `#121212`.
 2. **Screen 3 (Onboarding Step 1: Welcome & Identity Reveal)**:
-   - *Status*: **Implemented & Verified** ([`SimpleXInfo.kt#L630-L720`](file:///home/theanarchitect/Qryptana/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/onboarding/SimpleXInfo.kt#L630-L720)). Light mode houses video inside the milled dark titanium pedestal chamber (`#141210` background, 18dp rounded corners, 10dp shadow, `#38414D` border, top specular line); dark mode uses seamless edge dissolve. Wordmark backing active in dark mode; primary action CTA uses `qryptanaCopperControl` with crisp white text.
+   - *Status*: **Structurally verified; physical rendering unverified** ([`SimpleXInfo.kt#L630-L720`](file:///home/theanarchitect/Qryptana/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/onboarding/SimpleXInfo.kt#L630-L720)). The reveal video treatment remains unchanged. The canonical wordmark is rendered directly in both themes with no Android-only backing.
 3. **Screens 4–8 (Onboarding Steps 2–5: Profile, Passphrase, Network, Commitments, Notifications)**:
    - *Status*: **Implemented & Verified** ([`SimpleXInfo.kt#L180-L245`](file:///home/theanarchitect/Qryptana/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/onboarding/SimpleXInfo.kt#L180-L245), [`YourNetwork.kt#L62-L75`](file:///home/theanarchitect/Qryptana/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/onboarding/YourNetwork.kt#L62-L75)). Scoped `QryptanaAndroidOnboardingTheme` fully supports both dark (`#0E1013` / `#161A1F`) and light (`#F1F3F5` / `#FCFDFE`) themes with matching contrast-tested text and copper buttons.
 4. **Screens 9–11 (Chat List Empty State, Active Chats, Search & Filter Bar)**:
@@ -81,7 +83,7 @@ Every screen from [`screen-inventory.md`](file:///home/theanarchitect/Qryptana/d
 
 ## 2. Forensic Analysis of Packaged APKs
 
-Both candidate APKs were built via `./gradlew :android:assembleFossDebug` and forensically inspected using `apkanalyzer`, `aapt`, and `apksigner`:
+Both candidate APKs were built via `./gradlew :android:assembleFossDebug` and forensically inspected using generated MR/BuildConfig sources, ZIP entry hashes, `aapt`, and `apksigner`:
 
 ### 2.1 Inspection Data
 
@@ -97,44 +99,50 @@ Both candidate APKs were built via `./gradlew :android:assembleFossDebug` and fo
 | **Signature Scheme** | APK Signature Scheme v2 (`true`), v1 (`false`) | APK Signature Scheme v2 (`true`), v1 (`false`) |
 | **Signer Certificate DN** | `C=US, O=Android, CN=Android Debug` | `C=US, O=Android, CN=Android Debug` |
 | **Signing Cert SHA-256** | `76fec71b0c4b3d72fd43231330967da1c9fd8d04a985c7aade7430ecb45d2d97` | `76fec71b0c4b3d72fd43231330967da1c9fd8d04a985c7aade7430ecb45d2d97` |
-| **File Size** | 285,848,055 bytes | 271,543,399 bytes |
+| **File Size** | 296,357,373 bytes | 282,052,717 bytes |
 
 ### 2.2 Signing Certificate Comparison
 
 - **Current Debug Candidate**: `76fec71b0c4b3d72fd43231330967da1c9fd8d04a985c7aade7430ecb45d2d97`
-- **Previous Tested Candidate** (`/home/theanarchitect/code/Qryptana-release-artifacts/android-foss-arm64-v8a-debug.apk`): `76fec71b0c4b3d72fd43231330967da1c9fd8d04a985c7aade7430ecb45d2d97`
+- **Previous Precision-Titanium Candidates** (`android-precision-titanium-20261101` and `android-precision-titanium-debug-20261101`, both ABIs): `76fec71b0c4b3d72fd43231330967da1c9fd8d04a985c7aade7430ecb45d2d97`
 - **Result**: **EXACT MATCH**. Safe for in-place installable update without uninstalling or wiping user app data.
 
 ---
 
 ## 3. Preserved Versioned Release Artifacts
 
-Both candidate APKs have been archived in the dedicated versioned candidate directory:
-`/home/theanarchitect/code/Qryptana-release-artifacts/android-precision-titanium-debug-20261101/`
+Both candidate APKs have been archived in a new directory; earlier candidates were preserved:
+`/home/theanarchitect/code/Qryptana-release-artifacts/android-onboarding-corrections-verified-20261101-190331/`
 
 ### Recorded SHA-256 Hashes
 
 | Artifact File | Size (Bytes) | SHA-256 Digest |
 |---|---|---|
-| `qryptana-7.0.3-android-foss-arm64-v8a-precision-titanium-debug.apk` | 285,848,055 | `fdac5c04a00bec572e14506280935bab59f8b21d160f4835ed8143addf70cd73` |
-| `qryptana-7.0.3-android-foss-armeabi-v7a-precision-titanium-debug.apk` | 271,543,399 | `0cdfc79997bf1d764469d5efe0fe70abdac05180e5b1417a6a56c298dd3bb7ac` |
+| `qryptana-7.0.3-android-foss-arm64-v8a-onboarding-corrections-debug.apk` | 296,357,373 | `ea5ec3eed43daf43c3128cc5a9d675b24d0a7fee1d898920ce3497bfe659a5cd` |
+| `qryptana-7.0.3-android-foss-armeabi-v7a-onboarding-corrections-debug.apk` | 282,052,717 | `d4b5d89d3ecf2ac56b4326efd3d7e366cfcb887a1aa3d387f3dca7289174bf0b` |
 
 ---
 
 ## 4. Test & Verification Summary
 
 1. **Automated Unit & Theme Test Suite**:
-   - `JAVA_HOME=... ./gradlew desktopTest --offline` executed successfully (17s).
-   - 42 tests executed and passed, including:
+   - Final-tree `:common:desktopTest` executed successfully with the required offline, single-worker, non-parallel, in-process compiler options (1m52s; 18 actionable tasks).
+   - 40 tests executed with zero failures, errors, or skips, including:
      - `androidOnboardingMaterialTokensMatchApprovedDarkFinish`: asserts dark onboarding palette tokens and contrast $\ge 4.5:1$.
      - `androidOnboardingMaterialTokensMatchApprovedLightFinish`: asserts light onboarding palette tokens (`#F1F3F5`, `#FCFDFE`, `#20262B`, `#59636C`, `#BAC2CA`) and contrast $\ge 4.5:1$.
      - `androidMaterialTokensMatchApprovedPrecisionTitaniumAndCopperFinish`: asserts directional top bar gradients, composer shelf gradients, input well tokens, and copper control stops (`#B27357`, `#9F634C`, `#874E3B`, `#6F3B2A`).
      - `androidPalettesMapSemanticRolesAndRemainDistinct`: asserts all 4 mobile palettes remain distinct and map semantic roles.
      - `androidSemanticRolesMeetEnabledContrastTargets`: asserts all action text, headings, body, and borders satisfy WCAG AA contrast targets.
 2. **Android APK Assembly**:
-   - `JAVA_HOME=... ANDROID_HOME=... ./gradlew :android:assembleFossDebug --offline` executed successfully (12s).
-   - 65 actionable Gradle tasks completed without errors.
+   - Final-tree `:android:assembleFossDebug` executed successfully with the required options (12s; 66 actionable tasks).
    - Native CMake compilation linked `libsimplex.so`, `libsupport.so`, and `libapp-lib.so` for both `arm64-v8a` and `armeabi-v7a`.
-3. **Physical / Device Rendering Status**:
+   - The first Android attempt exposed an invalid Moko resource generated from the configured upstream duplicate `qryptana-wordmark.png`. The focused fix excludes only that duplicate from `copySimplexAssets`; the canonical underscore-named wordmark remains packaged.
+3. **Production Resource Selection**:
+   - Ignored `apps/multiplatform/local.properties` explicitly sets `simplex.assets.dir=../../assets`; generated `BuildConfigCommon.SIMPLEX_ASSETS` is `true`.
+   - Generated Android MR accessors bind `intro`, `intro_light`, `your_profile`, `your_profile_light`, `your_network`, `your_network_light`, `network_commitments`, and `network_commitments_light` to `R.drawable` resources. `OnboardingImage` selects those accessors by theme when `SIMPLEX_ASSETS` is true.
+   - Both APKs' xhdpi illustration entry hashes exactly match the corresponding tracked `@2x` PNG sources. This verifies the authored images selected by the production resource path rather than relying on filenames or non-empty entries alone.
+   - Canonical wordmark SHA-256 in source and both APKs: `a06334bcdcbb740da149c1da680745cc22a1b0f70bd82417c4b2e925b957d0e8`.
+   - Reveal video SHA-256 in source and both APKs: `8e80519593fc43114432646fab8bcaa644cb58eecdf5c4b888579130ae1f1b59`.
+4. **Physical / Device Rendering Status**:
    - Automated JVM tests, Compose compiler IR validations, and APK structural package forensics are complete.
-   - On-device visual inspection on physical Android hardware remains an outstanding release acceptance gate before production tag/merge.
+   - No APK was installed and no physical phone was observed. Light/dark physical rendering and the phone checklist remain outstanding release-acceptance gates; this report does not claim they passed.
