@@ -144,5 +144,6 @@ Both candidate APKs have been archived in a new directory; earlier candidates we
    - Canonical wordmark SHA-256 in source and both APKs: `a06334bcdcbb740da149c1da680745cc22a1b0f70bd82417c4b2e925b957d0e8`.
    - Reveal video SHA-256 in source and both APKs: `8e80519593fc43114432646fab8bcaa644cb58eecdf5c4b888579130ae1f1b59`.
 4. **Physical / Device Rendering Status**:
-   - Automated JVM tests, Compose compiler IR validations, and APK structural package forensics are complete.
-   - No APK was installed and no physical phone was observed. Light/dark physical rendering and the phone checklist remain outstanding release-acceptance gates; this report does not claim they passed.
+   - The maintainer reports that the current Android appearance was approved on a phone. This is a maintainer observation, not an independent observation by this verification run.
+   - A few remaining blue icons were accepted for now and are recorded as known visual follow-ups.
+   - Automated JVM tests, Compose compiler IR validations, and APK structural package forensics are complete. No APK was installed during this verification. Behavior outside the reported phone appearance remains unverified, and this report does not claim public-release readiness.
