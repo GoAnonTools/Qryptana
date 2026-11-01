@@ -1,6 +1,6 @@
 # Android backup, restore, and deletion UX verification
 
-Status: **blocked; not integrated**
+Status: **verification passed; integration pending**
 
 ## Changes prepared
 
@@ -40,3 +40,23 @@ Consequently APK assembly, packaged string/artwork/video inspection, APK signing
 The `ic_volume_off_filled` use in `CIVideoView.kt` was inside a commented-out block and had no matching resource. Upstream v7.0.3 has neither that import nor the commented block ([upstream source](https://github.com/simplex-chat/simplex-chat/blob/v7.0.3/apps/multiplatform/common/src/commonMain/kotlin/chat/simplex/common/views/chat/item/CIVideoView.kt)). The dead block and unused import were removed without changing active video behavior. Source commit: `f049d89c5`.
 
 The subsequent `:common:desktopTest` and `:common:compileDebugKotlinAndroid` runs both stopped because the Gradle daemon thrashed its configured 1.5 GiB heap during compilation. The heap was not increased. Tests and the desktop runtime smoke test did not execute, and APK assembly was not run. No APKs were produced or archived. Merge, push, and CI verification remain blocked until the checks pass under the required memory settings.
+
+## Final verification continuation (2026-11-01)
+
+The available-memory check reported 6.33 GiB available RAM; swap had 511 MiB total with virtually all in use. No Gradle/Kotlin build process was competing, and no process was terminated. The requested task-scoped 3 GiB heap was used with one worker, no parallelism, no daemon reuse, and in-process Kotlin compilation. No clean task was run and no permanent memory configuration changed.
+
+- `:common:desktopTest` — passed, 41 tests across 12 XML suites, 0 failures/errors. This includes `MokoResourcesDesktopTest.generatedStringBundleAndWordmarkLoadAtRuntime[desktop]`, which resolves the restore string and decodes the canonical wordmark through the desktop runtime resource API. The test needed its image accessor corrected from the obsolete `getImage()` call to MOKO 0.27.1's `image` property; that focused test correction is commit `cfc1f6d19`.
+- `:common:compileDebugKotlinAndroid` — passed.
+- `:android:assembleFossDebug` — passed for ARM64 and ARMv7. Existing resource-format and Android API warnings remain non-fatal.
+- SIMPLEX assets are opt-in through ignored `apps/multiplatform/local.properties` (`simplex.assets.dir=../../assets`). Gradle's production resource source points at `assets/multiplatform/resources/MR/images`; it verifies the directory and copies those local assets. No upstream assets were downloaded or newly enabled. The production onboarding UI selects the themed `intro`, `create_profile`, `your_profile`, `your_network`, and `network_commitments` accessors. Both APKs contain both light/dark variants of the ten source `@2x` illustration PNGs, byte-for-byte matching their tracked sources.
+- Both APKs contain the canonical `qryptana_wordmark` selected by `SimpleXInfo`; the packaged wordmark hash matches the source (`a06334bcdcbb740da149c1da680745cc22a1b0f70bd82417c4b2e925b957d0e8`). The reveal video remains at its original resource path and its APK bytes match source (`8e80519593fc43114432646fab8bcaa644cb58eecdf5c4b888579130ae1f1b59`). Android compiled resources include the Android-specific restore, backup, export/import, password, and deletion strings.
+- Both APKs report `chat.simplex.app.debug`, each contains only its expected ABI (`arm64-v8a` or `armeabi-v7a`), and `apksigner` verifies v2 signatures. Both signer certificate SHA-256 fingerprints are `76fec71b0c4b3d72fd43231330967da1c9fd8d04a985c7aade7430ecb45d2d97`, matching the prior backup/restore candidates.
+
+Archived (outside the repository) in `/home/theanarchitect/code/Qryptana-release-artifacts/android-restore-moko-volume-fix-20261101-v1/`:
+
+| ABI | APK | SHA-256 |
+| --- | --- | --- |
+| ARM64 | `qryptana-7.0.3-android-foss-arm64-v8a-restore-moko-debug.apk` | `9a3bebcef65078bdb3af8454f53d8879b5d008ca148a537069dc370aeb010e71` |
+| ARMv7 | `qryptana-7.0.3-android-foss-armeabi-v7a-restore-moko-debug.apk` | `629b51b65e92c58e0465dbab8d4e7b512b3e482d520fda125e2a6b04c05e8961` |
+
+No APK was installed. Restore/import cancellation, profile selection, and physical rendering are not established by these automated checks. The maintainer previously approved the phone appearance; several remaining blue icons are accepted visual follow-ups. Translations beyond English remain pending. The resource smoke test validates desktop runtime lookup, but iOS was not built or tested. No release/publication readiness is claimed.
