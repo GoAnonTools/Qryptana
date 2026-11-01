@@ -1,6 +1,6 @@
 # Android backup, restore, and deletion UX verification
 
-Status: **verification passed; integration pending**
+Status: **verified and integrated; CI passed for the source fix**
 
 ## Changes prepared
 
@@ -60,3 +60,11 @@ Archived (outside the repository) in `/home/theanarchitect/code/Qryptana-release
 | ARMv7 | `qryptana-7.0.3-android-foss-armeabi-v7a-restore-moko-debug.apk` | `629b51b65e92c58e0465dbab8d4e7b512b3e482d520fda125e2a6b04c05e8961` |
 
 No APK was installed. Restore/import cancellation, profile selection, and physical rendering are not established by these automated checks. The maintainer previously approved the phone appearance; several remaining blue icons are accepted visual follow-ups. Translations beyond English remain pending. The resource smoke test validates desktop runtime lookup, but iOS was not built or tested. No release/publication readiness is claimed.
+
+## CI fallback-resource correction and integration
+
+The first post-push workflow (`41341122712`, [run](https://github.com/GoAnonTools/Qryptana/actions/runs/41341122712)) failed in desktop compilation because CI intentionally has no `simplex.assets.dir`: MOKO's configured generated-accessor source set therefore omitted images referenced by shared Kotlin. The prior configuration always pointed MOKO at the optional local SIMPLEX image directory, even when the normal tracked default resources were selected.
+
+Source commit `152318940` changes only the MOKO accessor input directory: configured builds use the same local SIMPLEX resource directory as before; unconfigured builds generate accessors from the tracked `assets/default/MR` resources. No GitHub workflow, heap, or CI step was changed or skipped. With `simplex.assets.dir` temporarily absent (and `local.properties` restored byte-for-byte afterward), `:common:compileKotlinDesktop`, `:common:desktopTest`, and `:android:compileFossDebugKotlin` all passed. With the existing production asset configuration active, desktop tests, Android compilation, and APK assembly passed again; APK SHA-256 hashes remained identical to the archived candidates.
+
+The corrected source commit was pushed normally to `main` as `1523189406fa944229196637f5c3e5f4c202aadf`. GitHub Actions run `41342200535` ([run](https://github.com/GoAnonTools/Qryptana/actions/runs/41342200535)) completed successfully in 8m29s: desktop compile, desktop tests, and Android compile all passed. The workflow retains its 4 GiB Gradle heap. Existing Node 20 / setup-java v4 deprecation annotations remain informational.
