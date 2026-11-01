@@ -20,6 +20,7 @@ import androidx.compose.ui.layout.*
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import chat.simplex.common.BuildConfigCommon
+import chat.simplex.common.platform.appPlatform
 import chat.simplex.common.ui.theme.DEFAULT_PADDING
 import chat.simplex.common.ui.theme.QryptanaCopper
 import chat.simplex.common.ui.theme.QryptanaDarkBackground
@@ -103,7 +104,16 @@ fun OnboardingImage(
         )
     } else {
         val isDark = isInDarkTheme()
-        val stops = if (isDark) darkStops else lightStops
+        // The upstream onboarding placeholder used a saturated blue wash.
+        // Qryptana Android uses its selected titanium surfaces instead; retain
+        // the original desktop gradient unchanged.
+        val stops = if (appPlatform.isAndroid) {
+          arrayOf(
+            0.0f to MaterialTheme.colors.background,
+            0.5f to MaterialTheme.colors.surface,
+            1.0f to MaterialTheme.colors.background
+          )
+        } else if (isDark) darkStops else lightStops
         val scale = if (isDark) 1.5f else 1.2f
         Box(
             modifier

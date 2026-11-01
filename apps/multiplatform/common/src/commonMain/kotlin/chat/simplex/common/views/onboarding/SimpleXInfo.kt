@@ -442,6 +442,10 @@ private fun QryptanaWelcomeContent(
   onboardingStage: SharedPreference<OnboardingStage>?,
   modifier: Modifier = Modifier
 ) {
+  // Android's old welcome sweep/glow used an icy blue cast. Keep the desktop
+  // lighting untouched while Android uses its neutral and copper theme roles.
+  val welcomeTitaniumGlow = if (appPlatform.isAndroid) MaterialTheme.colors.onSurface else QryptanaMetal.titaniumGlow
+  val welcomeWordmarkSheen = if (appPlatform.isAndroid) MaterialTheme.colors.primary else Color(0xFFE6EDF7)
   // Choreography: wordmark first, then the identity plaque assembles and settles,
   // and only then does the copy introduce itself. If the platform cannot load or
   // play the clip, QryptanaIdentityReveal releases the copy on its timeout.
@@ -481,8 +485,8 @@ private fun QryptanaWelcomeContent(
           drawCircle(
             brush = Brush.radialGradient(
               colors = listOf(
-                QryptanaMetal.titaniumGlow.copy(alpha = 0.10f),
-                              QryptanaMetal.titaniumGlow.copy(alpha = 0.035f),
+                welcomeTitaniumGlow.copy(alpha = 0.10f),
+                              welcomeTitaniumGlow.copy(alpha = 0.035f),
                               Color.Transparent
               ),
               center = c,
@@ -495,7 +499,7 @@ private fun QryptanaWelcomeContent(
         // Tight core directly behind the letterforms.
         drawCircle(
           brush = Brush.radialGradient(
-            colors = listOf(QryptanaMetal.titaniumGlow.copy(alpha = 0.04f), Color.Transparent),
+            colors = listOf(welcomeTitaniumGlow.copy(alpha = 0.04f), Color.Transparent),
                                        center = c,
                                        radius = size.width * 0.26f
           ),
@@ -534,7 +538,7 @@ private fun QryptanaWelcomeContent(
             val cx = -bw + (size.width + 2f * bw) * t
             drawRect(
               brush = Brush.linearGradient(
-                colors = listOf(Color.Transparent, Color(0xFFE6EDF7).copy(alpha = 0.22f), Color.Transparent),
+                colors = listOf(Color.Transparent, welcomeWordmarkSheen.copy(alpha = 0.22f), Color.Transparent),
                                            start = Offset(cx - bw, 0f),
                                            end = Offset(cx + bw, size.height * 0.4f)
               ),
