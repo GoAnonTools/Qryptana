@@ -150,7 +150,8 @@ internal fun QryptanaAndroidInvitationCard(
   )
   Box(
     Modifier
-    .fillMaxSize()
+    .fillMaxWidth()
+    .heightIn(min = 100.dp)
     .clip(RoundedCornerShape(14.dp))
     .background(colors.surface)
     .clickable(onClick = onClick)
@@ -161,14 +162,18 @@ internal fun QryptanaAndroidInvitationCard(
       horizontalArrangement = Arrangement.spacedBy(16.dp)
     ) {
       Icon(painterResource(icon), null, Modifier.size(28.dp), tint = colors.primary)
-      Text(
-        title,
-        Modifier.weight(1f),
-        style = MaterialTheme.typography.subtitle1.copy(fontWeight = FontWeight.Medium),
-        color = colors.onSurface,
-        maxLines = 3,
-        overflow = TextOverflow.Ellipsis
-      )
+      Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(4.dp)) {
+        Text(
+          title,
+          style = MaterialTheme.typography.subtitle1.copy(fontWeight = FontWeight.Medium),
+          color = colors.onSurface,
+          maxLines = 3,
+          overflow = TextOverflow.Ellipsis
+        )
+        if (subtitle != null) {
+          Text(subtitle, style = MaterialTheme.typography.body2, color = colors.secondary, maxLines = 2, overflow = TextOverflow.Ellipsis)
+        }
+      }
       Icon(painterResource(MR.images.ic_chevron_right), null, Modifier.size(20.dp), tint = colors.secondary)
       }
   }
