@@ -11,10 +11,10 @@ import chat.simplex.res.MR
 @Composable
 actual fun OnboardingActionButton(user: User?, onboardingStage: SharedPreference<OnboardingStage>, onclick: (() -> Unit)?) {
   if (user == null) {
-    Column(Modifier.fillMaxWidth(), verticalArrangement = Arrangement.spacedBy(10.dp)) {
-      OnboardingActionButton(Modifier.fillMaxWidth(), labelId = MR.strings.qryptana_create_profile, onboarding = OnboardingStage.Step2_CreateProfile, onclick = onclick)
-      OnboardingActionButton(Modifier.fillMaxWidth(), labelId = MR.strings.qryptana_link_device, onboarding = OnboardingStage.LinkAMobile, secondary = true, onclick = onclick)
-    }
+    // LinkAMobile creates a companion-device QR link. It is not a restore
+    // entry point; Android restore/transfer is available from the profile
+    // screen's MigrateButton, which opens MigrateToDeviceView.
+    OnboardingActionButton(Modifier.fillMaxWidth(), labelId = MR.strings.qryptana_create_profile, onboarding = OnboardingStage.Step2_CreateProfile, onclick = onclick)
   } else {
     OnboardingActionButton(Modifier.fillMaxWidth(), labelId = MR.strings.make_private_connection, onboarding = OnboardingStage.OnboardingComplete, onclick = onclick)
   }
