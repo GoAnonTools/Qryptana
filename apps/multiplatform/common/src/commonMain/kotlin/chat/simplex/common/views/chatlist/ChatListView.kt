@@ -13,6 +13,7 @@ import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.*
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.focus.*
 import androidx.compose.ui.graphics.*
 import androidx.compose.ui.text.font.FontStyle
@@ -459,6 +460,7 @@ private fun AndroidOnboardingCards() {
 private fun BoxScope.NewChatSheetFloatingButton(oneHandUI: State<Boolean>, stopped: Boolean) {
   val messagingTokens = qryptanaMessagingTokens()
   val qryptanaDesktop = appPlatform.isDesktop
+  val isAndroid = appPlatform.isAndroid
   FloatingActionButton(
     onClick = {
       if (!stopped) {
@@ -471,7 +473,13 @@ private fun BoxScope.NewChatSheetFloatingButton(oneHandUI: State<Boolean>, stopp
     .align(Alignment.BottomEnd)
     .size(AppBarHeight * fontSizeSqrtMultiplier)
     .then(
-      if (qryptanaDesktop && !stopped) {
+      if (isAndroid && !stopped) {
+        Modifier
+          .shadow(6.dp, CircleShape, clip = false, ambientColor = Color.Black.copy(alpha = 0.45f), spotColor = Color(0xFF9F634C).copy(alpha = 0.45f))
+          .qryptanaCopperControl(true, CircleShape)
+      } else if (isAndroid) {
+        Modifier.qryptanaCopperControl(false, CircleShape)
+      } else if (qryptanaDesktop && !stopped) {
         Modifier.border(1.dp, Brush.verticalGradient(listOf(QryptanaMetal.copperLight.copy(alpha = 0.85f), QryptanaMetal.copperMid.copy(alpha = 0.32f), QryptanaMetal.copperShadow.copy(alpha = 0.22f))), CircleShape)
       } else if (qryptanaDesktop) {
         Modifier.border(1.dp, QryptanaMetal.titaniumBorder.copy(alpha = 0.6f), CircleShape)
@@ -483,12 +491,18 @@ private fun BoxScope.NewChatSheetFloatingButton(oneHandUI: State<Boolean>, stopp
       hoveredElevation = 0.dp,
       focusedElevation = 0.dp,
     ),
-    backgroundColor = if (qryptanaDesktop) {
+    backgroundColor = if (isAndroid && !stopped) {
+      Color.Transparent
+    } else if (isAndroid) {
+      Color(0xFF59636C).copy(alpha = 0.45f)
+    } else if (qryptanaDesktop) {
       if (!stopped) QryptanaMetal.titaniumMid else QryptanaMetal.titaniumLow
     } else if (!stopped) messagingTokens.accent else messagingTokens.secondaryText,
-      contentColor = if (qryptanaDesktop) {
-        if (!stopped) QryptanaMetal.copperLight else QryptanaMetal.textQuiet
-      } else messagingTokens.onAccent
+    contentColor = if (isAndroid) {
+      if (!stopped) Color.White else messagingTokens.disabledText
+    } else if (qryptanaDesktop) {
+      if (!stopped) QryptanaMetal.copperLight else QryptanaMetal.textQuiet
+    } else messagingTokens.onAccent
   ) {
     Icon(painterResource(MR.images.ic_edit_filled), stringResource(MR.strings.add_contact_or_create_group), Modifier.size(22.dp * fontSizeSqrtMultiplier))
   }
@@ -497,17 +511,20 @@ private fun BoxScope.NewChatSheetFloatingButton(oneHandUI: State<Boolean>, stopp
 @Composable
 private fun ConnectButton(text: String, onClick: () -> Unit) {
   val messagingTokens = qryptanaMessagingTokens()
+  val isAndroid = appPlatform.isAndroid
   Button(
     onClick,
     shape = RoundedCornerShape(21.dp),
          colors = ButtonDefaults.textButtonColors(
-           backgroundColor = messagingTokens.accent
+           backgroundColor = if (isAndroid) Color.Transparent else messagingTokens.accent
          ),
          elevation = null,
          contentPadding = PaddingValues(horizontal = DEFAULT_PADDING, vertical = DEFAULT_PADDING_HALF),
-         modifier = Modifier.height(42.dp)
+         modifier = Modifier
+           .height(42.dp)
+           .then(if (isAndroid) Modifier.qryptanaCopperControl(true, RoundedCornerShape(21.dp)) else Modifier)
   ) {
-    Text(text, color = messagingTokens.onAccent)
+    Text(text, color = if (isAndroid) Color.White else messagingTokens.onAccent)
   }
 }
 

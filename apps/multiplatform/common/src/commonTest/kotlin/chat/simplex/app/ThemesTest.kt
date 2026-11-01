@@ -180,4 +180,42 @@ class ThemesTest {
       )
     )
   }
+
+  @Test
+  fun androidOnboardingMaterialTokensMatchApprovedLightFinish() {
+    val p = QryptanaAndroidOnboardingPalette
+    assertEquals(Color(0xFFF1F3F5), p.LightBackground)
+    assertEquals(Color(0xFFFCFDFE), p.LightSurface)
+    assertEquals(Color(0xFFFFFFFF), p.LightSurfaceRaised)
+    assertEquals(Color(0xFF20262B), p.LightTextPrimary)
+    assertEquals(Color(0xFF59636C), p.LightTextSecondary)
+    assertEquals(Color(0xFFBAC2CA), p.LightBorder)
+    assertContrastAtLeast(p.LightTextPrimary, p.LightBackground, 4.5, "light onboarding heading/background")
+    assertContrastAtLeast(p.LightTextSecondary, p.LightBackground, 4.5, "light onboarding secondary/background")
+  }
+
+  @Test
+  fun androidMaterialTokensMatchApprovedPrecisionTitaniumAndCopperFinish() {
+    val t = QryptanaAndroidMaterialTokens
+    assertEquals(Color(0xFF1B2129), t.DarkAppBarGradient.first())
+    assertEquals(Color(0xFF13171D), t.DarkAppBarGradient.last())
+    assertEquals(Color(0xFF181E26), t.DarkComposerShelfGradient.first())
+    assertEquals(Color(0xFF111419), t.DarkComposerShelfGradient.last())
+    assertEquals(Color(0xFF20262E), t.DarkAppBarBorder)
+    assertEquals(Color(0xFF0E1014), t.DarkInputWellBackground)
+    assertEquals(Color(0xFF28303C), t.DarkInputWellBorder)
+
+    assertEquals(Color(0xFFFFFFFF), t.LightAppBarGradient.first())
+    assertEquals(Color(0xFFEEF2F6), t.LightAppBarGradient.last())
+    assertEquals(Color(0xFFFFFFFF), t.LightComposerShelfGradient.first())
+    assertEquals(Color(0xFFEEF2F6), t.LightComposerShelfGradient.last())
+    assertEquals(Color(0xFFD6DCE2), t.LightAppBarBorder)
+    assertEquals(Color(0xFFFFFFFF), t.LightInputWellBackground)
+    assertEquals(Color(0xFFBAC2CA), t.LightInputWellBorder)
+
+    assertEquals(Color(0xFF6F3B2A), t.CopperBorder)
+    assertEquals(Color(0xFFB27357), t.CopperGradientStops[0].second)
+    assertEquals(Color(0xFF9F634C), t.CopperGradientStops[1].second)
+    assertEquals(Color(0xFF874E3B), t.CopperGradientStops[2].second)
+  }
 }

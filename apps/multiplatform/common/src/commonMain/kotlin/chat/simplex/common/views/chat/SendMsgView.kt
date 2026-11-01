@@ -66,8 +66,16 @@ fun SendMsgView(
   ) {
   val showCustomDisappearingMessageDialog = remember { mutableStateOf(false) }
   val messagingTokens = qryptanaMessagingTokens()
-  val padding = if (appPlatform.isAndroid) PaddingValues(vertical = 8.dp) else PaddingValues(top = 3.dp, bottom = 4.dp)
-  Box(
+  val isAndroid = appPlatform.isAndroid
+  val isDark = isInDarkTheme()
+  val padding = if (isAndroid) PaddingValues(vertical = 8.dp) else PaddingValues(top = 3.dp, bottom = 4.dp)
+  val containerModifier = if (isAndroid) {
+    Modifier
+      .fillMaxWidth()
+      .qryptanaInputWell(isDark, RoundedCornerShape(20.dp))
+      .padding(horizontal = 8.dp)
+      .padding(padding)
+  } else {
     Modifier
       .fillMaxWidth()
       .background(messagingTokens.inputSurface, RoundedCornerShape(topStart = 16.dp, topEnd = 16.dp))
@@ -77,7 +85,8 @@ fun SendMsgView(
       )
       .padding(horizontal = 8.dp)
       .padding(padding)
-  ) {
+  }
+  Box(containerModifier) {
     val cs = composeState.value
     val showVoiceButton = !nextConnect && cs.message.text.isEmpty() && showVoiceRecordIcon && !composeState.value.editing &&
         !composeState.value.forwarding && cs.liveMessage == null && (cs.preview is ComposePreview.NoPreview || recState.value is RecordingState.Started) && (cs.contextItem !is ComposeContextItem.ReportedItem)
@@ -494,13 +503,20 @@ private fun SendMsgButton(
     Icon(
       icon,
       stringResource(MR.strings.icon_descr_send_message),
-      tint = qryptanaMessagingTokens().onAccent,
+      tint = if (appPlatform.isAndroid && enabled) Color.White else qryptanaMessagingTokens().onAccent,
       modifier = Modifier
         .size(sizeDp.value.dp)
         .padding(4.dp)
         .alpha(alpha.value)
-        .clip(CircleShape)
-        .background(if (enabled) sendButtonColor else qryptanaMessagingTokens().disabledText.copy(alpha = 0.75f))
+        .then(
+          if (appPlatform.isAndroid) {
+            Modifier.qryptanaCopperControl(enabled, CircleShape)
+          } else {
+            Modifier
+              .clip(CircleShape)
+              .background(if (enabled) sendButtonColor else qryptanaMessagingTokens().disabledText.copy(alpha = 0.75f))
+          }
+        )
         .padding(3.dp)
     )
   }

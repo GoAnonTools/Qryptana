@@ -165,7 +165,7 @@ internal object QryptanaMetal {
   val textQuiet = Color(0xFF746C65)
 }
 
-/** Dark Android onboarding finish, scoped to the onboarding pages only. */
+/** Android onboarding palette, scoped to the onboarding pages only. */
 internal object QryptanaAndroidOnboardingPalette {
   val Background = Color(0xFF0E1013)
   val Surface = Color(0xFF161A1F)
@@ -174,15 +174,24 @@ internal object QryptanaAndroidOnboardingPalette {
   val TitaniumMedium = Color(0xFF9BA4AF)
   val TitaniumDark = Color(0xFF6A737E)
   val Copper = Color(0xFFB87333)
+
+  // Light theme tokens
+  val LightBackground = Color(0xFFF1F3F5)
+  val LightSurface = Color(0xFFFCFDFE)
+  val LightSurfaceRaised = Color(0xFFFFFFFF)
+  val LightTextPrimary = Color(0xFF20262B)
+  val LightTextSecondary = Color(0xFF59636C)
+  val LightBorder = Color(0xFFBAC2CA)
 }
 
 @Composable
 internal fun QryptanaAndroidOnboardingTheme(content: @Composable () -> Unit) {
+  val isDark = isInDarkTheme()
   val inherited = MaterialTheme.colors
   val typography = MaterialTheme.typography
   val shapes = MaterialTheme.shapes
-  MaterialTheme(
-    colors = darkColors(
+  val colors = if (isDark) {
+    darkColors(
       primary = QryptanaAndroidOnboardingPalette.Copper,
       primaryVariant = QryptanaAndroidOnboardingPalette.SurfaceRaised,
       secondary = QryptanaAndroidOnboardingPalette.TitaniumMedium,
@@ -190,17 +199,35 @@ internal fun QryptanaAndroidOnboardingTheme(content: @Composable () -> Unit) {
       background = QryptanaAndroidOnboardingPalette.Background,
       surface = QryptanaAndroidOnboardingPalette.Surface,
       error = inherited.error,
-      onPrimary = QryptanaAndroidOnboardingPalette.TitaniumLight,
+      onPrimary = Color.White,
       onSecondary = QryptanaAndroidOnboardingPalette.TitaniumLight,
       onBackground = QryptanaAndroidOnboardingPalette.TitaniumLight,
       onSurface = QryptanaAndroidOnboardingPalette.TitaniumLight,
       onError = inherited.onError
-    ),
+    )
+  } else {
+    lightColors(
+      primary = QryptanaAndroidOnboardingPalette.Copper,
+      primaryVariant = QryptanaAndroidOnboardingPalette.LightSurfaceRaised,
+      secondary = QryptanaAndroidOnboardingPalette.LightTextSecondary,
+      secondaryVariant = QryptanaAndroidOnboardingPalette.LightBorder,
+      background = QryptanaAndroidOnboardingPalette.LightBackground,
+      surface = QryptanaAndroidOnboardingPalette.LightSurface,
+      error = inherited.error,
+      onPrimary = Color.White,
+      onSecondary = QryptanaAndroidOnboardingPalette.LightTextPrimary,
+      onBackground = QryptanaAndroidOnboardingPalette.LightTextPrimary,
+      onSurface = QryptanaAndroidOnboardingPalette.LightTextPrimary,
+      onError = inherited.onError
+    )
+  }
+  MaterialTheme(
+    colors = colors,
     typography = typography,
     shapes = shapes,
     content = {
       CompositionLocalProvider(
-        LocalContentColor provides QryptanaAndroidOnboardingPalette.TitaniumLight,
+        LocalContentColor provides if (isDark) QryptanaAndroidOnboardingPalette.TitaniumLight else QryptanaAndroidOnboardingPalette.LightTextPrimary,
         content = content
       )
     }
@@ -212,8 +239,9 @@ internal fun QryptanaAndroidOnboardingTheme(content: @Composable () -> Unit) {
  * corner falloff and a barely-there grain. Every onboarding page sits on this so the flow
  * reads as one lit surface.
  */
+@Composable
 internal fun Modifier.qryptanaBackdrop(): Modifier {
-  if (appPlatform.isAndroid) return background(QryptanaAndroidOnboardingPalette.Background)
+  if (appPlatform.isAndroid) return background(if (isInDarkTheme()) QryptanaAndroidOnboardingPalette.Background else QryptanaAndroidOnboardingPalette.LightBackground)
   return this.background(
   Brush.verticalGradient(
     colorStops = arrayOf(
@@ -440,7 +468,7 @@ private fun QryptanaHeroTitle(text: String, start: Boolean = true) {
          letterSpacing = 0.4.sp,
          lineHeight = 42.sp,
          textAlign = TextAlign.Center,
-         color = if (appPlatform.isAndroid) QryptanaAndroidOnboardingPalette.TitaniumLight else QryptanaMetal.textHero
+         color = if (appPlatform.isAndroid) (if (isInDarkTheme()) QryptanaAndroidOnboardingPalette.TitaniumLight else QryptanaAndroidOnboardingPalette.LightTextPrimary) else QryptanaMetal.textHero
     )
     if (lines.size > 1) {
       Spacer(Modifier.height(8.dp))
@@ -593,7 +621,7 @@ private fun QryptanaWelcomeContent(
               }
             }
         ) {
-          QryptanaWordmark(Modifier.fillMaxWidth(), lightOnDark = true)
+          QryptanaWordmark(Modifier.fillMaxWidth(), lightOnDark = if (appPlatform.isAndroid) isInDarkTheme() else true)
         }
       }
     }
@@ -603,11 +631,8 @@ private fun QryptanaWelcomeContent(
 
     // 2. Identity / invitation object (placeholder, unchanged design).
     if ((appPlatform.isDesktop || appPlatform.isAndroid) && revealMotionEnabled) {
-      // No card: no shadow, no clip, no border. The plaque is an object resting
-      // in the scene; its edges dissolve into the app background (see
-      // QryptanaIdentityReveal).
-      QryptanaIdentityReveal(
-        Modifier
+      val isLightAndroid = appPlatform.isAndroid && !isInDarkTheme()
+      val revealModifier = Modifier
         .widthIn(max = 620.dp)
         .fillMaxWidth()
         .aspectRatio(QRYPTANA_REVEAL_ASPECT)
@@ -620,9 +645,41 @@ private fun QryptanaWelcomeContent(
           layout(placeable.width, placeable.height - trimTop - trimBottom) {
             placeable.placeRelative(0, -trimTop)
           }
-        },
-        onSettled = { plaqueSettled = true }
-      )
+        }
+
+      if (isLightAndroid) {
+        // Light mode intentional dark titanium pedestal chamber
+        Box(
+          Modifier
+            .widthIn(max = 620.dp)
+            .fillMaxWidth()
+            .shadow(10.dp, RoundedCornerShape(18.dp), ambientColor = Color.Black.copy(alpha = 0.12f), spotColor = Color.Black.copy(alpha = 0.12f))
+            .clip(RoundedCornerShape(18.dp))
+            .background(Color(0xFF141210))
+            .border(1.dp, Color(0xFF38414D), RoundedCornerShape(18.dp))
+            .drawWithContent {
+              drawContent()
+              drawLine(
+                color = Color(0xFFDDE2E8).copy(alpha = 0.22f),
+                start = Offset(18.dp.toPx(), 1.dp.toPx()),
+                end = Offset(size.width - 18.dp.toPx(), 1.dp.toPx()),
+                strokeWidth = 1.5f
+              )
+            }
+            .padding(top = 6.dp, start = 6.dp, end = 6.dp, bottom = 10.dp)
+        ) {
+          QryptanaIdentityReveal(
+            revealModifier,
+            onSettled = { plaqueSettled = true }
+          )
+        }
+      } else {
+        // Dark mode: seamless edge dissolve into dark foundation
+        QryptanaIdentityReveal(
+          revealModifier,
+          onSettled = { plaqueSettled = true }
+        )
+      }
     } else {
       InvitationPreviewCard(floating = false)
     }
@@ -653,7 +710,7 @@ private fun QryptanaWelcomeContent(
         stringResource(MR.strings.onboarding_private_and_secure),
                            style = MaterialTheme.typography.h3.merge(
                              TextStyle(
-                               color = if (appPlatform.isAndroid) QryptanaAndroidOnboardingPalette.TitaniumLight else QryptanaMetal.textBright.copy(alpha = 0.86f),
+                               color = if (appPlatform.isAndroid) (if (isInDarkTheme()) QryptanaAndroidOnboardingPalette.TitaniumLight else QryptanaAndroidOnboardingPalette.LightTextPrimary) else QryptanaMetal.textBright.copy(alpha = 0.86f),
                                        fontWeight = FontWeight.Normal,
                                        fontSize = 18.sp,
                                        letterSpacing = 0.1.sp,
@@ -671,7 +728,7 @@ private fun QryptanaWelcomeContent(
                            modifier = Modifier.padding(top = 14.dp),
                            style = MaterialTheme.typography.body2.merge(
                              TextStyle(
-                               color = if (appPlatform.isAndroid) QryptanaAndroidOnboardingPalette.TitaniumMedium else Color(0xFFCAC2BA),
+                               color = if (appPlatform.isAndroid) (if (isInDarkTheme()) QryptanaAndroidOnboardingPalette.TitaniumMedium else QryptanaAndroidOnboardingPalette.LightTextSecondary) else Color(0xFFCAC2BA),
                                        fontWeight = FontWeight.Normal,
                                        fontSize = 16.sp,
                                        letterSpacing = 0.1.sp,
@@ -694,7 +751,7 @@ private fun QryptanaWelcomeContent(
         TextButtonBelowOnboardingButton(
           stringResource(MR.strings.how_it_works),
                                         onClick = { ModalManager.fullscreen.showModal { HowItWorks(user, onboardingStage) } },
-                                        color = if (appPlatform.isAndroid) QryptanaAndroidOnboardingPalette.TitaniumMedium else QryptanaMetal.textTertiary
+                                        color = if (appPlatform.isAndroid) (if (isInDarkTheme()) QryptanaAndroidOnboardingPalette.TitaniumMedium else QryptanaAndroidOnboardingPalette.LightTextSecondary) else QryptanaMetal.textTertiary
         )
       }
     }
@@ -923,7 +980,7 @@ private fun InvitationPreviewCard(floating: Boolean = true) {
         spotColor = Color.Black.copy(alpha = 0.16f)
       ) else Modifier.shadow(34.dp, cardShape, clip = false))
       .clip(cardShape)
-      .then(if (appPlatform.isAndroid) Modifier.background(QryptanaAndroidOnboardingPalette.SurfaceRaised) else Modifier.background(
+      .then(if (appPlatform.isAndroid) Modifier.background(if (isInDarkTheme()) QryptanaAndroidOnboardingPalette.SurfaceRaised else Color.White) else Modifier.background(
         // A three-stop diagonal gradient, not a flat fill: this is what
         // reads as a real graphite surface catching light from one corner
         // rather than a flat-colored card.
@@ -933,7 +990,7 @@ private fun InvitationPreviewCard(floating: Boolean = true) {
                              end = Offset(420f, 240f)
         )
       ))
-      .then(if (appPlatform.isAndroid) Modifier.border(1.dp, QryptanaAndroidOnboardingPalette.TitaniumDark, cardShape) else Modifier.border(
+      .then(if (appPlatform.isAndroid) Modifier.border(1.dp, if (isInDarkTheme()) QryptanaAndroidOnboardingPalette.TitaniumDark else Color(0xFFBAC2CA), cardShape) else Modifier.border(
         BorderStroke(1.dp,
         // The edge catches light like real metal: brightest where the
         // light source is, fading to nothing — not a uniform stroke.
@@ -967,14 +1024,14 @@ private fun InvitationPreviewCard(floating: Boolean = true) {
             Column {
               Text(
                 stringResource(MR.strings.onboarding_invitation_card_title),
-                   color = if (appPlatform.isAndroid) QryptanaAndroidOnboardingPalette.TitaniumLight else QryptanaMetal.textBright,
+                   color = if (appPlatform.isAndroid) (if (isInDarkTheme()) QryptanaAndroidOnboardingPalette.TitaniumLight else QryptanaAndroidOnboardingPalette.LightTextPrimary) else QryptanaMetal.textBright,
                    style = MaterialTheme.typography.h3,
                    fontSize = 21.sp,
                    fontWeight = FontWeight.Medium
               )
               Text(
                 stringResource(MR.strings.onboarding_invitation_card_subtitle),
-                   color = if (appPlatform.isAndroid) QryptanaAndroidOnboardingPalette.TitaniumMedium else QryptanaMetal.textSoft,
+                   color = if (appPlatform.isAndroid) (if (isInDarkTheme()) QryptanaAndroidOnboardingPalette.TitaniumMedium else QryptanaAndroidOnboardingPalette.LightTextSecondary) else QryptanaMetal.textSoft,
                    style = MaterialTheme.typography.body2,
                    modifier = Modifier.padding(top = 3.dp)
               )
@@ -1046,7 +1103,7 @@ internal fun QryptanaSerifTitle(text: String, modifier: Modifier = Modifier, siz
   Text(
     text,
     modifier,
-    color = if (appPlatform.isAndroid) QryptanaAndroidOnboardingPalette.TitaniumLight else QryptanaMetal.textHero,
+    color = if (appPlatform.isAndroid) (if (isInDarkTheme()) QryptanaAndroidOnboardingPalette.TitaniumLight else QryptanaAndroidOnboardingPalette.LightTextPrimary) else QryptanaMetal.textHero,
     fontFamily = rememberQryptanaSerif(),
        fontWeight = FontWeight.Light,
        fontSize = sizeSp.sp,
@@ -1098,15 +1155,23 @@ fun OnboardingActionButton(
       if (appPlatform.isAndroid) {
         Modifier
         .then(if (secondary) Modifier else Modifier.shadow(
-          6.dp,
+          if (pressed) 2.dp else 6.dp,
           shape,
           clip = false,
-          ambientColor = Color.Black.copy(alpha = 0.16f),
-          spotColor = Color.Black.copy(alpha = 0.16f)
+          ambientColor = Color.Black.copy(alpha = 0.35f),
+          spotColor = Color(0xFF9F634C).copy(alpha = 0.35f)
         ))
-        .clip(shape)
-        .background(if (secondary) QryptanaAndroidOnboardingPalette.Surface else QryptanaAndroidOnboardingPalette.SurfaceRaised)
-        .border(1.dp, if (secondary) QryptanaAndroidOnboardingPalette.TitaniumDark else QryptanaAndroidOnboardingPalette.Copper, shape)
+        .then(
+          if (secondary) {
+            val isDark = isInDarkTheme()
+            Modifier
+              .clip(shape)
+              .background(if (isDark) QryptanaAndroidOnboardingPalette.Surface else Color.White)
+              .border(1.dp, if (isDark) QryptanaAndroidOnboardingPalette.TitaniumDark else Color(0xFFBAC2CA), shape)
+          } else {
+            Modifier.qryptanaCopperControl(enabled, shape)
+          }
+        )
       } else if (secondary) {
         // Deliberately quiet: no drop shadow, no copper, a faint translucent
         // titanium body and a low-contrast neutral hairline. It reads as
@@ -1196,14 +1261,14 @@ fun OnboardingActionButton(
              Modifier.padding(end = DEFAULT_PADDING_HALF),
              // Copper reserved for this one small detail — an engraved accent,
              // not a filled surface — on both button variants.
-             tint = if (appPlatform.isAndroid) QryptanaAndroidOnboardingPalette.Copper else QryptanaMetal.copperLight
+             tint = if (appPlatform.isAndroid) (if (!secondary) Color.White else QryptanaAndroidOnboardingPalette.Copper) else QryptanaMetal.copperLight
         )
       }
       Text(
         stringResource(labelId),
            style = MaterialTheme.typography.h2,
            // Primary: full-bright titanium text. Secondary: noticeably dimmer.
-           color = if (appPlatform.isAndroid) QryptanaAndroidOnboardingPalette.TitaniumLight else if (secondary) QryptanaMetal.textBright.copy(alpha = 0.82f) else QryptanaMetal.textHero,
+           color = if (appPlatform.isAndroid) (if (!secondary) Color.White else (if (isInDarkTheme()) QryptanaAndroidOnboardingPalette.TitaniumLight else QryptanaAndroidOnboardingPalette.LightTextPrimary)) else if (secondary) QryptanaMetal.textBright.copy(alpha = 0.82f) else QryptanaMetal.textHero,
            fontSize = 15.sp,
            letterSpacing = 0.9.sp,
            fontWeight = if (secondary) FontWeight.Normal else FontWeight.Medium

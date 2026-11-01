@@ -1747,8 +1747,17 @@ fun ComposeView(
       }
     }
 
-    Surface(color = MaterialTheme.colors.background, contentColor = MaterialTheme.colors.onBackground) {
-      Divider()
+    val isAndroid = appPlatform.isAndroid
+    val isDark = isInDarkTheme()
+    val shelfModifier = if (isAndroid) Modifier.qryptanaComposerShelf(isDark) else Modifier
+    Surface(
+      modifier = shelfModifier,
+      color = if (isAndroid) Color.Transparent else MaterialTheme.colors.background,
+      contentColor = MaterialTheme.colors.onBackground
+    ) {
+      if (!isAndroid) {
+        Divider()
+      }
       if (chat.chatInfo is ChatInfo.Group && chat.chatInfo.groupInfo.nextConnectPrepared) {
         if (chat.chatInfo.groupInfo.businessChat == null) {
           val isChannel = chat.chatInfo.groupInfo.useRelays

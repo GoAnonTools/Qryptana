@@ -7,6 +7,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.*
+import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.*
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.text.font.FontWeight
@@ -15,6 +16,7 @@ import androidx.compose.ui.unit.*
 import dev.icerock.moko.resources.compose.painterResource
 import dev.icerock.moko.resources.compose.stringResource
 import chat.simplex.common.model.ChatController.appPrefs
+import chat.simplex.common.platform.appPlatform
 import chat.simplex.common.ui.theme.*
 import chat.simplex.common.views.chat.item.CenteredRowLayout
 import chat.simplex.res.MR
@@ -58,21 +60,42 @@ fun DefaultAppBar(
   Box(modifier) {
     val density = LocalDensity.current
     val blurRadius = remember { appPrefs.appearanceBarsBlurRadius.state }
+    val isDark = isInDarkTheme()
+    val androidAppGradient = remember(isDark) {
+      if (isDark) QryptanaAndroidMaterialTokens.DarkAppBarGradient else QryptanaAndroidMaterialTokens.LightAppBarGradient
+    }
+    val androidSpecular = remember(isDark) {
+      if (isDark) QryptanaAndroidMaterialTokens.DarkSpecularHairline else QryptanaAndroidMaterialTokens.LightSpecularHairline
+    }
     Box(Modifier
       .matchParentSize()
       .blurredBackgroundModifier(keyboardInset, handler, blurRadius, prefAlpha, handler?.keyboardCoversBar == true, onTop, density)
       .drawWithCache {
         // store it as a variable, don't put it inside if without holding it here. Compiler don't see it changes otherwise
         val alpha = prefAlpha.value
-        val backgroundColor = if (title != null || fixedTitleText != null || connection == null || !onTop) {
+        val effectiveAlpha = if (title != null || fixedTitleText != null || connection == null || !onTop) {
           // Explicit onboarding backgrounds must cover the old themed/blurred surface.
           // Otherwise the app bar becomes translucent and exposes the beige shell below it.
-          themeBackgroundMix.copy(alpha = if (hasExplicitBackground) 1f else alpha)
+          if (hasExplicitBackground) 1f else alpha
         } else {
-          themeBackgroundMix.copy(alpha = if (hasExplicitBackground) 1f else topTitleAlpha(false, connection))
+          if (hasExplicitBackground) 1f else topTitleAlpha(false, connection)
         }
+        val backgroundColor = themeBackgroundMix.copy(alpha = effectiveAlpha)
+        val androidBrush = if (appPlatform.isAndroid && !hasExplicitBackground) Brush.verticalGradient(androidAppGradient) else null
         onDrawBehind {
-          drawRect(backgroundColor)
+          if (androidBrush != null) {
+            drawRect(androidBrush, alpha = effectiveAlpha)
+            if (onTop) {
+              drawLine(
+                color = androidSpecular.copy(alpha = androidSpecular.alpha * effectiveAlpha),
+                start = Offset(0f, 0f),
+                end = Offset(size.width, 0f),
+                strokeWidth = 1f
+              )
+            }
+          } else {
+            drawRect(backgroundColor)
+          }
         }
       }
     )
@@ -171,16 +194,24 @@ fun NavigationButtonMenu(onButtonClicked: () -> Unit) {
 
 @Composable
 private fun BoxScope.AppBarDivider(onTop: Boolean, fixedAlpha: Boolean, connection: CollapsingAppBarNestedScrollConnection?) {
+  val dividerColor = if (appPlatform.isAndroid) {
+    if (isInDarkTheme()) QryptanaAndroidMaterialTokens.DarkAppBarBorder else QryptanaAndroidMaterialTokens.LightAppBarBorder
+  } else Color.Unspecified
+
   if (connection != null) {
     Divider(
       Modifier
         .align(if (onTop) Alignment.BottomStart else Alignment.TopStart)
         .graphicsLayer {
           alpha = if (!onTop || fixedAlpha) 1f else topTitleAlpha(false, connection, 1f)
-        }
+        },
+      color = if (dividerColor != Color.Unspecified) dividerColor else MaterialTheme.colors.onSurface.copy(alpha = 0.12f)
     )
   } else {
-    Divider(Modifier.align(if (onTop) Alignment.BottomStart else Alignment.TopStart))
+    Divider(
+      Modifier.align(if (onTop) Alignment.BottomStart else Alignment.TopStart),
+      color = if (dividerColor != Color.Unspecified) dividerColor else MaterialTheme.colors.onSurface.copy(alpha = 0.12f)
+    )
   }
 }
 
