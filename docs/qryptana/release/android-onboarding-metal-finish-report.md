@@ -1,6 +1,6 @@
 # Android onboarding titanium and copper finish
 
-> **Superseded; not approved.** This report documents the rejected candidate from source commit `0f0fe367f0e71741a11cd3363d305cb0279c402f` and evidence commit `7b80a0b55ce2360ab6305a7975e9990892903672`. Corrective commit `a19a8e08c233846a2c6c1340660faae1ea7da80c` reverses the implementation. The APKs and screenshots below are historical candidate artifacts, not approved release artifacts.
+> **Metallic logo treatment superseded; not approved.** This report documents the rejected treatment from source commit `0f0fe367f0e71741a11cd3363d305cb0279c402f` and evidence commit `7b80a0b55ce2360ab6305a7975e9990892903672`. Corrective commit `a19a8e08c233846a2c6c1340660faae1ea7da80c` reversed that commit; follow-up `d6de5ce6d` retained its cool titanium Android palette and neutral screen treatments while removing the logo shader/finish. The APKs and screenshots below are historical evidence of the rejected treatment, not approved release artifacts. See [the logo restoration report](android-onboarding-logo-restoration-report.md) for the corrected candidate.
 
 ## Change and scope
 
