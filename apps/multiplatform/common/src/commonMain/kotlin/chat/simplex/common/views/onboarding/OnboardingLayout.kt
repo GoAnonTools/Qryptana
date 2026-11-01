@@ -103,42 +103,55 @@ fun OnboardingImage(
               modifier = Modifier.fillMaxWidth().then(modifier)
         )
     } else {
-        val isDark = isInDarkTheme()
-        // The upstream onboarding placeholder used a saturated blue wash.
-        // Qryptana Android uses its selected titanium surfaces instead; retain
-        // the original desktop gradient unchanged.
-        val stops = if (appPlatform.isAndroid) {
-          arrayOf(
-            0.0f to MaterialTheme.colors.background,
-            0.5f to MaterialTheme.colors.surface,
-            1.0f to MaterialTheme.colors.background
-          )
-        } else if (isDark) darkStops else lightStops
-        val scale = if (isDark) 1.5f else 1.2f
-        Box(
-            modifier
-            .aspectRatio(aspectRatio)
-            .clip(RoundedCornerShape(24.dp))
-            .drawBehind {
-                val gp = gradientPoints(size.height / size.width, scale)
-                drawRect(
-                    Brush.linearGradient(
-                        colorStops = stops,
-                        start = Offset(gp.startX * size.width, gp.startY * size.height),
-                                         end = Offset(gp.endX * size.width, gp.endY * size.height)
-                    )
-                )
-            },
-            contentAlignment = Alignment.Center
-        ) {
-            Icon(
-                painterResource(fallbackIcon),
-                 contentDescription = null,
-                 modifier = Modifier.size(80.dp),
-                 tint = MaterialTheme.colors.primary
-            )
-        }
+      QryptanaOnboardingIllustrationFallback(fallbackIcon, modifier, aspectRatio)
     }
+}
+
+@Composable
+internal fun QryptanaOnboardingIllustrationFallback(
+  fallbackIcon: ImageResource,
+  modifier: Modifier = Modifier,
+  aspectRatio: Float = 1f,
+  androidTreatment: Boolean = appPlatform.isAndroid
+) {
+  val isDark = isInDarkTheme()
+  if (androidTreatment) {
+    // The packaged default SVGs are intentionally empty when upstream
+    // illustrations are absent. Leave the art slot unillustrated rather than
+    // substituting a generic icon for the missing authored artwork.
+    Box(
+      modifier
+      .aspectRatio(aspectRatio)
+      .clip(RoundedCornerShape(24.dp))
+      .background(QryptanaAndroidOnboardingPalette.Surface)
+    )
+  } else {
+    val scale = if (isDark) 1.5f else 1.2f
+    Box(
+      modifier
+      .aspectRatio(aspectRatio)
+      .clip(RoundedCornerShape(24.dp))
+      .drawBehind {
+        val stops = if (isDark) darkStops else lightStops
+        val gp = gradientPoints(size.height / size.width, scale)
+        drawRect(
+          Brush.linearGradient(
+            colorStops = stops,
+            start = Offset(gp.startX * size.width, gp.startY * size.height),
+            end = Offset(gp.endX * size.width, gp.endY * size.height)
+          )
+        )
+      },
+      contentAlignment = Alignment.Center
+    ) {
+      Icon(
+        painterResource(fallbackIcon),
+        contentDescription = null,
+        modifier = Modifier.size(80.dp),
+        tint = MaterialTheme.colors.primary
+      )
+    }
+  }
 }
 
 @Composable

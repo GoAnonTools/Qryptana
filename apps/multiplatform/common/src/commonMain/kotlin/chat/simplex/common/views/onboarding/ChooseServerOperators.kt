@@ -59,9 +59,10 @@ fun OnboardingConditionsView(chatModel: ChatModel) {
     OnboardingConditionsDesktop(selectedOperatorIds)
   } else {
     CompositionLocalProvider(LocalAppBarHandler provides rememberAppBarHandler()) {
-      ModalView({}, showClose = false, showAppBar = false, cardScreen = true) {
+      ModalView({}, showClose = false, showAppBar = false, cardScreen = true, background = if (appPlatform.isAndroid) QryptanaAndroidOnboardingPalette.Background else Color.Unspecified) {
+        val conditionsContent: @Composable () -> Unit = {
         OnboardingShrinkingLayout(
-          modifier = Modifier.fillMaxSize().themedBackground(bgLayerSize = LocalAppBarHandler.current?.backgroundGraphicsLayerSize, bgLayer = LocalAppBarHandler.current?.backgroundGraphicsLayer)
+          modifier = Modifier.fillMaxSize().then(if (appPlatform.isAndroid) Modifier.background(QryptanaAndroidOnboardingPalette.Background) else Modifier.themedBackground(bgLayerSize = LocalAppBarHandler.current?.backgroundGraphicsLayerSize, bgLayer = LocalAppBarHandler.current?.backgroundGraphicsLayer))
           .systemBarsPadding()
           .padding(horizontal = DEFAULT_ONBOARDING_HORIZONTAL_PADDING),
                                   topPadding = DEFAULT_PADDING,
@@ -129,6 +130,8 @@ fun OnboardingConditionsView(chatModel: ChatModel) {
                                     }
                                   }
         )
+        }
+        if (appPlatform.isAndroid) QryptanaAndroidOnboardingTheme(conditionsContent) else conditionsContent()
       }
     }
   }
