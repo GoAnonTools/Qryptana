@@ -46,6 +46,7 @@ import chat.simplex.res.ic_lock
 import chat.simplex.res.ic_manage_accounts
 import chat.simplex.res.ic_notifications_off
 import chat.simplex.res.ic_qr_code
+import chat.simplex.res.ic_security
 import chat.simplex.res.ic_settings
 import chat.simplex.res.ic_smartphone_300
 import chat.simplex.res.ic_toggle_on
@@ -53,6 +54,7 @@ import chat.simplex.res.ic_wifi
 import chat.simplex.res.ic_wifi_off
 import chat.simplex.res.link_a_mobile
 import chat.simplex.res.linked_mobiles
+import chat.simplex.res.privana_vpn
 import chat.simplex.res.settings_section_title_settings
 import chat.simplex.res.settings_section_title_use_from_desktop
 import chat.simplex.res.this_device
@@ -240,6 +242,7 @@ fun UserPicker(
 
     @Composable
     fun SecondSection() {
+      PrivanaVpnButton()
       UserPickerOptionRow(
         painterResource(MR.images.ic_qr_code),
         if (chatModel.userAddress.value != null) generalGetString(MR.strings.your_simplex_contact_address) else generalGetString(MR.strings.create_simplex_address),
@@ -499,6 +502,58 @@ fun UserProfileRow(u: User, enabled: Boolean = remember { chatModel.chatRunning 
       color = if (enabled) MenuTextColor else MaterialTheme.colors.secondary,
       fontWeight = if (u.activeUser) FontWeight.Medium else FontWeight.Normal
     )
+  }
+}
+
+@Composable
+private fun PrivanaVpnButton() {
+  val shape = RoundedCornerShape(14.dp)
+  Box(
+    Modifier
+      .fillMaxWidth()
+      .padding(horizontal = DEFAULT_PADDING, vertical = DEFAULT_PADDING_HALF)
+      .shadow(
+        6.dp,
+        shape,
+        clip = false,
+        ambientColor = Color.Black.copy(alpha = 0.16f),
+        spotColor = Color.Black.copy(alpha = 0.22f)
+      )
+      .clip(shape)
+      .background(
+        Brush.verticalGradient(
+          0f to Color(0xFFFFFFFF),
+          0.16f to Color(0xFFE9EDF3),
+          0.46f to Color(0xFFC2CAD5),
+          0.52f to Color(0xFFF8FAFD),
+          0.72f to Color(0xFFB6C0CC),
+          1f to Color(0xFFE3E8EF),
+        )
+      )
+      .border(1.dp, Color(0xFF8D97A4).copy(alpha = 0.65f), shape)
+      // Placeholder until Privana VPN is wired up.
+      .clickable { }
+      .heightIn(min = 54.dp),
+    contentAlignment = Alignment.Center
+  ) {
+    Row(
+      verticalAlignment = Alignment.CenterVertically,
+      horizontalArrangement = Arrangement.spacedBy(8.dp)
+    ) {
+      Icon(
+        painterResource(MR.images.ic_security),
+        contentDescription = null,
+        tint = Color(0xFF2A2F36),
+        modifier = Modifier.size(18.dp)
+      )
+      Text(
+        stringResource(MR.strings.privana_vpn),
+        color = Color(0xFF16191D),
+        fontWeight = FontWeight.SemiBold,
+        letterSpacing = 0.8.sp,
+        fontSize = 16.sp
+      )
+    }
   }
 }
 

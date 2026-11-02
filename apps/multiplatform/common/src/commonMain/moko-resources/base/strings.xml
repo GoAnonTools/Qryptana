@@ -1206,6 +1206,7 @@
   <string name="add_address_to_your_profile">Add address to your profile, so that your Qryptana contacts can share it with other people. Profile update will be sent to your Qryptana contacts.</string>
   <string name="create_address_and_let_people_connect">Create an address to let people connect with you.</string>
   <string name="create_simplex_address">Create Qryptana address</string>
+  <string name="privana_vpn">Privana VPN</string>
   <string name="share_with_contacts">Share with Qryptana contacts</string>
   <string name="share_address_with_contacts_question">Share address with Qryptana contacts?</string>
   <string name="profile_update_will_be_sent_to_contacts">Profile update will be sent to your Qryptana contacts.</string>

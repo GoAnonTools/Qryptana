@@ -53,6 +53,10 @@ import chat.simplex.res.smart_invite_scan_hint
 import chat.simplex.res.smart_invite_title
 import kotlinx.coroutines.launch
 
+// Solid copper on the white QR panel: ~5.7:1 contrast against white.
+// A gradient would vary module contrast and risks reducing scan reliability.
+private val qrCopper = Color(0xFF9A5522)
+
 @Composable
 fun SimpleXCreatedLinkQRCode(
   connLink: CreatedConnLink,
@@ -136,7 +140,7 @@ fun QRCode(
   val androidSmartInvite = branded && androidStyle
   val resolvedTint = when {
     copperPlaque -> QryptanaMetal.void
-    androidSmartInvite -> Color(0xFF11100F)
+    androidSmartInvite -> qrCopper
     else -> tintColor
   }
   val qr = remember(connReq, resolvedTint, withLogo) {
@@ -265,9 +269,9 @@ fun QRCode(
 }
 
 /**
- * Android Smart Invite keeps the QR itself conventional and high contrast.
- * Copper belongs to the heading/action role; the surrounding card is a quiet
- * titanium surface with a single neutral border and resilient wrapping.
+ * Android Smart Invite uses solid copper QR modules on a solid white panel.
+ * The dark copper keeps scanner contrast high; the surrounding card stays a
+ * quiet titanium surface with a single neutral border and resilient wrapping.
  */
 @Composable
 internal fun QryptanaAndroidSmartInvite(
