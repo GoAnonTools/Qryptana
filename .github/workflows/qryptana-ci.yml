@@ -17,6 +17,8 @@ jobs:
   multiplatform:
     runs-on: ubuntu-latest
     timeout-minutes: 45
+    env:
+      PRODUCTION_ASSETS_DIR: ../../assets
     steps:
       - name: Check out source
         uses: actions/checkout@v4
@@ -34,14 +36,74 @@ jobs:
         with:
           packages: 'platform-tools platforms;android-35 build-tools;35.0.0'
 
+      - name: Verify production assets are available
+        working-directory: apps/multiplatform
+        run: |
+          set -euo pipefail
+          assets="${PRODUCTION_ASSETS_DIR}/multiplatform/resources/MR/images"
+          if [ ! -d "$assets" ]; then
+            echo "::error::Production assets are missing at apps/multiplatform/$assets"
+            exit 1
+          fi
+          if [ ! -f "$assets/intro@2x.png" ]; then
+            echo "::error::Production artwork intro@2x.png is missing; refusing to fall back to assets/default"
+            exit 1
+          fi
+          echo "Production assets found at $assets"
+
       - name: Compile desktop Kotlin
         working-directory: apps/multiplatform
-        run: ./gradlew :common:compileKotlinDesktop --no-daemon --max-workers=1 --no-parallel -Dorg.gradle.jvmargs="-Xmx4g -XX:MaxMetaspaceSize=512m -Dfile.encoding=UTF-8" -Pkotlin.compiler.execution.strategy=in-process
+        run: ./gradlew -Psimplex.assets.dir="${PRODUCTION_ASSETS_DIR}" :common:compileKotlinDesktop --no-daemon --max-workers=1 --no-parallel -Dorg.gradle.jvmargs="-Xmx4g -XX:MaxMetaspaceSize=512m -Dfile.encoding=UTF-8" -Pkotlin.compiler.execution.strategy=in-process
 
       - name: Run desktop tests
         working-directory: apps/multiplatform
-        run: ./gradlew :common:desktopTest --no-daemon --max-workers=1 --no-parallel -Dorg.gradle.jvmargs="-Xmx4g -XX:MaxMetaspaceSize=512m -Dfile.encoding=UTF-8" -Pkotlin.compiler.execution.strategy=in-process
+        run: ./gradlew -Psimplex.assets.dir="${PRODUCTION_ASSETS_DIR}" :common:desktopTest --no-daemon --max-workers=1 --no-parallel -Dorg.gradle.jvmargs="-Xmx4g -XX:MaxMetaspaceSize=512m -Dfile.encoding=UTF-8" -Pkotlin.compiler.execution.strategy=in-process
 
       - name: Compile Android Kotlin
         working-directory: apps/multiplatform
-        run: ./gradlew :android:compileFossDebugKotlin --no-daemon --max-workers=1 --no-parallel -Dorg.gradle.jvmargs="-Xmx4g -XX:MaxMetaspaceSize=512m -Dfile.encoding=UTF-8" -Pkotlin.compiler.execution.strategy=in-process
+        run: ./gradlew -Psimplex.assets.dir="${PRODUCTION_ASSETS_DIR}" :android:compileFossDebugKotlin --no-daemon --max-workers=1 --no-parallel -Dorg.gradle.jvmargs="-Xmx4g -XX:MaxMetaspaceSize=512m -Dfile.encoding=UTF-8" -Pkotlin.compiler.execution.strategy=in-process
+
+      - name: Verify production assets were packaged
+        working-directory: apps/multiplatform
+        run: |
+          set -euo pipefail
+          build_config="common/build/generated/sources/buildConfig/main/chat/simplex/common/BuildConfigCommon.kt"
+          if [ ! -f "$build_config" ]; then
+            echo "::error::Generated BuildConfigCommon.kt not found at $build_config"
+            exit 1
+          fi
+          if ! grep -Eq 'SIMPLEX_ASSETS: Boolean = true' "$build_config"; then
+            echo "::error::Build did not enable production assets (SIMPLEX_ASSETS is not true)"
+            exit 1
+          fi
+
+          prod_dir="${PRODUCTION_ASSETS_DIR}/multiplatform/resources/MR/images"
+          copied_dir="common/src/commonMain/resources/assets/simplex/MR/images"
+          android_res="common/build/generated/res/generateMRandroidMain"
+          wordmark="common/src/commonMain/moko-resources/images/qryptana_wordmark@1x.png"
+
+          for f in \
+            "$prod_dir/intro@2x.png" \
+            "$copied_dir/intro@2x.png" \
+            "$android_res/drawable-xhdpi/intro.png" \
+            "$wordmark" \
+            "$android_res/drawable-mdpi/qryptana_wordmark.png"; do
+            if [ ! -f "$f" ]; then
+              echo "::error::Expected production asset is missing: $f"
+              exit 1
+            fi
+          done
+
+          cmp -s "$prod_dir/intro@2x.png" "$copied_dir/intro@2x.png" || {
+            echo "::error::Copied onboarding artwork does not match the production source"
+            exit 1
+          }
+          cmp -s "$prod_dir/intro@2x.png" "$android_res/drawable-xhdpi/intro.png" || {
+            echo "::error::Packaged Android onboarding artwork does not match the production source"
+            exit 1
+          }
+          cmp -s "$wordmark" "$android_res/drawable-mdpi/qryptana_wordmark.png" || {
+            echo "::error::Packaged canonical wordmark does not match the source"
+            exit 1
+          }
+          echo "Production assets and canonical wordmark verified in the build output."
