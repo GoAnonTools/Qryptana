@@ -8,11 +8,21 @@ plugins {
     id("org.jetbrains.kotlin.plugin.compose")
 }
 
+// Self-hosted sideload identity. The Kotlin namespace remains chat.simplex.app for
+// source/manifest class-name compatibility.
+val qryptanaApplicationId = "com.goanon.qryptana"
+val qryptanaStoreFile = rootProject.findProperty("Qryptana.storeFile") as String?
+val qryptanaStorePassword = rootProject.findProperty("Qryptana.storePassword") as String?
+val qryptanaKeyAlias = rootProject.findProperty("Qryptana.keyAlias") as String?
+val qryptanaKeyPassword = rootProject.findProperty("Qryptana.keyPassword") as String?
+val hasQryptanaReleaseSigning =
+  listOf(qryptanaStoreFile, qryptanaStorePassword, qryptanaKeyAlias, qryptanaKeyPassword).all { !it.isNullOrBlank() }
+
 android {
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "chat.simplex.app"
+        applicationId = qryptanaApplicationId
         namespace = "chat.simplex.app"
         minSdk = 26
         targetSdk = 35
@@ -31,12 +41,25 @@ android {
             }
         }
         manifestPlaceholders["app_name"] = "@string/app_name"
-        manifestPlaceholders["provider_authorities"] = "chat.simplex.app.provider"
         manifestPlaceholders["extract_native_libs"] = rootProject.extra["compression.level"] as Int != 0
     }
 
-    // `google` is distributed via Google Play as an app bundle and includes Play Billing.
-    // `foss` is distributed via F-Droid and as APKs on GitHub, without Play dependencies.
+    signingConfigs {
+        if (hasQryptanaReleaseSigning) {
+            create("release") {
+                val store = rootProject.file(qryptanaStoreFile!!)
+                require(store.isFile) { "Qryptana.storeFile does not exist: $qryptanaStoreFile" }
+                storeFile = store
+                storePassword = qryptanaStorePassword
+                keyAlias = qryptanaKeyAlias
+                keyPassword = qryptanaKeyPassword
+            }
+        }
+    }
+
+    // Qryptana is distributed as a self-hosted sideload APK from a VPS.
+    // `foss` is the sideload flavor; the legacy `google` flavor is retained for Play-only builds
+    // and is not used for Qryptana distribution.
     flavorDimensions += "store"
     productFlavors {
         create("google") {
@@ -55,12 +78,13 @@ android {
             applicationIdSuffix = rootProject.extra["application_id.suffix"] as String
             isDebuggable = rootProject.extra["enable_debuggable"] as Boolean
             manifestPlaceholders["app_name"] = rootProject.extra["app.name"] as String
-            // Provider can"t be the same for different apps on the same device
-            manifestPlaceholders["provider_authorities"] = "chat.simplex.app${rootProject.extra["application_id.suffix"]}.provider"
         }
         release {
             isMinifyEnabled = false
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            if (hasQryptanaReleaseSigning) {
+                signingConfig = signingConfigs.getByName("release")
+            }
         }
     }
     kotlinOptions {

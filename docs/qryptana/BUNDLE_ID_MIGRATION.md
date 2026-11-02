@@ -1,9 +1,9 @@
 # Bundle and application ID migration
 
-The current application identifiers remain unchanged for upgrade compatibility:
+The Android identifier migration is recorded in [`docs/qryptana/decisions/bundle-id-migration.md`](decisions/bundle-id-migration.md). Current identifiers:
 
-- Android `applicationId`: `chat.simplex.app` (including existing debug suffix behavior).
-- Desktop macOS bundle ID: `chat.simplex.app`.
+- Android `applicationId`: `com.goanon.qryptana` for the self-hosted sideload build; debug builds append `.debug`.
+- Desktop macOS bundle ID: `chat.simplex.app` (unchanged).
 
 Distribution artwork uses the existing original `docs/qryptana/brand/qryptana-symbol.png`. The initial remediation renamed/re-encoded some already-Qryptana assets: the desktop PNG and Android legacy `icon.png` pixels were already present at `2121b84`, not newly designed in `ff5daf4`. Desktop ICO was generated and build references changed. macOS still points at PNG; that is an unverified placeholder, not a validated jpackage fallback. A real ICNS and macOS packaging validation remain required.
 
@@ -19,4 +19,4 @@ Other density canvas/artwork sizes: mdpi 108/66, hdpi 162/99, xhdpi 216/132, xxh
 
 Changing identifiers in a future release would require an explicit migration plan covering installation upgrades, deep links, app links, notifications, store records, signing identities and user data. No identifier migration is performed here.
 
-NEEDS HUMAN: decide whether and when a bundle/application ID migration is worth the upgrade and ecosystem cost, and provide native icon assets for each target platform.
+NEEDS HUMAN: decide whether the desktop macOS bundle ID should also change at a later date, and provide native icon assets for each target platform. The Android identifier migration is decided and tracked in the decision record.

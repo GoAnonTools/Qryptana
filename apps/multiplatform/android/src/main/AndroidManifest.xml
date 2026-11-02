@@ -3,6 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="chat.simplex.app">
 
+  <!-- Manifest namespace stays chat.simplex.app for source compatibility.
+       The shipping Android applicationId is com.goanon.qryptana. -->
+
   <uses-feature android:name="android.hardware.camera" />
 
   <uses-permission android:name="android.permission.CAMERA" />
@@ -70,6 +73,8 @@
 
         <data android:scheme="simplex" />
       </intent-filter>
+      <!-- Keep simplex.chat / *.simplex.im hosts for QR and deep-link compatibility.
+           App-link verification uses the variant applicationId. -->
       <intent-filter android:autoVerify="true">
         <action android:name="android.intent.action.VIEW" />
 
@@ -160,7 +165,7 @@
 
     <provider
         android:name="androidx.core.content.FileProvider"
-        android:authorities="${provider_authorities}"
+        android:authorities="${applicationId}.provider"
         android:exported="false"
         android:grantUriPermissions="true">
       <meta-data

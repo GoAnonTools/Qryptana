@@ -28,6 +28,12 @@ buildscript {
     if (prop["simplex.assets.dir"] != null) {
         extra.set("simplex.assets.dir", prop["simplex.assets.dir"])
     }
+    // Release signing is supplied by the maintainer through ignored local.properties.
+    for (key in listOf("Qryptana.storeFile", "Qryptana.storePassword", "Qryptana.keyAlias", "Qryptana.keyPassword")) {
+        if (prop[key] != null) {
+            extra.set(key, prop[key])
+        }
+    }
     // NOTE: If you need a different version of something, provide it in `local.properties`
     // like so: compose.version=123, or gradle.plugin.version=1.2.3, etc
 
