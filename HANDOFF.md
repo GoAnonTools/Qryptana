@@ -2,8 +2,8 @@
 
 ## Current State
 - **Repo:** Qryptana (Android-only focus)
-- **Last commit:** 8dd62938b8fd4bd27bb4282c2d65a6a2e9cf6309 (Task 2 / F3)
-- **Status:** Tasks 1 and 2 complete and reviewed; Tasks 3–5 pending. CI has not been re-run on these commits yet.
+- **Last commit:** 27075d5fe6d8fdeb2d7d25200ae87dabbb1fed0d (Task 3 / R3 residual)
+- **Status:** Tasks 1–3 complete and locally verified; Tasks 4–5 pending. CI has not been re-run on these commits yet.
 - **Agent:** Claude Code (DeepSeek Flash backend)
 
 ## Strict Rules (DO NOT VIOLATE)
@@ -42,9 +42,16 @@
 - **Verification:** Markdown heading/trailing-whitespace review passed and all referenced repository paths exist. No markdown linter is installed in the environment.
 - **Goal:** Legal accuracy and transparency.
 
-### 3. Add CI Guard for Production Assets (R3 residual)
+### 3. Add CI Guard for Production Assets (R3 residual) — DONE
+- **Status:** Complete in commit `27075d5fe` (2026-11-02).
 - **Action:** Add a check to the CI workflow that fails if the build uses `assets/default` instead of production assets.
 - **Context:** The last CI failure exposed that CI doesn't build with production assets.
+- **Implemented:**
+  - `.github/workflows/qryptana-ci.yml` now sets `PRODUCTION_ASSETS_DIR: ../../assets` and passes `-Psimplex.assets.dir="${PRODUCTION_ASSETS_DIR}"` to the desktop compile, desktop test, and Android compile invocations, so CI uses the tracked production assets instead of falling back to `assets/default`.
+  - Added a pre-build step that fails early if `assets/multiplatform/resources/MR/images` or the production-only `intro@2x.png` is missing.
+  - Added a post-build step that fails unless `BuildConfigCommon.SIMPLEX_ASSETS` is `true`, the expected production-derived outputs exist, and the copied and generated `intro@2x.png` plus the canonical `qryptana_wordmark` match their source bytes.
+  - No Gradle or build-script changes were made.
+- **Verification:** Locally ran `:common:compileKotlinDesktop`, `:common:desktopTest`, and `:android:compileFossDebugKotlin` with `-Psimplex.assets.dir=../../assets`; all reported `BUILD SUCCESSFUL`. The exact post-build verification block passed. The workflow parses as valid YAML; `actionlint` is not installed.
 
 ### 4. Translate New Android Strings (Low/Medium)
 - **Action:** Translate the ~57 new `android_*` strings into German, French, Spanish, and Russian.
