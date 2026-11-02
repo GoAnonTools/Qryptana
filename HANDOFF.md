@@ -2,8 +2,8 @@
 
 ## Current State
 - **Repo:** Qryptana (Android-only focus)
-- **Last commit:** 3ad852f2671c909619ad45f89fd15c97ddc55354 (Task 4)
-- **Status:** Tasks 1–4 complete and locally verified; Task 5 (optional) pending. CI has not been re-run on these commits yet.
+- **Last commit:** bbb9eb49dd5d934fa96ee5ae372d7a0dbc6a76b5 (post-audit fixes)
+- **Status:** Tasks 1–4 complete; post-audit flag/privacy/handoff fixes applied and locally verified. Task 5 (optional) is on hold. CI is pending for this push.
 - **Agent:** Claude Code (DeepSeek Flash backend)
 
 ## Strict Rules (DO NOT VIOLATE)
