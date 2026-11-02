@@ -2,8 +2,8 @@
 
 ## Current State
 - **Repo:** Qryptana (Android-only focus)
-- **Last code commit:** 1685575870391c5fd448380a6b9e5db0658634fd (Task 1 / F2)
-- **Status:** Task 1 complete and locally verified; Tasks 2–5 pending. CI has not been re-run on this commit yet.
+- **Last commit:** 8dd62938b8fd4bd27bb4282c2d65a6a2e9cf6309 (Task 2 / F3)
+- **Status:** Tasks 1 and 2 complete and reviewed; Tasks 3–5 pending. CI has not been re-run on these commits yet.
 - **Agent:** Claude Code (DeepSeek Flash backend)
 
 ## Strict Rules (DO NOT VIOLATE)
@@ -27,12 +27,19 @@
 - **Verification:** `:common:compileKotlinDesktop`, `:android:compileFossDebugKotlin`, and `:common:desktopTest` all passed (`BUILD SUCCESSFUL`) on 2026-11-02. Grep confirmed every `get_simplex_name_beta`, `simplex_name_sales`, `simplex.domains`, and `SetSimplexDomainView(` reference is inside a gated block.
 - **Goal:** Qryptana users should not see third-party commercial promotion.
 
-### 2. Update PRIVACY.md (F3)
+### 2. Update PRIVACY.md (F3) — DONE
+- **Status:** Complete in commit `8dd62938b` (2026-11-02).
 - **Action:** Rewrite the document to accurately reflect:
   - Link previews are blocked behind a consent alert (code is safer than doc).
   - Calls use `stun.simplex.im` / `turn.simplex.im` with a shared TURN credential.
   - SimpleX-names resolution is used.
   - Foreground-service/battery behavior for notifications.
+- **Implemented:**
+  - Link previews: documents the default-on preference plus the consent alert (`privacyLinkPreviewsShowAlert` defaults true), enable/disable/dismiss behavior, and what the eventual fetch discloses.
+  - Calls: documents the WebRTC WebView, the default `stuns`/`stun`/`turns` servers at `*.simplex.im`, the hard-coded shared TURN username/credential in `call.js`, the default relay-only policy, and user ICE overrides.
+  - SimpleX names: documents that resolution depends on the configured SimpleX servers, that manual verification is available and automatic verification is off by default, and that the Task 1 flag hides registration while existing names still resolve/display.
+  - Android notifications: documents the default foreground service and persistent notification, periodic WorkManager checks, battery-optimization exemption requirements, notification permission, restart behavior, and the absence of a permanent wake lock.
+- **Verification:** Markdown heading/trailing-whitespace review passed and all referenced repository paths exist. No markdown linter is installed in the environment.
 - **Goal:** Legal accuracy and transparency.
 
 ### 3. Add CI Guard for Production Assets (R3 residual)
