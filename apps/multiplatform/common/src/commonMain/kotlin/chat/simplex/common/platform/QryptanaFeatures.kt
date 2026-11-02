@@ -13,4 +13,7 @@ object QryptanaFeatures {
   /** Hides third-party SimpleX-name promotion on every Qryptana platform. */
   val simplexNamesVisible: Boolean
     get() = SIMPLEX_NAMES_ENABLED
+
+  // TODO: Enable when Privana VPN is ready for release.
+  const val PRIVANA_VPN_ENABLED = false
 }

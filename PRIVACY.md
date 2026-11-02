@@ -25,8 +25,8 @@ Qryptana is an early Labs-stage downstream fork of SimpleX Chat. The upstream op
 
 ### SimpleX names
 
-- Contact and channel profiles can contain SimpleX names. The Android build hides the SimpleX-name registration and sales-promotion UI behind a disabled feature flag (`QryptanaFeatures.SIMPLEX_NAMES_ENABLED = false` in `platform/QryptanaFeatures.kt`, scoped to Android), but names already present in profiles are still displayed.
-- Resolving a name depends on SimpleX name-resolution services reached through the user's configured SimpleX messaging servers. Verification calls `resolveSimplexName` through the core (`src/Simplex/Chat/Library/Commands.hs`), and the app's UI notes that a server must support name resolution (`commonMain/moko-resources/base/strings.xml`). Those servers are not operated by Qryptana. The app also shows a "Verify name" action (`views/chat/SimplexNameView.kt`); automatic verification when opening a chat is optional and off by default (`privacyVerifySimplexNames` in `model/SimpleXAPI.kt`).
+- Contact and channel profiles can contain SimpleX names. Qryptana hides the SimpleX-name registration and sales-promotion UI behind a disabled feature flag (`QryptanaFeatures.SIMPLEX_NAMES_ENABLED = false` in `platform/QryptanaFeatures.kt`, applied globally on Android and Desktop), but names already present in profiles are still displayed.
+- Resolving a name depends on SimpleX name-resolution services reached through the user's configured SimpleX messaging servers. Verification calls `resolveSimplexName` through the core (`src/Simplex/Chat/Library/Commands.hs`), and the app's UI notes that a server must support name resolution (`commonMain/moko-resources/base/strings.xml`). Those servers are not operated by Qryptana. The app also shows a "Verify name" action (`views/chat/SimplexNameView.kt`).
 - A resolution or verification request can disclose the name being checked and network metadata to the configured servers. It does not change the end-to-end encryption of messages.
 
 ### Android notifications and background service

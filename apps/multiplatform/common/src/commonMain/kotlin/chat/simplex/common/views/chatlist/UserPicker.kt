@@ -242,7 +242,9 @@ fun UserPicker(
 
     @Composable
     fun SecondSection() {
-      PrivanaVpnButton()
+      if (QryptanaFeatures.PRIVANA_VPN_ENABLED) {
+        PrivanaVpnButton()
+      }
       UserPickerOptionRow(
         painterResource(MR.images.ic_qr_code),
         if (chatModel.userAddress.value != null) generalGetString(MR.strings.your_simplex_contact_address) else generalGetString(MR.strings.create_simplex_address),

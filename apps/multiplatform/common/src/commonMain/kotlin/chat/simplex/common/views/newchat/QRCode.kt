@@ -24,7 +24,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.drawBehind
-import androidx.compose.ui.draw.drawWithContent
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
@@ -55,25 +54,9 @@ import chat.simplex.res.smart_invite_scan_hint
 import chat.simplex.res.smart_invite_title
 import kotlinx.coroutines.launch
 
-// Copper QR modules use a narrow, dark gradient for depth. Both endpoints stay
-// well above the contrast needed for reliable scanning against the white panel.
-private val qrCopperTop = Color(0xFFA85A24)
-private val qrCopperBottom = Color(0xFF7A3E18)
-
-internal fun lerpArgb(from: Int, to: Int, t: Float): Int {
-  val f = t.coerceIn(0f, 1f)
-  val a = (from ushr 24) and 0xFF
-  val fr = (from shr 16) and 0xFF
-  val fg = (from shr 8) and 0xFF
-  val fb = from and 0xFF
-  val tr = (to shr 16) and 0xFF
-  val tg = (to shr 8) and 0xFF
-  val tb = to and 0xFF
-  val r = (fr + (tr - fr) * f).toInt()
-  val g = (fg + (tg - fg) * f).toInt()
-  val b = (fb + (tb - fb) * f).toInt()
-  return (a shl 24) or (r shl 16) or (g shl 8) or b
-}
+// Solid, high-contrast copper on the white QR panel (~5.7:1 against white).
+// Keep this solid rather than a gradient so every module has identical contrast.
+private val qrCopper = Color(0xFF9A5522)
 
 @Composable
 fun SimpleXCreatedLinkQRCode(
@@ -158,19 +141,14 @@ fun QRCode(
   val androidSmartInvite = branded && androidStyle
   val resolvedTint = when {
     copperPlaque -> QryptanaMetal.void
-    androidSmartInvite -> qrCopperTop
+    androidSmartInvite -> qrCopper
     else -> tintColor
   }
   fun tintedQr(): ImageBitmap {
-    val base = qrCodeBitmap(connReq, 1024, errorLevel)
-    val tinted = if (androidSmartInvite) {
-      base.replaceColorWithVerticalGradient(Color.Black.toArgb(), qrCopperTop.toArgb(), qrCopperBottom.toArgb())
-    } else {
-      base.replaceColor(Color.Black.toArgb(), resolvedTint.toArgb())
-    }
+    val tinted = qrCodeBitmap(connReq, 1024, errorLevel).replaceColor(Color.Black.toArgb(), resolvedTint.toArgb())
     return if (withLogo) tinted.addLogo(logoSize) else tinted
   }
-  val qr = remember(connReq, resolvedTint, withLogo, androidSmartInvite, small) { tintedQr() }
+  val qr = remember(connReq, resolvedTint, withLogo, small) { tintedQr() }
   val isLightTheme = MaterialTheme.colors.isLight
   if (copperPlaque) {
     QryptanaCopperPlaque(
@@ -334,17 +312,6 @@ internal fun QryptanaAndroidSmartInvite(
         ),
         shape
       )
-      .drawWithContent {
-        drawContent()
-        drawRect(
-          Brush.verticalGradient(
-            0f to Color.Black.copy(alpha = 0.14f),
-            0.10f to Color.Transparent,
-            0.90f to Color.Transparent,
-            1f to Color.Black.copy(alpha = 0.10f)
-          )
-        )
-      }
       .padding(16.dp),
       horizontalAlignment = Alignment.CenterHorizontally,
       verticalArrangement = Arrangement.spacedBy(14.dp)
@@ -552,8 +519,6 @@ fun qrCodeBitmap(content: String, size: Int = 1024, errorLevel: QrCode.ErrorLeve
 }
 
 expect fun ImageBitmap.replaceColor(from: Int, to: Int): ImageBitmap
-
-expect fun ImageBitmap.replaceColorWithVerticalGradient(from: Int, top: Int, bottom: Int): ImageBitmap
 
 @Preview
 @Composable

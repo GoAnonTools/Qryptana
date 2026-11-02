@@ -26,10 +26,9 @@ android {
         namespace = "chat.simplex.app"
         minSdk = 26
         targetSdk = 35
-        // !!!
-        // skip version code after release to F-Droid, as it uses two version codes
-        versionCode = (extra["android.version_code"] as String).toInt()
-        versionName = extra["android.version_name"] as String
+        // Qryptana's own versioning starts here; it is independent of the upstream SimpleX version.
+        versionCode = 1
+        versionName = "0.1.0-alpha"
 
         testInstrumentationRunner = "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables {
@@ -174,6 +173,12 @@ val apkTasks = setOf("packageFossDebug", "packageGoogleDebug", "packageFossRelea
 val apkTaskPaths = apkTasks.map { "$projectPath:$it" }.toSet()
 val bundleTaskPaths = apkTaskPaths.map { it + "Bundle" }.toSet()
 gradle.taskGraph.whenReady {
+    val releasePackagingRequested = (apkTaskPaths + bundleTaskPaths)
+        .filter { it.contains("Release", ignoreCase = true) }
+        .any { hasTask(it) }
+    if (releasePackagingRequested && !hasQryptanaReleaseSigning) {
+        throw GradleException("Missing Qryptana signing properties in local.properties")
+    }
     if (hasTask("$projectPath:packageGoogleRelease")) {
         throw GradleException("A release apk must not include Play Billing, use assembleFossRelease or bundleGoogleRelease")
     }

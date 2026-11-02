@@ -191,6 +191,10 @@ fun HelpAndSupportView(
         SettingsActionItem(painterResource(MR.images.ic_tag), stringResource(MR.strings.chat_with_the_founder), { uriHandler.openVerifiedSimplexUri(qryptanaSupportUri) }, textColor = MaterialTheme.colors.primary, disabled = stopped)
       }
     }
+    SectionDividerSpaced()
+    SectionView {
+      SourceCodeItem(uriHandler)
+    }
     SectionBottomSpacer()
   }
 }
@@ -284,7 +288,7 @@ fun ChatLockItem(
   }
 }
 
-@Composable fun InstallTerminalAppItem(uriHandler: UriHandler) {
+@Composable fun SourceCodeItem(uriHandler: UriHandler) {
   SectionItemView({ uriHandler.openExternalLink(qryptanaSourceUrl) }) {
     Icon(
       painter = painterResource(MR.images.ic_github),
