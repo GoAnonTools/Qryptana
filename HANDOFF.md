@@ -19,7 +19,7 @@
 - **Files:** `UserAddressView.kt`, `GroupChatInfoView.kt`, `SetSimplexNameView.kt`, plus new `platform/QryptanaFeatures.kt`
 - **Action:** Gate the "Get SimpleX name (BETA)" entry points behind a feature flag that is **off by default**.
 - **Implementation:**
-  - Added `QryptanaFeatures.SIMPLEX_NAMES_ENABLED = false`; the UI check is `QryptanaFeatures.simplexNamesVisible` (`SIMPLEX_NAMES_ENABLED && appPlatform.isAndroid`), so this Android pass leaves desktop behavior unchanged.
+  - Added `QryptanaFeatures.SIMPLEX_NAMES_ENABLED = false`; `QryptanaFeatures.simplexNamesVisible` now mirrors the flag directly, so the third-party SimpleX-name promotion is hidden globally on both Android and Desktop. A post-audit correction removed the earlier Android-only `appPlatform.isAndroid` condition.
   - `UserAddressView.kt`: hides the "Your SimpleX name" / "Get SimpleX name (BETA)" section and its divider, including the `SetSimplexDomainView` launcher.
   - `GroupChatInfoView.kt`: hides the channel SimpleX-name section and defensively gates the `setSimplexName` modal handler.
   - `SetSimplexNameView.kt`: hides the simplex.domains "register test name" link, the sales countdown section, and the `simplex_name_sales_footer` / simplex.domains link. Editing/removal controls remain for any pre-existing name.
@@ -36,7 +36,7 @@
   - Foreground-service/battery behavior for notifications.
 - **Implemented:**
   - Link previews: documents the default-on preference plus the consent alert (`privacyLinkPreviewsShowAlert` defaults true), enable/disable/dismiss behavior, and what the eventual fetch discloses.
-  - Calls: documents the WebRTC WebView, the default `stuns`/`stun`/`turns` servers at `*.simplex.im`, the hard-coded shared TURN username/credential in `call.js`, the default relay-only policy, and user ICE overrides.
+  - Calls: documents the WebRTC WebView, the default `stuns`/`stun`/`turns` servers at `*.simplex.im`, the presence of a hard-coded shared TURN credential embedded in `call.js` (the document deliberately does not reproduce the credential), the default relay-only policy, and user ICE overrides.
   - SimpleX names: documents that resolution depends on the configured SimpleX servers, that manual verification is available and automatic verification is off by default, and that the Task 1 flag hides registration while existing names still resolve/display.
   - Android notifications: documents the default foreground service and persistent notification, periodic WorkManager checks, battery-optimization exemption requirements, notification permission, restart behavior, and the absence of a permanent wake lock.
 - **Verification:** Markdown heading/trailing-whitespace review passed and all referenced repository paths exist. No markdown linter is installed in the environment.
@@ -56,7 +56,7 @@
 ### 4. Translate New Android Strings (Low/Medium) — DONE
 - **Status:** Complete in commit `3ad852f26` (2026-11-02).
 - **Action:** Translate the ~57 new `android_*` strings into German, French, Spanish, and Russian.
-- **Fallback:** Not needed; all 57 strings were translated.
+- **Fallback:** Accepted for this phase: the remaining 34 locale directories (the audit estimated ~33) use the English fallback for these new keys; only de/fr/es/ru were translated.
 - **Implemented:**
   - Added all 57 keys to `moko-resources/de/strings.xml`, `fr/strings.xml`, `es/strings.xml`, and `ru/strings.xml`.
   - Reused the established vocabulary: DE *Profil/Chat-Profil, Datenbank, Passwort, Sicherung, Gerät, Android-Keystore*; FR *profil, base de données, mot de passe, sauvegarde, appareil, Keystore d'Android*; ES *perfil, base de datos, contraseña, copia de seguridad, dispositivo, Android Keystore*; RU *профиль, база данных, пароль, резервная копия, устройство, Android Keystore*.
@@ -67,6 +67,9 @@
 ### 5. (Optional) Improve Android CI (F4)
 - **Action:** Add `assembleDebug` and `lint` steps to the CI pipeline.
 - **Context:** Current CI only compiles and runs desktop JVM tests.
+
+## Follow-up TODOs
+- [ ] Extend the production-asset CI guard to cover launcher icons and APK-level packaged-asset checks, in addition to the current generated-resource verification.
 
 ## Out of Scope (Human Maintainer Required)
 - **R1:** Package ID / Signing (`chat.simplex.app` → new ID).

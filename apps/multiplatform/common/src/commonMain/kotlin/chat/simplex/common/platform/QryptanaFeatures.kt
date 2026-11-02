@@ -4,15 +4,13 @@ package chat.simplex.common.platform
  * Compile-time switches for Qryptana builds.
  *
  * Keep [SIMPLEX_NAMES_ENABLED] off: SimpleX-name registration, its sales countdown, and the
- * simplex.domains links are third-party promotion that Qryptana users should not see.
+ * simplex.domains links are third-party promotion. Qryptana hides this promotion globally,
+ * on both Android and Desktop.
  */
 object QryptanaFeatures {
   const val SIMPLEX_NAMES_ENABLED = false
 
-  /**
-   * The Android finishing pass hides this UI unconditionally; desktop keeps its upstream behavior.
-   * Even if the flag is enabled for a future Android release, desktop remains unchanged.
-   */
+  /** Hides third-party SimpleX-name promotion on every Qryptana platform. */
   val simplexNamesVisible: Boolean
-    get() = SIMPLEX_NAMES_ENABLED && appPlatform.isAndroid
+    get() = SIMPLEX_NAMES_ENABLED
 }
