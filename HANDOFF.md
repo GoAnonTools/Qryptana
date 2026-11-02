@@ -2,8 +2,8 @@
 
 ## Current State
 - **Repo:** Qryptana (Android-only focus)
-- **Last commit:** 27075d5fe6d8fdeb2d7d25200ae87dabbb1fed0d (Task 3 / R3 residual)
-- **Status:** Tasks 1–3 complete and locally verified; Tasks 4–5 pending. CI has not been re-run on these commits yet.
+- **Last commit:** 3ad852f2671c909619ad45f89fd15c97ddc55354 (Task 4)
+- **Status:** Tasks 1–4 complete and locally verified; Task 5 (optional) pending. CI has not been re-run on these commits yet.
 - **Agent:** Claude Code (DeepSeek Flash backend)
 
 ## Strict Rules (DO NOT VIOLATE)
@@ -53,9 +53,16 @@
   - No Gradle or build-script changes were made.
 - **Verification:** Locally ran `:common:compileKotlinDesktop`, `:common:desktopTest`, and `:android:compileFossDebugKotlin` with `-Psimplex.assets.dir=../../assets`; all reported `BUILD SUCCESSFUL`. The exact post-build verification block passed. The workflow parses as valid YAML; `actionlint` is not installed.
 
-### 4. Translate New Android Strings (Low/Medium)
+### 4. Translate New Android Strings (Low/Medium) — DONE
+- **Status:** Complete in commit `3ad852f26` (2026-11-02).
 - **Action:** Translate the ~57 new `android_*` strings into German, French, Spanish, and Russian.
-- **Fallback:** If full translation is not feasible, document the English fallback as accepted in the handoff.
+- **Fallback:** Not needed; all 57 strings were translated.
+- **Implemented:**
+  - Added all 57 keys to `moko-resources/de/strings.xml`, `fr/strings.xml`, `es/strings.xml`, and `ru/strings.xml`.
+  - Reused the established vocabulary: DE *Profil/Chat-Profil, Datenbank, Passwort, Sicherung, Gerät, Android-Keystore*; FR *profil, base de données, mot de passe, sauvegarde, appareil, Keystore d'Android*; ES *perfil, base de datos, contraseña, copia de seguridad, dispositivo, Android Keystore*; RU *профиль, база данных, пароль, резервная копия, устройство, Android Keystore*.
+  - Preserved the `\n\n` escape in the delete-all warning, the ellipsis characters, the `<b>` markup in the non-recoverable-password warning, and all other formatting. This batch contains no `%` format specifiers.
+  - Kept the security warnings explicit: the password cannot be recovered or changed if lost, import replaces current profiles and chats, backup export must happen before deletion, and stopped-chat limitations remain stated.
+- **Verification:** XML well-formedness, key-completeness, duplicate-key, and formatting-invariant checks passed for all four locales. Generated Android resources contain 57 `android_*` entries per locale. `:common:generateMRcommonMain`, `:common:compileKotlinDesktop`, `:common:desktopTest`, and `:android:compileFossDebugKotlin` all passed with `-Psimplex.assets.dir=../../assets` on the final tree.
 
 ### 5. (Optional) Improve Android CI (F4)
 - **Action:** Add `assembleDebug` and `lint` steps to the CI pipeline.
