@@ -108,15 +108,40 @@ actual fun GrayU8.toImageBitmap(): ImageBitmap = ConvertBitmap.grayToBitmap(this
 
 actual fun ImageBitmap.hasAlpha(): Boolean = hasAlpha
 
+// The bundled QR logo has a dark rounded-square plate behind the copper Q.
+// Strip the neutral dark plate so the Q sits directly on the white QR panel.
+private val qrLogoBitmap: Bitmap by lazy {
+  val source = androidAppContext.resources.getDrawable(R.drawable.icon_foreground_android_common, null).toBitmap()
+  val scaled = Bitmap.createScaledBitmap(source, 256, 256, true)
+  val pixels = IntArray(scaled.width * scaled.height)
+  scaled.getPixels(pixels, 0, scaled.width, 0, 0, scaled.width, scaled.height)
+  for (i in pixels.indices) {
+    val c = pixels[i]
+    val a = (c ushr 24) and 0xFF
+    val r = (c shr 16) and 0xFF
+    val g = (c shr 8) and 0xFF
+    val b = c and 0xFF
+    val max = maxOf(r, g, b)
+    val min = minOf(r, g, b)
+    if (a > 0 && max < 80 && max - min < 20) {
+      pixels[i] = 0
+    }
+  }
+  val result = Bitmap.createBitmap(scaled.width, scaled.height, Bitmap.Config.ARGB_8888)
+  result.setPixels(pixels, 0, scaled.width, 0, 0, scaled.width, scaled.height)
+  result
+}
+
 actual fun ImageBitmap.addLogo(size: Float): ImageBitmap = asAndroidBitmap().applyCanvas {
-  val radius = (width * size) / 2
-  val paint = android.graphics.Paint()
-  paint.color = android.graphics.Color.WHITE
+  val logoSize = (width * size * 1.1f).toInt().coerceAtLeast(1)
+  val radius = logoSize * 0.58f
+  val paint = android.graphics.Paint().apply {
+    color = android.graphics.Color.WHITE
+    isAntiAlias = true
+  }
   drawCircle(width / 2f, height / 2f, radius, paint)
-  val logo = androidAppContext.resources.getDrawable(R.drawable.icon_foreground_android_common, null).toBitmap()
-  val logoSize = (width * size * 1.5).toInt()
   translate((width - logoSize) / 2f, (height - logoSize) / 2f)
-  drawBitmap(logo, null, android.graphics.Rect(0, 0, logoSize, logoSize), null)
+  drawBitmap(qrLogoBitmap, null, android.graphics.Rect(0, 0, logoSize, logoSize), null)
 }.asImageBitmap()
 
 actual fun ImageBitmap.scale(width: Int, height: Int): ImageBitmap = asAndroidBitmap().scale(width, height).asImageBitmap()

@@ -513,44 +513,60 @@ private fun PrivanaVpnButton() {
       .fillMaxWidth()
       .padding(horizontal = DEFAULT_PADDING, vertical = DEFAULT_PADDING_HALF)
       .shadow(
-        6.dp,
+        12.dp,
         shape,
         clip = false,
-        ambientColor = Color.Black.copy(alpha = 0.16f),
-        spotColor = Color.Black.copy(alpha = 0.22f)
+        ambientColor = Color(0xFF22D3EE).copy(alpha = 0.22f),
+        spotColor = Color(0xFF38BDF8).copy(alpha = 0.32f)
+      )
+      .shadow(
+        4.dp,
+        shape,
+        clip = false,
+        ambientColor = Color.Black.copy(alpha = 0.35f),
+        spotColor = Color.Black.copy(alpha = 0.45f)
       )
       .clip(shape)
       .background(
-        Brush.verticalGradient(
-          0f to Color(0xFFFFFFFF),
-          0.16f to Color(0xFFE9EDF3),
-          0.46f to Color(0xFFC2CAD5),
-          0.52f to Color(0xFFF8FAFD),
-          0.72f to Color(0xFFB6C0CC),
-          1f to Color(0xFFE3E8EF),
+        Brush.linearGradient(
+          0f to Color(0xFF6B7280),
+          0.20f to Color(0xFFF3F4F6),
+          0.50f to Color(0xFF9CA3AF),
+          0.80f to Color(0xFFF9FAFB),
+          1f to Color(0xFF4B5563)
         )
       )
-      .border(1.dp, Color(0xFF8D97A4).copy(alpha = 0.65f), shape)
+      .border(
+        1.dp,
+        Brush.verticalGradient(
+          listOf(
+            Color(0xFFFFFFFF).copy(alpha = 0.85f),
+            Color(0xFF6B7280).copy(alpha = 0.55f),
+            Color(0xFFFFFFFF).copy(alpha = 0.65f)
+          )
+        ),
+        shape
+      )
       // Placeholder until Privana VPN is wired up.
       .clickable { }
-      .heightIn(min = 54.dp),
+      .height(60.dp),
     contentAlignment = Alignment.Center
   ) {
     Row(
       verticalAlignment = Alignment.CenterVertically,
-      horizontalArrangement = Arrangement.spacedBy(8.dp)
+      horizontalArrangement = Arrangement.spacedBy(10.dp)
     ) {
       Icon(
         painterResource(MR.images.ic_security),
         contentDescription = null,
-        tint = Color(0xFF2A2F36),
-        modifier = Modifier.size(18.dp)
+        tint = Color(0xFF0F172A),
+        modifier = Modifier.size(20.dp)
       )
       Text(
         stringResource(MR.strings.privana_vpn),
-        color = Color(0xFF16191D),
-        fontWeight = FontWeight.SemiBold,
-        letterSpacing = 0.8.sp,
+        color = Color(0xFF111827),
+        fontWeight = FontWeight.Bold,
+        letterSpacing = 1.sp,
         fontSize = 16.sp
       )
     }
