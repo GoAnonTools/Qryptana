@@ -67,7 +67,6 @@ import chat.simplex.res.crowdfunding_4
 import chat.simplex.res.ic_account_box
 import chat.simplex.res.ic_add_link
 import chat.simplex.res.ic_add_reaction
-import chat.simplex.res.ic_alternate_email
 import chat.simplex.res.ic_arrow_back_ios_new
 import chat.simplex.res.ic_arrow_forward_ios
 import chat.simplex.res.ic_article
@@ -345,8 +344,6 @@ import chat.simplex.res.v7_0_channels_wider_messages
 import chat.simplex.res.v7_0_invest
 import chat.simplex.res.v7_0_invest_descr
 import chat.simplex.res.v7_0_invest_learn_more
-import chat.simplex.res.v7_0_simplex_names
-import chat.simplex.res.v7_0_simplex_names_descr
 import chat.simplex.res.view_updated_conditions
 import chat.simplex.res.whats_new_read_more
 import chat.simplex.res.whats_new_thanks_to_users_contribute_weblate
@@ -1236,11 +1233,6 @@ private val versionDescriptions: List<VersionDescription> = listOf(
     version = if (isInUs()) "v7.0.1" else "v7.0",
     post = null, // Qryptana does not link to the upstream investment campaign.
     features = listOf(
-      VersionFeature.FeatureDescription(
-        icon = MR.images.ic_alternate_email,
-        titleId = MR.strings.v7_0_simplex_names,
-        descrId = MR.strings.v7_0_simplex_names_descr
-      ),
       VersionFeature.FeatureDescription(
         icon = null,
         titleId = MR.strings.v7_0_channels,

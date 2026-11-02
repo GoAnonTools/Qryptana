@@ -128,7 +128,6 @@ import chat.simplex.res.simplex_link_mode_browser
 import chat.simplex.res.simplex_link_mode_description
 import chat.simplex.res.simplex_link_mode_full
 import chat.simplex.res.this_setting_is_for_your_current_profile
-import chat.simplex.res.verify_simplex_names
 import chat.simplex.res.without_tor_or_vpn_ip_address_will_be_visible_to_file_servers
 import chat.simplex.res.you_can_turn_on_lock
 import chat.simplex.res.your_privacy
@@ -245,11 +244,6 @@ fun MorePrivacyView(chatModel: ChatModel) {
             chatModel.draftChatId.value = null
           }
         })
-      SettingsPreferenceItem(
-        painterResource(MR.images.ic_tag),
-        stringResource(MR.strings.verify_simplex_names),
-        chatModel.controller.appPrefs.privacyVerifySimplexNames
-      )
       // hidden until message signing is user-facing (recipient-only stage)
 //      SettingsPreferenceItem(
 //        painterResource(MR.images.ic_verified),

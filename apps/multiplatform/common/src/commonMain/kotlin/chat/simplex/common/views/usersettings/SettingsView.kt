@@ -46,7 +46,6 @@ import chat.simplex.res.chat_is_stopped
 import chat.simplex.res.chat_lock
 import chat.simplex.res.chat_preferences
 import chat.simplex.res.chat_with_the_founder
-import chat.simplex.res.contribute
 import chat.simplex.res.help_and_support
 import chat.simplex.res.how_to_use_simplex_chat
 import chat.simplex.res.ic_add
@@ -58,7 +57,6 @@ import chat.simplex.res.ic_github
 import chat.simplex.res.ic_help
 import chat.simplex.res.ic_info
 import chat.simplex.res.ic_ios_share
-import chat.simplex.res.ic_keyboard
 import chat.simplex.res.ic_light_mode
 import chat.simplex.res.ic_lightbulb
 import chat.simplex.res.ic_lock
@@ -78,8 +76,6 @@ import chat.simplex.res.reset_all_hints
 import chat.simplex.res.settings_audio_video_calls
 import chat.simplex.res.settings_section_title_contact
 import chat.simplex.res.settings_section_title_help
-import chat.simplex.res.settings_section_title_support_project
-import chat.simplex.res.star_on_github
 import chat.simplex.res.terminal_always_visible
 import chat.simplex.res.whats_new
 import chat.simplex.res.your_privacy
@@ -195,14 +191,6 @@ fun HelpAndSupportView(
         SettingsActionItem(painterResource(MR.images.ic_tag), stringResource(MR.strings.chat_with_the_founder), { uriHandler.openVerifiedSimplexUri(qryptanaSupportUri) }, textColor = MaterialTheme.colors.primary, disabled = stopped)
       }
     }
-    SectionDividerSpaced()
-
-    SectionView(stringResource(MR.strings.settings_section_title_support_project)) {
-      if (!platform.androidIsPlayStoreBuild) {
-        ContributeItem(uriHandler)
-      }
-      StarOnGithubItem(uriHandler)
-    }
     SectionBottomSpacer()
   }
 }
@@ -272,30 +260,6 @@ fun ChatLockItem(
                                 iconColor = if (performLA.value) SimplexGreen else MaterialTheme.colors.secondary
   ) {
     Text(if (performLA.value) remember { currentLAMode.state }.value.text else generalGetString(MR.strings.la_mode_off), color = MaterialTheme.colors.secondary)
-  }
-}
-
-@Composable fun ContributeItem(uriHandler: UriHandler) {
-  SectionItemView({ uriHandler.openExternalLink(qryptanaSourceUrl) }) {
-    Icon(
-      painterResource(MR.images.ic_keyboard),
-         contentDescription = "GitHub",
-         tint = MaterialTheme.colors.secondary,
-    )
-    TextIconSpaced()
-    Text(generalGetString(MR.strings.contribute), color = MaterialTheme.colors.primary)
-  }
-}
-
-@Composable fun StarOnGithubItem(uriHandler: UriHandler) {
-  SectionItemView({ uriHandler.openExternalLink(qryptanaSourceUrl) }) {
-    Icon(
-      painter = painterResource(MR.images.ic_github),
-         contentDescription = "GitHub",
-         tint = MaterialTheme.colors.secondary,
-    )
-    TextIconSpaced()
-    Text(generalGetString(MR.strings.star_on_github), color = MaterialTheme.colors.primary)
   }
 }
 

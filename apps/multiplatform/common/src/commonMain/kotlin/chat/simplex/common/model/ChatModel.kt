@@ -2060,6 +2060,14 @@ sealed class ChatInfo: SomeChat, NamedChat {
     get() = groupInfo_?.useRelays == true
 }
 
+// The bundled native core still creates the preset support contact with the upstream name.
+// Rebrand it at the display layer so existing profiles show the Qryptana name too.
+private const val SIMPLEX_TEAM_CONTACT_NAME = "Ask SimpleX Team"
+private const val QRYPTANA_TEAM_CONTACT_NAME = "Ask Qryptana Team"
+
+private fun qryptanaContactName(name: String): String =
+  if (name == SIMPLEX_TEAM_CONTACT_NAME) QRYPTANA_TEAM_CONTACT_NAME else name
+
 @Serializable
 data class Contact(
   val contactId: Long,
@@ -2110,7 +2118,7 @@ data class Contact(
     ChatFeature.Calls -> mergedPreferences.calls.enabled.forUser
   }
   override val timedMessagesTTL: Int? get() = with(mergedPreferences.timedMessages) { if (enabled.forUser) userPreference.pref.ttl else null }
-  override val displayName get() = localAlias.ifEmpty { profile.displayName }
+  override val displayName get() = localAlias.ifEmpty { qryptanaContactName(profile.displayName) }
   override val fullName get() = profile.fullName
   override val shortDescr get() = profile.shortDescr
   override val profileDescription get() = profile.description
