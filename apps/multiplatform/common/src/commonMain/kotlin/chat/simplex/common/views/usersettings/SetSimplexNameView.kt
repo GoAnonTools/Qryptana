@@ -190,13 +190,15 @@ fun SetSimplexDomainView(
       SectionDividerSpaced()
       SectionView {
         if (editing.value) {
-          SettingsActionItem(
-            painterResource(MR.images.ic_open_in_new),
-            stringResource(MR.strings.register_test_name),
-            { openBrowserAlert("https://simplex.domains/#testing", uriHandler) },
-            textColor = MaterialTheme.colors.primary,
-            iconColor = MaterialTheme.colors.primary
-          )
+          if (QryptanaFeatures.simplexNamesVisible) {
+            SettingsActionItem(
+              painterResource(MR.images.ic_open_in_new),
+              stringResource(MR.strings.register_test_name),
+              { openBrowserAlert("https://simplex.domains/#testing", uriHandler) },
+              textColor = MaterialTheme.colors.primary,
+              iconColor = MaterialTheme.colors.primary
+            )
+          }
           SectionItemView({ if (broadcastWarning != null && !unchanged) AlertManager.shared.showAlertDialog(title = broadcastWarning, confirmText = generalGetString(MR.strings.save_verb), onConfirm = { doSave(close) }) else doSave(close) }, disabled = unchanged || saving.value || !isValid) {
             Text(
               stringResource(MR.strings.save_verb),
@@ -209,35 +211,37 @@ fun SetSimplexDomainView(
           }
         }
       }
-      SectionDividerSpaced()
-      val msToSaleStart = remember { mutableStateOf(simplexNameSaleStart.toEpochMilliseconds() - System.currentTimeMillis()) }
-      LaunchedEffect(Unit) {
-        while (msToSaleStart.value > 0) {
-          delay(1000)
-          msToSaleStart.value = simplexNameSaleStart.toEpochMilliseconds() - System.currentTimeMillis()
-        }
-      }
-      SectionView(stringResource(MR.strings.simplex_name_sales)) {
-        SectionItemView {
-          Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
-            Text(saleCountdown(msToSaleStart.value))
-            Text(
-              stringResource(if (msToSaleStart.value > 0) MR.strings.until_register_simplex_domain else MR.strings.update_app_register_simplex_domain),
-              color = MaterialTheme.colors.secondary,
-              fontSize = 12.sp
-            )
+      if (QryptanaFeatures.simplexNamesVisible) {
+        SectionDividerSpaced()
+        val msToSaleStart = remember { mutableStateOf(simplexNameSaleStart.toEpochMilliseconds() - System.currentTimeMillis()) }
+        LaunchedEffect(Unit) {
+          while (msToSaleStart.value > 0) {
+            delay(1000)
+            msToSaleStart.value = simplexNameSaleStart.toEpochMilliseconds() - System.currentTimeMillis()
           }
         }
-      }
-      SectionTextFooter(buildAnnotatedString {
-        append(generalGetString(MR.strings.simplex_name_sales_footer))
-        append(" ")
-        withLink(LinkAnnotation.Url(SIMPLEX_DOMAINS_URL) { uriHandler.openUriCatching(SIMPLEX_DOMAINS_URL) }) {
-          withStyle(SpanStyle(color = MaterialTheme.colors.primary)) {
-            append("simplex.domains")
+        SectionView(stringResource(MR.strings.simplex_name_sales)) {
+          SectionItemView {
+            Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
+              Text(saleCountdown(msToSaleStart.value))
+              Text(
+                stringResource(if (msToSaleStart.value > 0) MR.strings.until_register_simplex_domain else MR.strings.update_app_register_simplex_domain),
+                color = MaterialTheme.colors.secondary,
+                fontSize = 12.sp
+              )
+            }
           }
         }
-      })
+        SectionTextFooter(buildAnnotatedString {
+          append(generalGetString(MR.strings.simplex_name_sales_footer))
+          append(" ")
+          withLink(LinkAnnotation.Url(SIMPLEX_DOMAINS_URL) { uriHandler.openUriCatching(SIMPLEX_DOMAINS_URL) }) {
+            withStyle(SpanStyle(color = MaterialTheme.colors.primary)) {
+              append("simplex.domains")
+            }
+          }
+        })
+      }
       SectionBottomSpacer()
     }
   }

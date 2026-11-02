@@ -434,37 +434,39 @@ private fun UserAddressLayout(
             SectionTextFooter(stringResource(MR.strings.add_your_team_members_to_conversations))
           }
 
-          SectionDividerSpaced()
-          val domain = user?.profile?.contactDomain?.domain
-          SectionView(title = if (domain != null) generalGetString(MR.strings.your_simplex_name) else null) {
-            SettingsActionItem(
-              painterResource(MR.images.ic_at),
-              if (domain != null) "$domain" else generalGetString(MR.strings.get_simplex_name_beta),
-              click = {
-                ModalManager.start.showCustomModal { close ->
-                  SetSimplexDomainView(
-                    title = generalGetString(MR.strings.set_simplex_name),
-                    footer = generalGetString(MR.strings.set_user_simplex_name_footer),
-                    placeholder = "@yourname.testing",
-                    simplexName = if (domain == null) "" else "@$domain",
-                    registerBackgroundClose = true,
-                    broadcastWarning = generalGetString(MR.strings.profile_update_will_be_sent_to_contacts),
-                    save = { simplexDomain ->
-                      try {
-                        val u = chatModel.controller.apiSetUserDomain(user?.remoteHostId, simplexDomain)
-                        withContext(Dispatchers.Main) { chatModel.updateUser(u) }
-                        true
-                      } catch (e: Exception) {
-                        Log.e(TAG, "apiSetUserDomain: ${e.message}")
-                        false
-                      }
-                    },
-                    close = close
-                  )
-                }
-              },
-              iconColor = MaterialTheme.colors.secondary
-            )
+          if (QryptanaFeatures.simplexNamesVisible) {
+            SectionDividerSpaced()
+            val domain = user?.profile?.contactDomain?.domain
+            SectionView(title = if (domain != null) generalGetString(MR.strings.your_simplex_name) else null) {
+              SettingsActionItem(
+                painterResource(MR.images.ic_at),
+                if (domain != null) "$domain" else generalGetString(MR.strings.get_simplex_name_beta),
+                click = {
+                  ModalManager.start.showCustomModal { close ->
+                    SetSimplexDomainView(
+                      title = generalGetString(MR.strings.set_simplex_name),
+                      footer = generalGetString(MR.strings.set_user_simplex_name_footer),
+                      placeholder = "@yourname.testing",
+                      simplexName = if (domain == null) "" else "@$domain",
+                      registerBackgroundClose = true,
+                      broadcastWarning = generalGetString(MR.strings.profile_update_will_be_sent_to_contacts),
+                      save = { simplexDomain ->
+                        try {
+                          val u = chatModel.controller.apiSetUserDomain(user?.remoteHostId, simplexDomain)
+                          withContext(Dispatchers.Main) { chatModel.updateUser(u) }
+                          true
+                        } catch (e: Exception) {
+                          Log.e(TAG, "apiSetUserDomain: ${e.message}")
+                          false
+                        }
+                      },
+                      close = close
+                    )
+                  }
+                },
+                iconColor = MaterialTheme.colors.secondary
+              )
+            }
           }
 
           SectionDividerSpaced()

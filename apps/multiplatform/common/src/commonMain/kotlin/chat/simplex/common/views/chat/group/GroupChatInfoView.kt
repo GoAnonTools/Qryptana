@@ -297,6 +297,7 @@ fun ModalData.GroupChatInfoView(
           ModalManager.end.showCustomModal { close -> ChannelWebPageView(rhId, groupInfo, chatModel, close) }
       },
       setSimplexName = {
+        if (QryptanaFeatures.simplexNamesVisible) {
           ModalManager.end.showCustomModal { close ->
             val domain = groupInfo.groupProfile.publicGroup?.publicGroupAccess?.groupDomainClaim?.shortName
             SetSimplexDomainView(
@@ -316,6 +317,7 @@ fun ModalData.GroupChatInfoView(
               close = close
             )
           }
+        }
       },
       onSearchClicked = onSearchClicked,
       deletingItems = deletingItems
@@ -781,7 +783,7 @@ fun ModalData.GroupChatInfoLayout(
         if (!groupInfo.isOwner && channelLink != null) {
           SectionTextFooter(stringResource(MR.strings.you_can_share_channel_link_anybody_will_be_able_to_connect))
         }
-        if (groupInfo.isOwner && groupLink != null) {
+        if (QryptanaFeatures.simplexNamesVisible && groupInfo.isOwner && groupLink != null) {
           SectionDividerSpaced()
           val channelDomain = groupInfo.groupProfile.publicGroup?.publicGroupAccess?.groupDomainClaim?.shortName
           SectionView(title = if (channelDomain != null) generalGetString(MR.strings.channel_simplex_name) else null) {
