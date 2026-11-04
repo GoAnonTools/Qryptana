@@ -353,15 +353,6 @@ private fun ModalData.NewChatSheetLayout(
         }
         ContactListNavLinkView(chat, nextChatSelected, showDeletedChatIcon = true)
       }
-      if (searchText.value.text.isEmpty()) {
-        // One-hand layout is reversed, so this is the visually top-most item.
-        item { QryptanaNewChatHeader(actionButtonsOriginal.asReversed()) }
-      }
-      if (appPlatform.isAndroid) {
-        item {
-          Spacer(Modifier.windowInsetsTopHeight(WindowInsets.statusBars))
-        }
-      }
     }
   }
 
@@ -381,9 +372,6 @@ private fun ModalData.NewChatSheetLayout(
             bottomPadding = DEFAULT_PADDING
           )
         }
-      }
-      if (searchText.value.text.isEmpty()) {
-        item { QryptanaNewChatHeader(actionButtonsOriginal) }
       }
       stickyHeader {
         val scrolledSomething by remember { derivedStateOf { listState.firstVisibleItemScrollOffset > 0 || listState.firstVisibleItemIndex > 0 } }
@@ -457,13 +445,28 @@ private fun ModalData.NewChatSheetLayout(
     }
   }
 
+  // Top-aligned so the Qryptana header stays at the top of the sheet. Keeping the
+  // header outside the LazyColumn prevents reverseLayout from pushing it to the bottom.
   Box {
+    Column(Modifier.fillMaxSize(), verticalArrangement = Arrangement.Top) {
+      if (appPlatform.isAndroid && oneHandUI.value) {
+        // One-hand UI draws over the status bar; keep the header below it.
+        Spacer(Modifier.windowInsetsTopHeight(WindowInsets.statusBars))
+      }
+      if (searchText.value.text.isEmpty()) {
+        QryptanaNewChatHeader(actionButtonsOriginal)
+      }
+      Box(Modifier.weight(1f)) {
+        if (oneHandUI.value) {
+          OneHandLazyColumn()
+        } else {
+          NonOneHandLazyColumn()
+          NavigationBarBackground(oneHandUI.value, true)
+        }
+      }
+    }
     if (oneHandUI.value) {
-      OneHandLazyColumn()
       StatusBarBackground()
-    } else {
-      NonOneHandLazyColumn()
-      NavigationBarBackground(oneHandUI.value, true)
     }
   }
 }

@@ -6,7 +6,6 @@ import SectionView
 import android.app.Activity
 import android.content.ComponentName
 import android.content.pm.PackageManager
-import android.content.res.Configuration
 import android.content.pm.PackageManager.COMPONENT_ENABLED_STATE_DEFAULT
 import android.content.pm.PackageManager.COMPONENT_ENABLED_STATE_ENABLED
 import androidx.compose.desktop.ui.tooling.preview.Preview
@@ -171,19 +170,13 @@ fun AppearanceScope.AppearanceLayout(
 @Composable
 private fun AppIconPreview(item: AppIcon, modifier: Modifier) {
   val context = LocalContext.current
-  val dark = (context.resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK) == Configuration.UI_MODE_NIGHT_YES
-  // Use the exact launcher drawables: light -> @mipmap/icon (cream adaptive icon),
-  // dark -> @mipmap/icon_dark_blue (charcoal adaptive icon).
-  val mipmapName = if (dark) "icon_dark_blue" else "icon"
-  val resId = remember(mipmapName) {
-    context.resources.getIdentifier(mipmapName, "mipmap", context.packageName)
+  // Preview each choice on its own launcher background, independent of the current
+  // system theme. Otherwise both previews resolve to the same icon and look identical.
+  // light -> cream background, dark -> charcoal background.
+  val (background, foregroundName) = when (item) {
+    AppIcon.DEFAULT -> Color(0xFFF7F0E6) to "icon_foreground"
+    AppIcon.DARK_BLUE -> Color(0xFF171615) to "icon_dark_blue_foreground"
   }
-  val bitmap = remember(resId) {
-    if (resId == 0) null else runCatching {
-      context.getDrawable(resId)?.toBitmap(210, 210)?.asImageBitmap()
-    }.getOrNull()
-  }
-  val foregroundName = if (dark) "icon_dark_blue_foreground" else "icon_foreground"
   val foregroundId = remember(foregroundName) {
     context.resources.getIdentifier(foregroundName, "mipmap", context.packageName)
   }
@@ -192,18 +185,11 @@ private fun AppIconPreview(item: AppIcon, modifier: Modifier) {
       context.getDrawable(foregroundId)?.toBitmap(210, 210)?.asImageBitmap()
     }.getOrNull()
   }
-  if (bitmap != null) {
-    Image(bitmap, contentDescription = "", contentScale = ContentScale.Fit, modifier = modifier)
-  } else {
-    Box(
-      modifier.background(if (dark) Color(0xFF171615) else Color(0xFFF7F0E6)),
-      contentAlignment = Alignment.Center
-    ) {
-      if (foregroundBitmap != null) {
-        Image(foregroundBitmap, contentDescription = "", contentScale = ContentScale.Fit, modifier = Modifier.fillMaxSize(0.72f))
-      } else {
-        Image(painterResource(item.image), contentDescription = "", contentScale = ContentScale.Fit, modifier = Modifier.fillMaxSize(0.72f))
-      }
+  Box(modifier.background(background), contentAlignment = Alignment.Center) {
+    if (foregroundBitmap != null) {
+      Image(foregroundBitmap, contentDescription = "", contentScale = ContentScale.Fit, modifier = Modifier.fillMaxSize(0.72f))
+    } else {
+      Image(painterResource(item.image), contentDescription = "", contentScale = ContentScale.Fit, modifier = Modifier.fillMaxSize(0.72f))
     }
   }
 }
