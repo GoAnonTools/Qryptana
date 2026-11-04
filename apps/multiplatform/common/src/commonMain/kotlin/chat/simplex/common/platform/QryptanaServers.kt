@@ -18,9 +18,9 @@ class QryptanaServersException(message: String, val alertAlreadyShown: Boolean =
 object QryptanaServers {
   // Single-port onion format: the port is applied to the whole host list.
   // If the bundled core still rejects this during setUserServers, revert to
-  // clearnet-only addresses (smp.qryptana.foundation:5224 / xftp.qryptana.foundation:444).
+  // clearnet-only addresses.
   const val SMP = "smp://PN_HLQSdhKOp62HM8hoUtOMskUvdeNzqVBniJMunJjo=@smp.qryptana.foundation,b544yscwxhrir2ilsy57dgwedr5vutl7zj525rio4dazsfka4f22k6yd.onion:5224"
-  const val XFTP = "xftp://7pHBpUNapABy84mZpDEds4wSmSsCAX7lqMV_XiICBdc=@xftp.qryptana.foundation,bpdzfyp43fln46xa4hy67z7aqgpdylmlptgm5fwhoxl6tbiii3xireyd.onion:444"
+  const val XFTP = "xftp://P4pAiyTPwA2MNZbWZqL11v6ngAAMh7V8X50tc-_o3Lg=@xftp2.goanon.foundation,e6xroxqvdwcid42m54ck6bl4u3te45wu6x3ptaeupuowrgxxow7b6ayd.onion"
 
   /**
    * Adds the Qryptana relays to the active user's server list if they are missing.
@@ -33,15 +33,17 @@ object QryptanaServers {
     val existing = chatController.getUserServers(rh)
       ?: throw QryptanaServersException("Could not read the current server list.")
     val present = existing.flatMap { it.smpServers + it.xftpServers }.map { it.server }.toSet()
-    val smpServers = if (SMP in present) emptyList() else listOf(defaultServer(SMP))
-    val xftpServers = if (XFTP in present) emptyList() else listOf(defaultServer(XFTP))
-    if (smpServers.isEmpty() && xftpServers.isEmpty()) return
-    val qryptanaGroup = UserOperatorServers(
-      operator = null,
-      smpServers = smpServers,
-      xftpServers = xftpServers
-    )
-    if (!chatController.setUserServers(rh, existing + qryptanaGroup)) {
+    // SMP (VPS1) and XFTP (VPS2) run on different hosts and root domains; keep one
+    // group per relay so neither relay is bundled with the other's operator.
+    val groups = mutableListOf<UserOperatorServers>()
+    if (SMP !in present) {
+      groups.add(UserOperatorServers(operator = null, smpServers = listOf(defaultServer(SMP)), xftpServers = emptyList()))
+    }
+    if (XFTP !in present) {
+      groups.add(UserOperatorServers(operator = null, smpServers = emptyList(), xftpServers = listOf(defaultServer(XFTP))))
+    }
+    if (groups.isEmpty()) return
+    if (!chatController.setUserServers(rh, existing + groups)) {
       // setUserServers already showed the generic "failed to save servers" alert.
       throw QryptanaServersException("Could not save the Qryptana servers.", alertAlreadyShown = true)
     }
