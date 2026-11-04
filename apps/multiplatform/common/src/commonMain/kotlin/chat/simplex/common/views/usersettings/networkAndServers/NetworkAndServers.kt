@@ -20,6 +20,7 @@ import androidx.compose.ui.Modifier
 import dev.icerock.moko.resources.compose.painterResource
 import dev.icerock.moko.resources.compose.stringResource
 import androidx.compose.ui.text.*
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.*
 import androidx.compose.desktop.ui.tooling.preview.Preview
 import androidx.compose.foundation.Image
@@ -94,6 +95,9 @@ import chat.simplex.res.network_session_mode_user
 import chat.simplex.res.network_session_mode_user_description
 import chat.simplex.res.network_settings
 import chat.simplex.res.network_socks_proxy
+import chat.simplex.res.network_maximum_privacy_tor_desc
+import chat.simplex.res.network_maximum_privacy_tor_footer
+import chat.simplex.res.network_maximum_privacy_tor_title
 import chat.simplex.res.network_socks_proxy_settings
 import chat.simplex.res.network_socks_toggle_use_socks_proxy
 import chat.simplex.res.network_use_onion_hosts
@@ -259,6 +263,7 @@ fun ModalData.NetworkAndServersView(closeNetworkAndServers: () -> Unit) {
     }
   }
   val anyOperatorEnabled = remember { derivedStateOf { visibleOperators.value.any { (_, op) -> op.enabled } } }
+  val maximumPrivacyTor = rememberSaveable { mutableStateOf(false) }
   val scope = rememberCoroutineScope()
 
   LaunchedEffect(Unit) {
@@ -366,6 +371,17 @@ fun ModalData.NetworkAndServersView(closeNetworkAndServers: () -> Unit) {
       SectionTextFooter(annotatedStringResource(MR.strings.socks_proxy_setting_limitations))
     }
 
+    if (currentRemoteHost == null) {
+      SectionDividerSpaced()
+      SectionView(stringResource(MR.strings.network_maximum_privacy_tor_title)) {
+        MaximumPrivacyTorSwitch(maximumPrivacyTor) { enabled ->
+          maximumPrivacyTor.value = enabled
+          setMaximumPrivacyTor(enabled, chatModel, userServers, currentRemoteHost?.remoteHostId)
+        }
+      }
+      SectionTextFooter(stringResource(MR.strings.network_maximum_privacy_tor_footer))
+    }
+
     SectionDividerSpaced()
     SectionView {
       val saveDisabled = !serversCanBeSaved(currUserServers.value, userServers.value, serverErrors.value)
@@ -427,6 +443,57 @@ fun ModalData.NetworkAndServersView(closeNetworkAndServers: () -> Unit) {
   UseSocksProxySwitch(networkUseSocksProxy, toggleSocksProxy)
   SettingsActionItem(painterResource(MR.images.ic_settings_ethernet), stringResource(MR.strings.network_socks_proxy_settings), { showCustomModal { SocksProxySettings(networkUseSocksProxy.value, networkProxy, onionHosts, sessionMode.value, true, it) } })
   SessionModePicker(sessionMode, showModal, updateSessionMode)
+}
+
+@Composable
+fun MaximumPrivacyTorSwitch(
+  maximumPrivacyTor: MutableState<Boolean>,
+  onToggle: (Boolean) -> Unit,
+) {
+  Row(
+    Modifier.fillMaxWidth().padding(horizontal = DEFAULT_PADDING, vertical = DEFAULT_PADDING_HALF),
+    verticalAlignment = Alignment.CenterVertically,
+    horizontalArrangement = Arrangement.spacedBy(DEFAULT_PADDING_HALF)
+  ) {
+    Icon(
+      painterResource(MR.images.ic_security),
+      stringResource(MR.strings.network_maximum_privacy_tor_title),
+      tint = MaterialTheme.colors.primary
+    )
+    Column(Modifier.weight(1f)) {
+      Text(
+        stringResource(MR.strings.network_maximum_privacy_tor_title),
+        color = MaterialTheme.colors.primary,
+        fontWeight = FontWeight.Medium
+      )
+      Text(
+        stringResource(MR.strings.network_maximum_privacy_tor_desc),
+        style = MaterialTheme.typography.body2,
+        color = MaterialTheme.colors.secondary
+      )
+    }
+    DefaultSwitch(
+      checked = maximumPrivacyTor.value,
+      onCheckedChange = onToggle,
+    )
+  }
+}
+
+/**
+ * Placeholder for the one-click Tor flow. It will eventually:
+ * (a) enable the SOCKS proxy,
+ * (b) set onion hosts to required, and
+ * (c) replace the user's SMP/XFTP servers with Qryptana's .onion addresses.
+ */
+@Suppress("UNUSED_PARAMETER")
+private fun setMaximumPrivacyTor(
+  enabled: Boolean,
+  chatModel: ChatModel,
+  userServers: MutableState<List<UserOperatorServers>>,
+  rhId: Long?,
+) {
+  if (!enabled) return
+  // TODO: implement the one-click Tor setup described above.
 }
 
 @Composable

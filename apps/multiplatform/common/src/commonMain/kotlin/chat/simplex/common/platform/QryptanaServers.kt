@@ -16,8 +16,10 @@ import chat.simplex.common.model.UserServer
 class QryptanaServersException(message: String, val alertAlreadyShown: Boolean = false) : Exception(message)
 
 object QryptanaServers {
-  const val SMP = "smp://PN_HLQSdhKOp62HM8hoUtOMskUvdeNzqVBniJMunJjo=@smp.qryptana.foundation:5224,b544yscwxhrir2ilsy57dgwedr5vutl7zj525rio4dazsfka4f22k6yd.onion"
-  const val XFTP = "xftp://7pHBpUNapABy84mZpDEds4wSmSsCAX7lqMV_XiICBdc=@xftp.qryptana.foundation:444,bpdzfyp43fln46xa4hy67z7aqgpdylmlptgm5fwhoxl6tbiii3xireyd.onion"
+  // Clearnet defaults only. Onion addresses must not be passed through
+  // setUserServers: the bundled core fails to parse onion hosts with custom ports.
+  const val SMP = "smp://PN_HLQSdhKOp62HM8hoUtOMskUvdeNzqVBniJMunJjo=@smp.qryptana.foundation:5224"
+  const val XFTP = "xftp://7pHBpUNapABy84mZpDEds4wSmSsCAX7lqMV_XiICBdc=@xftp.qryptana.foundation:444"
 
   /**
    * Adds the Qryptana relays to the active user's server list if they are missing.
