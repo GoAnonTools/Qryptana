@@ -26,7 +26,6 @@ import androidx.compose.desktop.ui.tooling.preview.Preview
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.*
 import androidx.compose.ui.platform.LocalDensity
@@ -99,6 +98,9 @@ import chat.simplex.res.network_socks_proxy
 import chat.simplex.res.network_maximum_privacy_tor_desc
 import chat.simplex.res.network_maximum_privacy_tor_footer
 import chat.simplex.res.network_maximum_privacy_tor_title
+import chat.simplex.res.network_tor_open_orbot
+import chat.simplex.res.network_tor_orbot_missing_desc
+import chat.simplex.res.network_tor_orbot_missing_title
 import chat.simplex.res.network_socks_proxy_settings
 import chat.simplex.res.network_socks_toggle_use_socks_proxy
 import chat.simplex.res.network_use_onion_hosts
@@ -134,6 +136,10 @@ import chat.simplex.res.updating_settings_will_reconnect_client_to_all_servers
 import chat.simplex.res.webrtc_ice_servers
 import chat.simplex.res.your_servers
 import kotlinx.coroutines.*
+import java.net.InetSocketAddress
+import java.net.Socket
+
+private const val ORBOT_URL = "https://orbot.app"
 
 @Composable
 fun ModalData.NetworkAndServersView(closeNetworkAndServers: () -> Unit) {
@@ -141,6 +147,8 @@ fun ModalData.NetworkAndServersView(closeNetworkAndServers: () -> Unit) {
   // It's not a state, just a one-time value. Shouldn't be used in any state-related situations
   val netCfg = remember { chatModel.controller.getNetCfg() }
   val networkUseSocksProxy: MutableState<Boolean> = remember { mutableStateOf(netCfg.useSocksProxy) }
+  val onionHosts = remember { mutableStateOf(netCfg.onionHosts) }
+  val uriHandler = LocalUriHandler.current
   val currUserServers = remember { stateGetOrPut("currUserServers") { emptyList<UserOperatorServers>() } }
   val userServers = remember { stateGetOrPut("userServers") { emptyList<UserOperatorServers>() } }
   val serverErrors = remember { stateGetOrPut("serverErrors") { emptyList<UserServersError>() } }
@@ -178,7 +186,7 @@ fun ModalData.NetworkAndServersView(closeNetworkAndServers: () -> Unit) {
     NetworkAndServersLayout(
       currentRemoteHost = currentRemoteHost,
       networkUseSocksProxy = networkUseSocksProxy,
-      onionHosts = remember { mutableStateOf(netCfg.onionHosts) },
+      onionHosts = onionHosts,
       currUserServers = currUserServers,
       userServers = userServers,
       serverErrors = serverErrors,
@@ -239,6 +247,42 @@ fun ModalData.NetworkAndServersView(closeNetworkAndServers: () -> Unit) {
             }
           )
         }
+      },
+      toggleMaximumPrivacyTor = { enable ->
+        if (enable) {
+          withBGApi {
+            if (!isOrbotReachable()) {
+              networkUseSocksProxy.value = false
+              AlertManager.shared.showAlertDialog(
+                title = generalGetString(MR.strings.network_tor_orbot_missing_title),
+                text = generalGetString(MR.strings.network_tor_orbot_missing_desc),
+                confirmText = generalGetString(MR.strings.network_tor_open_orbot),
+                onConfirm = { uriHandler.openUriCatching(ORBOT_URL) }
+              )
+              return@withBGApi
+            }
+            val oldProxy = appPrefs.networkProxy.get()
+            val proxy = NetworkProxy(host = "127.0.0.1", port = 9050)
+            appPrefs.networkProxy.set(proxy)
+            val cfg = controller.getNetCfg().withProxy(proxy).withOnionHosts(OnionHosts.REQUIRED)
+            if (controller.apiSetNetworkConfig(cfg, showAlertOnError = false)) {
+              controller.setNetCfg(cfg)
+              networkUseSocksProxy.value = true
+              onionHosts.value = OnionHosts.REQUIRED
+            } else {
+              appPrefs.networkProxy.set(oldProxy)
+              showWrongProxyConfigAlert()
+            }
+          }
+        } else {
+          withBGApi {
+            val cfg = controller.getNetCfg().copy(socksProxy = null).withOnionHosts(OnionHosts.PREFER)
+            controller.apiSetNetworkConfig(cfg, showAlertOnError = false)
+            controller.setNetCfg(cfg)
+            networkUseSocksProxy.value = false
+            onionHosts.value = OnionHosts.PREFER
+          }
+        }
       }
     )
   }
@@ -253,6 +297,7 @@ fun ModalData.NetworkAndServersView(closeNetworkAndServers: () -> Unit) {
   serverWarnings: MutableState<List<UserServersWarning>>,
   userServers: MutableState<List<UserOperatorServers>>,
   toggleSocksProxy: (Boolean) -> Unit,
+  toggleMaximumPrivacyTor: (Boolean) -> Unit,
 ) {
   val m = chatModel
   val conditionsAction = remember { m.conditions.value.conditionsAction }
@@ -264,6 +309,15 @@ fun ModalData.NetworkAndServersView(closeNetworkAndServers: () -> Unit) {
     }
   }
   val anyOperatorEnabled = remember { derivedStateOf { visibleOperators.value.any { (_, op) -> op.enabled } } }
+  val networkProxy = remember { appPrefs.networkProxy.state }
+  val maximumPrivacyTorEnabled = remember {
+    derivedStateOf {
+      networkUseSocksProxy.value &&
+        onionHosts.value == OnionHosts.REQUIRED &&
+        networkProxy.value.host == "127.0.0.1" &&
+        networkProxy.value.port == 9050
+    }
+  }
   val scope = rememberCoroutineScope()
 
   LaunchedEffect(Unit) {
@@ -374,7 +428,10 @@ fun ModalData.NetworkAndServersView(closeNetworkAndServers: () -> Unit) {
     if (currentRemoteHost == null) {
       SectionDividerSpaced()
       SectionView {
-        MaximumPrivacyTorSwitch()
+        MaximumPrivacyTorSwitch(
+          enabled = maximumPrivacyTorEnabled.value,
+          onToggle = toggleMaximumPrivacyTor
+        )
       }
       SectionTextFooter(stringResource(MR.strings.network_maximum_privacy_tor_footer))
     }
@@ -443,11 +500,13 @@ fun ModalData.NetworkAndServersView(closeNetworkAndServers: () -> Unit) {
 }
 
 @Composable
-fun MaximumPrivacyTorSwitch() {
+fun MaximumPrivacyTorSwitch(
+  enabled: Boolean,
+  onToggle: (Boolean) -> Unit,
+) {
   Row(
     Modifier
       .fillMaxWidth()
-      .alpha(0.55f)
       .padding(horizontal = DEFAULT_PADDING, vertical = DEFAULT_PADDING_HALF),
     verticalAlignment = Alignment.CenterVertically,
     horizontalArrangement = Arrangement.spacedBy(DEFAULT_PADDING_HALF)
@@ -455,12 +514,12 @@ fun MaximumPrivacyTorSwitch() {
     Icon(
       painterResource(MR.images.ic_security),
       stringResource(MR.strings.network_maximum_privacy_tor_title),
-      tint = MaterialTheme.colors.secondary
+      tint = MaterialTheme.colors.primary
     )
     Column(Modifier.weight(1f)) {
       Text(
         stringResource(MR.strings.network_maximum_privacy_tor_title),
-        color = MaterialTheme.colors.secondary,
+        color = MaterialTheme.colors.primary,
         fontWeight = FontWeight.Medium
       )
       Text(
@@ -470,28 +529,21 @@ fun MaximumPrivacyTorSwitch() {
       )
     }
     DefaultSwitch(
-      checked = false,
-      onCheckedChange = null,
-      enabled = false,
+      checked = enabled,
+      onCheckedChange = onToggle,
     )
   }
 }
 
-/**
- * Placeholder for the one-click Tor flow. It will eventually:
- * (a) enable the SOCKS proxy,
- * (b) set onion hosts to required, and
- * (c) replace the user's SMP/XFTP servers with Qryptana's .onion addresses.
- */
-@Suppress("UNUSED_PARAMETER")
-private fun setMaximumPrivacyTor(
-  enabled: Boolean,
-  chatModel: ChatModel,
-  userServers: MutableState<List<UserOperatorServers>>,
-  rhId: Long?,
-) {
-  if (!enabled) return
-  // TODO: implement the one-click Tor setup described above.
+private suspend fun isOrbotReachable(): Boolean = withContext(Dispatchers.IO) {
+  try {
+    Socket().use {
+      it.connect(InetSocketAddress("127.0.0.1", 9050), 800)
+      true
+    }
+  } catch (e: Exception) {
+    false
+  }
 }
 
 @Composable
@@ -1190,6 +1242,7 @@ fun PreviewNetworkAndServersLayout() {
       networkUseSocksProxy = remember { mutableStateOf(true) },
       onionHosts = remember { mutableStateOf(OnionHosts.PREFER) },
       toggleSocksProxy = {},
+      toggleMaximumPrivacyTor = {},
       currUserServers =  remember { mutableStateOf(emptyList()) },
       userServers = remember { mutableStateOf(emptyList()) },
       serverErrors = remember { mutableStateOf(emptyList()) },

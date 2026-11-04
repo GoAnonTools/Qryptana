@@ -1093,9 +1093,12 @@
   <string name="network_socks_proxy">SOCKS proxy</string>
   <string name="network_socks_proxy_settings">SOCKS proxy settings</string>
   <string name="network_socks_toggle_use_socks_proxy">Use SOCKS proxy</string>
-  <string name="network_maximum_privacy_tor_title">Enable Maximum Privacy (Tor) - Coming Soon</string>
+  <string name="network_maximum_privacy_tor_title">Enable Maximum Privacy (Tor)</string>
   <string name="network_maximum_privacy_tor_desc">Route Qryptana through Tor and use its onion servers.</string>
-  <string name="network_maximum_privacy_tor_footer">Not active in this build. It will enable the SOCKS proxy, require onion hosts, and switch to Qryptana&apos;s onion servers.</string>
+  <string name="network_maximum_privacy_tor_footer">Routes Qryptana through the local Orbot proxy on port 9050 and requires onion servers.</string>
+  <string name="network_tor_orbot_missing_title">Orbot is not running</string>
+  <string name="network_tor_orbot_missing_desc">Orbot is not running. Please install and start Orbot to use Tor routing.</string>
+  <string name="network_tor_open_orbot">Open Orbot</string>
   <string name="read_our_privacy_policy">Read our Privacy Policy</string>
   <string name="network_proxy_auth">Proxy authentication</string>
   <string name="network_proxy_random_credentials">Use random credentials</string>
