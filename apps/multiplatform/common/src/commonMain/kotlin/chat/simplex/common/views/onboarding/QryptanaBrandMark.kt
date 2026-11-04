@@ -8,15 +8,22 @@ import chat.simplex.common.model.QryptanaServerFilters
 import chat.simplex.common.model.ServerOperator
 import dev.icerock.moko.resources.compose.painterResource
 
-/** The Qryptana relay mark, drawn from the platform's vector/logo resource. */
+enum class QryptanaIcon {
+  Name,
+  Network,
+  Commitments,
+  Support
+}
+
+/** The Qryptana branding mark for the given onboarding/support surface. */
 @Composable
-expect fun QryptanaBrandMark(modifier: Modifier = Modifier)
+expect fun QryptanaBrandMark(icon: QryptanaIcon, modifier: Modifier = Modifier)
 
 /** Shows the Qryptana mark for Qryptana operators and the upstream logo otherwise. */
 @Composable
 fun QryptanaOperatorLogo(operator: ServerOperator, modifier: Modifier = Modifier) {
   if (QryptanaServerFilters.isQryptanaOperator(operator)) {
-    QryptanaBrandMark(modifier)
+    QryptanaBrandMark(QryptanaIcon.Network, modifier)
   } else {
     Image(
       painter = painterResource(operator.logo),

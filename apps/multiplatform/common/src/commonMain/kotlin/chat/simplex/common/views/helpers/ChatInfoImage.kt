@@ -6,7 +6,6 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.material.Text
 import androidx.compose.ui.text.font.FontWeight
-import chat.simplex.common.views.onboarding.QryptanaMetal
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.InlineTextContent
@@ -39,6 +38,7 @@ import chat.simplex.common.model.LocalBadge
 import chat.simplex.common.model.localDate
 import chat.simplex.common.platform.*
 import chat.simplex.common.views.onboarding.QryptanaBrandMark
+import chat.simplex.common.views.onboarding.QryptanaIcon
 import chat.simplex.common.ui.theme.*
 import chat.simplex.res.MR
 import chat.simplex.res.badge_invested
@@ -91,18 +91,9 @@ fun ChatInfoImage(chatInfo: ChatInfo, size: Dp, iconColor: Color = MaterialTheme
 
 @Composable
 private fun QryptanaServiceAvatar(size: Dp) {
-  Box(Modifier.size(size), contentAlignment = Alignment.Center) {
-    val d = size * 0.78f
-    Box(
-      Modifier
-      .size(d)
-      .clip(CircleShape)
-      .background(Brush.verticalGradient(listOf(QryptanaMetal.titaniumHigh, QryptanaMetal.titaniumLow)))
-      .border(1.dp, Brush.verticalGradient(listOf(QryptanaMetal.copperLight, QryptanaMetal.copperShadow)), CircleShape),
-        contentAlignment = Alignment.Center
-    ) {
-      QryptanaBrandMark(Modifier.fillMaxSize(0.6f))
-    }
+  // The support avatar has its own graphite disc; render it at full size.
+  Box(Modifier.size(size).clip(CircleShape)) {
+    QryptanaBrandMark(QryptanaIcon.Support, Modifier.fillMaxSize())
   }
 }
 

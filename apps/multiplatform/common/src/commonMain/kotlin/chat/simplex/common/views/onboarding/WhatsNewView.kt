@@ -60,6 +60,14 @@ import chat.simplex.common.views.usersettings.UserAddressView
 import chat.simplex.common.views.usersettings.networkAndServers.UsageConditionsView
 import chat.simplex.common.views.usersettings.showAddShortLinkAlert
 import chat.simplex.res.MR
+import chat.simplex.res.qryptana_whats_new_absolute_privacy
+import chat.simplex.res.qryptana_whats_new_absolute_privacy_desc
+import chat.simplex.res.qryptana_whats_new_branding
+import chat.simplex.res.qryptana_whats_new_branding_desc
+import chat.simplex.res.qryptana_whats_new_independent_network
+import chat.simplex.res.qryptana_whats_new_independent_network_desc
+import chat.simplex.res.qryptana_whats_new_sovereign_infrastructure
+import chat.simplex.res.qryptana_whats_new_sovereign_infrastructure_desc
 import chat.simplex.res.crowdfunding_1
 import chat.simplex.res.crowdfunding_2
 import chat.simplex.res.crowdfunding_3
@@ -579,7 +587,28 @@ private val versionDescriptions: List<VersionDescription> = listOf(
   VersionDescription(
     version = "Qryptana 0.1.0-alpha",
     post = null,
-    features = emptyList()
+    features = listOf(
+      VersionFeature.FeatureDescription(
+        icon = MR.images.ic_dns,
+        titleId = MR.strings.qryptana_whats_new_sovereign_infrastructure,
+        descrId = MR.strings.qryptana_whats_new_sovereign_infrastructure_desc
+      ),
+      VersionFeature.FeatureDescription(
+        icon = MR.images.ic_security,
+        titleId = MR.strings.qryptana_whats_new_absolute_privacy,
+        descrId = MR.strings.qryptana_whats_new_absolute_privacy_desc
+      ),
+      VersionFeature.FeatureDescription(
+        icon = MR.images.ic_palette,
+        titleId = MR.strings.qryptana_whats_new_branding,
+        descrId = MR.strings.qryptana_whats_new_branding_desc
+      ),
+      VersionFeature.FeatureDescription(
+        icon = MR.images.ic_travel_explore,
+        titleId = MR.strings.qryptana_whats_new_independent_network,
+        descrId = MR.strings.qryptana_whats_new_independent_network_desc
+      )
+    )
   )
 )
 

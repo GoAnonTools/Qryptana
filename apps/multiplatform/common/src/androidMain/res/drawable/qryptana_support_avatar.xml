@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Avatar for the Qryptana support contact: a chat bubble with three dots, copper accent in the middle.
+     Has its own dark disc, so it works on any list background. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <!-- Graphite disc -->
+    <path
+        android:fillColor="#23221F"
+        android:pathData="M4,54 A50,50 0 1,1 104,54 A50,50 0 1,1 4,54 Z" />
+    <path
+        android:strokeColor="#5545423F"
+        android:strokeWidth="2"
+        android:pathData="M5,54 A49,49 0 1,1 103,54 A49,49 0 1,1 5,54 Z" />
+
+    <!-- Bubble -->
+    <path
+        android:fillColor="#C9CFD6"
+        android:pathData="M34,32 H74 A8,8 0 0 1 82,40 V58 A8,8 0 0 1 74,66 H56 L44,77 V66 H34 A8,8 0 0 1 26,58 V40 A8,8 0 0 1 34,32 Z" />
+
+    <!-- Three dots: someone is here to help. Middle dot is the copper accent. -->
+    <path
+        android:fillColor="#7A838C"
+        android:pathData="M38,49 A4.5,4.5 0 1,1 47,49 A4.5,4.5 0 1,1 38,49 Z" />
+    <path
+        android:fillColor="#A8692D"
+        android:pathData="M49.5,49 A4.5,4.5 0 1,1 58.5,49 A4.5,4.5 0 1,1 49.5,49 Z" />
+    <path
+        android:fillColor="#7A838C"
+        android:pathData="M61,49 A4.5,4.5 0 1,1 70,49 A4.5,4.5 0 1,1 61,49 Z" />
+</vector>

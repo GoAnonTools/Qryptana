@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Onboarding: "our commitments". Three seals: locked, protected, not watched. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="162dp"
+    android:height="108dp"
+    android:viewportWidth="162"
+    android:viewportHeight="108">
+
+    <!-- Connectors between seals -->
+    <path
+        android:strokeColor="#668F9AA6"
+        android:strokeWidth="1.5"
+        android:strokeLineCap="round"
+        android:pathData="M50,54 L58,54 M104,54 L112,54" />
+
+    <!-- Seal rings -->
+    <path
+        android:strokeColor="#8F9AA6"
+        android:strokeWidth="2"
+        android:pathData="M5,54 A22,22 0 1,1 49,54 A22,22 0 1,1 5,54 Z" />
+    <path
+        android:strokeColor="#C4844A"
+        android:strokeWidth="2.5"
+        android:pathData="M59,54 A22,22 0 1,1 103,54 A22,22 0 1,1 59,54 Z" />
+    <path
+        android:strokeColor="#8F9AA6"
+        android:strokeWidth="2"
+        android:pathData="M113,54 A22,22 0 1,1 157,54 A22,22 0 1,1 113,54 Z" />
+
+    <!-- 1. Lock -->
+    <path
+        android:strokeColor="#C9CFD6"
+        android:strokeWidth="3"
+        android:strokeLineCap="round"
+        android:pathData="M22.5,54 V49 A4.5,4.5 0 0 1 31.5,49 V54" />
+    <path
+        android:fillColor="#C9CFD6"
+        android:pathData="M21,54 H33 A2,2 0 0 1 35,56 V66 A2,2 0 0 1 33,68 H21 A2,2 0 0 1 19,66 V56 A2,2 0 0 1 21,54 Z" />
+    <path
+        android:fillColor="#23221F"
+        android:pathData="M25,60 A2,2 0 1,1 29,60 A2,2 0 1,1 25,60 Z" />
+
+    <!-- 2. Shield with check -->
+    <path
+        android:fillColor="#1AC4844A"
+        android:strokeColor="#D9A878"
+        android:strokeWidth="3"
+        android:strokeLineJoin="round"
+        android:pathData="M81,38 L95,43 V55 C95,64 89,70 81,73 C73,70 67,64 67,55 V43 Z" />
+    <path
+        android:strokeColor="#EBC9A4"
+        android:strokeWidth="3.2"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:pathData="M74,55 L79.5,60.5 L88.5,50" />
+
+    <!-- 3. Eye, struck through (not watched) -->
+    <path
+        android:strokeColor="#C9CFD6"
+        android:strokeWidth="3"
+        android:strokeLineJoin="round"
+        android:pathData="M119,54 C124,46 130,43 135,43 C140,43 146,46 151,54 C146,62 140,65 135,65 C130,65 124,62 119,54 Z" />
+    <path
+        android:fillColor="#C9CFD6"
+        android:pathData="M131,54 A4,4 0 1,1 139,54 A4,4 0 1,1 131,54 Z" />
+    <path
+        android:strokeColor="#D9A878"
+        android:strokeWidth="3"
+        android:strokeLineCap="round"
+        android:pathData="M123,66 L147,42" />
+</vector>

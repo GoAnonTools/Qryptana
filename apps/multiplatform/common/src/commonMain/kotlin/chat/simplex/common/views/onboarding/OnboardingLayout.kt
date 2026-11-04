@@ -175,7 +175,7 @@ internal fun QryptanaOnboardingIllustrationFallback(
  * network-commitments pages.
  */
 @Composable
-fun QryptanaOnboardingMarkIllustration(modifier: Modifier = Modifier, aspectRatio: Float = 1f) {
+fun QryptanaOnboardingMarkIllustration(icon: QryptanaIcon, modifier: Modifier = Modifier, aspectRatio: Float = 1f) {
   val isDark = isInDarkTheme()
   if (appPlatform.isAndroid) {
     Box(
@@ -186,7 +186,7 @@ fun QryptanaOnboardingMarkIllustration(modifier: Modifier = Modifier, aspectRati
         .border(1.dp, if (isDark) QryptanaAndroidOnboardingPalette.TitaniumDark.copy(alpha = 0.3f) else QryptanaAndroidOnboardingPalette.LightBorder, RoundedCornerShape(24.dp)),
       contentAlignment = Alignment.Center
     ) {
-      QryptanaBrandMark(Modifier.fillMaxSize(0.52f))
+      QryptanaBrandMark(icon, Modifier.fillMaxSize(0.52f))
     }
   } else {
     val scale = if (isDark) 1.5f else 1.2f
@@ -207,7 +207,7 @@ fun QryptanaOnboardingMarkIllustration(modifier: Modifier = Modifier, aspectRati
         },
       contentAlignment = Alignment.Center
     ) {
-      QryptanaBrandMark(Modifier.fillMaxSize(0.52f))
+      QryptanaBrandMark(icon, Modifier.fillMaxSize(0.52f))
     }
   }
 }
@@ -267,14 +267,14 @@ fun DesktopOnboardingShell(stage: OnboardingStage, content: @Composable () -> Un
                         )
                     }
                 } else {
-                    QryptanaOnboardingMarkIllustration(Modifier.fillMaxWidth())
+                    QryptanaOnboardingMarkIllustration(QryptanaIcon.Name, Modifier.fillMaxWidth())
                 }
                 OnboardingStage.Step3_ChooseServerOperators,
                 OnboardingStage.Step3_CreateSimpleXAddress,
                 OnboardingStage.Step4_SetNotificationsMode ->
-                QryptanaOnboardingMarkIllustration(Modifier.fillMaxWidth())
+                QryptanaOnboardingMarkIllustration(QryptanaIcon.Network, Modifier.fillMaxWidth())
                 OnboardingStage.Step4_NetworkCommitments ->
-                QryptanaOnboardingMarkIllustration(Modifier.fillMaxWidth(), aspectRatio = 1.5f)
+                QryptanaOnboardingMarkIllustration(QryptanaIcon.Commitments, Modifier.fillMaxWidth(), aspectRatio = 1.5f)
                 else -> {}
             }
         }

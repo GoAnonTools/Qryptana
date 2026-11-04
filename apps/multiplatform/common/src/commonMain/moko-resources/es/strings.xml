@@ -2991,4 +2991,12 @@
     <string name="android_delete_profiles_chats_message">Esto elimina permanentemente todos los perfiles y chats almacenados en Qryptana en este dispositivo. Exporta primero una copia de seguridad si quieres conservarlos.\n\nTambién se eliminarán los contactos, mensajes, archivos, multimedia y los datos guardados de dispositivos remotos.</string>
     <string name="android_delete_profiles_chats_success">Perfiles y chats eliminados</string>
 
+    <string name="qryptana_whats_new_sovereign_infrastructure">Sovereign Infrastructure</string>
+    <string name="qryptana_whats_new_sovereign_infrastructure_desc">Connect directly to GoAnon-operated SMP and XFTP servers. No third-party relays.</string>
+    <string name="qryptana_whats_new_absolute_privacy">Absolute Privacy</string>
+    <string name="qryptana_whats_new_absolute_privacy_desc">End-to-end encryption with no metadata tracking or user directories.</string>
+    <string name="qryptana_whats_new_branding">Qryptana Branding</string>
+    <string name="qryptana_whats_new_branding_desc">Experience a fresh new look with our signature Copper and Charcoal UI.</string>
+    <string name="qryptana_whats_new_independent_network">Independent Network</string>
+    <string name="qryptana_whats_new_independent_network_desc">A fully self-hosted ecosystem built for the GoAnon community.</string>
 </resources>

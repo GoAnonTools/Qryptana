@@ -9,7 +9,8 @@ import chat.simplex.res.qryptana_symbol
 import dev.icerock.moko.resources.compose.painterResource
 
 @Composable
-actual fun QryptanaBrandMark(modifier: Modifier) {
+actual fun QryptanaBrandMark(icon: QryptanaIcon, modifier: Modifier) {
+  // Desktop keeps the existing Qryptana symbol until platform-specific artwork is supplied.
   Image(
     painter = painterResource(MR.images.qryptana_symbol),
     contentDescription = null,

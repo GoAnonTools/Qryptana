@@ -93,6 +93,7 @@ fun OnboardingConditionsView(chatModel: ChatModel) {
                                   image = {
                                     Column(Modifier.padding(vertical = DEFAULT_PADDING_HALF), horizontalAlignment = Alignment.CenterHorizontally) {
                                       QryptanaOnboardingMarkIllustration(
+                                        QryptanaIcon.Commitments,
                                         modifier = Modifier.fillMaxWidth(),
                                         aspectRatio = 1.5f
                                       )

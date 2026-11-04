@@ -85,6 +85,7 @@ fun YourNetworkView(chatModel: ChatModel) {
                                   image = {
                                     Column(Modifier.padding(vertical = DEFAULT_PADDING_HALF), horizontalAlignment = Alignment.CenterHorizontally) {
                                       QryptanaOnboardingMarkIllustration(
+                                        QryptanaIcon.Network,
                                         modifier = Modifier.padding(horizontal = DEFAULT_ONBOARDING_HORIZONTAL_PADDING).fillMaxWidth()
                                       )
                                     }

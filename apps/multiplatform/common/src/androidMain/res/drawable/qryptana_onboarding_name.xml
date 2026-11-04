@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Onboarding: "your name". A badge with a person and an engraved name line.
+     Decorative: set contentDescription at the call site if needed. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <!-- Soft inner disc -->
+    <path
+        android:fillColor="#1AAEB8C0"
+        android:pathData="M12,54 A42,42 0 1,1 96,54 A42,42 0 1,1 12,54 Z" />
+
+    <!-- Titanium ring -->
+    <path
+        android:strokeColor="#8F9AA6"
+        android:strokeWidth="2.5"
+        android:pathData="M12,54 A42,42 0 1,1 96,54 A42,42 0 1,1 12,54 Z" />
+
+    <!-- Copper reflection on the upper-left edge of the ring -->
+    <path
+        android:strokeColor="#D9A878"
+        android:strokeWidth="3.5"
+        android:strokeLineCap="round"
+        android:pathData="M17.6,33 A42,42 0 0,1 54,12" />
+
+    <!-- Head -->
+    <path
+        android:fillColor="#C9CFD6"
+        android:pathData="M42,43 A12,12 0 1,1 66,43 A12,12 0 1,1 42,43 Z" />
+
+    <!-- Shoulders -->
+    <path
+        android:fillColor="#AEB8C0"
+        android:pathData="M30,78 C30,64 41,58 54,58 C67,58 78,64 78,78 Z" />
+
+    <!-- Engraved name line -->
+    <path
+        android:strokeColor="#C4844A"
+        android:strokeWidth="3"
+        android:strokeLineCap="round"
+        android:pathData="M42,87 L66,87" />
+</vector>

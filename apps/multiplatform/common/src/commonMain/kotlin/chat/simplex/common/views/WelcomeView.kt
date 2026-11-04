@@ -135,7 +135,7 @@ fun CreateProfile(chatModel: ChatModel, close: () -> Unit) {
               }
             }
           }
-          QryptanaBrandMark(Modifier.height(120.dp).aspectRatio(1f))
+          QryptanaBrandMark(QryptanaIcon.Name, Modifier.height(120.dp).aspectRatio(1f))
         }
         Column(Modifier.padding(horizontal = DEFAULT_PADDING)) {
           Row(Modifier.padding(bottom = DEFAULT_PADDING_HALF).fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
@@ -280,6 +280,7 @@ private fun CreateFirstProfileMobile(chatModel: ChatModel, close: () -> Unit) {
         Spacer(Modifier.weight(1f))
 
         QryptanaOnboardingMarkIllustration(
+          QryptanaIcon.Name,
           Modifier
           .then(if (keyboardState != KeyboardState.Opened) Modifier.fillMaxWidth() else Modifier)
           .then(imageHeightModifier)
