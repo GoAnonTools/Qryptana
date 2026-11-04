@@ -64,7 +64,6 @@ import chat.simplex.res.ic_share_filled
 import chat.simplex.res.ic_theater_comedy
 import chat.simplex.res.ic_theater_comedy_filled
 import chat.simplex.res.incognito
-import chat.simplex.res.invalid_contact_link
 import chat.simplex.res.invalid_qr_code
 import chat.simplex.res.keep_invitation_link
 import chat.simplex.res.keep_unused_invitation_question
@@ -717,10 +716,14 @@ private fun ConnectView(rhId: Long?, showQRCodeScanner: MutableState<Boolean>, p
 @Composable
 private fun PasteLinkView(rhId: Long?, pastedLink: MutableState<String>, showQRCodeScanner: MutableState<Boolean>, close: () -> Unit) {
   if (pastedLink.value.isEmpty()) {
-    val clipboard = LocalClipboardManager.current
+    val invalidLink = generalGetString(MR.strings.the_text_you_pasted_is_not_a_link)
     SectionItemView({
-      val str = clipboard.getText()?.text ?: return@SectionItemView
-      when (val target = strConnectTarget(str.trim())) {
+      val str = getClipboardText()
+      if (str == null) {
+        showToast(invalidLink)
+        return@SectionItemView
+      }
+      when (val target = strConnectTarget(str)) {
         is ConnectTarget.Link -> {
           pastedLink.value = target.text
           showQRCodeScanner.value = false
@@ -731,10 +734,7 @@ private fun PasteLinkView(rhId: Long?, pastedLink: MutableState<String>, showQRC
           showQRCodeScanner.value = false
           withBGApi { connect(rhId, target.text, close) { pastedLink.value = "" } }
         }
-        null -> AlertManager.shared.showAlertMsg(
-          title = generalGetString(MR.strings.invalid_contact_link),
-          text = generalGetString(MR.strings.the_text_you_pasted_is_not_a_link)
-        )
+        null -> showToast(invalidLink)
       }
     }) {
       Box(Modifier.weight(1f)) {

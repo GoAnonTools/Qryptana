@@ -5,6 +5,9 @@ import chat.simplex.common.views.helpers.KeyboardState
 
 expect fun showToast(text: String, timeout: Long = 2500L)
 
+/** Reads the system clipboard text, or null when it is empty or unavailable. */
+expect fun getClipboardText(): String?
+
 @Composable
 expect fun LockToCurrentOrientationUntilDispose()
 

@@ -8,6 +8,15 @@ actual fun showToast(text: String, timeout: Long) {
   simplexWindowState.toasts.add(text to timeout)
 }
 
+actual fun getClipboardText(): String? = runCatching {
+  val clipboard = java.awt.Toolkit.getDefaultToolkit().systemClipboard
+  if (clipboard.isDataFlavorAvailable(java.awt.datatransfer.DataFlavor.stringFlavor)) {
+    (clipboard.getData(java.awt.datatransfer.DataFlavor.stringFlavor) as? String)?.trim()?.takeIf { it.isNotEmpty() }
+  } else {
+    null
+  }
+}.getOrNull()
+
 @Composable
 actual fun LockToCurrentOrientationUntilDispose() {}
 

@@ -1,6 +1,7 @@
 package chat.simplex.common.platform
 
 import android.app.Activity
+import android.content.ClipboardManager
 import android.content.Context
 import android.content.pm.ActivityInfo
 import android.os.*
@@ -22,6 +23,13 @@ import chat.simplex.res.app_was_crashed
 import kotlinx.coroutines.*
 
 actual fun showToast(text: String, timeout: Long) = Toast.makeText(androidAppContext, text, Toast.LENGTH_SHORT).show()
+
+actual fun getClipboardText(): String? = runCatching {
+  val clipboard = androidAppContext.getSystemService(Context.CLIPBOARD_SERVICE) as? ClipboardManager ?: return@runCatching null
+  val clip = clipboard.primaryClip ?: return@runCatching null
+  if (clip.itemCount == 0) return@runCatching null
+  clip.getItemAt(0).coerceToText(androidAppContext)?.toString()?.trim()?.takeIf { it.isNotEmpty() }
+}.getOrNull()
 
 @Composable
 actual fun LockToCurrentOrientationUntilDispose() {
