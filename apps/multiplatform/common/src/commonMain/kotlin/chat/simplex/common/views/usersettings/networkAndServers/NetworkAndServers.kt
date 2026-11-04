@@ -26,6 +26,7 @@ import androidx.compose.desktop.ui.tooling.preview.Preview
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.*
 import androidx.compose.ui.platform.LocalDensity
@@ -263,7 +264,6 @@ fun ModalData.NetworkAndServersView(closeNetworkAndServers: () -> Unit) {
     }
   }
   val anyOperatorEnabled = remember { derivedStateOf { visibleOperators.value.any { (_, op) -> op.enabled } } }
-  val maximumPrivacyTor = rememberSaveable { mutableStateOf(false) }
   val scope = rememberCoroutineScope()
 
   LaunchedEffect(Unit) {
@@ -373,11 +373,8 @@ fun ModalData.NetworkAndServersView(closeNetworkAndServers: () -> Unit) {
 
     if (currentRemoteHost == null) {
       SectionDividerSpaced()
-      SectionView(stringResource(MR.strings.network_maximum_privacy_tor_title)) {
-        MaximumPrivacyTorSwitch(maximumPrivacyTor) { enabled ->
-          maximumPrivacyTor.value = enabled
-          setMaximumPrivacyTor(enabled, chatModel, userServers, currentRemoteHost?.remoteHostId)
-        }
+      SectionView {
+        MaximumPrivacyTorSwitch()
       }
       SectionTextFooter(stringResource(MR.strings.network_maximum_privacy_tor_footer))
     }
@@ -446,24 +443,24 @@ fun ModalData.NetworkAndServersView(closeNetworkAndServers: () -> Unit) {
 }
 
 @Composable
-fun MaximumPrivacyTorSwitch(
-  maximumPrivacyTor: MutableState<Boolean>,
-  onToggle: (Boolean) -> Unit,
-) {
+fun MaximumPrivacyTorSwitch() {
   Row(
-    Modifier.fillMaxWidth().padding(horizontal = DEFAULT_PADDING, vertical = DEFAULT_PADDING_HALF),
+    Modifier
+      .fillMaxWidth()
+      .alpha(0.55f)
+      .padding(horizontal = DEFAULT_PADDING, vertical = DEFAULT_PADDING_HALF),
     verticalAlignment = Alignment.CenterVertically,
     horizontalArrangement = Arrangement.spacedBy(DEFAULT_PADDING_HALF)
   ) {
     Icon(
       painterResource(MR.images.ic_security),
       stringResource(MR.strings.network_maximum_privacy_tor_title),
-      tint = MaterialTheme.colors.primary
+      tint = MaterialTheme.colors.secondary
     )
     Column(Modifier.weight(1f)) {
       Text(
         stringResource(MR.strings.network_maximum_privacy_tor_title),
-        color = MaterialTheme.colors.primary,
+        color = MaterialTheme.colors.secondary,
         fontWeight = FontWeight.Medium
       )
       Text(
@@ -473,8 +470,9 @@ fun MaximumPrivacyTorSwitch(
       )
     }
     DefaultSwitch(
-      checked = maximumPrivacyTor.value,
-      onCheckedChange = onToggle,
+      checked = false,
+      onCheckedChange = null,
+      enabled = false,
     )
   }
 }

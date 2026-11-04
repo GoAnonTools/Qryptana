@@ -63,6 +63,7 @@ import chat.simplex.res.onboarding_network_operators_cant_see_who_talks_to_whom
 import chat.simplex.res.onboarding_network_operators_configure_via_settings
 import chat.simplex.res.onboarding_network_operators_simplex_flux_agreement
 import chat.simplex.res.onboarding_privacy_commitments
+import chat.simplex.res.read_our_privacy_policy
 import dev.icerock.moko.resources.compose.painterResource
 import dev.icerock.moko.resources.compose.stringResource
 import dev.icerock.moko.resources.StringResource
@@ -141,8 +142,25 @@ fun OnboardingConditionsView(chatModel: ChatModel) {
                                                interactionSource = remember { MutableInteractionSource() },
                                                         indication = null
                                              ) {
-                                               uriHandler.openExternalLink(QRYPTANA_PRIVACY_URL)
+                                               ModalManager.fullscreen.showModal(endButtons = { ConditionsLinkButton() }) {
+                                                 SimpleConditionsView(rhId = null) {
+                                                   ModalManager.fullscreen.closeModal()
+                                                   acceptConditions(selectedOperatorIds.value)
+                                                 }
+                                               }
                                              }
+                                        )
+                                        Spacer(Modifier.height(DEFAULT_PADDING_HALF))
+                                        Text(
+                                          stringResource(MR.strings.read_our_privacy_policy),
+                                          style = MaterialTheme.typography.body2,
+                                          color = MaterialTheme.colors.primary,
+                                          modifier = Modifier.clickable(
+                                            interactionSource = remember { MutableInteractionSource() },
+                                            indication = null
+                                          ) {
+                                            uriHandler.openExternalLink(QRYPTANA_PRIVACY_URL)
+                                          }
                                         )
                                       }
                                     }
@@ -208,7 +226,12 @@ private fun OnboardingConditionsDesktop(selectedOperatorIds: MutableState<Set<Lo
                      interactionSource = remember { MutableInteractionSource() },
                               indication = null
                    ) {
-                     uriHandler.openExternalLink(QRYPTANA_PRIVACY_URL)
+                     ModalManager.fullscreen.showModal(forceAnimated = true, endButtons = { ConditionsLinkButton() }) {
+                       SimpleConditionsView(rhId = null) {
+                         ModalManager.fullscreen.closeModal()
+                         acceptConditions(selectedOperatorIds.value)
+                       }
+                     }
                    },
                    style = MaterialTheme.typography.body1,
                    fontWeight = FontWeight.Normal,
@@ -217,6 +240,21 @@ private fun OnboardingConditionsDesktop(selectedOperatorIds: MutableState<Set<Lo
                    lineHeight = 25.sp,
                    color = QryptanaMetal.copperLight,
                    textAlign = TextAlign.Center
+              )
+              Spacer(Modifier.height(12.dp))
+              Text(
+                stringResource(MR.strings.read_our_privacy_policy),
+                Modifier
+                  .align(Alignment.CenterHorizontally)
+                  .clickable(
+                    interactionSource = remember { MutableInteractionSource() },
+                    indication = null
+                  ) {
+                    uriHandler.openExternalLink(QRYPTANA_PRIVACY_URL)
+                  },
+                style = MaterialTheme.typography.body2,
+                color = QryptanaMetal.textSupport,
+                textAlign = TextAlign.Center
               )
             }
             Spacer(Modifier.height(38.dp))

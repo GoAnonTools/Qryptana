@@ -13,6 +13,8 @@ fun isQryptanaDomain(url: String): Boolean {
 fun isQryptanaInvitationLink(url: String): Boolean {
   if (!isQryptanaDomain(url)) return false
   val lower = url.lowercase()
-  return lower.contains("/contact") || lower.contains("/invitation") ||
+  // Require the fragment marker: /contact# and /invitation# are invitation
+  // formats, while paths such as /contact-us are ordinary pages.
+  return lower.contains("/contact#") || lower.contains("/invitation#") ||
     lower.contains("/a#") || lower.contains("/g#")
 }

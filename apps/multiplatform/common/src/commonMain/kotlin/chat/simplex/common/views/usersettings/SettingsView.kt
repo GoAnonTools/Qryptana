@@ -330,7 +330,7 @@ fun AppVersionItem(showVersion: () -> Unit) {
 }
 
 @Composable fun AppVersionText() {
-  Text(appVersionInfo.first)
+  Text(appVersionInfo.first + (if (appVersionInfo.second != null) " (build " + appVersionInfo.second + ")" else ""))
 }
 
 @Composable fun ProfilePreview(profileOf: NamedChat, size: Dp = 60.dp, iconColor: Color = MaterialTheme.colors.secondaryVariant, textColor: Color = MaterialTheme.colors.onBackground, stopped: Boolean = false, badge: LocalBadge? = null) {
