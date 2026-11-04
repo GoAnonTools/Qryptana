@@ -2874,4 +2874,5 @@
     <string name="qryptana_whats_new_branding_desc">Experience a fresh new look with our signature Copper and Charcoal UI.</string>
     <string name="qryptana_whats_new_independent_network">Independent Network</string>
     <string name="qryptana_whats_new_independent_network_desc">A fully self-hosted ecosystem built for the GoAnon community.</string>
+    <string name="qryptana_source_code_agpl">Qryptana 是依 AGPL-3.0 授權的自由軟體。Copyright (C) 2026 GoAnon。本程式不提供任何形式的擔保。原始碼：https://qryptana.foundation/source</string>
 </resources>

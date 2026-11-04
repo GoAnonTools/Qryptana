@@ -70,7 +70,7 @@ import kotlin.math.roundToInt
 fun ChatInfoImage(chatInfo: ChatInfo, size: Dp, iconColor: Color = MaterialTheme.colors.secondaryVariant, shadow: Boolean = false) {
   // The preset support contact keeps the upstream SimpleX avatar in the native core,
   // so render the Qryptana mark for it on every platform.
-  if (chatInfo is ChatInfo.Direct && chatInfo.contact.isQryptanaSupportContact()) {
+  if (chatInfo.isQryptanaSupportContact()) {
     QryptanaServiceAvatar(size)
     return
   }

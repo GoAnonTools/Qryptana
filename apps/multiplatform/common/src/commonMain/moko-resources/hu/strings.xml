@@ -2909,4 +2909,5 @@
     <string name="qryptana_whats_new_branding_desc">Experience a fresh new look with our signature Copper and Charcoal UI.</string>
     <string name="qryptana_whats_new_independent_network">Independent Network</string>
     <string name="qryptana_whats_new_independent_network_desc">A fully self-hosted ecosystem built for the GoAnon community.</string>
+    <string name="qryptana_source_code_agpl">A Qryptana szabad szoftver, amely az AGPL-3.0 licenc alatt áll. Copyright (C) 2026 GoAnon. Ez a program SEMMILYEN GARANCIÁVAL nem rendelkezik. Forráskód: https://qryptana.foundation/source</string>
 </resources>

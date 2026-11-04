@@ -2076,11 +2076,15 @@ private val hiddenPresetContactLinkIds = listOf(
 )
 
 /** Preset upstream support/directory contacts; hidden from Qryptana UI. */
-fun Contact.isQryptanaSupportContact(): Boolean =
-  profile.contactLink?.let { link -> hiddenPresetContactLinkIds.any { link.contains(it) } } == true
+fun ChatInfo.isQryptanaSupportContact(): Boolean {
+  val direct = this as? ChatInfo.Direct ?: return false
+  if (!direct.contactCard) return false
+  return direct.contact.profile.contactLink?.let { link ->
+    hiddenPresetContactLinkIds.any { link.contains(it) }
+  } == true
+}
 
-fun Chat.isQryptanaSupportChat(): Boolean =
-  (chatInfo as? ChatInfo.Direct)?.contact?.isQryptanaSupportContact() == true
+fun Chat.isQryptanaSupportChat(): Boolean = chatInfo.isQryptanaSupportContact()
 
 @Serializable
 data class Contact(
