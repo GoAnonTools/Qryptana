@@ -231,16 +231,6 @@ private fun ModalData.NewChatSheetLayout(
     }
 
     if (searchText.value.text.isEmpty()) {
-      Box(
-        Modifier.fillMaxWidth().padding(top = 32.dp, bottom = 24.dp),
-        contentAlignment = Alignment.Center
-      ) {
-        Image(
-          painterResource(MR.images.qryptana_symbol),
-          contentDescription = null,
-          modifier = Modifier.size(140.dp)
-        )
-      }
       Row {
         SectionView {
           actionButtons.map {
@@ -374,6 +364,10 @@ private fun ModalData.NewChatSheetLayout(
         }
         ContactListNavLinkView(chat, nextChatSelected, showDeletedChatIcon = true)
       }
+      if (searchText.value.text.isEmpty()) {
+        // One-hand layout is reversed, so this is the visually top-most item.
+        item { QryptanaNewChatLogo() }
+      }
       if (appPlatform.isAndroid) {
         item {
           Spacer(Modifier.windowInsetsTopHeight(WindowInsets.statusBars))
@@ -398,6 +392,9 @@ private fun ModalData.NewChatSheetLayout(
             bottomPadding = DEFAULT_PADDING
           )
         }
+      }
+      if (searchText.value.text.isEmpty()) {
+        item { QryptanaNewChatLogo() }
       }
       stickyHeader {
         val scrolledSomething by remember { derivedStateOf { listState.firstVisibleItemScrollOffset > 0 || listState.firstVisibleItemIndex > 0 } }
@@ -479,6 +476,20 @@ private fun ModalData.NewChatSheetLayout(
       NonOneHandLazyColumn()
       NavigationBarBackground(oneHandUI.value, true)
     }
+  }
+}
+
+@Composable
+private fun QryptanaNewChatLogo() {
+  Box(
+    Modifier.fillMaxWidth().padding(top = 48.dp, bottom = 24.dp),
+    contentAlignment = Alignment.Center
+  ) {
+    Image(
+      painterResource(MR.images.qryptana_symbol),
+      contentDescription = null,
+      modifier = Modifier.size(140.dp)
+    )
   }
 }
 

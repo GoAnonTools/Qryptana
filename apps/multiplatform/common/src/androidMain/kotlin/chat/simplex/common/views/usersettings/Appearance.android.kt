@@ -6,6 +6,7 @@ import SectionView
 import android.app.Activity
 import android.content.ComponentName
 import android.content.pm.PackageManager
+import android.content.res.Configuration
 import android.content.pm.PackageManager.COMPONENT_ENABLED_STATE_DEFAULT
 import android.content.pm.PackageManager.COMPONENT_ENABLED_STATE_ENABLED
 import androidx.compose.desktop.ui.tooling.preview.Preview
@@ -24,7 +25,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
-import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.toBitmap
 import dev.icerock.moko.resources.compose.stringResource
 import androidx.compose.ui.unit.dp
@@ -171,15 +171,18 @@ fun AppearanceScope.AppearanceLayout(
 @Composable
 private fun AppIconPreview(item: AppIcon, modifier: Modifier) {
   val context = LocalContext.current
-  val dark = chat.simplex.common.ui.theme.isSystemInDarkTheme()
-  // The preview follows the system theme: light icon in light mode, dark icon in dark mode.
-  val resourceName = if (dark) "icon_dark_blue" else "icon"
-  val resId = remember(resourceName) {
-    context.resources.getIdentifier(resourceName, "mipmap", context.packageName)
+  val dark = (context.resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK) == Configuration.UI_MODE_NIGHT_YES
+  // Resolve the same launcher icon the home screen uses for each theme:
+  // MainActivity_default -> @mipmap/icon, MainActivity_dark_blue -> @mipmap/icon_dark_blue.
+  val componentName = remember(dark) {
+    ComponentName(
+      APPLICATION_ID,
+      "chat.simplex.app.MainActivity_" + if (dark) "dark_blue" else "default"
+    )
   }
-  val bitmap = remember(resId) {
-    if (resId == 0) null else runCatching {
-      ContextCompat.getDrawable(context, resId)?.toBitmap(210, 210)?.asImageBitmap()
+  val bitmap = remember(componentName) {
+    runCatching {
+      context.packageManager.getActivityIcon(componentName)?.toBitmap(210, 210)?.asImageBitmap()
     }.getOrNull()
   }
   if (bitmap != null) {
