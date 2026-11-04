@@ -4,7 +4,6 @@ import SectionBottomSpacer
 import itemHPadding
 import SectionItemView
 import SectionDividerSpaced
-import SectionTextFooter
 import SectionView
 import TextIconSpaced
 import androidx.compose.desktop.ui.tooling.preview.Preview
@@ -52,7 +51,6 @@ import chat.simplex.res.how_to_use_simplex_chat
 import chat.simplex.res.ic_add
 import chat.simplex.res.ic_bolt
 import chat.simplex.res.ic_bolt_off
-import chat.simplex.res.ic_code
 import chat.simplex.res.ic_database
 import chat.simplex.res.ic_engineering
 import chat.simplex.res.ic_help
@@ -73,6 +71,7 @@ import chat.simplex.res.migrate_from_device_to_another_device
 import chat.simplex.res.network_and_servers
 import chat.simplex.res.notifications
 import chat.simplex.res.reset_all_hints
+import chat.simplex.res.legal_notices
 import chat.simplex.res.qryptana_source_code
 import chat.simplex.res.qryptana_source_code_agpl
 import chat.simplex.res.settings_audio_video_calls
@@ -194,9 +193,8 @@ fun HelpAndSupportView(
     }
     SectionDividerSpaced()
     SectionView {
-      SourceCodeItem(uriHandler)
+      LegalNoticesItem(uriHandler)
     }
-    SectionTextFooter(generalGetString(MR.strings.qryptana_source_code_agpl))
     SectionBottomSpacer()
   }
 }
@@ -290,15 +288,14 @@ fun ChatLockItem(
   }
 }
 
-@Composable fun SourceCodeItem(uriHandler: UriHandler) {
-  SectionItemView({ uriHandler.openExternalLink(qryptanaSourceUrl) }) {
-    Icon(
-      painter = painterResource(MR.images.ic_code),
-      contentDescription = generalGetString(MR.strings.qryptana_source_code),
-      tint = MaterialTheme.colors.secondary,
+@Composable fun LegalNoticesItem(uriHandler: UriHandler) {
+  SettingsActionItem(painterResource(MR.images.ic_info), stringResource(MR.strings.legal_notices)) {
+    AlertManager.shared.showAlertDialog(
+      title = generalGetString(MR.strings.legal_notices),
+      text = generalGetString(MR.strings.qryptana_source_code_agpl),
+      confirmText = generalGetString(MR.strings.qryptana_source_code),
+      onConfirm = { uriHandler.openExternalLink(qryptanaSourceUrl) },
     )
-    TextIconSpaced()
-    Text(generalGetString(MR.strings.qryptana_source_code), color = MaterialTheme.colors.primary)
   }
 }
 
@@ -329,7 +326,7 @@ fun AppVersionItem(showVersion: () -> Unit) {
 }
 
 @Composable fun AppVersionText() {
-  Text(appVersionInfo.first + (if (appVersionInfo.second != null) " (" + appVersionInfo.second + ")" else ""))
+  Text(appVersionInfo.first)
 }
 
 @Composable fun ProfilePreview(profileOf: NamedChat, size: Dp = 60.dp, iconColor: Color = MaterialTheme.colors.secondaryVariant, textColor: Color = MaterialTheme.colors.onBackground, stopped: Boolean = false, badge: LocalBadge? = null) {

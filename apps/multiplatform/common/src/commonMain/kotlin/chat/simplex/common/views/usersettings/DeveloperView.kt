@@ -31,7 +31,6 @@ import chat.simplex.res.ic_drive_folder_upload
 import chat.simplex.res.ic_report
 import chat.simplex.res.in_developing_desc
 import chat.simplex.res.in_developing_title
-import chat.simplex.res.qryptana_source_code_agpl
 import chat.simplex.res.settings_developer_tools
 import chat.simplex.res.show_dev_options
 import chat.simplex.res.show_developer_options
@@ -49,12 +48,11 @@ fun DeveloperView(withAuth: (title: String, desc: String, block: () -> Unit) -> 
     val devTools = remember { developerTools.state }
     val unchangedHints = mutableStateOf(unchangedHintPreferences())
     SectionView {
-      SourceCodeItem(uriHandler)
+      LegalNoticesItem(uriHandler)
       ChatConsoleItem { withAuth(generalGetString(MR.strings.auth_open_chat_console), generalGetString(MR.strings.auth_log_in_using_credential)) { ModalManager.start.showModalCloseable { TerminalView(false) } } }
       ResetHintsItem(unchangedHints)
       SettingsPreferenceItem(painterResource(MR.images.ic_code), stringResource(MR.strings.show_developer_options), developerTools)
     }
-    SectionTextFooter(generalGetString(MR.strings.qryptana_source_code_agpl))
     SectionTextFooter(
       generalGetString(if (devTools.value) MR.strings.show_dev_options else MR.strings.hide_dev_options) + " " +
           generalGetString(MR.strings.developer_options)

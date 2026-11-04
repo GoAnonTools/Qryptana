@@ -21,6 +21,7 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -38,6 +39,8 @@ import chat.simplex.common.views.newchat.darkStops
 import chat.simplex.common.views.newchat.gradientPoints
 import chat.simplex.common.views.newchat.lightStops
 import chat.simplex.common.views.usersettings.networkAndServers.*
+
+private const val QRYPTANA_PRIVACY_URL = "https://qryptana.foundation/privacy"
 import chat.simplex.res.MR
 import chat.simplex.res.how_it_helps_privacy
 import chat.simplex.res.ic_check_filled
@@ -68,6 +71,7 @@ import dev.icerock.moko.resources.StringResource
 
 @Composable
 fun OnboardingConditionsView(chatModel: ChatModel) {
+  val uriHandler = LocalUriHandler.current
   LaunchedEffect(Unit) {
     prepareChatBeforeFinishingOnboarding()
   }
@@ -137,12 +141,7 @@ fun OnboardingConditionsView(chatModel: ChatModel) {
                                                interactionSource = remember { MutableInteractionSource() },
                                                         indication = null
                                              ) {
-                                               ModalManager.fullscreen.showModal(endButtons = { ConditionsLinkButton() }) {
-                                                 SimpleConditionsView(rhId = null) {
-                                                   ModalManager.fullscreen.closeModal()
-                                                   acceptConditions(selectedOperatorIds.value)
-                                                 }
-                                               }
+                                               uriHandler.openExternalLink(QRYPTANA_PRIVACY_URL)
                                              }
                                         )
                                       }
@@ -208,12 +207,7 @@ private fun OnboardingConditionsDesktop(selectedOperatorIds: MutableState<Set<Lo
                      interactionSource = remember { MutableInteractionSource() },
                               indication = null
                    ) {
-                     ModalManager.fullscreen.showModal(forceAnimated = true, endButtons = { ConditionsLinkButton() }) {
-                       SimpleConditionsView(rhId = null) {
-                         ModalManager.fullscreen.closeModal()
-                         acceptConditions(selectedOperatorIds.value)
-                       }
-                     }
+                     uriHandler.openExternalLink(QRYPTANA_PRIVACY_URL)
                    },
                    style = MaterialTheme.typography.body1,
                    fontWeight = FontWeight.Normal,

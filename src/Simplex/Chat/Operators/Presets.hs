@@ -70,7 +70,7 @@ simplexChatSMPServers =
 -- with them can still be restored.
 enabledSimplexChatSMPServers :: NonEmpty SMPServer
 enabledSimplexChatSMPServers =
-  [ "smp://PN_HLQSdhKOp62HM8hoUtOMskUvdeNzqVBniJMunJjo=@smp.qryptana.foundation:5224" ]
+  [ "smp://PN_HLQSdhKOp62HM8hoUtOMskUvdeNzqVBniJMunJjo=@smp.qryptana.foundation:5224,b544yscwxhrir2ilsy57dgwedr5vutl7zj525rio4dazsfka4f22k6yd.onion" ]
 
 disabledSimplexChatSMPServers :: NonEmpty SMPServer
 disabledSimplexChatSMPServers =
@@ -93,7 +93,7 @@ disabledSimplexChatSMPServers =
 -- Qryptana's self-hosted XFTP relay is the only enabled preset XFTP server.
 qryptanaXFTPServers :: [NewUserServer 'PXFTP]
 qryptanaXFTPServers =
-  [presetServer True "xftp://7pHBpUNapABy84mZpDEds4wSmSsCAX7lqMV_XiICBdc=@xftp.qryptana.foundation:444"]
+  [presetServer True "xftp://7pHBpUNapABy84mZpDEds4wSmSsCAX7lqMV_XiICBdc=@xftp.qryptana.foundation:444,bpdzfyp43fln46xa4hy67z7aqgpdylmlptgm5fwhoxl6tbiii3xireyd.onion"]
 
 simplexChatRelays :: [NewUserChatRelay]
 simplexChatRelays =

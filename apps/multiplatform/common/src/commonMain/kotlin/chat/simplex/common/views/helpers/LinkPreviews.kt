@@ -18,6 +18,9 @@ import androidx.compose.ui.unit.sp
 import chat.simplex.common.model.ChatController.appPrefs
 import chat.simplex.common.model.LinkPreview
 import chat.simplex.common.model.NetworkProxyAuth
+import chat.simplex.common.model.QRYPTANA_INVITATION_PREVIEW_IMAGE
+import chat.simplex.common.model.QRYPTANA_INVITATION_TITLE
+import chat.simplex.common.model.isQryptanaInvitationLink
 import chat.simplex.common.platform.*
 import chat.simplex.common.ui.theme.*
 import chat.simplex.common.views.chat.chatViewScrollState
@@ -51,6 +54,9 @@ private val previewMutex = Mutex()
 suspend fun getLinkPreview(url: String): LinkPreview? {
   return withContext(Dispatchers.IO) {
     previewMutex.withLock {
+      if (isQryptanaInvitationLink(url)) {
+        return@withLock LinkPreview(url, QRYPTANA_INVITATION_TITLE, "", QRYPTANA_INVITATION_PREVIEW_IMAGE)
+      }
       try {
         try {
           val title: String?
@@ -175,7 +181,7 @@ fun ComposeLinkView(linkPreview: LinkPreview?, cancelPreview: () -> Unit, cancel
         modifier = Modifier.width(80.dp).height(60.dp).padding(end = 8.dp)
       )
       Column(Modifier.fillMaxWidth().weight(1F)) {
-        Text(linkPreview.title, maxLines = 1, overflow = TextOverflow.Ellipsis)
+        Text(linkPreview.displayTitle(), maxLines = 1, overflow = TextOverflow.Ellipsis)
         Text(
           linkPreview.uri, maxLines = 1, overflow = TextOverflow.Ellipsis,
           style = MaterialTheme.typography.body2
@@ -214,7 +220,7 @@ fun ChatItemLinkView(linkPreview: LinkPreview, showMenu: State<Boolean>, onLongC
       contentScale = ContentScale.FillWidth,
     )
     Column(Modifier.padding(top = 6.dp).padding(horizontal = 12.dp)) {
-      Text(linkPreview.title, maxLines = 3, overflow = TextOverflow.Ellipsis, lineHeight = 22.sp, modifier = Modifier.padding(bottom = 4.dp))
+      Text(linkPreview.displayTitle(), maxLines = 3, overflow = TextOverflow.Ellipsis, lineHeight = 22.sp, modifier = Modifier.padding(bottom = 4.dp))
       if (linkPreview.description != "") {
         Text(linkPreview.description, maxLines = 12, overflow = TextOverflow.Ellipsis, fontSize = 14.sp, lineHeight = 20.sp)
       }
@@ -222,6 +228,9 @@ fun ChatItemLinkView(linkPreview: LinkPreview, showMenu: State<Boolean>, onLongC
     }
   }
 }
+
+private fun LinkPreview.displayTitle(): String =
+  if (isQryptanaInvitationLink(uri)) QRYPTANA_INVITATION_TITLE else title
 
 private fun normalizeImageUri(u: URL, imageUri: String) = when {
   !imageUri.lowercase().startsWith("http") -> {

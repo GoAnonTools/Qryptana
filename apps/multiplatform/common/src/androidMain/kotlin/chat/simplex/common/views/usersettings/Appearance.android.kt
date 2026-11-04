@@ -20,8 +20,11 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.core.content.ContextCompat
+import androidx.core.graphics.drawable.toBitmap
 import dev.icerock.moko.resources.compose.stringResource
 import androidx.compose.ui.unit.dp
 import chat.simplex.common.model.*
@@ -139,11 +142,9 @@ fun AppearanceScope.AppearanceLayout(
       LazyRow {
         items(AppIcon.values().size, { index -> AppIcon.values()[index] }) { index ->
           val item = AppIcon.values()[index]
-          Image(
-            painterResource(item.image),
-            contentDescription = "",
-            contentScale = ContentScale.Fit,
-            modifier = Modifier
+          AppIconPreview(
+            item,
+            Modifier
               .border(1.dp, color = if (item == icon.value) colors.secondaryVariant else Color.Transparent, RoundedCornerShape(percent = 22))
               .clip(RoundedCornerShape(percent = 22))
               .size(70.dp)
@@ -163,6 +164,27 @@ fun AppearanceScope.AppearanceLayout(
     FontScaleSection()
 
     SectionBottomSpacer()
+  }
+}
+
+@Composable
+private fun AppIconPreview(item: AppIcon, modifier: Modifier) {
+  val context = LocalContext.current
+  val dark = isSystemInDarkTheme()
+  // DEFAULT follows the active theme; DARK_BLUE is explicitly the dark variant.
+  val resourceName = if (item == AppIcon.DARK_BLUE || dark) "icon_dark_blue" else "icon"
+  val resId = remember(resourceName) {
+    context.resources.getIdentifier(resourceName, "mipmap", APPLICATION_ID)
+  }
+  val bitmap = remember(resId) {
+    if (resId == 0) null else runCatching {
+      ContextCompat.getDrawable(context, resId)?.toBitmap(210, 210)?.asImageBitmap()
+    }.getOrNull()
+  }
+  if (bitmap != null) {
+    Image(bitmap, contentDescription = "", contentScale = ContentScale.Fit, modifier = modifier)
+  } else {
+    Image(painterResource(item.image), contentDescription = "", contentScale = ContentScale.Fit, modifier = modifier)
   }
 }
 
