@@ -52,7 +52,6 @@ import chat.simplex.res.onboarding_choose_private_routing
 import chat.simplex.res.onboarding_choose_server_operators
 import chat.simplex.res.onboarding_conditions_accept
 import chat.simplex.res.onboarding_conditions_by_using_you_agree
-import chat.simplex.res.onboarding_conditions_privacy_policy_and_conditions_of_use
 import chat.simplex.res.onboarding_conditions_private_chats_not_accessible
 import chat.simplex.res.onboarding_network_about_operators
 import chat.simplex.res.onboarding_network_commitments
@@ -133,25 +132,6 @@ fun OnboardingConditionsView(chatModel: ChatModel) {
                                         )
                                         Spacer(Modifier.height(DEFAULT_PADDING))
                                         Text(
-                                          stringResource(MR.strings.onboarding_conditions_privacy_policy_and_conditions_of_use),
-                                             style = MaterialTheme.typography.body1,
-                                             fontWeight = FontWeight.Medium,
-                                             color = MaterialTheme.colors.primary,
-                                             modifier = Modifier
-                                             .clickable(
-                                               interactionSource = remember { MutableInteractionSource() },
-                                                        indication = null
-                                             ) {
-                                               ModalManager.fullscreen.showModal(endButtons = { ConditionsLinkButton() }) {
-                                                 SimpleConditionsView(rhId = null) {
-                                                   ModalManager.fullscreen.closeModal()
-                                                   acceptConditions(selectedOperatorIds.value)
-                                                 }
-                                               }
-                                             }
-                                        )
-                                        Spacer(Modifier.height(DEFAULT_PADDING_HALF))
-                                        Text(
                                           stringResource(MR.strings.read_our_privacy_policy),
                                           style = MaterialTheme.typography.body2,
                                           color = MaterialTheme.colors.primary,
@@ -218,30 +198,6 @@ private fun OnboardingConditionsDesktop(selectedOperatorIds: MutableState<Set<Lo
               CommitmentDivider()
               CommitmentBlock(MR.strings.onboarding_conditions_by_using_you_agree)
               Spacer(Modifier.height(26.dp))
-              Text(
-                stringResource(MR.strings.onboarding_conditions_privacy_policy_and_conditions_of_use),
-                   Modifier
-                   .align(Alignment.CenterHorizontally)
-                   .clickable(
-                     interactionSource = remember { MutableInteractionSource() },
-                              indication = null
-                   ) {
-                     ModalManager.fullscreen.showModal(forceAnimated = true, endButtons = { ConditionsLinkButton() }) {
-                       SimpleConditionsView(rhId = null) {
-                         ModalManager.fullscreen.closeModal()
-                         acceptConditions(selectedOperatorIds.value)
-                       }
-                     }
-                   },
-                   style = MaterialTheme.typography.body1,
-                   fontWeight = FontWeight.Normal,
-                   fontSize = 15.sp,
-                   letterSpacing = 0.6.sp,
-                   lineHeight = 25.sp,
-                   color = QryptanaMetal.copperLight,
-                   textAlign = TextAlign.Center
-              )
-              Spacer(Modifier.height(12.dp))
               Text(
                 stringResource(MR.strings.read_our_privacy_policy),
                 Modifier

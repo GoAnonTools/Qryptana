@@ -47,6 +47,7 @@ import chat.simplex.res.ic_inventory_2
 import chat.simplex.res.ic_qr_code
 import chat.simplex.res.ic_search
 import chat.simplex.res.new_chat
+import chat.simplex.res.qryptana_symbol
 import chat.simplex.res.no_filtered_contacts
 import chat.simplex.res.search_or_paste_simplex_link
 import chat.simplex.res.smart_invite_create
@@ -230,6 +231,16 @@ private fun ModalData.NewChatSheetLayout(
     }
 
     if (searchText.value.text.isEmpty()) {
+      Box(
+        Modifier.fillMaxWidth().padding(top = 32.dp, bottom = 24.dp),
+        contentAlignment = Alignment.Center
+      ) {
+        Image(
+          painterResource(MR.images.qryptana_symbol),
+          contentDescription = null,
+          modifier = Modifier.size(140.dp)
+        )
+      }
       Row {
         SectionView {
           actionButtons.map {

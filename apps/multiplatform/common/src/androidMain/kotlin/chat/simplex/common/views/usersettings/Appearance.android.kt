@@ -17,6 +17,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.MaterialTheme.colors
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
@@ -171,10 +172,10 @@ fun AppearanceScope.AppearanceLayout(
 private fun AppIconPreview(item: AppIcon, modifier: Modifier) {
   val context = LocalContext.current
   val dark = chat.simplex.common.ui.theme.isSystemInDarkTheme()
-  // DEFAULT follows the active theme; DARK_BLUE is explicitly the dark variant.
-  val resourceName = if (item == AppIcon.DARK_BLUE || dark) "icon_dark_blue" else "icon"
+  // The preview follows the system theme: light icon in light mode, dark icon in dark mode.
+  val resourceName = if (dark) "icon_dark_blue" else "icon"
   val resId = remember(resourceName) {
-    context.resources.getIdentifier(resourceName, "mipmap", APPLICATION_ID)
+    context.resources.getIdentifier(resourceName, "mipmap", context.packageName)
   }
   val bitmap = remember(resId) {
     if (resId == 0) null else runCatching {
@@ -184,7 +185,12 @@ private fun AppIconPreview(item: AppIcon, modifier: Modifier) {
   if (bitmap != null) {
     Image(bitmap, contentDescription = "", contentScale = ContentScale.Fit, modifier = modifier)
   } else {
-    Image(painterResource(item.image), contentDescription = "", contentScale = ContentScale.Fit, modifier = modifier)
+    Box(
+      modifier.background(if (dark) Color(0xFF171615) else Color(0xFFF7F0E6)),
+      contentAlignment = Alignment.Center
+    ) {
+      Image(painterResource(item.image), contentDescription = "", contentScale = ContentScale.Fit, modifier = Modifier.fillMaxSize(0.72f))
+    }
   }
 }
 
