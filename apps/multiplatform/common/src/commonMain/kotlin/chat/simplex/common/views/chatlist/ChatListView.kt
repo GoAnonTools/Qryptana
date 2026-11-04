@@ -1584,14 +1584,15 @@ fun filteredChats(
   activeFilter: ActiveFilter? = null,
 ): List<Chat> {
   val linkChatIds = searchChatFilteredBySimplexLink.value
+  val visibleChats = chats.filterNot { it.isQryptanaSupportChat() }
   return if (linkChatIds.isNotEmpty()) {
-    chats.filter { it.id in linkChatIds }
+    visibleChats.filter { it.id in linkChatIds }
   } else {
     val s = if (searchShowingSimplexLink.value) "" else searchText.trim().lowercase()
     if (s.isEmpty())
-      chats.filter { chat -> chat.id == chatModel.chatId.value || (!chat.chatInfo.chatDeleted && !chat.chatInfo.contactCard && filtered(chat, activeFilter)) }
+      visibleChats.filter { chat -> chat.id == chatModel.chatId.value || (!chat.chatInfo.chatDeleted && !chat.chatInfo.contactCard && filtered(chat, activeFilter)) }
       else {
-        chats.filter { chat ->
+        visibleChats.filter { chat ->
           chat.id == chatModel.chatId.value ||
           when (val cInfo = chat.chatInfo) {
             is ChatInfo.Direct -> !cInfo.contact.chatDeleted && !chat.chatInfo.contactCard && cInfo.anyNameContains(s)

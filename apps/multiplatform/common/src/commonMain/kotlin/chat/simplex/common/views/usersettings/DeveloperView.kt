@@ -7,7 +7,6 @@ import SectionView
 import androidx.compose.foundation.background
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalUriHandler
 import chat.simplex.common.model.ChatController.appPrefs
 import chat.simplex.common.ui.theme.*
 import chat.simplex.common.platform.*
@@ -42,13 +41,11 @@ fun DeveloperView(withAuth: (title: String, desc: String, block: () -> Unit) -> 
 ) {
   val m = chatModel
   ColumnWithScrollBar {
-    val uriHandler = LocalUriHandler.current
     AppBarTitle(stringResource(MR.strings.settings_developer_tools))
     val developerTools = m.controller.appPrefs.developerTools
     val devTools = remember { developerTools.state }
     val unchangedHints = mutableStateOf(unchangedHintPreferences())
     SectionView {
-      SourceCodeItem(uriHandler)
       ChatConsoleItem { withAuth(generalGetString(MR.strings.auth_open_chat_console), generalGetString(MR.strings.auth_log_in_using_credential)) { ModalManager.start.showModalCloseable { TerminalView(false) } } }
       ResetHintsItem(unchangedHints)
       SettingsPreferenceItem(painterResource(MR.images.ic_code), stringResource(MR.strings.show_developer_options), developerTools)

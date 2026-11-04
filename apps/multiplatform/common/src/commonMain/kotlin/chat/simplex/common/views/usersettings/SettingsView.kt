@@ -53,7 +53,6 @@ import chat.simplex.res.ic_bolt
 import chat.simplex.res.ic_bolt_off
 import chat.simplex.res.ic_database
 import chat.simplex.res.ic_engineering
-import chat.simplex.res.ic_github
 import chat.simplex.res.ic_help
 import chat.simplex.res.ic_info
 import chat.simplex.res.ic_ios_share
@@ -71,7 +70,6 @@ import chat.simplex.res.la_mode_off
 import chat.simplex.res.migrate_from_device_to_another_device
 import chat.simplex.res.network_and_servers
 import chat.simplex.res.notifications
-import chat.simplex.res.qryptana_source_code
 import chat.simplex.res.reset_all_hints
 import chat.simplex.res.settings_audio_video_calls
 import chat.simplex.res.settings_section_title_contact
@@ -118,7 +116,6 @@ fun SettingsView(chatModel: ChatModel, setPerformLA: (Boolean) -> Unit, close: (
 // SimpleX contact link only, never mailto: or a general website URL.
 // TODO: configure this only after Qryptana has a verified support chat address.
 val qryptanaSupportUri: String? = null
-private const val qryptanaSourceUrl = "https://github.com/GoAnonTools/Qryptana"
 
 val simplexNewsUri =
   "simplex:/c#grcfG3ulVI4Sh6ow33qBsmSk7uEy3gRSl2KkJ5ER6tA?h=smp18.simplex.im"
@@ -184,16 +181,11 @@ fun HelpAndSupportView(
       SettingsActionItem(painterResource(MR.images.ic_add), stringResource(MR.strings.whats_new), showCustomModal { _, close -> WhatsNewView(viaSettings = true, close = close) }, disabled = stopped)
       SettingsActionItem(painterResource(MR.images.ic_info), stringResource(MR.strings.about_simplex_chat), showModal { SimpleXInfo(it, onboarding = false) })
     }
-    SectionDividerSpaced()
-
-    SectionView(stringResource(MR.strings.settings_section_title_contact)) {
-      if (!chatModel.desktopNoUserNoRemote && qryptanaSupportUri != null) {
+    if (!chatModel.desktopNoUserNoRemote && qryptanaSupportUri != null) {
+      SectionDividerSpaced()
+      SectionView(stringResource(MR.strings.settings_section_title_contact)) {
         SettingsActionItem(painterResource(MR.images.ic_tag), stringResource(MR.strings.chat_with_the_founder), { uriHandler.openVerifiedSimplexUri(qryptanaSupportUri) }, textColor = MaterialTheme.colors.primary, disabled = stopped)
       }
-    }
-    SectionDividerSpaced()
-    SectionView {
-      SourceCodeItem(uriHandler)
     }
     SectionBottomSpacer()
   }
@@ -285,18 +277,6 @@ fun ChatLockItem(
       checked = remember { pref.state }.value,
       onCheckedChange = onChange,
     )
-  }
-}
-
-@Composable fun SourceCodeItem(uriHandler: UriHandler) {
-  SectionItemView({ uriHandler.openExternalLink(qryptanaSourceUrl) }) {
-    Icon(
-      painter = painterResource(MR.images.ic_github),
-         contentDescription = "GitHub",
-         tint = MaterialTheme.colors.secondary,
-    )
-    TextIconSpaced()
-    Text(generalGetString(MR.strings.qryptana_source_code), color = MaterialTheme.colors.primary)
   }
 }
 

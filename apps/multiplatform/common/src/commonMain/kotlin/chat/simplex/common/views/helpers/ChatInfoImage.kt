@@ -33,8 +33,8 @@ import dev.icerock.moko.resources.compose.stringResource
 import chat.simplex.common.model.BadgeStatus
 import chat.simplex.common.model.BadgeType
 import chat.simplex.common.model.ChatInfo
-import chat.simplex.common.model.Contact
 import chat.simplex.common.model.LocalBadge
+import chat.simplex.common.model.isQryptanaSupportContact
 import chat.simplex.common.model.localDate
 import chat.simplex.common.platform.*
 import chat.simplex.common.views.onboarding.QryptanaBrandMark
@@ -70,7 +70,7 @@ import kotlin.math.roundToInt
 fun ChatInfoImage(chatInfo: ChatInfo, size: Dp, iconColor: Color = MaterialTheme.colors.secondaryVariant, shadow: Boolean = false) {
   // The preset support contact keeps the upstream SimpleX avatar in the native core,
   // so render the Qryptana mark for it on every platform.
-  if (chatInfo is ChatInfo.Direct && isQryptanaTeamContact(chatInfo.contact)) {
+  if (chatInfo is ChatInfo.Direct && chatInfo.contact.isQryptanaSupportContact()) {
     QryptanaServiceAvatar(size)
     return
   }
@@ -97,11 +97,6 @@ private fun QryptanaServiceAvatar(size: Dp) {
   }
 }
 
-private const val SIMPLEX_TEAM_CONTACT_NAME = "Ask SimpleX Team"
-private const val QRYPTANA_TEAM_CONTACT_NAME = "Ask Qryptana Team"
-
-private fun isQryptanaTeamContact(contact: Contact): Boolean =
-  contact.profile.displayName == SIMPLEX_TEAM_CONTACT_NAME || contact.profile.displayName == QRYPTANA_TEAM_CONTACT_NAME
 
 @Composable
 fun IncognitoImage(size: Dp, iconColor: Color = MaterialTheme.colors.secondaryVariant) {

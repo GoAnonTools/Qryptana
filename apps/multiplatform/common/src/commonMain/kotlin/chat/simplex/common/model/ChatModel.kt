@@ -2068,6 +2068,13 @@ private const val QRYPTANA_TEAM_CONTACT_NAME = "Ask Qryptana Team"
 private fun qryptanaContactName(name: String): String =
   if (name == SIMPLEX_TEAM_CONTACT_NAME) QRYPTANA_TEAM_CONTACT_NAME else name
 
+/** The preset support contact still points at upstream SimpleX support; hide it from Qryptana UI. */
+fun Contact.isQryptanaSupportContact(): Boolean =
+  profile.displayName == SIMPLEX_TEAM_CONTACT_NAME || profile.displayName == QRYPTANA_TEAM_CONTACT_NAME
+
+fun Chat.isQryptanaSupportChat(): Boolean =
+  (chatInfo as? ChatInfo.Direct)?.contact?.isQryptanaSupportContact() == true
+
 @Serializable
 data class Contact(
   val contactId: Long,
