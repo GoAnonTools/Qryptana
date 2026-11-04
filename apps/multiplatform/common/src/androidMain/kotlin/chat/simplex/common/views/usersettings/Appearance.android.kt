@@ -170,7 +170,7 @@ fun AppearanceScope.AppearanceLayout(
 @Composable
 private fun AppIconPreview(item: AppIcon, modifier: Modifier) {
   val context = LocalContext.current
-  val dark = isSystemInDarkTheme()
+  val dark = chat.simplex.common.ui.theme.isSystemInDarkTheme()
   // DEFAULT follows the active theme; DARK_BLUE is explicitly the dark variant.
   val resourceName = if (item == AppIcon.DARK_BLUE || dark) "icon_dark_blue" else "icon"
   val resId = remember(resourceName) {

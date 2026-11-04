@@ -39,8 +39,6 @@ import chat.simplex.common.views.newchat.darkStops
 import chat.simplex.common.views.newchat.gradientPoints
 import chat.simplex.common.views.newchat.lightStops
 import chat.simplex.common.views.usersettings.networkAndServers.*
-
-private const val QRYPTANA_PRIVACY_URL = "https://qryptana.foundation/privacy"
 import chat.simplex.res.MR
 import chat.simplex.res.how_it_helps_privacy
 import chat.simplex.res.ic_check_filled
@@ -68,6 +66,8 @@ import chat.simplex.res.onboarding_privacy_commitments
 import dev.icerock.moko.resources.compose.painterResource
 import dev.icerock.moko.resources.compose.stringResource
 import dev.icerock.moko.resources.StringResource
+
+private const val QRYPTANA_PRIVACY_URL = "https://qryptana.foundation/privacy"
 
 @Composable
 fun OnboardingConditionsView(chatModel: ChatModel) {
@@ -162,6 +162,7 @@ fun OnboardingConditionsView(chatModel: ChatModel) {
 
 @Composable
 private fun OnboardingConditionsDesktop(selectedOperatorIds: MutableState<Set<Long>>, noOperators: Boolean) {
+  val uriHandler = LocalUriHandler.current
   val markReveal = rememberReveal(delayMs = 0, durationMs = 900)
   val titleReveal = rememberReveal(delayMs = 200, durationMs = 900)
   val bodyReveal = rememberReveal(delayMs = 500, durationMs = 1000)

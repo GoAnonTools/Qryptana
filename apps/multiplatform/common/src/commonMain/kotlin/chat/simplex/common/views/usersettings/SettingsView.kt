@@ -289,14 +289,18 @@ fun ChatLockItem(
 }
 
 @Composable fun LegalNoticesItem(uriHandler: UriHandler) {
-  SettingsActionItem(painterResource(MR.images.ic_info), stringResource(MR.strings.legal_notices)) {
-    AlertManager.shared.showAlertDialog(
-      title = generalGetString(MR.strings.legal_notices),
-      text = generalGetString(MR.strings.qryptana_source_code_agpl),
-      confirmText = generalGetString(MR.strings.qryptana_source_code),
-      onConfirm = { uriHandler.openExternalLink(qryptanaSourceUrl) },
-    )
-  }
+  SettingsActionItem(
+    painterResource(MR.images.ic_info),
+    stringResource(MR.strings.legal_notices),
+    click = {
+      AlertManager.shared.showAlertDialog(
+        title = generalGetString(MR.strings.legal_notices),
+        text = generalGetString(MR.strings.qryptana_source_code_agpl),
+        confirmText = generalGetString(MR.strings.qryptana_source_code),
+        onConfirm = { uriHandler.openExternalLink(qryptanaSourceUrl) },
+      )
+    }
+  )
 }
 
 @Composable fun ResetHintsItem(unchangedHints: MutableState<Boolean>) {
