@@ -280,30 +280,20 @@ private fun ModalData.NewChatSheetLayout(
 
   @Composable
   fun OneHandLazyColumn() {
-    val blankSpaceSize = WindowInsets.navigationBars.asPaddingValues().calculateBottomPadding() + AppBarHeight * fontSizeSqrtMultiplier
+    // Room for the bottom app bar overlaid by the one-hand layout. It is a trailing
+    // item, so extra space stays at the bottom of the list instead of above it.
+    val bottomSpaceSize = WindowInsets.navigationBars.asPaddingValues().calculateBottomPadding() + AppBarHeight * fontSizeSqrtMultiplier
     LazyColumnWithScrollBar(
+      Modifier.imePadding(),
       state = listState,
-      reverseLayout = oneHandUI.value
+      reverseLayout = false,
+      verticalArrangement = Arrangement.Top,
     ) {
-      item { Spacer(Modifier.height(blankSpaceSize)) }
       stickyHeader {
         val scrolledSomething by remember { derivedStateOf { listState.firstVisibleItemScrollOffset > 0 || listState.firstVisibleItemIndex > 0 } }
         Column(
           Modifier
             .zIndex(1f)
-            .offset {
-              val y = if (searchText.value.text.isNotEmpty() || (appPlatform.isAndroid && keyboardState == KeyboardState.Opened)) {
-                if (listState.firstVisibleItemIndex == 0) -minOf(listState.firstVisibleItemScrollOffset, blankSpaceSize.roundToPx())
-                else -blankSpaceSize.roundToPx()
-              } else {
-                when (listState.firstVisibleItemIndex) {
-                  0 -> 0
-                  1 -> listState.firstVisibleItemScrollOffset
-                  else -> 1000
-                }
-              }
-              IntOffset(0, y)
-            }
             // show background when something is scrolled because otherwise the bar is transparent.
             // not using background always because of gradient in SimpleX theme
             .background(
@@ -315,21 +305,19 @@ private fun ModalData.NewChatSheetLayout(
             )
         ) {
           Divider()
-          Column(Modifier.consumeWindowInsets(WindowInsets.navigationBars).consumeWindowInsets(PaddingValues(bottom = AppBarHeight * fontSizeSqrtMultiplier))) {
-            ContactsSearchBar(
-              listState = listState,
-              searchText = searchText,
-              searchShowingSimplexLink = searchShowingSimplexLink,
-              searchChatFilteredBySimplexLink = searchChatFilteredBySimplexLink,
-              connectNameCandidate = connectNameCandidate,
-              close = close,
-            )
-            connectNameCandidate.value?.let { candidate ->
-              Divider()
-              ConnectByNameRow(candidate, searchText, connectNameCandidate, close = close)
-            }
-            Spacer(Modifier.windowInsetsBottomHeight(WindowInsets.ime))
+          ContactsSearchBar(
+            listState = listState,
+            searchText = searchText,
+            searchShowingSimplexLink = searchShowingSimplexLink,
+            searchChatFilteredBySimplexLink = searchChatFilteredBySimplexLink,
+            connectNameCandidate = connectNameCandidate,
+            close = close,
+          )
+          connectNameCandidate.value?.let { candidate ->
+            Divider()
+            ConnectByNameRow(candidate, searchText, connectNameCandidate, close = close)
           }
+          Divider()
         }
       }
       item {
@@ -337,9 +325,8 @@ private fun ModalData.NewChatSheetLayout(
       }
       item {
         if (filteredContactChats.isNotEmpty() && searchText.value.text.isEmpty()) {
-          SectionDividerSpaced(maxTopPadding = false, maxBottomPadding = false)
+          SectionDividerSpaced()
           SectionView(stringResource(MR.strings.contact_list_header_title), headerBottomPadding = DEFAULT_PADDING_HALF) {}
-          Spacer(Modifier.height(DEFAULT_PADDING_HALF))
         }
       }
       item {
@@ -353,6 +340,9 @@ private fun ModalData.NewChatSheetLayout(
         }
         ContactListNavLinkView(chat, nextChatSelected, showDeletedChatIcon = true)
       }
+      item {
+        Spacer(Modifier.height(bottomSpaceSize))
+      }
     }
   }
 
@@ -362,7 +352,8 @@ private fun ModalData.NewChatSheetLayout(
     LazyColumnWithScrollBar(
       Modifier.imePadding(),
       state = listState,
-      reverseLayout = false
+      reverseLayout = false,
+      verticalArrangement = Arrangement.Top,
     ) {
       item {
         Box(Modifier.padding(top = blankSpaceSize)) {
@@ -454,7 +445,8 @@ private fun ModalData.NewChatSheetLayout(
         Spacer(Modifier.windowInsetsTopHeight(WindowInsets.statusBars))
       }
       if (searchText.value.text.isEmpty()) {
-        QryptanaNewChatHeader(actionButtonsOriginal)
+        // Top to bottom: Create public channel, Create group, Scan an invite, Invite someone.
+        QryptanaNewChatHeader(actionButtonsOriginal.asReversed())
       }
       Box(Modifier.weight(1f)) {
         if (oneHandUI.value) {
