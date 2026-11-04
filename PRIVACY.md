@@ -2,13 +2,24 @@
 
 This document describes the current repository implementation as inspected for the Qryptana remediation. It is not a legal notice, operator policy, or promise about services operated by Qryptana or any third party.
 
-Qryptana is an early Labs-stage downstream fork of SimpleX Chat. The upstream operator policy is retained separately at [docs/upstream/SIMPLEX_PRIVACY.md](docs/upstream/SIMPLEX_PRIVACY.md); that document applies to its authors and operators, not automatically to Qryptana.
+Qryptana is an early Labs-stage downstream fork of SimpleX Chat. The upstream project's policy is retained separately at [docs/upstream/SIMPLEX_PRIVACY.md](docs/upstream/SIMPLEX_PRIVACY.md); that document applies to its authors and operators, not automatically to Qryptana.
+
+## Server operator and connection metadata
+
+- Qryptana's preset SMP (message relay) and XFTP (file relay) servers are operated solely by **GoAnon**:
+  - SMP: `smp.qryptana.foundation:5224`
+  - XFTP: `xftp.qryptana.foundation:444`
+- These are the application's default servers for new users. Onboarding installs them (`platform/QryptanaServers.kt`); the core preset definition used when the native core is rebuilt is in `src/Simplex/Chat/Operators/Presets.hs`. At the end of onboarding the app disables other preset operators so the default configuration uses the GoAnon-operated relays.
+- **Connection metadata routes through these servers.** When the app connects to them, GoAnon, as the operator, can observe network and relay metadata. This can include the client's IP address, connection and disconnection times, TLS and transport information, the relay or queue identifiers used by the client, message and file sizes, and traffic timing and volume. This metadata is inherent in operating a relay. It is not message content: GoAnon does not receive message or file plaintext, contact names, profile contents, or a public user directory through the protocol. Messages and files are end-to-end encrypted between users.
+- These observations are network-level. If the user routes connections through a configured SOCKS proxy or an onion service, the operator may see the proxy or onion address instead of the user's direct IP address, depending on configuration.
+- Qryptana does not require a phone number, email address, or public user ID to use these relays.
+- Users can add or change servers in Network & servers settings. Any third-party server a user adds is governed by that operator's policy, not this document.
 
 ## What the application currently does
 
 ### Messaging, servers and storage
 
-- Messaging uses the inherited SimpleX protocol implementation. Preset operators are SimpleX Chat Ltd (`simplex.im`) and InFlux Technologies Limited, trading as Flux (`simplexonflux.com`), as defined in `src/Simplex/Chat/Operators/Presets.hs`. Server selection and roles depend on configuration and accepted operator conditions. These are third parties, not verified Qryptana-operated servers. Their retained [policy and conditions](docs/upstream/SIMPLEX_PRIVACY.md) are not Qryptana promises.
+- Messaging uses the inherited SimpleX protocol implementation. With the default configuration, messages are relayed through the GoAnon-operated SMP server and files through the GoAnon-operated XFTP server described above. Server selection and roles can be changed in Network & servers settings.
 - The application stores profiles, contacts and messages in its local database. The code retains the upstream SQLCipher-backed database encryption behavior; device configuration and user choices can affect how a database is protected.
 
 ### Link previews
@@ -19,15 +30,15 @@ Qryptana is an early Labs-stage downstream fork of SimpleX Chat. The upstream op
 ### Calls
 
 - Calls use WebRTC in a local WebView. Android loads `commonMain/resources/assets/www/android/call.html`, which loads the shipped `commonMain/resources/assets/www/call.js`; the app-side call handling is in `views/call/WebRTC.kt`, `views/call/CallManager.kt` and `model/SimpleXAPI.kt`.
-- The call page's default ICE servers are `stuns:stun.simplex.im:443`, `stun:stun.simplex.im:443`, and `turns:turn.simplex.im:443?transport=tcp`. The TURN entry uses a hard-coded shared credential embedded in `commonMain/resources/assets/www/call.js`; this document intentionally does not reproduce the credential. These are third-party services under the `simplex.im` domain, not Qryptana-operated servers. They are used to discover network paths and, for TURN, to relay call traffic; they therefore receive connection metadata such as IP addresses, ports and timing.
+- The call page's default ICE servers are `stuns:stun.simplex.im:443`, `stun:stun.simplex.im:443`, and `turns:turn.simplex.im:443?transport=tcp`. The TURN entry uses a hard-coded shared credential embedded in `commonMain/resources/assets/www/call.js`; this document intentionally does not reproduce the credential. These are third-party services under the `simplex.im` domain, not GoAnon-operated servers. They are used to discover network paths and, for TURN, to relay call traffic; they therefore receive connection metadata such as IP addresses, ports and timing.
 - "Always use relay" is enabled by default (`webrtcPolicyRelay` in `model/SimpleXAPI.kt`). With it enabled, `call.js` sets the WebRTC ICE transport policy to `relay`, so call traffic uses the TURN server rather than direct peer-to-peer paths. Users can change this in call settings (`views/usersettings/CallSettings.kt`).
-- Users can replace the default ICE server list with their own in call settings (`views/usersettings/RTCServers.kt`). When no custom list is configured, the app uses the SimpleX defaults above; when a custom list is configured, `views/call/WebRTC.kt` passes it to the call page instead.
+- Users can replace the default ICE server list with their own in call settings (`views/usersettings/RTCServers.kt`). When no custom list is configured, the app uses the defaults above; when a custom list is configured, `views/call/WebRTC.kt` passes it to the call page instead.
 
 ### SimpleX names
 
 - Contact and channel profiles can contain SimpleX names. Qryptana hides the SimpleX-name registration and sales-promotion UI behind a disabled feature flag (`QryptanaFeatures.SIMPLEX_NAMES_ENABLED = false` in `platform/QryptanaFeatures.kt`, applied globally on Android and Desktop), but names already present in profiles are still displayed.
-- Resolving a name depends on SimpleX name-resolution services reached through the user's configured SimpleX messaging servers. Verification calls `resolveSimplexName` through the core (`src/Simplex/Chat/Library/Commands.hs`), and the app's UI notes that a server must support name resolution (`commonMain/moko-resources/base/strings.xml`). Those servers are not operated by Qryptana. The app also shows a "Verify name" action (`views/chat/SimplexNameView.kt`).
-- A resolution or verification request can disclose the name being checked and network metadata to the configured servers. It does not change the end-to-end encryption of messages.
+- Resolving a name depends on name-resolution services reached through the user's configured SMP servers. With the default configuration these are GoAnon-operated servers; if the user adds other servers, those operators may also be involved. Verification calls `resolveSimplexName` through the core (`src/Simplex/Chat/Library/Commands.hs`), and the app's UI notes that a server must support name resolution (`commonMain/moko-resources/base/strings.xml`). The app also shows a "Verify name" action (`views/chat/SimplexNameView.kt`).
+- A resolution or verification request can disclose the name being checked and network metadata to the servers used. It does not change the end-to-end encryption of messages.
 
 ### Android notifications and background service
 
@@ -45,7 +56,7 @@ The paths above are under `apps/multiplatform/common/src/` unless prefixed with 
 
 ## Information we do not claim
 
-Qryptana does not currently publish verified operator contacts, a support address, a data-retention schedule, a list of Qryptana-operated servers, or legal commitments about third-party relay operators. These items require human and legal review before any public release.
+Qryptana does not currently publish a data-retention schedule, server-log retention commitments, a privacy contact, or legal commitments about GoAnon-operated relays. The SMP and XFTP addresses above are the current preset servers; this draft does not promise that they will never change, and it does not cover third-party servers a user adds. These items require human and legal review before any public release.
 
 ## Source and license
 
@@ -53,4 +64,4 @@ The source is distributed under AGPL-3.0. SimpleX Chat attribution and upstream 
 
 ## Review status
 
-**DRAFT: FOR LEGAL REVIEW.** Confirm the actual deployment and operator model, support and privacy contacts, applicable jurisdictions, retention practices, and the final policy before publishing or distributing a Qryptana artifact. This revision (2026-11-02) adds source-inspected details about link-preview consent, calls and ICE servers, SimpleX-name resolution, and Android notification/background behavior.
+**DRAFT: FOR LEGAL REVIEW.** Confirm the actual deployment and operator model, support and privacy contacts, applicable jurisdictions, retention practices, and the final policy before publishing or distributing a Qryptana artifact. This revision (2026-11-04) replaces the upstream preset-operator description with the GoAnon-operated preset SMP/XFTP servers, adds a connection-metadata disclosure, and retains the source-inspected details about link-preview consent, calls and ICE servers, SimpleX-name resolution, and Android notification/background behavior.

@@ -43,4 +43,5 @@
     <string name="accept_contact_incognito_button">গুপ্ত-পরিচয় গ্রহণ করুন</string>
     <string name="search_verb">সার্চ</string>
     <string name="la_mode_off">বন্ধ আছে</string>
+    <string name="onboarding_network_operators_simplex_flux_agreement">Qryptana uses servers operated by GoAnon.</string>
 </resources>

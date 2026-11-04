@@ -33,6 +33,7 @@ import chat.simplex.res.onboarding_notifications_mode_periodic_desc_short
 import chat.simplex.res.onboarding_notifications_mode_service
 import chat.simplex.res.onboarding_notifications_mode_service_desc
 import chat.simplex.res.onboarding_notifications_mode_service_desc_short
+import kotlinx.coroutines.CancellationException
 import chat.simplex.res.onboarding_notifications_mode_subtitle
 import chat.simplex.res.onboarding_notifications_mode_title
 import dev.icerock.moko.resources.compose.painterResource
@@ -142,7 +143,12 @@ fun prepareChatBeforeFinishingOnboarding() {
       chatModel.currentUser.value = user
       chatModel.controller.startChat(user)
     }
-    runCatching { QryptanaServers.installDefaultUserServers() }
-      .onFailure { Log.e("QryptanaServers", "Failed to install default servers: ${it.stackTraceToString()}") }
+    try {
+      QryptanaServers.installDefaultUserServers()
+    } catch (e: CancellationException) {
+      throw e
+    } catch (e: Exception) {
+      showQryptanaServersSetupError(e)
+    }
   }
 }

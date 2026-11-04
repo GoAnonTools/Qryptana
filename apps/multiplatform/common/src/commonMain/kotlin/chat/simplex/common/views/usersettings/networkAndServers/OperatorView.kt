@@ -63,6 +63,7 @@ import chat.simplex.res.operator_use_for_messages_receiving
 import chat.simplex.res.operator_use_for_names
 import chat.simplex.res.operator_use_for_sending
 import chat.simplex.res.operator_use_operator_toggle_description
+import chat.simplex.res.onboarding_network_operators_simplex_flux_agreement
 import chat.simplex.res.smp_servers_per_user
 import chat.simplex.res.use_servers_of_operator_x
 import chat.simplex.res.view_conditions
@@ -215,6 +216,10 @@ fun OperatorViewLayout(
   val operator by remember { derivedStateOf { userServers.value[operatorIndex].operator_ } }
   val scope = rememberCoroutineScope()
   val duplicateHosts = findDuplicateHosts(serverErrors.value)
+  val visibleSmpServers = userServers.value[operatorIndex].smpServers.withIndex()
+    .filter { (_, server) -> !server.deleted && !QryptanaServerFilters.isUpstreamServer(server) }
+  val visibleXftpServers = userServers.value[operatorIndex].xftpServers.withIndex()
+    .filter { (_, server) -> !server.deleted && !QryptanaServerFilters.isUpstreamServer(server) }
 
   Column {
     SectionView(generalGetString(MR.strings.operator)) {
@@ -223,14 +228,7 @@ fun OperatorViewLayout(
           Modifier.fillMaxWidth(),
           verticalAlignment = Alignment.CenterVertically
         ) {
-          Image(
-            painterResource(operator.largeLogo),
-            operator.tradeName,
-            modifier = Modifier.height(48.dp),
-            colorFilter = if (operator.enabled) null else ColorFilter.colorMatrix(ColorMatrix().apply {
-              setToSaturation(0f)
-            })
-          )
+          QryptanaOperatorLogo(operator, Modifier.height(48.dp).alpha(if (operator.enabled) 1f else 0.45f))
           Spacer(Modifier.fillMaxWidth().weight(1f))
           Box(Modifier.padding(horizontal = 2.dp)) {
             Icon(painterResource(MR.images.ic_info), null, Modifier.size(24.dp), tint = MaterialTheme.colors.primaryVariant)
@@ -364,11 +362,11 @@ fun OperatorViewLayout(
       }
 
       // Preset servers can't be deleted
-      if (userServers.value[operatorIndex].smpServers.any { it.preset }) {
+      if (visibleSmpServers.any { (_, server) -> server.preset }) {
         SectionDividerSpaced()
         SectionView(generalGetString(MR.strings.message_servers)) {
-          userServers.value[operatorIndex].smpServers.forEachIndexed { i, server  ->
-            if (!server.preset) return@forEachIndexed
+          visibleSmpServers.forEach { (i, server) ->
+            if (!server.preset) return@forEach
             SectionItemView({ navigateToProtocolView(i, server, ServerProtocol.SMP) }) {
               ProtocolServerViewLink(
                 srv = server,
@@ -398,11 +396,11 @@ fun OperatorViewLayout(
         }
       }
 
-      if (userServers.value[operatorIndex].smpServers.any { !it.preset && !it.deleted }) {
+      if (visibleSmpServers.any { (_, server) -> !server.preset }) {
         SectionDividerSpaced()
         SectionView(generalGetString(MR.strings.operator_added_message_servers)) {
-          userServers.value[operatorIndex].smpServers.forEachIndexed { i, server ->
-            if (server.deleted || server.preset) return@forEachIndexed
+          visibleSmpServers.forEach { (i, server) ->
+            if (server.preset) return@forEach
             SectionItemView({ navigateToProtocolView(i, server, ServerProtocol.SMP) }) {
               ProtocolServerViewLink(
                 srv = server,
@@ -447,11 +445,11 @@ fun OperatorViewLayout(
       }
 
       // Preset servers can't be deleted
-      if (userServers.value[operatorIndex].xftpServers.any { it.preset }) {
+      if (visibleXftpServers.any { (_, server) -> server.preset }) {
         SectionDividerSpaced()
         SectionView(generalGetString(MR.strings.media_and_file_servers)) {
-          userServers.value[operatorIndex].xftpServers.forEachIndexed { i, server ->
-            if (!server.preset) return@forEachIndexed
+          visibleXftpServers.forEach { (i, server) ->
+            if (!server.preset) return@forEach
             SectionItemView({ navigateToProtocolView(i, server, ServerProtocol.XFTP) }) {
               ProtocolServerViewLink(
                 srv = server,
@@ -481,11 +479,11 @@ fun OperatorViewLayout(
         }
       }
 
-      if (userServers.value[operatorIndex].xftpServers.any { !it.preset && !it.deleted}) {
+      if (visibleXftpServers.any { (_, server) -> !server.preset }) {
         SectionDividerSpaced()
         SectionView(generalGetString(MR.strings.operator_added_xftp_servers)) {
-          userServers.value[operatorIndex].xftpServers.forEachIndexed { i, server ->
-            if (server.deleted || server.preset) return@forEachIndexed
+          visibleXftpServers.forEach { (i, server) ->
+            if (server.preset) return@forEach
             SectionItemView({ navigateToProtocolView(i, server, ServerProtocol.XFTP) }) {
               ProtocolServerViewLink(
                 srv = server,
@@ -501,20 +499,18 @@ fun OperatorViewLayout(
       SectionView {
         TestServersButton(
           testing = testing,
-          smpServers = userServers.value[operatorIndex].smpServers,
-          xftpServers = userServers.value[operatorIndex].xftpServers,
+          smpServers = visibleSmpServers.map { it.value },
+          xftpServers = visibleXftpServers.map { it.value },
           chatRelays = userServers.value[operatorIndex].chatRelays,
           onUpdate = { p, l ->
-            when (p) {
-              ServerProtocol.XFTP -> userServers.value = userServers.value.toMutableList().apply {
-                this[operatorIndex] = this[operatorIndex].copy(
-                  xftpServers = l
+            userServers.value = userServers.value.toMutableList().apply {
+              this[operatorIndex] = when (p) {
+                // Test results only cover the visible servers; keep hidden preset entries intact.
+                ServerProtocol.XFTP -> this[operatorIndex].copy(
+                  xftpServers = mergeTestedServers(this[operatorIndex].xftpServers, l)
                 )
-              }
-
-              ServerProtocol.SMP -> userServers.value = userServers.value.toMutableList().apply {
-                this[operatorIndex] = this[operatorIndex].copy(
-                  smpServers = l
+                ServerProtocol.SMP -> this[operatorIndex].copy(
+                  smpServers = mergeTestedServers(this[operatorIndex].smpServers, l)
                 )
               }
             }
@@ -536,13 +532,14 @@ fun OperatorViewLayout(
 
 @Composable
 fun OperatorInfoView(serverOperator: ServerOperator) {
+  val isQryptana = QryptanaServerFilters.isQryptanaOperator(serverOperator)
   ColumnWithScrollBar {
     AppBarTitle(stringResource(MR.strings.operator_info_title))
 
     SectionView {
       SectionItemView {
         Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
-          Image(painterResource(serverOperator.largeLogo), null, Modifier.height(48.dp))
+          QryptanaOperatorLogo(serverOperator, Modifier.height(48.dp))
           if (serverOperator.legalName != null) {
             Text(serverOperator.legalName)
           }
@@ -556,28 +553,39 @@ fun OperatorInfoView(serverOperator: ServerOperator) {
     SectionView {
       SectionItemView {
         Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
-          serverOperator.info.description.forEach { d ->
-            Text(d)
-          }
-          val website = serverOperator.info.website
-          if (website.isNotBlank()) {
-            Text(website, color = MaterialTheme.colors.primary, modifier = Modifier.clickable { uriHandler.openExternalLink(website) })
+          if (isQryptana) {
+            Text(stringResource(MR.strings.onboarding_network_operators_simplex_flux_agreement))
+          } else {
+            serverOperator.info.description.forEach { d ->
+              Text(d)
+            }
+            val website = serverOperator.info.website
+            if (website.isNotBlank()) {
+              Text(website, color = MaterialTheme.colors.primary, modifier = Modifier.clickable { uriHandler.openExternalLink(website) })
+            }
           }
         }
       }
     }
 
-    val selfhost = serverOperator.info.selfhost
-    if (selfhost != null) {
-      SectionDividerSpaced()
-      SectionView {
-        SectionItemView {
-          val (text, link) = selfhost
-          Text(text, color = MaterialTheme.colors.primary, modifier = Modifier.clickable { uriHandler.openExternalLink(link) })
+    if (!isQryptana) {
+      val selfhost = serverOperator.info.selfhost
+      if (selfhost != null) {
+        SectionDividerSpaced()
+        SectionView {
+          SectionItemView {
+            val (text, link) = selfhost
+            Text(text, color = MaterialTheme.colors.primary, modifier = Modifier.clickable { uriHandler.openExternalLink(link) })
+          }
         }
       }
     }
   }
+}
+
+private fun mergeTestedServers(original: List<UserServer>, tested: List<UserServer>): List<UserServer> {
+  val testedByAddress = tested.associateBy { it.server }
+  return original.map { testedByAddress[it.server] ?: it }
 }
 
 @Composable

@@ -103,6 +103,9 @@ fun YourServersViewLayout(
   testing: MutableState<Boolean>
 ) {
   val duplicateHosts = findDuplicateHosts(serverErrors.value)
+  val userGroup = userServers.value[operatorIndex]
+  val visibleSmpServers = userGroup.smpServers.withIndex().filter { (_, server) -> !server.deleted && !QryptanaServerFilters.isUpstreamServer(server) }
+  val visibleXftpServers = userGroup.xftpServers.withIndex().filter { (_, server) -> !server.deleted && !QryptanaServerFilters.isUpstreamServer(server) }
 
   Column {
     if (userServers.value[operatorIndex].chatRelays.any { !it.deleted }) {
@@ -118,11 +121,10 @@ fun YourServersViewLayout(
       SectionTextFooter(generalGetString(MR.strings.chat_relays_forward_messages_in_channels))
     }
 
-    if (userServers.value[operatorIndex].smpServers.any { !it.deleted }) {
+    if (visibleSmpServers.isNotEmpty()) {
       SectionDividerSpaced()
       SectionView(generalGetString(MR.strings.message_servers)) {
-        userServers.value[operatorIndex].smpServers.forEachIndexed { i, server  ->
-          if (server.deleted) return@forEachIndexed
+        visibleSmpServers.forEach { (i, server) ->
           SectionItemView({ navigateToProtocolView(i, server, ServerProtocol.SMP) }) {
             ProtocolServerViewLink(
               srv = server,
@@ -152,11 +154,10 @@ fun YourServersViewLayout(
       }
     }
 
-    if (userServers.value[operatorIndex].xftpServers.any { !it.deleted }) {
+    if (visibleXftpServers.isNotEmpty()) {
       SectionDividerSpaced()
       SectionView(generalGetString(MR.strings.media_and_file_servers)) {
-        userServers.value[operatorIndex].xftpServers.forEachIndexed { i, server ->
-          if (server.deleted) return@forEachIndexed
+        visibleXftpServers.forEach { (i, server) ->
           SectionItemView({ navigateToProtocolView(i, server, ServerProtocol.XFTP) }) {
             ProtocolServerViewLink(
               srv = server,
@@ -187,8 +188,8 @@ fun YourServersViewLayout(
     }
 
     if (
-      userServers.value[operatorIndex].smpServers.any { !it.deleted } ||
-      userServers.value[operatorIndex].xftpServers.any { !it.deleted } ||
+      visibleSmpServers.isNotEmpty() ||
+      visibleXftpServers.isNotEmpty() ||
       userServers.value[operatorIndex].chatRelays.any { !it.deleted }
       ) {
       SectionDividerSpaced()

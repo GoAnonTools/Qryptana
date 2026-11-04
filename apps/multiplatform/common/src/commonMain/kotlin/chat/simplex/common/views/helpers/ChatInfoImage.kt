@@ -7,7 +7,6 @@ import androidx.compose.foundation.border
 import androidx.compose.material.Text
 import androidx.compose.ui.text.font.FontWeight
 import chat.simplex.common.views.onboarding.QryptanaMetal
-import chat.simplex.common.views.onboarding.rememberQryptanaSerif
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.InlineTextContent
@@ -35,9 +34,11 @@ import dev.icerock.moko.resources.compose.stringResource
 import chat.simplex.common.model.BadgeStatus
 import chat.simplex.common.model.BadgeType
 import chat.simplex.common.model.ChatInfo
+import chat.simplex.common.model.Contact
 import chat.simplex.common.model.LocalBadge
 import chat.simplex.common.model.localDate
 import chat.simplex.common.platform.*
+import chat.simplex.common.views.onboarding.QryptanaBrandMark
 import chat.simplex.common.ui.theme.*
 import chat.simplex.res.MR
 import chat.simplex.res.badge_invested
@@ -67,7 +68,13 @@ import kotlin.math.roundToInt
 
 @Composable
 fun ChatInfoImage(chatInfo: ChatInfo, size: Dp, iconColor: Color = MaterialTheme.colors.secondaryVariant, shadow: Boolean = false) {
-  // Desktop: built-in SimpleX service contacts (Status / Team) get a neutral titanium monogram instead of the SimpleX logo.
+  // The preset support contact keeps the upstream SimpleX avatar in the native core,
+  // so render the Qryptana mark for it on every platform.
+  if (chatInfo is ChatInfo.Direct && isQryptanaTeamContact(chatInfo.contact)) {
+    QryptanaServiceAvatar(size)
+    return
+  }
+  // Desktop: other built-in SimpleX service contacts (Status) get a neutral titanium mark.
   if (appPlatform.isDesktop && chatInfo is ChatInfo.Direct && chatInfo.displayName.startsWith("SimpleX", ignoreCase = true)) {
     QryptanaServiceAvatar(size)
     return
@@ -94,10 +101,16 @@ private fun QryptanaServiceAvatar(size: Dp) {
       .border(1.dp, Brush.verticalGradient(listOf(QryptanaMetal.copperLight, QryptanaMetal.copperShadow)), CircleShape),
         contentAlignment = Alignment.Center
     ) {
-      Text("Q", color = QryptanaMetal.copperLight, fontFamily = rememberQryptanaSerif(), fontWeight = FontWeight.Normal, fontSize = with(androidx.compose.ui.platform.LocalDensity.current) { (d * 0.5f).toSp() })
+      QryptanaBrandMark(Modifier.fillMaxSize(0.6f))
     }
   }
 }
+
+private const val SIMPLEX_TEAM_CONTACT_NAME = "Ask SimpleX Team"
+private const val QRYPTANA_TEAM_CONTACT_NAME = "Ask Qryptana Team"
+
+private fun isQryptanaTeamContact(contact: Contact): Boolean =
+  contact.profile.displayName == SIMPLEX_TEAM_CONTACT_NAME || contact.profile.displayName == QRYPTANA_TEAM_CONTACT_NAME
 
 @Composable
 fun IncognitoImage(size: Dp, iconColor: Color = MaterialTheme.colors.secondaryVariant) {

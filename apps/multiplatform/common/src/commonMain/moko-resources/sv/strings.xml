@@ -1,3 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="onboarding_network_operators_simplex_flux_agreement">Qryptana uses servers operated by GoAnon.</string>
 </resources>

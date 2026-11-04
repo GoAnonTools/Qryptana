@@ -1326,4 +1326,5 @@
     <string name="in_reply_to">ในการตอบกลับถึง</string>
     <string name="no_history">ไม่มีประวัติ</string>
     <string name="conn_event_ratchet_sync_ok">encryptionใช้ได้</string>
+    <string name="onboarding_network_operators_simplex_flux_agreement">Qryptana uses servers operated by GoAnon.</string>
 </resources>

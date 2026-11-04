@@ -41,6 +41,7 @@ import chat.simplex.common.platform.*
 import chat.simplex.common.ui.theme.*
 import chat.simplex.common.views.helpers.*
 import chat.simplex.common.views.onboarding.OnboardingActionButton
+import chat.simplex.common.views.onboarding.QryptanaOperatorLogo
 import chat.simplex.common.views.onboarding.ReadableText
 import chat.simplex.common.views.usersettings.*
 import chat.simplex.res.MR
@@ -250,7 +251,14 @@ fun ModalData.NetworkAndServersView(closeNetworkAndServers: () -> Unit) {
 ) {
   val m = chatModel
   val conditionsAction = remember { m.conditions.value.conditionsAction }
-  val anyOperatorEnabled = remember { derivedStateOf { userServers.value.any { it.operator?.enabled == true } } }
+  val visibleOperators = remember {
+    derivedStateOf {
+      userServers.value.mapIndexedNotNull { index, srv ->
+        srv.operator?.takeUnless { QryptanaServerFilters.isUpstreamPresetOperator(it) }?.let { index to it }
+      }
+    }
+  }
+  val anyOperatorEnabled = remember { derivedStateOf { visibleOperators.value.any { (_, op) -> op.enabled } } }
   val scope = rememberCoroutineScope()
 
   LaunchedEffect(Unit) {
@@ -294,28 +302,34 @@ fun ModalData.NetworkAndServersView(closeNetworkAndServers: () -> Unit) {
     AppBarTitle(stringResource(MR.strings.network_and_servers))
     // TODO: Review this and socks.
     if (!chatModel.desktopNoUserNoRemote) {
-      SectionView(generalGetString(MR.strings.network_preset_servers_title)) {
-        userServers.value.forEachIndexed { index, srv ->
-          srv.operator?.let { ServerOperatorRow(index, it, currUserServers, userServers, serverErrors, serverWarnings, currentRemoteHost?.remoteHostId) }
+      if (visibleOperators.value.isNotEmpty()) {
+        SectionView(generalGetString(MR.strings.network_preset_servers_title)) {
+          visibleOperators.value.forEach { (index, op) ->
+            ServerOperatorRow(index, op, currUserServers, userServers, serverErrors, serverWarnings, currentRemoteHost?.remoteHostId)
+          }
         }
-      }
-      if (conditionsAction != null && anyOperatorEnabled.value) {
-        ConditionsButton(conditionsAction, rhId = currentRemoteHost?.remoteHostId)
-      }
-      val footerText = if (conditionsAction is UsageConditionsAction.Review && conditionsAction.deadline != null && anyOperatorEnabled.value) {
-        String.format(generalGetString(MR.strings.operator_conditions_will_be_accepted_on), localDate(conditionsAction.deadline))
-      } else null
+        if (conditionsAction != null && anyOperatorEnabled.value) {
+          ConditionsButton(conditionsAction, rhId = currentRemoteHost?.remoteHostId)
+        }
+        val footerText = if (conditionsAction is UsageConditionsAction.Review && conditionsAction.deadline != null && anyOperatorEnabled.value) {
+          String.format(generalGetString(MR.strings.operator_conditions_will_be_accepted_on), localDate(conditionsAction.deadline))
+        } else null
 
-      if (footerText != null) {
-        SectionTextFooter(footerText)
+        if (footerText != null) {
+          SectionTextFooter(footerText)
+        }
       }
       SectionDividerSpaced()
     }
 
     SectionView(generalGetString(MR.strings.settings_section_title_messages)) {
       val nullOperatorIndex = userServers.value.indexOfFirst { it.operator == null }
+      val nullOperatorHasVisibleServers = nullOperatorIndex != -1 && userServers.value[nullOperatorIndex].let { group ->
+        (group.smpServers + group.xftpServers).any { !it.deleted && !QryptanaServerFilters.isUpstreamServer(it) } ||
+          group.chatRelays.any { !it.deleted }
+      }
 
-      if (nullOperatorIndex != -1) {
+      if (nullOperatorHasVisibleServers) {
         SectionItemView({
           ModalManager.start.showModal {
             YourServersView(
@@ -777,14 +791,7 @@ private fun ServerOperatorRow(
       }
     }
   ) {
-    Image(
-      painterResource(operator.logo),
-      operator.tradeName,
-      modifier = Modifier.size(24.dp),
-      colorFilter = if (operator.enabled) null else ColorFilter.colorMatrix(ColorMatrix().apply {
-        setToSaturation(0f)
-      })
-    )
+    QryptanaOperatorLogo(operator, Modifier.size(24.dp))
     TextIconSpaced()
     Text(operator.tradeName, color = if (operator.enabled) MaterialTheme.colors.onBackground else MaterialTheme.colors.secondary)
 

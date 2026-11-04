@@ -2150,4 +2150,5 @@
     <string name="context_user_picker_cant_change_profile_alert_title">אי אפשר לשנות תמונת פרופיל</string>
 
 
+    <string name="onboarding_network_operators_simplex_flux_agreement">Qryptana uses servers operated by GoAnon.</string>
 </resources>

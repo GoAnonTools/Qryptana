@@ -70,6 +70,7 @@ import chat.simplex.res.short_descr
 import chat.simplex.res.your_profile
 import chat.simplex.res.your_profile_is_stored_on_your_device
 import chat.simplex.res.your_profile_light
+import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.launch
@@ -134,14 +135,7 @@ fun CreateProfile(chatModel: ChatModel, close: () -> Unit) {
               }
             }
           }
-          if (BuildConfigCommon.SIMPLEX_ASSETS) {
-            Image(
-              painterResource(if (isInDarkTheme()) MR.images.create_profile_light else MR.images.create_profile),
-                  contentDescription = null,
-                  contentScale = ContentScale.Fit,
-                  modifier = Modifier.height(140.dp)
-            )
-          }
+          QryptanaBrandMark(Modifier.height(120.dp).aspectRatio(1f))
         }
         Column(Modifier.padding(horizontal = DEFAULT_PADDING)) {
           Row(Modifier.padding(bottom = DEFAULT_PADDING_HALF).fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
@@ -285,9 +279,8 @@ private fun CreateFirstProfileMobile(chatModel: ChatModel, close: () -> Unit) {
       ColumnWithScrollBar(Modifier.padding(horizontal = DEFAULT_ONBOARDING_HORIZONTAL_PADDING), horizontalAlignment = Alignment.CenterHorizontally, maxIntrinsicSize = true) {
         Spacer(Modifier.weight(1f))
 
-        OnboardingImage(
-          MR.images.your_profile, MR.images.your_profile_light, MR.images.ic_person,
-          modifier = Modifier
+        QryptanaOnboardingMarkIllustration(
+          Modifier
           .then(if (keyboardState != KeyboardState.Opened) Modifier.fillMaxWidth() else Modifier)
           .then(imageHeightModifier)
         )
@@ -445,8 +438,13 @@ fun createProfileInNoProfileSetup(displayName: String, image: String? = null, cl
     }
     controller.appPrefs.onboardingStage.set(OnboardingStage.Step3_ChooseServerOperators)
     controller.startChat(user)
-    runCatching { QryptanaServers.installDefaultUserServers() }
-      .onFailure { Log.e("QryptanaServers", "Failed to install default servers: ${it.stackTraceToString()}") }
+    try {
+      QryptanaServers.installDefaultUserServers()
+    } catch (e: CancellationException) {
+      throw e
+    } catch (e: Exception) {
+      showQryptanaServersSetupError(e)
+    }
     controller.switchUIRemoteHost(null)
     close()
   }

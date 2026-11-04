@@ -13,8 +13,6 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
-import androidx.compose.ui.graphics.ColorFilter
-import androidx.compose.ui.graphics.ColorMatrix
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.ContentScale
@@ -43,6 +41,7 @@ import chat.simplex.res.onboarding_configure_notifications
 import chat.simplex.res.onboarding_configure_routers
 import chat.simplex.res.onboarding_connections_stay_private
 import chat.simplex.res.onboarding_network_operators_continue
+import chat.simplex.res.onboarding_network_operators_simplex_flux_agreement
 import chat.simplex.res.onboarding_network_routers_cannot_know
 import chat.simplex.res.onboarding_private_network
 import chat.simplex.res.onboarding_your_network
@@ -61,7 +60,7 @@ fun YourNetworkView(chatModel: ChatModel) {
     prepareChatBeforeFinishingOnboarding()
   }
 
-  val serverOperators = remember { derivedStateOf { chatModel.conditions.value.serverOperators } }
+  val serverOperators = remember { derivedStateOf { QryptanaServerFilters.visibleOperators(chatModel.conditions.value.serverOperators) } }
   val selectedOperatorIds = remember {
     mutableStateOf(serverOperators.value.filter { it.enabled }.map { it.operatorId }.toSet())
   }
@@ -85,8 +84,7 @@ fun YourNetworkView(chatModel: ChatModel) {
                                   topPadding = DEFAULT_PADDING,
                                   image = {
                                     Column(Modifier.padding(vertical = DEFAULT_PADDING_HALF), horizontalAlignment = Alignment.CenterHorizontally) {
-                                      OnboardingImage(
-                                        MR.images.your_network, MR.images.your_network_light, MR.images.ic_dns,
+                                      QryptanaOnboardingMarkIllustration(
                                         modifier = Modifier.padding(horizontal = DEFAULT_ONBOARDING_HORIZONTAL_PADDING).fillMaxWidth()
                                       )
                                     }
@@ -115,9 +113,11 @@ fun YourNetworkView(chatModel: ChatModel) {
                                              horizontalAlignment = Alignment.Start,
                                              verticalArrangement = Arrangement.spacedBy(4.dp)
                                       ) {
-                                        ConfigureRoutersButton(serverOperators, selectedOperatorIds) {
-                                          ModalManager.fullscreen.showCustomModal { close ->
-                                            ChooseServerOperators(serverOperators, selectedOperatorIds, close)
+                                        if (serverOperators.value.isNotEmpty()) {
+                                          ConfigureRoutersButton(serverOperators, selectedOperatorIds) {
+                                            ModalManager.fullscreen.showCustomModal { close ->
+                                              ChooseServerOperators(serverOperators, selectedOperatorIds, close)
+                                            }
                                           }
                                         }
                                         ConfigureNotificationsButton(notificationMode) {
@@ -126,6 +126,13 @@ fun YourNetworkView(chatModel: ChatModel) {
                                           }
                                         }
                                       }
+                                      Text(
+                                        stringResource(MR.strings.onboarding_network_operators_simplex_flux_agreement),
+                                        style = MaterialTheme.typography.body2,
+                                        color = MaterialTheme.colors.secondary,
+                                        textAlign = TextAlign.Center,
+                                        modifier = Modifier.padding(top = DEFAULT_PADDING).padding(horizontal = DEFAULT_ONBOARDING_HORIZONTAL_PADDING)
+                                      )
                                     }
                                   },
                                   button = {
@@ -193,12 +200,14 @@ private fun YourNetworkDesktop(
               Modifier.graphicsLayer { alpha = actionsReveal.value }.widthIn(max = 390.dp),
                    horizontalAlignment = Alignment.CenterHorizontally
             ) {
-              ConfigureRoutersButton(serverOperators, selectedOperatorIds, titanium = true) {
-                ModalManager.fullscreen.showCustomModal(forceAnimated = true) { close ->
-                  ChooseServerOperators(serverOperators, selectedOperatorIds, close)
+              if (serverOperators.value.isNotEmpty()) {
+                ConfigureRoutersButton(serverOperators, selectedOperatorIds, titanium = true) {
+                  ModalManager.fullscreen.showCustomModal(forceAnimated = true) { close ->
+                    ChooseServerOperators(serverOperators, selectedOperatorIds, close)
+                  }
                 }
+                Spacer(Modifier.height(24.dp))
               }
-              Spacer(Modifier.height(24.dp))
               OnboardingActionButton(
                 Modifier.fillMaxWidth(),
                                      labelId = MR.strings.onboarding_network_operators_continue,
@@ -206,6 +215,14 @@ private fun YourNetworkDesktop(
                                      onclick = { appPrefs.onboardingStage.set(OnboardingStage.Step4_NetworkCommitments) }
               )
             }
+            Spacer(Modifier.height(24.dp))
+            Text(
+              stringResource(MR.strings.onboarding_network_operators_simplex_flux_agreement),
+              color = QryptanaMetal.textSupport,
+              style = MaterialTheme.typography.body2,
+              textAlign = TextAlign.Center,
+              modifier = Modifier.widthIn(max = 440.dp)
+            )
           }
         }
       }
@@ -245,13 +262,9 @@ private fun ConfigureRoutersButton(serverOperators: State<List<ServerOperator>>,
       )
       serverOperators.value.forEach { op ->
         val selected = selectedOperatorIds.value.contains(op.operatorId)
-        Image(
-          painterResource(op.logo),
-              contentDescription = null,
-              modifier = Modifier.size(22.dp).then(if (titanium && !selected) Modifier.graphicsLayer { alpha = 0.55f } else Modifier),
-              colorFilter = if (selected) null else ColorFilter.colorMatrix(ColorMatrix().apply {
-                setToSaturation(0f)
-              })
+        QryptanaOperatorLogo(
+          op,
+          Modifier.size(22.dp).then(if (titanium && !selected) Modifier.graphicsLayer { alpha = 0.55f } else Modifier)
         )
       }
     }

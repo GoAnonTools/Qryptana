@@ -1522,4 +1522,5 @@
     <string name="remote_ctrl_error_timeout">데스크톱에 연결하는 동안 시간 초과되었습니다</string>
 
 
+    <string name="onboarding_network_operators_simplex_flux_agreement">Qryptana uses servers operated by GoAnon.</string>
 </resources>

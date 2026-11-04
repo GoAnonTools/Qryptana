@@ -33,6 +33,7 @@ import chat.simplex.common.model.ChatController.appPrefs
 import chat.simplex.common.platform.*
 import chat.simplex.common.ui.theme.*
 import chat.simplex.common.views.helpers.*
+import kotlinx.coroutines.CancellationException
 import chat.simplex.common.views.newchat.darkStops
 import chat.simplex.common.views.newchat.gradientPoints
 import chat.simplex.common.views.newchat.lightStops
@@ -71,7 +72,7 @@ fun OnboardingConditionsView(chatModel: ChatModel) {
     prepareChatBeforeFinishingOnboarding()
   }
 
-  val serverOperators = remember { derivedStateOf { chatModel.conditions.value.serverOperators } }
+  val serverOperators = remember { derivedStateOf { QryptanaServerFilters.visibleOperators(chatModel.conditions.value.serverOperators) } }
   val selectedOperatorIds = remember {
     mutableStateOf(OnboardingSharedState.selectedOperatorIds.ifEmpty {
       serverOperators.value.filter { it.enabled }.map { it.operatorId }.toSet()
@@ -79,7 +80,7 @@ fun OnboardingConditionsView(chatModel: ChatModel) {
   }
 
   if (appPlatform.isDesktop) {
-    OnboardingConditionsDesktop(selectedOperatorIds)
+    OnboardingConditionsDesktop(selectedOperatorIds, noOperators = serverOperators.value.isEmpty())
   } else {
     CompositionLocalProvider(LocalAppBarHandler provides rememberAppBarHandler()) {
       ModalView({}, showClose = false, showAppBar = false, cardScreen = true, background = if (appPlatform.isAndroid) (if (isInDarkTheme()) QryptanaAndroidOnboardingPalette.Background else QryptanaAndroidOnboardingPalette.LightBackground) else Color.Unspecified) {
@@ -91,10 +92,9 @@ fun OnboardingConditionsView(chatModel: ChatModel) {
                                   topPadding = DEFAULT_PADDING,
                                   image = {
                                     Column(Modifier.padding(vertical = DEFAULT_PADDING_HALF), horizontalAlignment = Alignment.CenterHorizontally) {
-                                      OnboardingImage(
-                                        MR.images.network_commitments, MR.images.network_commitments_light, MR.images.ic_shield,
+                                      QryptanaOnboardingMarkIllustration(
                                         modifier = Modifier.fillMaxWidth(),
-                                                      aspectRatio = 1.5f
+                                        aspectRatio = 1.5f
                                       )
                                     }
                                   },
@@ -149,7 +149,7 @@ fun OnboardingConditionsView(chatModel: ChatModel) {
                                   },
                                   button = {
                                     Column(Modifier.widthIn(max = 450.dp).padding(bottom = DEFAULT_PADDING * 2), horizontalAlignment = Alignment.CenterHorizontally) {
-                                      AcceptConditionsButton(enabled = selectedOperatorIds.value.isNotEmpty(), selectedOperatorIds)
+                                      AcceptConditionsButton(enabled = selectedOperatorIds.value.isNotEmpty() || serverOperators.value.isEmpty(), selectedOperatorIds)
                                     }
                                   }
         )
@@ -161,7 +161,7 @@ fun OnboardingConditionsView(chatModel: ChatModel) {
 }
 
 @Composable
-private fun OnboardingConditionsDesktop(selectedOperatorIds: MutableState<Set<Long>>) {
+private fun OnboardingConditionsDesktop(selectedOperatorIds: MutableState<Set<Long>>, noOperators: Boolean) {
   val markReveal = rememberReveal(delayMs = 0, durationMs = 900)
   val titleReveal = rememberReveal(delayMs = 200, durationMs = 900)
   val bodyReveal = rememberReveal(delayMs = 500, durationMs = 1000)
@@ -225,7 +225,7 @@ private fun OnboardingConditionsDesktop(selectedOperatorIds: MutableState<Set<Lo
             }
             Spacer(Modifier.height(38.dp))
             Box(Modifier.graphicsLayer { alpha = actionsReveal.value }.widthIn(max = 390.dp)) {
-              AcceptConditionsButton(enabled = selectedOperatorIds.value.isNotEmpty(), selectedOperatorIds)
+              AcceptConditionsButton(enabled = selectedOperatorIds.value.isNotEmpty() || noOperators, selectedOperatorIds)
             }
           }
         }
@@ -290,7 +290,7 @@ fun ModalData.ChooseServerOperators(
   }
   CompositionLocalProvider(LocalAppBarHandler provides rememberAppBarHandler()) {
     val qryptanaDesktop = appPlatform.isDesktop
-    ModalView(close, enableClose = selectedOperatorIds.value.isNotEmpty(), background = if (qryptanaDesktop) QryptanaDarkBackground else Color.Unspecified, appBarBackground = if (qryptanaDesktop) QryptanaDarkBackground else Color.Unspecified, appBarContentColor = if (qryptanaDesktop) QryptanaDarkText else Color.Unspecified, appBarNavigationTint = if (qryptanaDesktop) QryptanaCopperLight else Color.Unspecified) {
+    ModalView(close, enableClose = selectedOperatorIds.value.isNotEmpty() || serverOperators.value.isEmpty(), background = if (qryptanaDesktop) QryptanaDarkBackground else Color.Unspecified, appBarBackground = if (qryptanaDesktop) QryptanaDarkBackground else Color.Unspecified, appBarContentColor = if (qryptanaDesktop) QryptanaDarkText else Color.Unspecified, appBarNavigationTint = if (qryptanaDesktop) QryptanaCopperLight else Color.Unspecified) {
       ColumnWithScrollBar(
         (if (qryptanaDesktop) Modifier.background(QryptanaDarkBackground) else Modifier.themedBackground(bgLayerSize = LocalAppBarHandler.current?.backgroundGraphicsLayerSize, bgLayer = LocalAppBarHandler.current?.backgroundGraphicsLayer)),
                           maxIntrinsicSize = true
@@ -327,7 +327,7 @@ fun ModalData.ChooseServerOperators(
         Spacer(Modifier.height(if (qryptanaDesktop) 28.dp else DEFAULT_PADDING))
 
         Column(Modifier.widthIn(max = if (appPlatform.isAndroid) 450.dp else 1000.dp).padding(bottom = DEFAULT_PADDING * 2).align(Alignment.CenterHorizontally), horizontalAlignment = Alignment.CenterHorizontally) {
-          val enabled = selectedOperatorIds.value.isNotEmpty()
+          val enabled = selectedOperatorIds.value.isNotEmpty() || serverOperators.value.isEmpty()
           SetOperatorsButton(enabled, close)
         }
       }
@@ -348,7 +348,7 @@ private fun ChooseServerOperatorsDesktop(
   CompositionLocalProvider(LocalAppBarHandler provides rememberAppBarHandler()) {
     ModalView(
       close,
-      enableClose = selectedOperatorIds.value.isNotEmpty(),
+      enableClose = selectedOperatorIds.value.isNotEmpty() || serverOperators.value.isEmpty(),
               background = QryptanaMetal.void,
               appBarBackground = QryptanaMetal.void,
               appBarContentColor = QryptanaMetal.textBright,
@@ -384,7 +384,7 @@ private fun ChooseServerOperatorsDesktop(
             }
             Spacer(Modifier.height(30.dp))
             Box(Modifier.graphicsLayer { alpha = actionsReveal.value }.widthIn(max = 390.dp)) {
-              SetOperatorsButton(selectedOperatorIds.value.isNotEmpty(), close)
+              SetOperatorsButton(selectedOperatorIds.value.isNotEmpty() || serverOperators.value.isEmpty(), close)
             }
           }
         }
@@ -486,6 +486,11 @@ private fun SetOperatorsButton(enabled: Boolean, close: () -> Unit) {
 
 private fun acceptConditions(selectedOperatorIds: Set<Long>) {
   withBGApi {
+    if (selectedOperatorIds.isEmpty()) {
+      // No visible operators remain (Qryptana uses its own self-hosted servers).
+      completeOnboarding()
+      return@withBGApi
+    }
     val conditionsId = chatModel.conditions.value.currentConditions.conditionsId
     val r = chatController.acceptConditions(chatModel.remoteHostId(), conditionsId = conditionsId, operatorIds = selectedOperatorIds.toList())
     if (r != null) {
@@ -519,8 +524,15 @@ private fun AcceptConditionsButton(
 }
 
 private suspend fun completeOnboarding() {
-  runCatching { QryptanaServers.finalizeDefaults(chatModel.remoteHostId()) }
-    .getOrNull()?.let { chatModel.conditions.value = it }
+  val conditions = try {
+    QryptanaServers.finalizeDefaults(chatModel.remoteHostId())
+  } catch (e: CancellationException) {
+    throw e
+  } catch (e: Exception) {
+    showQryptanaServersSetupError(e)
+    return
+  }
+  chatModel.conditions.value = conditions
   appPrefs.onboardingStage.set(OnboardingStage.OnboardingComplete)
 }
 
@@ -570,7 +582,7 @@ private fun ChooseServerOperatorsInfoView() {
     SectionDividerSpaced()
 
     SectionView(title = stringResource(MR.strings.onboarding_network_about_operators)) {
-      chatModel.conditions.value.serverOperators.forEach { op ->
+      QryptanaServerFilters.visibleOperators(chatModel.conditions.value.serverOperators).forEach { op ->
         ServerOperatorRow(op)
       }
     }
@@ -589,11 +601,7 @@ private fun ServerOperatorRow(
       }
     }
   ) {
-    Image(
-      painterResource(operator.logo),
-          operator.tradeName,
-          modifier = Modifier.size(24.dp)
-    )
+    QryptanaOperatorLogo(operator, Modifier.size(24.dp))
     TextIconSpaced()
     Text(operator.tradeName)
   }

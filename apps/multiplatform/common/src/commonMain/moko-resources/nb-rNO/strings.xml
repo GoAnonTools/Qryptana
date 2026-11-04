@@ -217,4 +217,5 @@
     <string name="both_you_and_your_contact_can_send_files">Både du og kontakten din kan sende filer og medier.</string>
     <string name="both_you_and_your_contact_can_send_voice">Både du og kontakten din kan sende talemeldinger.</string>
     <string name="business_address">Firmaadresse</string>
+    <string name="onboarding_network_operators_simplex_flux_agreement">Qryptana uses servers operated by GoAnon.</string>
 </resources>

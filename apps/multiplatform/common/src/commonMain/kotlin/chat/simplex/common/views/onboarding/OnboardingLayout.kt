@@ -169,6 +169,49 @@ internal fun QryptanaOnboardingIllustrationFallback(
   }
 }
 
+/**
+ * Qryptana-native onboarding artwork: a themed panel with the copper relay mark.
+ * Replaces the upstream SimpleX illustrations on the profile, network and
+ * network-commitments pages.
+ */
+@Composable
+fun QryptanaOnboardingMarkIllustration(modifier: Modifier = Modifier, aspectRatio: Float = 1f) {
+  val isDark = isInDarkTheme()
+  if (appPlatform.isAndroid) {
+    Box(
+      modifier
+        .aspectRatio(aspectRatio)
+        .clip(RoundedCornerShape(24.dp))
+        .background(if (isDark) QryptanaAndroidOnboardingPalette.Surface else QryptanaAndroidOnboardingPalette.LightSurface)
+        .border(1.dp, if (isDark) QryptanaAndroidOnboardingPalette.TitaniumDark.copy(alpha = 0.3f) else QryptanaAndroidOnboardingPalette.LightBorder, RoundedCornerShape(24.dp)),
+      contentAlignment = Alignment.Center
+    ) {
+      QryptanaBrandMark(Modifier.fillMaxSize(0.52f))
+    }
+  } else {
+    val scale = if (isDark) 1.5f else 1.2f
+    Box(
+      modifier
+        .aspectRatio(aspectRatio)
+        .clip(RoundedCornerShape(24.dp))
+        .drawBehind {
+          val stops = if (isDark) darkStops else lightStops
+          val gp = gradientPoints(size.height / size.width, scale)
+          drawRect(
+            Brush.linearGradient(
+              colorStops = stops,
+              start = Offset(gp.startX * size.width, gp.startY * size.height),
+              end = Offset(gp.endX * size.width, gp.endY * size.height)
+            )
+          )
+        },
+      contentAlignment = Alignment.Center
+    ) {
+      QryptanaBrandMark(Modifier.fillMaxSize(0.52f))
+    }
+  }
+}
+
 @Composable
 fun DesktopOnboardingShell(stage: OnboardingStage, content: @Composable () -> Unit) {
     val qryptanaCenteredStage = stage == OnboardingStage.Step2_CreateProfile ||
@@ -224,14 +267,14 @@ fun DesktopOnboardingShell(stage: OnboardingStage, content: @Composable () -> Un
                         )
                     }
                 } else {
-                    OnboardingImage(MR.images.your_profile, MR.images.your_profile_light, MR.images.ic_person, Modifier.fillMaxWidth())
+                    QryptanaOnboardingMarkIllustration(Modifier.fillMaxWidth())
                 }
                 OnboardingStage.Step3_ChooseServerOperators,
                 OnboardingStage.Step3_CreateSimpleXAddress,
                 OnboardingStage.Step4_SetNotificationsMode ->
-                OnboardingImage(MR.images.your_network, MR.images.your_network_light, MR.images.ic_dns, Modifier.fillMaxWidth())
+                QryptanaOnboardingMarkIllustration(Modifier.fillMaxWidth())
                 OnboardingStage.Step4_NetworkCommitments ->
-                OnboardingImage(MR.images.network_commitments, MR.images.network_commitments_light, MR.images.ic_shield, Modifier.fillMaxWidth(), aspectRatio = 1.5f)
+                QryptanaOnboardingMarkIllustration(Modifier.fillMaxWidth(), aspectRatio = 1.5f)
                 else -> {}
             }
         }

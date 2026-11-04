@@ -1501,4 +1501,5 @@
     <string name="this_device">Tämä laite</string>
 
 
+    <string name="onboarding_network_operators_simplex_flux_agreement">Qryptana uses servers operated by GoAnon.</string>
 </resources>

@@ -1412,6 +1412,8 @@
   <string name="onboarding_choose_server_operators">Server operators</string>
   <string name="onboarding_network_operators">Network operators</string>
   <string name="onboarding_network_operators_simplex_flux_agreement">Qryptana uses servers operated by GoAnon.</string>
+  <string name="qryptana_servers_setup_failed_title">Qryptana servers not configured</string>
+  <string name="qryptana_servers_setup_failed_desc">Qryptana could not install its default SMP and XFTP servers. Check your connection and try again. Onboarding will not continue until they are configured.</string>
   <string name="onboarding_network_operators_app_will_use_different_operators">The app protects your privacy by using different operators in each conversation.</string>
   <string name="onboarding_network_operators_cant_see_who_talks_to_whom">When more than one operator is enabled, none of them has metadata to learn who communicates with whom.</string>
   <string name="onboarding_network_operators_app_will_use_for_routing">Your app can use different operators for different parts of a connection.</string>
