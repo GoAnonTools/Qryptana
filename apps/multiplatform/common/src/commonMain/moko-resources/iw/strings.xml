@@ -581,7 +581,7 @@
     <string name="auth_log_in_using_credential">התחבר באמצעות האישור שלך</string>
     <string name="learn_more">למדו עוד</string>
     <string name="markdown_help">עזרה במרקדאון</string>
-    <string name="email_invite_subject">בואו נדבר ב־Simplex Chat</string>
+    <string name="email_invite_subject">בואו נדבר ב־Qryptana Chat</string>
     <string name="keychain_error">שגיאת Keychain</string>
     <string name="join_group_incognito_button">הצטרף עם זהות נסתרת</string>
     <string name="leave_group_question">לעזוב קבוצה\?</string>
@@ -699,7 +699,7 @@
     <string name="toast_permission_denied">ההרשאה נדחתה!</string>
     <string name="image_descr_profile_image">תמונת פרופיל</string>
     <string name="profile_update_will_be_sent_to_contacts">עדכון הפרופיל יישלח לאנשי הקשר שלך.</string>
-    <string name="open_simplex_chat_to_accept_call">פיתחו את Simplex Chat כדי לענות לשיחה.</string>
+    <string name="open_simplex_chat_to_accept_call">פיתחו את Qryptana Chat כדי לענות לשיחה.</string>
     <string name="v4_5_message_draft_descr">שמירת טיוטת ההודעה האחרונה, עם קבצים מצורפים.</string>
     <string name="prohibit_message_reactions_group">לאסור תגובות אמוג׳י להודעות.</string>
     <string name="v4_5_private_filenames">שמות קבצים פרטיים</string>
@@ -1997,7 +1997,7 @@
     <string name="v6_0_upgrade_app_descr">הורד גרסאות חדשות מ GitHub.</string>
     <string name="report_reason_profile">פרופיל לא הולם</string>
     <string name="v6_2_network_decentralization_enable_flux_reason">לפרטיות מטא דאטא טובה יותר.</string>
-    <string name="v6_2_network_decentralization_enable_flux">אפשר Flux בהגדרות רשת ושרתים בשביל לשפר את הפרטיות של המטא דאטא</string>
+    <string name="v6_2_network_decentralization_enable_flux">אפשר Qryptana בהגדרות רשת ושרתים בשביל לשפר את הפרטיות של המטא דאטא</string>
     <string name="compose_forward_messages_n">מעביר %1$s הודעות</string>
     <string name="error_reading_passphrase">שגיאה בקריאת משפט-סיסמה של מסד נתונים</string>
     <string name="group_members_can_send_reports">משתמשים יכולים לדווח על הודעות לאחראי תוכן</string>

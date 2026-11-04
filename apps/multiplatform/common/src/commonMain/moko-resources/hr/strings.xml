@@ -920,7 +920,7 @@
     <string name="chat_preferences_yes">da</string>
     <string name="migrate_from_device_migration_complete">Migracija završena</string>
     <string name="network_smp_proxy_fallback_allow">Da</string>
-    <string name="v6_2_network_decentralization_enable_flux">Omogućiti flux</string>
+    <string name="v6_2_network_decentralization_enable_flux">Omogućiti Qryptana</string>
     <string name="error_with_info">Greška: %s</string>
     <string name="error_stopping_chat">Greška u zaustavljanju razgovora</string>
     <string name="contribute">Doprinesite</string>

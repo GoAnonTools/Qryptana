@@ -1210,25 +1210,21 @@ testOperators =
       alice ##> "/_conditions"
       alice <##. "Current conditions: 2."
       alice ##> "/_operators"
-      alice <##. "1 (simplex). SimpleX Chat (SimpleX Chat Ltd), domains: simplex.im, servers: enabled, conditions: required"
-      alice <## "2 (flux). Flux (InFlux Technologies Limited), domains: simplexonflux.com, servers: SMP enabled proxy, XFTP enabled, conditions: required"
-      alice <##. "The new conditions will be accepted for SimpleX Chat Ltd, InFlux Technologies Limited at "
+      alice <##. "1 (simplex). Qryptana (GoAnon), domains: qryptana.foundation, servers: enabled, conditions: required"
+      alice <##. "The new conditions will be accepted for GoAnon at "
       -- set conditions notified
       alice ##> "/_conditions_notified 2"
       alice <## "ok"
       alice ##> "/_operators"
-      alice <##. "1 (simplex). SimpleX Chat (SimpleX Chat Ltd), domains: simplex.im, servers: enabled, conditions: required"
-      alice <## "2 (flux). Flux (InFlux Technologies Limited), domains: simplexonflux.com, servers: SMP enabled proxy, XFTP enabled, conditions: required"
+      alice <##. "1 (simplex). Qryptana (GoAnon), domains: qryptana.foundation, servers: enabled, conditions: required"
       alice ##> "/_conditions"
       alice <##. "Current conditions: 2 (notified)."
       -- accept conditions
-      alice ##> "/_accept_conditions 2 1,2"
-      alice <##. "1 (simplex). SimpleX Chat (SimpleX Chat Ltd), domains: simplex.im, servers: enabled, conditions: accepted ("
-      alice <##. "2 (flux). Flux (InFlux Technologies Limited), domains: simplexonflux.com, servers: SMP enabled proxy, XFTP enabled, conditions: accepted ("
+      alice ##> "/_accept_conditions 2 1"
+      alice <##. "1 (simplex). Qryptana (GoAnon), domains: qryptana.foundation, servers: enabled, conditions: accepted ("
       -- update operators
-      alice ##> "/operators 2:on:smp=proxy:xftp=off"
-      alice <##. "1 (simplex). SimpleX Chat (SimpleX Chat Ltd), domains: simplex.im, servers: enabled, conditions: accepted ("
-      alice <##. "2 (flux). Flux (InFlux Technologies Limited), domains: simplexonflux.com, servers: SMP enabled proxy, XFTP disabled (servers known), conditions: accepted ("
+      alice ##> "/operators 1:off"
+      alice <##. "1 (simplex). Qryptana (GoAnon), domains: qryptana.foundation, servers: disabled, conditions: accepted ("
   where
     opts' = testOpts {coreOptions = testCoreOpts {smpServers = [], xftpServers = []}}
 

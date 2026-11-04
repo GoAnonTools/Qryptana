@@ -56,7 +56,7 @@
     <string name="acknowledged">Anerkendt</string>
     <string name="acknowledgement_errors">Bekræftelsesfejl</string>
     <string name="servers_info_subscriptions_connections_subscribed">Aktive forbindelser</string>
-    <string name="add_address_to_your_profile">Tilføj en adresse til din profil, så dine SimpleX-kontakter kan dele den med andre. Dine kontakter vil modtage din opdaterede profil.</string>
+    <string name="add_address_to_your_profile">Tilføj en adresse til din profil, så dine Qryptana-kontakter kan dele den med andre. Dine kontakter vil modtage din opdaterede profil.</string>
     <string name="add_contact_tab">Tilføj kontakt</string>
     <string name="operator_added_xftp_servers">Tilføjede medie- og filservere</string>
     <string name="operator_added_message_servers">Tilføjede beskedservere</string>
@@ -127,7 +127,7 @@
     <string name="enable_sending_member_reports">Tillad at rapportere meddelelser til moderatorer.</string>
     <string name="allow_to_send_disappearing">Tillad at sende forsvindende beskeder.</string>
     <string name="allow_to_send_files">Tillad at sende filer og medier.</string>
-    <string name="allow_to_send_simplex_links">Tillad at sende simplex -links.</string>
+    <string name="allow_to_send_simplex_links">Tillad at sende Qryptana -links.</string>
     <string name="allow_to_send_voice">Tillad at sende stemmemeddelelser.</string>
     <string name="allow_voice_messages_question">Tillad stemmemeddelelser?</string>
     <string name="allow_voice_messages_only_if">Tillad kun stemmemeddelelser, hvis din kontakt tillader dem.</string>
@@ -797,7 +797,7 @@
     <string name="business_address">Forretningsadresse</string>
     <string name="v6_2_business_chats">Forretningschats</string>
     <string name="v4_5_transport_isolation_descr">Med chatprofil (standard) eller ved forbindelse (beta).</string>
-    <string name="onboarding_conditions_by_using_you_agree">Ved at bruge simplex chat accepterer du:\n- Send kun lovligt indhold i offentlige grupper.\n- Respekter andre brugere - ingen spam.</string>
+    <string name="onboarding_conditions_by_using_you_agree">Ved at bruge Qryptana chat accepterer du:\n- Send kun lovligt indhold i offentlige grupper.\n- Respekter andre brugere - ingen spam.</string>
     <string name="call_already_ended">Opkald allerede afsluttet!</string>
     <string name="icon_descr_call_ended">Opkald sluttede</string>
     <string name="callstatus_ended">Opkald sluttede %1$s</string>

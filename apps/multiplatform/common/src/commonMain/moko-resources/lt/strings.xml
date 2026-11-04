@@ -720,7 +720,7 @@
     <string name="rcv_group_event_open_chat">Atverti</string>
     <string name="open_chat">Atverti pokalbį</string>
     <string name="network_status">Tinklo būsena</string>
-    <string name="email_invite_subject">Bendraukime per Simplex Chat</string>
+    <string name="email_invite_subject">Bendraukime per Qryptana Chat</string>
     <string name="message_too_large">Žinutė per didelė</string>
     <string name="new_in_version">Štai kas naujo %s versijoje</string>
     <string name="only_your_contact_can_send_voice">Tik jūsų kontaktas gali siųsti balso žinutes.</string>

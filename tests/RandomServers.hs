@@ -23,27 +23,27 @@ import Simplex.Messaging.Protocol (ProtoServerWithAuth (..), SProtocolType (..),
 import Test.Hspec
 
 randomServersTests :: Spec
-randomServersTests = describe "choosig random servers" $ do
-  it "should choose 4 + 3 random SMP servers and keep the rest disabled" testRandomSMPServers
-  it "should choose 3 + 3 random XFTP servers and keep the rest disabled" testRandomXFTPServers
+randomServersTests = describe "choosing preset servers" $ do
+  it "should use the single Qryptana SMP preset server" testPresetSMPServers
+  it "should use the single Qryptana XFTP preset server" testPresetXFTPServers
 
 deriving instance Eq ServerRoles
 
 deriving instance Eq (UserServer' s p)
 
-testRandomSMPServers :: IO ()
-testRandomSMPServers = do
+testPresetSMPServers :: IO ()
+testPresetSMPServers = do
   [srvs1, srvs2, srvs3] <-
     replicateM 3 $
-      checkEnabled SPSMP 7 False =<< chooseRandomServers (presetServers defaultChatConfig)
-  (srvs1 == srvs2 && srvs2 == srvs3) `shouldBe` False -- && to avoid rare failures
+      checkEnabled SPSMP 1 True =<< chooseRandomServers (presetServers defaultChatConfig)
+  (srvs1 == srvs2 && srvs2 == srvs3) `shouldBe` True
 
-testRandomXFTPServers :: IO ()
-testRandomXFTPServers = do
+testPresetXFTPServers :: IO ()
+testPresetXFTPServers = do
   [srvs1, srvs2, srvs3] <-
     replicateM 3 $
-      checkEnabled SPXFTP 6 False =<< chooseRandomServers (presetServers defaultChatConfig)
-  (srvs1 == srvs2 && srvs2 == srvs3) `shouldBe` False -- && to avoid rare failures
+      checkEnabled SPXFTP 1 True =<< chooseRandomServers (presetServers defaultChatConfig)
+  (srvs1 == srvs2 && srvs2 == srvs3) `shouldBe` True
 
 checkEnabled :: UserProtocol p => SProtocolType p -> Int -> Bool -> NonEmpty (PresetOperator) -> IO [NewUserServer p]
 checkEnabled p n allUsed presetOps' = do

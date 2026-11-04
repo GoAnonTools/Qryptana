@@ -202,16 +202,16 @@
   <string name="channel_name_requires_newer_app_version">Connecting via channel name requires a newer app version.</string>
   <string name="contact_name_requires_newer_app_version">Connecting via contact name requires a newer app version.</string>
   <string name="please_upgrade_the_app">Please upgrade the app.</string>
-  <string name="simplex_name_error">SimpleX name error</string>
-  <string name="simplex_name_no_servers_desc">None of your servers are set to resolve SimpleX names. Configure servers, or use a connection link.</string>
+  <string name="simplex_name_error">Qryptana name error</string>
+  <string name="simplex_name_no_servers_desc">None of your servers are set to resolve Qryptana names. Configure servers, or use a connection link.</string>
   <string name="simplex_name_server_no_resolver_desc">Server %1$s does not support name resolution. Configure servers, or use a connection link.</string>
   <string name="simplex_name_not_found">Name not found</string>
-  <string name="simplex_name_not_found_desc">This SimpleX name is not registered. Please check the name.</string>
+  <string name="simplex_name_not_found_desc">This Qryptana name is not registered. Please check the name.</string>
   <string name="simplex_name_resolver_error_desc">Resolver error: %1$s</string>
   <string name="simplex_name_no_valid_link">No valid link</string>
-  <string name="simplex_name_no_valid_link_desc">The SimpleX name %1$s is registered, but it has no valid link.</string>
+  <string name="simplex_name_no_valid_link_desc">The Qryptana name %1$s is registered, but it has no valid link.</string>
   <string name="simplex_name_unconfirmed">Unconfirmed name</string>
-  <string name="simplex_name_unconfirmed_desc">The SimpleX name %1$s is registered, but not added to profile. Please add it to your address or channel profile, if you are the owner.</string>
+  <string name="simplex_name_unconfirmed_desc">The Qryptana name %1$s is registered, but not added to profile. Please add it to your address or channel profile, if you are the owner.</string>
   <string name="channel_temporarily_unavailable">Channel temporarily unavailable</string>
   <string name="channel_no_active_relays_try_later">Channel has no active relays. Please try to join later.</string>
   <string name="app_update_required">App update required</string>
@@ -393,13 +393,13 @@
   <string name="reply_verb">Reply</string>
   <string name="share_verb">Share</string>
   <string name="copy_verb">Copy</string>
-  <string name="save_simplex_name_question">Save SimpleX name?</string>
-  <string name="get_simplex_name_beta">Get SimpleX name (BETA)</string>
-  <string name="channel_simplex_name">Channel SimpleX name</string>
+  <string name="save_simplex_name_question">Save Qryptana name?</string>
+  <string name="get_simplex_name_beta">Get Qryptana name (BETA)</string>
+  <string name="channel_simplex_name">Channel Qryptana name</string>
   <string name="register_test_name">How to register a test name</string>
-  <string name="simplex_name_sales">SimpleX name sale starts in</string>
-  <string name="until_register_simplex_domain">until you can register a SimpleX domain</string>
-  <string name="update_app_register_simplex_domain">Update the app to register a SimpleX domain</string>
+  <string name="simplex_name_sales">Qryptana name sale starts in</string>
+  <string name="until_register_simplex_domain">until you can register a Qryptana domain</string>
+  <string name="update_app_register_simplex_domain">Update the app to register a Qryptana domain</string>
   <string name="countdown_hrs_min_sec">%1$02d hrs %2$02d min %3$02d sec</string>
   <string name="simplex_name_sales_footer">Crowdfunding investors can reserve names before the sale starts:</string>
   <string name="remove_name">Remove name</string>
@@ -968,15 +968,15 @@
   <string name="one_time_link_short">1-time link</string>
   <string name="simplex_address">Qryptana address</string>
   <string name="verify_simplex_name_action">Verify name</string>
-  <string name="verify_simplex_names">Verify SimpleX names</string>
-  <string name="simplex_name_not_verified">SimpleX name not verified</string>
-  <string name="simplex_name">SimpleX name</string>
-  <string name="your_simplex_name">Your SimpleX name</string>
-  <string name="set_simplex_name">Set SimpleX name</string>
+  <string name="verify_simplex_names">Verify Qryptana names</string>
+  <string name="simplex_name_not_verified">Qryptana name not verified</string>
+  <string name="simplex_name">Qryptana name</string>
+  <string name="your_simplex_name">Your Qryptana name</string>
+  <string name="set_simplex_name">Set Qryptana name</string>
   <string name="error_saving_simplex_name">Error saving name</string>
-  <string name="simplex_name_owner_no_channel_link">The SimpleX name %1$s is registered without channel link. Add channel link to the name via the registration page.</string>
-  <string name="simplex_name_owner_no_address">The SimpleX name %1$s is registered without SimpleX address. Add your SimpleX address to the name via the registration page.</string>
-  <string name="set_user_simplex_name_footer">Let people connect to you via name registered with your SimpleX address.</string>
+  <string name="simplex_name_owner_no_channel_link">The Qryptana name %1$s is registered without channel link. Add channel link to the name via the registration page.</string>
+  <string name="simplex_name_owner_no_address">The Qryptana name %1$s is registered without Qryptana address. Add your Qryptana address to the name via the registration page.</string>
+  <string name="set_user_simplex_name_footer">Let people connect to you via name registered with your Qryptana address.</string>
   <string name="set_channel_simplex_name_footer">Let people join via name registered with this channel link.</string>
   <string name="or_show_this_qr_code">Or show this code</string>
   <string name="full_link_button_text">Full link</string>
@@ -1035,7 +1035,7 @@
   <string name="markdown_in_messages">Markdown in messages</string>
   <string name="chat_with_the_founder">Send questions and ideas</string>
   <string name="send_us_an_email">Send us email</string>
-  <string name="follow_simplex_network_news">Follow SimpleX Network News</string>
+  <string name="follow_simplex_network_news">Follow Qryptana Network News</string>
   <string name="chat_lock">Qryptana Lock</string>
   <string name="chat_console">Chat console</string>
   <string name="message_servers">Message servers</string>
@@ -1411,7 +1411,7 @@
   <string name="onboarding_conditions_accept">Accept</string>
   <string name="onboarding_choose_server_operators">Server operators</string>
   <string name="onboarding_network_operators">Network operators</string>
-  <string name="onboarding_network_operators_simplex_flux_agreement">You can choose between servers operated by SimpleX Chat Ltd and servers operated by Flux.</string>
+  <string name="onboarding_network_operators_simplex_flux_agreement">Qryptana uses servers operated by GoAnon.</string>
   <string name="onboarding_network_operators_app_will_use_different_operators">The app protects your privacy by using different operators in each conversation.</string>
   <string name="onboarding_network_operators_cant_see_who_talks_to_whom">When more than one operator is enabled, none of them has metadata to learn who communicates with whom.</string>
   <string name="onboarding_network_operators_app_will_use_for_routing">Your app can use different operators for different parts of a connection.</string>
@@ -2754,7 +2754,7 @@
   <string name="v6_1_delete_many_messages_descr">Delete or moderate up to 200 messages.</string>
   <string name="v6_2_network_decentralization">Network decentralization</string>
   <string name="v6_2_network_decentralization_descr">The second preset operator in the app!</string>
-  <string name="v6_2_network_decentralization_enable_flux">Enable Flux in Network &amp; servers settings for better metadata privacy.</string>
+  <string name="v6_2_network_decentralization_enable_flux">Enable Qryptana in Network &amp; servers settings for better metadata privacy.</string>
   <string name="v6_2_network_decentralization_enable_flux_reason">for better metadata privacy.</string>
   <string name="v6_2_improved_chat_navigation">Improved chat navigation</string>
   <string name="v6_2_improved_chat_navigation_descr">- Open chat on the first unread message.\n- Jump to quoted messages.</string>
@@ -2802,13 +2802,13 @@
   <string name="v6_5_safe_web_links_descr">- opt-in to send link previews.\n- use SOCKS proxy if enabled.\n- prevent hyperlink phishing.\n- remove link tracking.</string>
   <string name="v6_5_non_profit_governance">Non-profit governance</string>
   <string name="v6_5_non_profit_governance_descr">To make Qryptana Network last.</string>
-  <string name="v7_0_invest" translatable="false">You can now invest in SimpleX Chat! 🚀</string>
+  <string name="v7_0_invest" translatable="false">You can now invest in Qryptana! 🚀</string>
   <string name="v7_0_invest_descr" translatable="false">Crowdfunding on Wefunder.</string>
   <string name="v7_0_crowdfunding" translatable="false">Crowdfunding on Wefunder</string>
   <string name="v7_0_invest_learn_more" translatable="false">Learn more on Wefunder</string>
-  <string name="invest_banner_title" translatable="false">Invest in SimpleX Chat!</string>
+  <string name="invest_banner_title" translatable="false">Invest in Qryptana!</string>
   <string name="invest_banner_subtitle" translatable="false">Crowdfunding on Wefunder</string>
-  <string name="v7_0_simplex_names">SimpleX public names (BETA)</string>
+  <string name="v7_0_simplex_names">Qryptana public names (BETA)</string>
   <string name="v7_0_simplex_names_descr">Public names for your channel or business.</string>
   <string name="v7_0_channels">Better channels 📢</string>
   <string name="v7_0_channels_previews">Create web preview.</string>
@@ -3262,10 +3262,10 @@
   <string name="tray_tooltip_unread">Qryptana — %d unread</string>
   <string name="appearance_minimize_to_tray">Close to tray</string>
   <string name="appearance_minimize_to_tray_desc">Keep Qryptana running in the background to receive messages.</string>
-  <string name="badge_supports_simplex">%s supports SimpleX Chat.</string>
-  <string name="badge_supported_simplex">%1$s supported SimpleX Chat. The badge expired on %2$s.</string>
-  <string name="badge_support_from_v7">You can support SimpleX starting from v7 of the app.</string>
-  <string name="badge_invested">%s invested in SimpleX Chat crowdfunding.</string>
+  <string name="badge_supports_simplex">%s supports Qryptana.</string>
+  <string name="badge_supported_simplex">%1$s supported Qryptana. The badge expired on %2$s.</string>
+  <string name="badge_support_from_v7">You can support Qryptana starting from v7 of the app.</string>
+  <string name="badge_invested">%s invested in Qryptana crowdfunding.</string>
   <string name="badge_unverified_title">Unverified badge</string>
   <string name="badge_unverified_desc">This badge could not be verified and may not be genuine.</string>
   <string name="badge_unknown_key_title">Badge cannot be verified</string>

@@ -2192,7 +2192,7 @@
     <string name="create_list">Criar lista</string>
     <string name="edit_chat_list_menu_action">Editar</string>
     <string name="settings_message_shape_corner">Canto</string>
-    <string name="v6_2_network_decentralization_enable_flux">Ativar o Flux nas Configurações de rede e servidores para melhor privacidade de metadados.</string>
+    <string name="v6_2_network_decentralization_enable_flux">Ativar o Qryptana nas Configurações de rede e servidores para melhor privacidade de metadados.</string>
     <string name="report_archive_alert_desc_all">Todas denúncias serão arquivadas para você.</string>
     <string name="report_archive_alert_title_all">Arquivar todas denúncias?</string>
     <string name="report_archive_alert_title_nth">Arquivar %d denúncias?</string>
@@ -2331,7 +2331,7 @@
     <string name="share_simplex_address_on_social_media">Compartilhe o endereço do Qryptana nas redes sociais.</string>
     <string name="onboarding_network_operators_review_later">Revisar depois</string>
     <string name="network_session_mode_server">Servidor</string>
-    <string name="onboarding_network_operators_simplex_flux_agreement">You can choose between SimpleX-operated servers and servers operated by Flux.</string>
+    <string name="onboarding_network_operators_simplex_flux_agreement">Qryptana uses servers operated by GoAnon.</string>
     <string name="display_name_requested_to_connect">conexão solicitada</string>
     <string name="member_role_will_be_changed_with_notification_chat">The role will be changed to %s. Everyone in the chat will be notified.</string>
     <string name="appearance_in_app_bars_alpha">Transparência</string>

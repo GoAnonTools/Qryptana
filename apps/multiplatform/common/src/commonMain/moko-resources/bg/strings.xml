@@ -953,7 +953,7 @@
     <string name="periodic_notifications_disabled">Периодичните известия са деактивирани!</string>
     <string name="simplex_service_notification_text">Получаване на съобщения…</string>
     <string name="notifications_mode_off">Работи, когато приложението е отворено</string>
-    <string name="simplex_service_notification_title">Simplex Chat услуга</string>
+    <string name="simplex_service_notification_title">Qryptana Chat услуга</string>
     <string name="to_preserve_privacy_simplex_has_background_service_instead_of_push_notifications_it_uses_a_few_pc_battery"><![CDATA[За подобряване на поверителността <b>Qryptana работи във фонов режим</b> вместо да използва push известия.]]></string>
     <string name="enter_passphrase_notification_desc">За да получавате известия, моля, въведете паролата на базата данни</string>
     <string name="auth_log_in_using_credential">Влезте с вашите идентификационни данни</string>
@@ -2154,7 +2154,7 @@
     <string name="direct_messages_are_prohibited_in_chat">Личните съобщения между членовете са забранени в този чат.</string>
     <string name="v6_1_customizable_message_descr">Персонализирана форма на съобщенията.</string>
     <string name="v6_1_message_dates_descr">По-добри дати на съобщението.</string>
-    <string name="v6_2_network_decentralization_enable_flux">Активиране на Flux в настройките Мрежа и сървъри за по -добра поверителност на метаданните.</string>
+    <string name="v6_2_network_decentralization_enable_flux">Активиране на Qryptana в настройките Мрежа и сървъри за по -добра поверителност на метаданните.</string>
     <string name="v6_2_network_decentralization_enable_flux_reason">за по-добра поверителност на метаданните.</string>
     <string name="v6_2_improved_chat_navigation">Подобрена навигация в чата</string>
     <string name="error_saving_database">Грешка при запазване на базата данни</string>
@@ -2253,7 +2253,7 @@
     <string name="business_address">Бизнес адрес</string>
     <string name="leave_chat_question">Напусни чата?</string>
     <string name="appearance_bars_blur_radius">Размазване</string>
-    <string name="onboarding_network_operators_simplex_flux_agreement">You can choose between SimpleX-operated servers and servers operated by Flux.</string>
+    <string name="onboarding_network_operators_simplex_flux_agreement">Qryptana uses servers operated by GoAnon.</string>
     <string name="operator_conditions_will_be_applied"><![CDATA[Тези условия ще се прилагат и за: <b>%s</b>.]]></string>
     <string name="operators_conditions_will_also_apply"><![CDATA[Тези условия ще се прилагат и за: <b>%s</b>.]]></string>
     <string name="operator_open_conditions">Отвори условията</string>

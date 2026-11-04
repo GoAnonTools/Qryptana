@@ -50,7 +50,7 @@
     <string name="turn_off_battery_optimization_button">Cho phép</string>
     <string name="color_primary">Màu sơ cấp</string>
     <string name="network_enable_socks_info">Truy cập các máy chủ thông qua SOCKS proxy tại cổng %d? Proxy phải được khởi động trước khi bật cài đặt này.</string>
-    <string name="add_address_to_your_profile">Thêm địa chỉ vào hồ sơ của bạn để các liên hệ SimpleX có thể chia sẻ địa chỉ đó với người khác. Thông tin hồ sơ đã cập nhật sẽ được gửi đến các liên hệ SimpleX của bạn.</string>
+    <string name="add_address_to_your_profile">Thêm địa chỉ vào hồ sơ của bạn để các liên hệ Qryptana có thể chia sẻ địa chỉ đó với người khác. Thông tin hồ sơ đã cập nhật sẽ được gửi đến các liên hệ Qryptana của bạn.</string>
     <string name="allow_disappearing_messages_only_if">Cho phép nhắn tin nhắn tự xóa chỉ khi liên hệ của bạn cũng cho phép</string>
     <string name="allow_verb">Cho phép</string>
     <string name="above_then_preposition_continuation">theo như ở trên, thì:</string>
@@ -1391,7 +1391,7 @@
     <string name="onboarding_network_operators_continue">Tiếp tục</string>
     <string name="operator_conditions_failed_to_load">Không thể tải văn bản về các điều kiện hiện tại, bạn có thể xem xét các điều kiện thông qua đường dẫn này:</string>
     <string name="operator_conditions_of_use">Các điều kiện sử dụng</string>
-    <string name="v6_2_network_decentralization_enable_flux">Sử dụng Flux trong cài đặt Mạng &amp; máy chủ để bảo mật siêu dữ liệu tốt hơn.</string>
+    <string name="v6_2_network_decentralization_enable_flux">Sử dụng Qryptana trong cài đặt Mạng &amp; máy chủ để bảo mật siêu dữ liệu tốt hơn.</string>
     <string name="operator_conditions_will_be_accepted_on">Các điều kiện sẽ được chấp nhận vào: %s.</string>
     <string name="error_adding_server">Lỗi thêm máy chủ</string>
     <string name="error_updating_server_title">Lỗi cập nhật máy chủ</string>
@@ -1784,7 +1784,7 @@
     <string name="simplex_link_mode">Các đường dẫn Qryptana</string>
     <string name="simplex_link_invitation">Lời mời Qryptana dùng một lần</string>
     <string name="la_notice_title_simplex_lock">Khóa Qryptana</string>
-    <string name="onboarding_network_operators_simplex_flux_agreement">You can choose between SimpleX-operated servers and servers operated by Flux.</string>
+    <string name="onboarding_network_operators_simplex_flux_agreement">Qryptana uses servers operated by GoAnon.</string>
     <string name="theme_simplex">Qryptana</string>
     <string name="simplex_address">Địa chỉ Qryptana</string>
     <string name="shutdown_alert_question">Tắt?</string>
@@ -2502,7 +2502,7 @@
     <string name="relay_bar_relays_removed">%1$d thiết bị đã bị loại bỏ</string>
     <string name="channel_subscriber_count_singular">%1$d người theo dõi</string>
     <string name="channel_subscriber_count_plural">%1$d người theo dõi</string>
-    <string name="badge_supported_simplex">%1$s đã hỗ trợ SimpleX Chat. Huy hiệu đã hết hạn vào %2$s.</string>
+    <string name="badge_supported_simplex">%1$s đã hỗ trợ Qryptana. Huy hiệu đã hết hạn vào %2$s.</string>
     <string name="v6_4_1_new_interface_languages">4 ngôn ngữ giao diện mới</string>
     <string name="webpage_code_footer">Hãy thêm đoạn mã này vào trang web của bạn. Nó sẽ hiển thị bản xem trước (preview) cho kênh hoặc nhóm của bạn.</string>
     <string name="advanced_settings">Cài đặt nâng cao</string>

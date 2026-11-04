@@ -445,6 +445,8 @@ fun createProfileInNoProfileSetup(displayName: String, image: String? = null, cl
     }
     controller.appPrefs.onboardingStage.set(OnboardingStage.Step3_ChooseServerOperators)
     controller.startChat(user)
+    runCatching { QryptanaServers.installDefaultUserServers() }
+      .onFailure { Log.e("QryptanaServers", "Failed to install default servers: ${it.stackTraceToString()}") }
     controller.switchUIRemoteHost(null)
     close()
   }

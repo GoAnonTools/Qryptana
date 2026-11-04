@@ -15,14 +15,16 @@ import Simplex.Messaging.Agent.Store.Entity
 import Simplex.Messaging.Encoding.String
 import Simplex.Messaging.Protocol (ProtocolType (..), SMPServer)
 
+-- The operator tag is retained as OTSimplex for database compatibility with
+-- upstream installs; the user-facing operator identity is Qryptana.
 operatorSimpleXChat :: NewServerOperator
 operatorSimpleXChat =
   ServerOperator
     { operatorId = DBNewEntity,
       operatorTag = Just OTSimplex,
-      tradeName = "SimpleX Chat",
-      legalName = Just "SimpleX Chat Ltd",
-      serverDomains = ["simplex.im"],
+      tradeName = "Qryptana",
+      legalName = Just "GoAnon",
+      serverDomains = ["qryptana.foundation"],
       conditionsAcceptance = CARequired Nothing,
       enabled = True,
       smpRoles = allRoles,
@@ -63,8 +65,15 @@ simplexChatSMPServers =
 --
 -- !!! Also, if any servers need to be added, shortLinkPresetServers will need to be be split to two,
 -- so that option used for restoring links is updated earlier, for backward/forward compatibility.
+-- Qryptana's self-hosted SMP relay is the only enabled preset server.
+-- Upstream SimpleX servers are kept as disabled presets so that links created
+-- with them can still be restored.
 enabledSimplexChatSMPServers :: NonEmpty SMPServer
 enabledSimplexChatSMPServers =
+  [ "smp://PN_HLQSdhKOp62HM8hoUtOMskUvdeNzqVBniJMunJjo=@smp.qryptana.foundation:5224" ]
+
+disabledSimplexChatSMPServers :: NonEmpty SMPServer
+disabledSimplexChatSMPServers =
   [ "smp://0YuTwO05YJWS8rkjn9eLJDjQhFKvIYd8d4xG8X1blIU=@smp8.simplex.im,beccx4yfxxbvyhqypaavemqurytl6hozr47wfc7uuecacjqdvwpw2xid.onion",
     "smp://SkIkI6EPd2D63F4xFKfHk7I1UGZVNn6k1QWZ5rcyr6w=@smp9.simplex.im,jssqzccmrcws6bhmn77vgmhfjmhwlyr3u7puw4erkyoosywgl67slqqd.onion",
     "smp://6iIcWT_dF2zN_w5xzZEY7HI2Prbh3ldP07YTyDexPjE=@smp10.simplex.im,rb2pbttocvnbrngnwziclp2f4ckjq65kebafws6g4hy22cdaiv5dwjqd.onion",
@@ -75,20 +84,16 @@ enabledSimplexChatSMPServers =
     "smp://hejn2gVIqNU6xjtGM3OwQeuk8ZEbDXVJXAlnSBJBWUA=@smp16.simplex.im,p3ktngodzi6qrf7w64mmde3syuzrv57y55hxabqcq3l5p6oi7yzze6qd.onion",
     "smp://ZKe4uxF4Z_aLJJOEsC-Y6hSkXgQS5-oc442JQGkyP8M=@smp17.simplex.im,ogtwfxyi3h2h5weftjjpjmxclhb5ugufa5rcyrmg7j4xlch7qsr5nuqd.onion",
     "smp://PtsqghzQKU83kYTlQ1VKg996dW4Cw4x_bvpKmiv8uns=@smp18.simplex.im,lyqpnwbs2zqfr45jqkncwpywpbtq7jrhxnib5qddtr6npjyezuwd3nqd.onion",
-    "smp://N_McQS3F9TGoh4ER0QstUf55kGnNSd-wXfNPZ7HukcM=@smp19.simplex.im,i53bbtoqhlc365k6kxzwdp5w3cdt433s7bwh3y32rcbml2vztiyyz5id.onion"
-  ]
-
--- Please note: if any servers are removed from this list, they MUST be added to allPresetServers.
--- Otherwise previously created short links won't work.
---
--- !!! Also, if any servers need to be added, shortLinkPresetServers will need to be be split to two,
--- so that option used for restoring links is updated earlier, for backward/forward compatibility.
-disabledSimplexChatSMPServers :: NonEmpty SMPServer
-disabledSimplexChatSMPServers =
-  [ "smp://u2dS9sG8nMNURyZwqASV4yROM28Er0luVTx5X1CsMrU=@smp4.simplex.im,o5vmywmrnaxalvz6wi3zicyftgio6psuvyniis6gco6bp6ekl4cqj4id.onion",
+    "smp://N_McQS3F9TGoh4ER0QstUf55kGnNSd-wXfNPZ7HukcM=@smp19.simplex.im,i53bbtoqhlc365k6kxzwdp5w3cdt433s7bwh3y32rcbml2vztiyyz5id.onion",
+    "smp://u2dS9sG8nMNURyZwqASV4yROM28Er0luVTx5X1CsMrU=@smp4.simplex.im,o5vmywmrnaxalvz6wi3zicyftgio6psuvyniis6gco6bp6ekl4cqj4id.onion",
     "smp://hpq7_4gGJiilmz5Rf-CswuU5kZGkm_zOIooSw6yALRg=@smp5.simplex.im,jjbyvoemxysm7qxap7m5d5m35jzv5qq6gnlv7s4rsn7tdwwmuqciwpid.onion",
     "smp://PQUV2eL0t7OStZOoAsPEV2QYWt4-xilbakvGUGOItUo=@smp6.simplex.im,bylepyau3ty4czmn77q4fglvperknl4bi2eb2fdy2bh4jxtf32kf73yd.onion"
   ]
+
+-- Qryptana's self-hosted XFTP relay is the only enabled preset XFTP server.
+qryptanaXFTPServers :: [NewUserServer 'PXFTP]
+qryptanaXFTPServers =
+  [presetServer True "xftp://7pHBpUNapABy84mZpDEds4wSmSsCAX7lqMV_XiICBdc=@xftp.qryptana.foundation:444"]
 
 simplexChatRelays :: [NewUserChatRelay]
 simplexChatRelays =

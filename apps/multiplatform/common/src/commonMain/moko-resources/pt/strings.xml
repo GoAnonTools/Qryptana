@@ -390,7 +390,7 @@
     <string name="simplex_link_mode_description">Descrição</string>
     <string name="simplex_link_mode_full">Ligação completa</string>
     <string name="description_via_contact_address_link_incognito">anónimo via ligação de endereço de contato</string>
-    <string name="simplex_link_mode_browser_warning">Abrir a ligação no browser poderá reduzir a privacidade e a segurança da ligação. As ligações Simplex não confiáveis serão vermelhas.</string>
+    <string name="simplex_link_mode_browser_warning">Abrir a ligação no browser poderá reduzir a privacidade e a segurança da ligação. As ligações Qryptana não confiáveis serão vermelhas.</string>
     <string name="auth_confirm_credential">Confirmar credenciais</string>
     <string name="delete_contact_all_messages_deleted_cannot_undo_warning">O contacto e todas as mensagens serão eliminadas - esta ação é irreversível!</string>
     <string name="image_descr_link_preview">ligação de visualização de imagem</string>

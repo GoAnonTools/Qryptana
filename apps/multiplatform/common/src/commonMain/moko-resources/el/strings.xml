@@ -865,7 +865,7 @@
     <string name="feature_enabled_for_contact">ενεργοποιημένο για την επαφή</string>
     <string name="feature_enabled_for_you">ενεργοποιημένο για εσένα</string>
     <string name="v6_4_1_keep_chats_clean_descr">Ενεργοποίηση μηνυμάτων που εξαφανίζονται από προεπιλογή.</string>
-    <string name="v6_2_network_decentralization_enable_flux">Ενεργοποίησε το Flux στις ρυθμίσεις Δικτύου &amp; διακομιστών για καλύτερη προστασία μεταδεδομένων.</string>
+    <string name="v6_2_network_decentralization_enable_flux">Ενεργοποίησε το Qryptana στις ρυθμίσεις Δικτύου &amp; διακομιστών για καλύτερη προστασία μεταδεδομένων.</string>
     <string name="receipts_contacts_enable_for_all">Ενεργοποίηση για όλα</string>
     <string name="receipts_groups_enable_for_all">Ενεργοποίηση για όλες τις ομάδες</string>
     <string name="v5_6_quantum_resistant_encryption_descr">Ενεργοποίηση στις άμεσες συνομιλίες (ΔΟΚΙΜΑΣΤΙΚΟ)!</string>
@@ -877,7 +877,7 @@
     <string name="receipts_groups_title_enable">Ενεργοποίηση αναφορών παράδοσης για τις ομάδες;</string>
     <string name="enable_self_destruct">Ενεργοποίηση αυτοκαταστροφής</string>
     <string name="enabled_self_destruct_passcode">Ενεργοποίηση κωδικού αυτοκαταστροφής</string>
-    <string name="auth_enable_simplex_lock">Ενεργοποίηση SImpleX Lock</string>
+    <string name="auth_enable_simplex_lock">Ενεργοποίηση Qryptana Lock</string>
     <string name="network_option_enable_tcp_keep_alive">Ενεργοποίηση TCP keep-alive</string>
     <string name="encrypt_database">Κρυπτογράφηση</string>
     <string name="encrypt_database_question">Κρυπτογράφηση βάσης δεδομένων;</string>
@@ -2219,14 +2219,14 @@
     <string name="show_slow_api_calls">Εμφάνιση αργών κλήσεων API</string>
     <string name="settings_shutdown">Απενεργοποίηση</string>
     <string name="shutdown_alert_question">Απενεργοποίηση;</string>
-    <string name="theme_simplex">SImpleX</string>
+    <string name="theme_simplex">Qryptana</string>
     <string name="simplex_address">Qryptana διεύθυνση</string>
     <string name="icon_descr_address">Διεύθυνση Qryptana</string>
     <string name="simplex_address_and_1_time_links_are_safe_to_share">Η διεύθυνση Qryptana και οι σύνδεσμοι 1-χρήσης είναι ασφαλές να διαμοιράζονται μέσω οποιασδήποτε εφαρμογής ανταλλαγής μηνυμάτων.</string>
     <string name="simplex_address_or_1_time_link">Διεύθυνση Qryptana ή σύνδεσμος 1-χρήσης;</string>
     <string name="system_restricted_background_desc">Το Qryptana δεν μπορεί να λειτουργήσει στο παρασκήνιο. Θα λαμβάνεις τις ειδοποιήσεις μόνο όταν η εφαρμογή είναι σε λειτουργία.</string>
     <string name="simplex_link_channel">Σύνδεσμος καναλιού Qryptana</string>
-    <string name="onboarding_network_operators_simplex_flux_agreement">You can choose between SimpleX-operated servers and servers operated by Flux.</string>
+    <string name="onboarding_network_operators_simplex_flux_agreement">Qryptana uses servers operated by GoAnon.</string>
     <string name="ntf_channel_calls">Κλήσεις Qryptana</string>
     <string name="ntf_channel_messages">Μηνύματα Qryptana</string>
     <string name="v4_2_security_assessment_desc">Η ασφάλεια του Qryptana ελέγχθηκε από την Trail of Bits.</string>

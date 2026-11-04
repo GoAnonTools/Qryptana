@@ -518,7 +518,9 @@ private fun AcceptConditionsButton(
   )
 }
 
-private fun completeOnboarding() {
+private suspend fun completeOnboarding() {
+  runCatching { QryptanaServers.finalizeDefaults(chatModel.remoteHostId()) }
+    .getOrNull()?.let { chatModel.conditions.value = it }
   appPrefs.onboardingStage.set(OnboardingStage.OnboardingComplete)
 }
 

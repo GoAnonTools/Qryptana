@@ -810,7 +810,7 @@
     <string name="mark_code_verified">Merkitse vahvistetuksi</string>
     <string name="simplex_address">Qryptana-osoite</string>
     <string name="chat_with_the_founder">Lähetä kysymyksiä ja ideoita</string>
-    <string name="chat_lock">Simplex Lock</string>
+    <string name="chat_lock">Qryptana Lock</string>
     <string name="is_not_verified">%s ei ole vahvistettu</string>
     <string name="smp_servers_test_server">Testipalvelin</string>
     <string name="smp_servers_test_servers">Testipalvelimet</string>

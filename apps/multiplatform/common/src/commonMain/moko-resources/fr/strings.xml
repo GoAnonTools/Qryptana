@@ -2216,7 +2216,7 @@
     <string name="xftp_servers_per_user">Les serveurs pour les nouveaux fichiers de votre profil de discussion actuel</string>
     <string name="operator_server_alert_title">Serveur de l\'opérateur</string>
     <string name="error_server_protocol_changed">Le protocole du serveur a été modifié.</string>
-    <string name="v6_2_network_decentralization_enable_flux">Activer Flux</string>
+    <string name="v6_2_network_decentralization_enable_flux">Activer Qryptana</string>
     <string name="message_deleted_or_not_received_error_desc">Ce message a été supprimé ou n\'a pas encore été reçu.</string>
     <string name="address_creation_instruction">Appuyez sur Créer une adresse Qryptana dans le menu pour la créer ultérieurement.</string>
     <string name="share_address_publicly">Partager publiquement votre adresse</string>
@@ -2263,7 +2263,7 @@
     <string name="server_added_to_operator__name">Serveur ajouté à l\'opérateur %s.</string>
     <string name="onboarding_network_operators_app_will_use_different_operators">L\'application protège votre vie privée en utilisant des opérateurs différents pour chaque conversation.</string>
     <string name="onboarding_select_network_operators_to_use">Sélectionnez les opérateurs de réseau à utiliser.</string>
-    <string name="onboarding_network_operators_simplex_flux_agreement">You can choose between SimpleX-operated servers and servers operated by Flux.</string>
+    <string name="onboarding_network_operators_simplex_flux_agreement">Qryptana uses servers operated by GoAnon.</string>
     <string name="chat_list_notes">Notes</string>
     <string name="or_to_share_privately">Ou à partager en privé</string>
     <string name="simplex_address_or_1_time_link">Adresse Qryptana ou lien unique ?</string>

@@ -1216,7 +1216,7 @@
     <string name="v5_1_japanese_portuguese_interface">Interfață în japoneză și portugheză</string>
     <string name="v5_5_new_interface_languages">Interfață de utilizator maghiară și turcă</string>
     <string name="v5_7_forward">Redirecționează și salvează mesajele</string>
-    <string name="v6_2_network_decentralization_enable_flux">Activează Flux în setările Rețea și servere pentru o mai bună confidențialitate a metadatelor.</string>
+    <string name="v6_2_network_decentralization_enable_flux">Activează Qryptana în setările Rețea și servere pentru o mai bună confidențialitate a metadatelor.</string>
     <string name="v6_2_network_decentralization_enable_flux_reason">pentru o mai bună confidențialitate a metadatelor.</string>
     <string name="v6_1_forward_many_messages_descr">Redirecționați până la 20 de mesaje simultan.</string>
     <string name="v6_3_organize_chat_lists_descr">Nu rata mesajele importante.</string>
@@ -1843,7 +1843,7 @@
     <string name="use_simplex_chat_servers__question">Folosiți servere Qryptana?</string>
     <string name="network_socks_proxy">Proxy SOCKS</string>
     <string name="network_proxy_username">Nume de utilizator</string>
-    <string name="onboarding_network_operators_simplex_flux_agreement">You can choose between SimpleX-operated servers and servers operated by Flux.</string>
+    <string name="onboarding_network_operators_simplex_flux_agreement">Qryptana uses servers operated by GoAnon.</string>
     <string name="periodic_notifications_desc">Aplicația preia mesajele noi periodic și consumă câteva procente din baterie pe zi. Aplicația nu folosește notificări push, așadar datele de pe dispozitivul tău nu sunt trimise către servere.</string>
     <string name="la_notice_title_simplex_lock">Blocare Qryptana</string>
     <string name="file_error_auth">Cheie greșită sau adresă necunoscută a fragmentului de fișier - cel mai probabil fișierul este șters.</string>
@@ -2510,7 +2510,7 @@
     <string name="relay_bar_relays_removed">%1$d relee sterse</string>
     <string name="channel_subscriber_count_singular">%1$d abonat</string>
     <string name="channel_subscriber_count_plural">%1$d abonați</string>
-    <string name="badge_supported_simplex">%1$s a susținut SimpleX Chat. Insigna a expirat pe %2$s.</string>
+    <string name="badge_supported_simplex">%1$s a susținut Qryptana. Insigna a expirat pe %2$s.</string>
     <string name="settings_section_title_about">Despre</string>
     <string name="relay_status_accepted">acceptată</string>
     <string name="app_update_required">Aplicația necesita actualizare</string>

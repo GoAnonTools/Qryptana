@@ -2255,7 +2255,7 @@
     <string name="group_reports_active">%d raporty</string>
     <string name="edit_chat_list_menu_action">Edytuj</string>
     <string name="v6_4_1_keep_chats_clean_descr">Włącz domyślne znikanie wiadomości.</string>
-    <string name="v6_2_network_decentralization_enable_flux">Włącz Flux w ustawieniach sieci i serwerów, aby uzyskać lepszą prywatność metadanych.</string>
+    <string name="v6_2_network_decentralization_enable_flux">Włącz Qryptana w ustawieniach sieci i serwerów, aby uzyskać lepszą prywatność metadanych.</string>
     <string name="debug_logs">Włącz logi</string>
     <string name="encryption_renegotiation_in_progress">Renegocjacja szyfrowania jest w toku.</string>
     <string name="error_accepting_operator_conditions">Błąd podczas akceptacji warunków</string>
@@ -2471,7 +2471,7 @@
     <string name="short_link_button_text">Krótki link</string>
     <string name="v6_4_1_short_address">Krótki adres Qryptana</string>
     <string name="simplex_link_channel">Link do kanału na Qryptana</string>
-    <string name="onboarding_network_operators_simplex_flux_agreement">You can choose between SimpleX-operated servers and servers operated by Flux.</string>
+    <string name="onboarding_network_operators_simplex_flux_agreement">Qryptana uses servers operated by GoAnon.</string>
     <string name="simplex_link_relay">łącze przekaźnikowe Qryptana</string>
     <string name="report_reason_spam">Spam</string>
     <string name="blocking_reason_spam">Spam</string>

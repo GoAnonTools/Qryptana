@@ -1464,7 +1464,7 @@
     <string name="operator_conditions_accepted_for_enabled_operators_on">%s:에서 활성화된 운영자에 대한 약관이 자동으로 수락됩니다.</string>
     <string name="operator_conditions_failed_to_load">현재 약관 텍스트를 로드할 수 없습니다, 다음 링크를 통해 약관을 검토할 수 있습니다:</string>
     <string name="operator_conditions_of_use">사용 약관</string>
-    <string name="v6_2_network_decentralization_enable_flux">Flux 활성화</string>
+    <string name="v6_2_network_decentralization_enable_flux">Qryptana 활성화</string>
     <string name="all_message_and_files_e2e_encrypted"><![CDATA[모든 메시지와 파일은 쪽지에서 포스트 퀀텀 보안을 사용하여 <b>종단 간 암호화</b>로 전송됩니다.]]></string>
     <string name="onboarding_notifications_mode_service_desc_short">앱이 항상 백그라운드에서 실행</string>
     <string name="onboarding_network_operators_conditions_will_be_accepted">활성화된 운영자에 대한 약관은 30일 후에 수락됩니다.</string>

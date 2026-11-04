@@ -62,7 +62,7 @@
     <string name="allow_your_contacts_to_send_disappearing_messages">Дозвольте вашим контактам надсилати повідомлення, які зникають.</string>
     <string name="clear_chat_warning">Усі повідомлення будуть видалені - цю дію неможливо скасувати! Повідомлення будуть видалені ЛИШЕ для вас.</string>
     <string name="app_version_title">Версія додатку</string>
-    <string name="add_address_to_your_profile">Додайте адресу до свого профілю, щоб ваші контакти SimpleX могли поділитися нею з іншими людьми. Оновлення профілю буде відправлено вашим контактам SimpleX.</string>
+    <string name="add_address_to_your_profile">Додайте адресу до свого профілю, щоб ваші контакти Qryptana могли поділитися нею з іншими людьми. Оновлення профілю буде відправлено вашим контактам Qryptana.</string>
     <string name="all_your_contacts_will_remain_connected_update_sent">Усі ваші контакти залишаться підключеними. Оновлення профілю буде відправлено вашим контактам.</string>
     <string name="answer_call">Відповісти на виклик</string>
     <string name="address_section_title">Адреса</string>
@@ -448,7 +448,7 @@
     <string name="v4_3_voice_messages_desc">Максимум 40 секунд, надходять миттєво.</string>
     <string name="v5_0_app_passcode_descr">Встановіть його замість системної аутентифікації.</string>
     <string name="shutdown_alert_question">Вимкнути\?</string>
-    <string name="share_with_contacts">Поділитися з контактами SimpleX</string>
+    <string name="share_with_contacts">Поділитися з контактами Qryptana</string>
     <string name="your_profile_is_stored_on_device_and_shared_only_with_contacts_simplex_cannot_see_it">Ваш профіль зберігається на вашому пристрої та ділиться лише з вашими контактами. Серверам Qryptana профіль недоступний.</string>
     <string name="save_and_notify_contacts">Зберегти та сповістити контакти</string>
     <string name="save_and_notify_group_members">Зберегти та сповістити учасників</string>
@@ -839,7 +839,7 @@
     <string name="network_use_onion_hosts_no_desc">.Onion-хости не будуть використовуватися.</string>
     <string name="network_session_mode_transport_isolation">Ізоляція транспорту</string>
     <string name="customize_theme_title">Налаштування теми</string>
-    <string name="share_address_with_contacts_question">Поділитися адресою з контактами SimpleX?</string>
+    <string name="share_address_with_contacts_question">Поділитися адресою з контактами Qryptana?</string>
     <string name="callstatus_connecting">підключення дзвінка…</string>
     <string name="we_do_not_store_contacts_or_messages_on_servers">Ми не зберігаємо жодні з ваших контактів чи повідомлень (після доставки) на серверах.</string>
     <string name="callstate_waiting_for_answer">очікування відповіді…</string>
@@ -1024,7 +1024,7 @@
     <string name="create_address_and_let_people_connect">Створіть адресу, щоб дозволити людям підключатися до вас.</string>
     <string name="your_contacts_will_remain_connected">Контакти залишатимуться підключеними.</string>
     <string name="create_simplex_address">Створити Qryptana-адресу</string>
-    <string name="profile_update_will_be_sent_to_contacts">Оновлення профілю буде відправлено вашим SimpleX контактам.</string>
+    <string name="profile_update_will_be_sent_to_contacts">Оновлення профілю буде відправлено вашим Qryptana контактам.</string>
     <string name="stop_sharing_address">Зупинити поділ адреси?</string>
     <string name="stop_sharing">Зупинити поділ</string>
     <string name="enter_welcome_message_optional">Введіть текст привітання... (необов\'язково)</string>
@@ -2176,7 +2176,7 @@
     <string name="operator_conditions_failed_to_load">Текст поточних умов не вдалося завантажити, ви можете переглянути умови за цим посиланням:</string>
     <string name="errors_in_servers_configuration">Помилки в конфігурації серверів.</string>
     <string name="operator_conditions_accepted_on">Умови приймаються з: %s.</string>
-    <string name="v6_2_network_decentralization_enable_flux">Увімкніть Flux у налаштуваннях мережі та серверів для кращої конфіденційності метаданих</string>
+    <string name="v6_2_network_decentralization_enable_flux">Увімкніть Qryptana у налаштуваннях мережі та серверів для кращої конфіденційності метаданих</string>
     <string name="operator_conditions_will_be_accepted_on">Умови приймаються до: %s.</string>
     <string name="onboarding_network_operators_continue">Продовжити</string>
     <string name="create_1_time_link">Створити одноразове посилання</string>
@@ -2240,7 +2240,7 @@
     <string name="display_name_accepted_invitation">прийнято запрошення</string>
     <string name="display_name_requested_to_connect">запит на підключення</string>
     <string name="onboarding_network_about_operators">Про операторів</string>
-    <string name="onboarding_network_operators_simplex_flux_agreement">You can choose between SimpleX-operated servers and servers operated by Flux.</string>
+    <string name="onboarding_network_operators_simplex_flux_agreement">Qryptana uses servers operated by GoAnon.</string>
     <string name="sync_connection_desc">Підключення вимагає повторного узгодження шифрування.</string>
     <string name="encryption_renegotiation_in_progress">Виконується повторне узгодження шифрування.</string>
     <string name="sync_connection_confirm">Виправити</string>
@@ -2543,7 +2543,7 @@
     <string name="relay_bar_relays_removed">%1$d перемикачі видалені</string>
     <string name="channel_subscriber_count_singular">%1$d підписник</string>
     <string name="channel_subscriber_count_plural">%1$d підписники</string>
-    <string name="badge_supported_simplex">%1$s підтримував SimpleX Chat. Завершення дії значка %2$s.</string>
+    <string name="badge_supported_simplex">%1$s підтримував Qryptana. Завершення дії значка %2$s.</string>
     <string name="settings_section_title_about">Про</string>
     <string name="relay_status_accepted">підтверджено</string>
     <string name="relay_status_acknowledged_roster">затверджений список</string>

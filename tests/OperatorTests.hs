@@ -71,40 +71,36 @@ updatedServersTest = describe "validate user servers" $ do
   it "adding preset operators on first start" $ do
     let ops' :: [(Maybe PresetOperator, Maybe AServerOperator)] =
           updatedServerOperators operators []
-    length ops' `shouldBe` 2
+    length ops' `shouldBe` 1
     all addedPreset ops' `shouldBe` True
     let ops'' :: [(Maybe PresetOperator, Maybe ServerOperator)] =
           saveOps ops' -- mock getUpdateServerOperators
     uss <- groupByOperator' (ops'', [], [], []) -- no stored servers or relays
-    length uss `shouldBe` 3
-    [op1, op2, op3] <- pure $ map updatedUserServers uss
-    [p1, p2] <- pure operators -- presets
+    length uss `shouldBe` 2
+    [op1, op2] <- pure $ map updatedUserServers uss
+    let p1 = L.head operators -- the Qryptana preset
     sameServers p1 op1
     sameRelays p1 op1
-    sameServers p2 op2
-    sameRelays p2 op2
-    null (servers' SPSMP op3) `shouldBe` True
-    null (servers' SPXFTP op3) `shouldBe` True
-    null (chatRelays' op3) `shouldBe` True
+    null (servers' SPSMP op2) `shouldBe` True
+    null (servers' SPXFTP op2) `shouldBe` True
+    null (chatRelays' op2) `shouldBe` True
   it "adding preset operators and assigning servers to operator for existing users" $ do
     let ops' = updatedServerOperators operators []
         ops'' = saveOps ops'
     uss <-
       groupByOperator'
         ( ops'',
-          saveSrvs $ take 3 simplexChatSMPServers <> [newUserServer "smp://abcd@smp.example.im"],
-          saveSrvs $ map (presetServer True) $ L.take 3 defaultXFTPServers,
-          saveRelays $ take 2 simplexChatRelays <> [newChatRelay (mkRelayProfile "custom_relay" Nothing) ["example.im"] customRelayAddr]
+          saveSrvs $ take 1 simplexChatSMPServers <> [newUserServer "smp://abcd@smp.example.im"],
+          [],
+          saveRelays [newChatRelay (mkRelayProfile "custom_relay" Nothing) ["example.im"] customRelayAddr]
         )
-    [op1, op2, op3] <- pure $ map updatedUserServers uss
-    [p1, p2] <- pure operators -- presets
+    [op1, op2] <- pure $ map updatedUserServers uss
+    let p1 = L.head operators -- the Qryptana preset
     sameServers p1 op1
     sameRelays p1 op1
-    sameServers p2 op2
-    sameRelays p2 op2
-    map srvHost' (servers' SPSMP op3) `shouldBe` [["smp.example.im"]]
-    null (servers' SPXFTP op3) `shouldBe` True
-    map relayName' (chatRelays' op3) `shouldBe` ["custom_relay"]
+    map srvHost' (servers' SPSMP op2) `shouldBe` [["smp.example.im"]]
+    null (servers' SPXFTP op2) `shouldBe` True
+    map relayName' (chatRelays' op2) `shouldBe` ["custom_relay"]
   where
     addedPreset = \case
       (Just PresetOperator {operator = Just op}, Just (ASO SDBNew op')) -> operatorTag op == operatorTag op'
@@ -187,9 +183,9 @@ perServerRolesTest = describe "per-server roles" $ do
     -- host matches no operator domain -> self-hosted
     selfHostedSMP :: ServerRolesOverride -> NewUserServer 'PSMP
     selfHostedSMP r = (newUserServer "smp://abcd@self.example.com" :: NewUserServer 'PSMP) {roles = r}
-    -- host matches operator domain simplex.im
+    -- host matches operator domain qryptana.foundation
     opMatchedSMP :: ServerRolesOverride -> NewUserServer 'PSMP
-    opMatchedSMP r = (newUserServer "smp://abcd@smp8.simplex.im" :: NewUserServer 'PSMP) {roles = r}
+    opMatchedSMP r = (newUserServer "smp://abcd@smp.qryptana.foundation" :: NewUserServer 'PSMP) {roles = r}
     selfHostedUser :: ServerRolesOverride -> UpdatedUserOperatorServers
     selfHostedUser r =
       UpdatedUserOperatorServers
