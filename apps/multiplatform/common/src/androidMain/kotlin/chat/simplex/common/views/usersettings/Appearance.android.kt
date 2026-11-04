@@ -172,17 +172,24 @@ fun AppearanceScope.AppearanceLayout(
 private fun AppIconPreview(item: AppIcon, modifier: Modifier) {
   val context = LocalContext.current
   val dark = (context.resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK) == Configuration.UI_MODE_NIGHT_YES
-  // Resolve the same launcher icon the home screen uses for each theme:
-  // MainActivity_default -> @mipmap/icon, MainActivity_dark_blue -> @mipmap/icon_dark_blue.
-  val componentName = remember(dark) {
-    ComponentName(
-      APPLICATION_ID,
-      "chat.simplex.app.MainActivity_" + if (dark) "dark_blue" else "default"
-    )
+  // Use the exact launcher drawables: light -> @mipmap/icon (cream adaptive icon),
+  // dark -> @mipmap/icon_dark_blue (charcoal adaptive icon).
+  val mipmapName = if (dark) "icon_dark_blue" else "icon"
+  val resId = remember(mipmapName) {
+    context.resources.getIdentifier(mipmapName, "mipmap", context.packageName)
   }
-  val bitmap = remember(componentName) {
-    runCatching {
-      context.packageManager.getActivityIcon(componentName)?.toBitmap(210, 210)?.asImageBitmap()
+  val bitmap = remember(resId) {
+    if (resId == 0) null else runCatching {
+      context.getDrawable(resId)?.toBitmap(210, 210)?.asImageBitmap()
+    }.getOrNull()
+  }
+  val foregroundName = if (dark) "icon_dark_blue_foreground" else "icon_foreground"
+  val foregroundId = remember(foregroundName) {
+    context.resources.getIdentifier(foregroundName, "mipmap", context.packageName)
+  }
+  val foregroundBitmap = remember(foregroundId) {
+    if (foregroundId == 0) null else runCatching {
+      context.getDrawable(foregroundId)?.toBitmap(210, 210)?.asImageBitmap()
     }.getOrNull()
   }
   if (bitmap != null) {
@@ -192,7 +199,11 @@ private fun AppIconPreview(item: AppIcon, modifier: Modifier) {
       modifier.background(if (dark) Color(0xFF171615) else Color(0xFFF7F0E6)),
       contentAlignment = Alignment.Center
     ) {
-      Image(painterResource(item.image), contentDescription = "", contentScale = ContentScale.Fit, modifier = Modifier.fillMaxSize(0.72f))
+      if (foregroundBitmap != null) {
+        Image(foregroundBitmap, contentDescription = "", contentScale = ContentScale.Fit, modifier = Modifier.fillMaxSize(0.72f))
+      } else {
+        Image(painterResource(item.image), contentDescription = "", contentScale = ContentScale.Fit, modifier = Modifier.fillMaxSize(0.72f))
+      }
     }
   }
 }

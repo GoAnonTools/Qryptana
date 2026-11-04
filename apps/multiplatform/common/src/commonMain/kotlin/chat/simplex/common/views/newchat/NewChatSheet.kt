@@ -225,23 +225,12 @@ private fun ModalData.NewChatSheetLayout(
   )
 
   @Composable
-  fun DeletedChatsItem(actionButtons: List<Triple<Painter, String, () -> Unit>>) {
+  fun DeletedChatsItem() {
     if (searchText.value.text.isEmpty()) {
       Spacer(Modifier.padding(bottom = 27.dp))
     }
 
     if (searchText.value.text.isEmpty()) {
-      Row {
-        SectionView {
-          actionButtons.map {
-            NewChatButton(
-              icon = it.first,
-              text = it.second,
-              click = it.third,
-            )
-          }
-        }
-      }
       if (deletedChats.isNotEmpty()) {
         SectionDividerSpaced(maxBottomPadding = false)
         SectionView {
@@ -344,7 +333,7 @@ private fun ModalData.NewChatSheetLayout(
         }
       }
       item {
-        DeletedChatsItem(actionButtonsOriginal.asReversed())
+        DeletedChatsItem()
       }
       item {
         if (filteredContactChats.isNotEmpty() && searchText.value.text.isEmpty()) {
@@ -366,7 +355,7 @@ private fun ModalData.NewChatSheetLayout(
       }
       if (searchText.value.text.isEmpty()) {
         // One-hand layout is reversed, so this is the visually top-most item.
-        item { QryptanaNewChatLogo() }
+        item { QryptanaNewChatHeader(actionButtonsOriginal.asReversed()) }
       }
       if (appPlatform.isAndroid) {
         item {
@@ -394,7 +383,7 @@ private fun ModalData.NewChatSheetLayout(
         }
       }
       if (searchText.value.text.isEmpty()) {
-        item { QryptanaNewChatLogo() }
+        item { QryptanaNewChatHeader(actionButtonsOriginal) }
       }
       stickyHeader {
         val scrolledSomething by remember { derivedStateOf { listState.firstVisibleItemScrollOffset > 0 || listState.firstVisibleItemIndex > 0 } }
@@ -441,7 +430,7 @@ private fun ModalData.NewChatSheetLayout(
         }
       }
       item {
-        DeletedChatsItem(actionButtonsOriginal)
+        DeletedChatsItem()
       }
       item {
         if (filteredContactChats.isNotEmpty() && searchText.value.text.isEmpty()) {
@@ -480,16 +469,29 @@ private fun ModalData.NewChatSheetLayout(
 }
 
 @Composable
-private fun QryptanaNewChatLogo() {
-  Box(
-    Modifier.fillMaxWidth().padding(top = 48.dp, bottom = 24.dp),
-    contentAlignment = Alignment.Center
-  ) {
-    Image(
-      painterResource(MR.images.qryptana_symbol),
-      contentDescription = null,
-      modifier = Modifier.size(140.dp)
-    )
+private fun QryptanaNewChatHeader(actionButtons: List<Triple<Painter, String, () -> Unit>>) {
+  Column(Modifier.fillMaxWidth()) {
+    Box(
+      Modifier.fillMaxWidth().padding(top = 32.dp, bottom = 8.dp),
+      contentAlignment = Alignment.Center
+    ) {
+      Image(
+        painterResource(MR.images.qryptana_symbol),
+        contentDescription = null,
+        modifier = Modifier.size(140.dp)
+      )
+    }
+    Row {
+      SectionView {
+        actionButtons.map {
+          NewChatButton(
+            icon = it.first,
+            text = it.second,
+            click = it.third,
+          )
+        }
+      }
+    }
   }
 }
 
