@@ -2740,4 +2740,5 @@
     <string name="qryptana_whats_new_independent_network">Independent Network</string>
     <string name="qryptana_whats_new_independent_network_desc">A fully self-hosted ecosystem built for the GoAnon community.</string>
     <string name="qryptana_source_code_agpl">Qryptana adalah perangkat lunak bebas yang dilisensikan di bawah AGPL-3.0. Copyright (C) 2026 GoAnon. Program ini disediakan TANPA JAMINAN APA PUN. Kode sumber: https://qryptana.foundation/source</string>
+    <string name="qryptana_source_code">Kode sumber Qryptana</string>
 </resources>

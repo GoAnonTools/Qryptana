@@ -2506,4 +2506,5 @@
     <string name="qryptana_whats_new_independent_network">Independent Network</string>
     <string name="qryptana_whats_new_independent_network_desc">A fully self-hosted ecosystem built for the GoAnon community.</string>
     <string name="qryptana_source_code_agpl">Qryptana ir brīva programmatūra, kas licencēta saskaņā ar AGPL-3.0. Copyright (C) 2026 GoAnon. Šī programma tiek nodrošināta BEZ JEBKĀDAS GARANTIJAS. Pirmkods: https://qryptana.foundation/source</string>
+    <string name="qryptana_source_code">Qryptana pirmkods</string>
 </resources>

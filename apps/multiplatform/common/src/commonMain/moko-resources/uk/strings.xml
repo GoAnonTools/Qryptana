@@ -2705,4 +2705,5 @@
     <string name="qryptana_whats_new_independent_network">Independent Network</string>
     <string name="qryptana_whats_new_independent_network_desc">A fully self-hosted ecosystem built for the GoAnon community.</string>
     <string name="qryptana_source_code_agpl">Qryptana — вільне програмне забезпечення, ліцензоване за AGPL-3.0. Copyright (C) 2026 GoAnon. Ця програма надається БЕЗ БУДЬ-ЯКИХ ГАРАНТІЙ. Вихідний код: https://qryptana.foundation/source</string>
+    <string name="qryptana_source_code">Вихідний код Qryptana</string>
 </resources>
