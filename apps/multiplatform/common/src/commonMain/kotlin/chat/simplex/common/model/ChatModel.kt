@@ -2068,9 +2068,16 @@ private const val QRYPTANA_TEAM_CONTACT_NAME = "Ask Qryptana Team"
 private fun qryptanaContactName(name: String): String =
   if (name == SIMPLEX_TEAM_CONTACT_NAME) QRYPTANA_TEAM_CONTACT_NAME else name
 
-/** The preset support contact still points at upstream SimpleX support; hide it from Qryptana UI. */
+// Exact queue IDs from the upstream preset contact links. Matching the link (not the
+// display name) prevents a user from hiding themselves by renaming their profile.
+private val hiddenPresetContactLinkIds = listOf(
+  "K1rslx-m5bpXVIdMZg9NLUZ_8JBm8xTt", // upstream SimpleX support contact
+  "eXSPwqTkKyDO3px4fLf1wx3MvPdjdLW3", // upstream SimpleX Directory contact
+)
+
+/** Preset upstream support/directory contacts; hidden from Qryptana UI. */
 fun Contact.isQryptanaSupportContact(): Boolean =
-  profile.displayName == SIMPLEX_TEAM_CONTACT_NAME || profile.displayName == QRYPTANA_TEAM_CONTACT_NAME
+  profile.contactLink?.let { link -> hiddenPresetContactLinkIds.any { link.contains(it) } } == true
 
 fun Chat.isQryptanaSupportChat(): Boolean =
   (chatInfo as? ChatInfo.Direct)?.contact?.isQryptanaSupportContact() == true

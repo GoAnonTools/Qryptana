@@ -21,9 +21,10 @@ object QryptanaServerFilters {
 
   fun isUpstreamPresetOperator(operator: ServerOperator): Boolean {
     if (isQryptanaOperator(operator)) return false
-    val names = listOfNotNull(operator.tradeName, operator.legalName) + operator.serverDomains
-    val branded = names.any { it.contains("simplex", ignoreCase = true) || it.contains("flux", ignoreCase = true) }
-    return branded || operator.operatorTag == OperatorTag.SimpleX || operator.operatorTag == OperatorTag.Flux
+    // Match only exact upstream identities/domains, never brand words in display names.
+    return operator.serverDomains.any(::isUpstreamHost) ||
+      operator.operatorTag == OperatorTag.SimpleX ||
+      operator.operatorTag == OperatorTag.Flux
   }
 
   fun visibleOperators(operators: List<ServerOperator>): List<ServerOperator> =

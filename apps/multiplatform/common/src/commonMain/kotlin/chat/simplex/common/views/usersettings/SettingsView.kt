@@ -4,6 +4,7 @@ import SectionBottomSpacer
 import itemHPadding
 import SectionItemView
 import SectionDividerSpaced
+import SectionTextFooter
 import SectionView
 import TextIconSpaced
 import androidx.compose.desktop.ui.tooling.preview.Preview
@@ -51,6 +52,7 @@ import chat.simplex.res.how_to_use_simplex_chat
 import chat.simplex.res.ic_add
 import chat.simplex.res.ic_bolt
 import chat.simplex.res.ic_bolt_off
+import chat.simplex.res.ic_code
 import chat.simplex.res.ic_database
 import chat.simplex.res.ic_engineering
 import chat.simplex.res.ic_help
@@ -71,6 +73,8 @@ import chat.simplex.res.migrate_from_device_to_another_device
 import chat.simplex.res.network_and_servers
 import chat.simplex.res.notifications
 import chat.simplex.res.reset_all_hints
+import chat.simplex.res.qryptana_source_code
+import chat.simplex.res.qryptana_source_code_agpl
 import chat.simplex.res.settings_audio_video_calls
 import chat.simplex.res.settings_section_title_contact
 import chat.simplex.res.settings_section_title_help
@@ -116,6 +120,7 @@ fun SettingsView(chatModel: ChatModel, setPerformLA: (Boolean) -> Unit, close: (
 // SimpleX contact link only, never mailto: or a general website URL.
 // TODO: configure this only after Qryptana has a verified support chat address.
 val qryptanaSupportUri: String? = null
+private const val qryptanaSourceUrl = "https://qryptana.foundation/source"
 
 val simplexNewsUri =
   "simplex:/c#grcfG3ulVI4Sh6ow33qBsmSk7uEy3gRSl2KkJ5ER6tA?h=smp18.simplex.im"
@@ -187,6 +192,11 @@ fun HelpAndSupportView(
         SettingsActionItem(painterResource(MR.images.ic_tag), stringResource(MR.strings.chat_with_the_founder), { uriHandler.openVerifiedSimplexUri(qryptanaSupportUri) }, textColor = MaterialTheme.colors.primary, disabled = stopped)
       }
     }
+    SectionDividerSpaced()
+    SectionView {
+      SourceCodeItem(uriHandler)
+    }
+    SectionTextFooter(generalGetString(MR.strings.qryptana_source_code_agpl))
     SectionBottomSpacer()
   }
 }
@@ -277,6 +287,18 @@ fun ChatLockItem(
       checked = remember { pref.state }.value,
       onCheckedChange = onChange,
     )
+  }
+}
+
+@Composable fun SourceCodeItem(uriHandler: UriHandler) {
+  SectionItemView({ uriHandler.openExternalLink(qryptanaSourceUrl) }) {
+    Icon(
+      painter = painterResource(MR.images.ic_code),
+      contentDescription = generalGetString(MR.strings.qryptana_source_code),
+      tint = MaterialTheme.colors.secondary,
+    )
+    TextIconSpaced()
+    Text(generalGetString(MR.strings.qryptana_source_code), color = MaterialTheme.colors.primary)
   }
 }
 
