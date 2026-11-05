@@ -43,15 +43,15 @@
     <string name="accept_contact_incognito_button">গুপ্ত-পরিচয় গ্রহণ করুন</string>
     <string name="search_verb">সার্চ</string>
     <string name="la_mode_off">বন্ধ আছে</string>
-    <string name="onboarding_network_operators_simplex_flux_agreement">Qryptana uses servers operated by GoAnon.</string>
+    <string name="onboarding_network_operators_simplex_flux_agreement">Qryptana uses servers operated by GoAnon Foundation.</string>
     <string name="qryptana_whats_new_sovereign_infrastructure">Sovereign Infrastructure</string>
-    <string name="qryptana_whats_new_sovereign_infrastructure_desc">Connect directly to GoAnon-operated SMP and XFTP servers. No third-party relays.</string>
+    <string name="qryptana_whats_new_sovereign_infrastructure_desc">Connect directly to GoAnon Foundation-operated SMP and XFTP servers. No third-party relays.</string>
     <string name="qryptana_whats_new_absolute_privacy">Absolute Privacy</string>
     <string name="qryptana_whats_new_absolute_privacy_desc">End-to-end encryption with no metadata tracking or user directories.</string>
     <string name="qryptana_whats_new_branding">Qryptana Branding</string>
     <string name="qryptana_whats_new_branding_desc">Experience a fresh new look with our signature Copper and Charcoal UI.</string>
     <string name="qryptana_whats_new_independent_network">Independent Network</string>
-    <string name="qryptana_whats_new_independent_network_desc">A fully self-hosted ecosystem built for the GoAnon community.</string>
-    <string name="qryptana_source_code_agpl">Qryptana একটি মুক্ত সফটওয়্যার, যা AGPL-3.0 লাইসেন্সের অধীনে। Copyright (C) 2026 GoAnon। এই প্রোগ্রামটি কোনো ধরনের ওয়ারেন্টি ছাড়াই প্রদান করা হয়। সোর্স কোড: https://qryptana.foundation/source</string>
+    <string name="qryptana_whats_new_independent_network_desc">A fully self-hosted ecosystem built for the GoAnon Foundation community.</string>
+    <string name="qryptana_source_code_agpl">Qryptana একটি মুক্ত সফটওয়্যার, যা AGPL-3.0 লাইসেন্সের অধীনে। Copyright (C) 2026 GoAnon Foundation। এই প্রোগ্রামটি কোনো ধরনের ওয়ারেন্টি ছাড়াই প্রদান করা হয়। সোর্স কোড: https://qryptana.foundation/source</string>
     <string name="qryptana_source_code">Qryptana সোর্স কোড</string>
 </resources>

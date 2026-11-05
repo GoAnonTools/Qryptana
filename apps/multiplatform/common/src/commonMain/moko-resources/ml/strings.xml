@@ -415,15 +415,15 @@
     <string name="feature_offered_item">%s വാഗ്ദാനം ചെയ്തു</string>
     <string name="search_verb">തിരയുക</string>
     <string name="la_mode_off">ഓഫാണ്</string>
-    <string name="onboarding_network_operators_simplex_flux_agreement">Qryptana uses servers operated by GoAnon.</string>
+    <string name="onboarding_network_operators_simplex_flux_agreement">Qryptana uses servers operated by GoAnon Foundation.</string>
     <string name="qryptana_whats_new_sovereign_infrastructure">Sovereign Infrastructure</string>
-    <string name="qryptana_whats_new_sovereign_infrastructure_desc">Connect directly to GoAnon-operated SMP and XFTP servers. No third-party relays.</string>
+    <string name="qryptana_whats_new_sovereign_infrastructure_desc">Connect directly to GoAnon Foundation-operated SMP and XFTP servers. No third-party relays.</string>
     <string name="qryptana_whats_new_absolute_privacy">Absolute Privacy</string>
     <string name="qryptana_whats_new_absolute_privacy_desc">End-to-end encryption with no metadata tracking or user directories.</string>
     <string name="qryptana_whats_new_branding">Qryptana Branding</string>
     <string name="qryptana_whats_new_branding_desc">Experience a fresh new look with our signature Copper and Charcoal UI.</string>
     <string name="qryptana_whats_new_independent_network">Independent Network</string>
-    <string name="qryptana_whats_new_independent_network_desc">A fully self-hosted ecosystem built for the GoAnon community.</string>
-    <string name="qryptana_source_code_agpl">Qryptana AGPL-3.0 ലൈസൻസിന് കീഴിലുള്ള സ്വതന്ത്ര സോഫ്റ്റ്വെയറാണ്. Copyright (C) 2026 GoAnon. ഈ പ്രോഗ്രാം ഒരു തരത്തിലുള്ള വാറന്റിയുമില്ലാതെ നൽകുന്നു. സോഴ്സ് കോഡ്: https://qryptana.foundation/source</string>
+    <string name="qryptana_whats_new_independent_network_desc">A fully self-hosted ecosystem built for the GoAnon Foundation community.</string>
+    <string name="qryptana_source_code_agpl">Qryptana AGPL-3.0 ലൈസൻസിന് കീഴിലുള്ള സ്വതന്ത്ര സോഫ്റ്റ്വെയറാണ്. Copyright (C) 2026 GoAnon Foundation. ഈ പ്രോഗ്രാം ഒരു തരത്തിലുള്ള വാറന്റിയുമില്ലാതെ നൽകുന്നു. സോഴ്സ് കോഡ്: https://qryptana.foundation/source</string>
     <string name="qryptana_source_code">Qryptana സോഴ്സ് കോഡ്</string>
 </resources>

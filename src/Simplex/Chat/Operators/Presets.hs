@@ -93,7 +93,7 @@ disabledSimplexChatSMPServers =
 -- Qryptana's self-hosted XFTP relay is the only enabled preset XFTP server.
 qryptanaXFTPServers :: [NewUserServer 'PXFTP]
 qryptanaXFTPServers =
-  [presetServer True "xftp://7pHBpUNapABy84mZpDEds4wSmSsCAX7lqMV_XiICBdc=@xftp.qryptana.foundation,bpdzfyp43fln46xa4hy67z7aqgpdylmlptgm5fwhoxl6tbiii3xireyd.onion:444"]
+  [presetServer True "xftp://P4pAiyTPwA2MNZbWZqL11v6ngAAMh7V8X50tc-_o3Lg=@xftp2.goanon.foundation"]
 
 simplexChatRelays :: [NewUserChatRelay]
 simplexChatRelays =

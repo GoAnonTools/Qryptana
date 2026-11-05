@@ -2217,7 +2217,7 @@
     <string name="chat_main_profile_sent">سيتم إرسال ملف تعريفك للدردشة إلى أعضاء الدردشة</string>
     <string name="you_will_stop_receiving_messages_from_this_chat_chat_history_will_be_preserved">ستتوقف عن تلقي الرسائل من هذه الدردشة. سيتم حفظ سجل الدردشة.</string>
     <string name="onboarding_network_about_operators">عن المُشغلين</string>
-    <string name="onboarding_network_operators_simplex_flux_agreement">Qryptana uses servers operated by GoAnon.</string>
+    <string name="onboarding_network_operators_simplex_flux_agreement">Qryptana uses servers operated by GoAnon Foundation.</string>
     <string name="encryption_renegotiation_in_progress">جارِ إعادة التفاوض على التعمية.</string>
     <string name="sync_connection_question">إصلاح الاتصال؟</string>
     <string name="sync_connection_desc">يتطلب الاتصال إعادة التفاوض على التعمية.</string>
@@ -2909,13 +2909,13 @@
 
 
     <string name="qryptana_whats_new_sovereign_infrastructure">Sovereign Infrastructure</string>
-    <string name="qryptana_whats_new_sovereign_infrastructure_desc">Connect directly to GoAnon-operated SMP and XFTP servers. No third-party relays.</string>
+    <string name="qryptana_whats_new_sovereign_infrastructure_desc">Connect directly to GoAnon Foundation-operated SMP and XFTP servers. No third-party relays.</string>
     <string name="qryptana_whats_new_absolute_privacy">Absolute Privacy</string>
     <string name="qryptana_whats_new_absolute_privacy_desc">End-to-end encryption with no metadata tracking or user directories.</string>
     <string name="qryptana_whats_new_branding">Qryptana Branding</string>
     <string name="qryptana_whats_new_branding_desc">Experience a fresh new look with our signature Copper and Charcoal UI.</string>
     <string name="qryptana_whats_new_independent_network">Independent Network</string>
-    <string name="qryptana_whats_new_independent_network_desc">A fully self-hosted ecosystem built for the GoAnon community.</string>
-    <string name="qryptana_source_code_agpl">Qryptana برنامج حر مرخّص بموجب AGPL-3.0. حقوق النشر (C) 2026 GoAnon. يُقدَّم هذا البرنامج دون أي ضمانات إطلاقًا. الشفرة المصدرية: https://qryptana.foundation/source</string>
+    <string name="qryptana_whats_new_independent_network_desc">A fully self-hosted ecosystem built for the GoAnon Foundation community.</string>
+    <string name="qryptana_source_code_agpl">Qryptana برنامج حر مرخّص بموجب AGPL-3.0. حقوق النشر (C) 2026 GoAnon Foundation. يُقدَّم هذا البرنامج دون أي ضمانات إطلاقًا. الشفرة المصدرية: https://qryptana.foundation/source</string>
     <string name="qryptana_source_code">الشفرة المصدرية لـ Qryptana</string>
 </resources>

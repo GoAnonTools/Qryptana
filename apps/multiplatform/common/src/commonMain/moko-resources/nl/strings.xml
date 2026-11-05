@@ -2242,7 +2242,7 @@
     <string name="onboarding_network_operators_cant_see_who_talks_to_whom">Wanneer er meer dan één operator is ingeschakeld, beschikt geen enkele operator over metagegevens om te achterhalen wie met wie communiceert.</string>
     <string name="display_name_requested_to_connect">verzocht om verbinding te maken</string>
     <string name="onboarding_network_about_operators">Over operatoren</string>
-    <string name="onboarding_network_operators_simplex_flux_agreement">Qryptana uses servers operated by GoAnon.</string>
+    <string name="onboarding_network_operators_simplex_flux_agreement">Qryptana uses servers operated by GoAnon Foundation.</string>
     <string name="debug_logs">Logs inschakelen</string>
     <string name="error_saving_database">Fout bij het opslaan van de database</string>
     <string name="sync_connection_desc">Verbinding vereist heronderhandeling over encryptie.</string>
@@ -2442,13 +2442,13 @@
 
 
     <string name="qryptana_whats_new_sovereign_infrastructure">Sovereign Infrastructure</string>
-    <string name="qryptana_whats_new_sovereign_infrastructure_desc">Connect directly to GoAnon-operated SMP and XFTP servers. No third-party relays.</string>
+    <string name="qryptana_whats_new_sovereign_infrastructure_desc">Connect directly to GoAnon Foundation-operated SMP and XFTP servers. No third-party relays.</string>
     <string name="qryptana_whats_new_absolute_privacy">Absolute Privacy</string>
     <string name="qryptana_whats_new_absolute_privacy_desc">End-to-end encryption with no metadata tracking or user directories.</string>
     <string name="qryptana_whats_new_branding">Qryptana Branding</string>
     <string name="qryptana_whats_new_branding_desc">Experience a fresh new look with our signature Copper and Charcoal UI.</string>
     <string name="qryptana_whats_new_independent_network">Independent Network</string>
-    <string name="qryptana_whats_new_independent_network_desc">A fully self-hosted ecosystem built for the GoAnon community.</string>
-    <string name="qryptana_source_code_agpl">Qryptana is vrije software onder de AGPL-3.0-licentie. Copyright (C) 2026 GoAnon. Dit programma wordt geleverd ZONDER ENIGE GARANTIE. Broncode: https://qryptana.foundation/source</string>
+    <string name="qryptana_whats_new_independent_network_desc">A fully self-hosted ecosystem built for the GoAnon Foundation community.</string>
+    <string name="qryptana_source_code_agpl">Qryptana is vrije software onder de AGPL-3.0-licentie. Copyright (C) 2026 GoAnon Foundation. Dit programma wordt geleverd ZONDER ENIGE GARANTIE. Broncode: https://qryptana.foundation/source</string>
     <string name="qryptana_source_code">Qryptana-broncode</string>
 </resources>

@@ -2244,7 +2244,7 @@
     <string name="onboarding_network_operators_cant_see_who_talks_to_whom">Quando più di un operatore è attivato, nessuno di essi ha metadati per capire chi comunica con chi.</string>
     <string name="display_name_accepted_invitation">invito accettato</string>
     <string name="display_name_requested_to_connect">richiesto di connettersi</string>
-    <string name="onboarding_network_operators_simplex_flux_agreement">Qryptana uses servers operated by GoAnon.</string>
+    <string name="onboarding_network_operators_simplex_flux_agreement">Qryptana uses servers operated by GoAnon Foundation.</string>
     <string name="onboarding_network_about_operators">Info sugli operatori</string>
     <string name="sync_connection_desc">La connessione richiede la rinegoziazione della crittografia.</string>
     <string name="sync_connection_confirm">Correggi</string>
@@ -2937,13 +2937,13 @@
 
 
     <string name="qryptana_whats_new_sovereign_infrastructure">Sovereign Infrastructure</string>
-    <string name="qryptana_whats_new_sovereign_infrastructure_desc">Connect directly to GoAnon-operated SMP and XFTP servers. No third-party relays.</string>
+    <string name="qryptana_whats_new_sovereign_infrastructure_desc">Connect directly to GoAnon Foundation-operated SMP and XFTP servers. No third-party relays.</string>
     <string name="qryptana_whats_new_absolute_privacy">Absolute Privacy</string>
     <string name="qryptana_whats_new_absolute_privacy_desc">End-to-end encryption with no metadata tracking or user directories.</string>
     <string name="qryptana_whats_new_branding">Qryptana Branding</string>
     <string name="qryptana_whats_new_branding_desc">Experience a fresh new look with our signature Copper and Charcoal UI.</string>
     <string name="qryptana_whats_new_independent_network">Independent Network</string>
-    <string name="qryptana_whats_new_independent_network_desc">A fully self-hosted ecosystem built for the GoAnon community.</string>
-    <string name="qryptana_source_code_agpl">Qryptana è software libero distribuito con licenza AGPL-3.0. Copyright (C) 2026 GoAnon. Questo programma viene fornito SENZA ALCUNA GARANZIA. Codice sorgente: https://qryptana.foundation/source</string>
+    <string name="qryptana_whats_new_independent_network_desc">A fully self-hosted ecosystem built for the GoAnon Foundation community.</string>
+    <string name="qryptana_source_code_agpl">Qryptana è software libero distribuito con licenza AGPL-3.0. Copyright (C) 2026 GoAnon Foundation. Questo programma viene fornito SENZA ALCUNA GARANZIA. Codice sorgente: https://qryptana.foundation/source</string>
     <string name="qryptana_source_code">Codice sorgente di Qryptana</string>
 </resources>

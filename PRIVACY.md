@@ -26,8 +26,9 @@ Qryptana is an early Labs-stage downstream fork of SimpleX Chat. The upstream pr
 ### Maximum Privacy (Tor)
 
 - The Network & servers screen has an "Enable Maximum Privacy (Tor)" switch (`views/usersettings/networkAndServers/NetworkAndServers.kt`). It requires Orbot to be running with a SOCKS proxy at `127.0.0.1:9050`.
-- When enabled, the app routes its traffic through Orbot and requires onion hosts (`OnionHosts.REQUIRED`). Before enabling, the app checks every enabled SMP and XFTP server for an onion address. If any enabled server lacks one, the switch refuses to enable Tor and shows a warning instead of leaving those servers unreachable.
+- When enabled, the app routes its traffic through Orbot and requires onion hosts (`OnionHosts.REQUIRED`). Before enabling, the app checks every enabled SMP and XFTP server across all user profiles for an onion address. If any enabled server lacks one, the switch refuses to enable Tor and shows a warning instead of leaving those servers unreachable.
 - When disabled, the app restores the proxy and onion settings that were active before Tor was enabled.
+- Traffic for calls and links opened in an external browser does not go through the Tor proxy.
 - Tor changes the network path that relays and other servers observe; it does not change message or file end-to-end encryption, and it does not prevent a relay operator from observing metadata about connections that reach its onion service.
 
 ### Link previews

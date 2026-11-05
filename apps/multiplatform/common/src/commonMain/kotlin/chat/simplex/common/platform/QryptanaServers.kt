@@ -58,6 +58,7 @@ object QryptanaServers {
     if (!saveUserServers(rh, existing + clearnetGroups, showAlertOnError = true)) {
       throw QryptanaServersException("Could not save the Qryptana servers.", alertAlreadyShown = true)
     }
+    Log.w(TAG, "Saved relays with clearnet-only addresses; onion hosts were rejected")
   }
 
   /**

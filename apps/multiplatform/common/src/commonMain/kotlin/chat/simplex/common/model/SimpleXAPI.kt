@@ -1707,6 +1707,13 @@ object ChatController {
     return null
   }
 
+  suspend fun getUserServers(rh: Long?, userId: Long): List<UserOperatorServers>? {
+    val r = sendCmd(rh, CC.ApiGetUserServers(userId))
+    if (r is API.Result && r.res is CR.UserServers) return r.res.userServers
+    Log.e(TAG, "getUserServers($userId) bad response: ${r.responseType} ${r.details}")
+    return null
+  }
+
   suspend fun setUserServers(rh: Long?, userServers: List<UserOperatorServers>, showAlertOnError: Boolean = true): Boolean {
     val userId = currentUserId("setUserServers")
     val r = sendCmd(rh, CC.ApiSetUserServers(userId, userServers))

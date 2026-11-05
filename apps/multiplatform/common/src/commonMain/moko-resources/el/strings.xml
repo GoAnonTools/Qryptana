@@ -2226,7 +2226,7 @@
     <string name="simplex_address_or_1_time_link">Διεύθυνση Qryptana ή σύνδεσμος 1-χρήσης;</string>
     <string name="system_restricted_background_desc">Το Qryptana δεν μπορεί να λειτουργήσει στο παρασκήνιο. Θα λαμβάνεις τις ειδοποιήσεις μόνο όταν η εφαρμογή είναι σε λειτουργία.</string>
     <string name="simplex_link_channel">Σύνδεσμος καναλιού Qryptana</string>
-    <string name="onboarding_network_operators_simplex_flux_agreement">Qryptana uses servers operated by GoAnon.</string>
+    <string name="onboarding_network_operators_simplex_flux_agreement">Qryptana uses servers operated by GoAnon Foundation.</string>
     <string name="ntf_channel_calls">Κλήσεις Qryptana</string>
     <string name="ntf_channel_messages">Μηνύματα Qryptana</string>
     <string name="v4_2_security_assessment_desc">Η ασφάλεια του Qryptana ελέγχθηκε από την Trail of Bits.</string>
@@ -2524,13 +2524,13 @@
 
 
     <string name="qryptana_whats_new_sovereign_infrastructure">Sovereign Infrastructure</string>
-    <string name="qryptana_whats_new_sovereign_infrastructure_desc">Connect directly to GoAnon-operated SMP and XFTP servers. No third-party relays.</string>
+    <string name="qryptana_whats_new_sovereign_infrastructure_desc">Connect directly to GoAnon Foundation-operated SMP and XFTP servers. No third-party relays.</string>
     <string name="qryptana_whats_new_absolute_privacy">Absolute Privacy</string>
     <string name="qryptana_whats_new_absolute_privacy_desc">End-to-end encryption with no metadata tracking or user directories.</string>
     <string name="qryptana_whats_new_branding">Qryptana Branding</string>
     <string name="qryptana_whats_new_branding_desc">Experience a fresh new look with our signature Copper and Charcoal UI.</string>
     <string name="qryptana_whats_new_independent_network">Independent Network</string>
-    <string name="qryptana_whats_new_independent_network_desc">A fully self-hosted ecosystem built for the GoAnon community.</string>
-    <string name="qryptana_source_code_agpl">Το Qryptana είναι ελεύθερο λογισμικό υπό την άδεια AGPL-3.0. Copyright (C) 2026 GoAnon. Αυτό το πρόγραμμα παρέχεται ΧΩΡΙΣ ΚΑΜΙΑ ΑΠΟΛΥΤΩΣ ΕΓΓΥΗΣΗ. Πηγαίος κώδικας: https://qryptana.foundation/source</string>
+    <string name="qryptana_whats_new_independent_network_desc">A fully self-hosted ecosystem built for the GoAnon Foundation community.</string>
+    <string name="qryptana_source_code_agpl">Το Qryptana είναι ελεύθερο λογισμικό υπό την άδεια AGPL-3.0. Copyright (C) 2026 GoAnon Foundation. Αυτό το πρόγραμμα παρέχεται ΧΩΡΙΣ ΚΑΜΙΑ ΑΠΟΛΥΤΩΣ ΕΓΓΥΗΣΗ. Πηγαίος κώδικας: https://qryptana.foundation/source</string>
     <string name="qryptana_source_code">Πηγαίος κώδικας Qryptana</string>
 </resources>

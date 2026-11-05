@@ -1420,7 +1420,7 @@
   <string name="onboarding_conditions_accept">Accept</string>
   <string name="onboarding_choose_server_operators">Server operators</string>
   <string name="onboarding_network_operators">Network operators</string>
-  <string name="onboarding_network_operators_simplex_flux_agreement">Qryptana uses servers operated by GoAnon.</string>
+  <string name="onboarding_network_operators_simplex_flux_agreement">Qryptana uses servers operated by GoAnon Foundation.</string>
   <string name="qryptana_servers_setup_failed_title">Qryptana servers not configured</string>
   <string name="qryptana_servers_setup_failed_desc">Qryptana could not install its default SMP and XFTP servers. Check your connection and try again. Onboarding will not continue until they are configured.</string>
   <string name="onboarding_network_operators_app_will_use_different_operators">The app protects your privacy by using different operators in each conversation.</string>
@@ -3292,7 +3292,7 @@
 <string name="smart_invite_paste">Paste an invite</string>
 <string name="qryptana_source_code">Qryptana source code</string>
 <string name="legal_notices">Legal Notices</string>
-<string name="qryptana_source_code_agpl">Qryptana is free software licensed under AGPL-3.0. Copyright (C) 2026 GoAnon. This program comes with ABSOLUTELY NO WARRANTY. Source code: https://qryptana.foundation/source</string>
+<string name="qryptana_source_code_agpl">Qryptana is free software licensed under AGPL-3.0. Copyright (C) 2026 GoAnon Foundation. This program comes with ABSOLUTELY NO WARRANTY. Source code: https://qryptana.foundation/source</string>
 <string name="qryptana_desktop_theme_description">Qryptana desktop uses one black-titanium finish. Android follows system or user selection with warm Light, charcoal Dark, cool Titanium and Black copper presets; custom themes remain available.</string>
 <string name="app_check_for_updates_upstream_title">Upstream SimpleX release available for reference: %s</string>
 <string name="app_check_for_updates_upstream_only">This is an upstream SimpleX release note only. It is not a Qryptana release, and no Qryptana binary is offered here.</string>
@@ -3314,11 +3314,11 @@
 <string name="onboarding_choose_private_routing">Choose how your messages connect</string>
 <string name="onboarding_privacy_commitments">Keep your privacy at the center</string>
   <string name="qryptana_whats_new_sovereign_infrastructure">Sovereign Infrastructure</string>
-  <string name="qryptana_whats_new_sovereign_infrastructure_desc">Connect directly to GoAnon-operated SMP and XFTP servers. No third-party relays.</string>
+  <string name="qryptana_whats_new_sovereign_infrastructure_desc">Connect directly to GoAnon Foundation-operated SMP and XFTP servers. No third-party relays.</string>
   <string name="qryptana_whats_new_absolute_privacy">Absolute Privacy</string>
   <string name="qryptana_whats_new_absolute_privacy_desc">End-to-end encryption with no metadata tracking or user directories.</string>
   <string name="qryptana_whats_new_branding">Qryptana Branding</string>
   <string name="qryptana_whats_new_branding_desc">Experience a fresh new look with our signature Copper and Charcoal UI.</string>
   <string name="qryptana_whats_new_independent_network">Independent Network</string>
-  <string name="qryptana_whats_new_independent_network_desc">A fully self-hosted ecosystem built for the GoAnon community.</string>
+  <string name="qryptana_whats_new_independent_network_desc">A fully self-hosted ecosystem built for the GoAnon Foundation community.</string>
 </resources>

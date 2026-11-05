@@ -36,6 +36,7 @@ import chat.simplex.common.model.*
 import chat.simplex.common.model.ChatController.appPrefs
 import chat.simplex.common.model.ChatController.getServerOperators
 import chat.simplex.common.model.ChatController.getUserServers
+import chat.simplex.common.model.ChatController.listUsers
 import chat.simplex.common.model.ChatController.setUserServers
 import chat.simplex.common.model.ChatModel.controller
 import chat.simplex.common.platform.*
@@ -264,9 +265,21 @@ fun ModalData.NetworkAndServersView(closeNetworkAndServers: () -> Unit) {
               return@withBGApi
             }
             // Required onion mode would make any enabled server without an onion
-            // address unreachable. Warn instead of bricking the connection.
-            val servers = getUserServers(rh = currentRemoteHost?.remoteHostId) ?: currUserServers.value
-            val enabledServers = servers.flatMap { it.smpServers + it.xftpServers }.filter { it.enabled && !it.deleted }
+            // address unreachable. Check every profile, not just the active one, and
+            // ignore upstream relays that Qryptana does not operate.
+            val rhId = currentRemoteHost?.remoteHostId
+            val profiles = try {
+              listUsers(rhId)
+            } catch (e: Exception) {
+              Log.e(TAG, "Could not list profiles for Tor pre-flight: ${e.stackTraceToString()}")
+              emptyList()
+            }
+            val serversByProfile = profiles
+              .mapNotNull { info -> getUserServers(rh = rhId, userId = info.user.userId) }
+              .ifEmpty { listOfNotNull(getUserServers(rh = rhId) ?: currUserServers.value.takeIf { it.isNotEmpty() }) }
+            val enabledServers = serversByProfile
+              .flatMap { servers -> servers.flatMap { it.smpServers + it.xftpServers } }
+              .filter { it.enabled && !it.deleted && !QryptanaServerFilters.isUpstreamServer(it) }
             val withoutOnion = enabledServers.filterNot { serverHasOnionHost(it.server) }
             if (withoutOnion.isNotEmpty()) {
               networkUseSocksProxy.value = false

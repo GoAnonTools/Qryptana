@@ -2309,7 +2309,7 @@
     <string name="one_time_link_can_be_used_with_one_contact_only"><![CDATA[Одноразовая ссылка может быть использована <i>только с одним контактом</i> - поделитесь при встрече или через любой мессенджер.]]></string>
     <string name="no_message_servers_configured_for_private_routing">Нет серверов для доставки сообщений.</string>
     <string name="onboarding_network_operators_configure_via_settings">Вы можете настроить серверы позже.</string>
-    <string name="onboarding_network_operators_simplex_flux_agreement">Qryptana uses servers operated by GoAnon.</string>
+    <string name="onboarding_network_operators_simplex_flux_agreement">Qryptana uses servers operated by GoAnon Foundation.</string>
     <string name="onboarding_network_operators_app_will_use_different_operators">Приложение улучшает конфиденциальность, используя разных операторов в каждом разговоре.</string>
     <string name="onboarding_network_operators_cant_see_who_talks_to_whom">Когда больше чем один оператор включен, ни один из них не видит метаданные, чтобы определить, кто соединен с кем.</string>
     <string name="failed_to_save_servers">Ошибка сохранения серверов</string>
@@ -3067,13 +3067,13 @@
     <string name="android_delete_profiles_chats_success">Профили и чаты удалены</string>
 
     <string name="qryptana_whats_new_sovereign_infrastructure">Sovereign Infrastructure</string>
-    <string name="qryptana_whats_new_sovereign_infrastructure_desc">Connect directly to GoAnon-operated SMP and XFTP servers. No third-party relays.</string>
+    <string name="qryptana_whats_new_sovereign_infrastructure_desc">Connect directly to GoAnon Foundation-operated SMP and XFTP servers. No third-party relays.</string>
     <string name="qryptana_whats_new_absolute_privacy">Absolute Privacy</string>
     <string name="qryptana_whats_new_absolute_privacy_desc">End-to-end encryption with no metadata tracking or user directories.</string>
     <string name="qryptana_whats_new_branding">Qryptana Branding</string>
     <string name="qryptana_whats_new_branding_desc">Experience a fresh new look with our signature Copper and Charcoal UI.</string>
     <string name="qryptana_whats_new_independent_network">Independent Network</string>
-    <string name="qryptana_whats_new_independent_network_desc">A fully self-hosted ecosystem built for the GoAnon community.</string>
-    <string name="qryptana_source_code_agpl">Qryptana — свободное программное обеспечение, распространяемое под лицензией AGPL-3.0. Copyright (C) 2026 GoAnon. Эта программа предоставляется БЕЗ КАКИХ-ЛИБО ГАРАНТИЙ. Исходный код: https://qryptana.foundation/source</string>
+    <string name="qryptana_whats_new_independent_network_desc">A fully self-hosted ecosystem built for the GoAnon Foundation community.</string>
+    <string name="qryptana_source_code_agpl">Qryptana — свободное программное обеспечение, распространяемое под лицензией AGPL-3.0. Copyright (C) 2026 GoAnon Foundation. Эта программа предоставляется БЕЗ КАКИХ-ЛИБО ГАРАНТИЙ. Исходный код: https://qryptana.foundation/source</string>
     <string name="qryptana_source_code">Исходный код Qryptana</string>
 </resources>
