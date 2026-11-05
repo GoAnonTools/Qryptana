@@ -50,7 +50,7 @@ compose {
       }
       mainClass = "chat.simplex.desktop.MainKt"
       nativeDistributions {
-        copyright = "(c) 2026 Qryptana / GoAnon Foundation contributors. Derived from SimpleX Chat."
+        copyright = "(c) 2026 Qryptana / GoAnon contributors. Derived from SimpleX Chat."
         // For debugging via VisualVM
         if (debugJava) {
           modules("jdk.zipfs", "jdk.unsupported", "jdk.management.agent")

@@ -835,15 +835,15 @@
     <string name="migrate_from_device_start_chat">Siḧbetê bide destpêkirin</string>
 
 
-    <string name="onboarding_network_operators_simplex_flux_agreement">Qryptana uses servers operated by GoAnon Foundation.</string>
+    <string name="onboarding_network_operators_simplex_flux_agreement">Qryptana uses servers operated by GoAnon.</string>
     <string name="qryptana_whats_new_sovereign_infrastructure">Sovereign Infrastructure</string>
-    <string name="qryptana_whats_new_sovereign_infrastructure_desc">By default, your own queues connect directly to GoAnon Foundation-operated SMP and XFTP servers.</string>
+    <string name="qryptana_whats_new_sovereign_infrastructure_desc">By default, your own queues connect directly to GoAnon-operated SMP and XFTP servers.</string>
     <string name="qryptana_whats_new_absolute_privacy">Absolute Privacy</string>
     <string name="qryptana_whats_new_absolute_privacy_desc">End-to-end encryption with no metadata tracking or user directories.</string>
     <string name="qryptana_whats_new_branding">Qryptana Branding</string>
     <string name="qryptana_whats_new_branding_desc">Experience a fresh new look with our signature Copper and Charcoal UI.</string>
     <string name="qryptana_whats_new_independent_network">Independent Network</string>
-    <string name="qryptana_whats_new_independent_network_desc">A fully self-hosted ecosystem built for the GoAnon Foundation community.</string>
-    <string name="qryptana_source_code_agpl">Qryptana nermalava azad e ku bi destûra AGPL-3.0 hatî lîsanskirin. Copyright (C) 2026 GoAnon Foundation. Ev bername bêyî ti garantiyek tê pêşkêşkirin. Koda çavkaniyê: https://qryptana.foundation/source</string>
+    <string name="qryptana_whats_new_independent_network_desc">A fully self-hosted ecosystem built for the GoAnon community.</string>
+    <string name="qryptana_source_code_agpl">Qryptana nermalava azad e ku bi destûra AGPL-3.0 hatî lîsanskirin. Copyright (C) 2026 GoAnon. Ev bername bêyî ti garantiyek tê pêşkêşkirin. Koda çavkaniyê: https://qryptana.foundation/source</string>
     <string name="qryptana_source_code">Koda çavkaniyê ya Qryptana</string>
 </resources>

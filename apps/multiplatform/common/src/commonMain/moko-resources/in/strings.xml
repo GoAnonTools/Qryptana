@@ -1617,7 +1617,7 @@
     <string name="desktop_address">Alamat desktop</string>
     <string name="desktop_devices">Perangkat desktop</string>
     <string name="onboarding_network_about_operators">Tentang operator</string>
-    <string name="onboarding_network_operators_simplex_flux_agreement">Qryptana uses servers operated by GoAnon Foundation.</string>
+    <string name="onboarding_network_operators_simplex_flux_agreement">Qryptana uses servers operated by GoAnon.</string>
     <string name="delete_chat_profile_question">Hapus profil obrolan?</string>
     <string name="chat_is_stopped_you_should_transfer_database">Obrolan dihentikan. Jika Anda sudah gunakan basis data ini di perangkat lain, Anda harus transfer kembali sebelum memulai obrolan.</string>
     <string name="database_passphrase_will_be_updated">Frasa sandi enkripsi basis data akan diperbarui.</string>
@@ -2732,13 +2732,13 @@
 
 
     <string name="qryptana_whats_new_sovereign_infrastructure">Sovereign Infrastructure</string>
-    <string name="qryptana_whats_new_sovereign_infrastructure_desc">By default, your own queues connect directly to GoAnon Foundation-operated SMP and XFTP servers.</string>
+    <string name="qryptana_whats_new_sovereign_infrastructure_desc">By default, your own queues connect directly to GoAnon-operated SMP and XFTP servers.</string>
     <string name="qryptana_whats_new_absolute_privacy">Absolute Privacy</string>
     <string name="qryptana_whats_new_absolute_privacy_desc">End-to-end encryption with no metadata tracking or user directories.</string>
     <string name="qryptana_whats_new_branding">Qryptana Branding</string>
     <string name="qryptana_whats_new_branding_desc">Experience a fresh new look with our signature Copper and Charcoal UI.</string>
     <string name="qryptana_whats_new_independent_network">Independent Network</string>
-    <string name="qryptana_whats_new_independent_network_desc">A fully self-hosted ecosystem built for the GoAnon Foundation community.</string>
-    <string name="qryptana_source_code_agpl">Qryptana adalah perangkat lunak bebas yang dilisensikan di bawah AGPL-3.0. Copyright (C) 2026 GoAnon Foundation. Program ini disediakan TANPA JAMINAN APA PUN. Kode sumber: https://qryptana.foundation/source</string>
+    <string name="qryptana_whats_new_independent_network_desc">A fully self-hosted ecosystem built for the GoAnon community.</string>
+    <string name="qryptana_source_code_agpl">Qryptana adalah perangkat lunak bebas yang dilisensikan di bawah AGPL-3.0. Copyright (C) 2026 GoAnon. Program ini disediakan TANPA JAMINAN APA PUN. Kode sumber: https://qryptana.foundation/source</string>
     <string name="qryptana_source_code">Kode sumber Qryptana</string>
 </resources>

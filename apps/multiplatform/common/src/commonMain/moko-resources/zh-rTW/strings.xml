@@ -2418,7 +2418,7 @@
     <string name="onboarding_conditions_private_chats_not_accessible">營運商承諾：\n- 保持獨立\n- 盡量減少中繼資料使用\n- 執行已驗證的開源程式碼</string>
     <string name="onboarding_conditions_by_using_you_agree">你承諾：\n- 只在公開群組中發佈合法內容\n- 尊重其他使用者——不發送垃圾訊息</string>
     <string name="onboarding_conditions_privacy_policy_and_conditions_of_use">私隱政策與使用條件。</string>
-    <string name="onboarding_network_operators_simplex_flux_agreement">Qryptana uses servers operated by GoAnon Foundation.</string>
+    <string name="onboarding_network_operators_simplex_flux_agreement">Qryptana uses servers operated by GoAnon.</string>
     <string name="onboarding_network_operators_app_will_use_different_operators">應用程式會在每個對話中使用不同營運商，以保護你的私隱。</string>
     <string name="onboarding_network_operators_cant_see_who_talks_to_whom">啟用多於一個營運商時，沒有任何一方擁有足以得知誰與誰通訊的中繼資料。</string>
     <string name="onboarding_network_operators_app_will_use_for_routing">例如，如果你的聯絡人透過 Qryptana 伺服器接收訊息，你的應用程式會透過 Qryptana 伺服器傳送訊息。</string>
@@ -2867,13 +2867,13 @@
 
 
     <string name="qryptana_whats_new_sovereign_infrastructure">Sovereign Infrastructure</string>
-    <string name="qryptana_whats_new_sovereign_infrastructure_desc">By default, your own queues connect directly to GoAnon Foundation-operated SMP and XFTP servers.</string>
+    <string name="qryptana_whats_new_sovereign_infrastructure_desc">By default, your own queues connect directly to GoAnon-operated SMP and XFTP servers.</string>
     <string name="qryptana_whats_new_absolute_privacy">Absolute Privacy</string>
     <string name="qryptana_whats_new_absolute_privacy_desc">End-to-end encryption with no metadata tracking or user directories.</string>
     <string name="qryptana_whats_new_branding">Qryptana Branding</string>
     <string name="qryptana_whats_new_branding_desc">Experience a fresh new look with our signature Copper and Charcoal UI.</string>
     <string name="qryptana_whats_new_independent_network">Independent Network</string>
-    <string name="qryptana_whats_new_independent_network_desc">A fully self-hosted ecosystem built for the GoAnon Foundation community.</string>
-    <string name="qryptana_source_code_agpl">Qryptana 是依 AGPL-3.0 授權的自由軟體。Copyright (C) 2026 GoAnon Foundation。本程式不提供任何形式的擔保。原始碼：https://qryptana.foundation/source</string>
+    <string name="qryptana_whats_new_independent_network_desc">A fully self-hosted ecosystem built for the GoAnon community.</string>
+    <string name="qryptana_source_code_agpl">Qryptana 是依 AGPL-3.0 授權的自由軟體。Copyright (C) 2026 GoAnon。本程式不提供任何形式的擔保。原始碼：https://qryptana.foundation/source</string>
     <string name="qryptana_source_code">Qryptana 原始碼</string>
 </resources>

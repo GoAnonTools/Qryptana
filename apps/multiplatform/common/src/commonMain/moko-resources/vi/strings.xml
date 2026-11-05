@@ -1784,7 +1784,7 @@
     <string name="simplex_link_mode">Các đường dẫn Qryptana</string>
     <string name="simplex_link_invitation">Lời mời Qryptana dùng một lần</string>
     <string name="la_notice_title_simplex_lock">Khóa Qryptana</string>
-    <string name="onboarding_network_operators_simplex_flux_agreement">Qryptana uses servers operated by GoAnon Foundation.</string>
+    <string name="onboarding_network_operators_simplex_flux_agreement">Qryptana uses servers operated by GoAnon.</string>
     <string name="theme_simplex">Qryptana</string>
     <string name="simplex_address">Địa chỉ Qryptana</string>
     <string name="shutdown_alert_question">Tắt?</string>
@@ -2528,13 +2528,13 @@
 
 
     <string name="qryptana_whats_new_sovereign_infrastructure">Sovereign Infrastructure</string>
-    <string name="qryptana_whats_new_sovereign_infrastructure_desc">By default, your own queues connect directly to GoAnon Foundation-operated SMP and XFTP servers.</string>
+    <string name="qryptana_whats_new_sovereign_infrastructure_desc">By default, your own queues connect directly to GoAnon-operated SMP and XFTP servers.</string>
     <string name="qryptana_whats_new_absolute_privacy">Absolute Privacy</string>
     <string name="qryptana_whats_new_absolute_privacy_desc">End-to-end encryption with no metadata tracking or user directories.</string>
     <string name="qryptana_whats_new_branding">Qryptana Branding</string>
     <string name="qryptana_whats_new_branding_desc">Experience a fresh new look with our signature Copper and Charcoal UI.</string>
     <string name="qryptana_whats_new_independent_network">Independent Network</string>
-    <string name="qryptana_whats_new_independent_network_desc">A fully self-hosted ecosystem built for the GoAnon Foundation community.</string>
-    <string name="qryptana_source_code_agpl">Qryptana là phần mềm tự do được cấp phép theo AGPL-3.0. Copyright (C) 2026 GoAnon Foundation. Chương trình này được cung cấp KHÔNG CÓ BẤT KỲ BẢO HÀNH NÀO. Mã nguồn: https://qryptana.foundation/source</string>
+    <string name="qryptana_whats_new_independent_network_desc">A fully self-hosted ecosystem built for the GoAnon community.</string>
+    <string name="qryptana_source_code_agpl">Qryptana là phần mềm tự do được cấp phép theo AGPL-3.0. Copyright (C) 2026 GoAnon. Chương trình này được cung cấp KHÔNG CÓ BẤT KỲ BẢO HÀNH NÀO. Mã nguồn: https://qryptana.foundation/source</string>
     <string name="qryptana_source_code">Mã nguồn Qryptana</string>
 </resources>

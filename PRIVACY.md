@@ -6,12 +6,12 @@ Qryptana is an early Labs-stage downstream fork of SimpleX Chat. The upstream pr
 
 ## Server operator and connection metadata
 
-- Qryptana's preset SMP (message relay) and XFTP (file relay) servers are operated solely by **GoAnon Foundation**:
+- Qryptana's preset SMP (message relay) and XFTP (file relay) servers are operated solely by **GoAnon**:
   - SMP (VPS1): `smp.qryptana.foundation:5224`, onion host `b544yscwxhrir2ilsy57dgwedr5vutl7zj525rio4dazsfka4f22k6yd.onion:5224`
   - XFTP (VPS2): `xftp2.goanon.foundation`, onion host `e6xroxqvdwcid42m54ck6bl4u3te45wu6x3ptaeupuowrgxxow7b6ayd.onion`
-- The relays are on different hosts and different root domains (`qryptana.foundation` for SMP, `goanon.foundation` for XFTP) and are installed as separate server groups. This is a technical separation intended to limit cross-relay metadata visibility. It does **not** make them independent third parties: GoAnon Foundation operates both relays and could in principle correlate metadata observed at both.
-- These are the application's default servers for new users. Onboarding installs them (`platform/QryptanaServers.kt`); the core preset definition used when the native core is rebuilt is in `src/Simplex/Chat/Operators/Presets.hs`. At the end of onboarding the app disables other preset operators so the default configuration uses the GoAnon Foundation-operated relays.
-- **Connection metadata routes through these servers.** When the app connects to them, GoAnon Foundation, as the operator, can observe network and relay metadata. This can include the client's IP address, connection and disconnection times, TLS and transport information, the relay or queue identifiers used by the client, message and file sizes, and traffic timing and volume. This metadata is inherent in operating a relay. It is not message content: GoAnon Foundation does not receive message or file plaintext, contact names, profile contents, or a public user directory through the protocol. Messages and files are end-to-end encrypted between users.
+- The relays are on different hosts and different root domains (`qryptana.foundation` for SMP, `goanon.foundation` for XFTP) and are installed as separate server groups. This is a technical separation intended to limit cross-relay metadata visibility. It does **not** make them independent third parties: GoAnon operates both relays and could in principle correlate metadata observed at both.
+- These are the application's default servers for new users. Onboarding installs them (`platform/QryptanaServers.kt`); the core preset definition used when the native core is rebuilt is in `src/Simplex/Chat/Operators/Presets.hs`. At the end of onboarding the app disables other preset operators so the default configuration uses the GoAnon-operated relays.
+- **Connection metadata routes through these servers.** When the app connects to them, GoAnon, as the operator, can observe network and relay metadata. This can include the client's IP address, connection and disconnection times, TLS and transport information, the relay or queue identifiers used by the client, message and file sizes, and traffic timing and volume. This metadata is inherent in operating a relay. It is not message content: GoAnon does not receive message or file plaintext, contact names, profile contents, or a public user directory through the protocol. Messages and files are end-to-end encrypted between users.
 - These observations are network-level. If the user routes connections through a configured SOCKS proxy or an onion service, the operator may see the proxy or onion address instead of the user's direct IP address, depending on configuration. The Maximum Privacy (Tor) switch configures the app to use Orbot and require onion hosts, as described below.
 - Qryptana does not require a phone number, email address, or public user ID to use these relays.
 - Users can add or change servers in Network & servers settings. Any third-party server a user adds is governed by that operator's policy, not this document.
@@ -20,7 +20,7 @@ Qryptana is an early Labs-stage downstream fork of SimpleX Chat. The upstream pr
 
 ### Messaging, servers and storage
 
-- Messaging uses the inherited SimpleX protocol implementation. With the default configuration, messages are relayed through the GoAnon Foundation-operated SMP server at `smp.qryptana.foundation` and files through the GoAnon Foundation-operated XFTP server at `xftp2.goanon.foundation`. Server selection and roles can be changed in Network & servers settings.
+- Messaging uses the inherited SimpleX protocol implementation. With the default configuration, messages are relayed through the GoAnon-operated SMP server at `smp.qryptana.foundation` and files through the GoAnon-operated XFTP server at `xftp2.goanon.foundation`. Server selection and roles can be changed in Network & servers settings.
 - The application stores profiles, contacts and messages in its local database. The code retains the upstream SQLCipher-backed database encryption behavior; device configuration and user choices can affect how a database is protected.
 
 ### Maximum Privacy (Tor)
@@ -65,7 +65,7 @@ The paths above are under `apps/multiplatform/common/src/` unless prefixed with 
 
 ## Information we do not claim
 
-Qryptana does not currently publish a data-retention schedule, server-log retention commitments, a privacy contact, or legal commitments about GoAnon Foundation-operated relays. The SMP and XFTP addresses above are the current preset servers, both operated by GoAnon Foundation; this draft does not promise that they will never change, and it does not cover third-party servers a user adds. These items require human and legal review before any public release.
+Qryptana does not currently publish a data-retention schedule, server-log retention commitments, a privacy contact, or legal commitments about GoAnon-operated relays. The SMP and XFTP addresses above are the current preset servers, both operated by GoAnon; this draft does not promise that they will never change, and it does not cover third-party servers a user adds. These items require human and legal review before any public release.
 
 ## Source and license
 
@@ -73,4 +73,4 @@ The source is distributed under AGPL-3.0. SimpleX Chat attribution and upstream 
 
 ## Review status
 
-**DRAFT: FOR LEGAL REVIEW.** Confirm the actual deployment and operator model, support and privacy contacts, applicable jurisdictions, retention practices, and the final policy before publishing or distributing a Qryptana artifact. This revision (2026-11-05) describes the split SMP (`qryptana.foundation`) and XFTP (`goanon.foundation`) relays, states that GoAnon Foundation operates both, documents the Maximum Privacy (Tor) behavior, and retains the source-inspected details about link-preview consent, calls and ICE servers, SimpleX-name resolution, and Android notification/background behavior.
+**DRAFT: FOR LEGAL REVIEW.** Confirm the actual deployment and operator model, support and privacy contacts, applicable jurisdictions, retention practices, and the final policy before publishing or distributing a Qryptana artifact. This revision (2026-11-05) describes the split SMP (`qryptana.foundation`) and XFTP (`goanon.foundation`) relays, states that GoAnon operates both, documents the Maximum Privacy (Tor) behavior, and retains the source-inspected details about link-preview consent, calls and ICE servers, SimpleX-name resolution, and Android notification/background behavior.

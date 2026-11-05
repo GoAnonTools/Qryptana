@@ -1843,7 +1843,7 @@
     <string name="use_simplex_chat_servers__question">Folosiți servere Qryptana?</string>
     <string name="network_socks_proxy">Proxy SOCKS</string>
     <string name="network_proxy_username">Nume de utilizator</string>
-    <string name="onboarding_network_operators_simplex_flux_agreement">Qryptana uses servers operated by GoAnon Foundation.</string>
+    <string name="onboarding_network_operators_simplex_flux_agreement">Qryptana uses servers operated by GoAnon.</string>
     <string name="periodic_notifications_desc">Aplicația preia mesajele noi periodic și consumă câteva procente din baterie pe zi. Aplicația nu folosește notificări push, așadar datele de pe dispozitivul tău nu sunt trimise către servere.</string>
     <string name="la_notice_title_simplex_lock">Blocare Qryptana</string>
     <string name="file_error_auth">Cheie greșită sau adresă necunoscută a fragmentului de fișier - cel mai probabil fișierul este șters.</string>
@@ -2532,13 +2532,13 @@
 
 
     <string name="qryptana_whats_new_sovereign_infrastructure">Sovereign Infrastructure</string>
-    <string name="qryptana_whats_new_sovereign_infrastructure_desc">By default, your own queues connect directly to GoAnon Foundation-operated SMP and XFTP servers.</string>
+    <string name="qryptana_whats_new_sovereign_infrastructure_desc">By default, your own queues connect directly to GoAnon-operated SMP and XFTP servers.</string>
     <string name="qryptana_whats_new_absolute_privacy">Absolute Privacy</string>
     <string name="qryptana_whats_new_absolute_privacy_desc">End-to-end encryption with no metadata tracking or user directories.</string>
     <string name="qryptana_whats_new_branding">Qryptana Branding</string>
     <string name="qryptana_whats_new_branding_desc">Experience a fresh new look with our signature Copper and Charcoal UI.</string>
     <string name="qryptana_whats_new_independent_network">Independent Network</string>
-    <string name="qryptana_whats_new_independent_network_desc">A fully self-hosted ecosystem built for the GoAnon Foundation community.</string>
-    <string name="qryptana_source_code_agpl">Qryptana este software liber licențiat sub AGPL-3.0. Copyright (C) 2026 GoAnon Foundation. Acest program este furnizat FĂRĂ NICIO GARANȚIE. Cod sursă: https://qryptana.foundation/source</string>
+    <string name="qryptana_whats_new_independent_network_desc">A fully self-hosted ecosystem built for the GoAnon community.</string>
+    <string name="qryptana_source_code_agpl">Qryptana este software liber licențiat sub AGPL-3.0. Copyright (C) 2026 GoAnon. Acest program este furnizat FĂRĂ NICIO GARANȚIE. Cod sursă: https://qryptana.foundation/source</string>
     <string name="qryptana_source_code">Codul sursă Qryptana</string>
 </resources>

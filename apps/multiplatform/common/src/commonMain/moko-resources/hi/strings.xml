@@ -302,15 +302,15 @@
     <string name="database_migration_in_progress">डेटाबेस माइग्रेशन जारी है।\nइसमें कुछ मिनट लग सकते हैं।</string>
     <string name="non_content_uri_alert_title">अमान्य फ़ाइल पथ</string>
     <string name="non_content_uri_alert_text">आपने एक अमान्य फ़ाइल पथ साझा किया है। कृपया इस समस्या की सूचना ऐप डेवलपर्स को दें।</string>
-    <string name="onboarding_network_operators_simplex_flux_agreement">Qryptana uses servers operated by GoAnon Foundation.</string>
+    <string name="onboarding_network_operators_simplex_flux_agreement">Qryptana uses servers operated by GoAnon.</string>
     <string name="qryptana_whats_new_sovereign_infrastructure">Sovereign Infrastructure</string>
-    <string name="qryptana_whats_new_sovereign_infrastructure_desc">By default, your own queues connect directly to GoAnon Foundation-operated SMP and XFTP servers.</string>
+    <string name="qryptana_whats_new_sovereign_infrastructure_desc">By default, your own queues connect directly to GoAnon-operated SMP and XFTP servers.</string>
     <string name="qryptana_whats_new_absolute_privacy">Absolute Privacy</string>
     <string name="qryptana_whats_new_absolute_privacy_desc">End-to-end encryption with no metadata tracking or user directories.</string>
     <string name="qryptana_whats_new_branding">Qryptana Branding</string>
     <string name="qryptana_whats_new_branding_desc">Experience a fresh new look with our signature Copper and Charcoal UI.</string>
     <string name="qryptana_whats_new_independent_network">Independent Network</string>
-    <string name="qryptana_whats_new_independent_network_desc">A fully self-hosted ecosystem built for the GoAnon Foundation community.</string>
-    <string name="qryptana_source_code_agpl">Qryptana एक मुक्त सॉफ़्टवेयर है, जो AGPL-3.0 के अंतर्गत लाइसेंस प्राप्त है। Copyright (C) 2026 GoAnon Foundation. यह प्रोग्राम बिना किसी भी प्रकार की वारंटी के प्रदान किया जाता है। स्रोत कोड: https://qryptana.foundation/source</string>
+    <string name="qryptana_whats_new_independent_network_desc">A fully self-hosted ecosystem built for the GoAnon community.</string>
+    <string name="qryptana_source_code_agpl">Qryptana एक मुक्त सॉफ़्टवेयर है, जो AGPL-3.0 के अंतर्गत लाइसेंस प्राप्त है। Copyright (C) 2026 GoAnon. यह प्रोग्राम बिना किसी भी प्रकार की वारंटी के प्रदान किया जाता है। स्रोत कोड: https://qryptana.foundation/source</string>
     <string name="qryptana_source_code">Qryptana स्रोत कोड</string>
 </resources>
