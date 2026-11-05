@@ -1099,6 +1099,11 @@
   <string name="network_tor_orbot_missing_title">Orbot is not running</string>
   <string name="network_tor_orbot_missing_desc">Orbot is not running. Please install and start Orbot to use Tor routing.</string>
   <string name="network_tor_open_orbot">Open Orbot</string>
+  <string name="network_tor_orbot_not_installed_title">Orbot is not installed</string>
+  <string name="network_tor_orbot_not_installed_desc">Install Orbot, then return here and enable Maximum Privacy again.</string>
+  <string name="network_tor_orbot_install">Install Orbot</string>
+  <string name="network_tor_connection_failed_title">Orbot connection failed</string>
+  <string name="network_tor_connection_failed_desc">Could not connect to Orbot. Please ensure Orbot is running and try again.</string>
   <string name="network_tor_missing_onion_title">Some servers have no onion address</string>
   <string name="network_tor_missing_onion_desc">Tor requires onion addresses, but these enabled servers don\'t have one and would become unreachable:\n%1$s</string>
   <string name="read_our_privacy_policy">Read our Privacy Policy</string>

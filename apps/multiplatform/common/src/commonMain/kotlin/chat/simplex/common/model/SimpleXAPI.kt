@@ -565,6 +565,8 @@ class AppPreferences {
   )
   val networkTorPreviousUseSocksProxy = mkBoolPreference(SHARED_PREFS_NETWORK_TOR_PREVIOUS_USE_SOCKS_PROXY, false)
   val networkTorPreviousOnionHosts = mkSafeEnumPreference(SHARED_PREFS_NETWORK_TOR_PREVIOUS_ONION_HOSTS, OnionHosts.PREFER)
+  // True when Maximum Privacy is using Orbot's OS-level VPN routing (no SOCKS proxy).
+  val networkTorVpnMode = mkBoolPreference(SHARED_PREFS_NETWORK_TOR_VPN_MODE, false)
   val networkSessionMode: SharedPreference<TransportSessionMode> = mkSafeEnumPreference(SHARED_PREFS_NETWORK_SESSION_MODE, TransportSessionMode.default)
   val networkSMPProxyMode: SharedPreference<SMPProxyMode> = mkSafeEnumPreference(SHARED_PREFS_NETWORK_SMP_PROXY_MODE, SMPProxyMode.default)
   val networkSMPProxyFallback: SharedPreference<SMPProxyFallback> = mkSafeEnumPreference(SHARED_PREFS_NETWORK_SMP_PROXY_FALLBACK, SMPProxyFallback.default)
@@ -851,6 +853,7 @@ class AppPreferences {
     private const val SHARED_PREFS_NETWORK_TOR_PREVIOUS_PROXY = "NetworkTorPreviousProxy"
     private const val SHARED_PREFS_NETWORK_TOR_PREVIOUS_USE_SOCKS_PROXY = "NetworkTorPreviousUseSocksProxy"
     private const val SHARED_PREFS_NETWORK_TOR_PREVIOUS_ONION_HOSTS = "NetworkTorPreviousOnionHosts"
+    private const val SHARED_PREFS_NETWORK_TOR_VPN_MODE = "NetworkTorVpnMode"
     private const val SHARED_PREFS_NETWORK_SESSION_MODE = "NetworkSessionMode"
     private const val SHARED_PREFS_NETWORK_SMP_PROXY_MODE = "NetworkSMPProxyMode"
     private const val SHARED_PREFS_NETWORK_SMP_PROXY_FALLBACK = "NetworkSMPProxyFallback"
@@ -1788,16 +1791,23 @@ object ChatController {
     throw Exception("failed to set chat TTL: ${r.responseType} ${r.details}")
   }
 
-  suspend fun apiSetNetworkConfig(cfg: NetCfg, showAlertOnError: Boolean = true, ctrl: ChatCtrl? = null): Boolean {
+  suspend fun apiSetNetworkConfig(
+    cfg: NetCfg,
+    showAlertOnError: Boolean = true,
+    ctrl: ChatCtrl? = null,
+    onError: ((String) -> Unit)? = null,
+  ): Boolean {
     val r = sendCmd(null, CC.APISetNetworkConfig(cfg), ctrl)
     if (r.result is CR.CmdOk) return true
-    Log.e(TAG, "apiSetNetworkConfig bad response: ${r.responseType} ${r.details}")
+    val details = "${r.responseType}: ${r.details}"
+    Log.e(TAG, "apiSetNetworkConfig bad response: $details")
     if (showAlertOnError) {
       AlertManager.shared.showAlertMsg(
         generalGetString(MR.strings.error_setting_network_config),
-        "${r.responseType}: ${r.details}"
+        details
       )
     }
+    onError?.invoke(details)
     return false
   }
 

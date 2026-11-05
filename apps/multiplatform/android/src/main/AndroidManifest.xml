@@ -32,6 +32,7 @@
 
   <!-- Allows to query app name and icon that can open specific file type -->
   <queries>
+    <package android:name="org.torproject.android" />
     <intent>
       <action android:name="android.intent.action.VIEW" />
       <data android:mimeType="*/*" />

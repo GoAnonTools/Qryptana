@@ -101,6 +101,11 @@ import chat.simplex.res.network_maximum_privacy_tor_footer
 import chat.simplex.res.network_maximum_privacy_tor_title
 import chat.simplex.res.network_tor_missing_onion_desc
 import chat.simplex.res.network_tor_missing_onion_title
+import chat.simplex.res.network_tor_connection_failed_desc
+import chat.simplex.res.network_tor_connection_failed_title
+import chat.simplex.res.network_tor_orbot_install
+import chat.simplex.res.network_tor_orbot_not_installed_desc
+import chat.simplex.res.network_tor_orbot_not_installed_title
 import chat.simplex.res.network_tor_open_orbot
 import chat.simplex.res.network_tor_orbot_missing_desc
 import chat.simplex.res.network_tor_orbot_missing_title
@@ -254,7 +259,18 @@ fun ModalData.NetworkAndServersView(closeNetworkAndServers: () -> Unit) {
       toggleMaximumPrivacyTor = { enable ->
         if (enable) {
           withBGApi {
-            if (!isOrbotReachable()) {
+            if (appPlatform.isAndroid) {
+              if (!isOrbotInstalled()) {
+                networkUseSocksProxy.value = false
+                AlertManager.shared.showAlertDialog(
+                  title = generalGetString(MR.strings.network_tor_orbot_not_installed_title),
+                  text = generalGetString(MR.strings.network_tor_orbot_not_installed_desc),
+                  confirmText = generalGetString(MR.strings.network_tor_orbot_install),
+                  onConfirm = { uriHandler.openUriCatching(ORBOT_URL) }
+                )
+                return@withBGApi
+              }
+            } else if (!isOrbotReachable()) {
               networkUseSocksProxy.value = false
               AlertManager.shared.showAlertDialog(
                 title = generalGetString(MR.strings.network_tor_orbot_missing_title),
@@ -264,6 +280,8 @@ fun ModalData.NetworkAndServersView(closeNetworkAndServers: () -> Unit) {
               )
               return@withBGApi
             }
+            // Ask Orbot to start and learn whether it routes via VPN or a SOCKS proxy.
+            val orbot = if (appPlatform.isAndroid) startOrbotAndAwaitStatus() else null
             // Required onion mode would make any enabled server without an onion
             // address unreachable. Check every profile, not just the active one, and
             // ignore upstream relays that Qryptana does not operate.
@@ -298,13 +316,25 @@ fun ModalData.NetworkAndServersView(closeNetworkAndServers: () -> Unit) {
             appPrefs.networkTorPreviousProxy.set(appPrefs.networkProxy.get())
             appPrefs.networkTorPreviousUseSocksProxy.set(appPrefs.networkUseSocksProxy.get())
             appPrefs.networkTorPreviousOnionHosts.set(previousCfg.onionHosts)
-            val proxy = NetworkProxy(host = "127.0.0.1", port = 9050)
-            val cfg = previousCfg.withProxy(proxy).withOnionHosts(OnionHosts.REQUIRED)
-            if (setNetworkConfigSafely(cfg)) {
-              appPrefs.networkProxy.set(proxy)
+            val vpnMode = orbot?.vpnMode
+            val torProxy = parseOrbotProxy(orbot?.socksProxy)
+            val cfg = when (vpnMode) {
+              // VPN mode: the OS routes all traffic, so no SOCKS proxy is needed.
+              true -> previousCfg.copy(socksProxy = null).withOnionHosts(OnionHosts.REQUIRED)
+              // Proxy mode: use Orbot's advertised endpoint (defaults to :9050).
+              false -> previousCfg.withProxy(torProxy).withOnionHosts(OnionHosts.REQUIRED)
+              // Unknown mode: current SOCKS fallback.
+              null -> previousCfg.withProxy(NetworkProxy(host = "127.0.0.1", port = 9050)).withOnionHosts(OnionHosts.REQUIRED)
+            }
+            var errorDetails: String? = null
+            if (setNetworkConfigSafely(cfg) { errorDetails = it }) {
+              appPrefs.networkTorVpnMode.set(vpnMode == true)
+              if (vpnMode != true) appPrefs.networkProxy.set(torProxy)
               controller.setNetCfg(cfg)
-              networkUseSocksProxy.value = true
+              networkUseSocksProxy.value = cfg.useSocksProxy
               onionHosts.value = OnionHosts.REQUIRED
+            } else if (errorDetails?.contains("BROKER", ignoreCase = true) == true) {
+              showTorConnectionFailedAlert()
             } else {
               showWrongProxyConfigAlert()
             }
@@ -320,6 +350,7 @@ fun ModalData.NetworkAndServersView(closeNetworkAndServers: () -> Unit) {
               .withOnionHosts(previousOnion)
             if (setNetworkConfigSafely(cfg)) {
               appPrefs.networkProxy.set(previousProxy)
+              appPrefs.networkTorVpnMode.set(false)
               controller.setNetCfg(cfg)
               networkUseSocksProxy.value = previousUseSocks
               onionHosts.value = previousOnion
@@ -355,12 +386,15 @@ fun ModalData.NetworkAndServersView(closeNetworkAndServers: () -> Unit) {
   }
   val anyOperatorEnabled = remember { derivedStateOf { visibleOperators.value.any { (_, op) -> op.enabled } } }
   val networkProxy = remember { appPrefs.networkProxy.state }
+  val torVpnMode = remember { appPrefs.networkTorVpnMode.state }
   val maximumPrivacyTorEnabled = remember {
     derivedStateOf {
-      networkUseSocksProxy.value &&
-        onionHosts.value == OnionHosts.REQUIRED &&
-        networkProxy.value.host == "127.0.0.1" &&
-        networkProxy.value.port == 9050
+      onionHosts.value == OnionHosts.REQUIRED && (
+        torVpnMode.value ||
+          (networkUseSocksProxy.value &&
+            networkProxy.value.host == "127.0.0.1" &&
+            networkProxy.value.port == 9050)
+        )
     }
   }
   val scope = rememberCoroutineScope()
@@ -592,11 +626,29 @@ internal fun serverHasOnionHost(server: String): Boolean =
     .split(',')
     .any { it.trim().substringBefore(':').endsWith(".onion", ignoreCase = true) }
 
-private suspend fun setNetworkConfigSafely(cfg: NetCfg): Boolean =
+private fun parseOrbotProxy(socksProxy: String?): NetworkProxy {
+  val value = socksProxy?.takeIf { it.isNotBlank() }
+    ?: return NetworkProxy(host = "127.0.0.1", port = 9050)
+  return NetworkProxy(
+    host = value.substringBefore(':'),
+    port = value.substringAfter(':', "9050").toIntOrNull() ?: 9050,
+  )
+}
+
+private fun showTorConnectionFailedAlert() {
+  AlertManager.shared.showAlertMsg(
+    title = generalGetString(MR.strings.network_tor_connection_failed_title),
+    text = generalGetString(MR.strings.network_tor_connection_failed_desc),
+  )
+}
+
+private suspend fun setNetworkConfigSafely(cfg: NetCfg, onError: (String) -> Unit = {}): Boolean =
   try {
-    controller.apiSetNetworkConfig(cfg, showAlertOnError = false)
+    controller.apiSetNetworkConfig(cfg, showAlertOnError = false, onError = onError)
   } catch (e: Exception) {
-    Log.e(TAG, "apiSetNetworkConfig failed: ${e.stackTraceToString()}")
+    val details = e.stackTraceToString()
+    Log.e(TAG, "apiSetNetworkConfig failed: $details")
+    onError(details)
     false
   }
 
