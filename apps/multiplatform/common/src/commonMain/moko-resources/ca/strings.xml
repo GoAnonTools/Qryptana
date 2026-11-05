@@ -2515,6 +2515,6 @@
     <string name="qryptana_whats_new_branding_desc">Experience a fresh new look with our signature Copper and Charcoal UI.</string>
     <string name="qryptana_whats_new_independent_network">Independent Network</string>
     <string name="qryptana_whats_new_independent_network_desc">A fully self-hosted ecosystem built for the GoAnon community.</string>
-    <string name="qryptana_source_code_agpl">Qryptana és programari lliure sota la llicència AGPL-3.0. Copyright (C) 2026 GoAnon contributors. Aquest programa es distribueix SENSE CAP GARANTIA. Codi font: https://qryptana.foundation/source</string>
+    <string name="qryptana_source_code_agpl">Qryptana és programari lliure sota la llicència AGPL-3.0. Copyright (C) 2026 GoAnon. Aquest programa es distribueix SENSE CAP GARANTIA. Codi font: https://qryptana.foundation/source</string>
     <string name="qryptana_source_code">Codi font de Qryptana</string>
 </resources>

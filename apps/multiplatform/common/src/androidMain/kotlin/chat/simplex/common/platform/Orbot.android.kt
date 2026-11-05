@@ -5,11 +5,16 @@ import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import android.content.pm.PackageManager
+import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
+import android.os.Build
 import androidx.core.content.ContextCompat
 import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import kotlinx.coroutines.withTimeoutOrNull
+import java.net.InetSocketAddress
+import java.net.Socket
 
 private const val ORBOT_PACKAGE = "org.torproject.android"
 private const val ACTION_START = "org.torproject.android.intent.action.START"
@@ -22,6 +27,9 @@ private const val STATUS_ON = "on"
 
 actual fun isOrbotInstalled(): Boolean =
   try {
+    // TODO: pin Guardian Project's signing certificate SHA-256 in addition to the
+    // package name. Until then, rely on strict loopback proxy validation so a
+    // substituted Orbot package cannot redirect traffic off-device.
     androidAppContext.packageManager.getPackageInfo(ORBOT_PACKAGE, 0)
     true
   } catch (_: PackageManager.NameNotFoundException) {
@@ -34,6 +42,15 @@ actual suspend fun startOrbotAndAwaitStatus(timeoutMs: Long): OrbotState? = with
   val receiver = object : BroadcastReceiver() {
     override fun onReceive(ctx: Context?, intent: Intent?) {
       if (intent?.action != ACTION_STATUS) return
+      // Android 14+ exposes the sender package. Reject anything that is not Orbot
+      // so a malicious app cannot spoof its mode or proxy.
+      if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
+        val sender = sentFromPackage
+        if (sender != ORBOT_PACKAGE) {
+          Log.w(TAG, "Ignoring Orbot status broadcast from unexpected sender: $sender")
+          return
+        }
+      }
       if (intent.getStringExtra(EXTRA_STATUS) != STATUS_ON) return
       val vpn = if (intent.hasExtra(EXTRA_VPN)) intent.getBooleanExtra(EXTRA_VPN, false) else null
       if (!result.isCompleted) {
@@ -46,6 +63,10 @@ actual suspend fun startOrbotAndAwaitStatus(timeoutMs: Long): OrbotState? = with
       }
     }
   }
+  // RECEIVER_NOT_EXPORTED cannot receive broadcasts from another app, so it would
+  // never see Orbot's status. Export the receiver and verify the sender above; on
+  // older releases the loopback-pinned proxy validation below limits any spoofed
+  // broadcast to a denial of service, never traffic redirection.
   ContextCompat.registerReceiver(
     context,
     receiver,
@@ -63,3 +84,28 @@ actual suspend fun startOrbotAndAwaitStatus(timeoutMs: Long): OrbotState? = with
     runCatching { context.unregisterReceiver(receiver) }
   }
 }
+
+actual suspend fun isTorRoutingLive(vpnMode: Boolean, proxyHost: String, proxyPort: Int): Boolean =
+  withContext(Dispatchers.IO) {
+    if (vpnMode) hasVpnTransport() else isLoopbackHost(proxyHost) && canConnect(proxyHost, proxyPort)
+  }
+
+private fun isLoopbackHost(host: String): Boolean =
+  host.lowercase() in setOf("127.0.0.1", "::1", "localhost")
+
+private fun hasVpnTransport(): Boolean {
+  val cm = androidAppContext.getSystemService(Context.CONNECTIVITY_SERVICE) as? ConnectivityManager ?: return false
+  val network = cm.activeNetwork ?: return false
+  val capabilities = cm.getNetworkCapabilities(network) ?: return false
+  return capabilities.hasTransport(NetworkCapabilities.TRANSPORT_VPN)
+}
+
+private fun canConnect(host: String, port: Int): Boolean =
+  try {
+    Socket().use {
+      it.connect(InetSocketAddress(host, port), 800)
+      true
+    }
+  } catch (_: Exception) {
+    false
+  }

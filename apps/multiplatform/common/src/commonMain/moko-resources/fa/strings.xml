@@ -2539,6 +2539,6 @@
     <string name="qryptana_whats_new_branding_desc">Experience a fresh new look with our signature Copper and Charcoal UI.</string>
     <string name="qryptana_whats_new_independent_network">Independent Network</string>
     <string name="qryptana_whats_new_independent_network_desc">A fully self-hosted ecosystem built for the GoAnon community.</string>
-    <string name="qryptana_source_code_agpl">Qryptana نرمافزار آزادی است که تحت مجوز AGPL-3.0 منتشر شده است. Copyright (C) 2026 GoAnon contributors. این برنامه بدون هیچگونه ضمانتی ارائه می‌شود. کد منبع: https://qryptana.foundation/source</string>
+    <string name="qryptana_source_code_agpl">Qryptana نرمافزار آزادی است که تحت مجوز AGPL-3.0 منتشر شده است. Copyright (C) 2026 GoAnon. این برنامه بدون هیچگونه ضمانتی ارائه می‌شود. کد منبع: https://qryptana.foundation/source</string>
     <string name="qryptana_source_code">کد منبع Qryptana</string>
 </resources>

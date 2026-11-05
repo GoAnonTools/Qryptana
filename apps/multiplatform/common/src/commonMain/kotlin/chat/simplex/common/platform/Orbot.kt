@@ -16,3 +16,10 @@ expect fun isOrbotInstalled(): Boolean
  * Returns null if Orbot is unavailable or the mode cannot be determined.
  */
 expect suspend fun startOrbotAndAwaitStatus(timeoutMs: Long = 15_000L): OrbotState?
+
+/**
+ * True when the configured Tor route is usable right now: the loopback SOCKS
+ * proxy accepts connections in proxy mode, or a VPN transport is active in VPN
+ * mode. Used so the UI never trusts a saved preference alone.
+ */
+expect suspend fun isTorRoutingLive(vpnMode: Boolean, proxyHost: String, proxyPort: Int): Boolean
