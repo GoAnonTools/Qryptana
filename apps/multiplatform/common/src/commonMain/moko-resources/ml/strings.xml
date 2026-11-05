@@ -424,6 +424,6 @@
     <string name="qryptana_whats_new_branding_desc">Experience a fresh new look with our signature Copper and Charcoal UI.</string>
     <string name="qryptana_whats_new_independent_network">Independent Network</string>
     <string name="qryptana_whats_new_independent_network_desc">A fully self-hosted ecosystem built for the GoAnon community.</string>
-    <string name="qryptana_source_code_agpl">Qryptana AGPL-3.0 ലൈസൻസിന് കീഴിലുള്ള സ്വതന്ത്ര സോഫ്റ്റ്വെയറാണ്. Copyright (C) 2026 GoAnon. ഈ പ്രോഗ്രാം ഒരു തരത്തിലുള്ള വാറന്റിയുമില്ലാതെ നൽകുന്നു. സോഴ്സ് കോഡ്: https://qryptana.foundation/source</string>
+    <string name="qryptana_source_code_agpl">Qryptana AGPL-3.0 ലൈസൻസിന് കീഴിലുള്ള സ്വതന്ത്ര സോഫ്റ്റ്വെയറാണ്. Copyright (C) 2026 GoAnon contributors. ഈ പ്രോഗ്രാം ഒരു തരത്തിലുള്ള വാറന്റിയുമില്ലാതെ നൽകുന്നു. സോഴ്സ് കോഡ്: https://qryptana.foundation/source</string>
     <string name="qryptana_source_code">Qryptana സോഴ്സ് കോഡ്</string>
 </resources>

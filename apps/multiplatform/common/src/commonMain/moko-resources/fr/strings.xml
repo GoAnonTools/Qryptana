@@ -2512,6 +2512,6 @@
     <string name="qryptana_whats_new_branding_desc">Experience a fresh new look with our signature Copper and Charcoal UI.</string>
     <string name="qryptana_whats_new_independent_network">Independent Network</string>
     <string name="qryptana_whats_new_independent_network_desc">A fully self-hosted ecosystem built for the GoAnon community.</string>
-    <string name="qryptana_source_code_agpl">Qryptana est un logiciel libre sous licence AGPL-3.0. Copyright (C) 2026 GoAnon. Ce programme est fourni SANS AUCUNE GARANTIE. Code source : https://qryptana.foundation/source</string>
+    <string name="qryptana_source_code_agpl">Qryptana est un logiciel libre sous licence AGPL-3.0. Copyright (C) 2026 GoAnon contributors. Ce programme est fourni SANS AUCUNE GARANTIE. Code source : https://qryptana.foundation/source</string>
     <string name="qryptana_source_code">Code source de Qryptana</string>
 </resources>

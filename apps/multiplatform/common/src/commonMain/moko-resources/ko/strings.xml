@@ -1531,6 +1531,6 @@
     <string name="qryptana_whats_new_branding_desc">Experience a fresh new look with our signature Copper and Charcoal UI.</string>
     <string name="qryptana_whats_new_independent_network">Independent Network</string>
     <string name="qryptana_whats_new_independent_network_desc">A fully self-hosted ecosystem built for the GoAnon community.</string>
-    <string name="qryptana_source_code_agpl">Qryptana는 AGPL-3.0에 따라 라이선스된 자유 소프트웨어입니다. Copyright (C) 2026 GoAnon. 이 프로그램은 어떠한 보증도 없이 제공됩니다. 소스 코드: https://qryptana.foundation/source</string>
+    <string name="qryptana_source_code_agpl">Qryptana는 AGPL-3.0에 따라 라이선스된 자유 소프트웨어입니다. Copyright (C) 2026 GoAnon contributors. 이 프로그램은 어떠한 보증도 없이 제공됩니다. 소스 코드: https://qryptana.foundation/source</string>
     <string name="qryptana_source_code">Qryptana 소스 코드</string>
 </resources>

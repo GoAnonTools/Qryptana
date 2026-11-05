@@ -1,4 +1,4 @@
-# Qryptana privacy statement (DRAFT: FOR LEGAL REVIEW)
+# Qryptana privacy statement
 
 This document describes the current repository implementation as inspected for the Qryptana remediation. It is not a legal notice, operator policy, or promise about services operated by Qryptana or any third party.
 
@@ -6,7 +6,7 @@ Qryptana is an early Labs-stage downstream fork of SimpleX Chat. The upstream pr
 
 ## Server operator and connection metadata
 
-- Qryptana's preset SMP (message relay) and XFTP (file relay) servers are operated solely by **GoAnon**:
+- Qryptana's preset SMP (message relay) and XFTP (file relay) servers are operated by the GoAnon project/contributors:
   - SMP (VPS1): `smp.qryptana.foundation:5224`, onion host `b544yscwxhrir2ilsy57dgwedr5vutl7zj525rio4dazsfka4f22k6yd.onion:5224`
   - XFTP (VPS2): `xftp2.goanon.foundation`, onion host `e6xroxqvdwcid42m54ck6bl4u3te45wu6x3ptaeupuowrgxxow7b6ayd.onion`
 - The relays are on different hosts and different root domains (`qryptana.foundation` for SMP, `goanon.foundation` for XFTP) and are installed as separate server groups. This is a technical separation intended to limit cross-relay metadata visibility. It does **not** make them independent third parties: GoAnon operates both relays and could in principle correlate metadata observed at both.
@@ -70,7 +70,3 @@ Qryptana does not currently publish a data-retention schedule, server-log retent
 ## Source and license
 
 The source is distributed under AGPL-3.0. SimpleX Chat attribution and upstream documentation are retained in the repository. Qryptana is not affiliated with, endorsed by, sponsored by, or officially connected to the SimpleX Chat project.
-
-## Review status
-
-**DRAFT: FOR LEGAL REVIEW.** Confirm the actual deployment and operator model, support and privacy contacts, applicable jurisdictions, retention practices, and the final policy before publishing or distributing a Qryptana artifact. This revision (2026-11-05) describes the split SMP (`qryptana.foundation`) and XFTP (`goanon.foundation`) relays, states that GoAnon operates both, documents the Maximum Privacy (Tor) behavior, and retains the source-inspected details about link-preview consent, calls and ICE servers, SimpleX-name resolution, and Android notification/background behavior.
