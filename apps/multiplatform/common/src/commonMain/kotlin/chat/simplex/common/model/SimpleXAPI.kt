@@ -293,7 +293,7 @@ import chat.simplex.res.no_media_servers_configured_for_sending
 import chat.simplex.res.no_message_servers_configured
 import chat.simplex.res.no_message_servers_configured_for_private_routing
 import chat.simplex.res.no_message_servers_configured_for_receiving
-import chat.simplex.res.no_names_servers_enabled
+import chat.simplex.res.qryptana_names_search_disabled_info
 import chat.simplex.res.not_connected_to_server_to_receive_messages_no_sub
 import chat.simplex.res.ok
 import chat.simplex.res.only_you_can_add_message_reactions
@@ -5212,7 +5212,7 @@ sealed class UserServersWarning {
         } else text
       }
       is NoNamesServers -> {
-        val text = generalGetString(MR.strings.no_names_servers_enabled)
+        val text = generalGetString(MR.strings.qryptana_names_search_disabled_info)
         if (user != null) {
           String.format(generalGetString(MR.strings.for_chat_profile), user.localDisplayName) + " " + text
         } else text

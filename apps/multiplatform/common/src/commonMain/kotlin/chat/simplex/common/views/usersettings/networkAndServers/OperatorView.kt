@@ -246,6 +246,7 @@ fun OperatorViewLayout(
     }
     val serversErrs = globalServersErrors(serverErrors.value)
     val serversWarns = globalServersWarnings(serverWarnings.value)
+    val serversInfos = globalServerInfoWarnings(serverWarnings.value)
     if (serversErrs.isNotEmpty()) {
       serversErrs.forEach { err ->
         SectionCustomFooter {
@@ -269,6 +270,11 @@ fun OperatorViewLayout(
       }
       if (footerText != null) {
         SectionTextFooter(footerText)
+      }
+    }
+    serversInfos.forEach { info ->
+      SectionCustomFooter {
+        ServersInfoFooter(info)
       }
     }
 

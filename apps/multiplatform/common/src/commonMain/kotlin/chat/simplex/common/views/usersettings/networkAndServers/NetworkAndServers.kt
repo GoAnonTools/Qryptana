@@ -63,6 +63,7 @@ import chat.simplex.res.ic_outbound
 import chat.simplex.res.ic_safety_divider
 import chat.simplex.res.ic_security
 import chat.simplex.res.ic_settings_ethernet
+import chat.simplex.res.ic_info
 import chat.simplex.res.ic_warning
 import chat.simplex.res.icon_descr_edited
 import chat.simplex.res.icon_descr_server_status_connected
@@ -585,6 +586,11 @@ fun ModalData.NetworkAndServersView(closeNetworkAndServers: () -> Unit) {
     globalServersWarnings(serverWarnings.value).forEach { warn ->
       SectionCustomFooter {
         ServersWarningFooter(warn)
+      }
+    }
+    globalServerInfoWarnings(serverWarnings.value).forEach { info ->
+      SectionCustomFooter {
+        ServersInfoFooter(info)
       }
     }
 
@@ -1312,6 +1318,30 @@ fun ServersWarningFooter(warnStr: String) {
   }
 }
 
+@Composable
+fun ServersInfoFooter(infoStr: String) {
+  Row(
+    Modifier.fillMaxWidth(),
+    verticalAlignment = Alignment.CenterVertically
+  ) {
+    Icon(
+      painterResource(MR.images.ic_info),
+      contentDescription = null,
+      tint = MaterialTheme.colors.secondary,
+      modifier = Modifier
+        .size(19.sp.toDp())
+        .offset(x = 2.sp.toDp())
+    )
+    TextIconSpaced()
+    Text(
+      infoStr,
+      color = MaterialTheme.colors.secondary,
+      lineHeight = 18.sp,
+      fontSize = 14.sp
+    )
+  }
+}
+
 private fun showUnsavedChangesAlert(save: () -> Unit, revert: () -> Unit) {
   AlertManager.shared.showAlertDialogStacked(
     title = generalGetString(MR.strings.smp_save_servers_question),
@@ -1376,8 +1406,13 @@ fun globalServersErrors(serverErrors: List<UserServersError>): List<String> =
 
 fun globalServersWarnings(serverWarnings: List<UserServersWarning>): List<String> =
   serverWarnings
-    // Qryptana does not use SimpleX chat relays, so this warning is always noise.
-    .filterNot { it is UserServersWarning.NoChatRelays }
+    // Qryptana does not use SimpleX chat relays or public name resolution.
+    .filterNot { it is UserServersWarning.NoChatRelays || it is UserServersWarning.NoNamesServers }
+    .mapNotNull { it.globalWarning }
+
+fun globalServerInfoWarnings(serverWarnings: List<UserServersWarning>): List<String> =
+  serverWarnings
+    .filterIsInstance<UserServersWarning.NoNamesServers>()
     .mapNotNull { it.globalWarning }
 
 fun globalSMPServersError(serverErrors: List<UserServersError>): String? {

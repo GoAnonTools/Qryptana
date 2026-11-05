@@ -216,6 +216,11 @@ fun YourServersViewLayout(
         ServersWarningFooter(warn)
       }
     }
+    globalServerInfoWarnings(serverWarnings.value).forEach { info ->
+      SectionCustomFooter {
+        ServersInfoFooter(info)
+      }
+    }
     SectionDividerSpaced()
 
     SectionView {
