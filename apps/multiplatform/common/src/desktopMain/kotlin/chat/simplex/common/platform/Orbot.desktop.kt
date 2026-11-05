@@ -24,3 +24,7 @@ actual suspend fun isTorRoutingLive(vpnMode: Boolean, proxyHost: String, proxyPo
       }
     }
   }
+
+actual suspend fun isVpnTransportActive(): Boolean = false
+
+actual fun openOrbot(): Boolean = false

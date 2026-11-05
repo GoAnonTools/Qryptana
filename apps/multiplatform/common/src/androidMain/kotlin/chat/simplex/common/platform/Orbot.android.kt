@@ -99,6 +99,20 @@ actual suspend fun isTorRoutingLive(vpnMode: Boolean, proxyHost: String, proxyPo
     if (vpnMode) hasVpnTransport() else isLoopbackHost(proxyHost) && canConnect(proxyHost, proxyPort)
   }
 
+actual suspend fun isVpnTransportActive(): Boolean =
+  withContext(Dispatchers.IO) { hasVpnTransport() }
+
+actual fun openOrbot(): Boolean {
+  val intent = androidAppContext.packageManager.getLaunchIntentForPackage(ORBOT_PACKAGE) ?: return false
+  intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+  return try {
+    androidAppContext.startActivity(intent)
+    true
+  } catch (_: Exception) {
+    false
+  }
+}
+
 private fun isLoopbackHost(host: String): Boolean =
   host.lowercase() in setOf("127.0.0.1", "::1", "localhost")
 

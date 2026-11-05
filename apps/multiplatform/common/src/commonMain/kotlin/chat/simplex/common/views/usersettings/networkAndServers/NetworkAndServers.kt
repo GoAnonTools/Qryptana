@@ -108,6 +108,7 @@ import chat.simplex.res.network_tor_orbot_not_installed_desc
 import chat.simplex.res.network_tor_orbot_not_installed_title
 import chat.simplex.res.network_tor_open_orbot
 import chat.simplex.res.network_tor_required_orbot_not_running
+import chat.simplex.res.network_tor_waiting_for_orbot
 import chat.simplex.res.network_tor_orbot_missing_desc
 import chat.simplex.res.network_tor_orbot_missing_title
 import chat.simplex.res.network_socks_proxy_settings
@@ -157,6 +158,7 @@ fun ModalData.NetworkAndServersView(closeNetworkAndServers: () -> Unit) {
   val netCfg = remember { chatModel.controller.getNetCfg() }
   val networkUseSocksProxy: MutableState<Boolean> = remember { mutableStateOf(netCfg.useSocksProxy) }
   val onionHosts = remember { mutableStateOf(netCfg.onionHosts) }
+  val torWaiting = remember { mutableStateOf(false) }
   val uriHandler = LocalUriHandler.current
   val currUserServers = remember { stateGetOrPut("currUserServers") { emptyList<UserOperatorServers>() } }
   val userServers = remember { stateGetOrPut("userServers") { emptyList<UserOperatorServers>() } }
@@ -196,6 +198,7 @@ fun ModalData.NetworkAndServersView(closeNetworkAndServers: () -> Unit) {
       currentRemoteHost = currentRemoteHost,
       networkUseSocksProxy = networkUseSocksProxy,
       onionHosts = onionHosts,
+      torWaiting = torWaiting,
       currUserServers = currUserServers,
       userServers = userServers,
       serverErrors = serverErrors,
@@ -259,94 +262,108 @@ fun ModalData.NetworkAndServersView(closeNetworkAndServers: () -> Unit) {
       },
       toggleMaximumPrivacyTor = { enable ->
         if (enable) {
+          torWaiting.value = true
           withBGApi {
-            if (appPlatform.isAndroid) {
-              if (!isOrbotInstalled()) {
+            val openOrbotUi: () -> Unit = { if (!openOrbot()) uriHandler.openUriCatching(ORBOT_URL) }
+            // Send START immediately; the broadcast result is used only if it arrives.
+            val orbotStatus = if (appPlatform.isAndroid) async { startOrbotAndAwaitStatus() } else null
+            try {
+              if (appPlatform.isAndroid) {
+                if (!isOrbotInstalled()) {
+                  networkUseSocksProxy.value = false
+                  AlertManager.shared.showAlertDialog(
+                    title = generalGetString(MR.strings.network_tor_orbot_not_installed_title),
+                    text = generalGetString(MR.strings.network_tor_orbot_not_installed_desc),
+                    confirmText = generalGetString(MR.strings.network_tor_orbot_install),
+                    onConfirm = { uriHandler.openUriCatching(ORBOT_URL) }
+                  )
+                  return@withBGApi
+                }
+              } else if (!isOrbotReachable()) {
                 networkUseSocksProxy.value = false
                 AlertManager.shared.showAlertDialog(
-                  title = generalGetString(MR.strings.network_tor_orbot_not_installed_title),
-                  text = generalGetString(MR.strings.network_tor_orbot_not_installed_desc),
-                  confirmText = generalGetString(MR.strings.network_tor_orbot_install),
+                  title = generalGetString(MR.strings.network_tor_orbot_missing_title),
+                  text = generalGetString(MR.strings.network_tor_orbot_missing_desc),
+                  confirmText = generalGetString(MR.strings.network_tor_open_orbot),
                   onConfirm = { uriHandler.openUriCatching(ORBOT_URL) }
                 )
                 return@withBGApi
               }
-            } else if (!isOrbotReachable()) {
-              networkUseSocksProxy.value = false
-              AlertManager.shared.showAlertDialog(
-                title = generalGetString(MR.strings.network_tor_orbot_missing_title),
-                text = generalGetString(MR.strings.network_tor_orbot_missing_desc),
-                confirmText = generalGetString(MR.strings.network_tor_open_orbot),
-                onConfirm = { uriHandler.openUriCatching(ORBOT_URL) }
-              )
-              return@withBGApi
-            }
-            // Ask Orbot to start and learn whether it routes via VPN or a SOCKS proxy.
-            val orbot = if (appPlatform.isAndroid) startOrbotAndAwaitStatus() else null
-            // Required onion mode would make any enabled server without an onion
-            // address unreachable. Check every profile, not just the active one, and
-            // ignore upstream relays that Qryptana does not operate.
-            val rhId = currentRemoteHost?.remoteHostId
-            val profiles = try {
-              listUsers(rhId)
-            } catch (e: Exception) {
-              Log.e(TAG, "Could not list profiles for Tor pre-flight: ${e.stackTraceToString()}")
-              Log.w(TAG, "Listing all profiles failed for the Tor pre-flight; falling back to checking only the current profile")
-              emptyList()
-            }
-            val serversByProfile = profiles
-              .mapNotNull { info -> getUserServers(rh = rhId, userId = info.user.userId) }
-              .ifEmpty { listOfNotNull(getUserServers(rh = rhId) ?: currUserServers.value.takeIf { it.isNotEmpty() }) }
-            val enabledServers = serversByProfile
-              .flatMap { servers -> servers.flatMap { it.smpServers + it.xftpServers } }
-              .filter { it.enabled && !it.deleted && !QryptanaServerFilters.isUpstreamServer(it) }
-            val withoutOnion = enabledServers.filterNot { serverHasOnionHost(it.server) }
-            if (withoutOnion.isNotEmpty()) {
-              networkUseSocksProxy.value = false
-              AlertManager.shared.showAlertMsg(
-                title = generalGetString(MR.strings.network_tor_missing_onion_title),
-                text = String.format(
-                  generalGetString(MR.strings.network_tor_missing_onion_desc),
-                  withoutOnion.joinToString("\n") { serverHostname(it.server) }
+              // Required onion mode would make any enabled server without an onion
+              // address unreachable. Check every profile, not just the active one, and
+              // ignore upstream relays that Qryptana does not operate.
+              val rhId = currentRemoteHost?.remoteHostId
+              val profiles = try {
+                listUsers(rhId)
+              } catch (e: Exception) {
+                Log.e(TAG, "Could not list profiles for Tor pre-flight: ${e.stackTraceToString()}")
+                Log.w(TAG, "Listing all profiles failed for the Tor pre-flight; falling back to checking only the current profile")
+                emptyList()
+              }
+              val serversByProfile = profiles
+                .mapNotNull { info -> getUserServers(rh = rhId, userId = info.user.userId) }
+                .ifEmpty { listOfNotNull(getUserServers(rh = rhId) ?: currUserServers.value.takeIf { it.isNotEmpty() }) }
+              val enabledServers = serversByProfile
+                .flatMap { servers -> servers.flatMap { it.smpServers + it.xftpServers } }
+                .filter { it.enabled && !it.deleted && !QryptanaServerFilters.isUpstreamServer(it) }
+              val withoutOnion = enabledServers.filterNot { serverHasOnionHost(it.server) }
+              if (withoutOnion.isNotEmpty()) {
+                networkUseSocksProxy.value = false
+                AlertManager.shared.showAlertMsg(
+                  title = generalGetString(MR.strings.network_tor_missing_onion_title),
+                  text = String.format(
+                    generalGetString(MR.strings.network_tor_missing_onion_desc),
+                    withoutOnion.joinToString("\n") { serverHostname(it.server) }
+                  )
                 )
-              )
-              return@withBGApi
-            }
-            // Remember the pre-Tor proxy/onion state before changing anything.
-            val previousCfg = controller.getNetCfg()
-            appPrefs.networkTorPreviousProxy.set(appPrefs.networkProxy.get())
-            appPrefs.networkTorPreviousUseSocksProxy.set(appPrefs.networkUseSocksProxy.get())
-            appPrefs.networkTorPreviousOnionHosts.set(previousCfg.onionHosts)
-            val vpnMode = orbot?.vpnMode
-            val torProxy = parseOrbotProxy(orbot?.socksProxy)
-            val cfg = when (vpnMode) {
-              // VPN mode: the OS routes all traffic, so no SOCKS proxy is needed.
-              true -> previousCfg.copy(socksProxy = null).withOnionHosts(OnionHosts.REQUIRED)
-              // Proxy mode: use Orbot's advertised endpoint (defaults to :9050).
-              false -> previousCfg.withProxy(torProxy).withOnionHosts(OnionHosts.REQUIRED)
-              // Unknown mode: current SOCKS fallback.
-              null -> previousCfg.withProxy(NetworkProxy(host = "127.0.0.1", port = 9050)).withOnionHosts(OnionHosts.REQUIRED)
-            }
-            var errorDetails: String? = null
-            if (setNetworkConfigSafely(cfg) { errorDetails = it }) {
-              // L1: only report Tor as enabled after the route is actually usable.
-              if (!waitForTorRouting(vpnMode == true, torProxy)) {
-                setNetworkConfigSafely(previousCfg)
-                rollbackTorPreferences()
-                showTorConnectionFailedAlert()
                 return@withBGApi
               }
-              appPrefs.networkTorVpnMode.set(vpnMode == true)
-              if (vpnMode != true) appPrefs.networkProxy.set(torProxy)
-              controller.setNetCfg(cfg)
-              networkUseSocksProxy.value = cfg.useSocksProxy
-              onionHosts.value = OnionHosts.REQUIRED
-            } else if (errorDetails?.contains("BROKER", ignoreCase = true) == true) {
-              rollbackTorPreferences()
-              showTorConnectionFailedAlert()
-            } else {
-              rollbackTorPreferences()
-              showWrongProxyConfigAlert()
+              // Remember the pre-Tor proxy/onion state before changing anything.
+              val previousCfg = controller.getNetCfg()
+              appPrefs.networkTorPreviousProxy.set(appPrefs.networkProxy.get())
+              appPrefs.networkTorPreviousUseSocksProxy.set(appPrefs.networkUseSocksProxy.get())
+              appPrefs.networkTorPreviousOnionHosts.set(previousCfg.onionHosts)
+              // Wait up to 15 seconds for Orbot to bootstrap and expose either a
+              // VPN transport or the loopback SOCKS listener on 9050.
+              var vpnActive = false
+              var proxyLive = false
+              var waited = 0L
+              while (waited < 15_000L) {
+                vpnActive = appPlatform.isAndroid && isVpnTransportActive()
+                proxyLive = isTorRoutingLive(vpnMode = false, proxyHost = "127.0.0.1", proxyPort = 9050)
+                if (vpnActive || proxyLive) break
+                delay(1000)
+                waited += 1000
+              }
+              if (!vpnActive && !proxyLive) {
+                rollbackTorPreferences()
+                showTorConnectionFailedAlert(openOrbotUi)
+                return@withBGApi
+              }
+              // Prefer ConnectivityManager's VPN signal; fall back to the broadcast
+              // only as an additional VPN hint.
+              val status = orbotStatus?.takeIf { it.isCompleted }?.await()
+              val vpnMode = vpnActive || status?.vpnMode == true
+              val torProxy = parseOrbotProxy(status?.socksProxy)
+              val cfg = if (vpnMode) {
+                // VPN mode: the OS routes all traffic, so no SOCKS proxy is needed.
+                previousCfg.copy(socksProxy = null).withOnionHosts(OnionHosts.REQUIRED)
+              } else {
+                previousCfg.withProxy(torProxy).withOnionHosts(OnionHosts.REQUIRED)
+              }
+              if (setNetworkConfigSafely(cfg)) {
+                appPrefs.networkTorVpnMode.set(vpnMode)
+                if (!vpnMode) appPrefs.networkProxy.set(torProxy)
+                controller.setNetCfg(cfg)
+                networkUseSocksProxy.value = cfg.useSocksProxy
+                onionHosts.value = OnionHosts.REQUIRED
+              } else {
+                rollbackTorPreferences()
+                showTorConnectionFailedAlert(openOrbotUi)
+              }
+            } finally {
+              orbotStatus?.cancel()
+              torWaiting.value = false
             }
           }
         } else {
@@ -378,6 +395,7 @@ fun ModalData.NetworkAndServersView(closeNetworkAndServers: () -> Unit) {
   currentRemoteHost: RemoteHostInfo?,
   networkUseSocksProxy: MutableState<Boolean>,
   onionHosts: MutableState<OnionHosts>,
+  torWaiting: MutableState<Boolean>,
   currUserServers: MutableState<List<UserOperatorServers>>,
   serverErrors: MutableState<List<UserServersError>>,
   serverWarnings: MutableState<List<UserServersWarning>>,
@@ -530,6 +548,7 @@ fun ModalData.NetworkAndServersView(closeNetworkAndServers: () -> Unit) {
         MaximumPrivacyTorSwitch(
           enabled = torConfigured.value,
           running = torLive.value,
+          waiting = torWaiting.value,
           onToggle = toggleMaximumPrivacyTor
         )
       }
@@ -603,6 +622,7 @@ fun ModalData.NetworkAndServersView(closeNetworkAndServers: () -> Unit) {
 fun MaximumPrivacyTorSwitch(
   enabled: Boolean,
   running: Boolean,
+  waiting: Boolean,
   onToggle: (Boolean) -> Unit,
 ) {
   Row(
@@ -624,15 +644,23 @@ fun MaximumPrivacyTorSwitch(
         fontWeight = FontWeight.Medium
       )
       Text(
-        if (enabled && !running) stringResource(MR.strings.network_tor_required_orbot_not_running)
-        else stringResource(MR.strings.network_maximum_privacy_tor_desc),
+        when {
+          waiting -> stringResource(MR.strings.network_tor_waiting_for_orbot)
+          enabled && !running -> stringResource(MR.strings.network_tor_required_orbot_not_running)
+          else -> stringResource(MR.strings.network_maximum_privacy_tor_desc)
+        },
         style = MaterialTheme.typography.body2,
-        color = if (enabled && !running) MaterialTheme.colors.error else MaterialTheme.colors.secondary
+        color = when {
+          waiting -> MaterialTheme.colors.primary
+          enabled && !running -> MaterialTheme.colors.error
+          else -> MaterialTheme.colors.secondary
+        }
       )
     }
     DefaultSwitch(
       checked = enabled,
       onCheckedChange = onToggle,
+      enabled = !waiting,
     )
   }
 }
@@ -684,18 +712,12 @@ private fun rollbackTorPreferences() {
   appPrefs.networkTorPreviousProxy.get()?.let { appPrefs.networkProxy.set(it) }
 }
 
-private suspend fun waitForTorRouting(vpnMode: Boolean, proxy: NetworkProxy): Boolean {
-  repeat(6) {
-    if (isTorRoutingLive(vpnMode, proxy.host, proxy.port)) return true
-    delay(1000)
-  }
-  return false
-}
-
-private fun showTorConnectionFailedAlert() {
-  AlertManager.shared.showAlertMsg(
+private fun showTorConnectionFailedAlert(onOpenOrbot: () -> Unit) {
+  AlertManager.shared.showAlertDialog(
     title = generalGetString(MR.strings.network_tor_connection_failed_title),
     text = generalGetString(MR.strings.network_tor_connection_failed_desc),
+    confirmText = generalGetString(MR.strings.network_tor_open_orbot),
+    onConfirm = onOpenOrbot,
   )
 }
 
@@ -1415,6 +1437,7 @@ fun PreviewNetworkAndServersLayout() {
       currentRemoteHost = null,
       networkUseSocksProxy = remember { mutableStateOf(true) },
       onionHosts = remember { mutableStateOf(OnionHosts.PREFER) },
+      torWaiting = remember { mutableStateOf(false) },
       toggleSocksProxy = {},
       toggleMaximumPrivacyTor = {},
       currUserServers =  remember { mutableStateOf(emptyList()) },

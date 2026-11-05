@@ -23,3 +23,9 @@ expect suspend fun startOrbotAndAwaitStatus(timeoutMs: Long = 15_000L): OrbotSta
  * mode. Used so the UI never trusts a saved preference alone.
  */
 expect suspend fun isTorRoutingLive(vpnMode: Boolean, proxyHost: String, proxyPort: Int): Boolean
+
+/** True when an OS-level VPN transport is active. Always false on desktop. */
+expect suspend fun isVpnTransportActive(): Boolean
+
+/** Opens Orbot's UI. Returns false when it cannot be launched. */
+expect fun openOrbot(): Boolean

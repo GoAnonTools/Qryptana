@@ -1105,6 +1105,7 @@
   <string name="network_tor_connection_failed_title">Orbot connection failed</string>
   <string name="network_tor_connection_failed_desc">Could not connect to Orbot. Please ensure Orbot is running and try again.</string>
   <string name="network_tor_required_orbot_not_running">Tor required, Orbot not running</string>
+  <string name="network_tor_waiting_for_orbot">Waiting for Orbot...</string>
   <string name="network_tor_missing_onion_title">Some servers have no onion address</string>
   <string name="network_tor_missing_onion_desc">Tor requires onion addresses, but these enabled servers don\'t have one and would become unreachable:\n%1$s</string>
   <string name="read_our_privacy_policy">Read our Privacy Policy</string>
