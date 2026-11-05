@@ -21,6 +21,9 @@ object QryptanaServers {
   // clearnet-only addresses.
   const val SMP = "smp://PN_HLQSdhKOp62HM8hoUtOMskUvdeNzqVBniJMunJjo=@smp.qryptana.foundation,b544yscwxhrir2ilsy57dgwedr5vutl7zj525rio4dazsfka4f22k6yd.onion:5224"
   const val XFTP = "xftp://P4pAiyTPwA2MNZbWZqL11v6ngAAMh7V8X50tc-_o3Lg=@xftp2.goanon.foundation,e6xroxqvdwcid42m54ck6bl4u3te45wu6x3ptaeupuowrgxxow7b6ayd.onion"
+  // NTF servers are preset-only in the native core; keep this in sync with
+  // _defaultNtfServers in src/Simplex/Chat/Library/Commands.hs.
+  const val NTF = "ntf://0G9RCHbRkd8w1vrjjc6AhSFPnVj071BnHCTlBIsfeh8=@ntf.goanon.foundation:8443"
 
   /**
    * Adds the Qryptana relays to the active user's server list if they are missing.
