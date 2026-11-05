@@ -26,8 +26,11 @@ object QryptanaServers {
   const val NTF = "ntf://0G9RCHbRkd8w1vrjjc6AhSFPnVj071BnHCTlBIsfeh8=@ntf.goanon.foundation:8443"
 
   /**
-   * Adds the Qryptana relays to the active user's server list if they are missing.
-   * Safe to call more than once; servers are matched by host.
+   * Adds the Qryptana relays to the active user's server list if they are missing,
+   * and re-enables them if a network reset left them disabled. Safe to call more
+   * than once; servers are matched by host.
+   *
+   * This is also used as a repair function after network configuration resets.
    *
    * Throws [QryptanaServersException] instead of returning silently so onboarding
    * can show the failure and refuse to complete.
@@ -42,6 +45,17 @@ object QryptanaServers {
       .flatMap { hostsOf(it.server) }
       .toSet()
     fun isPresent(address: String) = hostsOf(address).any { it in presentHosts }
+    val qryptanaHosts = hostsOf(SMP) + hostsOf(XFTP)
+    fun isQryptanaRelay(srv: UserServer) = !srv.deleted && hostsOf(srv.server).any { it in qryptanaHosts }
+    // Repair pass: a failed/rolled-back network change must not leave the default
+    // relays disabled.
+    val repaired = existing.map { group ->
+      group.copy(
+        smpServers = group.smpServers.map { if (isQryptanaRelay(it) && !it.enabled) it.copy(enabled = true) else it },
+        xftpServers = group.xftpServers.map { if (isQryptanaRelay(it) && !it.enabled) it.copy(enabled = true) else it },
+      )
+    }
+    val needsRepair = repaired != existing
     // SMP (VPS1) and XFTP (VPS2) run on different hosts and root domains; keep one
     // group per relay so neither relay is bundled with the other's operator.
     val groups = mutableListOf<UserOperatorServers>()
@@ -51,14 +65,14 @@ object QryptanaServers {
     if (!isPresent(XFTP)) {
       groups.add(UserOperatorServers(operator = null, smpServers = emptyList(), xftpServers = listOf(defaultServer(XFTP))))
     }
-    if (groups.isEmpty()) return
-    if (saveUserServers(rh, existing + groups, showAlertOnError = false)) return
+    if (groups.isEmpty() && !needsRepair) return
+    if (saveUserServers(rh, repaired + groups, showAlertOnError = false)) return
     // The core may reject the onion address (onion parsing, connectivity, or a core
     // build without the required format). Retry with clearnet-only addresses so a
     // new user can always complete onboarding even when Tor/onion is unavailable.
     Log.e(TAG, "Saving relays with onion hosts failed; retrying with clearnet-only addresses")
     val clearnetGroups = groups.map { it.clearnetOnly() }
-    if (!saveUserServers(rh, existing + clearnetGroups, showAlertOnError = true)) {
+    if (!saveUserServers(rh, repaired + clearnetGroups, showAlertOnError = true)) {
       throw QryptanaServersException("Could not save the Qryptana servers.", alertAlreadyShown = true)
     }
     Log.w(TAG, "Saved relays with clearnet-only addresses; onion hosts were rejected")

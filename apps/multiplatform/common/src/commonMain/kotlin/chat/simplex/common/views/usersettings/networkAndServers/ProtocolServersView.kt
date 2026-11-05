@@ -35,6 +35,7 @@ import chat.simplex.res.ic_error
 import chat.simplex.res.ic_open_in_new
 import chat.simplex.res.media_and_file_servers
 import chat.simplex.res.message_servers
+import chat.simplex.res.smp_server
 import chat.simplex.res.smp_servers_add
 import chat.simplex.res.smp_servers_enter_manually
 import chat.simplex.res.smp_servers_per_user
@@ -343,7 +344,9 @@ fun ProtocolServerViewLink(serverProtocol: ServerProtocol, srv: UserServer, dupl
     else -> ShowTestStatus(srv)
   }
   Spacer(Modifier.padding(horizontal = 4.dp))
-  val text = address?.hostnames?.firstOrNull() ?: srv.server
+  val text = address?.hostnames?.firstOrNull()?.takeIf { it.isNotBlank() }
+    ?: srv.server.takeIf { it.isNotBlank() }
+    ?: stringResource(MR.strings.smp_server)
   if (srv.enabled) {
     Text(text, color = MaterialTheme.colors.onBackground, maxLines = 1)
   } else {

@@ -337,6 +337,7 @@ fun ModalData.NetworkAndServersView(closeNetworkAndServers: () -> Unit) {
               }
               if (!vpnActive && !proxyLive) {
                 rollbackTorPreferences()
+                repairQryptanaServers(currentRemoteHost?.remoteHostId)
                 showTorConnectionFailedAlert(openOrbotUi)
                 return@withBGApi
               }
@@ -359,6 +360,7 @@ fun ModalData.NetworkAndServersView(closeNetworkAndServers: () -> Unit) {
                 onionHosts.value = OnionHosts.REQUIRED
               } else {
                 rollbackTorPreferences()
+                repairQryptanaServers(currentRemoteHost?.remoteHostId)
                 showTorConnectionFailedAlert(openOrbotUi)
               }
             } finally {
@@ -381,7 +383,10 @@ fun ModalData.NetworkAndServersView(closeNetworkAndServers: () -> Unit) {
               controller.setNetCfg(cfg)
               networkUseSocksProxy.value = previousUseSocks
               onionHosts.value = previousOnion
+              // Repair the default relays after the network reset.
+              repairQryptanaServers(currentRemoteHost?.remoteHostId)
             } else {
+              repairQryptanaServers(currentRemoteHost?.remoteHostId)
               showWrongProxyConfigAlert()
             }
           }
@@ -710,6 +715,14 @@ internal fun parseOrbotProxy(socksProxy: String?): NetworkProxy {
 private fun rollbackTorPreferences() {
   appPrefs.networkTorVpnMode.set(false)
   appPrefs.networkTorPreviousProxy.get()?.let { appPrefs.networkProxy.set(it) }
+}
+
+private suspend fun repairQryptanaServers(rhId: Long?) {
+  try {
+    QryptanaServers.installDefaultUserServers(rhId)
+  } catch (e: Exception) {
+    Log.e(TAG, "Could not repair Qryptana default servers: ${e.stackTraceToString()}")
+  }
 }
 
 private fun showTorConnectionFailedAlert(onOpenOrbot: () -> Unit) {
@@ -1362,7 +1375,10 @@ fun globalServersErrors(serverErrors: List<UserServersError>): List<String> =
   serverErrors.mapNotNull { it.globalError }
 
 fun globalServersWarnings(serverWarnings: List<UserServersWarning>): List<String> =
-  serverWarnings.mapNotNull { it.globalWarning }
+  serverWarnings
+    // Qryptana does not use SimpleX chat relays, so this warning is always noise.
+    .filterNot { it is UserServersWarning.NoChatRelays }
+    .mapNotNull { it.globalWarning }
 
 fun globalSMPServersError(serverErrors: List<UserServersError>): String? {
   for (err in serverErrors) {
