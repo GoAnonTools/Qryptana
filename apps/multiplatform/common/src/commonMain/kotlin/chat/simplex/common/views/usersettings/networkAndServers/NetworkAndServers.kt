@@ -272,6 +272,7 @@ fun ModalData.NetworkAndServersView(closeNetworkAndServers: () -> Unit) {
               listUsers(rhId)
             } catch (e: Exception) {
               Log.e(TAG, "Could not list profiles for Tor pre-flight: ${e.stackTraceToString()}")
+              Log.w(TAG, "Listing all profiles failed for the Tor pre-flight; falling back to checking only the current profile")
               emptyList()
             }
             val serversByProfile = profiles
@@ -585,8 +586,11 @@ fun MaximumPrivacyTorSwitch(
   }
 }
 
-private fun serverHasOnionHost(server: String): Boolean =
-  ServerAddress.parseServerAddress(server)?.hostnames?.any { it.endsWith(".onion", ignoreCase = true) } == true
+internal fun serverHasOnionHost(server: String): Boolean =
+  server.substringAfter('@', server)
+    .substringBefore('/')
+    .split(',')
+    .any { it.trim().substringBefore(':').endsWith(".onion", ignoreCase = true) }
 
 private suspend fun setNetworkConfigSafely(cfg: NetCfg): Boolean =
   try {

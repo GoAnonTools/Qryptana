@@ -2505,7 +2505,7 @@
     <string name="android_delete_profiles_chats_success">Profils et chats supprimés</string>
 
     <string name="qryptana_whats_new_sovereign_infrastructure">Sovereign Infrastructure</string>
-    <string name="qryptana_whats_new_sovereign_infrastructure_desc">Connect directly to GoAnon Foundation-operated SMP and XFTP servers. No third-party relays.</string>
+    <string name="qryptana_whats_new_sovereign_infrastructure_desc">By default, your own queues connect directly to GoAnon Foundation-operated SMP and XFTP servers.</string>
     <string name="qryptana_whats_new_absolute_privacy">Absolute Privacy</string>
     <string name="qryptana_whats_new_absolute_privacy_desc">End-to-end encryption with no metadata tracking or user directories.</string>
     <string name="qryptana_whats_new_branding">Qryptana Branding</string>

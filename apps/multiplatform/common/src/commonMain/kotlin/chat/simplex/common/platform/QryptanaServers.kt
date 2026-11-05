@@ -122,7 +122,7 @@ object QryptanaServers {
     xftpServers = xftpServers.map { it.copy(server = clearnetOnly(it.server)) },
   )
 
-  private fun hostsOf(server: String): Set<String> =
+  internal fun hostsOf(server: String): Set<String> =
     server.substringAfter('@', server)
       .substringBefore('/')
       .split(',')
@@ -130,7 +130,7 @@ object QryptanaServers {
       .filter { it.isNotEmpty() }
       .toSet()
 
-  private fun clearnetOnly(address: String): String {
+  internal fun clearnetOnly(address: String): String {
     val at = address.indexOf('@')
     if (at == -1) return address
     val hostsWithPort = address.substring(at + 1)
