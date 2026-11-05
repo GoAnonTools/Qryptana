@@ -199,7 +199,7 @@ fun YourServersViewLayout(
       SettingsActionItem(
         painterResource(MR.images.ic_add),
         stringResource(MR.strings.smp_servers_add),
-        click = { showAddServerDialog(scope, userServers, serverErrors, serverWarnings, rhId) },
+        click = { showAddServerDialog(scope, userServers, serverErrors, serverWarnings, rhId, operatorIndex) },
         disabled = testing.value,
         textColor = if (testing.value) MaterialTheme.colors.secondary else MaterialTheme.colors.primary,
         iconColor = if (testing.value) MaterialTheme.colors.secondary else MaterialTheme.colors.primary
@@ -284,7 +284,8 @@ fun showAddServerDialog(
   userServers: MutableState<List<UserOperatorServers>>,
   serverErrors: MutableState<List<UserServersError>>,
   serverWarnings: MutableState<List<UserServersWarning>>,
-  rhId: Long?
+  rhId: Long?,
+  operatorIndex: Int,
 ) {
   AlertManager.shared.showAlertDialogButtonsColumn(
     title = generalGetString(MR.strings.smp_servers_add),
@@ -293,7 +294,7 @@ fun showAddServerDialog(
         SectionItemView({
           AlertManager.shared.hideAlert()
           ModalManager.start.showCustomModal { close ->
-            NewServerView(userServers, serverErrors, serverWarnings, rhId, close)
+            NewServerView(userServers, serverErrors, serverWarnings, rhId, operatorIndex, close)
           }
         }) {
           Text(stringResource(MR.strings.smp_servers_enter_manually), Modifier.fillMaxWidth(), textAlign = TextAlign.Center, color = MaterialTheme.colors.primary)
@@ -310,6 +311,7 @@ fun showAddServerDialog(
                   serverErrors,
                   serverWarnings,
                   rhId,
+                  preferredOperatorIndex = operatorIndex,
                   close = close
                 )
               }
@@ -322,7 +324,7 @@ fun showAddServerDialog(
         SectionItemView({
           AlertManager.shared.hideAlert()
           ModalManager.start.showCustomModal { close ->
-            NewChatRelayView(userServers, serverErrors, serverWarnings, rhId, close)
+            NewChatRelayView(userServers, serverErrors, serverWarnings, rhId, operatorIndex, close)
           }
         }) {
           Text(stringResource(MR.strings.chat_relay), Modifier.fillMaxWidth(), textAlign = TextAlign.Center, color = MaterialTheme.colors.primary)

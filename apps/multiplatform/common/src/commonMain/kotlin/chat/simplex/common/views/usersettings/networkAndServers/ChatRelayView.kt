@@ -93,6 +93,7 @@ fun addChatRelay(
   serverErrors: MutableState<List<UserServersError>>,
   serverWarnings: MutableState<List<UserServersWarning>>?,
   rhId: Long?,
+  operatorIndex: Int,
   close: () -> Unit
 ) {
   val nameEmpty = relay.displayName.trim().isEmpty()
@@ -112,7 +113,9 @@ fun addChatRelay(
       text = generalGetString(MR.strings.check_relay_address)
     )
   } else {
-    val i = userServers.value.indexOfFirst { it.operator == null }
+    // Use the custom group the user is inspecting; there can be more than one
+    // nil-operator group (for example a separate SMP and XFTP group).
+    val i = operatorIndex.takeIf { userServers.value.getOrNull(it)?.operator == null } ?: -1
     if (i != -1) {
       val updatedUserServers = userServers.value.toMutableList()
       val operatorServers = updatedUserServers[i]
@@ -372,6 +375,7 @@ fun ModalData.NewChatRelayView(
   serverErrors: MutableState<List<UserServersError>>,
   serverWarnings: MutableState<List<UserServersWarning>>,
   rhId: Long?,
+  operatorIndex: Int,
   close: () -> Unit
 ) {
   val relayToEdit = remember {
@@ -392,7 +396,7 @@ fun ModalData.NewChatRelayView(
   }
 
   ModalView(close = {
-    addChatRelay(relayToEdit.value, userServers, serverErrors, serverWarnings, rhId, close)
+    addChatRelay(relayToEdit.value, userServers, serverErrors, serverWarnings, rhId, operatorIndex, close)
   }, cardScreen = true) {
     NewChatRelayLayout(relayToEdit)
   }

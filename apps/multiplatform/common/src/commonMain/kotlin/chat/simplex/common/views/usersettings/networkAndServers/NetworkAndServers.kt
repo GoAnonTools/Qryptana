@@ -98,6 +98,8 @@ import chat.simplex.res.network_socks_proxy
 import chat.simplex.res.network_maximum_privacy_tor_desc
 import chat.simplex.res.network_maximum_privacy_tor_footer
 import chat.simplex.res.network_maximum_privacy_tor_title
+import chat.simplex.res.network_tor_missing_onion_desc
+import chat.simplex.res.network_tor_missing_onion_title
 import chat.simplex.res.network_tor_open_orbot
 import chat.simplex.res.network_tor_orbot_missing_desc
 import chat.simplex.res.network_tor_orbot_missing_title
@@ -261,26 +263,55 @@ fun ModalData.NetworkAndServersView(closeNetworkAndServers: () -> Unit) {
               )
               return@withBGApi
             }
-            val oldProxy = appPrefs.networkProxy.get()
+            // Required onion mode would make any enabled server without an onion
+            // address unreachable. Warn instead of bricking the connection.
+            val servers = getUserServers(rh = currentRemoteHost?.remoteHostId) ?: currUserServers.value
+            val enabledServers = servers.flatMap { it.smpServers + it.xftpServers }.filter { it.enabled && !it.deleted }
+            val withoutOnion = enabledServers.filterNot { serverHasOnionHost(it.server) }
+            if (withoutOnion.isNotEmpty()) {
+              networkUseSocksProxy.value = false
+              AlertManager.shared.showAlertMsg(
+                title = generalGetString(MR.strings.network_tor_missing_onion_title),
+                text = String.format(
+                  generalGetString(MR.strings.network_tor_missing_onion_desc),
+                  withoutOnion.joinToString("\n") { serverHostname(it.server) }
+                )
+              )
+              return@withBGApi
+            }
+            // Remember the pre-Tor proxy/onion state before changing anything.
+            val previousCfg = controller.getNetCfg()
+            appPrefs.networkTorPreviousProxy.set(appPrefs.networkProxy.get())
+            appPrefs.networkTorPreviousUseSocksProxy.set(appPrefs.networkUseSocksProxy.get())
+            appPrefs.networkTorPreviousOnionHosts.set(previousCfg.onionHosts)
             val proxy = NetworkProxy(host = "127.0.0.1", port = 9050)
-            appPrefs.networkProxy.set(proxy)
-            val cfg = controller.getNetCfg().withProxy(proxy).withOnionHosts(OnionHosts.REQUIRED)
-            if (controller.apiSetNetworkConfig(cfg, showAlertOnError = false)) {
+            val cfg = previousCfg.withProxy(proxy).withOnionHosts(OnionHosts.REQUIRED)
+            if (setNetworkConfigSafely(cfg)) {
+              appPrefs.networkProxy.set(proxy)
               controller.setNetCfg(cfg)
               networkUseSocksProxy.value = true
               onionHosts.value = OnionHosts.REQUIRED
             } else {
-              appPrefs.networkProxy.set(oldProxy)
               showWrongProxyConfigAlert()
             }
           }
         } else {
           withBGApi {
-            val cfg = controller.getNetCfg().copy(socksProxy = null).withOnionHosts(OnionHosts.PREFER)
-            controller.apiSetNetworkConfig(cfg, showAlertOnError = false)
-            controller.setNetCfg(cfg)
-            networkUseSocksProxy.value = false
-            onionHosts.value = OnionHosts.PREFER
+            // Restore what was active before Tor was enabled, not hardcoded defaults.
+            val previousProxy = appPrefs.networkTorPreviousProxy.get() ?: NetworkProxy()
+            val previousUseSocks = appPrefs.networkTorPreviousUseSocksProxy.get()
+            val previousOnion = appPrefs.networkTorPreviousOnionHosts.get()
+            val cfg = controller.getNetCfg()
+              .copy(socksProxy = if (previousUseSocks) previousProxy.toProxyString() else null)
+              .withOnionHosts(previousOnion)
+            if (setNetworkConfigSafely(cfg)) {
+              appPrefs.networkProxy.set(previousProxy)
+              controller.setNetCfg(cfg)
+              networkUseSocksProxy.value = previousUseSocks
+              onionHosts.value = previousOnion
+            } else {
+              showWrongProxyConfigAlert()
+            }
           }
         }
       }
@@ -382,35 +413,41 @@ fun ModalData.NetworkAndServersView(closeNetworkAndServers: () -> Unit) {
     }
 
     SectionView(generalGetString(MR.strings.settings_section_title_messages)) {
-      val nullOperatorIndex = userServers.value.indexOfFirst { it.operator == null }
-      val nullOperatorHasVisibleServers = nullOperatorIndex != -1 && userServers.value[nullOperatorIndex].let { group ->
-        (group.smpServers + group.xftpServers).any { !it.deleted && !QryptanaServerFilters.isUpstreamServer(it) } ||
-          group.chatRelays.any { !it.deleted }
-      }
-
-      if (nullOperatorHasVisibleServers) {
-        SectionItemView({
-          ModalManager.start.showModal {
-            YourServersView(
-              userServers = userServers,
-              serverErrors = serverErrors,
-              serverWarnings = serverWarnings,
-              operatorIndex = nullOperatorIndex,
-              rhId = currentRemoteHost?.remoteHostId
+      // SMP and XFTP can live in separate groups without an operator. Show every
+      // such group so neither relay is hidden from inspection or removal.
+      val nullOperatorIndices = userServers.value.withIndex().filter { it.value.operator == null }.map { it.index }
+      nullOperatorIndices.forEach { nullOperatorIndex ->
+        val group = userServers.value[nullOperatorIndex]
+        val hasVisibleServers =
+          (group.smpServers + group.xftpServers).any { !it.deleted && !QryptanaServerFilters.isUpstreamServer(it) } ||
+            group.chatRelays.any { !it.deleted }
+        if (hasVisibleServers) {
+          val host = (group.smpServers + group.xftpServers).firstOrNull { !it.deleted }?.let { serverHostname(it.server) }
+          SectionItemView({
+            ModalManager.start.showModal {
+              YourServersView(
+                userServers = userServers,
+                serverErrors = serverErrors,
+                serverWarnings = serverWarnings,
+                operatorIndex = nullOperatorIndex,
+                rhId = currentRemoteHost?.remoteHostId
+              )
+            }
+          }) {
+            Icon(
+              painterResource(MR.images.ic_dns),
+              stringResource(MR.strings.your_servers),
+              tint = MaterialTheme.colors.secondary
             )
-          }
-        }) {
-          Icon(
-            painterResource(MR.images.ic_dns),
-            stringResource(MR.strings.your_servers),
-            tint = MaterialTheme.colors.secondary
-          )
-          TextIconSpaced()
-          Text(stringResource(MR.strings.your_servers), color = MaterialTheme.colors.onBackground)
-
-          if (currUserServers.value.getOrNull(nullOperatorIndex) != userServers.value.getOrNull(nullOperatorIndex)) {
-            Spacer(Modifier.weight(1f))
-            UnsavedChangesIndicator()
+            TextIconSpaced()
+            Text(
+              if (host != null) "${stringResource(MR.strings.your_servers)} · $host" else stringResource(MR.strings.your_servers),
+              color = MaterialTheme.colors.onBackground
+            )
+            if (currUserServers.value.getOrNull(nullOperatorIndex) != userServers.value.getOrNull(nullOperatorIndex)) {
+              Spacer(Modifier.weight(1f))
+              UnsavedChangesIndicator()
+            }
           }
         }
       }
@@ -534,6 +571,17 @@ fun MaximumPrivacyTorSwitch(
     )
   }
 }
+
+private fun serverHasOnionHost(server: String): Boolean =
+  ServerAddress.parseServerAddress(server)?.hostnames?.any { it.endsWith(".onion", ignoreCase = true) } == true
+
+private suspend fun setNetworkConfigSafely(cfg: NetCfg): Boolean =
+  try {
+    controller.apiSetNetworkConfig(cfg, showAlertOnError = false)
+  } catch (e: Exception) {
+    Log.e(TAG, "apiSetNetworkConfig failed: ${e.stackTraceToString()}")
+    false
+  }
 
 private suspend fun isOrbotReachable(): Boolean = withContext(Dispatchers.IO) {
   try {

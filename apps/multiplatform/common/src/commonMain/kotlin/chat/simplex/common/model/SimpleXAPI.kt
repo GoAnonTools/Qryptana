@@ -553,6 +553,18 @@ class AppPreferences {
     },
     set = fun(proxy: NetworkProxy) { _networkProxy.set(json.encodeToString(proxy)) }
   )
+  // Captured before Maximum Privacy (Tor) is enabled, so disabling Tor restores the
+  // user's prior proxy/onion choices instead of overwriting them with defaults.
+  private val _networkTorPreviousProxy = mkStrPreference(SHARED_PREFS_NETWORK_TOR_PREVIOUS_PROXY, null)
+  val networkTorPreviousProxy: SharedPreference<NetworkProxy?> = SharedPreference(
+    get = fun(): NetworkProxy? {
+      val value = _networkTorPreviousProxy.get() ?: return null
+      return runCatching { json.decodeFromString<NetworkProxy>(value) }.getOrNull()
+    },
+    set = fun(proxy: NetworkProxy?) { _networkTorPreviousProxy.set(proxy?.let { json.encodeToString(it) }) }
+  )
+  val networkTorPreviousUseSocksProxy = mkBoolPreference(SHARED_PREFS_NETWORK_TOR_PREVIOUS_USE_SOCKS_PROXY, false)
+  val networkTorPreviousOnionHosts = mkSafeEnumPreference(SHARED_PREFS_NETWORK_TOR_PREVIOUS_ONION_HOSTS, OnionHosts.PREFER)
   val networkSessionMode: SharedPreference<TransportSessionMode> = mkSafeEnumPreference(SHARED_PREFS_NETWORK_SESSION_MODE, TransportSessionMode.default)
   val networkSMPProxyMode: SharedPreference<SMPProxyMode> = mkSafeEnumPreference(SHARED_PREFS_NETWORK_SMP_PROXY_MODE, SMPProxyMode.default)
   val networkSMPProxyFallback: SharedPreference<SMPProxyFallback> = mkSafeEnumPreference(SHARED_PREFS_NETWORK_SMP_PROXY_FALLBACK, SMPProxyFallback.default)
@@ -836,6 +848,9 @@ class AppPreferences {
     private const val SHARED_PREFS_NETWORK_USE_SOCKS_PROXY = "NetworkUseSocksProxy"
     private const val SHARED_PREFS_NETWORK_SHOW_SUBSCRIPTION_PERCENTAGE = "ShowSubscriptionPercentage"
     private const val SHARED_PREFS_NETWORK_PROXY_HOST_PORT = "NetworkProxyHostPort"
+    private const val SHARED_PREFS_NETWORK_TOR_PREVIOUS_PROXY = "NetworkTorPreviousProxy"
+    private const val SHARED_PREFS_NETWORK_TOR_PREVIOUS_USE_SOCKS_PROXY = "NetworkTorPreviousUseSocksProxy"
+    private const val SHARED_PREFS_NETWORK_TOR_PREVIOUS_ONION_HOSTS = "NetworkTorPreviousOnionHosts"
     private const val SHARED_PREFS_NETWORK_SESSION_MODE = "NetworkSessionMode"
     private const val SHARED_PREFS_NETWORK_SMP_PROXY_MODE = "NetworkSMPProxyMode"
     private const val SHARED_PREFS_NETWORK_SMP_PROXY_FALLBACK = "NetworkSMPProxyFallback"
@@ -1692,14 +1707,16 @@ object ChatController {
     return null
   }
 
-  suspend fun setUserServers(rh: Long?, userServers: List<UserOperatorServers>): Boolean {
+  suspend fun setUserServers(rh: Long?, userServers: List<UserOperatorServers>, showAlertOnError: Boolean = true): Boolean {
     val userId = currentUserId("setUserServers")
     val r = sendCmd(rh, CC.ApiSetUserServers(userId, userServers))
     if (r.result is CR.CmdOk) return true
-    AlertManager.shared.showAlertMsg(
-      generalGetString(MR.strings.failed_to_save_servers),
-      "${r.responseType}: ${r.details}"
-    )
+    if (showAlertOnError) {
+      AlertManager.shared.showAlertMsg(
+        generalGetString(MR.strings.failed_to_save_servers),
+        "${r.responseType}: ${r.details}"
+      )
+    }
     Log.e(TAG, "setUserServers bad response: ${r.responseType} ${r.details}")
     return false
   }

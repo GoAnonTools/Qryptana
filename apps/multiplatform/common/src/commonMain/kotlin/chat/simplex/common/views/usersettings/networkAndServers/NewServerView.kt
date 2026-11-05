@@ -24,6 +24,7 @@ fun ModalData.NewServerView(
   serverErrors: MutableState<List<UserServersError>>,
   serverWarnings: MutableState<List<UserServersWarning>>,
   rhId: Long?,
+  operatorIndex: Int,
   close: () -> Unit
 ) {
   val testing = remember { mutableStateOf(false) }
@@ -38,6 +39,7 @@ fun ModalData.NewServerView(
       serverErrors,
       serverWarnings,
       rhId,
+      preferredOperatorIndex = operatorIndex,
       close = close
     )
   }) {
@@ -112,12 +114,16 @@ fun addServer(
   serverErrors: MutableState<List<UserServersError>>,
   serverWarnings: MutableState<List<UserServersWarning>>? = null,
   rhId: Long?,
+  preferredOperatorIndex: Int? = null,
   close: () -> Unit
 ) {
   val result = serverProtocolAndOperator(server, userServers.value)
   if (result != null) {
     val (serverProtocol, matchingOperator) = result
-    val operatorIndex = userServers.value.indexOfFirst { it.operator?.operatorId == matchingOperator?.operatorId }
+    val operatorIndex = matchingOperator?.let { op ->
+      userServers.value.indexOfFirst { it.operator?.operatorId == op.operatorId }
+    } ?: preferredOperatorIndex?.takeIf { userServers.value.getOrNull(it)?.operator == null }
+      ?: userServers.value.indexOfFirst { it.operator == null }
     if (operatorIndex != -1) {
       // Create a mutable copy of the userServers list
       val updatedUserServers = userServers.value.toMutableList()
