@@ -46,6 +46,15 @@ actual suspend fun startOrbotAndAwaitStatus(timeoutMs: Long): OrbotState? = with
       // so a malicious app cannot spoof its mode or proxy.
       if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
         val sender = sentFromPackage
+        if (sender == null) {
+          // Orbot did not identify itself. Do not wait for another broadcast:
+          // fall back immediately to the default SOCKS endpoint.
+          Log.w(TAG, "Orbot status broadcast has no sender identity; falling back to SOCKS 127.0.0.1:9050")
+          if (!result.isCompleted) {
+            result.complete(OrbotState(vpnMode = false, socksProxy = "127.0.0.1:9050"))
+          }
+          return
+        }
         if (sender != ORBOT_PACKAGE) {
           Log.w(TAG, "Ignoring Orbot status broadcast from unexpected sender: $sender")
           return

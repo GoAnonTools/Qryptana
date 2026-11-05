@@ -107,6 +107,7 @@ import chat.simplex.res.network_tor_orbot_install
 import chat.simplex.res.network_tor_orbot_not_installed_desc
 import chat.simplex.res.network_tor_orbot_not_installed_title
 import chat.simplex.res.network_tor_open_orbot
+import chat.simplex.res.network_tor_required_orbot_not_running
 import chat.simplex.res.network_tor_orbot_missing_desc
 import chat.simplex.res.network_tor_orbot_missing_title
 import chat.simplex.res.network_socks_proxy_settings
@@ -331,6 +332,7 @@ fun ModalData.NetworkAndServersView(closeNetworkAndServers: () -> Unit) {
               // L1: only report Tor as enabled after the route is actually usable.
               if (!waitForTorRouting(vpnMode == true, torProxy)) {
                 setNetworkConfigSafely(previousCfg)
+                rollbackTorPreferences()
                 showTorConnectionFailedAlert()
                 return@withBGApi
               }
@@ -340,8 +342,10 @@ fun ModalData.NetworkAndServersView(closeNetworkAndServers: () -> Unit) {
               networkUseSocksProxy.value = cfg.useSocksProxy
               onionHosts.value = OnionHosts.REQUIRED
             } else if (errorDetails?.contains("BROKER", ignoreCase = true) == true) {
+              rollbackTorPreferences()
               showTorConnectionFailedAlert()
             } else {
+              rollbackTorPreferences()
               showWrongProxyConfigAlert()
             }
           }
@@ -394,17 +398,18 @@ fun ModalData.NetworkAndServersView(closeNetworkAndServers: () -> Unit) {
   val networkProxy = remember { appPrefs.networkProxy.state }
   val torVpnMode = remember { appPrefs.networkTorVpnMode.state }
   val torLive = remember { mutableStateOf(false) }
+  val torConfigured = remember {
+    derivedStateOf {
+      onionHosts.value == OnionHosts.REQUIRED && (torVpnMode.value || networkUseSocksProxy.value)
+    }
+  }
   // L1: keep the switch honest by requiring a live proxy/VPN check, not just prefs.
   LaunchedEffect(torVpnMode.value, networkUseSocksProxy.value, networkProxy.value.host, networkProxy.value.port, onionHosts.value) {
     while (true) {
-      torLive.value = onionHosts.value == OnionHosts.REQUIRED &&
-        (torVpnMode.value || networkUseSocksProxy.value) &&
+      torLive.value = torConfigured.value &&
         isTorRoutingLive(torVpnMode.value, networkProxy.value.host, networkProxy.value.port)
       delay(5000)
     }
-  }
-  val maximumPrivacyTorEnabled = remember {
-    derivedStateOf { torLive.value && onionHosts.value == OnionHosts.REQUIRED }
   }
   val scope = rememberCoroutineScope()
 
@@ -523,7 +528,8 @@ fun ModalData.NetworkAndServersView(closeNetworkAndServers: () -> Unit) {
       SectionDividerSpaced()
       SectionView {
         MaximumPrivacyTorSwitch(
-          enabled = maximumPrivacyTorEnabled.value,
+          enabled = torConfigured.value,
+          running = torLive.value,
           onToggle = toggleMaximumPrivacyTor
         )
       }
@@ -596,6 +602,7 @@ fun ModalData.NetworkAndServersView(closeNetworkAndServers: () -> Unit) {
 @Composable
 fun MaximumPrivacyTorSwitch(
   enabled: Boolean,
+  running: Boolean,
   onToggle: (Boolean) -> Unit,
 ) {
   Row(
@@ -617,9 +624,10 @@ fun MaximumPrivacyTorSwitch(
         fontWeight = FontWeight.Medium
       )
       Text(
-        stringResource(MR.strings.network_maximum_privacy_tor_desc),
+        if (enabled && !running) stringResource(MR.strings.network_tor_required_orbot_not_running)
+        else stringResource(MR.strings.network_maximum_privacy_tor_desc),
         style = MaterialTheme.typography.body2,
-        color = MaterialTheme.colors.secondary
+        color = if (enabled && !running) MaterialTheme.colors.error else MaterialTheme.colors.secondary
       )
     }
     DefaultSwitch(
@@ -637,7 +645,7 @@ internal fun serverHasOnionHost(server: String): Boolean =
 
 private val LOOPBACK_PROXY_HOSTS = setOf("127.0.0.1", "::1", "localhost")
 
-private fun parseOrbotProxy(socksProxy: String?): NetworkProxy {
+internal fun parseOrbotProxy(socksProxy: String?): NetworkProxy {
   val default = NetworkProxy(host = "127.0.0.1", port = 9050)
   val raw = socksProxy?.trim()?.takeIf { it.isNotEmpty() } ?: return default
   // Accept plain host:port and standard SOCKS URI forms such as
@@ -662,12 +670,18 @@ private fun parseOrbotProxy(socksProxy: String?): NetworkProxy {
       port = authority.substringAfter(':', "9050").toIntOrNull() ?: 9050
     }
   }
-  // H1: never let a spoofed broadcast route traffic off-device.
-  if (host.lowercase() !in LOOPBACK_PROXY_HOSTS) {
-    Log.w(TAG, "Rejecting non-loopback Orbot proxy host: $host")
+  // H1: only the default Orbot endpoint is accepted. A spoofed broadcast cannot
+  // redirect traffic to a non-loopback host or to another loopback port.
+  if (host.lowercase() !in LOOPBACK_PROXY_HOSTS || port != 9050) {
+    Log.w(TAG, "Rejecting Orbot proxy $host:$port; using 127.0.0.1:9050")
     return default
   }
   return NetworkProxy(host = host, port = port)
+}
+
+private fun rollbackTorPreferences() {
+  appPrefs.networkTorVpnMode.set(false)
+  appPrefs.networkTorPreviousProxy.get()?.let { appPrefs.networkProxy.set(it) }
 }
 
 private suspend fun waitForTorRouting(vpnMode: Boolean, proxy: NetworkProxy): Boolean {
